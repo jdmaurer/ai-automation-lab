@@ -1,0 +1,109 @@
+{
+  "name": "webhook-receiver.json",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "coi-intake",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "42704524-b49c-4e87-b8f9-1691639dc016",
+      "name": "Webhook",
+      "webhookId": "bd7898e7-973f-41e8-9e89-903b76c71fd6"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "73688bb1-6a90-46b8-ae07-557c31d0335c",
+              "name": "client",
+              "value": "={{ $json.body.client_name }}",
+              "type": "string"
+            },
+            {
+              "id": "3a5e52fd-0446-4491-9481-e9a85a9b75b5",
+              "name": "ticket_id",
+              "value": "={{ \"COI-\" + $now.toMillis() }}",
+              "type": "string"
+            },
+            {
+              "id": "32ff4255-338b-42f5-99c8-074568367626",
+              "name": "received",
+              "value": "={{ $now }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        224,
+        0
+      ],
+      "id": "6aeda552-60a1-4bc1-bd6d-0dc151f97b30",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"status\": \"received\",\n  \"ticket_id\": \"{{ $json.ticket_id }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        368,
+        0
+      ],
+      "id": "1fa90780-4581-4bb9-a603-f7ac24f09f6c",
+      "name": "Respond to Webhook"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "965f4a79-5032-46c6-a18b-eb7c7538fb24",
+  "meta": {
+    "instanceId": "2715342599d07c701864618983ddb3282653ff6367764812b33a21aeb5a08c1a"
+  },
+  "nodeGroups": [],
+  "id": "uZw6FEegzPfXUJKB",
+  "tags": []
+}
