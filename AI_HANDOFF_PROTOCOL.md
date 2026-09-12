@@ -60,10 +60,16 @@ git push
 Canonical shared project record.
 
 ### ChatGPT Project
-Persistent ChatGPT workspace with the core reference materials.
+Persistent ChatGPT workspace with the core course and reference materials.
+
+ChatGPT has direct GitHub connector access to `jdmaurer/ai-automation-lab`. At the start of a session, read the live `CURRENT_STATE.md` from GitHub rather than relying on a separately uploaded static copy.
 
 ### Claude Project
-Persistent Claude workspace with the same core reference materials.
+Persistent Claude workspace with the core course and reference materials.
+
+The GitHub repository `jdmaurer/ai-automation-lab` is added to Claude Project Context/Knowledge. After repository changes are pushed to GitHub, use Claude's `Sync` function before continuing so Claude has the latest repository state.
+
+Do not maintain a separate static copy of `CURRENT_STATE.md` in Claude when the GitHub project source is available. GitHub remains canonical.
 
 ### CURRENT_STATE.md
 The baton between systems. Keep it short and current.
@@ -73,4 +79,12 @@ The running historical record for that week.
 
 ## Core rule
 When switching systems:
-AI session → update CURRENT_STATE + weekly log → commit/push → next AI reads CURRENT_STATE.
+
+AI session → update `CURRENT_STATE.md` + weekly log → commit/push to GitHub.
+
+Then:
+
+- Moving to ChatGPT: tell ChatGPT to read the latest `CURRENT_STATE.md` from `jdmaurer/ai-automation-lab`.
+- Moving to Claude: Sync the GitHub project source first, then tell Claude to read the latest `CURRENT_STATE.md`.
+
+GitHub is the canonical shared state. `CURRENT_STATE.md` is the baton between systems.
