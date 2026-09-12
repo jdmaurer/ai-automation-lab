@@ -54,8 +54,10 @@ git add .
 git commit -m "..."
 git push
 ```
+Then click Sync now on the GitHub card in this Claude Project.
 
 ## Roles
+
 ### GitHub
 Canonical shared project record.
 
@@ -80,7 +82,7 @@ The running historical record for that week.
 ## Core rule
 When switching systems:
 
-AI session → update `CURRENT_STATE.md` + weekly log → commit/push to GitHub.
+AI session → update `CURRENT_STATE.md` + weekly log → commit/push to GitHub → Sync now in Project.
 
 Then:
 
