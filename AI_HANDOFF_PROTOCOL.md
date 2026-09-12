@@ -21,6 +21,19 @@ Add only these handoff files at repository root:
 - `AI_HANDOFF_PROTOCOL.md`
 - `SESSION_LOG_TEMPLATE.md`
 
+## How Josh learns
+State the purpose and expected result before giving any instruction - what he's about to do, what he should see happen, and why it matters.
+
+He learns by doing, not reading. Textbook-style, text-heavy courses do not work for him. Prefer video, interactive exercises, and building in real tools over long reading.
+
+He works from screenshots. Read what's actually on screen rather than assuming.
+
+He pushes back when something doesn't track, and he's often right - take his description at face value rather than substituting a theory.
+
+End each concept with a one-line KEY MESSAGE in bold so it doesn't get buried in a long response.
+
+If he asks for something simpler or slower (e.g. "explain this like I'm in fifth grade"), keep that register for the rest of the session, not just the next reply.
+
 ## Start of every session
 Read `CURRENT_STATE.md` first.
 
