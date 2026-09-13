@@ -1,47 +1,55 @@
 # CURRENT_STATE
 
 Project: AI Skills Intensive — 12 Week
-Last updated: 2026-09-11
+Last updated: 2026-09-13
 
 ## Current objective
-Complete n8n Academy N8N102 Section 2 hands-on work, then pivot to Lead Intake v1 for Rivertown Professional Services.
+N8N102 Section 2 (Order Webhook Processor) is fully complete and
+tested. Before taking the Section 2 quiz: live hands-on demo of the
+quiz topics that only got covered as text last session (cURL import,
+Response Format options, node-level vs workflow-level error handling).
+After the quiz: pivot to Lead Intake v1 for Rivertown Professional
+Services.
 
 ## Current build
-Workflow: `Section 2 - Order Webhook Processor`
-Current node: `WebhookNewOrder`
+Both workflows complete, tested, and documented:
+- `Section 2 - Order Webhook Processor` (main) — webhook, validation,
+  calls sub-workflow, responds. Unpublished after testing.
+- `Section 2 - Process Order (Sub-workflow)` — duplicate check, insert,
+  processing API call, status update, converged result.
+
+All Step 1/2/3 graded tests passed on first real run. Confirmation
+code: N8N-FOUNDATIONS-N8N102-S2-3-2026-AIY169UH.
 
 ## Exact stopping point
-Step 1.2 — configure `WebhookNewOrder`.
-
-Required values:
-- HTTP Method: `POST`
-- Path: `course/n8n102/new-order`
-- Authentication: `Header Auth`
-- Credential: `n8n Academy API Key`
-- Respond: `Using 'Respond to Webhook' Node`
+Section 2 exercise fully done (build, tests, docs, cleanup). Section 2
+quiz not yet taken — scheduled for today, 9/13.
 
 ## Exact next step
-Open `WebhookNewOrder`, verify/configure the five values above, then continue to Step 1.3 and create `ValidateRequiredFields`.
-
-## Remaining Section 2 sequence
-- Finish secure webhook, validation, response nodes, publish, and tester
-- Create `n8n102_course_orders` Data Table
-- Build `Section 2 - Process Order (Sub-workflow)`
-- Add duplicate checking/idempotency
-- Refactor the main workflow to call the sub-workflow
-- Test the full pipeline
-- Add documentation
-- Unpublish the webhook when finished
-- Pivot to Lead Intake v1
+Add a scratch (disconnected) HTTP Request node. Use its Import cURL
+button with a sample cURL block and observe the auto-filled
+Method/URL/Headers/Body live in n8n. Then same live, hands-on treatment
+for Response Format options and node-level vs workflow-level error
+handling. Then take the Section 2 quiz. Then start Lead Intake v1.
 
 ## Working rules for AI assistants
 - Explain WHY with a concrete everyday example before or alongside steps.
 - Always spell out exact names, values, expressions, settings, and commands.
-- Teach genuinely new tools directly.
-- For portfolio work that recombines known tools, switch to case-study mode: state the requirement, ask what Josh would build first, then confirm/correct.
-- After 2–3 reasoned attempts at an unclear or undocumented issue, verify instead of continuing to guess.
+- Teach genuinely new tools directly, hands-on in n8n — not as text
+  explanation, even for "just worth knowing for the quiz" asides.
+- For portfolio work that recombines known tools, switch to case-study
+  mode: state the requirement, ask what Josh would build first, then
+  confirm/correct.
+- After 2–3 reasoned attempts at an unclear or undocumented issue,
+  verify instead of continuing to guess.
 - Flag contradictions in course materials.
-- Treat portfolio skill-building as more important than merely finishing certificates.
+- Give one instruction at a time by default; expand to a few grouped
+  steps only when they're one continuous task with no decision points
+  in between.
+- Match instructions exactly to what's on screen — use the same labels
+  Josh reports seeing, not the exercise doc's wording, if they differ.
+- Treat portfolio skill-building as more important than merely
+  finishing certificates.
 
 ## Source hierarchy
 1. `CURRENT_STATE.md` for where to resume
