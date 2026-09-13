@@ -112,3 +112,50 @@ Exact next step: Continue N8N102 Section 2, Step 1.2 - configure
 WebhookNewOrder (POST, course/n8n102/new-order, Header Auth, n8n Academy
 API Key, Respond via Respond to Webhook node). No n8n work happened this
 day - this carries over unchanged.
+
+## Saturday 9.13.26 - Section 2 complete, but a rough session
+
+N8N102 Section 2 finished end to end today - webhook, validation, Data
+Table storage, a full sub-workflow with real duplicate-checking, an
+external API call, and a converged response. All three graded tests
+passed on the first real run. Confirmation code:
+N8N-FOUNDATIONS-N8N102-S2-3-2026-AIY169UH.
+
+What's actually sinking in: n8n itself is getting easier. JSON is
+starting to read naturally instead of looking like noise - I could
+follow the structure of expressions, not just copy them. The
+mechanics of the build made sense even when a lot of the actual typing
+was copy-paste.
+
+WHAT DIDN'T WORK TODAY:
+- Claude was noticeably harder to work with than in past sessions -
+  more mistakes, more back-and-forth to get something right.
+- Felt like I spent real energy re-teaching Claude how to teach me,
+  instead of just learning n8n - explaining more than once that I
+  wanted step-by-step, not five things at once; that I didn't have the
+  assignment doc in front of me; that instructions had to match what
+  was actually on my screen.
+- Genuinely disappointed at how much quality changed moving between
+  chats inside the same Claude project. Consistency shouldn't reset
+  every time a new chat starts.
+- Real wiring mistakes happened on Claude's side today (a node chain
+  built in the wrong order, an instruction that didn't match the
+  actual on-screen labels, a promised hands-on quiz demo that got
+  delivered as text instead) - caught and fixed each one.
+
+WHAT WENT RIGHT ANYWAY:
+- Catching Claude's mistakes myself felt genuinely good - a real sign
+  I understand what's happening under the hood, not just following
+  steps blind.
+- Plan going forward: copy the previous project conversation into this
+  chat (finally have the token room to do it) and see what can be
+  added to memory, so future sessions perform closer to how earlier
+  ones did instead of repeating today.
+
+Exact stopping point: N8N102 Section 2 fully complete and tested.
+Quiz not yet taken - scheduled for tomorrow (9.13.26).
+
+Exact next step: Live hands-on demo (not text) of three remaining quiz
+topics - cURL import, Response Format options, node-level vs
+workflow-level error handling - using a scratch HTTP Request node.
+Then take the Section 2 quiz. Then pivot to Lead Intake v1.
