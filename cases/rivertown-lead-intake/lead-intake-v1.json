@@ -1,0 +1,1177 @@
+{
+  "name": "Rivertown - Lead Intake v1",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "rivertown/lead-intake",
+        "authentication": "headerAuth",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        64,
+        -96
+      ],
+      "id": "9f58a2a3-bce6-4ba7-8775-00f1c92f14af",
+      "name": "Webhook",
+      "webhookId": "8c2f6054-3bbe-43cc-b733-1b867038965b",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "PEJSCkgG8e75C9bo",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"status\": \"received\",\n  \"external_id\": \"{{ $json.external_id }}\",\n  \"routed_to\": \"{{ $json.routed_to }}\"\n}",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        1600,
+        -112
+      ],
+      "id": "c75c0a01-695e-44d5-8b5b-8da913d2d0ef",
+      "name": "RespondSuccess"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"status\": \"rejected\",\n  \"reason\": \"Missing required field: external_id or email\"\n}",
+        "options": {
+          "responseCode": 400
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        592,
+        128
+      ],
+      "id": "18abe241-36a5-4088-8b78-cfb8e04b6c96",
+      "name": "RespondFail"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"status\": \"duplicate\",\n  \"external_id\": \"{{ $json.external_id }}\",\n  \"message\": \"This submission was already received. No new record created.\"\n}",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        1296,
+        128
+      ],
+      "id": "8cdc1066-788d-4268-bc6b-2c3dc343f014",
+      "name": "RespondDuplicate"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fa58f602-5e17-4bb5-83d8-62f4fd8ed771",
+              "name": "first_name",
+              "value": "={{ $json.body.first_name.trim() }}",
+              "type": "string"
+            },
+            {
+              "id": "e9027d8a-c4c9-4f8b-a477-c2055575e497",
+              "name": "last_name",
+              "value": "={{ $json.body.last_name.trim() }}",
+              "type": "string"
+            },
+            {
+              "id": "ca3befd4-4583-41c3-b03b-cd755cc480c1",
+              "name": "email",
+              "value": "={{ $json.body.email.trim().toLowerCase() }}",
+              "type": "string"
+            },
+            {
+              "id": "18b04847-a3ad-442e-8a4f-4c7431092f08",
+              "name": "company",
+              "value": "={{ $json.body.company.trim() }}",
+              "type": "string"
+            },
+            {
+              "id": "848e099b-1610-4077-a63e-574e2444d422",
+              "name": "external_id",
+              "value": "={{ $json.body.external_id }}",
+              "type": "string"
+            },
+            {
+              "id": "0438f89d-154b-4f9d-9ba8-e5efbf16cea7",
+              "name": "engagement_type",
+              "value": "={{ $json.body.engagement_type }}",
+              "type": "string"
+            },
+            {
+              "id": "48de490e-fc44-4125-a719-cd53e2493463",
+              "name": "phone",
+              "value": "={{ $json.body.phone }}",
+              "type": "string"
+            },
+            {
+              "id": "e7aca0be-19a5-456e-b046-0e58d9dca73b",
+              "name": "message",
+              "value": "={{ $json.body.message }}",
+              "type": "string"
+            },
+            {
+              "id": "3b384594-b1e8-40a3-9abd-ef8d5fb85002",
+              "name": "company_size",
+              "value": "={{ $json.body.company_size }}",
+              "type": "string"
+            },
+            {
+              "id": "78b977e3-36c5-48cc-ac33-2fcd14a07247",
+              "name": "submitted_at",
+              "value": "={{ $json.body.submitted_at }}",
+              "type": "string"
+            },
+            {
+              "id": "0146a4a1-4d6f-4056-96d4-77d4da6ffffa",
+              "name": "=received_at",
+              "value": "={{ $now }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        240,
+        -96
+      ],
+      "id": "bc155a36-9890-478a-bd4e-3871e19b5e37",
+      "name": "NormalizeLead"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "d1d71075-6008-4fd8-9af4-f0f262951aae",
+              "leftValue": "={{ $json.external_id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "51c83e01-c613-4263-9cbe-b05065ddc85b",
+              "leftValue": "={{ $json.email }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        416,
+        -96
+      ],
+      "id": "8f44bd84-0684-483c-a765-5aadfee58f6e",
+      "name": "ValidateRequiredFields"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "1T1iVKk1PrQISwo0",
+          "mode": "list",
+          "cachedResultName": "rivertown leads seed",
+          "cachedResultUrl": "/projects/oUX66llJE7KPzWeD/datatables/1T1iVKk1PrQISwo0"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "external_id",
+              "keyValue": "={{ $json.external_id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        592,
+        -96
+      ],
+      "id": "e0b4f3a6-94cc-42c9-8405-37bd394f6e42",
+      "name": "CheckLeadExists",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "70575356-9a40-4d4c-8cce-ad34066e0a5a",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        768,
+        -96
+      ],
+      "id": "87ddc1b2-8e13-4a3e-bc33-fe19ce599bcf",
+      "name": "IsNewLead"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a1",
+              "name": "first_name",
+              "value": "={{ $('NormalizeLead').item.json.first_name }}",
+              "type": "string"
+            },
+            {
+              "id": "a2",
+              "name": "last_name",
+              "value": "={{ $('NormalizeLead').item.json.last_name }}",
+              "type": "string"
+            },
+            {
+              "id": "a3",
+              "name": "email",
+              "value": "={{ $('NormalizeLead').item.json.email }}",
+              "type": "string"
+            },
+            {
+              "id": "a4",
+              "name": "company",
+              "value": "={{ $('NormalizeLead').item.json.company }}",
+              "type": "string"
+            },
+            {
+              "id": "a5",
+              "name": "external_id",
+              "value": "={{ $('NormalizeLead').item.json.external_id }}",
+              "type": "string"
+            },
+            {
+              "id": "a6",
+              "name": "engagement_type",
+              "value": "={{ $('NormalizeLead').item.json.engagement_type }}",
+              "type": "string"
+            },
+            {
+              "id": "a7",
+              "name": "phone",
+              "value": "={{ $('NormalizeLead').item.json.phone }}",
+              "type": "string"
+            },
+            {
+              "id": "a8",
+              "name": "message",
+              "value": "={{ $('NormalizeLead').item.json.message }}",
+              "type": "string"
+            },
+            {
+              "id": "a9",
+              "name": "company_size",
+              "value": "={{ $('NormalizeLead').item.json.company_size }}",
+              "type": "string"
+            },
+            {
+              "id": "a10",
+              "name": "submitted_at",
+              "value": "={{ $('NormalizeLead').item.json.submitted_at }}",
+              "type": "string"
+            },
+            {
+              "id": "a11",
+              "name": "received_at",
+              "value": "={{ $('NormalizeLead').item.json.received_at }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        992,
+        -112
+      ],
+      "id": "1e903ed6-bdac-4b27-9950-be4d5d4b6a03",
+      "name": "RestoreLeadData"
+    },
+    {
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "value": "1T1iVKk1PrQISwo0",
+          "mode": "list",
+          "cachedResultName": "rivertown leads seed",
+          "cachedResultUrl": "/projects/oUX66llJE7KPzWeD/datatables/1T1iVKk1PrQISwo0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "external_id": "={{ $json.external_id }}",
+            "first_name": "={{ $json.first_name }}",
+            "last_name": "={{ $json.last_name }}",
+            "email": "={{ $json.email }}",
+            "company": "={{ $json.company }}",
+            "phone": "={{ $json.phone }}",
+            "engagement_type": "={{ $json.engagement_type }}",
+            "company_size": "={{ $json.company_size }}",
+            "message": "={{ $json.message }}",
+            "submitted_at": "={{ $json.submitted_at }}",
+            "received_at": "={{ $json.received_at }}",
+            "routed_to": "={{ $json.engagement_type.toLowerCase() }}",
+            "status": "new",
+            "duplicate_count": 0
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "external_id",
+              "displayName": "external_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_name",
+              "displayName": "first_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "last_name",
+              "displayName": "last_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "company",
+              "displayName": "company",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "phone",
+              "displayName": "phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "engagement_type",
+              "displayName": "engagement_type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "company_size",
+              "displayName": "company_size",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "message",
+              "displayName": "message",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "submitted_at",
+              "displayName": "submitted_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "received_at",
+              "displayName": "received_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "routed_to",
+              "displayName": "routed_to",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "duplicate_count",
+              "displayName": "duplicate_count",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        1408,
+        -208
+      ],
+      "id": "7d97043f-e885-4ad1-84da-2a3409cd7909",
+      "name": "InsertRoutedLead"
+    },
+    {
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "value": "1T1iVKk1PrQISwo0",
+          "mode": "list",
+          "cachedResultName": "rivertown leads seed",
+          "cachedResultUrl": "/projects/oUX66llJE7KPzWeD/datatables/1T1iVKk1PrQISwo0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "external_id": "={{ $json.external_id }}",
+            "first_name": "={{ $json.first_name }}",
+            "last_name": "={{ $json.last_name }}",
+            "email": "={{ $json.email }}",
+            "company": "={{ $json.company }}",
+            "phone": "={{ $json.phone }}",
+            "engagement_type": "={{ $json.engagement_type }}",
+            "company_size": "={{ $json.company_size }}",
+            "message": "={{ $json.message }}",
+            "submitted_at": "={{ $json.submitted_at }}",
+            "received_at": "={{ $json.received_at }}",
+            "routed_to": "=review",
+            "status": "new",
+            "duplicate_count": 0
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "external_id",
+              "displayName": "external_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_name",
+              "displayName": "first_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "last_name",
+              "displayName": "last_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "company",
+              "displayName": "company",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "phone",
+              "displayName": "phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "engagement_type",
+              "displayName": "engagement_type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "company_size",
+              "displayName": "company_size",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "message",
+              "displayName": "message",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "submitted_at",
+              "displayName": "submitted_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "received_at",
+              "displayName": "received_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "routed_to",
+              "displayName": "routed_to",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "duplicate_count",
+              "displayName": "duplicate_count",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        1408,
+        -32
+      ],
+      "id": "78235a94-9706-4c7a-838e-42af37fc9bf1",
+      "name": "InsertForReview"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "1T1iVKk1PrQISwo0",
+          "mode": "list",
+          "cachedResultName": "rivertown leads seed",
+          "cachedResultUrl": "/projects/oUX66llJE7KPzWeD/datatables/1T1iVKk1PrQISwo0"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "external_id",
+              "keyValue": "={{ $json.external_id }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "duplicate_count": "={{ ($json.duplicate_count || 0) + 1 }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "external_id",
+              "displayName": "external_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "first_name",
+              "displayName": "first_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "last_name",
+              "displayName": "last_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "company",
+              "displayName": "company",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "phone",
+              "displayName": "phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "engagement_type",
+              "displayName": "engagement_type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "company_size",
+              "displayName": "company_size",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "message",
+              "displayName": "message",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "submitted_at",
+              "displayName": "submitted_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "received_at",
+              "displayName": "received_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "routed_to",
+              "displayName": "routed_to",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "duplicate_count",
+              "displayName": "duplicate_count",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        1072,
+        128
+      ],
+      "id": "e6ccd40a-5411-492d-9a8a-08689bd22c59",
+      "name": "IncrementDuplicateCount"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.engagement_type }}",
+                    "rightValue": "Training",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "bbce7211-3a59-40f8-8da9-7b8b7bd25fc3"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "b7125981-9e58-4302-8f60-e03a8d5bf597",
+                    "leftValue": "={{ $json.engagement_type }}",
+                    "rightValue": "Consulting",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "df81c077-2b97-4aea-9199-e36ce163c175",
+                    "leftValue": "={{ $json.engagement_type }}",
+                    "rightValue": "Speaking",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        1184,
+        -144
+      ],
+      "id": "b19ff8ff-636a-42f6-a237-b6158d23ca36",
+      "name": "RouteByEngagementType"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "body": {
+            "external_id": "FORM-10231",
+            "first_name": "  Dana ",
+            "last_name": "Okonkwo",
+            "email": "Dana.Okonkwo@Meridian-Partners.COM ",
+            "company": "meridian partners llc",
+            "phone": "608-555-0142",
+            "engagement_type": "Training",
+            "message": "Looking for a two-day facilitation workshop for our managers.",
+            "company_size": "11-50",
+            "submitted_at": "2026-09-14T15:22:08.000Z"
+          }
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "NormalizeLead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NormalizeLead": {
+      "main": [
+        [
+          {
+            "node": "ValidateRequiredFields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ValidateRequiredFields": {
+      "main": [
+        [
+          {
+            "node": "CheckLeadExists",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "RespondFail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CheckLeadExists": {
+      "main": [
+        [
+          {
+            "node": "IsNewLead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IsNewLead": {
+      "main": [
+        [
+          {
+            "node": "RestoreLeadData",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "IncrementDuplicateCount",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RestoreLeadData": {
+      "main": [
+        [
+          {
+            "node": "RouteByEngagementType",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "InsertRoutedLead": {
+      "main": [
+        [
+          {
+            "node": "RespondSuccess",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "InsertForReview": {
+      "main": [
+        [
+          {
+            "node": "RespondSuccess",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IncrementDuplicateCount": {
+      "main": [
+        [
+          {
+            "node": "RespondDuplicate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RouteByEngagementType": {
+      "main": [
+        [
+          {
+            "node": "InsertRoutedLead",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "InsertRoutedLead",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "InsertRoutedLead",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "InsertForReview",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "f893046a-0e14-4e7d-bd70-b58f0b1b18dc",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "2715342599d07c701864618983ddb3282653ff6367764812b33a21aeb5a08c1a"
+  },
+  "nodeGroups": [],
+  "id": "2hohi1VyRfjJplBa",
+  "tags": [
+    {
+      "updatedAt": "2026-09-15T17:04:16.013Z",
+      "createdAt": "2026-09-15T17:04:16.013Z",
+      "id": "N3YYPcNVVpkXIMAY",
+      "name": "rivertown"
+    }
+  ]
+}
