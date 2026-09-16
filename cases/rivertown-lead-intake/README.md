@@ -3,8 +3,8 @@
 A webhook-driven lead intake, deduplication, and routing workflow built in
 n8n. Portfolio case study; synthetic data only.
 
-STATUS: built and tested with pinned data. Postman testing against a live
-published webhook is pending.
+STATUS: built and live-tested against the published Production URL with Header Auth.
+All ten Postman cases passed; the workflow was unpublished again after verification.
 
 ---
 
@@ -84,8 +84,8 @@ business making.
 
 ## What this does not claim
 
-See `limitations.md`. In short: synthetic data, not published, no
-authentication configured, no alerting, form intake only.
+See `limitations.md`. In short: synthetic data, currently unpublished after
+live verification, Header Auth configured, no alerting, form intake only.
 
 ## Files
 

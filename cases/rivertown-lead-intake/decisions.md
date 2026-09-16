@@ -121,3 +121,25 @@ at all." Any field guaranteed on a real row would work.
 Safe on migration because `id` never leaves the node. Storing or exporting a
 surrogate key is what breaks when rows are renumbered; `external_id` is the
 natural key and travels with the lead.
+
+## 2026-09-16 — live verification
+
+### D12. Webhook uses a stable path and dedicated Header Auth
+Changed the webhook Path from n8n's generated identifier to
+`rivertown/lead-intake` and changed Authentication from None to Header Auth
+with a credential dedicated to this workflow.
+
+The readable path makes the endpoint easier to document and configure, but
+the path itself is not treated as a secret. Authentication provides the
+actual access control.
+
+*Rejected:* reusing the existing n8n Academy API Key credential. Credentials
+should be separated by purpose so changing or revoking one integration does
+not affect an unrelated one.
+
+The workflow was published temporarily to run all ten Postman cases against
+the Production URL, then unpublished after verification. This was live
+integration testing, not a production deployment claim.
+
+The credential secret is not documented or committed to the repository. The
+exported workflow JSON was checked for the secret before it was staged.

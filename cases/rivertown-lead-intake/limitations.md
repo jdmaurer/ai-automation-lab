@@ -8,9 +8,9 @@ What this workflow does not do, and why. Written for a client-facing
 - **Form intake only.** The shared inbox described in the case is out of
   scope. Email arrives as unstructured text and requires a model to read it;
   that is a separate case with its own controls.
-- **Not published, no authentication configured.** The webhook path is still
-  the generated GUID and Authentication is None. Both must change before this
-  is exposed.
+- **Currently unpublished after live verification.** The webhook path is
+  `rivertown/lead-intake` and Header Auth is configured. It was published
+  temporarily for Postman testing with synthetic data, then unpublished.
 - **Synthetic data only.** Rivertown is a fictional 30-person B2B consulting
   and training firm. No real prospect data has been processed.
 
