@@ -1,88 +1,74 @@
-# Start of Session — 2026-09-16
+# Start of Session — Next Session
 
-Delete or overwrite this file once the session is underway. It exists so the
-first ten minutes are not spent reconstructing where things stood.
+This file is the start-of-day checklist. Rivertown Lead Intake v1 live verification
+is complete. Do not repeat the Postman test run unless a new change requires it.
 
 ---
 
 ## Before opening a chat
 
 1. **Confirm the repo is current.** In PowerShell:
+
    ```powershell
    cd "$HOME\ai-automation-lab"
    git status
    ```
-   Expect "nothing to commit, working tree clean."
 
-2. **Sync the GitHub source in the Claude Project.**
-   Project knowledge → GitHub → Sync. Without this, the chat reads yesterday's
-   files.
+   Expect a clean working tree after the 2026-09-16 session-close commit and push.
 
-3. **Update the Project instructions** (the text pane in Project settings).
-   Two lines are now stale:
-   - N8N102's format is no longer "UNVERIFIED" — the course is complete
-   - Lead Intake v1 is no longer upcoming — it is built and awaiting live
-     testing
+2. **Sync the GitHub source used by the AI Skills Intensive project.**
+
+3. **Open N8N103 in n8n Academy.**
+   N8N102 is complete. N8N101 remains diagnostic-only; do not chase the
+   Foundations badge.
 
 ## Opening the chat
 
-New chat **inside the AI Skills Intensive Project**, not a regular chat.
+Start a new chat inside the AI Skills Intensive project.
 
-**Nothing needs to be uploaded.** Everything lives in the repo and syncs
-through Project knowledge. The master calendar and tracker are already Project
-files.
+Paste:
 
-Paste this as the first message:
+> Read CURRENT_STATE.md and NEXT_SESSION_START.md first. Rivertown Lead Intake
+> v1 live verification is complete. Continue from the exact next step with
+> N8N103. Explain the purpose and expected result before instructions, give one
+> instruction at a time by default, group routine same-screen steps with no
+> decision point, use one PowerShell command per copy block, and include pin
+> data JSON only when the current test actually uses n8n pinned data.
 
-> Read CURRENT_STATE.md first, then cases/rivertown-lead-intake/. Continue
-> from the exact next step. Explain why before giving steps, one step at a
-> time, spell out all values in full, and give me the pin data JSON with any
-> test instruction.
+## First work item
 
-## Today's work, in order
+Begin **N8N103 — In Practice: AI, Testing and Best Practices**.
 
-**1. Reset the Data Table.**
-Clear all rows in `rivertown leads seed`, re-import
-`cases/rivertown-lead-intake/rivertown_leads_seed.csv`.
-Ten rows. Rows 1-3 keep `duplicate_count` null on purpose — case A depends on
-it.
+Use the same working style that succeeded on Rivertown:
+- learn in the tool rather than reading long explanations first
+- pause at real decision points
+- capture any n8n documentation defects in `n8n-patterns.md`
+- prefer portfolio evidence and working behavior over certificate chasing
 
-Do NOT export the table from n8n and use that as the seed. An export is live
-state including test rows.
+## Rivertown state to preserve
 
-**2. Configure the webhook for real use.**
-- Change Path from the generated GUID to `rivertown/lead-intake`
-- Set Authentication to Header Auth and create the credential
-- Confirm Respond is set to "Using 'Respond to Webhook' Node"
+- `Rivertown - Lead Intake v1` is **unpublished**
+- webhook path is `rivertown/lead-intake`
+- Header Auth is configured with a dedicated credential
+- all ten Postman cases A-J passed against the published Production URL
+- tested export is `cases/rivertown-lead-intake/lead-intake-v1.json`
+- the credential secret is not in the repository
+- live-test Data Table currently has 18 rows
+- the canonical reset baseline is
+  `cases/rivertown-lead-intake/rivertown_leads_seed.csv`
+- do not reset the live table unless another test run requires the 10-row baseline
 
-**3. Publish the workflow.**
+## Open items, not blockers for starting N8N103
 
-**4. Run all ten cases through Postman** against the Production URL.
-Cases and payloads are in `cases/rivertown-lead-intake/test-cases.md`.
-For each: record status code, response body, and resulting table state.
+- n8n Cloud trial: check remaining days and decide self-host vs paid before expiry
+- Claude Code install remains pending and matters from around Week 4
+- rotate the current Rivertown Header Auth secret before any real client or
+  production use
 
-This is the real test. Pin data proved the logic; only a real POST proves the
-response, the method, and the auth.
+## Source order
 
-**5. Fill in the Postman column** of the results table in `test-cases.md`.
-
-**6. Unpublish.**
-
-**7. Export the workflow** to
-`cases/rivertown-lead-intake/lead-intake-v1.json`.
-
-**8. Commit and push.**
-
-## If there is time after that
-
-- Check the Excel tracker — completion has not been recorded for several
-  sessions
-- Check n8n Cloud trial days remaining; decide self-host vs paid
-- Verify the Data Table column count (it reported 15; expected count is worth
-  confirming)
-- Claude Code install — still pending, matters from around Week 4
-
-## Then
-
-N8N103: In Practice — AI, Testing and Best Practices. Master calendar Week 5.
-N8N101 stays out of scope except diagnostic sections.
+1. `CURRENT_STATE.md`
+2. `NEXT_SESSION_START.md`
+3. `cases/rivertown-lead-intake/` when Rivertown context is needed
+4. Master Calendar for sequencing
+5. current `weekN-log.md` for history

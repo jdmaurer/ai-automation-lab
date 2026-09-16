@@ -116,3 +116,34 @@ study committed and pushed (36b352f).
 
 Exact next step: reset the table, set webhook path and Header Auth, publish,
 run all ten cases through Postman against the Production URL, record results.
+
+
+## Wednesday 9.16.26 - Live-tested Lead Intake v1
+
+Picked up at the exact next step from yesterday: prove the pinned-data build against a real published webhook.
+
+Reset the n8n Data Table to the canonical 10-row seed baseline, changed the webhook path to `rivertown/lead-intake`, and added a dedicated Header Auth credential instead of reusing the n8n Academy key. The readable path is for documentation; the auth header is the actual access control.
+
+Published temporarily and ran all ten Postman cases A-J against the Production URL. All ten passed:
+- duplicate replay incremented Dana's `duplicate_count` from null to 1 without adding a row
+- Training, Consulting, and Speaking routed correctly
+- `Other` and unexpected `Retainer` values routed to review
+- missing company and other blank optional fields were accepted
+- missing `external_id` returned 400 and stored nothing
+- Priya's same email with a new `external_id` was treated as a new request, confirming idempotency is keyed to the request ID, not the person
+
+The live-test table ended at 18 rows. The fixed 10-row seed CSV remains the reset baseline.
+
+After testing, unpublished the workflow, exported the exact tested version to `cases/rivertown-lead-intake/lead-intake-v1.json`, and checked the export for the credential secret before committing it. The secret is not in the repo.
+
+Commits from the session:
+- `a99f288` Record live Postman test results
+- `aa2f695` Add tested Lead Intake v1 workflow export
+- `b389e6d` Update Lead Intake case after live verification
+
+Also updated the case README, limitations, and decision log so the portfolio now says what actually happened: Header Auth is configured, the workflow was live-tested, and it is currently unpublished rather than claiming a real production deployment.
+
+Process lesson from today: group routine same-screen fields together, but keep real decision points separate. For PowerShell, one command per copy block.
+
+Rivertown Lead Intake v1 is now through live verification. Next curriculum item: N8N103 — In Practice: AI, Testing and Best Practices.
+
