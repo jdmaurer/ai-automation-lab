@@ -19,19 +19,20 @@ Case A relies on this to exercise the `|| 0` fallback in
 
 | # | Case | Expected path | Expected response | Pin data | Postman |
 |---|---|---|---|---|---|
-| A | Duplicate lead | IncrementDuplicateCount | 200 `duplicate` | PASS | — |
-| B | New lead, Training | InsertRoutedLead | 200 `received` | PASS | — |
-| C | New lead, Consulting | InsertRoutedLead | 200 `received` | — | — |
-| D | New lead, Speaking | InsertRoutedLead | 200 `received` | — | — |
-| E | New lead, "Other" | InsertForReview | 200 `received` | — | — |
-| F | Unexpected engagement_type | InsertForReview | 200 `received` | PASS | — |
-| G | Missing company (now optional) | InsertRoutedLead | 200 `received` | — | — |
-| H | Missing external_id | RespondFail | 400 `rejected` | PASS | — |
-| I | Blank optional fields only | InsertRoutedLead | 200 `received` | — | — |
-| J | Same person, new request | InsertRoutedLead | 200 `received` | — | — |
+| A | Duplicate lead | IncrementDuplicateCount | 200 `duplicate` | PASS | PASS |
+| B | New lead, Training | InsertRoutedLead | 200 `received` | PASS | PASS |
+| C | New lead, Consulting | InsertRoutedLead | 200 `received` | — | PASS |
+| D | New lead, Speaking | InsertRoutedLead | 200 `received` | — | PASS |
+| E | New lead, "Other" | InsertForReview | 200 `received` | — | PASS |
+| F | Unexpected engagement_type | InsertForReview | 200 `received` | PASS | PASS |
+| G | Missing company (now optional) | InsertRoutedLead | 200 `received` | — | PASS |
+| H | Missing external_id | RespondFail | 400 `rejected` | PASS | PASS |
+| I | Blank optional fields only | InsertRoutedLead | 200 `received` | — | PASS |
+| J | Same person, new request | InsertRoutedLead | 200 `received` | — | PASS |
 
-Cases C, D, E, G, I, J built but not yet executed. All ten need a Postman run
-against the published Production URL.
+All ten cases passed against the published Production URL using Header Auth on
+2026-09-16. Results were verified from both the HTTP response and resulting
+Data Table state.
 
 ---
 
