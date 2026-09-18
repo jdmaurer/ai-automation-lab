@@ -1,74 +1,67 @@
 # Start of Session — Next Session
 
-This file is the start-of-day checklist. Rivertown Lead Intake v1 live verification
-is complete. Do not repeat the Postman test run unless a new change requires it.
+N8N103 Section 1 — AI Introduction is complete: both hands-on projects are
+finished, the Practical Assessment is 3/3, and the knowledge check is complete.
 
 ---
 
 ## Before opening a chat
 
-1. **Confirm the repo is current.** In PowerShell:
+Because the 2026-09-17 closeout was written directly to GitHub, fast-forward
+the local clone before doing local repo work:
 
-   ```powershell
-   cd "$HOME\ai-automation-lab"
-   git status
-   ```
+```powershell
+cd "$HOME\ai-automation-lab"
+git pull --ff-only
+git status
+```
 
-   Expect a clean working tree after the 2026-09-16 session-close commit and push.
-
-2. **Sync the GitHub source used by the AI Skills Intensive project.**
-
-3. **Open N8N103 in n8n Academy.**
-   N8N102 is complete. N8N101 remains diagnostic-only; do not chase the
-   Foundations badge.
+Expect a clean working tree after the pull.
 
 ## Opening the chat
 
-Start a new chat inside the AI Skills Intensive project.
+Start inside the AI Skills Intensive project and have the assistant read
+`CURRENT_STATE.md` first.
 
-Paste:
+Key working rule for N8N103 Section 2:
 
-> Read CURRENT_STATE.md and NEXT_SESSION_START.md first. Rivertown Lead Intake
-> v1 live verification is complete. Continue from the exact next step with
-> N8N103. Explain the purpose and expected result before instructions, give one
-> instruction at a time by default, group routine same-screen steps with no
-> decision point, use one PowerShell command per copy block, and include pin
-> data JSON only when the current test actually uses n8n pinned data.
+> Before the hands-on work begins, map the Section 2 knowledge-check questions
+> to the concepts in the practical. Ask the relevant question when I actually
+> reach that concept in n8n. Do not save the questions for a post-project quiz.
+> Group routine same-screen configuration when there is no decision point.
 
-## First work item
+## First work items
 
-Begin **N8N103 — In Practice: AI, Testing and Best Practices**.
+1. In `Section 1 - Feedback Agent`, add the course documentation sticky note.
+   Use the actual model `openai/gpt-oss-120b`. Correct the course template's
+   Order Status description to use `order_id`, not `customer_id`.
+2. Skip the optional Simple Memory stretch unless Josh explicitly wants it.
+3. Begin **N8N103 Section 2 — Testing & Debugging**.
+4. Map Section 2 knowledge-check questions into the hands-on work before
+   starting the build.
 
-Use the same working style that succeeded on Rivertown:
-- learn in the tool rather than reading long explanations first
-- pause at real decision points
-- capture any n8n documentation defects in `n8n-patterns.md`
-- prefer portfolio evidence and working behavior over certificate chasing
+Section 2 should cover pinned/mock data, test scenarios, execution data, error
+messages/logs, error handling, and deciding when to troubleshoot independently
+versus when to seek help.
 
-## Rivertown state to preserve
+## Section 1 state to preserve
 
-- `Rivertown - Lead Intake v1` is **unpublished**
-- webhook path is `rivertown/lead-intake`
-- Header Auth is configured with a dedicated credential
-- all ten Postman cases A-J passed against the published Production URL
-- tested export is `cases/rivertown-lead-intake/lead-intake-v1.json`
-- the credential secret is not in the repository
-- live-test Data Table currently has 18 rows
-- the canonical reset baseline is
-  `cases/rivertown-lead-intake/rivertown_leads_seed.csv`
-- do not reset the live table unless another test run requires the 10-row baseline
+- `Section 1 - Feedback Pipeline` completed and graded.
+- `Section 1 - Feedback Agent` completed and graded.
+- Practical Assessment: 3/3.
+- Knowledge check: complete.
+- Project 2 course model was unavailable; actual model used:
+  `openai/gpt-oss-120b`.
+- Agent tool tests passed for order status, customer info, and product info.
 
-## Open items, not blockers for starting N8N103
+## Portfolio state to preserve
 
-- n8n Cloud trial: check remaining days and decide self-host vs paid before expiry
-- Claude Code install remains pending and matters from around Week 4
-- rotate the current Rivertown Header Auth secret before any real client or
-  production use
+`Rivertown - Lead Intake v1` remains unpublished after successful live
+verification. Do not rerun or reset it unless a new change requires another
+evidence run.
 
-## Source order
+## Open items, not blockers
 
-1. `CURRENT_STATE.md`
-2. `NEXT_SESSION_START.md`
-3. `cases/rivertown-lead-intake/` when Rivertown context is needed
-4. Master Calendar for sequencing
-5. current `weekN-log.md` for history
+- n8n Cloud trial: check remaining days and decide self-host vs paid before expiry.
+- Claude Code install remains pending and matters from around Week 4.
+- Rotate the Rivertown Header Auth secret before any real client/production use.
