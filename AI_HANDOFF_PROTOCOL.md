@@ -53,8 +53,22 @@ Deliver teaching in pieces alongside the clicking, not stacked up in front of
 it. A page of reading before any doing is the failure mode — it has happened
 more than once and he has had to call it out.
 
-Give one instruction at a time by default. Group only routine steps with no
-decision points between them.
+Give one instruction at a time by default. Group routine same-screen steps when
+there is no decision point between them; do not artificially split repetitive
+field entry into separate turns.
+
+When a course section includes knowledge-check or quiz questions alongside a
+hands-on project, map the questions to the build before starting. Ask each
+relevant question naturally when Josh reaches that concept in the tool. Do not
+save the questions and turn them into a separate post-project quiz.
+
+During quiz/knowledge-check work, do not reveal the answer or give hints until
+Josh asks. After he gives an answer, say plainly whether it is correct first;
+then add nuance without making a correct answer sound wrong.
+
+For paste-ready n8n fields, keep field labels and field values in separate copy
+blocks. Never put a label and the value intended for a different UI field into
+the same copy block.
 
 Always supply the pin data JSON with any test instruction. Do not make him
 switch between documents to find it.
@@ -91,6 +105,12 @@ any test instruction."
 
 Work through this list. Not every item applies every night — but check each
 one rather than assuming.
+
+**Direct GitHub closeout:** when the assistant has authenticated GitHub write
+access, it should update and commit the handoff files directly instead of making
+Josh manually copy/paste edits and run a long closeout sequence. If GitHub is
+updated remotely, note that the local clone will need a fast-forward pull before
+local repo work continues.
 
 **1. Always:**
 - Update `CURRENT_STATE.md` — objective, current build, exact stopping point,
