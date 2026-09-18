@@ -142,6 +142,11 @@ Open data CSVs in VS Code, not Excel — and never save from Excel.
 and reported success from a simulated run, not a real one. Check what an AI
 fix actually changed, not just whether it claims success.
 
+**When supplying paste-ready n8n fields, separate the field label from the field value.**
+Put `Name` and `Value` in separate copy blocks. A combined label/value paste can
+silently put the label into the actual value; the node may still execute while
+grading or downstream matching fails.
+
 ---
 
 ## Course documentation defects — N8N102 Section 2
@@ -159,3 +164,12 @@ fix actually changed, not just whether it claims success.
 |---|---|---|
 | D5 | Batch size conflict | Loop Over Items: written instructions say 5, grading criteria says 10. |
 | D6 | Missing expected values | FinalizePipeline expected values stated nowhere in the instructions — resolved by elimination testing. |
+
+
+### N8N103 Section 1
+
+| # | Defect | Detail |
+|---|---|---|
+| D7 | Unavailable model | Project 2 specifies `llama-3.3-70b-versatile`, but it was not available in the current Groq model selector. `openai/gpt-oss-120b` was used instead and all three graded tool tests passed. |
+| D8 | Workflow-name drift | The Project 2 documentation step says to open `Section 2 - Feedback Agent`, although the exercise created `Section 1 - Feedback Agent`. |
+| D9 | Wrong order-tool parameter in sticky-note template | The template says Order Status looks up by `customer_id`; the actual tool description and query parameter require `order_id`. |
