@@ -147,3 +147,79 @@ Process lesson from today: group routine same-screen fields together, but keep r
 
 Rivertown Lead Intake v1 is now through live verification. Next curriculum item: N8N103 — In Practice: AI, Testing and Best Practices.
 
+## Thursday 9.17.26 - N8N103 Section 1 complete
+
+Finished the first section of N8N103, including both hands-on projects, the
+3/3 Practical Assessment, and the AI Introduction knowledge check.
+
+PROJECT 1 — FEEDBACK PIPELINE
+
+Built the full feedback pipeline: fetch one feedback item, classify it with a
+Basic LLM Chain, force the classification into structured output, combine the
+classification with the original message, generate a customer-facing reply,
+and submit the result to the Academy endpoint.
+
+The useful distinction here was small model vs larger model by task, not by
+input length. Classification is constrained and cheaper; a customer-facing
+reply needs more nuance.
+
+The bigger lesson came from testing several items. The reply model confidently
+invented things that were never in the source: a 24-hour reversal timeline,
+personal follow-through, a location in the product UI, and a claim that the
+request had been passed to the product team. Structured output solved the data
+shape, but it did nothing to make the answer true. The prompt needs explicit
+rules against unsupported procedures, policies, timelines, actions, and
+commitments.
+
+I also lost far too much time on a grading failure that turned out to be a
+copy/paste problem. A field label had been pasted into the field value, so the
+value previewed as `feedback_id FB-010` instead of just `FB-010`. The request
+still returned HTTP 200, which sent us chasing the wrong theories. Permanent
+process rule: field names and field values get separate copy blocks.
+
+PROJECT 2 — FEEDBACK AGENT
+
+Built a customer-service AI Agent with three HTTP tools: order status, customer
+information, and product information. The agent decides which tool to call from
+the conversation, and `$fromAI()` supplies the parameter it extracts from the
+user's message.
+
+The course called for `llama-3.3-70b-versatile`, but that model was not in the
+current selector. Used `openai/gpt-oss-120b` instead and all three graded tests
+worked:
+- order status for `ORD-011`
+- subscription/account lookup for `CUST-010`
+- Enterprise License features and pricing
+
+The Practical Assessment moved to 3/3.
+
+Conceptually, the clean rule from this section is:
+- known exact values → deterministic IF/Switch logic
+- ambiguous language or unstructured content → AI classification/extraction
+- adaptive multi-step work with tools → an agent
+- structured predictable work → do not add AI just because you can
+
+The knowledge check reinforced the same pattern: schedule + database + CSV +
+Drive does not need AI; a required dropdown does not need AI; variable email
+categories do; image/document understanding can; 429 rate limits call for
+batching/waits plus retry; and prompt changes should be evaluated by comparing
+before/after outputs rather than assuming a green workflow means quality is
+fine.
+
+PROCESS CORRECTION
+
+I had to repeat an important point several times: the reason ChatGPT has the
+course questions is so it can ask the relevant question while I'm doing the
+matching thing in n8n. Asking me the whole set after the project is over
+defeats the purpose. From here on, map the questions before the hands-on work
+and weave them into the build at the relevant moment.
+
+Also confirmed the pacing rule again: group routine same-screen changes when
+there is no decision point. Slow down for new concepts or choices, not for every
+field.
+
+Exact stopping point: Section 1 complete. The optional Simple Memory stretch
+was not done. The agent sticky-note documentation still needs to be added.
+Next: finish that documentation, then begin N8N103 Section 2 — Testing &
+Debugging, with its knowledge-check questions mapped into the hands-on work
+before we start.
