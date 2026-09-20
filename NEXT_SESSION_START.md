@@ -1,14 +1,26 @@
 # Start of Session — Next Session
 
-N8N103 Section 1 — AI Introduction is complete: both hands-on projects are
-finished, the Practical Assessment is 3/3, and the knowledge check is complete.
+N8N103 is complete, including Sections 1–3 and the 20-question final exam.
+N8N102 is also complete. N8N101 remains diagnostic-only; do not chase the
+Foundations badge just for the credential.
+
+The next curriculum item is the Master Calendar's **Week 6 — Microsoft access,
+Power Automate, Dataverse or SharePoint Lists, and cross-platform translation**.
 
 ---
 
-## Before opening a chat
+## Before opening Claude
 
-Because the 2026-09-17 closeout was written directly to GitHub, fast-forward
-the local clone before doing local repo work:
+1. In the Claude Project, **Sync the GitHub project source**.
+2. Start the chat with:
+
+> Read the latest CURRENT_STATE.md first, then the active case folder under
+> cases/rivertown-lead-intake/. Continue from the exact next step. State purpose
+> and expected result before instructions, teach one meaningful step at a time,
+> and use case-study mode when I am recombining tools I already know.
+
+Because the 2026-09-19 closeout was written directly to GitHub, the local clone
+will be behind until it is pulled. Before local repo work:
 
 ```powershell
 cd "$HOME\ai-automation-lab"
@@ -18,50 +30,57 @@ git status
 
 Expect a clean working tree after the pull.
 
-## Opening the chat
+## First work item
 
-Start inside the AI Skills Intensive project and have the assistant read
-`CURRENT_STATE.md` first.
+Begin the Week 6 Microsoft-access gate. The calendar's day labels are reference
+only; track completion.
 
-Key working rule for N8N103 Section 2:
+**Purpose:** establish the Microsoft development environment before building
+Power Automate/Copilot work, without buying unnecessary licensing.
 
-> Before the hands-on work begins, map the Section 2 knowledge-check questions
-> to the concepts in the practical. Ask the relevant question when I actually
-> reach that concept in n8n. Do not save the questions for a post-project quiz.
-> Group routine same-screen configuration when there is no decision point.
+**Expected result:** a documented decision showing what free environment is
+available, what is blocked, what expires when, and what fallback architecture
+will be used.
 
-## First work items
+Start with:
+1. Review the Power Apps Developer Plan, Power Platform trial rules, and Copilot
+   Studio trial limitations.
+2. Inventory tenant, identity, admin, license, connector, and data-residency
+   dependencies.
+3. Attempt a separate development/trial environment using a work or school
+   account.
+4. Do not use the university production tenant for experiments and do not use
+   real data.
+5. Create `microsoft-environment-decision.md` with environment obtained,
+   blockers, trial/cancellation/expiry dates, and fallback architecture.
+6. If blocked, document the blocker. Do not buy enterprise capacity impulsively.
 
-1. In `Section 1 - Feedback Agent`, add the course documentation sticky note.
-   Use the actual model `openai/gpt-oss-120b`. Correct the course template's
-   Order Status description to use `order_id`, not `customer_id`.
-2. Skip the optional Simple Memory stretch unless Josh explicitly wants it.
-3. Begin **N8N103 Section 2 — Testing & Debugging**.
-4. Map Section 2 knowledge-check questions into the hands-on work before
-   starting the build.
+## Build discipline carried forward from N8N103
 
-Section 2 should cover pinned/mock data, test scenarios, execution data, error
-messages/logs, error handling, and deciding when to troubleshoot independently
-versus when to seek help.
+For each serious build, briefly check:
+- clarity
+- modularity only when the logic has earned a separate boundary
+- readability
+- maintainability
+- scalability
+- production readiness: publishing, monitoring, failure handling, disable, and
+  recovery
 
-## Section 1 state to preserve
+Documentation should explain **why**, assumptions, constraints, and change
+context—not merely restate what a node does.
 
-- `Section 1 - Feedback Pipeline` completed and graded.
-- `Section 1 - Feedback Agent` completed and graded.
-- Practical Assessment: 3/3.
-- Knowledge check: complete.
-- Project 2 course model was unavailable; actual model used:
-  `openai/gpt-oss-120b`.
-- Agent tool tests passed for order status, customer info, and product info.
+When debugging, follow evidence:
+**failing node → exact error → input → trace earlier data/configuration → rerun**.
 
-## Portfolio state to preserve
+If a proposed course fix suddenly requires advanced syntax the course never
+taught, first ask whether the intended repair is simpler and structural.
 
-`Rivertown - Lead Intake v1` remains unpublished after successful live
-verification. Do not rerun or reset it unless a new change requires another
-evidence run.
+## State to preserve
 
-## Open items, not blockers
-
-- n8n Cloud trial: check remaining days and decide self-host vs paid before expiry.
-- Claude Code install remains pending and matters from around Week 4.
+- N8N102 complete; certificate earned.
+- N8N103 complete.
+- Rivertown Lead Intake v1 remains unpublished after successful live verification.
+- No new Rivertown workflow change was made during N8N103.
+- n8n Cloud trial showed 3 days remaining at the end of 9/19; a self-host vs paid
+  decision is still open before expiry.
 - Rotate the Rivertown Header Auth secret before any real client/production use.
