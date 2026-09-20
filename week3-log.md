@@ -223,3 +223,105 @@ was not done. The agent sticky-note documentation still needs to be added.
 Next: finish that documentation, then begin N8N103 Section 2 — Testing &
 Debugging, with its knowledge-check questions mapped into the hands-on work
 before we start.
+
+
+## Saturday 9.19.26 - Finished N8N103, and the debugging lesson mattered more than the certificate
+
+Finished the rest of N8N103 today: Section 2 Testing & Debugging, Section 3
+Workflow Organization & Best Practices, and the 20-question Section 4 final
+exam. The course-complete screen is done.
+
+SECTION 2 — TESTING & DEBUGGING
+
+The retry exercise was straightforward: a flaky Academy endpoint, Retry On Fail,
+and a final validation call. The useful rule is still that retries are for
+temporary failures — 5xx, timeouts, rate limits — not permanent 401/404/config
+problems.
+
+The Error Workflow exercise was more useful. Built the separate Error Trigger
+handler, linked it from the workflow that fails, and proved again that Error
+Workflows fire on production/automatic failures, not manual tests. Added the
+optional Slack placeholder stretch. That stretch exposed a real course defect:
+the course puts the formatting node after ReportError but uses `$json.workflow`
+and `$json.execution` expressions. ReportError replaces the current item with
+the Academy response, so those expressions go blank. The correct version has
+to reference TriggerError explicitly or branch from TriggerError before the
+payload is replaced.
+
+The broken-workflow project produced the most important learning of the day.
+The imported HTTP nodes referenced credentials that did not exist in my tenant,
+so "Credentials not found" correctly sent me to Authentication first. After
+that, the Academy errors pointed directly to the missing X-Assessment-ID.
+
+Then the final node referenced a deleted `AggregateOrders` node. ChatGPT sent
+me into a roughly two-hour detour trying to replace it with
+`.all().map(item => item.json)`. I kept asking how a certificate learner was
+supposed to know that syntax when the course had not taught it. I was right to
+push harder.
+
+The clean diagnostic path was sitting in front of us:
+- the expression said the missing node should provide one item's JSON field
+  named `enriched_orders`
+- the prior Merge produced 10 separate records
+- therefore the missing step had to turn 10 records into one record containing
+  an `enriched_orders` list
+- that is exactly what the Aggregate node does
+
+Recreated `AggregateOrders` with All Item Data (Into a Single List), output
+field `enriched_orders`, restored the original expression, and the next error
+became useful: the queued orders were missing `customer_name`,
+`contact_email`, and `account_manager`.
+
+That sent the debugging path backward to the Merge. Both inputs had
+`customer_id`, but the Merge was configured for `customerId`. Changed it to
+`customer_id`, reran, customer fields appeared, aggregated again, and the
+validator returned success with `enrichment_verified: true` and
+`orders_queued: 10`. Full workflow then ran green end to end.
+
+The real debugging lesson is not memorizing fixes. It is:
+**read the exact error → inspect the failing node's input → trace backward until
+the data/configuration changes → fix one thing → rerun and let the next error
+narrow the search.**
+
+Also learned enough of the n8n expression model to read it without pretending I
+need to write JavaScript from memory: `.all()` gathers all records from a named
+node into an array; `.map(item => item.json)` walks that array and returns the
+JSON payload from each record. Useful to recognize, but it was not the intended
+fix for this exercise.
+
+SECTION 3 — ORGANIZATION & BEST PRACTICES
+
+Moved through this section very quickly. Most multiple-choice answers were
+obvious from work we had already done, so I did not spend time reading every
+page. The ideas worth carrying into future builds are:
+- clarity
+- modularity, but only after a boundary has earned it
+- readability
+- maintainability
+- scalability
+- deliberate publishing, monitoring, failure handling, and recovery
+
+I do not need another study block for these. They belong as a quick architecture
+checkpoint inside future builds. Documentation should explain why a decision
+exists, assumptions and constraints, not just repeat what the node UI already
+shows.
+
+SECTION 4 — FINAL EXAM
+
+Completed all 20 questions and reached the N8N103 course-complete page. The
+exam reinforced RAG, human review, agents vs standard AI nodes, deterministic
+rules before AI, pinned data behavior, Error Workflows, retry behavior, Router +
+Worker, organization, publishing, governance, and execution-first debugging.
+
+A few questions were useful because the wording exposed gaps rather than the
+concept itself — "differed" vs "deferred," activation vs publishing, and why an
+Error Workflow is linked in workflow settings rather than by a canvas line.
+
+N8N103 is now complete. N8N102 was already complete. N8N101 remains
+diagnostic-only; I am not spending time chasing the Foundations badge when the
+portfolio and applied skill are the goal.
+
+Exact next step: move to the Master Calendar's Week 6 Microsoft access gate —
+test the free Power Apps Developer Plan / trial routes, document tenant and
+licensing constraints, and create `microsoft-environment-decision.md` before
+building Power Automate work.
