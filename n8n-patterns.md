@@ -173,3 +173,39 @@ grading or downstream matching fails.
 | D7 | Unavailable model | Project 2 specifies `llama-3.3-70b-versatile`, but it was not available in the current Groq model selector. `openai/gpt-oss-120b` was used instead and all three graded tool tests passed. |
 | D8 | Workflow-name drift | The Project 2 documentation step says to open `Section 2 - Feedback Agent`, although the exercise created `Section 1 - Feedback Agent`. |
 | D9 | Wrong order-tool parameter in sticky-note template | The template says Order Status looks up by `customer_id`; the actual tool description and query parameter require `order_id`. |
+
+
+---
+
+## N8N103 Section 2 — additional gotchas
+
+**Imported workflows can carry credential references that do not exist in the
+recipient tenant.** The imported node may show an author's generic credential
+name and fail with `Credentials not found`. Reselect a local credential that
+actually exists. Also inspect required custom headers separately; imported
+Academy exercises may need the local `X-Assessment-ID` restored.
+
+**Use the error message to choose where to look.** A productive debugging path
+is: failing node → exact error → Input panel → trace earlier in the workflow
+until the field/configuration changes → fix one issue → rerun. The node that
+throws the error may only be where bad upstream data is detected.
+
+**Aggregate can turn many records into one list-bearing record.** With
+`All Item Data (Into a Single List)`, 10 incoming records can become one output
+record containing an array field such as `enriched_orders`. This is different
+from merely using `.all()` inside an expression.
+
+**`$('Node').all()` versus node output count.** `.all()` returns an array of
+all n8n items from the named node for use inside an expression; it does not by
+itself change a node from 10 incoming items to 1 outgoing item.
+`.map(item => item.json)` transforms that array into an array of each item's
+JSON payload.
+
+### N8N103 Section 2 course/documentation defects
+
+| # | Defect | Detail |
+|---|---|---|
+| D10 | Successful-execution saving default mismatch | Section 2 Question 3 expects the answer that successful production executions are not saved by default. The current n8n Cloud workflow settings showed `Save successful production executions: Default - Save`, and execution history contained both green successes and red failures. Treat as a course/version default discrepancy. |
+| D11 | Slack stretch uses the wrong current payload | The optional Slack stretch places the formatting node after `ReportError` but gives expressions like `$json.workflow.name` and `$json.execution...`. `ReportError` replaces the current item with the Academy response, so the Slack fields render blank. Reference `$('TriggerError').item.json...` explicitly or branch from TriggerError before ReportError. |
+| D12 | Wrong section number in Project 3 documentation step | The Fix Broken Workflow documentation instruction says to open `Section 5 - Fix Broken Workflow` even though the exercise is Section 2. |
+| D13 | Missing AggregateOrders step is under-explained | Project 3's later issue list says SendToOrdersQueue referenced a deleted `AggregateOrders` node, but the documented Expected Flow omits AggregateOrders and the instructions never explain how to recreate the expected `enriched_orders` shape. Recreating AggregateOrders as Aggregate → All Item Data (Into a Single List) with output field `enriched_orders` restored the original expression and passed the Academy validator. |
