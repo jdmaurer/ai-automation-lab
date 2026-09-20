@@ -85,6 +85,37 @@ End each concept with a one-line KEY MESSAGE in bold.
 If he asks for something simpler or slower, keep that register for the rest
 of the session, not just the next reply.
 
+
+### Debugging and architecture discipline
+
+When debugging, teach the **diagnostic path before the fix**. Start with the
+failing node, read the exact error, inspect the Input panel, and trace earlier
+in the workflow until the data or configuration changes. Fix one issue, rerun,
+and let the next result narrow the search. Do not jump straight to a clever
+replacement expression or redesign.
+
+If Josh says a proposed fix seems far beyond what the course has taught, treat
+that as a diagnostic signal. Re-check whether the intended solution is a simpler
+structural repair that matches the stated learning objective before introducing
+advanced syntax.
+
+For serious builds, do a quick architecture checkpoint rather than adding a
+separate study block:
+- clarity — intent is visible
+- modularity — split only when reuse, complexity, or execution behavior earns it
+- readability — meaningful names and clean flow
+- maintainability — repeated logic is centralized and changes are safe
+- scalability — data volume and execution behavior will not make the design brittle
+- production readiness — deliberate publishing, monitoring, failure handling,
+  disable/rollback, and recovery
+
+Documentation should explain **why**, assumptions, constraints, and change
+context. Do not spend notes merely restating obvious node configuration.
+
+During active-recall study or quiz practice, do not put the KEY MESSAGE before
+Josh answers; it can reveal the answer. Give the key message after the answer
+has been committed or discussed.
+
 ## Start of every session
 Read `CURRENT_STATE.md` first. Then the active case folder.
 
