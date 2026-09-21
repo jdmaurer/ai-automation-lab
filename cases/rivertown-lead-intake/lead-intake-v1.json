@@ -12,15 +12,15 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        64,
-        -96
+        -1344,
+        112
       ],
-      "id": "9f58a2a3-bce6-4ba7-8775-00f1c92f14af",
+      "id": "8dfc9605-36a5-4947-9e50-b0fe86deb784",
       "name": "Webhook",
       "webhookId": "8c2f6054-3bbe-43cc-b733-1b867038965b",
       "credentials": {
         "httpHeaderAuth": {
-          "id": "PEJSCkgG8e75C9bo",
+          "id": "MSXBffl9MupBNWc2",
           "name": "Header Auth account"
         }
       }
@@ -36,10 +36,10 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.5,
       "position": [
-        1600,
-        -112
+        192,
+        96
       ],
-      "id": "c75c0a01-695e-44d5-8b5b-8da913d2d0ef",
+      "id": "c29f68f7-d603-460e-bb92-ee304965439d",
       "name": "RespondSuccess"
     },
     {
@@ -53,10 +53,10 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.5,
       "position": [
-        592,
-        128
+        -816,
+        336
       ],
-      "id": "18abe241-36a5-4088-8b78-cfb8e04b6c96",
+      "id": "6c6b913a-e08a-47ef-b89b-19ad2e1a01eb",
       "name": "RespondFail"
     },
     {
@@ -70,10 +70,10 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.5,
       "position": [
-        1296,
-        128
+        -112,
+        336
       ],
-      "id": "8cdc1066-788d-4268-bc6b-2c3dc343f014",
+      "id": "4585d104-37f8-4399-aebd-157a8dcde77d",
       "name": "RespondDuplicate"
     },
     {
@@ -141,8 +141,8 @@
               "type": "string"
             },
             {
-              "id": "0146a4a1-4d6f-4056-96d4-77d4da6ffffa",
-              "name": "=received_at",
+              "id": "ee9b7b42-46d2-40bc-871a-d87fbbee87d1",
+              "name": "received_at",
               "value": "={{ $now }}",
               "type": "string"
             }
@@ -153,10 +153,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.5,
       "position": [
-        240,
-        -96
+        -1168,
+        112
       ],
-      "id": "bc155a36-9890-478a-bd4e-3871e19b5e37",
+      "id": "fb65b429-0486-4d07-a6ce-c6be5de381c6",
       "name": "NormalizeLead"
     },
     {
@@ -197,10 +197,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        416,
-        -96
+        -992,
+        112
       ],
-      "id": "8f44bd84-0684-483c-a765-5aadfee58f6e",
+      "id": "2911687f-0797-4e88-a854-d58ff12b7be9",
       "name": "ValidateRequiredFields"
     },
     {
@@ -208,10 +208,10 @@
         "operation": "get",
         "dataTableId": {
           "__rl": true,
-          "value": "1T1iVKk1PrQISwo0",
+          "value": "DE0RbWElJleCCY5R",
           "mode": "list",
-          "cachedResultName": "rivertown leads seed",
-          "cachedResultUrl": "/projects/oUX66llJE7KPzWeD/datatables/1T1iVKk1PrQISwo0"
+          "cachedResultName": "rivertown leads",
+          "cachedResultUrl": "/projects/tROV5LmWfFMPE6X7/datatables/DE0RbWElJleCCY5R"
         },
         "matchType": "allConditions",
         "filters": {
@@ -226,10 +226,10 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        592,
-        -96
+        -816,
+        112
       ],
-      "id": "e0b4f3a6-94cc-42c9-8405-37bd394f6e42",
+      "id": "8e87436b-0e6d-4519-b54f-24247b5b6d7f",
       "name": "CheckLeadExists",
       "alwaysOutputData": true
     },
@@ -261,10 +261,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        768,
-        -96
+        -640,
+        112
       ],
-      "id": "87ddc1b2-8e13-4a3e-bc33-fe19ce599bcf",
+      "id": "9707722a-b3f2-459c-9ebc-2461a5fc7495",
       "name": "IsNewLead"
     },
     {
@@ -344,20 +344,20 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.5,
       "position": [
-        992,
-        -112
+        -416,
+        96
       ],
-      "id": "1e903ed6-bdac-4b27-9950-be4d5d4b6a03",
+      "id": "dde126c3-563a-41e4-8e7a-05f4426049d2",
       "name": "RestoreLeadData"
     },
     {
       "parameters": {
         "dataTableId": {
           "__rl": true,
-          "value": "1T1iVKk1PrQISwo0",
+          "value": "DE0RbWElJleCCY5R",
           "mode": "list",
-          "cachedResultName": "rivertown leads seed",
-          "cachedResultUrl": "/projects/oUX66llJE7KPzWeD/datatables/1T1iVKk1PrQISwo0"
+          "cachedResultName": "rivertown leads",
+          "cachedResultUrl": "/projects/tROV5LmWfFMPE6X7/datatables/DE0RbWElJleCCY5R"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -528,20 +528,20 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        1408,
-        -208
+        0,
+        0
       ],
-      "id": "7d97043f-e885-4ad1-84da-2a3409cd7909",
+      "id": "ddca29b4-6982-4195-b25e-973db3009e90",
       "name": "InsertRoutedLead"
     },
     {
       "parameters": {
         "dataTableId": {
           "__rl": true,
-          "value": "1T1iVKk1PrQISwo0",
+          "value": "DE0RbWElJleCCY5R",
           "mode": "list",
-          "cachedResultName": "rivertown leads seed",
-          "cachedResultUrl": "/projects/oUX66llJE7KPzWeD/datatables/1T1iVKk1PrQISwo0"
+          "cachedResultName": "rivertown leads",
+          "cachedResultUrl": "/projects/tROV5LmWfFMPE6X7/datatables/DE0RbWElJleCCY5R"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -712,10 +712,10 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        1408,
-        -32
+        0,
+        176
       ],
-      "id": "78235a94-9706-4c7a-838e-42af37fc9bf1",
+      "id": "8bdeb489-80ba-4eed-95f8-670b1a62149e",
       "name": "InsertForReview"
     },
     {
@@ -723,10 +723,10 @@
         "operation": "update",
         "dataTableId": {
           "__rl": true,
-          "value": "1T1iVKk1PrQISwo0",
+          "value": "DE0RbWElJleCCY5R",
           "mode": "list",
-          "cachedResultName": "rivertown leads seed",
-          "cachedResultUrl": "/projects/oUX66llJE7KPzWeD/datatables/1T1iVKk1PrQISwo0"
+          "cachedResultName": "rivertown leads",
+          "cachedResultUrl": "/projects/tROV5LmWfFMPE6X7/datatables/DE0RbWElJleCCY5R"
         },
         "matchType": "allConditions",
         "filters": {
@@ -893,10 +893,10 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        1072,
-        128
+        -336,
+        336
       ],
-      "id": "e6ccd40a-5411-492d-9a8a-08689bd22c59",
+      "id": "d9433429-924c-45bd-8e61-61a870571b4c",
       "name": "IncrementDuplicateCount"
     },
     {
@@ -980,10 +980,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.4,
       "position": [
-        1184,
-        -144
+        -224,
+        64
       ],
-      "id": "b19ff8ff-636a-42f6-a237-b6158d23ca36",
+      "id": "926936d1-7537-49b5-b707-266a9588c69c",
       "name": "RouteByEngagementType"
     }
   ],
@@ -1159,19 +1159,19 @@
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "f893046a-0e14-4e7d-bd70-b58f0b1b18dc",
+  "versionId": "85ddb723-75c8-43a8-bcc8-da48675427b0",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "2715342599d07c701864618983ddb3282653ff6367764812b33a21aeb5a08c1a"
+    "instanceId": "9639342321f230803f07cc4c8e9a1767f01aa8f545f98badb8e5ce4c15add930"
   },
   "nodeGroups": [],
-  "id": "2hohi1VyRfjJplBa",
+  "id": "usb62bEQwOVljKYt",
   "tags": [
     {
-      "updatedAt": "2026-09-15T17:04:16.013Z",
-      "createdAt": "2026-09-15T17:04:16.013Z",
-      "id": "N3YYPcNVVpkXIMAY",
-      "name": "rivertown"
+      "name": "rivertown",
+      "id": "EbeVzawQXdmWntsd",
+      "updatedAt": "2026-09-21T16:31:15.859Z",
+      "createdAt": "2026-09-21T16:31:15.859Z"
     }
   ]
 }
