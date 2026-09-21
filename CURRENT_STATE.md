@@ -77,3 +77,27 @@ Requirement is stated, design questions not yet answered.
 - n8n's Data Table CSV download offers different column sets depending on
   where it is triggered. Two exports of the same table will not match.
   Candidate entry for n8n-patterns.md (would be #7).
+
+## DECIDED: Python resources
+
+Primary is unchanged: Google Crash Course on Python via Coursera. The
+master calendar maps specific modules to specific days so instruction
+lands next to the API work it serves. Do not swap this out.
+
+DataCamp access already exists (no new spend). Two designated uses only:
+
+1. Warm-up. "Introduction to Python" Chapter 1, ~1 hour, before starting
+   the Coursera material. Purpose is arriving at the videos having
+   already typed variables and print statements, not learning Python.
+
+2. Week 5 contingency. If the trigger fires — cannot explain his own
+   Python output — go to DataCamp Chapters 2-3 (data structures,
+   control flow, graded exercises) rather than re-watching video. Better
+   format for remediation. The DataCamp track it belongs to also covers
+   APIs in Python, closer to the read-and-supervise bound than the
+   beginner course alone.
+
+RISK: do not run two Python tracks in parallel. The failure mode is
+feeling productive doing both and arriving at Week 8 with double the
+Python and no Dataverse. DataCamp is warm-up and safety net, not a
+second curriculum.
