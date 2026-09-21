@@ -1,164 +1,79 @@
-# CURRENT_STATE
+# CURRENT STATE
 
-Project: AI Skills Intensive — 12 Week
-Last updated: 2026-09-19
+Last updated: 2026-09-20, evening session
 
-## Current objective
+## Where things stand
 
-N8N103 — In Practice: AI, Testing and Best Practices is COMPLETE.
+N8N102 complete (9/14). N8N103 complete. Certificates earned.
 
-Completed:
-- Section 1 — AI Introduction
-- Section 2 — Testing & Debugging
-- Section 3 — Workflow Organization & Best Practices
-- Section 4 — 20-question final exam
-- Course completion banner reached
+Rivertown Lead Intake v1 is DONE: built, live-verified via Postman,
+exported, unpublished. 13 nodes. Deterministic routing with an
+unknown-value fallback to review. Idempotency via external_id.
 
-N8N102 was already complete. N8N101 remains diagnostic-only; do not chase the
-Foundations badge just for the credential.
+## Tonight's session (9/20)
 
-Next curriculum item from the Master Calendar: **Week 6 — Microsoft access,
-Power Automate, Dataverse or SharePoint Lists, and cross-platform translation.**
+n8n Cloud trial had ~2 days left. Ran a full preservation pass so the
+expiry costs nothing:
 
-## Current build state
+- Workflow JSON re-exported and verified clean of secrets. Byte-identical
+  to the 9/16 commit, confirming v1 was genuinely frozen.
+- Data Table exported twice: 17-column version (includes n8n's id,
+  createdAt, updatedAt) and 14-column version (own columns only).
+  The 14-column file is the rebuild blueprint.
+- N8N102/103 coursework workflows exported as reference material.
+  Parked in Downloads, NOT repo material.
 
-### N8N103 Section 2 — Testing & Debugging
+All migration files live outside the repo. Delete once rebuild is verified.
 
-Completed the retry, error-workflow, debugging, and broken-workflow exercises.
+## DECIDED: self-host n8n, do not pay for Cloud
 
-Key working patterns practiced:
-- Retry On Fail for temporary failures, not permanent 4xx/configuration errors.
-- Separate Error Workflow with Error Trigger for failed production executions.
-- Production Error Workflows do not fire from manual test executions.
-- Pinned/mock data is for safe manual testing; automatic executions use real data.
-- Read the exact error first, inspect the failing node's input, then trace earlier
-  in the workflow until the data/configuration changes.
+Evaluated let-it-lapse vs. monthly Cloud vs. self-host. Chose self-host.
+Free, permanent, owned. Data Tables are available on self-hosted, so the
+v1 design carries over intact. Once the export was done the trial deadline
+stopped mattering, so there is no time pressure on this.
 
-Project 3 — Fix Broken Workflow finished successfully:
-- repaired imported Academy credential references and restored X-Assessment-ID
-  headers where required
-- corrected MergeOrdersCustomers match field from `customerId` to
-  `customer_id`
-- recreated the missing `AggregateOrders` step using Aggregate → All Item Data
-  (Into a Single List), output field `enriched_orders`
-- restored the original SendToOrdersQueue expression:
-  `{{ $('AggregateOrders').item.json.enriched_orders }}`
-- final validator returned `status: success`,
-  `enrichment_verified: true`, and `orders_queued: 10`
-- full workflow then ran green end-to-end
+## CORRECTION: no university tenant exists
 
-Important process correction: when a course debugging exercise appears to
-require unexplained advanced syntax, first test whether the intended fix is a
-simpler structural repair supported by the error message and the course level.
-The two-hour `.all().map(...)` detour was unnecessary; recreating the missing
-Aggregate node was the clean course-level repair.
+The master calendar's instruction to "check whether his university tenant
+grants admin rights" is OBSOLETE. Josh is not employed by a university and
+has no institutional email or Microsoft work/school account.
 
-### N8N103 Section 3 — Workflow Organization & Best Practices
+Do not build on a partner's or anyone else's credentials. Power Platform is
+pure identity — there is no install-it-locally workaround, and work created
+under someone else's login is neither portable nor honestly claimable.
 
-Completed quickly; the multiple-choice checks were mostly obvious from prior
-work. The durable practices should be applied inside future builds rather than
-studied as a separate block:
+Week 6 Microsoft access therefore has exactly one path: BUILD HIS OWN TENANT.
+He is Global Administrator, controls self-service licensing, nothing can be
+revoked. The M365 Developer Program route is separately closed — it now
+requires a Visual Studio Pro/Enterprise subscription, which strategy
+forbids buying.
 
-- Clarity — intent should be visible.
-- Modularity — split only when reuse, complexity, or execution behavior earns it.
-- Readability — meaningful names and clean visual flow.
-- Maintainability — centralize repeated logic and document why decisions exist.
-- Scalability — avoid monoliths and uncontrolled item accumulation as load grows.
-- Production readiness — publish deliberately, inspect executions, plan failure,
-  monitoring, disable, and recovery paths.
+This removes the dependency on anyone else's availability.
 
-For serious builds, use a brief architecture checkpoint across those five
-dimensions. Do not create sub-workflows prematurely.
+## NEXT STEP
 
-### N8N103 Section 4 — Final Exam
+Stand up self-hosted n8n.
 
-Completed all 20 questions and reached the course-complete screen.
+1. Check Node version compatibility (running Node 24.19; n8n is strict
+   about versions). If unsupported, use Docker instead.
+2. Install and start. Keep the .n8n folder OUT of the repo — it holds the
+   credential encryption key.
+3. Import lead-intake-v1.json. Expect to repoint 4 Data Table nodes:
+   the cloud table ID 1T1iVKk1PrQISwo0 will not exist locally.
+4. Recreate the Header Auth credential by hand. Credentials never transfer.
+5. Rebuild the Data Table from the 14-column CSV. Define 14 columns only —
+   n8n supplies id, createdAt, updatedAt itself.
+6. Verify green end-to-end before building anything new.
 
-Notable reinforced concepts:
-- RAG for grounded retrieval across many documents
-- human review for borderline AI decisions
-- standard AI node vs agent-with-tools distinction
-- deterministic rules should stay deterministic
-- automatic runs ignore pinned data
-- Error Triggers fire on automatic/production failures, not manual runs
-- Router + Worker for a single entry point with separated execution logic
-- folders express primary organization; tags support cross-cutting discovery
-- saved is not published
-- unpublish to stop automatic executions while preserving logic/configuration
+Then: Rivertown Lead Intake v2, adding an AI triage step. Case-study mode.
+Requirement is stated, design questions not yet answered.
 
-## Exact stopping point
+## Open findings to log at next closeout
 
-- N8N103 is fully complete.
-- N8N102 is fully complete.
-- Rivertown Lead Intake v1 remains unchanged and unpublished after successful
-  live verification.
-- No new portfolio-case workflow change was made during the N8N103 course work.
-- This closeout is being written directly to GitHub so the local Windows clone
-  will need a fast-forward pull before local repo work continues.
-
-## Exact next step
-
-Begin the Master Calendar's Week 6 Microsoft-access work. Track completion, not
-the calendar's assumed day/date.
-
-1. Review the free Power Apps Developer Plan, Power Platform trial rules, and
-   Copilot Studio trial limitations.
-2. Inventory tenant, identity, admin, license, connector, and data-residency
-   dependencies.
-3. Attempt a separate development/trial environment using a work or school
-   account. Do **not** use the university production tenant for experiments and
-   do not add real data.
-4. Create `microsoft-environment-decision.md` documenting:
-   - environment obtained
-   - blocked features
-   - trial/cancellation/expiry dates
-   - fallback architecture
-5. If access is blocked, document the blocker instead of buying enterprise
-   capacity impulsively. Test free routes first.
-
-## Open items
-
-- n8n Cloud trial showed 3 days remaining at the end of the 2026-09-19 session.
-  Decide self-host vs paid before expiry; do not make an annual commitment just
-  to finish the curriculum.
-- Claude Code install remains pending and should be woven into real API/data/test
-  work rather than studied as a separate subject.
-- Rivertown Lead Intake v1 remains unpublished after successful live verification.
-- Rotate the Rivertown Header Auth secret before any real client/production use.
-- Microsoft access may be constrained by the university tenant; test free
-  individual/developer routes before paying anything.
-
-## Process rules reinforced this session
-
-- State purpose and expected result before instructions.
-- Teach in pieces alongside the clicking.
-- For known/recombined tools, use case-study mode: requirement → Josh proposes
-  the build/diagnosis → confirm or correct.
-- During debugging, teach the diagnostic path before the fix:
-  failing node → exact error → input → trace earlier data/configuration → rerun.
-- Treat "this solution seems beyond what the course taught" as a diagnostic
-  signal that the approach may be overengineered.
-- In interactive study/quiz practice, do not place a KEY MESSAGE before Josh
-  answers; it can give away the answer.
-- Define unfamiliar shorthand/jargon immediately. Example: upstream = closer to
-  the trigger; downstream = later in the workflow.
-- Documentation should explain why, assumptions, constraints, and change context,
-  not merely repeat obvious node settings.
-- Architecture checkpoint for serious builds: clear, modular only when earned,
-  readable, maintainable, scalable, and production-ready.
-
-## Source hierarchy
-
-1. `CURRENT_STATE.md` for where to resume
-2. 12-week Master Calendar and tracker for decided sequencing
-3. Relevant course/project instructions for exact build requirements
-4. `n8n-patterns.md` for known gotchas and course defects
-5. `cases/rivertown-lead-intake/` when portfolio-case context is needed
-6. Current and earlier `weekN-log.md` files for history
-
-## End-of-session note
-
-This closeout was written directly to GitHub. Before continuing in Claude,
-**Sync the GitHub project source**, then have Claude read `CURRENT_STATE.md`
-first. Before any local repo work, fast-forward the Windows clone with
-`git pull --ff-only`.
+- NormalizeLead has a field NAMED "=received_at" with a stray leading equals
+  sign. Cosmetic today (values write correctly) but fix during rebuild.
+- duplicate_count is blank on some rows and 0 on others. Blank and zero are
+  not equivalent. Candidate line for limitations.md.
+- n8n's Data Table CSV download offers different column sets depending on
+  where it is triggered. Two exports of the same table will not match.
+  Candidate entry for n8n-patterns.md (would be #7).
