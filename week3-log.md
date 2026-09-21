@@ -325,3 +325,25 @@ Exact next step: move to the Master Calendar's Week 6 Microsoft access gate —
 test the free Power Apps Developer Plan / trial routes, document tenant and
 licensing constraints, and create `microsoft-environment-decision.md` before
 building Power Automate work.
+
+## 9/20 — short session
+
+Maybe 15 minutes of actual work, a lot of back-and-forth to get there.
+
+Pulled everything off the n8n Cloud trial before it expires: workflow
+JSON, data table twice (17-col and 14-col), coursework workflows for
+reference. Workflow came back byte-identical to the 9/16 commit, so v1
+really was frozen.
+
+Decided to self-host rather than pay for Cloud. Claude had manufactured
+a two-day deadline for building v2 before the trial died — I pushed on
+whether that was real and it wasn't. Once the export is done, nothing
+expires. Worth remembering: check whether a deadline is actually load-
+bearing before reorganizing a night around it.
+
+Also killed the university-tenant assumption that's been sitting in the
+plan since the start. I don't have a university account. Week 6 is build
+my own tenant, and I don't need anyone's help to do it.
+
+Didn't start the self-host install — not enough time to finish it, and a
+half-installed n8n is worse than none.
