@@ -15,9 +15,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Upload to Google Drive
-        uses: adityak74/google-drive-upload-action@v0.3
+        uses: Jumbo810/Upload_Github_Artifacts_TO_GDrive@v2.3.5
         with:
+          target: "AI_HANDOFF_PROTOCOL.md"
           credentials: ${{ secrets.GCP_CREDENTIALS }}
-          filename: "AI_HANDOFF_PROTOCOL.md"
-          folderId: ${{ secrets.DRIVE_FOLDER_ID }}
-          overwrite: "true"
+          parent_folder_id: ${{ secrets.DRIVE_FOLDER_ID }}
+          override: true
