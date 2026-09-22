@@ -216,5 +216,6 @@ Then:
 
   Testing Google Drive sync.
   Again.
+  test 3.
 
 GitHub is the canonical shared state. `CURRENT_STATE.md` is the baton.
