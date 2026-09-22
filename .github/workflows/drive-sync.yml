@@ -1,0 +1,23 @@
+name: Sync Handoff to Google Drive
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'handoff.md'
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Upload to Google Drive
+        uses: adityak74/google-drive-upload-action@v0.3
+        with:
+          credentials: ${{ secrets.GCP_CREDENTIALS }}
+          filename: "handoff.md"
+          folderId: ${{ secrets.DRIVE_FOLDER_ID }}
+          overwrite: "true"
