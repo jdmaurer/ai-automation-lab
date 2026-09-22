@@ -214,4 +214,6 @@ Then:
 - Moving to Claude: Sync the GitHub project source first, then tell Claude to
   read the latest `CURRENT_STATE.md`.
 
+  Testing Google Drive sync.
+
 GitHub is the canonical shared state. `CURRENT_STATE.md` is the baton.
