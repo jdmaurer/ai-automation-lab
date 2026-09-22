@@ -20,4 +20,4 @@ jobs:
           target: "AI_HANDOFF_PROTOCOL.md"
           credentials: ${{ secrets.GCP_CREDENTIALS }}
           parent_folder_id: ${{ secrets.DRIVE_FOLDER_ID }}
-          override: true
+          replace_mode: "update_in_place"
