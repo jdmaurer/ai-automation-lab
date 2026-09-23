@@ -560,7 +560,7 @@
             "status": "new",
             "duplicate_count": 0,
             "phone": "={{ $('NormalizeLead').item.json.phone }}",
-            "routed_by": "rules",
+            "routed_by": "={{ $json.ai_category ? 'rules' : 'ai_failure' }}",
             "ai_category": "={{ $json.ai_category }}",
             "ai_confidence": "={{ $json.ai_confidence }}",
             "ai_rationale": "={{ $json.ai_rationale }}"
@@ -1067,7 +1067,7 @@
       ],
       "id": "e0353de6-bc29-4cd0-aaa2-d92e461545b7",
       "name": "ClassifyMessage",
-      "retryOnFail": false,
+      "retryOnFail": true,
       "onError": "continueErrorOutput"
     },
     {
@@ -1708,7 +1708,7 @@
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "fc5e2862-7551-4e99-86f8-3d013d610a36",
+  "versionId": "fb0c9a42-b052-42fc-adf4-65f1f51eda32",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "9639342321f230803f07cc4c8e9a1767f01aa8f545f98badb8e5ce4c15add930"

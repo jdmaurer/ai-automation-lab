@@ -68,3 +68,13 @@ TBD.
 - v2 production URL: http://localhost:5678/webhook/rivertown/lead-intake-v2
 - Publish only for testing; unpublish when done.
 - Reset v2 test data: delete the added rows so the table returns to the 10 seed rows, or re-import rivertown_leads_seed.csv. Same table either way; no nodes need repointing.
+
+## Added 2026-09-22 (late session)
+
+- Forcing an AI failure: switch Groq Chat Model's credential to "Groq - BROKEN (test only)" (fake key, kept for reruns of test K). Publish, send K, then switch back to "Groq account".
+- After switching the credential back, RE-SELECT openai/gpt-oss-20b and confirm temperature 0. n8n resets the model on a credential swap.
+- All v2 Postman requests now point at http://localhost:5678/webhook/rivertown/lead-intake-v2. New v2 requests: K (Error path) and E2 (low-confidence regression).
+- To rerun a test whose row is evidence from an earlier session, do not delete the row. Duplicate the request and give it a new external_id.
+- routed_by values in v2: ai, rules, ai_failure, or blank (rules path).
+- Evaluation set: cases/rivertown-lead-intake/eval-set-v1.csv. Frozen. Never edit labels to improve a score; create a new version file instead.
+- Data Table CSV exports shift timestamps by +5h. Never copy a timestamp from an export into a test body.

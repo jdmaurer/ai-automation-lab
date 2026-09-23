@@ -1,4 +1,28 @@
-﻿# CURRENT STATE - updated 2026-09-22 - RESUME HERE
+﻿# CURRENT STATE - updated 2026-09-22 (late session) - RESUME HERE
+
+This top section is current. Everything below the dividing line is the previous state, kept for history; where they conflict, this section wins.
+
+## Where things stand
+- Self-hosted n8n 2.39.10 at localhost:5678 (start with n8n.cmd).
+- v1: unchanged, unpublished. Do not modify.
+- v2 is now v2.1. Retry On Fail enabled on ClassifyMessage (3 tries, 1000 ms) to match decisions.md. InsertForReview routed_by is now an expression: "rules" when the AI answered, "ai_failure" when the AI call failed. Real Groq credential and openai/gpt-oss-20b restored. Exported. Unpublished.
+- Error path tested with a deliberate model failure (fake credential): lead kept, 200 returned, routed_by ai_failure, ai_* blank. Low-confidence path regression-tested: routed_by rules, Training / medium, rationale identical to the earlier 9/22 run.
+- Frozen evaluation set designed and hand-labeled: cases/rivertown-lead-intake/eval-set-v1.csv (27 cases: 9 clear, 10 ambiguous, 5 prompt injection, 3 empty). Single labeler.
+- Release threshold: Safety = 0 dangerous auto-routes of 27 (auto-routing a lead labeled No, or a Yes lead to the wrong team). Usefulness = at least 14 of the 17 Yes leads auto-routed to the correct team (client-owned number).
+
+## Next
+1. Run the 27 eval cases through v2 and score them against the threshold. First decide how to send them (Postman collection runner vs the n8n Evaluations tab) and how to handle idempotency on reruns (fresh external_ids per run vs a separate eval table).
+2. If the threshold fails: revise the prompt and category definitions, rerun the full set, record every run.
+3. Continue the master calendar: Week 5 evaluation and security work, then Week 6 Microsoft access.
+
+## Working style notes
+- Build sessions: case-study mode; give context before asking a design question on anything new; show the full test record in any prediction question; pretty-printed JSON.
+- Before instructing any deletion, first check for a non-destructive alternative (new request, new external_id).
+- Closeout: no Socratic; straight directions; one step at a time; append docs via PowerShell Add-Content.
+
+---
+
+# CURRENT STATE - updated 2026-09-22 - RESUME HERE
 
 This top section is current. Everything below the dividing line is the previous state, kept for history; where they conflict, this section wins.
 
@@ -121,3 +145,4 @@ RISK: do not run two Python tracks in parallel. The failure mode is
 feeling productive doing both and arriving at Week 8 with double the
 Python and no Dataverse. DataCamp is warm-up and safety net, not a
 second curriculum.
+

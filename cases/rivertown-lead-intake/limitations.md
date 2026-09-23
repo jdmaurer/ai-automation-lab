@@ -61,3 +61,12 @@ ambiguous path.
 - v2 has been tested on two AI cases only (Ingrid, Desmond). No frozen evaluation set yet, so no accuracy claim is supported.
 - Category definitions are assumptions for this synthetic case, not client-confirmed.
 - Leads with an empty message that reach the Fallback path have not been tested.
+
+## Added 2026-09-22 (late session)
+
+- RESOLVED: the v2 AI Error path is now tested with a deliberate failure (fake credential). Lead kept, 200 returned, routed_by ai_failure.
+- Only the "key rejected" failure was tested. An unparseable model answer (schema failure) has not been forced.
+- The evaluation set exists (27 cases) but has not been run. No accuracy claim is supported yet.
+- Evaluation labels come from one labeler. No inter-rater reliability measured.
+- With 17 Yes cases, each miss moves the usefulness score about 6 points. The threshold is a rough reading, not a precise measurement.
+- Retry fires on every error, including non-transient ones like a rejected key, which adds about 2.5 seconds before the lead reaches review.

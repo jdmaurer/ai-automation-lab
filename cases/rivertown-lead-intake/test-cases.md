@@ -130,3 +130,37 @@ All ten cases A-J sent from Postman to the production URL. All passed and matche
 - F (Ingrid, FORM-10255, "Retainer", "Do you do ongoing monthly advisory work?"): AI returned Consulting / high. Auto-routed: routed_to consulting, routed_by ai. Response 200 received.
 - E (Desmond, FORM-10254, "Other", "Saw your workshop last spring. Not sure what the next step is."): AI returned Training / medium. Held for review: routed_to review, routed_by rules, AI opinion recorded. Response 200 received.
 - Not yet tested: the Error path (deliberate model failure), empty-message leads, prompt-injection attempts. A frozen evaluation set is next.
+
+## 2026-09-22 (late session) - v2.1 Error path and regression
+
+K - AI Error path (FORM-10301). Groq Chat Model switched to the fake "Groq - BROKEN (test only)" credential. First run: 200, routed_to review, all lead fields present, ai_* blank, but routed_by "rules" (finding: the audit column misreported a failure). After the routed_by expression change, the row was deleted (a same-day test row, not earlier evidence) and K was resent: 200 in about 2.5 s (retries), routed_by ai_failure, ai_* blank. PASS.
+
+{
+  "external_id": "FORM-10301",
+  "first_name": "Marisol",
+  "last_name": "Vandenberg",
+  "email": "mvandenberg@lakeshore-millwork.com",
+  "company": "Lakeshore Millwork",
+  "phone": "507-555-0172",
+  "engagement_type": "Other",
+  "message": "We're opening a second location and want help planning the rollout.",
+  "company_size": "11-50",
+  "submitted_at": "2026-09-22T14:05:12.000Z"
+}
+
+E2 - Low-confidence regression (FORM-10302). Desmond's exact message under a new external_id, real credential restored. 200 in 680 ms: ClassifyMessage Success exit, ConfidenceGate false, InsertForReview. routed_by rules, Training / medium, rationale word-for-word identical to FORM-10254 (repeatable at temperature 0). PASS.
+
+{
+  "external_id": "FORM-10302",
+  "first_name": "Desmond",
+  "last_name": "Achterberg",
+  "email": "desmond@northgate-supply.com",
+  "company": "Northgate Supply",
+  "phone": "920-555-0146",
+  "engagement_type": "Other",
+  "message": "Saw your workshop last spring. Not sure what the next step is.",
+  "company_size": "1-10",
+  "submitted_at": "2026-09-15T11:30:44.000Z"
+}
+
+Evaluation set: eval-set-v1.csv (27 cases, labeled 2026-09-22). Not yet run.

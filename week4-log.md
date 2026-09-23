@@ -18,3 +18,24 @@ Tested end to end: Ingrid ("ongoing monthly advisory work") auto-routed to consu
 Process lessons: the teaching works when I'm asked to propose and then corrected, not handed finished answers. Show me the test record when asking me to predict. Closeout is straight directions only.
 
 Next: test the Error path, then build a frozen evaluation set.
+
+## Tuesday 9.22.26 (late session) - Error path tested, evaluation set built
+
+Woke up from a nap around 8 and decided to keep going after the earlier session.
+
+Broke the AI on purpose. Made a fake Groq credential and swapped it in so the model call would fail, then sent a new lead through Postman. The lead survived: 200 response, every field saved, AI columns blank. But the row said routed_by "rules," which wasn't true. The rules didn't decide; a failure did. Changed it to an expression so failures now say ai_failure, then proved both sides: Marisol's failure reads ai_failure, and Desmond's message resent under a new ID still reads rules, with the exact same rationale as the earlier run.
+
+Found along the way: retry was in my decision log but switched off in the build. The duplicated Postman request still pointed at v1's URL (fixed every v2 request). Swapping credentials silently erased my model, and n8n filled in a different one.
+
+Then designed the evaluation set: 27 synthetic leads, clear, ambiguous, prompt injection, and empty. Labeled every one myself, one at a time with the definitions right next to it. Labeling showed me my own category definitions have gaps: a workshop at a conference can read as training or speaking depending on how literally you take them. I decide by format; the definitions don't mention format.
+
+Set the release rule: zero leads auto-routed somewhere I didn't approve, and at least 14 of 17 clear ones auto-routed correctly. Cautious is fine. Confidently wrong is not.
+
+WHAT I PUSHED BACK ON:
+- Twice I was told to delete something when a new record would do. Duplicate and use a new ID instead; don't destroy earlier evidence.
+- Too much information at once, again, and design questions about things I had no context for. Context first, then the question.
+- JSON packed onto one line is hard to read.
+- The closeout came as one giant message. One step at a time, every time.
+
+Exact stopping point: error path tested, eval set labeled and saved, threshold set. v2.1 exported and unpublished.
+Exact next step: run the 27 eval cases through v2 and score them against the threshold.

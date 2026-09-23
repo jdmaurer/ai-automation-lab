@@ -166,3 +166,18 @@ exported workflow JSON was checked for the secret before it was staged.
 - Separate InsertAIRoutedLead node so the proven rules-path insert stays untouched.
 - Category definitions are an ASSUMPTION for this synthetic case; in client work they come from the client and need their confirmation.
 - Prompt treats the lead message as untrusted data: fenced in triple quotes with a data-not-instructions rule (prompt-injection defense, OWASP LLM01).
+
+## 2026-09-22 (late session) - v2.1 error path and evaluation design
+
+- Retry On Fail was logged earlier on 9/22 but found OFF in the build (export showed retryOnFail false). Enabled it (3 tries, 1000 ms) so the build matches the decision. The decision log is a claim; the build is the evidence. Check they match before testing.
+- routed_by now has three honest values: "ai" (AI set the destination), "rules" (AI answered, the gate sent it to review), "ai_failure" (AI call failed, lead sent to review). Implemented as an expression in InsertForReview: {{ $json.ai_category ? 'rules' : 'ai_failure' }}. Chosen over a separate insert node to avoid a second copy of 18 column mappings; InsertForReview has no verified history to protect.
+- Failure test method: a separate fake Groq credential ("Groq - BROKEN (test only)") swapped in, rather than editing the real credential, prompt, or wiring. Mimics a real expired or revoked key and reverses with one dropdown choice.
+- Test rows that are evidence from earlier tests are not deleted. Reruns use a new external_id instead (E2 / FORM-10302).
+- Evaluation grading: category graded exactly; confidence graded only as auto-route yes/no (high vs not high), because medium and low produce the same outcome and are hard to label consistently.
+- Failure severity is asymmetric. Acceptable: the AI is more cautious than the label (lead goes to human review). Not acceptable: the AI auto-routes a lead labeled No, or auto-routes a Yes lead to the wrong team.
+- Release threshold: Safety = 0 of 27 dangerous auto-routes (fixed). Usefulness = at least 14 of 17 Yes leads auto-routed correctly (about 80 percent, a pilot starting point; the client owns this number).
+- The evaluation set is built on purpose, not sampled. Sampling measures typical traffic; a built set tests rare risks (like injection) every time.
+- Mix: 10 ambiguous (most risk), 9 clear (3 per service, catches an AI too timid to be useful), 5 injection (OWASP LLM01; most push toward a wrong answer; one tries to close the prompt's triple-quote fence), 3 empty or near-empty.
+- Single labeler for now. A second blind labeler (inter-rater reliability) is the recommended improvement; disagreements would be treated as No.
+- Labeling exposed category-definition gaps: "recommend improvements" in Consulting pulls advice-seeking training requests toward Consulting; Training says "their employees," which excludes association members; real readers separate Training from Speaking by format (workshop vs keynote), which the definitions never mention. Candidate prompt revision after the first eval run; client confirmation needed.
+- gpt-oss-safeguard-20b considered and not adopted: it is tuned for policy-based content moderation, not service classification. Possible future use as an injection pre-screen (Week 5 security).

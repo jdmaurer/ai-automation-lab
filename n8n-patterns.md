@@ -227,3 +227,11 @@ JSON payload.
 - A low-confidence answer (If false branch) is not an AI failure (Error exit). Different paths, different handling.
 - Use $json when the field is already on the incoming item; reach back with $('NodeName') only when an earlier node dropped it.
 - "Error fetching options" after repointing a Data Table node means the dropdown's source moved. Re-pick the column and condition; nothing is lost.
+
+## Added 2026-09-22 (late session)
+
+- Swapping a model node to a credential that cannot load the model list ERASES the selected model. Switching back to a working credential fills in n8n's default model (llama3-8b-8192), not the previous choice. Nothing warns you. After any credential swap, re-check the model and its options.
+- Production executions (webhook calls from Postman) do not feed the editor's expression preview. The preview only uses runs made inside the editor.
+- When a node fails and uses "Continue (using error output)", the Error exit passes the original input item through, so the lead's fields survive. A Basic LLM Chain's Success output replaces the item; its Error output does not.
+- Retry On Fail lives on the node's Settings tab, and the export records retryOnFail true or false. Check the export to confirm a documented retry actually exists.
+- A duplicated Postman request inherits the original's URL. Check the address before the first send (v2 requests copied from v1 still pointed at the v1 webhook).
