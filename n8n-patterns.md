@@ -209,3 +209,21 @@ JSON payload.
 | D11 | Slack stretch uses the wrong current payload | The optional Slack stretch places the formatting node after `ReportError` but gives expressions like `$json.workflow.name` and `$json.execution...`. `ReportError` replaces the current item with the Academy response, so the Slack fields render blank. Reference `$('TriggerError').item.json...` explicitly or branch from TriggerError before ReportError. |
 | D12 | Wrong section number in Project 3 documentation step | The Fix Broken Workflow documentation instruction says to open `Section 5 - Fix Broken Workflow` even though the exercise is Section 2. |
 | D13 | Missing AggregateOrders step is under-explained | Project 3's later issue list says SendToOrdersQueue referenced a deleted `AggregateOrders` node, but the documented Expected Flow omits AggregateOrders and the instructions never explain how to recreate the expected `enriched_orders` shape. Recreating AggregateOrders as Aggregate → All Item Data (Into a Single List) with output field `enriched_orders` restored the original expression and passed the Academy validator. |
+
+## Added 2026-09-21/22 - self-hosting and v2 build
+
+- Windows PowerShell blocks npm and n8n (.ps1 execution policy). Use npm.cmd and n8n.cmd; no security setting needs to change.
+- The npm "allow-scripts" warning during n8n install was harmless. Test by starting n8n rather than pre-emptively allowing scripts.
+- Data Table CSV export offers different column sets depending on where it is triggered.
+- Data Table CSV EXPORT shifts datetimes by the local UTC offset (+5h observed). Stored data is correct; the export is wrong. Never re-import an export as a seed.
+- Postman raw body must be JSON, not Text, or the webhook receives an unparsed string and validation rejects it (400).
+- Browser Postman cannot reach a self-hosted localhost instance. Use the Postman desktop app.
+- The workflow menu item is "Export JSON", never "Download".
+- Copying a workflow within one instance keeps WORKING references to the original's table and webhook path. Nothing errors; it silently collides. Change both.
+- Moving between instances breaks references loudly: table IDs and credentials don't exist on the new host.
+- A Basic LLM Chain's output REPLACES the item. Rebuild lead fields after it with reach-back expressions like $('NormalizeLead').item.json.field.
+- After adding table columns, insert nodes don't show them until the column list is refreshed (refresh icon next to "Values to insert").
+- On Error: "Continue" sends failures out the normal output. Only "Continue (using error output)" creates a separate Error exit.
+- A low-confidence answer (If false branch) is not an AI failure (Error exit). Different paths, different handling.
+- Use $json when the field is already on the incoming item; reach back with $('NodeName') only when an earlier node dropped it.
+- "Error fetching options" after repointing a Data Table node means the dropdown's source moved. Re-pick the column and condition; nothing is lost.

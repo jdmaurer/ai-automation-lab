@@ -143,3 +143,26 @@ integration testing, not a production deployment claim.
 
 The credential secret is not documented or committed to the repository. The
 exported workflow JSON was checked for the secret before it was staged.
+
+## 2026-09-21 - Self-hosted migration
+
+- Moved v1 from n8n Cloud to self-hosted n8n (npm, v2.39.10) on Windows. Docker migration expected later: n8n now flags non-container installs as deprecated.
+- n8n AI Assistant deliberately deferred during verification: nothing that can change the workflow stays in the loop while proving it unchanged.
+- Rebuilt the data table from the 10-row seed CSV, not an n8n export (exports carry test history and shift timestamps).
+- Fixed the stray "=received_at" field name in NormalizeLead after verification (v1.1). Behavior identical.
+
+## 2026-09-22 - Lead Intake v2: AI triage
+
+- v2 is a separate workflow with its own webhook path (rivertown/lead-intake-v2) and its own table (rivertown leads v2), so v1's verified evidence is never touched.
+- The model sees ONLY leads the rules cannot route (the Fallback path). Rules are already correct for Training/Consulting/Speaking.
+- Auto-route only when confidence is high AND category is not Unclear. Everything else goes to human review.
+- Confidence is a label (high/medium/low) defined by observable reader agreement, not a model-invented number.
+- Four audit columns: routed_by, ai_category, ai_confidence, ai_rationale. ai_category is stored verbatim and separately from routed_to so the AI can be graded later.
+- routed_by records who decided: "ai" when the AI's answer set the destination, "rules" when the gate did. Rules-path rows leave it blank to keep the verified InsertRoutedLead unchanged.
+- needs_human_review is computed by the workflow, not asked of the model.
+- Model: Groq openai/gpt-oss-20b at temperature 0. Smaller model suffices for narrow classification; temperature 0 keeps answers repeatable for evaluation.
+- Output enforced by a JSON Schema parser (enums, all fields required, no extras). Auto-Fix off: a failed parse goes to human review rather than a second paid model call.
+- Retry 3x at 1s for transient failures; on persistent failure the error output routes the lead to review. An AI failure must never lose a lead.
+- Separate InsertAIRoutedLead node so the proven rules-path insert stays untouched.
+- Category definitions are an ASSUMPTION for this synthetic case; in client work they come from the client and need their confirmation.
+- Prompt treats the lead message as untrusted data: fenced in triple quotes with a data-not-instructions rule (prompt-injection defense, OWASP LLM01).

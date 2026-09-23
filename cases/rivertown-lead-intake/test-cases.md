@@ -120,3 +120,13 @@ duplicate.
 - A case with an oversized field
 - A case with an unexpected extra field in the payload
 - Replay of the same request twice in immediate succession
+
+## 2026-09-21 - v1 re-verification on self-hosted n8n
+
+All ten cases A-J sent from Postman to the production URL. All passed and matched the 2026-09-16 Cloud results. Table ended at 18 rows. A: duplicate_count went to 1. B: email lowercased and trimmed. H: rejected with 400, nothing stored. I: stored, routed to training.
+
+## 2026-09-22 - v2 AI triage (pinned data and Postman to production URL)
+
+- F (Ingrid, FORM-10255, "Retainer", "Do you do ongoing monthly advisory work?"): AI returned Consulting / high. Auto-routed: routed_to consulting, routed_by ai. Response 200 received.
+- E (Desmond, FORM-10254, "Other", "Saw your workshop last spring. Not sure what the next step is."): AI returned Training / medium. Held for review: routed_to review, routed_by rules, AI opinion recorded. Response 200 received.
+- Not yet tested: the Error path (deliberate model failure), empty-message leads, prompt-injection attempts. A frozen evaluation set is next.

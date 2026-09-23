@@ -53,3 +53,18 @@ TBD.
 
 ## Escalation
 TBD.
+
+## Self-hosted operation (from 2026-09-21)
+
+- Host: http://localhost:5678. Start with n8n.cmd in a normal PowerShell window. n8n runs only while that window stays open; closing it or laptop sleep stops it.
+- Patch: npm.cmd update -g n8n
+- Encryption key: C:\Users\joshu\.n8n\config. Backed up outside the repo. If lost, every saved credential becomes unreadable.
+- Never allow Node.js through Windows Firewall for local n8n. Local traffic doesn't need it; allowing it exposes n8n to the network.
+- Community license activated (debug in editor, execution search, folders, workflow history). License changes require an n8n restart.
+- Groq key "n8n-local-rivertown" has an expiry date. If the AI step starts failing, check the key first.
+- Credentials are kept in a password-protected file outside the repo.
+- Testing: use the Postman desktop app (not browser), body raw -> JSON. Collections: "Rivertown Lead Intake v1" and "Rivertown Lead Intake v2".
+- v1 production URL: http://localhost:5678/webhook/rivertown/lead-intake
+- v2 production URL: http://localhost:5678/webhook/rivertown/lead-intake-v2
+- Publish only for testing; unpublish when done.
+- Reset v2 test data: delete the added rows so the table returns to the 10 seed rows, or re-import rivertown_leads_seed.csv. Same table either way; no nodes need repointing.

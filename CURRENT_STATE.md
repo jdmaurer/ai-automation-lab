@@ -1,3 +1,23 @@
+﻿# CURRENT STATE - updated 2026-09-22 - RESUME HERE
+
+This top section is current. Everything below the dividing line is the previous state, kept for history; where they conflict, this section wins.
+
+## Where things stand
+- Self-hosted n8n 2.39.10 running at localhost:5678 (npm, start with n8n.cmd). Community license active.
+- v1 (Rivertown - Lead Intake v1): re-verified on self-host 2026-09-21, A-J all pass. v1.1 (field-name fix) exported and pushed (a0f6dc3). Unpublished. Do not modify.
+- v2 (Rivertown - Lead Intake v2): AI triage on the Fallback path. Built and passing both AI paths via pinned data and Postman (Ingrid auto-routed to consulting; Desmond held for review). Exported and pushed (db16b68). Unpublished.
+- v2 design, decisions, patterns, limitations, runbook, and test results are recorded in the case files.
+
+## Next
+1. Test the v2 Error path with a deliberate model failure. Expect the lead in review with blank ai_* columns and a 200 response.
+2. Build a frozen evaluation set for the AI step (clear, ambiguous, empty-message, and prompt-injection cases), hand-label expected outputs, set a release threshold.
+3. Continue the master calendar: N8N103 and Week 5 evaluation/security work.
+
+## Working style notes
+- Build sessions: case-study mode, Socratic, show the full test record in any prediction question.
+- Closeout: no Socratic; straight directions; append docs via PowerShell Add-Content.
+
+---
 # CURRENT STATE
 
 Last updated: 2026-09-20, evening session

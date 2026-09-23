@@ -49,3 +49,15 @@ Regulated data, decisions with legal or financial consequence, autonomous
 outbound contact, or any workflow where a missed lead causes material harm.
 This is a low-risk intake and routing workflow with human review on every
 ambiguous path.
+
+## Added 2026-09-21/22
+
+- Python task runner is not installed on the self-hosted instance: no Python in Code nodes.
+- duplicate_count is blank on some rows and 0 on others. Blank and zero are not equivalent.
+- In v2, rules-routed rows have a blank routed_by. Blank means "rules" (deliberate, to keep the verified InsertRoutedLead unchanged), not "unrecorded".
+- The X-API-Key webhook secret is reused from the Cloud era. Acceptable on a localhost-only instance; rotate before any public exposure.
+- n8n shows timestamps in Eastern time (its default); the operator is in Central. Stored instants are correct; one setting would fix the display.
+- v2's AI Error path (model unavailable or unparseable answer) has not yet been tested with a deliberate failure.
+- v2 has been tested on two AI cases only (Ingrid, Desmond). No frozen evaluation set yet, so no accuracy claim is supported.
+- Category definitions are assumptions for this synthetic case, not client-confirmed.
+- Leads with an empty message that reach the Fallback path have not been tested.
