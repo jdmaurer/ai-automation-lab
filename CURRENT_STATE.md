@@ -15,10 +15,9 @@ This top section is current. Everything below the dividing line is the previous 
 
 ## Next
 1. Write the client-facing evaluation summary: safety held on unseen leads; usefulness 78 percent vs 80 percent target; the trade-off is automation vs human review; the client owns the usefulness number.
-2. Continue the master calendar: Week 5 evaluation and security (NIST GenAI Profile, OWASP LLM lists), N8N103; then Week 6 Microsoft (own tenant).
+2. Continue the master calendar: Week 5 evaluation and security (NIST GenAI Profile, OWASP LLM lists; N8N103 already complete, certificate earned); then Week 6 Microsoft (own tenant).
 
 ## Open items
-- GitHub sync to the Claude Project failed to refresh authentication on 2026-09-23; reconnect it.
 - Rotate the webhook API key before any public exposure.
 - Retry wait (1000 ms) is shorter than Groq's retry-after (about 2.5 s); bursts of leads fall to ai_failure.
 - Empty messages still reach the AI; a rules check could catch them first.
