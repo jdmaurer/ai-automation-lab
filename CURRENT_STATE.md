@@ -1,4 +1,38 @@
-﻿# CURRENT STATE - updated 2026-09-22 (late session) - RESUME HERE
+﻿# CURRENT STATE - updated 2026-09-23 - RESUME HERE
+
+This top section is current. Everything below the dividing line is the previous state, kept for history; where they conflict, this section wins.
+
+## Where things stand
+- v2 is now v2.5 (ambiguity gate). Exported as cases/rivertown-lead-intake/lead-intake-v2.5.json. Unpublished. lead-intake-v2.4.json is the last prompt-only version; lead-intake-v2.json is still the v2.1 baseline.
+- v2.5 design: Groq openai/gpt-oss-120b, temperature 0, revised prompt (Training = hands-on/step-by-step, Speaking = one-way speech, Consulting = changes how the work is done; rules for choosing). The model also returns other_possible_categories. ConfidenceGate auto-routes only if confidence is high AND category is not Unclear AND ai_other_categories is empty. New Data Table column: ai_other_categories.
+- Eval runs use Newman (free Postman CLI runner; data files in the Postman app are now a paid feature). The collection export lives OUTSIDE the repo in $HOME\rivertown-eval because it contains the API key. Run from that folder:
+  newman.cmd run "Rivertown Eval.postman_collection.json" -d <csv path> --env-var "run_id=<ID>" --delay-request 20000 | Tee-Object -FilePath run-<ID>-log.txt
+  Use a new run_id every run (dedup blocks repeats). Pace at 20 s: Groq free tier is 8,000 tokens per minute.
+- eval-set-v1 (27 cases) results: R1 invalid (7 rate-limit failures). R2 v2.1 baseline: 4 dangerous (EVAL-02, 07, 10, 24), 17/17. R3 v2.2 prompt revision 1: 4 dangerous. R4 v2.3 gpt-oss-120b: 2 dangerous (07, 24). R5 v2.4 prompt revision 2: 2 dangerous. R6 v2.5 ambiguity gate: 0 dangerous, 14/17. PASSES the release threshold.
+- Holdout eval-set-holdout-v1.csv (10 new cases, labeled and threshold set before running: 0 dangerous, at least 5 of 6 Yes): H1 on v2.5 = 0 dangerous (PASS), 4 of 6 usefulness (FAIL; H-04 and H-06 held for review). Not tuned afterward, per the holdout rule.
+- Combined: 0 wrong routes in 37 cases; 18 of 23 Yes leads auto-routed (78 percent vs the 80 percent pilot target).
+- Evidence: cases/rivertown-lead-intake/eval-runs/ (Newman logs R1-R6 and H1, table export).
+
+## Next
+1. Write the client-facing evaluation summary: safety held on unseen leads; usefulness 78 percent vs 80 percent target; the trade-off is automation vs human review; the client owns the usefulness number.
+2. Continue the master calendar: Week 5 evaluation and security (NIST GenAI Profile, OWASP LLM lists), N8N103; then Week 6 Microsoft (own tenant).
+
+## Open items
+- GitHub sync to the Claude Project failed to refresh authentication on 2026-09-23; reconnect it.
+- Rotate the webhook API key before any public exposure.
+- Retry wait (1000 ms) is shorter than Groq's retry-after (about 2.5 s); bursts of leads fall to ai_failure.
+- Empty messages still reach the AI; a rules check could catch them first.
+- Single labeler; a second independent labeler is the recommended improvement.
+
+## Working style notes
+- Build sessions: case-study mode; context before any design question; full test record in prediction questions; one step at a time; instruction first, extra detail as bullets below.
+- The n8n expression editor drops the end of long pastes. Paste prompts in parts and check the ending after each.
+- Track exact Download filenames; repeat downloads get (2), (3), and so on.
+- Give full copy blocks rather than mid-text edits.
+- Closeout: no Socratic; straight directions; one step at a time.
+
+---
+# CURRENT STATE - updated 2026-09-22 (late session) - RESUME HERE
 
 This top section is current. Everything below the dividing line is the previous state, kept for history; where they conflict, this section wins.
 

@@ -235,3 +235,16 @@ JSON payload.
 - When a node fails and uses "Continue (using error output)", the Error exit passes the original input item through, so the lead's fields survive. A Basic LLM Chain's Success output replaces the item; its Error output does not.
 - Retry On Fail lives on the node's Settings tab, and the export records retryOnFail true or false. Check the export to confirm a documented retry actually exists.
 - A duplicated Postman request inherits the original's URL. Check the address before the first send (v2 requests copied from v1 still pointed at the v1 webhook).
+
+## 2026-09-23 - Patterns from evaluation and the ambiguity gate build
+
+- Long pastes can silently lose their ending (seen in the n8n expression editor and in the PowerShell console). After any long paste, scroll to the end and confirm the last line. For long text into PowerShell, download a file and append it with a short command instead of pasting.
+- A blank field can mean "nothing to report" or "the data never arrived". An If condition like "is empty" passes in both cases, so a broken mapping can silently switch off a safety check. After adding a field, open the execution and confirm the field exists in the node output before trusting the gate.
+- Adding a column to a Data Table does not add it to insert nodes that map columns manually. Each insert node needs the new column mapped, or it stays blank.
+- In the Set node and Data Table mappings, the "=" or "fx" marker at the left of a value means expression mode. Without it, a {{ }} value is stored as literal text.
+- The expression editor's Result panel shows "[Execute previous nodes for preview]" when no run data is loaded. That is normal and still confirms the {{ }} is being read as an expression.
+- Publishing asks for a version name and description. Use them as the change log: what changed and what it is testing.
+- Groq rate-limit errors appear in the chat model node's output ("Rate limit reached ... tokens per minute"). With retry on and the error output connected, the workflow still shows "Succeeded", so check routed_by (ai_failure) rather than execution status.
+- Windows PowerShell blocks .ps1 scripts by default; use the .cmd versions (npm.cmd, newman.cmd, n8n.cmd) instead of changing the execution policy.
+- PowerShell Set-Content -Encoding UTF8 adds a byte-order mark to the start of the file. Tools that read CSV headers (like Newman) can then misread the first column name. Use -Encoding ASCII for CSV data files with plain text.
+

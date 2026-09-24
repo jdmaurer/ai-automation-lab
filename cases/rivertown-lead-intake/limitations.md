@@ -70,3 +70,15 @@ ambiguous path.
 - Evaluation labels come from one labeler. No inter-rater reliability measured.
 - With 17 Yes cases, each miss moves the usefulness score about 6 points. The threshold is a rough reading, not a precise measurement.
 - Retry fires on every error, including non-transient ones like a rejected key, which adds about 2.5 seconds before the lead reaches review.
+
+## 2026-09-23 - Limitations found in evaluation
+
+- Usefulness is below the pilot target on unseen leads: 4 of 6 on the holdout, 18 of 23 Yes leads across both sets (78 percent vs 80 percent). The system is more cautious than the labeler: leads that describe a problem without naming a service tend to go to human review.
+- Requests that mix more than one service always go to a reviewer (by design).
+- The model's self-reported confidence is not reliable on ambiguous leads (it said high on EVAL-07 and 24 in every run). Safety depends on the model listing alternatives. If it stops listing them, the gate cannot catch it.
+- Groq free tier: 8,000 tokens per minute and 200,000 tokens per day per model. Each lead costs roughly 1,500 tokens with the v2.5 prompt, so about 5 leads per minute. Retry waits 1000 ms; Groq asks for about 2.5 s, so bursts fall to ai_failure (lead kept, sent to review).
+- Empty or near-empty messages still reach the AI. On one run the model described its own instructions as the message. It was held, but a rules check before the AI would be cleaner.
+- Small samples: 27 plus 10 cases, single labeler. Each holdout Yes lead is about 17 points of the usefulness rate.
+- The holdout set was written by the same assistant that helped write the prompt; a truly independent set should come from someone else (for example the client).
+- Prompt changes are tied to a specific model. A prompt tuned on gpt-oss-20b behaved differently on gpt-oss-120b; any model change requires a full rerun.
+

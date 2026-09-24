@@ -39,3 +39,27 @@ WHAT I PUSHED BACK ON:
 
 Exact stopping point: error path tested, eval set labeled and saved, threshold set. v2.1 exported and unpublished.
 Exact next step: run the 27 eval cases through v2 and score them against the threshold.
+
+## 2026-09-23 - Evaluation day: from 4 dangerous routes to 0
+
+What I did: ran the frozen 27-case evaluation set against Rivertown Lead Intake v2 and kept going until it passed the release threshold, then tested it on 10 new cases it had never seen.
+
+How: Postman's Collection Runner wanted a paid plan for data files, so I switched to Newman (Postman's free command-line runner). One templated request, the eval CSV as the data file, a run ID added to every external_id so reruns get past dedup without deleting earlier evidence.
+
+What happened:
+- R1 was spoiled by Groq's free-tier rate limit (7 cases failed). Lesson: check the error before blaming the model. Slowed the pacing.
+- R2 baseline: 4 dangerous auto-routes, all ambiguous leads the model called "high".
+- I walked through each failure and put my own labeling reasoning into the prompt as rules. No change (R3).
+- Bigger model (gpt-oss-120b) fixed 2 of the 4 (R4). Another prompt rewrite fixed nothing (R5). The model just echoed whatever words the definitions used.
+- Changed the design instead: the model now lists other categories a reasonable reader could choose, and the workflow only auto-routes if that list is empty. R6: 0 dangerous, 14 of 17 useful. Passed.
+- Holdout (10 new cases, labeled before running): safety held, usefulness 4 of 6, below target. Not tuned afterward.
+
+What I learned:
+- Asking a model how sure it is and asking it what else the message could mean are different questions. It is bad at the first and decent at the second.
+- Change one thing per run.
+- Rewording a prompt changes the model's vocabulary before it changes its decisions.
+- Tuning against the same test set is not proof. The holdout is.
+- The last call on usefulness belongs to the client.
+
+Stopping point: v2.5 exported and unpublished; docs updated. Next: client-facing evaluation summary, then Week 5 evaluation and security work.
+
