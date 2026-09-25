@@ -82,3 +82,9 @@ ambiguous path.
 - The holdout set was written by the same assistant that helped write the prompt; a truly independent set should come from someone else (for example the client).
 - Prompt changes are tied to a specific model. A prompt tuned on gpt-oss-20b behaved differently on gpt-oss-120b; any model change requires a full rerun.
 
+
+## 2026-09-25 - Found in client summary review
+
+- Routing only records the team in the Data Table. Nothing delivers messages to the teams yet.
+- The workflow does not contact customers. Respond to Webhook returns a status to the website form only.
+

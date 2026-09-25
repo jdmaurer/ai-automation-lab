@@ -63,3 +63,33 @@ What I learned:
 
 Stopping point: v2.5 exported and unpublished; docs updated. Next: client-facing evaluation summary, then Week 5 evaluation and security work.
 
+
+## Friday 9.25.26 - Client summary, deep research, and rules for automating it
+
+Started out to write the Rivertown client summary by hand and pushed back. Writing reports is exactly the busywork a consultancy would automate, so we're building that instead: an n8n workflow that drafts client evaluation summaries. It's useful for my own practice and a portfolio piece.
+
+Also called out the last two days: 15-16 hours for about an hour of real learning. New working rule: name the learning goal up front, go Socratic only on new concepts, and run evidence work fast.
+
+Ran the same deep research prompt in ChatGPT, Perplexity, and Gemini, with an identical output format so they could be compared. Claude compared them. ChatGPT's was clearly the strongest, but we weighed the evidence rather than voting. Worked through six conflicts one at a time: exact counts plus one "roughly 1 in X"; limits before the decision so the memo ends on the action; a plain verdict on a missed target with honest context; no forecasts from a hand-built test; an AI can edit but never approve; flag long sentences instead of failing them.
+
+My own contributions that became rules: an editor pass (the "can you do better?" habit) instead of an AI judge; the governing principle that an oversold client does more damage than a lost sale; and "make it easy, not impressive."
+
+Then pulled Claude back when the pipeline got over-engineered. The goal is the best draft with the fewest inputs; my review is the safety net.
+
+Reviewing revision 3 of the summary caught real problems neither code nor an AI editor would have:
+- "Sends it to the team" was wrong. The build only records the team in a table; delivery was never built.
+- Option B described a mechanism ("loosening the check") instead of what happens to the business.
+- "Clear inquiries" and even "inquiries" were jargon. Now "straightforward requests" and "messages."
+- A pilot commitment hid that it depends on the client's teams.
+- The 500-word cap was cutting real content. It's now a target, with one page as the ceiling.
+
+Most of these became permanent rules in the guide.
+
+What I learned:
+- Before automating a deliverable, make one good example by hand. It's the test for the automation.
+- Judge a source by whether it fits the claim, not where it's published.
+- Double-barreled questions produce wrong assumptions. One question at a time.
+- If it takes a PhD a moment to follow, a manager will call you.
+
+Stopping point: rules, template, checklist, and the approved Rivertown summary are done. Next: define the standard input format, then build the n8n workflow.
+

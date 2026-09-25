@@ -194,3 +194,13 @@ exported workflow JSON was checked for the secret before it was staged.
 - Holdout set: 10 new cases, labeled and threshold set before running, run once, never used for tuning. Limitation: written by the same assistant that helped write the prompt; a truly independent set should come from someone else.
 - Result: v2.5 passed the release threshold on eval-set-v1 (R6) and held safety on the holdout (H1), but holdout usefulness was 4 of 6. The usefulness trade-off (automation vs human review) goes to the client with the evidence; per the threshold decision, the client owns that number.
 
+
+## 2026-09-25 - Client evaluation summary
+
+- The summary follows the memo rules in cases/eval-summary-drafter/. Revision 3 was approved after Josh's checklist review and saved as eval-summary-v2.5.md.
+- Recommendation: a supervised pilot as it is (Option A). Option B is stated as its business consequence: more automation means some messages could go to the wrong team.
+- Only the API key rotation is promised before launch. The blank-message check, the longer retry wait, and the scrambled-answer test are internal before-pilot items, left out of the memo because they don't change the owner's decision.
+- Catching wrong routes during the pilot depends on the client's teams. It is written as a request to them; we track and report.
+- Delivery to teams: we recommend automatic email per team, built and tested before the pilot. The reviewer handing messages out is the fallback.
+- The client is offered a test set written by their own staff before the pilot.
+

@@ -1,4 +1,36 @@
-﻿# CURRENT STATE - updated 2026-09-23 - RESUME HERE
+﻿# CURRENT STATE - updated 2026-09-25 - RESUME HERE
+
+This top section is current. Everything below the dividing line is the previous state, kept for history; where they conflict, this section wins.
+
+## Where things stand
+- Rivertown Lead Intake v2.5 is unchanged and unpublished. Evaluation numbers are in the 2026-09-23 section below.
+- The client-facing evaluation summary is done and approved: cases/rivertown-lead-intake/eval-summary-v2.5.md.
+- Change of plan: future summaries will be drafted by an n8n workflow. New case: cases/eval-summary-drafter/.
+- Its rules are built from three deep research reports (in research/): memo-guide.md (rules), memo-outline.md (template), memo-checklist.md (review items owned by code, the AI editor, or Josh). Decisions are in that case's decisions.md.
+- Pipeline: code computes facts, the AI drafts, a fresh AI call edits, code checks with one retry, and problems are flagged, never stopped. Josh reviews in this Claude Project.
+
+## Next
+1. Define the standard test-results input format (JSON favored) and the per-client setup: client name, target, outcome categories, usefulness measure, what the system does and does not do, known limits, and banned names.
+2. Build the workflow in n8n. Time-boxed; name the learning goal for each block; fast directions once a concept lands.
+3. Test on Rivertown (compare against eval-summary-v2.5.md), then on an imagined second case (an invoice extractor).
+4. Then Week 5 security work: NIST GenAI Profile, OWASP LLM lists, and a threat model for both builds.
+
+## Open items - Rivertown, do before any pilot
+- Build and test email delivery to each team. Routing currently only records the team in the Data Table.
+- Add a blank-message check before the AI, with a quick retest.
+- Lengthen the retry wait (1000 ms vs Groq's ~2.5 s), with a quick burst test.
+- Test a scrambled or unparseable AI answer. Only the rejected-key failure has been tested.
+- Rotate the webhook API key before any public exposure. This is promised in the client summary.
+- Single labeler. The summary offers a client-written test set before the pilot.
+
+## Working rules from 2026-09-25
+- Name the learning goal up front. Socratic pace only for new concepts; evidence work runs fast.
+- One question at a time, with context before the question.
+- Downloads only when needed.
+
+---
+
+# CURRENT STATE - updated 2026-09-23 - RESUME HERE
 
 This top section is current. Everything below the dividing line is the previous state, kept for history; where they conflict, this section wins.
 
