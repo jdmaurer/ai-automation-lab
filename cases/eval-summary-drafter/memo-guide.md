@@ -1,6 +1,6 @@
 # Guide: Writing One-Page AI Evaluation Memos
 
-Version 1.1, 2026-09-26 (added 1.6 and 5.5). Rules for any client memo, whether drafted by hand or by the automation. Built from three independent deep research reports (ChatGPT, Perplexity, Gemini), compared and decided in the Rivertown sessions. Companion files: memo-outline.md and memo-checklist.md.
+Version 1.1, 2026-09-26 (added 1.6, 5.5 and 7.5). Rules for any client memo, whether drafted by hand or by the automation. Built from three independent deep research reports (ChatGPT, Perplexity, Gemini), compared and decided in the Rivertown sessions. Companion files: memo-outline.md and memo-checklist.md.
 
 Evidence labels: STRONG = systematic reviews, peer-reviewed studies, or standards bodies with direct support. MODERATE = government guidance or strong evidence transferred from another field. OPINION = expert judgment.
 
@@ -96,6 +96,8 @@ Evidence labels: STRONG = systematic reviews, peer-reviewed studies, or standard
 7.3 **Write for a business owner, not for a grade level.** (MODERATE: Digital.gov.)
 
 7.4 **Length serves content, not the reverse.** Aim for 350 to 500 words, allow up to about 650 (one printed page) for decision-relevant content. To shorten, cut repetition and wording, never a limit or required element. (OPINION: the word budgets from the research were marked expert opinion, not evidence.)
+
+7.5 **Write setup facts into natural sentences.** Use the client setup for meaning, not as text to paste. Never quote a setup field word for word or in italics: "It sent no message to the wrong team," not "*a message sent to the wrong team* in 0 of 37." (OPINION, added after the second automated draft pasted the harmful-action definition into three sections.)
 
 ## 8. Word lists (checked by code)
 
