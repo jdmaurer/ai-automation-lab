@@ -32,3 +32,13 @@ Append-only. Newest at the bottom.
 - Groups of test items are described in everyday words every time, never with a defined label (2.3a).
 - If a harmful action occurred, describe each one, not just the count (1.2a).
 - Length is a target (350 to 500 words) with a ceiling of about 650, one printed page. Cut repetition and wording, never content (7.4).
+
+## 2026-09-26 - Input format, first automated draft, options playbook
+
+- Two inputs. The test results file changes every run: test_date plus items with id, item, correct_answer, system_did, held_back. The client setup is filled in once per client. Both are JSON. Rivertown's copies: cases/rivertown-lead-intake/summary-inputs/.
+- Code grades by matching correct_answer to system_did. Correct answer is the person label and the system routed it: harmful. Correct answer is a team and the system chose another team: harmful. Correct answer is a team and it went to a person: referral. Usefulness is measured on items whose correct answer is not the person label.
+- Optional per-item `outcome` for clients whose grading is not a simple match (for example, partly-correct invoices). Its labels are defined in setup `outcome_labels`. An unknown label is flagged, never guessed.
+- Universal banned words live in guide 8 and the code check. Setup `banned_words` holds only the project's own names (models, tools, run labels).
+- The workflow reads the rule files from GitHub main at run time, so the guide stays the single source of truth. The full rules (about 5,800 tokens) fit the Groq free tier; the draft call needs Maximum Number of Tokens 8000 (the first run returned an empty draft: finish_reason length at the 3,072 default).
+- First automated draft: every number correct. Every error came from a fact missing from the inputs; worst, it said the client's staff wrote the tests. Setup gains test_authors, harmful_action, handled_group and person_group. New guide rule 1.6: write [MISSING: ...] instead of guessing.
+- Options come from a playbook (guide 5.5). Code sets the scenario (below_target, met_target, harmful, no_target); the AI writes the options as business consequences; an optional setup `options` list overrides it.

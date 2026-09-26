@@ -1,0 +1,47 @@
+{
+  "client_name": "Rivertown Professional Services",
+  "client_role": "Owner",
+  "system_name": "Rivertown Lead Intake Assistant",
+  "item_word": "message",
+  "person_label": "Person review",
+  "target_percent": 80,
+  "does": "Reads each message from the website form and records which team should get it: Training, Speaking, Consulting, or a person to review.",
+  "does_not": "Deliver messages to the teams or contact customers.",
+  "design_reason": "Sends a message to a person whenever it sees more than one reasonable reading. Requests for two services always go to a person.",
+  "test_authors": "our team",
+  "harmful_action": "a message sent to the wrong team, or routed on its own when it needed a person",
+  "handled_group": "straightforward requests for one service",
+  "person_group": "vague, empty, two-service, or trick messages",
+  "not_tested": [
+    "Real messages",
+    "How many messages Rivertown receives",
+    "How the team handles the review pile"
+  ],
+  "known_limits": [
+    "Safety depends on the assistant noticing when a message could fit more than one team",
+    "If more than about 5 messages arrive in one minute, the extras go straight to a person; none are lost",
+    "A security key will be replaced before launch",
+    "We can run a test set written by the client's own staff before the pilot"
+  ],
+  "confirmations_needed": [
+    "Confirm our service definitions: Training is hands-on skill building, Speaking is a talk or keynote, Consulting changes how work gets done",
+    "Name who reviews held messages",
+    "Ask each team to report any message that isn't theirs",
+    "Decide how teams receive messages during the pilot"
+  ],
+  "banned_words": [
+    "Groq",
+    "gpt-oss",
+    "gpt-oss-120b",
+    "openai",
+    "n8n",
+    "Newman",
+    "Postman",
+    "webhook",
+    "Data Table",
+    "v2.5",
+    "R6",
+    "H1",
+    "EVAL"
+  ]
+}

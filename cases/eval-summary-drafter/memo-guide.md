@@ -1,6 +1,6 @@
 # Guide: Writing One-Page AI Evaluation Memos
 
-Version 1, 2026-09-25. Rules for any client memo, whether drafted by hand or by the automation. Built from three independent deep research reports (ChatGPT, Perplexity, Gemini), compared and decided in the Rivertown sessions. Companion files: memo-outline.md and memo-checklist.md.
+Version 1.1, 2026-09-26 (added 1.6 and 5.5). Rules for any client memo, whether drafted by hand or by the automation. Built from three independent deep research reports (ChatGPT, Perplexity, Gemini), compared and decided in the Rivertown sessions. Companion files: memo-outline.md and memo-checklist.md.
 
 Evidence labels: STRONG = systematic reviews, peer-reviewed studies, or standards bodies with direct support. MODERATE = government guidance or strong evidence transferred from another field. OPINION = expert judgment.
 
@@ -25,6 +25,8 @@ Evidence labels: STRONG = systematic reviews, peer-reviewed studies, or standard
 1.4 **No savings, volume, or time claims unless measured.** "Saves 10 hours a week" is a forecast. Say what happened in the test instead: "your team would have handled 5 of 23 instead of all 23." (OPINION, follows from 1.1.)
 
 1.5 **Describe what the system actually does.** If it only sorts, say it only sorts. Don't let "handled automatically" imply the whole job was done. (OPINION.)
+
+1.6 **Never fill a gap by guessing.** If the memo needs a fact that is not in the approved facts or the client setup, write [MISSING: what is needed] and let the consultant fill it. A guessed fact reads exactly like a real one. (OPINION, added after the first automated draft said the client's staff wrote the tests.)
 
 ## 2. Numbers
 
@@ -69,6 +71,15 @@ Evidence labels: STRONG = systematic reviews, peer-reviewed studies, or standard
 5.3a **Say who does what in the pilot.** When a pilot depends on the client's staff, put their action in the decision section as a request to them, and state what we do to support it ("Ask each team to report... We will track these and report back"). Never write a pilot activity in a way that hides whose job it is. (OPINION, added after the first Rivertown review.)
 
 5.4 **Limits come before the decision.** The owner chooses after seeing the downsides. The memo ends on the action. (MODERATE: Stacey 2024.)
+
+5.5 **Choose the options from the playbook.** Code sets the scenario from the approved facts. The AI writes that scenario's options as business consequences, using the client's harmful action and item groups from the setup. A client-specific `options` list in the setup replaces the playbook for unusual cases. (OPINION, from the Rivertown options discussion, 2026-09-26.)
+
+| Scenario (set by code) | Option A | Option B | Our default recommendation |
+|---|---|---|---|
+| below_target: no harmful actions, below target | Pilot as is. More [items] come to your reviewer than the target assumed. | Push toward the target before the pilot. The system would decide on its own more often when unsure, so more [items] could end in [harmful action]. | A. Ask whether the target is still right (3.4). |
+| met_target: no harmful actions, target met | Pilot as is. | Start with a narrower pilot (fewer kinds of [items] or a shorter trial) to confirm the results on real [items]. | A |
+| harmful: any harmful action occurred | Fix and retest before any pilot. | Pilot with a person checking every [item]; the system only suggests. | A. Describe each harmful action (1.2a). |
+| no_target: no target set | No options yet. Report the result and ask the owner to set a target. | None | None until a target exists |
 
 ## 6. Limits
 

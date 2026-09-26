@@ -1,0 +1,51 @@
+{
+  "name": "Eval Summary Drafter v0",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "eval-summary",
+        "options": {}
+      },
+      "id": "a1f0c6d2-1111-4a8e-9c01-000000000001",
+      "name": "ReceiveInputs",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "5b1d2c3e-2222-4f4a-8b77-000000000002"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ComputeFacts: turns the setup file and the test results into the approved facts.\n// Every number the memo may use comes from here. The AI never calculates.\nconst body = $input.first().json.body;\nconst setup = body.setup;\nconst items = body.results.items;\nconst P = setup.person_label;\nconst flags = [];\n\n// Optional per-client outcome labels, e.g. {\"fixed_by_person\": \"referral\"}.\n// Allowed values: useful, referral, harmful, correct_referral.\nconst labels = setup.outcome_labels || {};\n\nfunction grade(i) {\n  if (i.outcome) {\n    if (labels[i.outcome]) return labels[i.outcome];\n    flags.push(`${i.id}: outcome \"${i.outcome}\" is not listed in the setup's outcome_labels`);\n    return 'unknown';\n  }\n  if (i.correct_answer === P) return i.system_did === P ? 'correct_referral' : 'harmful';\n  if (i.system_did === i.correct_answer) return 'useful';\n  if (i.system_did === P) return 'referral';\n  return 'harmful';\n}\n\nconst graded = items.map(i => ({ ...i, grade: grade(i) }));\nconst count = g => graded.filter(i => i.grade === g).length;\n\n// Usefulness is measured on the items the system is supposed to handle itself.\nconst base = graded.filter(i => i.correct_answer !== P);\nconst useful = base.filter(i => i.grade === 'useful').length;\nconst referred = base.filter(i => i.grade === 'referral');\nconst exact = base.length ? (useful / base.length) * 100 : 0;\nconst target = setup.target_percent ?? null;\n\nlet verdict = null, oneMore = null, shortBy = null;\nif (target !== null) {\n  verdict = exact >= target ? 'met your target' : 'below your target';   // decided on the unrounded value\n  if (exact < target) {\n    shortBy = Math.ceil((target * base.length) / 100) - useful;\n    oneMore = { count: useful + 1, percent: Math.round(((useful + 1) / base.length) * 100) };\n  }\n} else {\n  flags.push('No target in setup: the memo reports the result and asks the owner to set one.');\n}\n\nconst oneInX = referred.length ? Math.round(base.length / referred.length) : null;\n\nconst facts = {\n  test_date: body.results.test_date,\n  total_items: graded.length,\n  held_back: graded.filter(i => i.held_back).length,\n  harmful: {\n    count: count('harmful'),\n    total: graded.length,\n    items: graded.filter(i => i.grade === 'harmful')\n      .map(({ id, item, correct_answer, system_did }) => ({ id, item, correct_answer, system_did })),\n  },\n  should_go_to_person: { count: graded.length - base.length,\n                         sent_to_person: count('correct_referral') },\n  usefulness: {\n    count: useful,\n    total: base.length,\n    percent: Math.round(exact),\n    target_percent: target,\n    verdict,\n    short_by: shortBy,\n    one_more: oneMore,\n  },\n  referrals: {\n    count: referred.length,\n    total: base.length,\n    roughly_1_in_x: oneInX ? `roughly 1 in ${oneInX}` : null,\n    examples: referred.map(({ id, item }) => ({ id, item })),\n  },\n  flags,\n};\n\nreturn [{ json: { facts, setup } }];\n"
+      },
+      "id": "a1f0c6d2-1111-4a8e-9c01-000000000003",
+      "name": "ComputeFacts",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        260,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "ReceiveInputs": {
+      "main": [
+        [
+          {
+            "node": "ComputeFacts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {}
+}
