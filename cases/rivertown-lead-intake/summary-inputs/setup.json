@@ -10,6 +10,7 @@
   "design_reason": "Sends a message to a person whenever it sees more than one reasonable reading. Requests for two services always go to a person.",
   "test_authors": "our team",
   "harmful_action": "a message sent to the wrong team, or routed on its own when it needed a person",
+  "harmful_action_name": "wrong route",
   "handled_group": "straightforward requests for one service",
   "person_group": "vague, empty, two-service, or trick messages",
   "not_tested": [

@@ -1,0 +1,647 @@
+{
+  "name": "Eval Summary Drafter v9 - invoice test",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "eval-summary",
+        "options": {}
+      },
+      "id": "fa9bc65c-6525-4ef6-ab0e-423ecfd50b3e",
+      "name": "ReceiveInputs",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "8e4a5f6b-5555-4f4a-8b77-000000000002"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ComputeFacts: turns the setup file and the test results into the approved facts.\n// Every number the memo may use comes from here. The AI never calculates.\nconst body = $input.first().json.body;\nconst setup = body.setup;\nconst items = body.results.items;\nconst P = setup.person_label;\nconst flags = [];\n\n// Optional per-client outcome labels, e.g. {\"fixed_by_person\": \"referral\"}.\n// Allowed values: useful, referral, harmful, correct_referral.\nconst labels = setup.outcome_labels || {};\n\nfunction grade(i) {\n  if (i.outcome) {\n    if (labels[i.outcome]) return labels[i.outcome];\n    flags.push(`${i.id}: outcome \"${i.outcome}\" is not listed in the setup's outcome_labels`);\n    return 'unknown';\n  }\n  if (i.correct_answer === P) return i.system_did === P ? 'correct_referral' : 'harmful';\n  if (i.system_did === i.correct_answer) return 'useful';\n  if (i.system_did === P) return 'referral';\n  return 'harmful';\n}\n\nconst graded = items.map(i => ({ ...i, grade: grade(i) }));\nconst count = g => graded.filter(i => i.grade === g).length;\n\n// Usefulness is measured on the items the system is supposed to handle itself.\nconst base = graded.filter(i => i.correct_answer !== P);\nconst useful = base.filter(i => i.grade === 'useful').length;\nconst referred = base.filter(i => i.grade === 'referral');\nconst exact = base.length ? (useful / base.length) * 100 : 0;\nconst target = setup.target_percent ?? null;\n\nlet verdict = null, oneMore = null, shortBy = null;\nif (target !== null) {\n  verdict = exact >= target ? 'met your target' : 'below your target';   // decided on the unrounded value\n  if (exact < target) {\n    shortBy = Math.ceil((target * base.length) / 100) - useful;\n    oneMore = { count: useful + 1, percent: Math.round(((useful + 1) / base.length) * 100) };\n  }\n} else {\n  flags.push('No target in setup: the memo reports the result and asks the owner to set one.');\n}\n\n// Scenario picks the options playbook row (guide 5.5).\nconst scenario = count('harmful') > 0 ? 'harmful'\n  : target === null ? 'no_target'\n  : exact >= target ? 'met_target' : 'below_target';\n\nconst oneInX = referred.length ? Math.round(base.length / referred.length) : null;\n\nconst facts = {\n  test_date: body.results.test_date,\n  scenario,\n  total_items: graded.length,\n  held_back: graded.filter(i => i.held_back).length,\n  harmful: {\n    count: count('harmful'),\n    total: graded.length,\n    items: graded.filter(i => i.grade === 'harmful')\n      .map(({ id, item, correct_answer, system_did }) => ({ id, item, correct_answer, system_did })),\n  },\n  should_go_to_person: { count: graded.length - base.length,\n                         sent_to_person: count('correct_referral') },\n  usefulness: {\n    count: useful,\n    total: base.length,\n    percent: Math.round(exact),\n    target_percent: target,\n    verdict,\n    short_by: shortBy,\n    one_more: oneMore,\n  },\n  referrals: {\n    count: referred.length,\n    total: base.length,\n    roughly_1_in_x: oneInX ? `roughly 1 in ${oneInX}` : null,\n    quotable_examples: referred.map(({ item }) => item),   // real test items the memo may quote\n  },\n  flags,\n};\n\nreturn [{ json: { facts, setup } }];\n"
+      },
+      "id": "4c77dc83-d7e3-4a8d-b46a-2042e3a780d3",
+      "name": "ComputeFacts",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        272,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// BuildPrompt: assembles the drafting prompt from the approved facts, the client setup,\n// and the current rule files on GitHub (the committed versions are the source of truth).\nconst { facts, setup } = $input.first().json;\nconst base = 'https://raw.githubusercontent.com/jdmaurer/ai-automation-lab/main/cases/eval-summary-drafter/';\nconst get = async f => this.helpers.httpRequest({ url: base + f, json: false });\n\nconst guideFull = await get('memo-guide.md');\nconst guide = guideFull.split('\\n## Sources')[0];      // sources are for people, not the drafter\nconst outline = await get('memo-outline.md');\nconst checklist = await get('memo-checklist.md');\n\nconst memoDate = new Date().toLocaleDateString('en-US',\n  { timeZone: 'America/Chicago', year: 'numeric', month: 'long', day: 'numeric' });\n\nconst prompt = `You draft a one-page evaluation memo for a non-technical business owner deciding whether to pilot an AI-assisted system. Follow the OUTLINE for structure, the GUIDE for every writing rule, and make the draft pass the CODE and EDITOR items in the CHECKLIST. The YOUR CHECKS items belong to the consultant; do not answer them.\n\nHARD RULES\n- Use only numbers that appear in APPROVED FACTS or CLIENT SETUP. Never calculate, round, or estimate a new number.\n- Use the verdict wording and the \"roughly 1 in X\" phrase exactly as given in APPROVED FACTS.\n- Never use any word in CLIENT SETUP banned_words, or any word banned in GUIDE section 8.\n- Never mention item IDs.\n- Propose a recommendation. Label it as ours and leave the choice with the owner.\n- Memo date: ${memoDate}.\n- Call the harmful action by its short name, CLIENT SETUP harmful_action_name (for example \"0 ${setup.harmful_action_name || 'harmful actions'}s in ${facts.total_items} test ${setup.item_word}s\"). Explain once, in your own words, what it means, using harmful_action. Never paste harmful_action word for word. Describe the two groups of test items with handled_group and person_group, every time. Say who wrote the tests and set the answers with test_authors.\n- Options: if CLIENT SETUP has an options list, use it. Otherwise use the GUIDE 5.5 playbook row for APPROVED FACTS scenario, written as business consequences for this client.\n- APPROVED FACTS referrals.quotable_examples are real test items. Quote one in section 5.\n- If the memo needs a fact that is not in APPROVED FACTS or CLIENT SETUP, write [MISSING: what is needed]. Never guess.\n- Output only the memo in Markdown. No preamble, no notes after it.\n\nAPPROVED FACTS\n${JSON.stringify(facts, null, 2)}\n\nCLIENT SETUP\n${JSON.stringify(setup, null, 2)}\n\nOUTLINE\n${outline}\n\nGUIDE\n${guide}\n\nCHECKLIST\n${checklist}`;\n\nreturn [{ json: { prompt, prompt_chars: prompt.length, approx_tokens: Math.round(prompt.length / 4), facts, setup } }];\n"
+      },
+      "id": "5702c52b-0924-470a-b3f1-c82e4e99a745",
+      "name": "BuildPrompt",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        528,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// BuildEditPrompt: a fresh AI call edits the draft against the editor checks.\n// It gets the draft, the approved facts, the setup, and the rules. Nothing else.\nconst draft = $input.first().json.text || '';\nconst { facts, setup } = $('BuildPrompt').first().json;\nconst base = 'https://raw.githubusercontent.com/jdmaurer/ai-automation-lab/main/cases/eval-summary-drafter/';\nconst get = async f => this.helpers.httpRequest({ url: base + f, json: false });\n\n// The editor gets a trimmed copy of the rules to stay under Groq's 8,000 tokens-per-minute limit:\n// no source citations, no word lists or pipeline notes (code checks those), only the editor checks.\nconst cut = (t, from, to) => { const i = t.indexOf(from); if (i < 0) return t; const j = to ? t.indexOf(to, i) : -1; return j < 0 ? t.slice(0, i) : t.slice(0, i) + t.slice(j); };\nlet guide = (await get('memo-guide.md')).split('\\n## Sources')[0];\nguide = cut(guide, '\\n## 8. Word lists', null);\nguide = guide.replace(/\\s*\\((STRONG|MODERATE|OPINION)[^)]*\\)/g, '')\n             .replace(/^Evidence labels:.*$/m, '')\n             .replace(/^\\*\\*Set the expectation before testing starts\\.\\*\\*.*$/m, '');\nconst outline = (await get('memo-outline.md')).split('\\n## Overfitting test')[0]\n  .split('\\n').filter(l => !/^- \\*\\*(Tags|Data needed):\\*\\*/.test(l)).join('\\n');\nconst fullChecklist = await get('memo-checklist.md');\nconst checklist = fullChecklist.slice(fullChecklist.indexOf('## Editor checks'), fullChecklist.indexOf('## Your checks'));\n\nconst prompt = `You are the editor of a one-page evaluation memo for a non-technical business owner. You did not write the DRAFT. Edit it against the EDITOR CHECKS (E1 to E8), using the GUIDE and the OUTLINE.\n\nYOU MAY: change wording, split long sentences, reorder sentences within a section, remove repetition, and add a missing required element from the OUTLINE using only APPROVED FACTS and CLIENT SETUP.\nYOU MAY NOT: change, add, or remove any number; change any fact; change the recommendation or the options; make the memo more persuasive. \"Improve\" means clearer and more complete, not more convincing.\nCHECK EVERY ABSOLUTE CLAIM: any sentence with \"all\", \"every\", \"none\", \"never\" or \"always\" must match APPROVED FACTS. If 5 of 23 went to a person, \"all were routed to a team\" is false: rewrite it with the exact counts.\nFLAG, DON'T FIX: E7 (top summary and decision section disagree), E8 (anything the approved facts can't support, or a gap they can't fill), and any judgment question for the consultant. Leave any [MISSING: ...] marker in place.\n\nOUTPUT EXACTLY THIS, NOTHING ELSE:\nthe full edited memo in Markdown\n===CHANGES===\none bullet per change, starting with its checklist item or guide rule, for example \"- E2: split the second sentence of section 5.\"\n===FLAGS===\none bullet per issue for the consultant, or \"- None\"\n\nDRAFT\n${draft}\n\nAPPROVED FACTS\n${JSON.stringify(facts, null, 2)}\n\nCLIENT SETUP\n${JSON.stringify(setup, null, 2)}\n\nOUTLINE\n${outline}\n\nGUIDE\n${guide}\n\nEDITOR CHECKS\n${checklist}`;\n\nif (!draft.trim()) {\n  return [{ json: { prompt: '', draft_empty: true, facts, setup } }];\n}\nreturn [{ json: { prompt, approx_tokens: Math.round(prompt.length / 4), draft, facts, setup } }];\n"
+      },
+      "id": "9cf1920b-fd3a-4abe-b69b-8e1cc58aaddf",
+      "name": "BuildEditPrompt",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1040,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// SplitEdit: separates the editor's answer into the memo, its change list, and its flags.\n// If the markers are missing, keep everything as the memo and flag it. Nothing stops.\nconst raw = $input.first().json.text || '';\nconst flags = [];\nlet memo = raw, changes = '', editorFlags = '';\nconst c = raw.indexOf('===CHANGES===');\nconst f = raw.indexOf('===FLAGS===');\nif (c === -1 || f === -1 || f < c) {\n  flags.push('Editor output did not follow the format; the whole answer is kept as the memo.');\n} else {\n  memo = raw.slice(0, c).trim();\n  changes = raw.slice(c + 13, f).trim();\n  editorFlags = raw.slice(f + 11).trim();\n}\nif (!raw.trim()) flags.push('Editor returned nothing; check Maximum Number of Tokens on its model.');\nreturn [{ json: { memo, changes, editor_flags: editorFlags, flags } }];\n"
+      },
+      "id": "8b1427ba-3b23-4066-b03c-45f24b805c09",
+      "name": "SplitEdit",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1680,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.prompt }}",
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        736,
+        0
+      ],
+      "id": "d3691662-7dc6-4cc4-950e-e96072352bc8",
+      "name": "DraftMemo"
+    },
+    {
+      "parameters": {
+        "model": "openai/gpt-oss-120b",
+        "options": {
+          "maxTokensToSample": 8000,
+          "temperature": 0.2
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        736,
+        224
+      ],
+      "id": "c4ee437f-86aa-467f-b8dd-27b6414b16f7",
+      "name": "Groq Chat Model",
+      "credentials": {
+        "groqApi": {
+          "id": "LXrfCFEVvItUzLgJ",
+          "name": "Groq account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "openai/gpt-oss-120b",
+        "options": {
+          "maxTokensToSample": 8000,
+          "temperature": 0.2
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        1408,
+        240
+      ],
+      "id": "0e2a717b-89a9-4422-91e6-5a831fd6a132",
+      "name": "Groq Chat Model1",
+      "credentials": {
+        "groqApi": {
+          "id": "LXrfCFEVvItUzLgJ",
+          "name": "Groq account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.prompt }}",
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        1408,
+        0
+      ],
+      "id": "5c308cf2-019c-461e-9d3e-e63841e3b98d",
+      "name": "EditMemo"
+    },
+    {
+      "parameters": {
+        "amount": 65
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1264,
+        0
+      ],
+      "id": "9f1300af-5189-4475-9627-82c6481148d2",
+      "name": "PauseBeforeEdit",
+      "webhookId": "89f5f47a-6721-4d97-879f-be7997062ccd"
+    },
+    {
+      "parameters": {
+        "jsCode": "// CheckMemo: code checks the memo against the approved facts, the setup, and the guide's word lists.\n// Failures get one AI fix attempt; flags go straight to the consultant. Nothing stops.\n// The same code runs twice: after SplitEdit (first check) and after FixMemo (recheck).\nconst inp = $input.first().json;\nconst isRecheck = inp.memo === undefined;               // FixMemo returns {text}, SplitEdit returns {memo}\nconst memo = (isRecheck ? inp.text : inp.memo) || '';\nconst { facts, setup } = $('BuildPrompt').first().json;\nconst edit = $('SplitEdit').first().json;\nconst failures = [], flags = [...(edit.flags || [])];\nconst fail = (check, detail) => failures.push({ check, detail });\nconst esc = s => s.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&');\nconst norm = memo.replace(/[\\u2010-\\u2015]/g, '-')                 // non-breaking hyphens and dashes\n  .replace(/[\\u00a0\\u2000-\\u200b\\u202f\\u205f\\u3000]/g, ' ');   // non-breaking and narrow spaces\nconst low = norm.toLowerCase().replace(/\\*/g, '');   // bold markers can hide words from checks\nconst has = p => new RegExp('\\\\b' + esc(p.toLowerCase()) + '\\\\b').test(low);\n\n// C1: every number must come from the approved facts or the setup (or a date in the memo header).\nconst allowed = new Set();\nconst walk = v => { if (typeof v === 'number') allowed.add(v);\n  else if (typeof v === 'string') (v.match(/\\d+(\\.\\d+)?/g) || []).forEach(n => allowed.add(parseFloat(n)));\n  else if (v && typeof v === 'object') Object.values(v).forEach(walk); };\nwalk(facts); walk(setup);\nconst now = new Date(); [now.getFullYear(), now.getDate(), now.getMonth() + 1].forEach(n => allowed.add(n));\nconst body = norm.replace(/^#+\\s*\\d+\\./gm, '').replace(/\\(\\d+\\)/g, '').replace(/^\\s*\\d+\\.\\s/gm, '');\nconst unknown = [...new Set((body.match(/\\d+(\\.\\d+)?/g) || []).map(parseFloat))].filter(n => !allowed.has(n));\nif (unknown.length) fail('C1', `Numbers not in the approved facts: ${unknown.join(', ')}. Use only approved numbers.`);\n\n// C2: the verdict must match the calculated one.\nconst u = facts.usefulness;\nif (u.verdict) {\n  // Accept \"below your target\" and \"below your 80 percent target\".\n  const v = w => new RegExp(w.replace(' target', '(\\\\s+\\\\d+\\\\s*(percent|%))?\\\\s+target'));\n  const other = u.verdict === 'met your target' ? 'below your target' : 'met your target';\n  if (!v(u.verdict).test(low)) fail('C2', `The verdict \"${u.verdict}\" is missing.`);\n  if (v(other).test(low)) fail('C2', `The memo says \"${other}\", but the result is \"${u.verdict}\".`);\n}\n\n// C2b: a garbled verdict, like \"Your 80 percent target was below your target\".\nconst garble = low.replace(/\\*/g, '').match(/target (was|is|remains) (not )?(below|met) your/);\nif (garble) fail('C2', `Garbled verdict: \"...${garble[0]}...\". Write it plainly, for example \"That is below your ${setup.target_percent} percent target.\"`);\n\n// C3: \"roughly 1 in X\" at most once, exactly as calculated.\nconst r = facts.referrals.roughly_1_in_x;\nconst n1inX = (low.match(/roughly 1 in \\d+/g) || []);\nif (n1inX.length > 1) fail('C3', `\"roughly 1 in X\" appears ${n1inX.length} times; use it once.`);\nif (n1inX.length && r && !n1inX.every(x => x === r)) fail('C3', `\"${n1inX[0]}\" does not match the calculated \"${r}\".`);\n\n// C4: banned words from guide section 8 (read from GitHub) plus the setup's project names.\nconst guide = await this.helpers.httpRequest({ url: 'https://raw.githubusercontent.com/jdmaurer/ai-automation-lab/main/cases/eval-summary-drafter/memo-guide.md', json: false });\nconst lists = (guide.match(/^- \\*\\*[^*]+\\(banned[^)]*\\):\\*\\* .*$/gm) || [])\n  .map(l => l.replace(/^- \\*\\*[^*]+\\*\\* /, '').replace(/\\(.*$/, '').replace(/\\.$/, ''));\nconst banned = lists.join(', ').split(',').map(w => w.trim()).filter(w => w && !/model names|run numbers/.test(w))\n  .concat(setup.banned_words || []);\nconst hits = [...new Set(banned.filter(has))];\nif (hits.length) fail('C4', `Banned words: ${hits.join(', ')}. Replace each with plain business wording.`);\n\n// C5: the first result carries a test qualifier.\nconst s1 = (norm.split(/^## *2\\./m)[0] || '');\nif (!new RegExp(`in testing|test (${esc(setup.item_word || 'item')}s?|items|cases)|in \\\\d+ test`, 'i').test(s1)) fail('C5', 'Section 1 states a result without \"in testing\" or \"in N test [items]\".');\n\n// C6: seven numbered sections, in order.\nconst nums = (norm.match(/^## *(\\d)\\./gm) || []).map(h => +h.replace(/\\D/g, ''));\nif (nums.join() !== '1,2,3,4,5,6,7') fail('C6', `Sections found: ${nums.join(', ') || 'none'}. Expected 1 to 7 in order.`);\n\n// C7 and C8: length.\n// Count body words only: headings and the \"Prepared for\" line don't count toward the page.\nconst bodyText = norm.split('\\n').filter(l => !/^\\s*#/.test(l) && !/prepared for:/i.test(l)).join(' ');\nconst words = bodyText.replace(/[*_>|-]/g, ' ').split(/\\s+/).filter(w => /\\w/.test(w)).length;\nif (words > 650) fail('C7', `${words} words; the ceiling is about 650. Cut repetition and wording, never content.`);\nelse if (words > 500) flags.push(`C7: ${words} words, over the 500-word target (under the 650 ceiling).`);\nconst long = norm.replace(/\\n/g, ' ').split(/(?<=[.!?])\\s+/).filter(s => s.split(/\\s+/).length > 20);\nif (long.length) flags.push(`C8: ${long.length} sentence(s) over 20 words.`);\n\n// Guide rules without a checklist item (added 2026-09-26).\n// 2.3a: say what each group of test items was. One sentence must carry the group's count AND at least\n// half of the group's key words (same meaning, not exact wording). Word overlap alone is too loose when\n// the group words are everyday words for that client (\"typed vendor invoices\" in an invoice memo).\nconst stop = new Set(['for','or','and','the','a','an','of','to','with','one']);\nconst stem = w => w.replace(/s$/, '');\nconst keyWords = t => t.toLowerCase().split(/[^a-z]+/).filter(w => w.length > 2 && !stop.has(w)).map(stem);\nconst sentences = low.replace(/\\n+/g, ' ').split(/(?<=[.!?:])\\s+/);\n[['handled_group', facts.usefulness.total], ['person_group', facts.should_go_to_person.count]].forEach(([k, n]) => {\n  const kw = setup[k] ? keyWords(setup[k]) : [];\n  if (!kw.length || !n) return;\n  const described = sentences.some(s => new RegExp(`\\\\b${n}\\\\b`).test(s) &&\n    kw.filter(w => s.split(/[^a-z]+/).map(stem).includes(w)).length / kw.length >= 0.5);\n  if (!described)\n    fail('2.3a', `Say what the ${n} ${setup.item_word}s were, in one sentence with the number: \"${setup[k]}\" (same meaning, your own words).`);\n});\nif (['below_target', 'no_target'].includes(facts.scenario) && !/right target|revisit (the|your) target|set a target/.test(low))\n  fail('3.4', 'Section 7 must ask whether the target is still right (or ask for one if none was set).');\nif (setup.harmful_action && low.includes(setup.harmful_action.toLowerCase()))\n  fail('7.5', `The harmful-action definition is pasted word for word. Use the short name instead, for example \"0 ${setup.harmful_action_name || 'harmful action'}s in ${facts.total_items} test ${setup.item_word}s\".`);\nif (/\\bthe harmful action\\b/.test(low)) fail('7.5', 'Uses the label \"the harmful action\". Name what actually happens instead.');\n// Units: any gap stated in points or percent must be the true gap (target minus result, rounded),\n// and \"short by\" is counted in items. \"2 points below\" is fine; \"1 percentage point\" is not.\nif (u.target_percent !== null && u.target_percent !== undefined) {\n  const exactPct = u.total ? (u.count / u.total) * 100 : 0;\n  const pointGap = Math.round(Math.abs(u.target_percent - exactPct));\n  const wordNum = { one: 1, two: 2, three: 3, four: 4, five: 5 };\n  const re = /(short by|below[^.]{0,40}?by|by|off by) (\\d+|one|two|three|four|five) (percentage points?|points?|percent|%)/g;\n  for (const g of low.replace(/\\*/g, \"\").matchAll(re)) {   // ignore bold markers\n    const n = wordNum[g[2]] ?? +g[2];\n    if (g[1] === 'short by' || n !== pointGap)\n      fail('units', `\"${g[0]}\" is wrong: the result is ${u.short_by} ${setup.item_word}(s) short, or ${pointGap} points below the target.`);\n  }\n}\n// Numbers in words (fractions, approximations) are new numbers the facts never approved.\nconst wordNums = [...new Set(low.match(/\\b(approximately|roughly (?!1 in)|(one|two|three|four)[- ](half|halves|thirds?|quarters?|fifths?)|half of|majority|most of)\\b/g) || [])];\nif (wordNums.length)\n  fail('C1', `Numbers in words or approximations: ${wordNums.join(', ')}. Use the exact approved count instead, or remove the sentence.`);\n// Absolute claims (\"all\", \"every\", \"never\") are where the AI overstates without using a number.\n// Code can't judge them, so list them for the consultant (flag only).\nconst absolute = sentences.filter(s => /\\b(all|every|never|always|entirely|completely)\\b/.test(s) && !/^#/.test(s.trim()));\nif (absolute.length) flags.push(`Check against the facts: ${absolute.slice(0, 4).map(s => `\"${s.trim().slice(0, 110)}\"`).join('; ')}`);\nconst missing = norm.match(/\\[MISSING[^\\]]*\\]/g) || [];\nif (missing.length) flags.push(`For you to fill: ${missing.join('; ')}`);\n\nif (isRecheck) failures.forEach(f => flags.push(`Still failing after one fix: ${f.check}: ${f.detail}`));\n\nreturn [{ json: { memo, failures, flags, word_count: words, fix_attempted: isRecheck,\n  editor_changes: edit.changes, editor_flags: edit.editor_flags, facts, setup } }];\n"
+      },
+      "id": "a318dc67-f798-4571-8a20-79919c8d35f4",
+      "name": "CheckMemo",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1900,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// BuildFixPrompt: one automatic fix attempt, with the exact failures named.\n// No failures: return nothing, so the fix branch doesn't run and CheckMemo's output is final.\nconst c = $input.first().json;\nif (!c.failures.length) return [];\nconst s = c.setup, f = c.facts;\nconst prompt = `Fix ONLY the problems listed below in this client memo. Change nothing else: keep every other sentence, every number, the recommendation, and the options as they are. Use only the facts given here.\n\nPROBLEMS\n${c.failures.map(x => `- ${x.check}: ${x.detail}`).join('\\n')}\n\nFACTS YOU MAY USE\n${s.handled_group ? `- The ${f.usefulness.total} ${s.item_word}s the system should handle were ${s.handled_group}.` : ''}${s.person_group && f.should_go_to_person.count ? ` The other ${f.should_go_to_person.count} were ${s.person_group}.` : ''}\n- Call the harmful outcome a \"${s.harmful_action_name || 'harmful action'}\". If the memo explains it, use your own words for what it means (${s.harmful_action}); never paste that definition.\n${s.target_percent != null ? `- The target is ${s.target_percent} percent.` : '- There is no target yet; section 7 asks the owner to set one.'} When the result is below target, section 7 asks: \"Is ${s.target_percent} percent still the right target, now that you've seen the trade-off?\"\n- Quotable test items: ${f.referrals.quotable_examples.map(q => `\"${q}\"`).join(' ')}\n- Write setup facts as natural sentences. Never paste them word for word, and never say \"the harmful action\".\n\nOutput only the full corrected memo in Markdown. No notes before or after it.\n\nMEMO\n${c.memo}`;\nreturn [{ json: { prompt, approx_tokens: Math.round(prompt.length / 4) } }];\n"
+      },
+      "id": "00401e2f-99de-44ea-8696-e450e29307bb",
+      "name": "BuildFixPrompt",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2120,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 65
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2340,
+        0
+      ],
+      "id": "864d2095-f7e0-44dd-9670-c93e155420cb",
+      "name": "PauseBeforeFix",
+      "webhookId": "bad15853-95d1-4ae9-8c50-bb1c6a73e200"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.prompt }}",
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        2560,
+        0
+      ],
+      "id": "2de98463-686f-44ed-995c-d5e2527d3c22",
+      "name": "FixMemo"
+    },
+    {
+      "parameters": {
+        "model": "openai/gpt-oss-120b",
+        "options": {
+          "maxTokensToSample": 8000,
+          "temperature": 0.2
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        2560,
+        224
+      ],
+      "id": "f0fc77e6-d0c9-4d20-b8e2-54a29f2ef2e1",
+      "name": "Groq Chat Model2",
+      "credentials": {
+        "groqApi": {
+          "id": "LXrfCFEVvItUzLgJ",
+          "name": "Groq account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// CheckMemo: code checks the memo against the approved facts, the setup, and the guide's word lists.\n// Failures get one AI fix attempt; flags go straight to the consultant. Nothing stops.\n// The same code runs twice: after SplitEdit (first check) and after FixMemo (recheck).\nconst inp = $input.first().json;\nconst isRecheck = inp.memo === undefined;               // FixMemo returns {text}, SplitEdit returns {memo}\nconst memo = (isRecheck ? inp.text : inp.memo) || '';\nconst { facts, setup } = $('BuildPrompt').first().json;\nconst edit = $('SplitEdit').first().json;\nconst failures = [], flags = [...(edit.flags || [])];\nconst fail = (check, detail) => failures.push({ check, detail });\nconst esc = s => s.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&');\nconst norm = memo.replace(/[\\u2010-\\u2015]/g, '-')                 // non-breaking hyphens and dashes\n  .replace(/[\\u00a0\\u2000-\\u200b\\u202f\\u205f\\u3000]/g, ' ');   // non-breaking and narrow spaces\nconst low = norm.toLowerCase().replace(/\\*/g, '');   // bold markers can hide words from checks\nconst has = p => new RegExp('\\\\b' + esc(p.toLowerCase()) + '\\\\b').test(low);\n\n// C1: every number must come from the approved facts or the setup (or a date in the memo header).\nconst allowed = new Set();\nconst walk = v => { if (typeof v === 'number') allowed.add(v);\n  else if (typeof v === 'string') (v.match(/\\d+(\\.\\d+)?/g) || []).forEach(n => allowed.add(parseFloat(n)));\n  else if (v && typeof v === 'object') Object.values(v).forEach(walk); };\nwalk(facts); walk(setup);\nconst now = new Date(); [now.getFullYear(), now.getDate(), now.getMonth() + 1].forEach(n => allowed.add(n));\nconst body = norm.replace(/^#+\\s*\\d+\\./gm, '').replace(/\\(\\d+\\)/g, '').replace(/^\\s*\\d+\\.\\s/gm, '');\nconst unknown = [...new Set((body.match(/\\d+(\\.\\d+)?/g) || []).map(parseFloat))].filter(n => !allowed.has(n));\nif (unknown.length) fail('C1', `Numbers not in the approved facts: ${unknown.join(', ')}. Use only approved numbers.`);\n\n// C2: the verdict must match the calculated one.\nconst u = facts.usefulness;\nif (u.verdict) {\n  // Accept \"below your target\" and \"below your 80 percent target\".\n  const v = w => new RegExp(w.replace(' target', '(\\\\s+\\\\d+\\\\s*(percent|%))?\\\\s+target'));\n  const other = u.verdict === 'met your target' ? 'below your target' : 'met your target';\n  if (!v(u.verdict).test(low)) fail('C2', `The verdict \"${u.verdict}\" is missing.`);\n  if (v(other).test(low)) fail('C2', `The memo says \"${other}\", but the result is \"${u.verdict}\".`);\n}\n\n// C2b: a garbled verdict, like \"Your 80 percent target was below your target\".\nconst garble = low.replace(/\\*/g, '').match(/target (was|is|remains) (not )?(below|met) your/);\nif (garble) fail('C2', `Garbled verdict: \"...${garble[0]}...\". Write it plainly, for example \"That is below your ${setup.target_percent} percent target.\"`);\n\n// C3: \"roughly 1 in X\" at most once, exactly as calculated.\nconst r = facts.referrals.roughly_1_in_x;\nconst n1inX = (low.match(/roughly 1 in \\d+/g) || []);\nif (n1inX.length > 1) fail('C3', `\"roughly 1 in X\" appears ${n1inX.length} times; use it once.`);\nif (n1inX.length && r && !n1inX.every(x => x === r)) fail('C3', `\"${n1inX[0]}\" does not match the calculated \"${r}\".`);\n\n// C4: banned words from guide section 8 (read from GitHub) plus the setup's project names.\nconst guide = await this.helpers.httpRequest({ url: 'https://raw.githubusercontent.com/jdmaurer/ai-automation-lab/main/cases/eval-summary-drafter/memo-guide.md', json: false });\nconst lists = (guide.match(/^- \\*\\*[^*]+\\(banned[^)]*\\):\\*\\* .*$/gm) || [])\n  .map(l => l.replace(/^- \\*\\*[^*]+\\*\\* /, '').replace(/\\(.*$/, '').replace(/\\.$/, ''));\nconst banned = lists.join(', ').split(',').map(w => w.trim()).filter(w => w && !/model names|run numbers/.test(w))\n  .concat(setup.banned_words || []);\nconst hits = [...new Set(banned.filter(has))];\nif (hits.length) fail('C4', `Banned words: ${hits.join(', ')}. Replace each with plain business wording.`);\n\n// C5: the first result carries a test qualifier.\nconst s1 = (norm.split(/^## *2\\./m)[0] || '');\nif (!new RegExp(`in testing|test (${esc(setup.item_word || 'item')}s?|items|cases)|in \\\\d+ test`, 'i').test(s1)) fail('C5', 'Section 1 states a result without \"in testing\" or \"in N test [items]\".');\n\n// C6: seven numbered sections, in order.\nconst nums = (norm.match(/^## *(\\d)\\./gm) || []).map(h => +h.replace(/\\D/g, ''));\nif (nums.join() !== '1,2,3,4,5,6,7') fail('C6', `Sections found: ${nums.join(', ') || 'none'}. Expected 1 to 7 in order.`);\n\n// C7 and C8: length.\n// Count body words only: headings and the \"Prepared for\" line don't count toward the page.\nconst bodyText = norm.split('\\n').filter(l => !/^\\s*#/.test(l) && !/prepared for:/i.test(l)).join(' ');\nconst words = bodyText.replace(/[*_>|-]/g, ' ').split(/\\s+/).filter(w => /\\w/.test(w)).length;\nif (words > 650) fail('C7', `${words} words; the ceiling is about 650. Cut repetition and wording, never content.`);\nelse if (words > 500) flags.push(`C7: ${words} words, over the 500-word target (under the 650 ceiling).`);\nconst long = norm.replace(/\\n/g, ' ').split(/(?<=[.!?])\\s+/).filter(s => s.split(/\\s+/).length > 20);\nif (long.length) flags.push(`C8: ${long.length} sentence(s) over 20 words.`);\n\n// Guide rules without a checklist item (added 2026-09-26).\n// 2.3a: say what each group of test items was. One sentence must carry the group's count AND at least\n// half of the group's key words (same meaning, not exact wording). Word overlap alone is too loose when\n// the group words are everyday words for that client (\"typed vendor invoices\" in an invoice memo).\nconst stop = new Set(['for','or','and','the','a','an','of','to','with','one']);\nconst stem = w => w.replace(/s$/, '');\nconst keyWords = t => t.toLowerCase().split(/[^a-z]+/).filter(w => w.length > 2 && !stop.has(w)).map(stem);\nconst sentences = low.replace(/\\n+/g, ' ').split(/(?<=[.!?:])\\s+/);\n[['handled_group', facts.usefulness.total], ['person_group', facts.should_go_to_person.count]].forEach(([k, n]) => {\n  const kw = setup[k] ? keyWords(setup[k]) : [];\n  if (!kw.length || !n) return;\n  const described = sentences.some(s => new RegExp(`\\\\b${n}\\\\b`).test(s) &&\n    kw.filter(w => s.split(/[^a-z]+/).map(stem).includes(w)).length / kw.length >= 0.5);\n  if (!described)\n    fail('2.3a', `Say what the ${n} ${setup.item_word}s were, in one sentence with the number: \"${setup[k]}\" (same meaning, your own words).`);\n});\nif (['below_target', 'no_target'].includes(facts.scenario) && !/right target|revisit (the|your) target|set a target/.test(low))\n  fail('3.4', 'Section 7 must ask whether the target is still right (or ask for one if none was set).');\nif (setup.harmful_action && low.includes(setup.harmful_action.toLowerCase()))\n  fail('7.5', `The harmful-action definition is pasted word for word. Use the short name instead, for example \"0 ${setup.harmful_action_name || 'harmful action'}s in ${facts.total_items} test ${setup.item_word}s\".`);\nif (/\\bthe harmful action\\b/.test(low)) fail('7.5', 'Uses the label \"the harmful action\". Name what actually happens instead.');\n// Units: any gap stated in points or percent must be the true gap (target minus result, rounded),\n// and \"short by\" is counted in items. \"2 points below\" is fine; \"1 percentage point\" is not.\nif (u.target_percent !== null && u.target_percent !== undefined) {\n  const exactPct = u.total ? (u.count / u.total) * 100 : 0;\n  const pointGap = Math.round(Math.abs(u.target_percent - exactPct));\n  const wordNum = { one: 1, two: 2, three: 3, four: 4, five: 5 };\n  const re = /(short by|below[^.]{0,40}?by|by|off by) (\\d+|one|two|three|four|five) (percentage points?|points?|percent|%)/g;\n  for (const g of low.replace(/\\*/g, \"\").matchAll(re)) {   // ignore bold markers\n    const n = wordNum[g[2]] ?? +g[2];\n    if (g[1] === 'short by' || n !== pointGap)\n      fail('units', `\"${g[0]}\" is wrong: the result is ${u.short_by} ${setup.item_word}(s) short, or ${pointGap} points below the target.`);\n  }\n}\n// Numbers in words (fractions, approximations) are new numbers the facts never approved.\nconst wordNums = [...new Set(low.match(/\\b(approximately|roughly (?!1 in)|(one|two|three|four)[- ](half|halves|thirds?|quarters?|fifths?)|half of|majority|most of)\\b/g) || [])];\nif (wordNums.length)\n  fail('C1', `Numbers in words or approximations: ${wordNums.join(', ')}. Use the exact approved count instead, or remove the sentence.`);\n// Absolute claims (\"all\", \"every\", \"never\") are where the AI overstates without using a number.\n// Code can't judge them, so list them for the consultant (flag only).\nconst absolute = sentences.filter(s => /\\b(all|every|never|always|entirely|completely)\\b/.test(s) && !/^#/.test(s.trim()));\nif (absolute.length) flags.push(`Check against the facts: ${absolute.slice(0, 4).map(s => `\"${s.trim().slice(0, 110)}\"`).join('; ')}`);\nconst missing = norm.match(/\\[MISSING[^\\]]*\\]/g) || [];\nif (missing.length) flags.push(`For you to fill: ${missing.join('; ')}`);\n\nif (isRecheck) failures.forEach(f => flags.push(`Still failing after one fix: ${f.check}: ${f.detail}`));\n\nreturn [{ json: { memo, failures, flags, word_count: words, fix_attempted: isRecheck,\n  editor_changes: edit.changes, editor_flags: edit.editor_flags, facts, setup } }];\n"
+      },
+      "id": "cc448486-6c93-4e2c-abe4-b102b243df05",
+      "name": "RecheckMemo",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2800,
+        0
+      ]
+    }
+  ],
+  "pinData": {
+    "ReceiveInputs": [
+      {
+        "json": {
+          "headers": {
+            "content-type": "application/json; charset=utf-8"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "setup": {
+              "client_name": "Harbor Bookkeeping",
+              "client_role": "Owner",
+              "system_name": "Harbor Invoice Entry Assistant",
+              "item_word": "invoice",
+              "person_label": "Manual entry",
+              "target_percent": 70,
+              "does": "Reads each vendor invoice and enters the vendor, date, and amount into the ledger for a bookkeeper to approve.",
+              "does_not": "Pay invoices or contact vendors.",
+              "design_reason": "Marks an invoice for a bookkeeper whenever a field is unreadable.",
+              "test_authors": "our team",
+              "harmful_action": "an invoice entered with a wrong amount and no flag for review",
+              "harmful_action_name": "unflagged wrong amount",
+              "handled_group": "typed vendor invoices",
+              "outcome_labels": {
+                "accepted": "useful",
+                "fixed_by_person": "referral",
+                "unflagged_wrong_amount": "harmful"
+              },
+              "not_tested": [
+                "Handwritten invoices",
+                "Invoices in other currencies"
+              ],
+              "known_limits": [
+                "Amounts over $10,000 always go to a bookkeeper"
+              ],
+              "confirmations_needed": [
+                "Name who approves entries"
+              ],
+              "banned_words": [
+                "Groq",
+                "gpt-oss"
+              ]
+            },
+            "results": {
+              "test_date": "2026-10-01",
+              "items": [
+                {
+                  "id": "INV-01",
+                  "item": "Typed invoice from vendor 1, clean scan",
+                  "correct_answer": "all fields correct",
+                  "system_did": "all fields correct",
+                  "outcome": "accepted",
+                  "held_back": false
+                },
+                {
+                  "id": "INV-02",
+                  "item": "Typed invoice from vendor 2, clean scan",
+                  "correct_answer": "all fields correct",
+                  "system_did": "all fields correct",
+                  "outcome": "accepted",
+                  "held_back": false
+                },
+                {
+                  "id": "INV-03",
+                  "item": "Typed invoice from vendor 3, clean scan",
+                  "correct_answer": "all fields correct",
+                  "system_did": "all fields correct",
+                  "outcome": "accepted",
+                  "held_back": false
+                },
+                {
+                  "id": "INV-04",
+                  "item": "Typed invoice from vendor 4, clean scan",
+                  "correct_answer": "all fields correct",
+                  "system_did": "all fields correct",
+                  "outcome": "accepted",
+                  "held_back": false
+                },
+                {
+                  "id": "INV-05",
+                  "item": "Typed invoice from vendor 5, clean scan",
+                  "correct_answer": "all fields correct",
+                  "system_did": "all fields correct",
+                  "outcome": "accepted",
+                  "held_back": false
+                },
+                {
+                  "id": "INV-06",
+                  "item": "Typed invoice from vendor 6, clean scan",
+                  "correct_answer": "all fields correct",
+                  "system_did": "all fields correct",
+                  "outcome": "accepted",
+                  "held_back": false
+                },
+                {
+                  "id": "INV-07",
+                  "item": "Typed invoice from vendor 7, clean scan",
+                  "correct_answer": "all fields correct",
+                  "system_did": "all fields correct",
+                  "outcome": "accepted",
+                  "held_back": false
+                },
+                {
+                  "id": "INV-08",
+                  "item": "Typed invoice from vendor 8, clean scan",
+                  "correct_answer": "all fields correct",
+                  "system_did": "all fields correct",
+                  "outcome": "accepted",
+                  "held_back": false
+                },
+                {
+                  "id": "INV-09",
+                  "item": "Typed invoice from vendor 9, clean scan",
+                  "correct_answer": "all fields correct",
+                  "system_did": "all fields correct",
+                  "outcome": "accepted",
+                  "held_back": false
+                },
+                {
+                  "id": "INV-10",
+                  "item": "Typed invoice from vendor 10, clean scan",
+                  "correct_answer": "all fields correct",
+                  "system_did": "all fields correct",
+                  "outcome": "accepted",
+                  "held_back": false
+                },
+                {
+                  "id": "INV-11",
+                  "item": "Typed invoice from vendor 11, clean scan",
+                  "correct_answer": "all fields correct",
+                  "system_did": "all fields correct",
+                  "outcome": "accepted",
+                  "held_back": true
+                },
+                {
+                  "id": "INV-12",
+                  "item": "Typed invoice from vendor 12, clean scan",
+                  "correct_answer": "all fields correct",
+                  "system_did": "all fields correct",
+                  "outcome": "accepted",
+                  "held_back": true
+                },
+                {
+                  "id": "INV-13",
+                  "item": "Typed invoice from vendor 13, clean scan",
+                  "correct_answer": "all fields correct",
+                  "system_did": "all fields correct",
+                  "outcome": "accepted",
+                  "held_back": true
+                },
+                {
+                  "id": "INV-14",
+                  "item": "Typed invoice from vendor 14, clean scan",
+                  "correct_answer": "all fields correct",
+                  "system_did": "all fields correct",
+                  "outcome": "accepted",
+                  "held_back": true
+                },
+                {
+                  "id": "INV-15",
+                  "item": "Lakeview Paper invoice, amount smudged near the total",
+                  "correct_answer": "all fields correct",
+                  "system_did": "left a field blank for a bookkeeper (amount smudged near the total)",
+                  "outcome": "fixed_by_person",
+                  "held_back": false
+                },
+                {
+                  "id": "INV-16",
+                  "item": "Northside Electric invoice, vendor name cut off at the top",
+                  "correct_answer": "all fields correct",
+                  "system_did": "left a field blank for a bookkeeper (vendor name cut off at the top)",
+                  "outcome": "fixed_by_person",
+                  "held_back": false
+                },
+                {
+                  "id": "INV-17",
+                  "item": "Birch & Co. Printing invoice, due date missing",
+                  "correct_answer": "all fields correct",
+                  "system_did": "left a field blank for a bookkeeper (due date missing)",
+                  "outcome": "fixed_by_person",
+                  "held_back": false
+                },
+                {
+                  "id": "INV-18",
+                  "item": "Summit Office Supply invoice, two totals on the page",
+                  "correct_answer": "all fields correct",
+                  "system_did": "left a field blank for a bookkeeper (two totals on the page)",
+                  "outcome": "fixed_by_person",
+                  "held_back": false
+                },
+                {
+                  "id": "INV-19",
+                  "item": "Harbor Freight Lines invoice, handwritten correction to the amount",
+                  "correct_answer": "all fields correct",
+                  "system_did": "left a field blank for a bookkeeper (handwritten correction to the amount)",
+                  "outcome": "fixed_by_person",
+                  "held_back": false
+                },
+                {
+                  "id": "INV-20",
+                  "item": "Acme Supply invoice, total $4,200",
+                  "correct_answer": "amount $4,200",
+                  "system_did": "entered $420 with no flag",
+                  "outcome": "unflagged_wrong_amount",
+                  "held_back": false
+                }
+              ]
+            }
+          },
+          "webhookUrl": "http://localhost:5678/webhook-test/eval-summary",
+          "executionMode": "test"
+        }
+      }
+    ]
+  },
+  "connections": {
+    "ReceiveInputs": {
+      "main": [
+        [
+          {
+            "node": "ComputeFacts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ComputeFacts": {
+      "main": [
+        [
+          {
+            "node": "BuildPrompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "DraftMemo",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "BuildPrompt": {
+      "main": [
+        [
+          {
+            "node": "DraftMemo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "EditMemo",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DraftMemo": {
+      "main": [
+        [
+          {
+            "node": "BuildEditPrompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "BuildEditPrompt": {
+      "main": [
+        [
+          {
+            "node": "PauseBeforeEdit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EditMemo": {
+      "main": [
+        [
+          {
+            "node": "SplitEdit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PauseBeforeEdit": {
+      "main": [
+        [
+          {
+            "node": "EditMemo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SplitEdit": {
+      "main": [
+        [
+          {
+            "node": "CheckMemo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CheckMemo": {
+      "main": [
+        [
+          {
+            "node": "BuildFixPrompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "BuildFixPrompt": {
+      "main": [
+        [
+          {
+            "node": "PauseBeforeFix",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PauseBeforeFix": {
+      "main": [
+        [
+          {
+            "node": "FixMemo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FixMemo": {
+      "main": [
+        [
+          {
+            "node": "RecheckMemo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "FixMemo",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "meta": {
+    "instanceId": "9639342321f230803f07cc4c8e9a1767f01aa8f545f98badb8e5ce4c15add930"
+  },
+  "nodeGroups": [],
+  "tags": []
+}

@@ -93,3 +93,30 @@ What I learned:
 
 Stopping point: rules, template, checklist, and the approved Rivertown summary are done. Next: define the standard input format, then build the n8n workflow.
 
+
+
+## 2026-09-26 - Eval Summary Drafter: built and running
+
+Built the workflow that drafts client evaluation memos. It runs end to end on Rivertown: code computes the facts, one AI drafts, a second edits, code checks, one automatic fix, recheck. Anything still wrong arrives as a flag.
+
+The morning went badly: unclear questions and talking over me. Once we set the plan (six steps, time-boxed) it moved.
+
+What I built:
+- Two input files: a test-results file (one line per test item) and a one-time client setup.
+- Eight workflow versions, each fixing what the last run showed.
+- Code checks for numbers, banned words, groups, the target question, units, and numbers written in words.
+- An options playbook in the guide, so the choices at the end come from a rule, not the AI's imagination.
+
+What I learned:
+- When the AI invents a fact, the fix is usually a missing input, not a better prompt. The first draft said the client's staff wrote the tests, because nothing said who did.
+- An AI editor only fixes what its checklist names. Mechanical rules belong in code.
+- Give the AI a short name for a concept ("wrong route") or it pastes the long definition.
+- Test the checker on memos you already have, including the approved one. That caught bugs in my own checks.
+- Test on a second, deliberately different client. Rivertown wording had leaked into code meant for everyone.
+- Groq's two errors mean different things: too many requests (wait) vs request too large (send less).
+
+Problems: rate limits, an empty draft from a token cap, long pastes getting cut off, and a slow start.
+
+Last step: a live run on a made-up invoice client. Right client, right numbers, the wrong amount described, fix-and-retest recommended. It generalizes.
+
+Stopping point: the drafter is done (v9). Drafts need 2 to 4 small edits, and those are judgment calls, which is my job by design. Next: Week 5 security work.

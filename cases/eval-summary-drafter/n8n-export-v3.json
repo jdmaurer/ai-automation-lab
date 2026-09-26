@@ -7,7 +7,7 @@
         "path": "eval-summary",
         "options": {}
       },
-      "id": "d4f0c6d2-1111-4a8e-9c01-000000000001",
+      "id": "fa9bc65c-6525-4ef6-ab0e-423ecfd50b3e",
       "name": "ReceiveInputs",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
@@ -21,12 +21,12 @@
       "parameters": {
         "jsCode": "// ComputeFacts: turns the setup file and the test results into the approved facts.\n// Every number the memo may use comes from here. The AI never calculates.\nconst body = $input.first().json.body;\nconst setup = body.setup;\nconst items = body.results.items;\nconst P = setup.person_label;\nconst flags = [];\n\n// Optional per-client outcome labels, e.g. {\"fixed_by_person\": \"referral\"}.\n// Allowed values: useful, referral, harmful, correct_referral.\nconst labels = setup.outcome_labels || {};\n\nfunction grade(i) {\n  if (i.outcome) {\n    if (labels[i.outcome]) return labels[i.outcome];\n    flags.push(`${i.id}: outcome \"${i.outcome}\" is not listed in the setup's outcome_labels`);\n    return 'unknown';\n  }\n  if (i.correct_answer === P) return i.system_did === P ? 'correct_referral' : 'harmful';\n  if (i.system_did === i.correct_answer) return 'useful';\n  if (i.system_did === P) return 'referral';\n  return 'harmful';\n}\n\nconst graded = items.map(i => ({ ...i, grade: grade(i) }));\nconst count = g => graded.filter(i => i.grade === g).length;\n\n// Usefulness is measured on the items the system is supposed to handle itself.\nconst base = graded.filter(i => i.correct_answer !== P);\nconst useful = base.filter(i => i.grade === 'useful').length;\nconst referred = base.filter(i => i.grade === 'referral');\nconst exact = base.length ? (useful / base.length) * 100 : 0;\nconst target = setup.target_percent ?? null;\n\nlet verdict = null, oneMore = null, shortBy = null;\nif (target !== null) {\n  verdict = exact >= target ? 'met your target' : 'below your target';   // decided on the unrounded value\n  if (exact < target) {\n    shortBy = Math.ceil((target * base.length) / 100) - useful;\n    oneMore = { count: useful + 1, percent: Math.round(((useful + 1) / base.length) * 100) };\n  }\n} else {\n  flags.push('No target in setup: the memo reports the result and asks the owner to set one.');\n}\n\n// Scenario picks the options playbook row (guide 5.5).\nconst scenario = count('harmful') > 0 ? 'harmful'\n  : target === null ? 'no_target'\n  : exact >= target ? 'met_target' : 'below_target';\n\nconst oneInX = referred.length ? Math.round(base.length / referred.length) : null;\n\nconst facts = {\n  test_date: body.results.test_date,\n  scenario,\n  total_items: graded.length,\n  held_back: graded.filter(i => i.held_back).length,\n  harmful: {\n    count: count('harmful'),\n    total: graded.length,\n    items: graded.filter(i => i.grade === 'harmful')\n      .map(({ id, item, correct_answer, system_did }) => ({ id, item, correct_answer, system_did })),\n  },\n  should_go_to_person: { count: graded.length - base.length,\n                         sent_to_person: count('correct_referral') },\n  usefulness: {\n    count: useful,\n    total: base.length,\n    percent: Math.round(exact),\n    target_percent: target,\n    verdict,\n    short_by: shortBy,\n    one_more: oneMore,\n  },\n  referrals: {\n    count: referred.length,\n    total: base.length,\n    roughly_1_in_x: oneInX ? `roughly 1 in ${oneInX}` : null,\n    examples: referred.map(({ id, item }) => ({ id, item })),\n  },\n  flags,\n};\n\nreturn [{ json: { facts, setup } }];\n"
       },
-      "id": "d4f0c6d2-1111-4a8e-9c01-000000000003",
+      "id": "4c77dc83-d7e3-4a8d-b46a-2042e3a780d3",
       "name": "ComputeFacts",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        260,
+        272,
         0
       ]
     },
@@ -34,12 +34,12 @@
       "parameters": {
         "jsCode": "// BuildPrompt: assembles the drafting prompt from the approved facts, the client setup,\n// and the current rule files on GitHub (the committed versions are the source of truth).\nconst { facts, setup } = $input.first().json;\nconst base = 'https://raw.githubusercontent.com/jdmaurer/ai-automation-lab/main/cases/eval-summary-drafter/';\nconst get = async f => this.helpers.httpRequest({ url: base + f, json: false });\n\nconst guideFull = await get('memo-guide.md');\nconst guide = guideFull.split('\\n## Sources')[0];      // sources are for people, not the drafter\nconst outline = await get('memo-outline.md');\nconst checklist = await get('memo-checklist.md');\n\nconst memoDate = new Date().toLocaleDateString('en-US',\n  { timeZone: 'America/Chicago', year: 'numeric', month: 'long', day: 'numeric' });\n\nconst prompt = `You draft a one-page evaluation memo for a non-technical business owner deciding whether to pilot an AI-assisted system. Follow the OUTLINE for structure, the GUIDE for every writing rule, and make the draft pass the CODE and EDITOR items in the CHECKLIST. The YOUR CHECKS items belong to the consultant; do not answer them.\n\nHARD RULES\n- Use only numbers that appear in APPROVED FACTS or CLIENT SETUP. Never calculate, round, or estimate a new number.\n- Use the verdict wording and the \"roughly 1 in X\" phrase exactly as given in APPROVED FACTS.\n- Never use any word in CLIENT SETUP banned_words, or any word banned in GUIDE section 8.\n- Never mention item IDs.\n- Propose a recommendation. Label it as ours and leave the choice with the owner.\n- Memo date: ${memoDate}.\n- Name the harmful action with CLIENT SETUP harmful_action. Describe the two groups of test items with handled_group and person_group, every time. Say who wrote the tests and set the answers with test_authors.\n- Options: if CLIENT SETUP has an options list, use it. Otherwise use the GUIDE 5.5 playbook row for APPROVED FACTS scenario, written as business consequences for this client.\n- If the memo needs a fact that is not in APPROVED FACTS or CLIENT SETUP, write [MISSING: what is needed]. Never guess.\n- Output only the memo in Markdown. No preamble, no notes after it.\n\nAPPROVED FACTS\n${JSON.stringify(facts, null, 2)}\n\nCLIENT SETUP\n${JSON.stringify(setup, null, 2)}\n\nOUTLINE\n${outline}\n\nGUIDE\n${guide}\n\nCHECKLIST\n${checklist}`;\n\nreturn [{ json: { prompt, prompt_chars: prompt.length, approx_tokens: Math.round(prompt.length / 4), facts, setup } }];\n"
       },
-      "id": "d4f0c6d2-1111-4a8e-9c01-000000000004",
+      "id": "5702c52b-0924-470a-b3f1-c82e4e99a745",
       "name": "BuildPrompt",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        520,
+        528,
         0
       ]
     },
@@ -47,12 +47,12 @@
       "parameters": {
         "jsCode": "// BuildEditPrompt: a fresh AI call edits the draft against the editor checks.\n// It gets the draft, the approved facts, the setup, and the rules. Nothing else.\nconst draft = $input.first().json.text || '';\nconst { facts, setup } = $('BuildPrompt').first().json;\nconst base = 'https://raw.githubusercontent.com/jdmaurer/ai-automation-lab/main/cases/eval-summary-drafter/';\nconst get = async f => this.helpers.httpRequest({ url: base + f, json: false });\n\n// The editor gets a trimmed copy of the rules to stay under Groq's 8,000 tokens-per-minute limit:\n// no source citations, no word lists or pipeline notes (code checks those), only the editor checks.\nconst cut = (t, from, to) => { const i = t.indexOf(from); if (i < 0) return t; const j = to ? t.indexOf(to, i) : -1; return j < 0 ? t.slice(0, i) : t.slice(0, i) + t.slice(j); };\nlet guide = (await get('memo-guide.md')).split('\\n## Sources')[0];\nguide = cut(guide, '\\n## 8. Word lists', null);\nguide = guide.replace(/\\s*\\((STRONG|MODERATE|OPINION)[^)]*\\)/g, '')\n             .replace(/^Evidence labels:.*$/m, '')\n             .replace(/^\\*\\*Set the expectation before testing starts\\.\\*\\*.*$/m, '');\nconst outline = (await get('memo-outline.md')).split('\\n## Overfitting test')[0]\n  .split('\\n').filter(l => !/^- \\*\\*(Tags|Data needed):\\*\\*/.test(l)).join('\\n');\nconst fullChecklist = await get('memo-checklist.md');\nconst checklist = fullChecklist.slice(fullChecklist.indexOf('## Editor checks'), fullChecklist.indexOf('## Your checks'));\n\nconst prompt = `You are the editor of a one-page evaluation memo for a non-technical business owner. You did not write the DRAFT. Edit it against the EDITOR CHECKS (E1 to E8), using the GUIDE and the OUTLINE.\n\nYOU MAY: change wording, split long sentences, reorder sentences within a section, remove repetition, and add a missing required element from the OUTLINE using only APPROVED FACTS and CLIENT SETUP.\nYOU MAY NOT: change, add, or remove any number; change any fact; change the recommendation or the options; make the memo more persuasive. \"Improve\" means clearer and more complete, not more convincing.\nFLAG, DON'T FIX: E7 (top summary and decision section disagree), E8 (anything the approved facts can't support, or a gap they can't fill), and any judgment question for the consultant. Leave any [MISSING: ...] marker in place.\n\nOUTPUT EXACTLY THIS, NOTHING ELSE:\nthe full edited memo in Markdown\n===CHANGES===\none bullet per change, starting with its checklist item or guide rule, for example \"- E2: split the second sentence of section 5.\"\n===FLAGS===\none bullet per issue for the consultant, or \"- None\"\n\nDRAFT\n${draft}\n\nAPPROVED FACTS\n${JSON.stringify(facts, null, 2)}\n\nCLIENT SETUP\n${JSON.stringify(setup, null, 2)}\n\nOUTLINE\n${outline}\n\nGUIDE\n${guide}\n\nEDITOR CHECKS\n${checklist}`;\n\nif (!draft.trim()) {\n  return [{ json: { prompt: '', draft_empty: true, facts, setup } }];\n}\nreturn [{ json: { prompt, approx_tokens: Math.round(prompt.length / 4), draft, facts, setup } }];\n"
       },
-      "id": "d4f0c6d2-1111-4a8e-9c01-000000000005",
+      "id": "9cf1920b-fd3a-4abe-b69b-8e1cc58aaddf",
       "name": "BuildEditPrompt",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1100,
+        1040,
         0
       ]
     },
@@ -60,7 +60,7 @@
       "parameters": {
         "jsCode": "// SplitEdit: separates the editor's answer into the memo, its change list, and its flags.\n// If the markers are missing, keep everything as the memo and flag it. Nothing stops.\nconst raw = $input.first().json.text || '';\nconst flags = [];\nlet memo = raw, changes = '', editorFlags = '';\nconst c = raw.indexOf('===CHANGES===');\nconst f = raw.indexOf('===FLAGS===');\nif (c === -1 || f === -1 || f < c) {\n  flags.push('Editor output did not follow the format; the whole answer is kept as the memo.');\n} else {\n  memo = raw.slice(0, c).trim();\n  changes = raw.slice(c + 13, f).trim();\n  editorFlags = raw.slice(f + 11).trim();\n}\nif (!raw.trim()) flags.push('Editor returned nothing; check Maximum Number of Tokens on its model.');\nreturn [{ json: { memo, changes, editor_flags: editorFlags, flags } }];\n"
       },
-      "id": "d4f0c6d2-1111-4a8e-9c01-000000000006",
+      "id": "8b1427ba-3b23-4066-b03c-45f24b805c09",
       "name": "SplitEdit",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -68,35 +68,98 @@
         1680,
         0
       ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.prompt }}",
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        736,
+        0
+      ],
+      "id": "d3691662-7dc6-4cc4-950e-e96072352bc8",
+      "name": "DraftMemo"
+    },
+    {
+      "parameters": {
+        "model": "openai/gpt-oss-120b",
+        "options": {
+          "maxTokensToSample": 8000,
+          "temperature": 0.2
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        736,
+        224
+      ],
+      "id": "c4ee437f-86aa-467f-b8dd-27b6414b16f7",
+      "name": "Groq Chat Model",
+      "credentials": {
+        "groqApi": {
+          "id": "LXrfCFEVvItUzLgJ",
+          "name": "Groq account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "openai/gpt-oss-120b",
+        "options": {
+          "maxTokensToSample": 8000,
+          "temperature": 0.2
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        1408,
+        240
+      ],
+      "id": "0e2a717b-89a9-4422-91e6-5a831fd6a132",
+      "name": "Groq Chat Model1",
+      "credentials": {
+        "groqApi": {
+          "id": "LXrfCFEVvItUzLgJ",
+          "name": "Groq account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.prompt }}",
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        1408,
+        0
+      ],
+      "id": "5c308cf2-019c-461e-9d3e-e63841e3b98d",
+      "name": "EditMemo"
+    },
+    {
+      "parameters": {
+        "amount": 65
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1264,
+        0
+      ],
+      "id": "9f1300af-5189-4475-9627-82c6481148d2",
+      "name": "Wait",
+      "webhookId": "89f5f47a-6721-4d97-879f-be7997062ccd"
     }
   ],
-  "connections": {
-    "ReceiveInputs": {
-      "main": [
-        [
-          {
-            "node": "ComputeFacts",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "ComputeFacts": {
-      "main": [
-        [
-          {
-            "node": "BuildPrompt",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    }
-  },
-  "settings": {
-    "executionOrder": "v1"
-  },
   "pinData": {
     "ReceiveInputs": [
       {
@@ -424,5 +487,118 @@
         }
       }
     ]
-  }
+  },
+  "connections": {
+    "ReceiveInputs": {
+      "main": [
+        [
+          {
+            "node": "ComputeFacts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ComputeFacts": {
+      "main": [
+        [
+          {
+            "node": "BuildPrompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "DraftMemo",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "BuildPrompt": {
+      "main": [
+        [
+          {
+            "node": "DraftMemo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "EditMemo",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DraftMemo": {
+      "main": [
+        [
+          {
+            "node": "BuildEditPrompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "BuildEditPrompt": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EditMemo": {
+      "main": [
+        [
+          {
+            "node": "SplitEdit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "EditMemo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "d8d6f2be-eac7-4ecb-bf24-fc18751ef20b",
+  "meta": {
+    "instanceId": "9639342321f230803f07cc4c8e9a1767f01aa8f545f98badb8e5ce4c15add930"
+  },
+  "nodeGroups": [],
+  "id": "Vdp408BRAquMMred",
+  "tags": []
 }

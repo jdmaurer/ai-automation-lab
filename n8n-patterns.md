@@ -248,3 +248,15 @@ JSON payload.
 - Windows PowerShell blocks .ps1 scripts by default; use the .cmd versions (npm.cmd, newman.cmd, n8n.cmd) instead of changing the execution policy.
 - PowerShell Set-Content -Encoding UTF8 adds a byte-order mark to the start of the file. Tools that read CSV headers (like Newman) can then misread the first column name. Use -Encoding ASCII for CSV data files with plain text.
 
+
+
+## 2026-09-26 - Eval Summary Drafter gotchas
+- A reasoning model (openai/gpt-oss-120b on Groq) can return an empty answer with finish_reason "length": it spent the whole token cap thinking. n8n's Groq node defaulted to 3,072; set Maximum Number of Tokens to 8000.
+- Groq free tier, 8,000 tokens per minute: "The service is receiving too many requests" means wait (a Wait node of 65 s between AI calls); "Request too large" means the single request is over the limit, so send less.
+- Code node can fetch files: `await this.helpers.httpRequest({ url, json: false })`. Used to read the guide from raw.githubusercontent.com at run time.
+- A Code node that returns [] stops that branch without an error. Used to skip the fix step when nothing failed.
+- Nodes copy between workflows with Ctrl+C / Ctrl+V and keep their credential on the same n8n instance.
+- Build a new version by exporting the working workflow (⋯ > Download) and editing the file; importing it keeps the hand-built AI nodes and credentials.
+- Pin data can ship inside an imported workflow file (the "pinData" key), so a test input survives re-imports.
+- AI output may contain narrow no-break spaces and non-breaking hyphens; normalize them before any text check.
+- Long n8n outputs get cut off when pasted into chat; send them as a .txt file.

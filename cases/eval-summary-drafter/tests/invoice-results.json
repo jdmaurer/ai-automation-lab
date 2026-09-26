@@ -1,0 +1,165 @@
+{
+  "test_date": "2026-10-01",
+  "items": [
+    {
+      "id": "INV-01",
+      "item": "Typed invoice from vendor 1, clean scan",
+      "correct_answer": "all fields correct",
+      "system_did": "all fields correct",
+      "outcome": "accepted",
+      "held_back": false
+    },
+    {
+      "id": "INV-02",
+      "item": "Typed invoice from vendor 2, clean scan",
+      "correct_answer": "all fields correct",
+      "system_did": "all fields correct",
+      "outcome": "accepted",
+      "held_back": false
+    },
+    {
+      "id": "INV-03",
+      "item": "Typed invoice from vendor 3, clean scan",
+      "correct_answer": "all fields correct",
+      "system_did": "all fields correct",
+      "outcome": "accepted",
+      "held_back": false
+    },
+    {
+      "id": "INV-04",
+      "item": "Typed invoice from vendor 4, clean scan",
+      "correct_answer": "all fields correct",
+      "system_did": "all fields correct",
+      "outcome": "accepted",
+      "held_back": false
+    },
+    {
+      "id": "INV-05",
+      "item": "Typed invoice from vendor 5, clean scan",
+      "correct_answer": "all fields correct",
+      "system_did": "all fields correct",
+      "outcome": "accepted",
+      "held_back": false
+    },
+    {
+      "id": "INV-06",
+      "item": "Typed invoice from vendor 6, clean scan",
+      "correct_answer": "all fields correct",
+      "system_did": "all fields correct",
+      "outcome": "accepted",
+      "held_back": false
+    },
+    {
+      "id": "INV-07",
+      "item": "Typed invoice from vendor 7, clean scan",
+      "correct_answer": "all fields correct",
+      "system_did": "all fields correct",
+      "outcome": "accepted",
+      "held_back": false
+    },
+    {
+      "id": "INV-08",
+      "item": "Typed invoice from vendor 8, clean scan",
+      "correct_answer": "all fields correct",
+      "system_did": "all fields correct",
+      "outcome": "accepted",
+      "held_back": false
+    },
+    {
+      "id": "INV-09",
+      "item": "Typed invoice from vendor 9, clean scan",
+      "correct_answer": "all fields correct",
+      "system_did": "all fields correct",
+      "outcome": "accepted",
+      "held_back": false
+    },
+    {
+      "id": "INV-10",
+      "item": "Typed invoice from vendor 10, clean scan",
+      "correct_answer": "all fields correct",
+      "system_did": "all fields correct",
+      "outcome": "accepted",
+      "held_back": false
+    },
+    {
+      "id": "INV-11",
+      "item": "Typed invoice from vendor 11, clean scan",
+      "correct_answer": "all fields correct",
+      "system_did": "all fields correct",
+      "outcome": "accepted",
+      "held_back": true
+    },
+    {
+      "id": "INV-12",
+      "item": "Typed invoice from vendor 12, clean scan",
+      "correct_answer": "all fields correct",
+      "system_did": "all fields correct",
+      "outcome": "accepted",
+      "held_back": true
+    },
+    {
+      "id": "INV-13",
+      "item": "Typed invoice from vendor 13, clean scan",
+      "correct_answer": "all fields correct",
+      "system_did": "all fields correct",
+      "outcome": "accepted",
+      "held_back": true
+    },
+    {
+      "id": "INV-14",
+      "item": "Typed invoice from vendor 14, clean scan",
+      "correct_answer": "all fields correct",
+      "system_did": "all fields correct",
+      "outcome": "accepted",
+      "held_back": true
+    },
+    {
+      "id": "INV-15",
+      "item": "Lakeview Paper invoice, amount smudged near the total",
+      "correct_answer": "all fields correct",
+      "system_did": "left a field blank for a bookkeeper (amount smudged near the total)",
+      "outcome": "fixed_by_person",
+      "held_back": false
+    },
+    {
+      "id": "INV-16",
+      "item": "Northside Electric invoice, vendor name cut off at the top",
+      "correct_answer": "all fields correct",
+      "system_did": "left a field blank for a bookkeeper (vendor name cut off at the top)",
+      "outcome": "fixed_by_person",
+      "held_back": false
+    },
+    {
+      "id": "INV-17",
+      "item": "Birch & Co. Printing invoice, due date missing",
+      "correct_answer": "all fields correct",
+      "system_did": "left a field blank for a bookkeeper (due date missing)",
+      "outcome": "fixed_by_person",
+      "held_back": false
+    },
+    {
+      "id": "INV-18",
+      "item": "Summit Office Supply invoice, two totals on the page",
+      "correct_answer": "all fields correct",
+      "system_did": "left a field blank for a bookkeeper (two totals on the page)",
+      "outcome": "fixed_by_person",
+      "held_back": false
+    },
+    {
+      "id": "INV-19",
+      "item": "Harbor Freight Lines invoice, handwritten correction to the amount",
+      "correct_answer": "all fields correct",
+      "system_did": "left a field blank for a bookkeeper (handwritten correction to the amount)",
+      "outcome": "fixed_by_person",
+      "held_back": false
+    },
+    {
+      "id": "INV-20",
+      "item": "Acme Supply invoice, total $4,200",
+      "correct_answer": "amount $4,200",
+      "system_did": "entered $420 with no flag",
+      "outcome": "unflagged_wrong_amount",
+      "held_back": false
+    }
+  ]
+}
