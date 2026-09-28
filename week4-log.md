@@ -99,7 +99,7 @@ Stopping point: rules, template, checklist, and the approved Rivertown summary a
 
 Built the workflow that drafts client evaluation memos. It runs end to end on Rivertown: code computes the facts, one AI drafts, a second edits, code checks, one automatic fix, recheck. Anything still wrong arrives as a flag.
 
-The morning went badly: unclear questions and talking over me. Once we set the plan (six steps, time-boxed) it moved.
+The morning went badly: tried using voice in Claude for first time and it started talking over me before I could finish asking a question. It's too bad as hearing and reading could really help learning. Finally after a decently long conversation about waiting for me to finish it finally said it could not do or hold a real conversation as breath taken is very similiar to hitting enter in the text box. Close voice and and set the plan.  Once we set the plan (six steps, time-boxed) things moved at regular pace, but was slower because of the manual reading and changes to improve professionalism and accuracy.
 
 What I built:
 - Two input files: a test-results file (one line per test item) and a one-time client setup.
@@ -120,3 +120,29 @@ Problems: rate limits, an empty draft from a token cap, long pastes getting cut 
 Last step: a live run on a made-up invoice client. Right client, right numbers, the wrong amount described, fix-and-retest recommended. It generalizes.
 
 Stopping point: the drafter is done (v9). Drafts need 2 to 4 small edits, and those are judgment calls, which is my job by design. Next: Week 5 security work.
+
+
+
+## 2026-09-28 - Week 5 security block: threat model for both builds
+
+Started 9/27, finished 9/28. Threat matrix, OWASP/NIST tags, four controls in Rivertown v2.6, a live attack run, and a threat model that goes public.
+
+What I built:
+- Threat matrices for Rivertown (10 rows) and the drafter (5 rows), each tagged to the OWASP LLM 2026 list, the OWASP Agentic list, and NIST AI 600-1.
+- Rivertown v2.6: a blank-message check (the AI never sees an empty message), a 5-second retry wait, and a documented kill switch with rollback.
+- A seven-request abuse collection in Newman. 17 of 19 checks passed; the two failures were the gaps I predicted before the run (card number stored, guessed-ID attack blocks a real lead).
+- threat-model.md, a v2.6 README for the case, and updates to the runbook, decisions, limitations, and n8n-patterns.
+
+What I learned:
+- The core idea: you never fix the AI. You fix what reaches it, what it's allowed to do, and where the human looks.
+- The five terms to know for client conversations: prompt injection, sensitive information disclosure, excessive agency, hallucination, overreliance.
+- You can't reliably filter out every bad input, so limit what a fooled AI can do.
+- Write the expected result before a test runs. A test that passes when the system is off is worthless; my first run proved it.
+- A safety feature built for honest mistakes (dedup) can be turned against real customers.
+- Check the decision log before calling something a bug. A "finding" turned out to be a choice I'd made on 9/22.
+- A workflow export is the design, not the evidence. Save test logs separately.
+- Write documents for the reader: past tense, no "new" or "now," sources for every claim, and say plainly when Rivertown is fictional.
+
+Problems: too much information at once, again. Voice input split my messages mid-thought. The edits landed in the original workflow instead of the copy (duplicating opens a new tab), fixed by swapping names. A "restore" to clean up line endings would have wiped the day's edits; caught on a double-check.
+
+Stopping point: security block done and committed. Before any real client data: random form IDs, a form note plus a retention limit, and detailed errors turned off.

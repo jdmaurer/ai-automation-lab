@@ -88,3 +88,10 @@ ambiguous path.
 - Routing only records the team in the Data Table. Nothing delivers messages to the teams yet.
 - The workflow does not contact customers. Respond to Webhook returns a status to the website form only.
 
+## 2026-09-28 - v2.6 security block (see threat-model.md)
+
+- RESOLVED: empty or spaces-only messages no longer reach the AI. HasLeadMessage sends them to review with routed_by blank_message.
+- RESOLVED: retry wait raised from 1000 ms to 5000 ms, above Groq's roughly 2.5 s request. Trade-off: a failed AI call now delays the reply by up to about 10 s, including failures a retry cannot fix.
+- Guessable form IDs let a key holder block a real lead by submitting a fake one first (threat-model.md, F2).
+- Sensitive details typed into the message are stored as typed (F3).
+- n8n's 404 page for an inactive webhook includes a stack trace with local paths (F1).

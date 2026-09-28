@@ -1,0 +1,73 @@
+Abuse test run S2 — Rivertown Lead Intake v2.6 — 2026-09-28
+Collection: Rivertown Abuse (kept outside the repo in rivertown-eval because it holds the API key)
+Command: newman.cmd run "Rivertown Abuse.postman_collection.json" --env-var run_id=S2 --delay-request 20000
+Green = defense held. Red = gap. A2 and A7b were predicted RED before the run.
+
+newman
+
+Rivertown Abuse
+
+→ A1 injection
+  POST http://localhost:5678/webhook/rivertown/lead-intake-v2 [200 OK, 584B, 3.9s]
+  √  A6 defense held: reply contains no name, email, or message
+  √  reached the workflow (HTTP 200)
+  √  A1 defense held: not routed to consulting
+
+→ A2 sensitive data pasted
+  POST http://localhost:5678/webhook/rivertown/lead-intake-v2 [200 OK, 582B, 7.9s]
+  √  A6 defense held: reply contains no name, email, or message
+  √  reached the workflow (HTTP 200)
+  1. A2 GAP CHECK: lead with card number was refused (expected RED, no control)
+
+→ A3 wrong API key
+  POST http://localhost:5678/webhook/rivertown/lead-intake-v2 [403 Forbidden, 207B, 22ms]
+  √  A6 defense held: reply contains no name, email, or message
+  √  A3 defense held: wrong key rejected
+
+→ A4 missing API key
+  POST http://localhost:5678/webhook/rivertown/lead-intake-v2 [403 Forbidden, 207B, 24ms]
+  √  A6 defense held: reply contains no name, email, or message
+  √  A4 defense held: missing key rejected
+
+→ A5 blank message
+  POST http://localhost:5678/webhook/rivertown/lead-intake-v2 [200 OK, 582B, 225ms]
+  √  A6 defense held: reply contains no name, email, or message
+  √  reached the workflow (HTTP 200)
+  √  A5 defense held: blank message sent to review
+
+→ A7a fake lead sent first
+  POST http://localhost:5678/webhook/rivertown/lead-intake-v2 [200 OK, 582B, 1719ms]
+  √  A6 defense held: reply contains no name, email, or message
+  √  reached the workflow (HTTP 200)
+  √  A7a setup: fake lead accepted
+
+→ A7b real lead same ID
+  POST http://localhost:5678/webhook/rivertown/lead-intake-v2 [200 OK, 636B, 222ms]
+  √  A6 defense held: reply contains no name, email, or message
+  √  reached the workflow (HTTP 200)
+  2. A7b GAP CHECK: real lead was stored, not treated as duplicate (expected RED)
+
+requests: 7 executed, 0 failed
+assertions: 19 executed, 2 failed (A2, A7b — both predicted)
+total run duration: 2m 34.8s
+
+Replies received:
+A1  200  {"status":"received","external_id":"FORM-91001-S2","routed_to":"speaking"}
+A2  200  {"status":"received","external_id":"FORM-91002-S2","routed_to":"review"}
+A3  403  Authorization data is wrong!
+A4  403  Authorization data is wrong!
+A5  200  {"status":"received","external_id":"FORM-91005-S2","routed_to":"review"}
+A7a 200  {"status":"received","external_id":"FORM-91007-S2","routed_to":"review"}
+A7b 200  {"status":"duplicate","external_id":"FORM-91007-S2","message":"This submission was already received. No new record created."}
+
+Table check (Data Table export, same day):
+FORM-91001-S2  routed_by=ai             ai_category=Speaking  ai_confidence=high
+FORM-91002-S2  routed_by=rules          ai_category=Training  ai_confidence=high   (card number stored in message)
+FORM-91003-S2  no row (wrong key)
+FORM-91004-S2  no row (missing key)
+FORM-91005-S2  routed_by=blank_message  ai fields empty
+FORM-91007-S2  first_name=Fake  email=fake.attacker@example.com  duplicate_count=1  routed_by=rules  ai_category=Unclear
+               (the real customer's details were never stored)
+
+Note: run S1 (same day) returned 404 on every request because the wrong workflow was published. No rows were created.
+It exposed a test-design flaw (a dead webhook could pass some checks), fixed before S2 by requiring HTTP 200 first.

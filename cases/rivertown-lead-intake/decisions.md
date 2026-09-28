@@ -204,3 +204,13 @@ exported workflow JSON was checked for the secret before it was staged.
 - Delivery to teams: we recommend automatic email per team, built and tested before the pilot. The reviewer handing messages out is the fallback.
 - The client is offered a test set written by their own staff before the pilot.
 
+
+## 2026-09-28 - v2.6 security controls (see threat-model.md)
+
+- HasLeadMessage (If node) before ClassifyMessage: a missing, empty, or spaces-only message skips the AI and goes to review. Test: `($json.message ?? '').trim()` is not empty.
+- Blank leads go to a separate node, InsertBlankForReview, with routed_by fixed to `blank_message`. Chosen over extending the InsertForReview expression so the blank check lives in one place and the AI review path is untouched. Accepted cost: a second copy of the column mappings (the reason v2.1 chose an expression); a column change must be made in both nodes.
+- `blank_message` added as a fifth routed_by value. The existing `rules` value is unchanged: it means the AI answered and the gate sent the lead to review (2026-09-22). This is correct labeling, not a defect.
+- ClassifyMessage wait between tries raised from 1000 ms to 5000 ms (n8n's maximum), above Groq's roughly 2.5 s request. Accepted cost: a failed AI call can delay the reply by about 10 s.
+- Kill switch documented in runbook.md: unpublish; re-send waiting submissions after a fix, safe because deduplication is idempotent.
+- n8n workflows: "Rivertown - Lead Intake v2.6" (current) and "Rivertown - Lead Intake v2.5 (evidence copy)" (rollback). The edits were first made in the original workflow by mistake (a duplicate opens in a new tab), so the names were swapped rather than rebuilding; the repo's lead-intake-v2.5.json remains the evidence record.
+- Security tests use reserved IDs (FORM-900xx manual, FORM-910NN-<run> abuse) so evidence rows are never touched.

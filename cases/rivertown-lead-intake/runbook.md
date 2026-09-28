@@ -37,6 +37,50 @@ Unpublish the workflow in n8n. The webhook stops accepting requests
 immediately. Form submissions will fail at the form tool's end — check
 whether that is visible to the person submitting.
 
+## Kill switch — v2.6 (self-hosted)
+
+Use when v2.6 is misbehaving: wrong routing, a flood of fake leads, a suspected leaked API key, or anything you can't explain yet.
+
+### Stop it
+
+1. Open the n8n editor at http://localhost:5678.
+2. Open **Lead Intake v2.6** and **unpublish** it.
+3. Confirm it stopped. In PowerShell:
+
+   ```
+   Invoke-WebRequest -Method POST -Uri "http://localhost:5678/webhook/rivertown/lead-intake-v2" -ContentType "application/json" -Body '{"external_id": "FORM-90002", "message": "kill switch test"}'
+   ```
+
+   Expected: a 404 error saying the webhook is not registered.
+
+**If the editor won't open:** press Ctrl+C in the PowerShell window running n8n. This stops ALL workflows, not just v2.6.
+
+**If the API key may be leaked:** also replace the key in the webhook's Header Auth credential and give the new key to the form tool. Unpublishing alone doesn't protect you once it's back on.
+
+### While it's off
+
+- The form tool gets a 404 for every submission. n8n stores nothing.
+- Leads wait in the form tool's own submission history. Confirm the client's form tool keeps submissions before relying on this.
+- Nothing already in the table is changed or lost.
+
+### Turn it back on and catch up
+
+1. Fix the problem and republish v2.6.
+2. Re-send every submission the form tool received while it was off.
+3. This is safe to do in bulk: CheckLeadExists matches on `external_id`, so any lead that was already stored gets its duplicate count bumped instead of a second row.
+
+### Roll back to the previous version
+
+Unpublish **Rivertown - Lead Intake v2.6**, then publish **Rivertown - Lead Intake v2.5 (evidence copy)**. Only one can be published at a time because they share the same webhook address.
+
+### Verified
+
+2026-09-27: unpublished-state test returned 404 (FORM-90002). No row created.
+
+### Known issue
+
+The 404 response includes a stack trace with local file paths (username and n8n install location). This is an n8n default. Recommended before any real client use: turn off detailed error responses for production.
+
 ## Failure modes
 | Symptom | Likely cause | Action |
 |---|---|---|
@@ -78,3 +122,10 @@ TBD.
 - routed_by values in v2: ai, rules, ai_failure, or blank (rules path).
 - Evaluation set: cases/rivertown-lead-intake/eval-set-v1.csv. Frozen. Never edit labels to improve a score; create a new version file instead.
 - Data Table CSV exports shift timestamps by +5h. Never copy a timestamp from an export into a test body.
+
+## Added 2026-09-28 (v2.6)
+
+- n8n workflow names: **Rivertown - Lead Intake v2.6** (current) and **Rivertown - Lead Intake v2.5 (evidence copy)** (rollback). Only one may be published at a time.
+- routed_by values in v2.6: ai, rules, ai_failure, blank_message, or blank (rules path).
+- After publishing, confirm the address is live before a full Newman run: `newman.cmd run "Rivertown Abuse.postman_collection.json" --folder "A3 wrong API key" --env-var run_id=SMOKE` should return 403. A 404 means the workflow is not live.
+- Security tests use IDs FORM-900xx (manual) and FORM-910NN-<run_id> (abuse runs). See threat-model.md.

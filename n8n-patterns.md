@@ -260,3 +260,13 @@ JSON payload.
 - Pin data can ship inside an imported workflow file (the "pinData" key), so a test input survives re-imports.
 - AI output may contain narrow no-break spaces and non-breaking hyphens; normalize them before any text check.
 - Long n8n outputs get cut off when pasted into chat; send them as a .txt file.
+
+## 2026-09-28 - Security block gotchas
+- Duplicating a workflow opens the copy in a new browser tab; the original stays open in the old tab. Edits made in the old tab change the original. After duplicating, check the workflow name at the top left before editing.
+- The workflow list's "Last updated" time is a quick way to spot edits that landed in the wrong workflow.
+- "Published" does not prove the webhook is live. Send one cheap request (for example, a wrong-key request that should return 403) before a long test run.
+- A test that only checks a field value can pass when the endpoint is down (a missing field is "not equal" to anything). Check the HTTP status first.
+- Newman `--folder "<request name>"` runs a single request, not just a folder.
+- Newman's JSON reporter export records request headers, including API keys. Keep those files out of the repository; the CLI output is safe to keep.
+- n8n's 404 for an inactive production webhook includes a stack trace with local file paths.
+- To test a safety check (such as an output parser), create the failure on purpose in an isolated scratch workflow that has no table nodes.

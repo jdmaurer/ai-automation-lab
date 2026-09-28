@@ -5,6 +5,9 @@ An n8n workflow that drafts a one-page, client-facing evaluation summary from AI
 ## Status (2026-09-26)
 Built and tested (eval-summary-drafter-v9.json). Runs on Rivertown and on a made-up invoice client with correct numbers and client-specific content; drafts need 2 to 4 small edits at review. Final outputs with review notes are in tests/.
 
+## Security
+Threat model: [../rivertown-lead-intake/threat-model.md](../rivertown-lead-intake/threat-model.md), Part 2 (shared with Rivertown).
+
 ## Files
 - `memo-guide.md` - the writing rules, with sources and evidence strength
 - `memo-outline.md` - the seven-section template, tagged by who produces each part
