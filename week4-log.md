@@ -99,7 +99,7 @@ Stopping point: rules, template, checklist, and the approved Rivertown summary a
 
 Built the workflow that drafts client evaluation memos. It runs end to end on Rivertown: code computes the facts, one AI drafts, a second edits, code checks, one automatic fix, recheck. Anything still wrong arrives as a flag.
 
-The morning went badly: tried using voice in Claude for first time and it started talking over me before I could finish asking a question. It's too bad as hearing and reading could really help learning. Finally after a decently long conversation about waiting for me to finish it finally said it could not do or hold a real conversation as breath taken is very similiar to hitting enter in the text box. Close voice and and set the plan.  Once we set the plan (six steps, time-boxed) things moved at regular pace, but was slower because of the manual reading and changes to improve professionalism and accuracy.
+The morning went badly: unclear questions and talking over me. Once we set the plan (six steps, time-boxed) it moved.
 
 What I built:
 - Two input files: a test-results file (one line per test item) and a one-time client setup.
@@ -127,6 +127,8 @@ Stopping point: the drafter is done (v9). Drafts need 2 to 4 small edits, and th
 
 Started 9/27, finished 9/28. Threat matrix, OWASP/NIST tags, four controls in Rivertown v2.6, a live attack run, and a threat model that goes public.
 
+The morning went badly: tried using voice in Claude for the first time and it started talking over me before I could finish asking a question. It's too bad, as hearing and reading could really help learning. Finally, after a decently long conversation about waiting for me to finish, it said it could not hold a real conversation, as a breath taken is very similar to hitting enter in the text box. It was an ongoing problem for the last two days, and I've finally given up on voice. Closed voice and set the plan. Once we set the plan (time-boxed) things moved at a regular pace, but slower because of the manual reading and changes to improve professionalism and accuracy.
+
 What I built:
 - Threat matrices for Rivertown (10 rows) and the drafter (5 rows), each tagged to the OWASP LLM 2026 list, the OWASP Agentic list, and NIST AI 600-1.
 - Rivertown v2.6: a blank-message check (the AI never sees an empty message), a 5-second retry wait, and a documented kill switch with rollback.
@@ -143,6 +145,6 @@ What I learned:
 - A workflow export is the design, not the evidence. Save test logs separately.
 - Write documents for the reader: past tense, no "new" or "now," sources for every claim, and say plainly when Rivertown is fictional.
 
-Problems: too much information at once, again. Voice input split my messages mid-thought. The edits landed in the original workflow instead of the copy (duplicating opens a new tab), fixed by swapping names. A "restore" to clean up line endings would have wiped the day's edits; caught on a double-check.
+Problems: too much information at once, again. The edits landed in the original workflow instead of the copy (duplicating opens a new tab), fixed by swapping names. A "restore" to clean up line endings would have wiped the day's edits; caught on a double-check.
 
 Stopping point: security block done and committed. Before any real client data: random form IDs, a form note plus a retention limit, and detailed errors turned off.
