@@ -148,3 +148,29 @@ What I learned:
 Problems: too much information at once, again. The edits landed in the original workflow instead of the copy (duplicating opens a new tab), fixed by swapping names. A "restore" to clean up line endings would have wiped the day's edits; caught on a double-check.
 
 Stopping point: security block done and committed. Before any real client data: random form IDs, a form note plus a retention limit, and detailed errors turned off.
+
+
+## 2026-09-28 (evening) - Week 5 Friday: release rules, a failed regression, and a second opinion
+
+Planned: finish the release thresholds, rerun the frozen test set on v2.6, tag the release. What happened: v2.6 failed, and I built v2.7.
+
+What I did:
+- Wrote the full release rules before any test ran: hard lines (no badly formatted answer routed, no forbidden actions, no worse on trick, empty, or ambiguous messages) and budgets (AI failures, reply time, cost, review load).
+- R7 on v2.6 failed. EVAL-07 ("Could someone present on AI tools to our staff at our quarterly all-hands meeting? About an hour.") went straight to Speaking. R8 did the same thing, word for word. On 9/23 the AI had said "maybe Training" and that maybe was the only thing stopping it. Nothing changed on our side.
+- Asked myself what I'd do if I couldn't trust the sorter to say "not sure": ask somebody else. Built a second opinion from a different company's AI (Qwen), only on leads about to be sent automatically. Both have to agree, be sure, and list no maybes.
+- The first smoke test sent a clear lead to a person even though Qwen agreed. The gate was comparing against literal text because one box wasn't in expression mode. One-lead smoke test, one-minute fix.
+- R9 on v2.7: 0 dangerous, 14 of 17. Qwen held exactly one lead, EVAL-07. Holdout H2: 0 dangerous, 4 of 6, same as before.
+- Asked the manager question: if Qwen caught it, why isn't Qwen first? Tested Qwen alone: 16 of 17 on the practice set, but 4 of 6 on the holdout, exactly the same as the OpenAI model (gpt-oss). Better on the practice leads, no better on new ones. Set the verdict before running, so the answer was clear: v2.7 stays.
+- Saved everything, tagged lead-intake-v0.2-evaluated. Rivertown is done.
+
+What I learned:
+- One passing run isn't proof. The same AI gave a different answer on a different day.
+- A second opinion earns its place by being independent, not by being better. A checker that can only say "no" makes a system safer, never more useful.
+- I put the second check right after the first AI's "yes" and before the lead gets sent automatically. Leads going to a person already get a human look, so checking them again would only cost more.
+- If different AIs keep "missing" the same test leads, check the answer key before blaming the AIs. The answer key is the list of correct answers I wrote for each test lead. For H-04 ("new supervisors don't know how to run one-on-ones") and H-06 ("team feels disconnected since we went hybrid"), I said each should go straight to one team. But both AIs, in every setup, said "this could be Training or Consulting." When two different AIs keep hesitating on the same messages, maybe the messages really are unclear, and my answer is the thing that's off. The fix isn't to change my answers to get a better score. It's to ask the client how their own staff would route those messages.
+- A {{ }} value only works in expression mode.
+- Decide what a result will mean before you run the test. Before the Qwen runs, we wrote down the rule: Qwen alone only counts as a real option with 0 dangerous routes, at least 14 of 17 on the practice set, and at least 5 of 6 on the holdout. We ran the holdout first because it was smaller and told us more. It came in at 4 of 6, so Qwen alone was out, and the second practice run couldn't change that. Skipping it saved about 15 minutes and Qwen's daily allowance. Same idea as writing the release rules before R7: nobody gets to move the goalposts after seeing the score.
+
+Problems: the day started with a page and a half of directions at once, and I said so. Three days of mostly documents felt like I wasn't learning anything; tonight's design work fixed that. Paste-ready values kept showing up messages earlier instead of at the step, so that's now a rule.
+
+Stopping point: Rivertown Lead Intake closed at v2.7, committed and tagged. Next: Week 6, Microsoft access, and a Gate 1 score.
