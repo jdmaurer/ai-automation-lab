@@ -150,7 +150,7 @@ Problems: too much information at once, again. The edits landed in the original 
 Stopping point: security block done and committed. Before any real client data: random form IDs, a form note plus a retention limit, and detailed errors turned off.
 
 
-## 2026-09-28 (evening) - Week 5 Friday: release rules, a failed regression, and a second opinion
+## Monday 9.28.26 (evening) - Master calendar Week 5, Friday block: release rules, a failed regression, and a second opinion
 
 Planned: finish the release thresholds, rerun the frozen test set on v2.6, tag the release. What happened: v2.6 failed, and I built v2.7.
 

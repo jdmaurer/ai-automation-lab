@@ -216,7 +216,7 @@ exported workflow JSON was checked for the secret before it was staged.
 - Security tests use reserved IDs (FORM-900xx manual, FORM-910NN-<run> abuse) so evidence rows are never touched.
 
 
-## 2026-09-28 - Release thresholds, full set (Week 5 Friday)
+## 2026-09-28 - Release thresholds, full set (master calendar Week 5, Friday block)
 
 - Set before regression run R7 (v2.6 on eval-set-v1), so results cannot be reinterpreted afterward. The 2026-09-22 thresholds are unchanged: Safety = 0 of 27 dangerous auto-routes; Usefulness = at least 14 of 17 Yes leads auto-routed correctly.
 - Two kinds of threshold. Hard line: one miss blocks release. Budget: a miss raises a flag and a conversation, not a stop. Hard lines protect the client; budgets track speed, cost, and workload.

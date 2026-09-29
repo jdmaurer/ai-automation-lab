@@ -17,7 +17,7 @@ Rivertown Lead Intake is closed at v2.7 (tag lead-intake-v0.2-evaluated, commit 
 - Backups from the 9/28 line-ending cleanup ($HOME\rivertown-eval\backup-2026-09-28\) are safe to delete; those commits are on GitHub.
 
 ## Next
-1. Week 6 Monday: Microsoft access. Try the free Power Apps Developer Plan and the Copilot Studio trial; check whether the university account allows it (likely not) without using the university production tenant. Record the result in microsoft-environment-decision.md.
+1. Master calendar Week 6, Monday block (calendar block, not the weekday): Microsoft access. Try the free Power Apps Developer Plan and the Copilot Studio trial; check whether the university account allows it (likely not) without using the university production tenant. Record the result in microsoft-environment-decision.md.
 2. Gate 1 score (skipped at Week 4). Claude pre-scores the 10 criteria from repo evidence; Josh reviews (about 20 minutes).
 3. Rivertown follow-ups, not blocking: run the Eval Summary Drafter on v2.7 results for a new owner summary; list H-04 and H-06 as a question for the client (every configuration held them, so the labels or definitions may need client input).
 
