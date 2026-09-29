@@ -139,6 +139,15 @@ Seven requests sent 20 seconds apart through Newman, using IDs in a reserved tes
 
 ---
 
+### Update — v2.7 second opinion (2026-09-28, late)
+
+Regression runs R7 and R8 on v2.6 showed row 5's control failing: EVAL-07 was auto-routed to the wrong team in both runs. The model answered "high, no alternatives," so ConfidenceGate had nothing to catch. The residual risk noted in row 5 happened.
+
+**Control 5 — Second opinion (row 5).** Before any auto-route, an independent model (qwen/qwen3.8-27b) answers the same question. The lead is auto-routed only if it names the same category, says high, and lists no alternatives. Otherwise it goes to review with `routed_by = second_opinion`. A failed or garbled second answer fails the check, so the lead goes to review.
+*Evidence:* R9 — EVAL-07 held (`second_opinion`); 0 wrong routes in 27. H2 — 0 wrong routes in 10 unseen messages.
+*Residual risk:* both models confidently wrong on the same message. Reduced, not removed.
+*Not shown:* a forced failure of the second model.
+
 ## Part 2 — Eval Summary Drafter v9
 
 ### What it touches

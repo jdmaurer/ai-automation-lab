@@ -270,3 +270,12 @@ JSON payload.
 - Newman's JSON reporter export records request headers, including API keys. Keep those files out of the repository; the CLI output is safe to keep.
 - n8n's 404 for an inactive production webhook includes a stack trace with local file paths.
 - To test a safety check (such as an output parser), create the failure on purpose in an isolated scratch workflow that has no table nodes.
+
+## 2026-09-28 - Second-opinion build gotchas
+- An If node's right-hand value containing {{ }} is compared as literal text unless the box is in expression mode (fx marker). Every item then fails silently. A one-lead smoke test caught it.
+- An AI chain node (Basic LLM Chain) replaces the item with its own output. To compare two AI answers, a merge step (Set or Code node) must put the lead, the first answer, and the second answer back into one item.
+- On Error "Continue" (regular output) sends a failed node's item down the normal path, so a downstream check can treat "no answer" the same as "no"; "Continue (using error output)" needs a separate wire.
+- Export JSON (... menu) always saves to Downloads; move the file into the repo afterward.
+- Publish asks for a version name every time; name experiments clearly (for example "EXPERIMENT ...") so the version history shows what was temporary.
+- Groq free-tier limits are per model (Settings > Limits lists each model separately), so a second model has its own allowance.
+- Groq's Usage page shows cost in dollars, not tokens, even on the free plan.

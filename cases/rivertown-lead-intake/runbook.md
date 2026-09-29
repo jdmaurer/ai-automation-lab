@@ -129,3 +129,13 @@ TBD.
 - routed_by values in v2.6: ai, rules, ai_failure, blank_message, or blank (rules path).
 - After publishing, confirm the address is live before a full Newman run: `newman.cmd run "Rivertown Abuse.postman_collection.json" --folder "A3 wrong API key" --env-var run_id=SMOKE` should return 403. A 404 means the workflow is not live.
 - Security tests use IDs FORM-900xx (manual) and FORM-910NN-<run_id> (abuse runs). See threat-model.md.
+
+## Added 2026-09-28 (v2.7)
+
+- n8n workflow: **Rivertown - Lead Intake v2.7** (current). The v2.6 n8n workflow was edited into v2.7; v2.6 exists as lead-intake-v2.6.json. Rollback: import that file, or publish "Rivertown - Lead Intake v2.5 (evidence copy)".
+- Two model nodes, same "Groq account" credential, both temperature 0: **Groq Chat Model** (first AI, openai/gpt-oss-120b) and **Qwen Chat Model** (second opinion, qwen/qwen3.8-27b). After any experiment, confirm the first AI's model in the exported JSON.
+- routed_by values in v2.7: ai, rules, ai_failure, blank_message, second_opinion, or blank (rules path).
+- If node right-hand values that use {{ }} must be in expression mode (fx marker). In fixed mode they are compared as literal text.
+- Smoke test after any change: one lead with a new run ID (`-n 1` on eval-set-v1). Open the newest execution and check which insert node ran.
+- Pacing: 20 s between leads for v2.7. Use 30 s if one model answers twice per lead, to stay under its 8,000 tokens per minute.
+- Export: n8n ... menu > Export JSON. The file lands in Downloads; move and rename it into this folder.

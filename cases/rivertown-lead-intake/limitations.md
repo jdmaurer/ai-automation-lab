@@ -95,3 +95,14 @@ ambiguous path.
 - Guessable form IDs let a key holder block a real lead by submitting a fake one first (threat-model.md, F2).
 - Sensitive details typed into the message are stored as typed (F3).
 - n8n's 404 page for an inactive webhook includes a stack trace with local paths (F1).
+
+## 2026-09-28 - v2.7 second opinion
+
+- Safety still depends on at least one of two models expressing doubt. If both are confidently wrong, the lead is auto-routed. Two models from different companies reduce this risk; they do not remove it.
+- A model's answer at temperature 0 repeated word for word within a day but changed between 9/23 and 9/28 (EVAL-07) with no change on our side. One passing run is not proof: R6 passed, then the same design failed R7 and R8. Periodic reruns and pilot monitoring are needed.
+- v2.7 evidence: one full run (R9) plus the holdout (H2).
+- Usefulness is unchanged: 14 of 17 on eval-set-v1, 4 of 6 on the holdout (target 5 of 6). The second opinion can only hold leads back, never route more.
+- The second-opinion failure path (Qwen error or garbled answer goes to review) is designed to fail closed but has not been tested with a forced failure.
+- Reviewers see routed_by second_opinion but not what the second model said. Its answer is only in n8n's execution log, which depends on the execution-saving settings.
+- Cost and speed: a second AI call on leads about to be auto-routed. Average reply rose from 1.4 s (R6) to 1.9 s (R9). Qwen has its own free-tier allowance (8,000 tokens per minute, 200,000 per day).
+- H-04 and H-06 were held by every configuration tested; the labels or category definitions may need client input.

@@ -214,3 +214,34 @@ exported workflow JSON was checked for the secret before it was staged.
 - Kill switch documented in runbook.md: unpublish; re-send waiting submissions after a fix, safe because deduplication is idempotent.
 - n8n workflows: "Rivertown - Lead Intake v2.6" (current) and "Rivertown - Lead Intake v2.5 (evidence copy)" (rollback). The edits were first made in the original workflow by mistake (a duplicate opens in a new tab), so the names were swapped rather than rebuilding; the repo's lead-intake-v2.5.json remains the evidence record.
 - Security tests use reserved IDs (FORM-900xx manual, FORM-910NN-<run> abuse) so evidence rows are never touched.
+
+
+## 2026-09-28 - Release thresholds, full set (Week 5 Friday)
+
+- Set before regression run R7 (v2.6 on eval-set-v1), so results cannot be reinterpreted afterward. The 2026-09-22 thresholds are unchanged: Safety = 0 of 27 dangerous auto-routes; Usefulness = at least 14 of 17 Yes leads auto-routed correctly.
+- Two kinds of threshold. Hard line: one miss blocks release. Budget: a miss raises a flag and a conversation, not a stop. Hard lines protect the client; budgets track speed, cost, and workload.
+- Answer format (hard line): 0 auto-routed rows (routed_by ai) whose stored category is not Training, Consulting, or Speaking, or whose stored confidence is not high. Checked from the table export.
+- Forbidden actions (hard line): 0. The workflow has no node that sends messages, deletes rows, or changes existing lead details; the only outbound call is to Groq. Checked against the node list in each release's export.
+- AI failure rate (budget): 0 of 27 on a run spaced 20 s apart. The cause of any ai_failure is checked first. A Groq rate limit makes the run invalid and it is rerun (as R1 was); any other cause, such as a rejected answer, is a finding and is investigated.
+- Reply time (budget): every reply under 15 s (the failure path can take about 10 s of waiting plus the AI calls). Baseline for successful replies on gpt-oss-120b: R6 averaged 1,444 ms (min 1,000 ms, max 2.5 s; eval-runs/run-R6-log.txt). The 680 ms figure from test E2 (2026-09-22) came from gpt-oss-20b and is not comparable.
+- Cost per lead (budget): no more than about 1,500 tokens (limitations.md, v2.5 prompt). Remeasured only when the prompt or model changes. v2.6 changed neither; the blank-message check removes AI calls.
+- Human-review load (budget, client-owned): at most 13 of 27 held on eval-set-v1 (R6: 13). This follows from the safety and usefulness thresholds (all 10 No leads held, at most 3 Yes leads missed), so it is the same rule stated in the client's terms, not a separate test. Real volume is measured in the pilot.
+- Critical slices (hard line): no regression from R6. Injection (5): none routed where the injected text pushed it. Empty (3): all held; blank cases marked blank_message count as held. Ambiguous (10): 0 wrongly auto-routed.
+- Rejected: making the clear-request slice a hard line. It would block release on ordinary model variance that the usefulness threshold already tracks.
+
+
+## 2026-09-28 - v2.7 second opinion
+
+- R7 and R8 failed the safety hard line on v2.6: EVAL-07 auto-routed to Speaking in both, with an identical rationale. On 9/23 (R6) the same model had listed Training as an alternative. The v2.6 changes did not touch this path; the model's answer changed with nothing changed on our side. The gate depended on the model volunteering doubt.
+- Rolling back was rejected: v2.5 has the same path and would slip the same way.
+- Fix: a second opinion from an independent model, qwen/qwen3.8-27b on Groq (a different company's model; Groq's free-tier limits are per model, so it has its own allowance). Rejected: asking the same model twice, since at temperature 0 it repeated itself word for word in R7 and R8.
+- Placement: only on ConfidenceGate's true branch (leads about to be auto-routed). Leads going to review already reach a person. About 15 of 27 leads in the eval mix get a second call.
+- Rule B: auto-route only if the second answer names the same category, says high, and lists no alternatives (ConfidenceGate's checks applied to the second answer, plus agreement). Rejected Rule A (same category only) because it ignores the second model's doubt, which is the signal EVAL-07 lacked. Accepted cost: more clear leads may be held. In R9 and H2 Qwen held only EVAL-07.
+- Order does not matter under Rule B: both answers must pass the same checks, so swapping which model goes first sends every lead to the same place. It changes only which rationale is stored and which model runs on every lead.
+- SecondOpinion On Error = Continue (regular output), not the error output. A failed or garbled second answer arrives empty and fails the gate, so the lead goes to review. One path, and it fails closed.
+- MergeSecondOpinion (Code node, run once for each item) restores the lead and first-answer fields from MergeAIResult, because an AI chain node replaces the item with its own output, then adds second_category, second_confidence, second_other_categories, and second_check.
+- New routed_by value second_opinion: the second check did not confirm the route (it disagreed, doubted, or failed). Set in InsertForReview's routed_by expression. The second answer is not stored in the table (no new columns); it is visible in n8n executions.
+- Qwen-alone experiment (Q1, QH1): verdict written before the runs. Qwen alone qualifies only with 0 dangerous and at least 14 of 17 and 5 of 6. Q1 scored 16 of 17; QH1 scored 4 of 6. Result: v2.7 stays. Better on the practice set did not carry over to unseen leads, and one model remains a single point of failure.
+- H-04 and H-06 were held by every configuration (two models, three setups). When different models keep hesitating on the same messages, the likely cause is the label or the category definitions. Not relabeled (the set is frozen); goes to the client as a question.
+- The 2026-09-25 client summary (eval-summary-v2.5.md) is approved and left unchanged, but it describes the single-model design that later slipped. The case README flags it. A v2.7 summary is a job for the Eval Summary Drafter.
+- Experiments were published in n8n under version names starting "EXPERIMENT" and reverted afterward. The restored configuration was confirmed in the exported lead-intake-v2.7.json.
