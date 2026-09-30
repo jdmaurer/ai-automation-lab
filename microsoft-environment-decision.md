@@ -21,7 +21,7 @@ Use my own Microsoft organization (`joshmaurer.onmicrosoft.com`, display name **
 | University account | Not available; I no longer hold an institutional account. |
 | Personal Microsoft account (Gmail) | Not accepted. The Developer Plan requires a work or school account. [1] |
 | Microsoft 365 Developer Program sandbox | Not eligible. Eligibility runs mainly through Visual Studio Professional or Enterprise subscriptions and partner programs. [2] The master calendar rules out buying Visual Studio Professional. |
-| Microsoft 365 Business Basic free trial | Viable fallback. It creates a new organization, requires a credit card, and converts to paid unless recurring billing is turned off. [3] Not needed. |
+| Microsoft 365 Business Basic free trial | Viable fallback. It creates a new organization, requires a credit card, and converts to a paid plan when the trial month ends. [3] Not needed. |
 | **Existing organization + Developer Plan** | **Chosen.** Work account with admin rights already in place; no card, no trial clock. |
 
 ## Limits to plan around
