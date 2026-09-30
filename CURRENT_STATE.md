@@ -1,25 +1,33 @@
-# CURRENT STATE - updated 2026-09-28 (late) - RESUME HERE
+# CURRENT STATE - updated 2026-09-29 - RESUME HERE
 
 Per AI_HANDOFF_PROTOCOL.md this file is overwritten each session. Earlier states are in git history and the weekly logs.
 
 ## Objective
-Rivertown Lead Intake is closed at v2.7 (tag lead-intake-v0.2-evaluated, commit facd881). Week 5 is complete. Next: Week 6, Microsoft access.
+Master calendar Week 6 is under way. The Monday block (Microsoft access) is done: free developer environment obtained, $0 spent. Next: the Week 6 Tuesday block, the first Power Automate build.
 
 ## Where things stand
-- Rivertown v2.7 = v2.6 plus an independent second opinion (qwen/qwen3.8-27b) before any auto-route. Rule B: auto-route only if the second model names the same category, says high, and lists no alternatives; otherwise review, routed_by second_opinion. Export: cases/rivertown-lead-intake/lead-intake-v2.7.json.
-- Why: regression runs R7 and R8 on v2.6 auto-routed EVAL-07 to the wrong team (the model stopped listing alternatives, with no change on our side). R9 on v2.7: 0 dangerous, 14 of 17. Holdout H2: 0 dangerous, 4 of 6 (target 5; same misses as v2.5).
-- Qwen-alone experiment: Q1 16 of 17, QH1 4 of 6. Fails the verdict set before the runs; v2.7 stays. Q2 not run.
-- Release thresholds (full set) written before R7: decisions.md, 2026-09-28.
-- n8n: "Rivertown - Lead Intake v2.7" (unpublished). The first AI is openai/gpt-oss-120b (confirmed in the export after the experiments). Rollback: import lead-intake-v2.6.json, or publish "Rivertown - Lead Intake v2.5 (evidence copy)".
-- All v2.7 docs updated: test-cases, decisions, limitations, runbook, threat-model (Control 5), case README, n8n-patterns.
-- eval-summary-v2.5.md (approved 9/25) is outdated: it describes the single-model design. Left unchanged; the case README flags it.
-- Drafter: done at v9. Reads rules from GitHub main; threat model recommends pinning a commit (D2).
-- Backups from the 9/28 line-ending cleanup ($HOME\rivertown-eval\backup-2026-09-28\) are safe to delete; those commits are on GitHub.
+- Microsoft access: see microsoft-environment-decision.md. Own organization joshmaurer.onmicrosoft.com, display name "jdmaurer Labs", one user (me, Global Administrator). No paid products active.
+- Power Apps Developer Plan: environment "Josh Maurer's Environment", created 2026-09-29. Dataverse (Tables) and Flows available. Limits: 750 flow runs/month, 2 GB; disabled after 30 days unused.
+- Sign-in: josh@joshmaurer.onmicrosoft.com, password saved in the Chrome profile "jdmaurer Labs" (blue). Microsoft Authenticator app handles sign-in approval. Use that profile for ALL Microsoft work; the regular Chrome profile picks the wrong account.
+- No Microsoft 365 apps license: no Outlook, SharePoint, or Teams. Week 6 data goes in Dataverse. Week 8 inbox triage needs a decision then (Business Basic trial or design-only Outlook steps).
+- Copilot Studio trial: NOT started on purpose. Sign up on the first day of Week 7.
+- Rivertown Lead Intake: unchanged, closed at v2.7 (tag lead-intake-v0.2-evaluated). n8n workflow "Rivertown - Lead Intake v2.7" unpublished.
+
+## Browser setup (name the window in every instruction)
+Chrome has two profiles. Every instruction says which window to use, by color and name.
+| Window | Signed in as | Use it for | Bookmarks bar |
+|---|---|---|---|
+| **Orange "Joshua"** | joshuadmaurer@gmail.com (Google) | GitHub, Claude, ChatGPT, Gemini, NotebookLM, Gmail, Google Drive, n8n at localhost:5678, Postman web | Favorites, Claude, ChatGPT, Google Gemini, NotebookLM, github |
+| **Blue "jdmaurer Labs"** | josh@joshmaurer.onmicrosoft.com (Microsoft work) | Everything Microsoft: admin center, Power Apps, Power Automate, Copilot Studio, Entra | Admin, Power Apps, Power Automate, Copilot Studio, Entra |
+- Never do Microsoft work in the orange window; it offers the personal Microsoft account and the admin center refuses it.
+- Private (incognito) windows are no longer needed.
+- Switch windows with the profile picture at the top right of Chrome, or pick the window from the taskbar.
 
 ## Next
-1. Master calendar Week 6, Monday block (calendar block, not the weekday): Microsoft access. Try the free Power Apps Developer Plan and the Copilot Studio trial; check whether the university account allows it (likely not) without using the university production tenant. Record the result in microsoft-environment-decision.md.
+1. Master calendar Week 6, Tuesday block: Power Automate. Learn: Get Started modules of "Automate a Business Process Using Power Automate" (Microsoft Learn; text-heavy, so interleave reading with building). Practice: manual, scheduled, and event-triggered toy flows; look at run history. Build: a solution-aware Rivertown Lead Intake flow in Josh Maurer's Environment (trigger, normalization, required-field validation, record creation in Dataverse). Save: flow diagram plus an n8n-to-Power Automate terminology table.
 2. Gate 1 score (skipped at Week 4). Claude pre-scores the 10 criteria from repo evidence; Josh reviews (about 20 minutes).
-3. Rivertown follow-ups, not blocking: run the Eval Summary Drafter on v2.7 results for a new owner summary; list H-04 and H-06 as a question for the client (every configuration held them, so the labels or definitions may need client input).
+3. Save the environment screenshot (Power Apps home, "Josh Maurer's Environment" with the developer banner) as evidence for microsoft-environment-decision.md.
+4. Rivertown follow-ups, not blocking: Eval Summary Drafter on v2.7 results; H-04 and H-06 as a client question.
 
 ## Open items - Rivertown, before any real client data
 - Random form IDs, or treat a repeated ID with a different email as a conflict (threat-model F2).
@@ -42,3 +50,4 @@ Rivertown Lead Intake is closed at v2.7 (tag lead-intake-v0.2-evaluated, commit 
 - n8n: Export JSON lands in Downloads; Claude moves it into the repo. Publish only for testing; unpublish at the end of the session.
 - Evidence dates match when things happened. Documents for outside readers: past tense, no "new"/"now", a source for every claim.
 - Keep the design lean; flags, not stops; Josh's review is the safety net. Time-box, and say when something isn't teaching anything.
+- Microsoft work happens only in the Chrome profile "jdmaurer Labs". Billing edits can trigger a 1-2 day account review; never make them right before a trial sign-up.

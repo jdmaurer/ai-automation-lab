@@ -174,3 +174,29 @@ What I learned:
 Problems: the day started with a page and a half of directions at once, and I said so. Three days of mostly documents felt like I wasn't learning anything; tonight's design work fixed that. Paste-ready values kept showing up messages earlier instead of at the step, so that's now a rule.
 
 Stopping point: Rivertown Lead Intake closed at v2.7, committed and tagged. Next: Week 6, Microsoft access, and a Gate 1 score.
+
+
+## Tuesday 9.29.26 - Master calendar Week 6, Monday block: Microsoft access
+
+Planned: follow the calendar's rule to try Microsoft's free routes before paying for anything, to get an environment for the Power Automate and Copilot Studio weeks. What happened: it took most of the day, but it worked, at no cost.
+
+What I did:
+- Checked the free routes first. My personal (Gmail) Microsoft account doesn't qualify; the Developer Plan needs a work or school account. The Microsoft 365 Developer Program sandbox is now mostly for Visual Studio subscribers, which the calendar rules out. A Business Basic free trial would work, but it requires a card and converts to a paid plan when the trial month ends.
+- Then found I already had a work account: a Microsoft organization I set up in 2024 for Power BI Pro. I'm its only user and its admin. Nothing is being charged.
+- Renamed the organization to jdmaurer Labs and my display name to Josh Maurer, so every screenshot matches my GitHub name.
+- Signed up for the Power Apps Developer Plan. Passed on the first try: "Josh Maurer's Environment," with the developer banner, Tables (Dataverse), and Flows.
+- Made a separate Chrome profile, jdmaurer Labs (blue), with the work sign-in saved and bookmarks for Admin, Power Apps, Power Automate, Copilot Studio, and Entra.
+- Held off on the Copilot Studio trial until Week 7, so the trial clock covers the weeks I actually use it.
+- Wrote microsoft-environment-decision.md.
+
+What I learned:
+- Tenant, environment, license: the organization is the building, an environment is a room in it, and a license is the key to a room. The Developer Plan gave me a free room without a Microsoft 365 license.
+- Personal and work Microsoft accounts are two different systems. The admin center refused my personal account outright. A separate browser profile keeps the work identity from getting mixed up, and that's worth recommending to any client who juggles accounts.
+- Editing billing details can put the account under review for a day or two and pause purchases and trials. Do billing edits early, never right before a sign-up.
+- Some fields are locked and only Microsoft Support can change them. Check before promising a client a quick fix.
+- Names are cached. The admin center showed my old name until I signed out and back in, and the environment takes its name from the display name at sign-up, so rename first.
+- The developer environment shuts off after 30 days unused, and it has no Outlook or SharePoint. Week 6 data goes in Dataverse; Week 8 needs a decision.
+
+Problems: a non-learning day. Almost all of it was accounts and settings, not building. The browser kept picking my personal Microsoft account until I used a private window, then the new profile.
+
+Stopping point: Microsoft access done and documented. Next: Week 6 Tuesday block, the first Power Automate flow, plus the Gate 1 score.
