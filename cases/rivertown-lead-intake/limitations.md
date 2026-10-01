@@ -106,3 +106,15 @@ ambiguous path.
 - Reviewers see routed_by second_opinion but not what the second model said. Its answer is only in n8n's execution log, which depends on the execution-saving settings.
 - Cost and speed: a second AI call on leads about to be auto-routed. Average reply rose from 1.4 s (R6) to 1.9 s (R9). Qwen has its own free-tier allowance (8,000 tokens per minute, 200,000 per day).
 - H-04 and H-06 were held by every configuration tested; the labels or category definitions may need client input.
+
+
+## 2026-09-30 - Power Automate rebuild (power-automate/README.md)
+
+- First half of the n8n build only: no duplicate check, AI triage, routing, audit trail, or approvals yet. Re-sending a lead creates a second row.
+- Trigger set to "Anyone": the web address is the key. Anyone holding it can submit leads. Stronger options (tenant OAuth or a front service) are a before-real-client item.
+- Premium connectors (HTTP trigger, Response, Dataverse): free in the Developer Plan, a paid license for a real client.
+- The developer environment is disabled after 30 days unused, and allows 750 flow runs a month.
+- status, routed_to, duplicate_count exist but are not written yet.
+- The custom "status" column shares its name with Microsoft's built-in Status column.
+- Not yet tested: how the Email column type treats a malformed address when a flow writes it.
+- The 10 seed rows have no company_size (column recreated as text).

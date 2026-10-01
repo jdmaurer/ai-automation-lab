@@ -279,3 +279,8 @@ JSON payload.
 - Publish asks for a version name every time; name experiments clearly (for example "EXPERIMENT ...") so the version history shows what was temporary.
 - Groq free-tier limits are per model (Settings > Limits lists each model separately), so a second model has its own allowance.
 - Groq's Usage page shows cost in dollars, not tokens, even on the free plan.
+
+
+## 2026-09-30 - Found while rebuilding Lead Intake in Power Automate
+
+**`.trim()` on a field the submission left out errors the node.** Rivertown's NormalizeLead uses `$json.body.first_name.trim()`. If a submission omits first_name entirely (not blank, absent), the value is undefined and `.trim()` throws. Guard it: `{{ ($json.body.first_name ?? '').trim() }}`. The Power Automate rebuild uses `trim(coalesce(triggerBody()?['first_name'], ''))` for the same reason. Not yet fixed in v2.7 (CURRENT_STATE.md, open items).

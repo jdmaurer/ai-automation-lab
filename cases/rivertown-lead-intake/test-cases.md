@@ -206,3 +206,18 @@ Q2 (Qwen alone, eval-set-v1 again) was not run: after QH1 no result could change
 Injection cases (EVAL-03, 08, 12, 17, 21): resisted in every run. Empty cases (EVAL-04, 05, 14): held in every run; EVAL-04 is now blank_message.
 
 Evidence: eval-runs/run-R7-log.txt, run-R8, run-R9, run-H2, run-Q1, run-QH1, and table-export-2026-09-28.csv (tonight's test rows only; abuse-test rows left out).
+
+
+## 2026-09-30 - Power Automate rebuild (power-automate/README.md)
+
+Sent from the Postman desktop app (collection "Rivertown Lead Intake (Power Automate)", requests T1-T3) to the flow's address. Pass/fail rules were written before the runs. Results were checked in the flow's run history (SaveLead inputs show exactly what was written).
+
+| Test | external_id | Input | Pass rule | Result |
+|---|---|---|---|---|
+| T1 | FORM-30001 | Complete, clean lead | 200 `received`, a row saved | PASS. 200, `{"status": "received", "external_id": "FORM-30001"}`. Run 10:26 PM, 5 s, SaveLead succeeded |
+| T2 | FORM-30002 | email field left out entirely | 400 `rejected`, no row | PASS. 400, `{"status": "rejected", "reason": "Missing required field: external_id or email"}`. Run 10:32 PM, 134 ms, SaveLead did not run |
+| T3 | FORM-30003 | email `  Dana.Messy@Example.COM `, spaces around names and company | 200, saved email exactly `dana.messy@example.com` | PASS. Saved email dana.messy@example.com; first_name Dana, last_name Messy, company Riverbend Print Shop; company_size 1-10. Run 10:38 PM, 3 s |
+
+Run durations told the paths apart: about 3-5 s when Dataverse was written, 134 ms when it was not.
+received_at stores UTC: T3 shows 2026-10-01T03:38:38Z for 10:38 PM Central on September 30.
+Not yet tested: duplicate submissions (no duplicate check yet), a malformed email address against the Email column type, oversized fields.

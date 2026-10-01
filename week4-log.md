@@ -200,3 +200,36 @@ What I learned:
 Problems: a non-learning day. Almost all of it was accounts and settings, not building. The browser kept picking my personal Microsoft account until I used a private window, then the new profile.
 
 Stopping point: Microsoft access done and documented. Next: Week 6 Tuesday block, the first Power Automate flow, plus the Gate 1 score.
+
+
+## Wednesday 9.30.26 - Master calendar Week 6, Tuesday block: first Power Automate build
+
+Planned: score Gate 1, build three practice flows, rebuild the first half of Rivertown Lead Intake in Power Automate, and test it. What happened: all of it, over a long day with a long break in the middle.
+
+Gate 1, scored from the repo: not passed. HTTP, JSON, Git, workflow, security, and evidence pass. Authentication passed once I explained OAuth tonight. Reliability is conditional: the n8n build never stored a correlation ID or set a timeout. SQL and Python fail because I never did them; the early weeks turned into n8n work. SQL comes before the Dataverse data-model block. The revert drill closed the Git item but taught me nothing I didn't already understand, so I set a rule: ask what skill a gate item checks before designing the activity. Learning first, check marks second.
+
+What I built:
+- Three practice flows: one I start by hand, one on a clock (ran twice, then turned off to protect the 750-run monthly limit), and one that starts when a Contact row is added.
+- A solution, "Rivertown Lead Intake," with my own publisher and the prefix jdm.
+- The Lead table, imported from my n8n seed CSV. The import's AI guessed most column types well, but it also renamed the table and picked its own technical names.
+- The intake flow: receive, NormalizeLead, ValidateRequiredFields, SaveLead, and a 200 or 400 reply. Same contract as my n8n build: external_id and email required, cleaned before they're checked.
+- Three Postman tests, pass rules written first. All passed: a good lead saved, a lead with no email rejected without saving, and a messy email saved lowercase and trimmed.
+- An unmanaged solution export in the repo, searched for the flow's address before commit.
+
+What I learned:
+- A solution is a labeled box: the table and the flow export together as one file.
+- Check the environment name every time. Power Automate opened in the shared default environment, not my developer one.
+- A connection is OAuth: Power Automate gets its own limited code, like a separate garage keypad code. It never sees my password, and it can be cancelled without changing mine.
+- Change type and scope decide what starts a flow. Scope is whose rows count.
+- A formula only works as an fx tag. Typed text is used as typed, the same lesson as n8n's expression mode.
+- A trigger hands the flow a snapshot. A calculated field (Full Name) was out of date in it; build from the raw fields.
+- Dataverse locks a column's type once it exists, and won't delete a column while a form or view uses it. Find what depends on it, unhook it, then delete.
+- Text columns have a hidden length limit. message was capped at 100 characters, and my eval set has longer messages; those leads would have failed to save. Raised to 4,000.
+- Store what comes from outside as text, exactly as it arrived. Dropdowns only for values we control.
+- "Premium" means a paid license in production. Free in the developer plan, but a real cost line for a client.
+- With "Anyone," the flow's web address is the password. It lives in rivertown-eval, never in the repo.
+- Run history told the story without opening anything: 134 ms for the rejected lead (nothing saved) against 3-5 seconds for the saves.
+
+Problems: the directions kept starting from pages I wasn't on, named buttons without saying where they were, and put warnings after the steps instead of before. I lost time to a staged mistake, to Back needing two clicks, to the wrong environment, to changing company instead of company_size, and to Postman saving over a request. The fixes are written into the handoff protocol.
+
+Stopping point: Power Automate Lead Intake v1 built, tested (T1-T3), and exported. Next: SQL remediation, then the Week 6 Wednesday block (Dataverse data model and duplicate check).

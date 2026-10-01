@@ -86,6 +86,25 @@ If he asks for something simpler or slower, keep that register for the rest
 of the session, not just the next reply.
 
 
+### Directions on screen (added 2026-09-30)
+
+- Learning comes first. Before any gate item, ask what skill it checks and
+  build the activity around that skill. Cut activities that only produce a
+  check mark.
+- Start every direction from the page Josh is on. Name the exact place on
+  screen (which panel, which corner, the label on the button). Say where Back
+  lands.
+- Put cautions and warnings before the first step, never after.
+- Label steps by goal in plain words. No step titles that read like a button
+  name ("open the view" sent Josh looking for a button called View).
+- Teach a term before asking about it. Name the specific build when
+  referring to past work.
+- Ask for screenshots only when needed: decision points and unfamiliar
+  screens.
+- When a command reads the clipboard, give the order: paste the command, copy
+  the value, then press Enter.
+
+
 ### Debugging and architecture discipline
 
 When debugging, teach the **diagnostic path before the fix**. Start with the

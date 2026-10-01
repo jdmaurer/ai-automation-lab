@@ -150,6 +150,7 @@ See [limitations.md](limitations.md) and [threat-model.md](threat-model.md). In 
 | `limitations.md` | What it does not do, and why |
 | `runbook.md` | Operation, kill switch, rollback, failure modes |
 | `rivertown_leads_seed.csv` | Seed data for the v1 Data Table |
+| `power-automate/` | Power Automate rebuild (v1): solution export, flow diagram, n8n-to-Power Automate terms, field map |
 
 ## Planned next
 
