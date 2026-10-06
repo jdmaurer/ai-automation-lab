@@ -1,9 +1,9 @@
-# CURRENT STATE - updated 2026-09-30 - RESUME HERE
+# CURRENT STATE - updated 2026-10-06 - RESUME HERE
 
 Per AI_HANDOFF_PROTOCOL.md this file is overwritten each session. Earlier states are in git history and the weekly logs.
 
 ## Objective
-Master calendar Week 6, Tuesday block (Power Automate) is done: Rivertown Lead Intake rebuilt in Power Automate, tested, and exported. Gate 1 was scored and did not pass (SQL, Python, and the reliability item). Next: SQL remediation, then the Week 6 Wednesday block (Dataverse data model and duplicate check).
+SQL remediation is underway after the 2026-09-30 Gate 1 score. DataCamp Introduction to SQL and Intermediate SQL are complete. JOINs and relational-database work are not complete yet, so Gate 1 #7 has not been re-scored. Next: DataCamp Joining Data in SQL, then relational database basics and the small SQLite Rivertown schema with the UNIQUE (external_id, source) idempotency rule and the required duplicate and invalid-reference tests. The Power Automate build is unchanged.
 
 ## Gate 1 (scored 2026-09-30, from repo evidence)
 Result: NOT PASSED. 7 pass, 1 conditional, 2 fail. Pass needs 8 of 10 plus the four mandatory items (2, 3, 8, 9).
@@ -15,11 +15,11 @@ Result: NOT PASSED. 7 pass, 1 conditional, 2 fail. Pass needs 8 of 10 plus the f
 | 4 | Git and GitHub | Pass | Skills exercise (branch, PR, merge); tag; revert drill commits b7637e4 + 4d96295 |
 | 5 | Python | Fail | No Python work done |
 | 6 | Workflow | Pass | Rivertown n8n build |
-| 7 | SQL and state | Fail | No SQL work done; dedup was on external_id only, no relational schema |
+| 7 | SQL and state | Fail | As scored 9/30. Remediation now in progress: DataCamp Introduction to SQL and Intermediate SQL complete; JOINs, relational schema, idempotency constraint, and duplicate/invalid-reference tests still outstanding |
 | 8 | Reliability (mandatory) | Conditional | Retry, error path, review queue, no silent success exist. Missing: correlation ID stored on each row, explicit timeout |
 | 9 | Security (mandatory) | Pass | Full-history secret scan clean; threat-model.md |
 | 10 | Evidence | Pass | README, runbook, limitations, 37 frozen cases, tagged release |
-Remediation chosen: SQL first (before Dataverse); #8 in n8n (store the n8n execution ID on each row, set a timeout) alongside the SQL session; Python per the calendar contingency (8-10 hours, taken from Week 10 MCP time), date not yet set.
+Remediation chosen: SQL first (before Dataverse). The working SQL route is DataCamp rather than SQLBolt because the interactive exercise format fits Josh better; the master-calendar skill target is unchanged. After SQL, close Gate 1 #8 in n8n (store the n8n execution ID on each row and set a timeout). Python remains scheduled later per the calendar contingency.
 
 ## Where things stand
 - Microsoft: own organization joshmaurer.onmicrosoft.com ("jdmaurer Labs"), Power Apps Developer Plan environment "Josh Maurer's Environment" (750 flow runs/month; disabled after 30 days unused). See microsoft-environment-decision.md.
@@ -31,13 +31,14 @@ Remediation chosen: SQL first (before Dataverse); #8 in n8n (store the n8n execu
 - Practice flows (outside the solution): Toy 1 Manual (on), Toy 2 Scheduled (OFF; never leave it on), Toy 3 Automated on Contacts (confirm it is off). Connection "Dataverse - Josh Maurer (dev)". Contacts has one test row, Toy3 TestContact.
 - Rivertown n8n build: unchanged, closed at v2.7 (tag lead-intake-v0.2-evaluated), unpublished.
 - Copilot Studio trial: NOT started. Sign up on the first day of Week 7.
+- SQL remediation: DataCamp Introduction to SQL is complete (completed before the Intermediate course; exact certificate date was not independently verified at closeout). DataCamp Intermediate SQL was completed 2026-10-05. Practiced filtering, CASE, CTEs/subqueries, grouping, aggregates, HAVING, DISTINCT, and conditional aggregation. JOINs and relational database design are still ahead; DataCamp Joining Data in SQL is next.
 
 ## Next
-1. SQL remediation (Gate 1 #7). SQLBolt lessons, guided, then a small SQLite Rivertown schema with a UNIQUE (external_id, source) constraint and duplicate and invalid-reference tests. SQLBolt lessons are also the "change of pace" when Josh wants to keep going past a stopping point.
-2. Gate 1 #8 in n8n, same session if time: store the execution ID on each Data Table row (correlation ID), set a timeout. Design question first, then build.
-3. Week 6 Wednesday block: recreate the SQL data model in Dataverse. Duplicate check (alternate key or check-before-insert), WorkflowRun audit, a field map document (display vs technical names), rename the custom "status" column's display name to lead_status, and one test of how the Email column treats a malformed address.
-4. Week 6 Thursday (approvals, Try/Catch scopes) and Friday (same cases through n8n and Power Automate; comparison memo with licensing: Dataverse and the HTTP trigger are Premium).
-5. Schedule the Python remediation.
+1. DataCamp **Joining Data in SQL**. Keep the question-first teaching pattern: identify when tables must be combined, choose the join type and join columns, write the join, then verify the row result.
+2. Relational database basics and the Rivertown SQLite build: table/row/column, primary key, foreign key, nullability, CREATE/INSERT/UPDATE/DELETE, then Lead, Company, Source, WorkflowRun, and ReviewDecision with `UNIQUE (external_id, source)`. Run the duplicate and invalid-reference tests.
+3. Gate 1 #8 in n8n: store the execution ID on each Data Table row (correlation ID) and set an explicit timeout. Design question first, then build.
+4. Week 6 Wednesday block: recreate the SQL data model in Dataverse. Duplicate check (alternate key or check-before-insert), WorkflowRun audit, field map (display vs technical names), rename the custom "status" column's display name to lead_status, and test malformed-email behavior.
+5. Week 6 Thursday (approvals, Try/Catch scopes) and Friday (same cases through n8n and Power Automate; comparison memo with licensing). Schedule Python remediation after the SQL/Dataverse sequence.
 
 ## Open items - Power Automate build
 - status, routed_to, duplicate_count are not written yet (later blocks). Choice columns will need Microsoft's option numbers.
@@ -72,6 +73,7 @@ Remediation chosen: SQL first (before Dataverse); #8 in n8n (store the n8n execu
 - Label steps by goal in plain words; no step titles that read like button names.
 - Teach a term before asking about it. Name the specific build when referring to past work ("Rivertown n8n v2.7, the webhook one").
 - One question at a time, context first. Explain like a fifth grader when asked. Wait until Josh has finished; he types.
+- Coding exercises are answer-first: state the requirement, ask Josh what construct or small code piece he would use, and do not reveal the answer in the question or correction unless he is stuck. Once he gets it right, provide the exact copy/paste syntax if useful.
 - Choices: good, bad, a recommendation, a table when the difference isn't obvious.
 - One instruction at a time, purpose and expected result first. Paste-ready values in the same message as the step.
 - Screenshots only when needed (decision points, unfamiliar screens). Josh says when something doesn't match.
