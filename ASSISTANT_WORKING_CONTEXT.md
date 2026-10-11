@@ -64,7 +64,7 @@ This applies to SQL, Python, JavaScript, APIs, and other programming or technica
 
 Do not test Josh on invented table or column names. Supply the relevant schema names and business goal, then test whether he can choose the right SQL family and retrieve the syntax. Separate conceptual understanding from syntax recall. Do not reteach concepts that are already sound just because one command word was missed.
 
-Known SQL syntax retrieval gaps after the completed DataCamp sequence: ADD CONSTRAINT; SET NOT NULL; RENAME COLUMN; INSERT INTO ... VALUES; INSERT INTO ... SELECT DISTINCT ... FROM; UPDATE ... SET ... FROM ... WHERE; ALTER COLUMN ... TYPE; FOREIGN KEY ... REFERENCES; UNIQUE constraint syntax. JOIN logic, WHERE, GROUP BY, COUNT, LIMIT, primary/foreign-key concepts, referential integrity, and 1:N/N:M reasoning are stronger.
+SQL target is operational literacy, not memorization. Josh can read and understand most SQL. Exact syntax gaps exist, especially around constraints and row-changing commands, but only practice syntax the Rivertown build actually needs. Normal reference help is acceptable when the skill being tested is design, supervision, or behavior rather than recall. JOIN logic, WHERE, GROUP BY, COUNT, LIMIT, primary/foreign-key concepts, referential integrity, and 1:N/N:M reasoning are stronger.
 
 ## Strategy — decided
 
@@ -90,7 +90,7 @@ MCP comes later, after APIs, auth, evaluation, and Microsoft work.
 - DataCamp Intermediate SQL: complete as of 2026-10-05.
 - DataCamp Joining Data in SQL: complete as of 2026-10-06.
 - DataCamp Introduction to Relational Databases in SQL: complete as of 2026-10-10.
-- SQL coursework is complete, but applied SQL remediation is not. Before the Rivertown SQLite build, run one bounded whole-certificate retrieval diagnostic focused on syntax that did not stick. Then build the Rivertown schema with primary/foreign keys, nullability, CRUD, UNIQUE(external_id, source), and duplicate/invalid-reference tests.
+- SQL coursework is complete, but applied SQL remediation is not. Before the Rivertown SQLite build, run only a short Rivertown-focused readiness check. Do not run a whole-certificate syntax exam. Then build the Rivertown schema with primary/foreign keys, nullability, CRUD, UNIQUE(external_id, source), and duplicate/invalid-reference tests.
 
 ## Session close routine
 
