@@ -60,6 +60,12 @@ Teach for understanding, not copying or memorizing syntax.
 
 This applies to SQL, Python, JavaScript, APIs, and other programming or technical-code work.
 
+### SQL retrieval rule added 2026-10-11
+
+Do not test Josh on invented table or column names. Supply the relevant schema names and business goal, then test whether he can choose the right SQL family and retrieve the syntax. Separate conceptual understanding from syntax recall. Do not reteach concepts that are already sound just because one command word was missed.
+
+Known SQL syntax retrieval gaps after the completed DataCamp sequence: ADD CONSTRAINT; SET NOT NULL; RENAME COLUMN; INSERT INTO ... VALUES; INSERT INTO ... SELECT DISTINCT ... FROM; UPDATE ... SET ... FROM ... WHERE; ALTER COLUMN ... TYPE; FOREIGN KEY ... REFERENCES; UNIQUE constraint syntax. JOIN logic, WHERE, GROUP BY, COUNT, LIMIT, primary/foreign-key concepts, referential integrity, and 1:N/N:M reasoning are stronger.
+
 ## Strategy — decided
 
 The authoritative strategy document is the AI Implementation Consultant 12-Week Master Calendar plus its companion tracker. Do not re-litigate its strategy choices.
@@ -82,8 +88,9 @@ MCP comes later, after APIs, auth, evaluation, and Microsoft work.
 - N8N102: complete.
 - DataCamp Introduction to SQL: complete.
 - DataCamp Intermediate SQL: complete as of 2026-10-05.
-- DataCamp Joining Data in SQL: next.
-- Relational database work and the Rivertown SQLite build still remain before SQL remediation is complete.
+- DataCamp Joining Data in SQL: complete as of 2026-10-06.
+- DataCamp Introduction to Relational Databases in SQL: complete as of 2026-10-10.
+- SQL coursework is complete, but applied SQL remediation is not. Before the Rivertown SQLite build, run one bounded whole-certificate retrieval diagnostic focused on syntax that did not stick. Then build the Rivertown schema with primary/foreign keys, nullability, CRUD, UNIQUE(external_id, source), and duplicate/invalid-reference tests.
 
 ## Session close routine
 
