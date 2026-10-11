@@ -22,8 +22,8 @@ If git status shows local changes, stop before pulling and inspect them.
 
 Paste this:
 
-Read CURRENT_STATE.md, ASSISTANT_WORKING_CONTEXT.md, and SQL_RETRIEVAL_HANDOFF.md from the live GitHub repository first. Run the bounded SQL retrieval diagnostic in SQL_RETRIEVAL_HANDOFF.md one problem at a time. Give me the table and column names; test SQL structure and logic, not name memorization. Do not teach beyond the 12-week program's applied SQL requirement. After the diagnostic, give me the short remediation list before we start the Rivertown SQLite build.
+Read CURRENT_STATE.md, ASSISTANT_WORKING_CONTEXT.md, and SQL_RETRIEVAL_HANDOFF.md from the live GitHub repository first. Treat the SQL target as operational SQL literacy, not memorization. Do a short Rivertown-focused readiness check only, using at most 4-6 tasks and giving me the table and column names. Test whether I can choose the right SQL operation, understand the relational model, supervise the syntax, and predict duplicate/foreign-key behavior. Do not run a whole-certificate syntax exam. Then move into the Rivertown SQLite build.
 
-## After the diagnostic
+## After the readiness check
 
 Proceed to the Rivertown SQLite schema and the duplicate plus invalid-reference tests described in CURRENT_STATE.md.
