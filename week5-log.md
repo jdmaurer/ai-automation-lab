@@ -114,3 +114,16 @@ Covered basic Python expressions, variable assignments, lists, functions, method
 Teaching lesson: I can complete exercises rapidly when the task is clear and I am allowed to try the whole code myself. Long explanations, supplying code before I attempt it, failing to explicitly say when to create a variable, and treating intentionally hidden instructions as knowledge gaps waste time. Present exact requirements in plain English, one task at a time, then diagnose only real errors. During practice, I may deliberately reconstruct the full script rather than fill in provided blanks.
 
 Next: SQL readiness check from SQL_RETRIEVAL_HANDOFF.md, then small Rivertown SQLite build with UNIQUE(external_id, source), duplicate and invalid-reference tests, followed later by short mixed SQL/Python retrieval practice. No Intermediate Python certificate yet.
+
+
+## Thursday 10.15.26 - Rivertown SQLite schema built; duplicate and invalid-reference tests passed
+
+Installed the SQLite command-line tool (winget, version 3.53.4) and built the Rivertown database: Source, Company, Lead, WorkflowRun, and ReviewDecision, with primary keys, foreign keys, required columns, and UNIQUE (external_id, source_id). Claude wrote the SQL; I reviewed, approved the pass/fail rules before each test, ran everything, and judged the results.
+
+Duplicate test passed: Dana resending FORM-10231 from the website form was refused; Pat's FORM-10231 from the event form was accepted, because the pair is different. Invalid-reference test passed: a lead pointing to source_id 9, which doesn't exist, was refused with foreign keys on. Gate 1 #7 re-scored to Pass. Evidence is in cases/rivertown-lead-intake/sqlite/README.md.
+
+Independent: installing and checking SQLite, the UNIQUE logic (Pat gets in because the source differs), judging both tests, and spotting that a broken form reusing a number for a different person would be blocked too (already threat-model F2). With help: what each column stood for (lead_id vs source_id) and reading the terminal output the first time.
+
+Teaching lesson: the session started with questions before anything was taught, and about 40 minutes went to untangling labels and shorthand, not SQL. I understood what UNIQUE does; I didn't understand the why or the variables. What worked: the real-life story (when would the same form number show up twice?), one rule stated in one line, the exact cell where an error happens, and a reading guide before running a test. Rules added to ASSISTANT_WORKING_CONTEXT.md and CURRENT_STATE.md.
+
+Next: close Gate 1 #8 in n8n (execution ID on each row, explicit timeout).

@@ -263,3 +263,18 @@ exported workflow JSON was checked for the secret before it was staged.
 - RespondSuccess echoes external_id from SaveLead's result (the saved row) rather than the trigger: the receipt reflects what was saved.
 - The Dataverse connection reference was added to the solution at export. It holds no key; an importing environment points it at its own connection.
 - Exported unmanaged (editable, for source control). Managed is for handing finished work to a client's live environment.
+
+
+## 2026-10-15 - SQLite relational model (Gate 1 #7)
+
+- Five tables: Source, Company, Lead, WorkflowRun, ReviewDecision. Lead is the center; it requires a Source and optionally points to a Company (company is optional in the data contract).
+- Duplicate key is `UNIQUE (external_id, source_id)`, not external_id alone. Each form tool numbers its own submissions, so the same number from a different form is a different lead. The same number from the same form is a resend and is refused.
+- lead_id (automatic primary key) is never used to detect duplicates: every row gets a fresh number, so it cannot recognize a resend. Same reasoning as D11.
+- Known gap carried forward: the UNIQUE rule cannot tell a resend from a broken form reusing a number for a different person; both are refused. Handling belongs in the workflow (threat-model F2), not the schema.
+- WorkflowRun.lead_id is optional because a rejected submission (400) produces a run but no lead. execution_id is unique, ready for the Gate 1 #8 correlation ID.
+- ReviewDecision.lead_id is required: a decision without a lead means nothing.
+- Columns follow the data contract and are stored as text, matching the 2026-09-30 rule (outside input stored exactly as it arrived). No CHECK lists for enum values in v1, to keep the model lean; Dataverse choice columns can add them later where Rivertown controls the values.
+- AI audit fields (ai_category, ai_confidence, ai_rationale, ai_other_categories) sit on WorkflowRun, because they describe what one run's model said, not the lead itself.
+- No ON DELETE CASCADE. Deleting a lead that has runs or review decisions is refused, which protects the audit trail.
+- Every SQL file starts with `PRAGMA foreign_keys = ON`: SQLite does not enforce foreign keys unless each connection turns them on.
+- The database file (rivertown.db) is not committed; the scripts rebuild it.

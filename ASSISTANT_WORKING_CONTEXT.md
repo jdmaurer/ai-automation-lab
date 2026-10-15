@@ -74,6 +74,19 @@ SQL questions must show every table involved, labeled by name, with primary and 
 
 SQL and Python checks show finished code and ask what it does, whether it's correct, what's wrong with it, or what will happen when it runs. Do not ask Josh to write code from a blank or fill in missing lines unless he asks to practice writing. Writing tasks test mastery, which is beyond the program's target.
 
+### Teach before testing (added 2026-10-15)
+
+The 2026-10-15 SQLite build lost about 40 minutes because questions came before teaching. Rules:
+- Before asking anything, walk through the real-life purpose (when would this happen?) and what each column or value means, in plain words.
+- Never quiz on something not yet walked through step by step. A wrong answer to an untaught question is a teaching gap, not a knowledge gap.
+- Before a test runs, give a reading guide for its output: which line is a heading, where an error appears, what no output means.
+- Copy boxes hold only commands. Expected output goes in plain text (Josh copied an expected prompt line from a box and ran it).
+- Use exact column names ("source_id 9", not "form 9"). Write out primary key and foreign key; do not assume PK/FK abbreviations are read.
+- Avoid sample data where different ID columns carry the same values (lead_id 1, 2 next to source_id 1, 2 read as one thing).
+- Do not put explanatory notes inside a data table (a "Story" column was read as a real column).
+- Park side topics (e.g., a later workflow fix) instead of raising them mid-explanation; each new idea mid-confusion reads as "30 different things."
+- Josh reasons from "why." When he questions the logic, answer the why directly and briefly; he often reaches the right design point himself (he independently found the reused-ID gap, threat-model F2).
+
 ## Strategy — decided
 
 The authoritative strategy document is the AI Implementation Consultant 12-Week Master Calendar plus its companion tracker. Do not re-litigate its strategy choices.
@@ -98,7 +111,7 @@ MCP comes later, after APIs, auth, evaluation, and Microsoft work.
 - DataCamp Intermediate SQL: complete as of 2026-10-05.
 - DataCamp Joining Data in SQL: complete as of 2026-10-06.
 - DataCamp Introduction to Relational Databases in SQL: complete as of 2026-10-10.
-- SQL coursework is complete, but applied SQL remediation is not. Before the Rivertown SQLite build, run only a short Rivertown-focused readiness check. Do not run a whole-certificate syntax exam. Then build the Rivertown schema with primary/foreign keys, nullability, CRUD, UNIQUE(external_id, source), and duplicate/invalid-reference tests.
+- SQL coursework is complete, and the applied Rivertown SQLite build and tests are done (2026-10-15; Gate 1 #7 re-scored Pass). Evidence: cases/rivertown-lead-intake/sqlite/README.md.
 
 ## Session close routine
 
