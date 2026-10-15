@@ -70,6 +70,10 @@ SQL target is operational literacy, not memorization. Josh can read and understa
 
 SQL questions must show every table involved, labeled by name, with primary and foreign keys marked; show the exact row being inserted; and state the goal in one sentence. Define any term (e.g., "enforcing") before asking about it.
 
+### Checks match the read-and-supervise target (added 2026-10-15)
+
+SQL and Python checks show finished code and ask what it does, whether it's correct, what's wrong with it, or what will happen when it runs. Do not ask Josh to write code from a blank or fill in missing lines unless he asks to practice writing. Writing tasks test mastery, which is beyond the program's target.
+
 ## Strategy — decided
 
 The authoritative strategy document is the AI Implementation Consultant 12-Week Master Calendar plus its companion tracker. Do not re-litigate its strategy choices.

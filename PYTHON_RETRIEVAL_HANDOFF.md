@@ -30,7 +30,10 @@ The SQL companion record already exists at `SQL_RETRIEVAL_HANDOFF.md`. Do not re
 
 ## How to run future Python retrieval practice
 
-Keep it applied and short. Offer one complete mini-business requirement at a time (Rivertown synthetic lead-response data is appropriate), let Josh construct the code rather than fill in DataCamp's blanks. Test both previously provided scaffolding and independently authored lines when he requests the whole script.
+**Checks match the read-and-supervise target (added 2026-10-15).**
+SQL and Python checks show finished code and ask what it does, whether it's correct, what's wrong with it, or what will happen when it runs. Do not ask Josh to write code from a blank or fill in missing lines unless he asks to practice writing. Writing tasks test mastery, which is beyond the program's target.
+
+Keep it applied and short. Offer one complete mini-business requirement at a time (Rivertown synthetic lead-response data is appropriate), let Josh construct the code rather than fill in DataCamp's blanks (only when he asks to practice writing; see the rule above). Test both previously provided scaffolding and independently authored lines when he requests the whole script.
 
 For **each step**, explicitly state in simple English:
 - the business purpose and expected observable result;
