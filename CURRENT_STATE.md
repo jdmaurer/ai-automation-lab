@@ -1,8 +1,10 @@
-# CURRENT STATE - updated 2026-10-11 - RESUME HERE
+# CURRENT STATE - updated 2026-10-14 - RESUME HERE
 
 Per AI_HANDOFF_PROTOCOL.md this file is overwritten each session. Earlier states are in git history and the weekly logs.
 
 ## Objective
+2026-10-14 study update: DataCamp Introduction to Python certificate is complete. Python introductory skills and retrieval gaps are recorded in `PYTHON_RETRIEVAL_HANDOFF.md`. Decision: pause before Intermediate Python, return to SQL readiness and Rivertown SQLite applied tests. Later integrate small SQL + Python recall checks using both `SQL_RETRIEVAL_HANDOFF.md` and `PYTHON_RETRIEVAL_HANDOFF.md`; do not re-run lengthy whole-certificate diagnostics. Gate 1 Python criterion was scored BEFORE this training and has not yet been re-scored from applied evidence.
+
 SQL remediation is still the active priority after the 2026-09-30 Gate 1 score. The coursework portion is now complete: DataCamp Introduction to SQL, Intermediate SQL, Joining Data in SQL, and Introduction to Relational Databases in SQL are all finished. Gate 1 #7 is still not ready to re-score because the applied Rivertown SQLite schema, the UNIQUE (external_id, source) idempotency rule, and the required duplicate and invalid-reference tests have not been built yet. Before that build, run a short Rivertown-focused SQL readiness check in a fresh chat. The target is operational SQL literacy, not memorizing the DataCamp certificate: understand the model, choose the right SQL operation, read/supervise the syntax, and predict duplicate/foreign-key behavior. The Power Automate build is unchanged.
 
 ## Gate 1 (scored 2026-09-30, from repo evidence)
