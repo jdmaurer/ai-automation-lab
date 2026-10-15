@@ -1,4 +1,4 @@
-# CURRENT STATE - updated 2026-10-14 - RESUME HERE
+# CURRENT STATE - updated 2026-10-15 - RESUME HERE
 
 Per AI_HANDOFF_PROTOCOL.md this file is overwritten each session. Earlier states are in git history and the weekly logs.
 
@@ -36,7 +36,7 @@ Remediation chosen: SQL first (before Dataverse). The working SQL route used Dat
 - SQL remediation coursework: DataCamp Introduction to SQL complete; Intermediate SQL completed 2026-10-05; Joining Data in SQL completed 2026-10-06; Introduction to Relational Databases in SQL completed 2026-10-10. JOIN reasoning and relational concepts are substantially stronger than exact syntax retrieval. Concepts that held: primary vs foreign keys, 1:N and N:M relationships, referential integrity, CASCADE behavior, UNIQUE vs DISTINCT, JOIN logic, filtering/grouping. Syntax that needs delayed-recall practice includes ADD CONSTRAINT, SET NOT NULL, RENAME COLUMN, INSERT INTO ... VALUES, INSERT INTO ... SELECT DISTINCT ... FROM, UPDATE ... SET ... FROM ... WHERE, ALTER COLUMN ... TYPE, and FOREIGN KEY ... REFERENCES. Do not quiz table/column names; provide the names and test the SQL pattern and logic.
 
 ## Next
-1. Start a fresh chat with a short **Rivertown-focused SQL readiness check**. The goal is operational SQL literacy, not blank-screen syntax memorization. Give the schema names, test the relational reasoning and choice of SQL operation, allow normal reference help for exact syntax, and stop after 4-6 tasks or once readiness is clear.
+1. SQL readiness check done 2026-10-15: ready for the SQLite build. Practice in build: table-level UNIQUE (a, b) and quoting text values.
 2. Build the small Rivertown SQLite schema: Lead, Company, Source, WorkflowRun, and ReviewDecision; primary keys, foreign keys, nullability, CRUD, and `UNIQUE (external_id, source)`. Run the duplicate and invalid-reference tests. This is the applied proof for Gate 1 #7.
 3. Re-score Gate 1 #7 from the applied SQLite evidence. Then close Gate 1 #8 in n8n: store the execution ID on each Data Table row (correlation ID) and set an explicit timeout. Design question first, then build.
 4. Recreate the SQL data model in Dataverse. Duplicate check (alternate key or check-before-insert), WorkflowRun audit, field map (display vs technical names), rename the custom "status" column's display name to lead_status, and test malformed-email behavior.

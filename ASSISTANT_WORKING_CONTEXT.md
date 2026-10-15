@@ -66,6 +66,10 @@ Do not test Josh on invented table or column names. Supply the relevant schema n
 
 SQL target is operational literacy, not memorization. Josh can read and understand most SQL. Exact syntax gaps exist, especially around constraints and row-changing commands, but only practice syntax the Rivertown build actually needs. Normal reference help is acceptable when the skill being tested is design, supervision, or behavior rather than recall. JOIN logic, WHERE, GROUP BY, COUNT, LIMIT, primary/foreign-key concepts, referential integrity, and 1:N/N:M reasoning are stronger.
 
+### SQL question format rule added 2026-10-15
+
+SQL questions must show every table involved, labeled by name, with primary and foreign keys marked; show the exact row being inserted; and state the goal in one sentence. Define any term (e.g., "enforcing") before asking about it.
+
 ## Strategy — decided
 
 The authoritative strategy document is the AI Implementation Consultant 12-Week Master Calendar plus its companion tracker. Do not re-litigate its strategy choices.
