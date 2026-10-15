@@ -104,3 +104,13 @@ Decision for next session: do not start another SQL course and do not expand int
 
 Stopping point: all planned DataCamp SQL coursework is complete. Next: whole-certificate retrieval diagnostic, then the applied Rivertown SQLite build.
 
+
+## Wednesday 10.14.26 - Introduction to Python certificate completed; return to SQL
+
+Finished DataCamp Introduction to Python. The personal gold-medal/podium motivation helped get the certificate finished, but the next project priority is not another certificate. Pause before Intermediate Python and return to Rivertown SQL readiness and the applied SQLite/idempotency build.
+
+Covered basic Python expressions, variable assignments, lists, functions, methods, imports, NumPy arrays, 1D/2D selection, arithmetic, average, median, standard deviation, and correlation. On the final exercise, mean/median/standard deviation were completed quickly. Correlation initially produced an unhelpful huge matrix because np.corrcoef interpreted rows as variables; corrected by comparing height and weight columns separately. The wrong-looking output was a useful diagnostic clue. Earlier conversion exercise exposed a function-call parentheses versus list-brackets retrieval gap. Full details and future quiz procedure are in PYTHON_RETRIEVAL_HANDOFF.md.
+
+Teaching lesson: I can complete exercises rapidly when the task is clear and I am allowed to try the whole code myself. Long explanations, supplying code before I attempt it, failing to explicitly say when to create a variable, and treating intentionally hidden instructions as knowledge gaps waste time. Present exact requirements in plain English, one task at a time, then diagnose only real errors. During practice, I may deliberately reconstruct the full script rather than fill in provided blanks.
+
+Next: SQL readiness check from SQL_RETRIEVAL_HANDOFF.md, then small Rivertown SQLite build with UNIQUE(external_id, source), duplicate and invalid-reference tests, followed later by short mixed SQL/Python retrieval practice. No Intermediate Python certificate yet.
