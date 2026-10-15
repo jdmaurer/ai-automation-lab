@@ -1,33 +1,26 @@
 # NEXT SESSION START
 
-Updated: 2026-10-14
+Updated: 2026-10-15
 
 ## Before local repo work
 
-Because ChatGPT updated the GitHub repository remotely, fast-forward the local clone before editing anything locally.
+GitHub was updated remotely on 2026-10-15 (readiness-check result, question-format rule, read-and-supervise rule). Fast-forward the local clone before editing anything locally.
 
 ```powershell
 cd "$HOME\ai-automation-lab"
-git status
 git pull --ff-only
 ```
 
-Expected result:
-- git status should not show uncommitted work that would be overwritten
-- git pull should bring down the 2026-10-11 closeout commits, including SQL_RETRIEVAL_HANDOFF.md
+Expected result: "Fast-forward" (or "Already up to date"). If git reports local changes or an error, stop and inspect before doing anything else.
 
-If git status shows local changes, stop before pulling and inspect them.
-
-## Start the fresh SQL chat
+## Start the Rivertown SQLite build chat
 
 Paste this:
 
-Read CURRENT_STATE.md, ASSISTANT_WORKING_CONTEXT.md, SQL_RETRIEVAL_HANDOFF.md, and PYTHON_RETRIEVAL_HANDOFF.md from the live GitHub repository first. Python Intro certificate was completed on 2026-10-14, but SQL and the Rivertown SQLite build come next. Treat the SQL target as operational SQL literacy, not memorization. Do a short Rivertown-focused readiness check only, using at most 4-6 tasks and giving me the table and column names. Test whether I can choose the right SQL operation, understand the relational model, supervise the syntax, and predict duplicate/foreign-key behavior. Do not run a whole-certificate syntax exam. Then move into the Rivertown SQLite build.
+Read CURRENT_STATE.md and ASSISTANT_WORKING_CONTEXT.md from the live GitHub repo first, then cases/rivertown-lead-intake/README.md (data contract). The SQL readiness check is done (2026-10-15): ready for the build. Today we build the Rivertown SQLite schema: Lead, Company, Source, WorkflowRun, ReviewDecision, with primary keys, foreign keys, nullability, and UNIQUE (external_id, source_id). Then run the duplicate test and the invalid-reference test, with foreign-key enforcing turned on, and write pass/fail rules before each test runs. This is the applied evidence for Gate 1 #7.
 
-## After SQL applied tests
+How to run it: Claude Code (or you) writes the SQL; my job is to review it, approve it, run it, and judge the results, which is the read-and-supervise target. Don't ask me to write code from a blank or fill in blanks unless I ask to practice writing. Every question shows every table involved, labeled by name, with primary and foreign keys marked, the exact row going in, and the goal in one sentence. Define any term before asking about it. State purpose and expected result before each step, one step at a time. Track what I do independently vs. with help. Don't start Intermediate Python.
 
-Use the Python handoff to give a short mixed SQL and Python retention check, tracking independent recall vs assisted work. Do not start Intermediate Python automatically.
+## After the build
 
-## After the readiness check
-
-Proceed to the Rivertown SQLite schema and the duplicate plus invalid-reference tests described in CURRENT_STATE.md.
+Re-score Gate 1 #7 from the SQLite evidence, then close Gate 1 #8 in n8n (correlation ID on each row, explicit timeout). A short mixed SQL + Python retention check comes later, in review format.
