@@ -1,4 +1,4 @@
-# CURRENT STATE - updated 2026-10-15 (afternoon) - RESUME HERE
+# CURRENT STATE - updated 2026-10-15 (evening) - RESUME HERE
 
 Per AI_HANDOFF_PROTOCOL.md this file is overwritten each session. Earlier states are in git history and the weekly logs.
 
@@ -10,13 +10,42 @@ What changed in the n8n build (version names "v2.8 correlation ID" and "v2.8 tim
 - Workflow setting Timeout Workflow on, 60 seconds (worst normal run about 30 s, from AI retries). Timezone set to America/Chicago.
 - Tests CID-A to CID-E and TO-1 all passed with rules written first (test-cases.md). Evidence runs #351-#356.
 
-## Gate rules (agreed 2026-10-15)
-Gate 1 stopped building for two weeks (9/30 build, then 10/1-10/14 coursework only). That is not what a gate is for. From now on:
-- A gate is a snapshot, never a stop. Score it, then keep building.
-- Each miss gets three things written here: the upcoming build that closes it, the evidence that will prove it, and where it is tracked.
+## Gate rules (agreed 2026-10-15; extended the same evening)
+Gate 1 stopped building for two weeks (9/30 build, then 10/1-10/14 coursework only). That is not what a gate is for. A gate is a skill check: did we miss or skip something? It never stops the build. At each gate:
+1. Score it: what was missed or skipped.
+2. Decide each miss: fold it into a named later build (with the evidence that will prove it, tracked here), or drop it with a one-line reason if it adds no value. A skill that keeps coming back in builds can't be dropped twice; a second miss is a signal.
+3. Update the sell list (README, "What I can deliver now").
+4. Tell marketing: the sell list sets what the marketing track's videos and pages may claim.
 - One exception: safety. If a miss would make the next build leak secrets or real data, fix it first, inside the build, within a day.
-- Skill gaps are learned inside the build that needs them: a short time-boxed burst (about 30 minutes), at the level the build needs (read and supervise; AI writes the code), and any check uses the same format the training used.
+- Skills are learned inside the build that needs them, on Josh's own data (Rivertown files, his own tables), at the moment the build needs them: a short burst (about 30 minutes), at the level the build needs (read and supervise; AI writes the code). Any check uses the same format and the same data the teaching used. Why: four SQL courses taught the concepts, but practice on someone else's data didn't carry over to his own workflow (2026-10-15).
+- No certificates or daily drills that aren't tied to a build. When Claude usage runs out, Claude writes a Gemini prompt for the build's skill ("teach me X so I can do Y, using this file") to use with Google's tutor gem and the same Rivertown file.
 - Always moving forward: no multi-week course detours to pass a gate.
+
+## Decisions 2026-10-15 (evening review of the AI agency forum post and Blazing Zebra guides)
+Source material: an accelerator's Q3 lessons from ~1,150 AI agencies plus member discussion, and the Blazing Zebra guides (on Josh's desktop). Read as a list of problems clients pay to remove, not as methods to copy.
+1. Gates stay as a skill check (rules above).
+2. **Approval map** in the Power Automate approvals build: a table of every action the workflow could take and, for each, "runs alone," "a person approves first," or "a person does it." Write `approval-map.md` for Rivertown (n8n and Power Automate) during that build; later cases get one as part of their permission work. It is evidence for the existing "approval gates" and "human oversight" rubric items; no new points. For tools a client already pays for (Copilot, Gemini, Claude connectors), each row maps to a setting in that tool.
+3. **Demo at the end of every build:** a 2-minute screen recording (no camera): the problem, the build working, what a person still approves. Voice or captions added later in the marketing track; AI voice only as a backup, disclosed. About 30-45 minutes per build. Keep it to the business problem, not a technical tour. Purpose: something to show on the website before meeting people.
+4. **Adoption plan** in the Week 8 handoff: add a "when adoption stalls" section and the case where the client already pays for Copilot. Usage tracking is designed, not tested (no Copilot license); say so in limitations.md.
+5. **Client-platform step:** add "What does the client already run on?" to the Week 11 discovery guide. Google Workspace/Gemini goes in the Week 12 decision tree as a labeled desk-research branch (Gemini needs a Workspace admin to switch it on, the same admin question as Microsoft). No Gemini block.
+6. Sell list lives in README.md ("What I can deliver now"); the marketing track points to it.
+7. The diagnostic, competitor watch, and offer path are marketing-track decisions (marketing repo). The intensive's Week 11 discovery kit is where the diagnostic gets practiced on Rivertown.
+
+## Problems clients pay to remove (forum + Blazing Zebra)
+Status against this plan. Build demos for the problems that come up most, not all of them.
+| Problem | Status |
+|---|---|
+| Leads go cold; slow follow-up | Built (Rivertown lead intake) |
+| Drowning in email | Planned (Week 8 inbox triage) |
+| Knowledge lives in one person's head | Planned (Week 10 SOP lookup) |
+| Messy process nobody fixes before automating | Planned (Week 11 discovery; the paid diagnostic) |
+| Content takes forever | Marketing track, Phase 4 |
+| Chasing people for money or missing documents | Gap (in both sources; "a person approves every one" on the approval map) |
+| Building the same report every week | Gap (marketing stats report covers Josh's own) |
+| Meeting notes that never become tasks | Gap (one of the calendar's five Rivertown cases; no week assigned) |
+| Reminders and follow-ups that slip | Gap (in both sources) |
+| Not knowing what customers think | Gap (Blazing Zebra only) |
+After week 12: competitor watch (marketing decision), then the gaps above, chosen by which ones prospects bring up.
 
 ## Gate 1 (scored 2026-09-30; re-scored 2026-10-15)
 Result: **PASSED**. 9 pass, 1 fail. Pass needs 8 of 10 plus the four mandatory items (2, 3, 8, 9).
@@ -57,9 +86,10 @@ Carried forward from Gate 1 (close inside these builds, not separately):
 
 ## Next
 1. Recreate the SQL data model in Dataverse (the reason the SQL was learned). The SQLite schema in cases/rivertown-lead-intake/sqlite/schema.sql is the blueprint: UNIQUE (external_id, source_id) becomes an alternate key; Lead and WorkflowRun become tables; WorkflowRun.execution_id holds the run ID as n8n now does. Includes an UPDATE (resend bumps duplicate_count), closing the Gate 1 #7 note. Also: field map (display vs technical names), rename the custom "status" display name to lead_status, malformed-email test.
-2. Remaining Power Automate blocks: approvals, Try/Catch scopes (closes the #8 alert note), same-case comparison with n8n including licensing.
-3. Python #5 folded into a build (see carried-forward table), in a short burst, read-and-supervise level. Do not start Intermediate Python as a separate track.
-4. Later: a short mixed SQL + Python retention check in review format (show finished code, ask what it does).
+2. Remaining Power Automate blocks: approvals (write approval-map.md here, decision 2), Try/Catch scopes (closes the #8 alert note), same-case comparison with n8n including licensing. End with the 2-minute screen recording (decision 3).
+3. Python #5 folded into a build (see carried-forward table): Claude teaches the few pieces the script needs on Josh's own Rivertown export, AI writes it, Josh explains it back. Do not start Intermediate Python as a separate track.
+4. Add the "What I can deliver now" section to README.md (decision 6).
+5. Later: a short mixed SQL + Python retention check in review format (show finished code, ask what it does), on Rivertown data.
 
 ## Open items - Power Automate build
 - status, routed_to, duplicate_count are not written yet (later blocks). Choice columns will need Microsoft's option numbers.
@@ -111,4 +141,5 @@ Carried forward from Gate 1 (close inside these builds, not separately):
 - Keep the design lean; time-box and say when something isn't teaching anything.
 - Show it in the tool, not on the page (2026-10-15): when a concept lives in n8n, send Josh to the screen where he can see it (Executions, the canvas, the table) instead of describing it. Keep each message to a short screen: one picture or small table, one step or one question. A two- or three-page message before a question is the failure mode.
 - Josh came back to this build after two weeks away; after a gap, re-orient with the real screen first, and explain like a fifth grader when he asks.
+- Planning talks (agreed 2026-10-15): baby steps, one item at a time, one short screen per message. For each item give thoughts, then pushback, then one simple question, and end with a bold KEY MESSAGE. Keep a numbered "Approved so far" list in the chat and save it at closeout. When he asks for the fifth-grader version, use an everyday analogy (the diagnostic is a doctor's checkup) and give both the good and the watch-outs.
 - Microsoft work only in the "jdmaurer Labs" profile. No billing edits right before a trial sign-up.

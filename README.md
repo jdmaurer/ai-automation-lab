@@ -13,13 +13,30 @@ prototyping.
 
 | Case | What it is | Status |
 |---|---|---|
-| [`cases/rivertown-lead-intake/`](cases/rivertown-lead-intake/) | Webhook-driven lead intake, deduplication, and routing for a synthetic 30-person B2B consulting firm | Built and tested; live testing pending |
+| [`cases/rivertown-lead-intake/`](cases/rivertown-lead-intake/) | Webhook-driven lead intake, deduplication, and routing for a synthetic 30-person B2B consulting firm | Built and tested; Power Automate rebuild in progress |
+| [`cases/eval-summary-drafter/`](cases/eval-summary-drafter/) | Drafts one-page client summaries from AI test results; a person reviews every draft | Built and tested (v9) |
 
 Each case folder holds the workflow export, seed data, test cases with
 results, a decision log with reasoning, a limitations statement, and a
 runbook.
 
 All cases use synthetic data only.
+
+---
+
+## What I can deliver now
+
+<!-- DRAFT 2026-10-15: Josh to confirm each line before it goes public. Updated at each gate and after each finished build; the marketing track's claims follow this list. Sources: the master calendar's responsible-monetization table and the claim rules. -->
+
+| Offer | Status | Backed by |
+|---|---|---|
+| AI literacy workshops, prompting, and executive briefings | Available | Teaching and strategy background |
+| Workflow-opportunity review: find the repeat work, map the process, rank what to try first | Available | Strategy and management background |
+| Paid diagnostic (the Team AI Map plus cost, outside interviews, process fixes, and a recommendation) | Once the form exists and has had one free test run | Week 11 discovery work on Rivertown |
+| Prototype or low-risk pilot of a simple workflow, on test data, not for production | Available (Gate 1 passed 2026-10-15) | Rivertown lead intake: tests, runbook, threat model |
+| Approval workflows in Power Automate | After the approvals build | Rivertown Power Automate build |
+
+Not offered: production AI systems, enterprise governance, autonomous agents, or Microsoft tenant administration.
 
 ---
 
