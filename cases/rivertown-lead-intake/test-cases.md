@@ -221,3 +221,20 @@ Sent from the Postman desktop app (collection "Rivertown Lead Intake (Power Auto
 Run durations told the paths apart: about 3-5 s when Dataverse was written, 134 ms when it was not.
 received_at stores UTC: T3 shows 2026-10-01T03:38:38Z for 10:38 PM Central on September 30.
 Not yet tested: duplicate submissions (no duplicate check yet), a malformed email address against the Email column type, oversized fields.
+
+
+## 2026-10-15 - v2.8 correlation ID and timeout (Gate 1 #8)
+
+Sent from the Postman desktop app (collection "Rivertown Lead Intake v2", new requests CID-A to CID-E and TO-1) to http://localhost:5678/webhook/rivertown/lead-intake-v2. Pass/fail rules approved by Josh before each run. Checked in Executions (ID# on the run) and the Data Table (search by external_id, scroll to execution_id). Josh graded every test.
+
+| Test | external_id | Input | Pass rule | Result |
+|---|---|---|---|---|
+| CID-A | FORM-20117 | Consulting lead (rules path) | 200 received; new row; execution_id = run ID# | PASS. Run #351, InsertRoutedLead, execution_id 351, 407 ms |
+| CID-B | FORM-20117 | Same body resent | 200 duplicate; still one row; duplicate_count 1; execution_id still 351 | PASS. Run #352 (134 ms), duplicate_count 0 to 1, execution_id stayed 351 |
+| CID-C | FORM-20118 | Other, "workshop or process" message | New row; execution_id = run ID# | PASS. Run #353, InsertForReview, routed_by rules (Unclear, alternatives Training, Consulting), execution_id 353 |
+| CID-D | FORM-20119 | Other, empty message | New row; execution_id = run ID# | PASS. Run #354, InsertBlankForReview, routed_by blank_message, execution_id 354 |
+| CID-E | FORM-20120 | Other, hands-on Excel training workshop | New row; execution_id = run ID# | PASS. Run #355, SecondOpinionGate true, InsertAIRoutedLead, routed_by ai, Training/high, execution_id 355 |
+| TO-1 | FORM-20121 | Other, clear training request; timeout temporarily 1 s | Run not Succeeded; caller not 200 received; no row | PASS. Run #356 Canceled in 1.036 s inside ClassifyMessage; Postman 500 "The execution was cancelled because it timed out"; no row (table stayed at 327) |
+
+All four Insert nodes proven by real runs. Timeout restored to 60 s after TO-1 and confirmed by reopening Settings.
+Finding: the 500 body includes a stack trace with the local username and install path (threat-model F1).

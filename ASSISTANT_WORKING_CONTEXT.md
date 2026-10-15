@@ -87,6 +87,20 @@ The 2026-10-15 SQLite build lost about 40 minutes because questions came before 
 - Park side topics (e.g., a later workflow fix) instead of raising them mid-explanation; each new idea mid-confusion reads as "30 different things."
 - Josh reasons from "why." When he questions the logic, answer the why directly and briefly; he often reaches the right design point himself (he independently found the reused-ID gap, threat-model F2).
 
+### Gates are snapshots, not stops (added 2026-10-15)
+
+Gate 1 halted building for two weeks (last build 9/30, coursework only 10/1-10/14) and nearly stopped the program. Rules:
+- Score the gate, then keep building. A miss never pauses the program.
+- Each miss is assigned to an upcoming build that will close it, with the evidence that will prove it, tracked in CURRENT_STATE.md.
+- Only exception: safety (a miss that would leak secrets or real data in the next build). Fix it inside the build, within a day.
+- Skill gaps get short, time-boxed bursts (about 30 minutes) inside the build that needs them, at the level the build needs. Josh's target is read and supervise; AI writes the code. Do not train syntax recall that a chatbot would do in seconds.
+- Any check uses the same format as the training (the SQL readiness check did not match the DataCamp format, which was a major frustration).
+- Always say how a skill connects to the next build (e.g., SQL exists so the Rivertown model can be rebuilt in Dataverse).
+
+### Show it in the tool (added 2026-10-15)
+
+When a concept lives in a tool, send Josh to the screen where he can see it (n8n Executions, the canvas, the table) instead of describing it. Keep each message to a short screen: one picture or small table, then one step or one question. Name side issues when they appear and ask whether to handle now or log; do not silently push them to the end.
+
 ## Strategy — decided
 
 The authoritative strategy document is the AI Implementation Consultant 12-Week Master Calendar plus its companion tracker. Do not re-litigate its strategy choices.

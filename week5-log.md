@@ -127,3 +127,18 @@ Independent: installing and checking SQLite, the UNIQUE logic (Pat gets in becau
 Teaching lesson: the session started with questions before anything was taught, and about 40 minutes went to untangling labels and shorthand, not SQL. I understood what UNIQUE does; I didn't understand the why or the variables. What worked: the real-life story (when would the same form number show up twice?), one rule stated in one line, the exact cell where an error happens, and a reading guide before running a test. Rules added to ASSISTANT_WORKING_CONTEXT.md and CURRENT_STATE.md.
 
 Next: close Gate 1 #8 in n8n (execution ID on each row, explicit timeout).
+
+
+## Thursday 10.15.26 (afternoon) - Gate 1 #8 closed; Gate 1 passed
+
+Back in n8n for the first time since 9/30. Added a correlation ID to the Rivertown build: a new execution_id column on the Data Table, written by the four Insert nodes with {{ $execution.id }}. The row keeps the run that created it, because that run made every decision; a resend only adds to duplicate_count. Then set a 60-second workflow timeout (the worst normal run is about 30 s with AI retries) and set the workflow timezone to Chicago.
+
+Six tests, rules approved before each one, all passed: a new rules-path lead (run #351), a resend that left the ID at 351 (#352), an AI lead sent to review (#353), a blank message (#354), an AI-routed lead (#355), and a forced timeout at 1 s (#356 canceled, Postman got 500, no row). Then I put the timeout back to 60 s. Gate 1 #8 re-scored to Pass. Gate 1 is PASSED: 9 of 10, all four mandatory items.
+
+Independent: the design call (open #350, the run that made the ticket, not #400, the resend), grading all six tests, and running the last two Insert-path tests together instead of one at a time. With help: n8n navigation (Add Column, Refresh column list) and choosing the timeout value.
+
+Teaching lesson: the opening was three pages for one question after two weeks away. It worked once we looked at the real thing in n8n: the Executions list, one run's green path, the table. Show it on screen, one short step at a time. Side issues get named when they appear, with a choice to handle now or log.
+
+The bigger lesson is about gates. Gate 1 stopped my building for two weeks; the log shows the 9/30 build and then nothing but coursework until today. That is not what a gate is for. New rule: a gate is a snapshot, not a stop. Misses get folded into the next builds, skills get learned inside the build that needs them in short bursts at the level the build needs, and only a safety problem pauses anything. I learned SQL so the Rivertown model can be rebuilt in Dataverse; that build is next.
+
+Next: Dataverse rebuild of the SQLite model (includes the UPDATE the SQL gate note asked for).

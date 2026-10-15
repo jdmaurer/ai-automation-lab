@@ -139,3 +139,15 @@ TBD.
 - Smoke test after any change: one lead with a new run ID (`-n 1` on eval-set-v1). Open the newest execution and check which insert node ran.
 - Pacing: 20 s between leads for v2.7. Use 30 s if one model answers twice per lead, to stay under its 8,000 tokens per minute.
 - Export: n8n ... menu > Export JSON. The file lands in Downloads; move and rename it into this folder.
+
+
+## Added 2026-10-15 (v2.8)
+
+- Version names "v2.8 correlation ID" and "v2.8 timeout 60s" in the n8n workflow still named **Rivertown - Lead Intake v2.7**. Export: lead-intake-v2.8.json.
+- **Trace a row to its run:** read the row's `execution_id`, open the workflow's Executions tab, and find the run with that ID#. It shows every node's input and output, including the second model's answer, which is not stored in the table. Rows created before 2026-10-15 have no execution_id.
+- A resend does not change execution_id; the row keeps the run that created it.
+- **Timeout:** ... menu > Settings > Timeout Workflow, 60 seconds. A run past 60 s is canceled; the caller gets 500 and no row is written. The form tool should resend; dedup makes that safe.
+- **Daily check, added:** in Executions, filter for failed or canceled runs. A canceled run means a lead was not stored and nobody was alerted. Confirm the form tool resent it (search its external_id in the table).
+- Workflow settings (timeout, timezone) take effect without republishing.
+- To test the timeout: set Timeout After to 1 second, send one "Other" lead, then set it back to 1 minute and reopen Settings to confirm. Never leave it at 1 s: every AI lead would fail.
+- Workflow timezone is America/Chicago.

@@ -6,7 +6,7 @@ A lead intake, deduplication, and routing workflow built in n8n. Straightforward
 
 | | |
 |---|---|
-| **Current version** | v2.7 (2026-09-28) |
+| **Current version** | v2.8 (2026-10-15): v2.7 plus a correlation ID on every row and a 60-second timeout |
 | **Stack** | n8n (self-hosted), n8n Data Table, Groq `openai/gpt-oss-120b` (classifier) and `qwen/qwen3.8-27b` (second opinion), both at temperature 0, Postman and Newman for testing |
 | **Deployment** | Runs on a local development machine; not deployed as a live service |
 | **Operating it** | [runbook.md](runbook.md): normal operation, kill switch, rollback |
@@ -94,6 +94,7 @@ Every path ends in a response, and no submission is silently dropped.
 | `duplicate_count` | number | — | workflow |
 | `routed_by` | enum | — | workflow (who decided the destination; see below) |
 | `ai_category`, `ai_confidence`, `ai_rationale`, `ai_other_categories` | text | — | AI answer, stored for audit |
+| `execution_id` | string | — | workflow: the n8n run that created the row (correlation ID; added v2.8) |
 
 `engagement_type` is a fixed dropdown (Training / Consulting / Speaking / Other), so most leads are routed by rule with no model involved. The AI is used only for "Other" or any value the rules don't recognize.
 
@@ -136,7 +137,8 @@ See [limitations.md](limitations.md) and [threat-model.md](threat-model.md). In 
 
 | File | Contents |
 |---|---|
-| `lead-intake-v2.7.json` | Current workflow export (second opinion; evaluated in R9 and H2) |
+| `lead-intake-v2.8.json` | Current workflow export (v2.7 plus execution_id and 60 s timeout; tests CID-A to E, TO-1) |
+| `lead-intake-v2.7.json` | Previous export (second opinion; evaluated in R9 and H2) |
 | `lead-intake-v2.6.json` | Previous version (blank-message check; failed R7 and R8) |
 | `lead-intake-v2.5.json` | Version evaluated in runs R6 and H1 |
 | `lead-intake-v1.json`, `lead-intake-v2.json`, `lead-intake-v2.4.json` | Earlier versions |

@@ -278,3 +278,15 @@ exported workflow JSON was checked for the secret before it was staged.
 - No ON DELETE CASCADE. Deleting a lead that has runs or review decisions is refused, which protects the audit trail.
 - Every SQL file starts with `PRAGMA foreign_keys = ON`: SQLite does not enforce foreign keys unless each connection turns them on.
 - The database file (rivertown.db) is not committed; the scripts rebuild it.
+
+
+## 2026-10-15 - v2.8 reliability: correlation ID and timeout (Gate 1 #8)
+
+- Correlation ID: one new Data Table column, `execution_id` (string, same name as WorkflowRun.execution_id in the SQLite model). The four Insert nodes write `{{ $execution.id }}`.
+- The row keeps the run that created it, not the latest run. That run made every decision (routing, AI answers, second opinion), so it is the one to open when someone asks why a lead went where it did. A resend only adds to duplicate_count. IncrementDuplicateCount leaves execution_id alone. Josh made this call (run #350 vs #400).
+- Rejected: a second column for the latest resend run (duplicate_count already shows a resend happened; lean), and a separate runs table in n8n (the SQLite and Dataverse models carry WorkflowRun; the flat Data Table only needs the pointer).
+- Stored as string, not number: it is an identifier, not something to calculate with; matches TEXT in SQLite.
+- Timeout: workflow-level Timeout Workflow, 60 seconds. The Groq chat model nodes have no timeout option of their own, so the stopwatch goes on the whole workflow. Worst normal run is about 30 s (each AI node: 3 tries, 5 s apart). 10 s would kill normal retry runs; 5 minutes would leave the form tool waiting. Past 60 s a run is treated as stuck.
+- When the timeout fires, n8n cancels the run, the caller gets 500 ("The execution was cancelled because it timed out"), and no row is written. The form tool can resend; CheckLeadExists makes that safe. This is not a silent success.
+- No failure alert built (option A). D8's "no alerting" held because every failure ended in the review queue; the timeout is the first failure that skips the queue. Documented in the runbook and limitations; Gate 1 #8 accepts "alert or review queue". The alert skill is covered by the planned Power Automate Try/Catch block, not a separate n8n build.
+- Workflow timezone set to America/Chicago (operator's zone). New received_at values carry -05:00 instead of -04:00; same instant, different label.

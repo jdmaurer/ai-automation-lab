@@ -118,3 +118,15 @@ ambiguous path.
 - The custom "status" column shares its name with Microsoft's built-in Status column.
 - Not yet tested: how the Email column type treats a malformed address when a flow writes it.
 - The 10 seed rows have no company_size (column recreated as text).
+
+
+## 2026-10-15 - v2.8 correlation ID and timeout
+
+- RESOLVED: n8n timestamps showed in Eastern. The workflow timezone is now America/Chicago. (Data Table createdAt may still display with the instance's offset.)
+- Rows created before 2026-10-15 have no execution_id and can only be matched to a run by time.
+- The row stores only the run that created it. Resend runs are counted (duplicate_count) but not linked from the row.
+- An execution_id points to a saved run. n8n prunes old saved executions by default (check EXECUTIONS_DATA_PRUNE and EXECUTIONS_DATA_MAX_AGE before relying on old IDs); once pruned, the pointer leads nowhere.
+- A submission rejected with 400 creates no row, so its run can only be found in Executions. (The SQLite and Dataverse models record it in WorkflowRun.)
+- No failure alert. A run killed by the 60 s timeout writes no row and notifies no one; the caller gets 500 and must resend. The operator finds it only by checking Executions.
+- The timeout 500 response includes a stack trace with the local username and install path (threat-model F1).
+- The timeout was tested by shrinking it to 1 s. A real hung AI call was not reproduced.

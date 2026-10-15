@@ -118,7 +118,7 @@ Seven requests sent 20 seconds apart through Newman, using IDs in a reserved tes
 
 ### Findings
 
-**F1 — Error pages reveal system details.** When the workflow is off, n8n's 404 response includes a stack trace showing the local username and install path. This is an n8n default. *Risk:* helps an attacker learn about the host. *Fix:* disable detailed error responses in production.
+**F1 — Error pages reveal system details.** When the workflow is off, n8n's 404 response includes a stack trace showing the local username and install path. This is an n8n default. *Risk:* helps an attacker learn about the host. *Fix:* disable detailed error responses in production. *Seen again 2026-10-15:* the workflow timeout's 500 response carries the same stack trace (test TO-1).
 
 **F2 — A guessed ID can block a real lead (row 4).** Form IDs are sequential, so the next one is predictable. A7 confirmed that a fake lead sent first causes the real lead to be discarded, and the form tool is told it was already received, so nothing signals a problem. The duplicate check was designed for honest retries; this turns it against real customers. *Why it matters even though the API key is required:* the key is shared with the form tool and any integration, and the harm is silent loss of a real customer, not just extra noise. *Fix:* have the form tool issue random IDs, or treat a repeated ID with a different email as a conflict for review rather than a duplicate.
 
