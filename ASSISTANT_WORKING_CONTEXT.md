@@ -101,6 +101,19 @@ Gate 1 halted building for two weeks (last build 9/30, coursework only 10/1-10/1
 
 When a concept lives in a tool, send Josh to the screen where he can see it (n8n Executions, the canvas, the table) instead of describing it. Keep each message to a short screen: one picture or small table, then one step or one question. Name side issues when they appear and ask whether to handle now or log; do not silently push them to the end.
 
+### Power Apps directions (added 2026-10-16)
+
+Josh has spent only a few hours in Power Apps; navigation, not the ideas, ate most of the 2026-10-16 time (a column built on the wrong table, then a relationship cleanup). In n8n Claude's directions were seamless; in Power Apps Claude often did not know what was on screen. Rules:
+- Use vision first: Claude in Chrome is installed in the blue window. Claude can see only tabs in its own tab group, so Josh works in that tab. Look before each direction; Josh clicks, Claude never does.
+- Screenshots and menus: a Claude screenshot briefly takes over the tab and closes any open dropdown. Never look while a menu is open: tell Josh what to pick inside the menu, he picks it right away, says "done", then Claude looks.
+- Message format for each step: **bold action with the button name first** ("Click Objects"), then Where (screen position: far left, middle, top, bottom; must be accurate, Josh's monitor is a wide 34-inch), then You'll see, then Why at the bottom. Mark each step "Screenshot: yes/no". Josh replies "d" for done.
+- Copy boxes go directly under the line that says to paste. Never several steps with the copy box far below.
+- One click per message while navigating. Group only form fields he has filled before (then a small table of box/value works well).
+- "Click external_id" means click the name itself. Three ways open a column's panel: click the name; row ⋮ > Edit; select the row, then Edit at the top. The row's ⋮ menu has an "Advanced" that is not the panel's "Advanced options".
+- Left-panel trap: when two tables are expanded in Objects, "Columns" can belong to the wrong one. Prefer a path that can't be confused (Overview > Recent items > the table, then the Schema box) and check the breadcrumb.
+- Dataverse is slow: after clicking a lookup cell, wait for its list. Errors like "Could not acquire Write lock" may mean the save went through; Refresh and check before retrying.
+- Label each recommendation **Build fit** (what this build's rules call for) or **Client fit** (what Claude would do for a real client), and say when they differ.
+
 ## Strategy — decided
 
 The authoritative strategy document is the AI Implementation Consultant 12-Week Master Calendar plus its companion tracker. Do not re-litigate its strategy choices.

@@ -142,3 +142,20 @@ Teaching lesson: the opening was three pages for one question after two weeks aw
 The bigger lesson is about gates. Gate 1 stopped my building for two weeks; the log shows the 9/30 build and then nothing but coursework until today. That is not what a gate is for. New rule: a gate is a snapshot, not a stop. Misses get folded into the next builds, skills get learned inside the build that needs them in short bursts at the level the build needs, and only a safety problem pauses anything. I learned SQL so the Rivertown model can be rebuilt in Dataverse; that build is next.
 
 Next: Dataverse rebuild of the SQLite model (includes the UPDATE the SQL gate note asked for).
+
+
+## Friday 10.16.26 - Dataverse rebuild, part 1: Source table and both keys Active
+
+Started the reason I learned SQL: rebuilding the Rivertown SQLite model in Dataverse. Thursday night was only re-orientation (Lead's columns next to the SQLite Lead table: source_id and the UNIQUE rule were missing). Friday evening was the build.
+
+Design, decided before any clicking: source is a Lookup to a new Source table (option A) because that is the SQLite model rebuilt, with both protections (duplicate and invalid reference). Honest client answer: for a small client with two forms, a dropdown (Choice) on Lead would be fine. The form sends its source name, the flow checks it against Source, and a missing source means website_form. Existing rows get updated, not deleted.
+
+Built: the Source table with website_form and event_form and a key on name; the source lookup on Lead (Business required); all 12 existing leads updated to website_form by hand in the grid (my UPDATE); a check that all 12 external_ids are different (Holloway and Northline appear twice as repeat customers, different form numbers); external_id cut from 850 to 100 characters after the key was refused as too large (850 x 2 bytes = the whole 1,700-byte index limit), and made Business required; then the Lead key "Unique lead per source" on external_id + source. Active.
+
+Independent: the Lead source column panel, the Lead key panel, the external_id fix (Required and length), and working out the three ways into a column's settings. With help: getting around Power Apps, the design choices (A vs B took two passes and a fifth-grader version), and reading Microsoft's errors.
+
+What went wrong: the first source column landed on the Source table instead of Lead (the left panel had both tables open), and deleting it from the column list failed until we deleted the relationship instead. That is the same kind of link-cleanup hole that ate an hour last time and helped push me into two weeks of certificates. The fix wasn't more care; it was giving Claude eyes. Installed Claude in Chrome in the blue window. After that, directions matched my screen and the rest of the build went step by step.
+
+Teaching lessons: button name first in bold, then where on screen (far left, middle, top, bottom) and it has to be accurate, then what I'll see, and the why at the bottom. Copy boxes right under the line that says paste. One click per message while navigating. Say whether a screenshot is needed. Label recommendations as build fit or client fit so I know if the advice is for the build or for a real client. Rules added to ASSISTANT_WORKING_CONTEXT.md.
+
+Next: the flow learns to use the key. A resend bumps duplicate_count on the existing row instead of making a second one (the Gate 1 #7 UPDATE note), with pass/fail rules first.

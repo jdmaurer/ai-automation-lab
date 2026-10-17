@@ -48,7 +48,8 @@ Same contract as the n8n build: only external_id and email are required (decisio
 
 | Column (display) | Technical name | Type | Value comes from |
 |---|---|---|---|
-| external_id (primary column) | jdm_externalid | Text | Form, as received |
+| external_id (primary column) | jdm_externalid | Text, max 100, Business required (2026-10-16; was 850, Optional) | Form, as received |
+| source | jdm_source | Lookup to Source, Business required (2026-10-16) | Not written by the flow yet (planned: the form's `source` name, looked up in Source; missing = website_form) |
 | first_name | jdm_firstname | Text | NormalizeLead (trimmed) |
 | last_name | jdm_lastname | Text | NormalizeLead (trimmed) |
 | email | jdm_emailaddress | Email | NormalizeLead (trimmed, lowercase) |
@@ -66,6 +67,20 @@ Same contract as the n8n build: only external_id and email are required (decisio
 Rule used for column types: input from outside (the website form) is stored as text, exactly as received; dropdowns (Choice) only for values Rivertown controls. A Choice column rejects any value not on its list, which would lose the lead.
 
 The technical names were chosen by the import's AI and differ from the display names. Dataverse adds its own system columns (owner, created on, and others).
+
+## Source table and keys (added 2026-10-16)
+
+The SQLite blueprint (../sqlite/schema.sql) rebuilt in Dataverse, part 1. Decisions: decisions.md, 2026-10-16.
+
+| SQLite | Dataverse |
+|---|---|
+| `Source (source_id INTEGER PRIMARY KEY, name TEXT NOT NULL UNIQUE)` | Table **Source** (jdm_source). Row ID column **Source** (jdm_SourceId, a long code instead of 1, 2). Primary column **name** (jdm_name). Key **Unique source name** (jdm_uniquesourcename) on name. Rows: website_form, event_form |
+| `Lead.source_id INTEGER NOT NULL REFERENCES Source (source_id)` | Lead column **source** (jdm_source), Lookup to Source, Business required |
+| `UNIQUE (external_id, source_id)` | Lead key **Unique lead per source** (jdm_uniqueleadpersource) on external_id + source. Active |
+| `lead_id INTEGER PRIMARY KEY` | Lead row ID column **Lead** (jdm_LeadId), Unique identifier |
+| `NOT NULL` | Closest: Business required, which Microsoft's screens enforce but flows and the API do not |
+
+Not yet in Dataverse: Company (company stays as text on Lead), WorkflowRun, ReviewDecision.
 
 ## Tests (2026-09-30)
 

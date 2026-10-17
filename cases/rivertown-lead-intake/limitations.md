@@ -130,3 +130,12 @@ ambiguous path.
 - No failure alert. A run killed by the 60 s timeout writes no row and notifies no one; the caller gets 500 and must resend. The operator finds it only by checking Executions.
 - The timeout 500 response includes a stack trace with the local username and install path (threat-model F1).
 - The timeout was tested by shrinking it to 1 s. A real hung AI call was not reproduced.
+
+
+## 2026-10-16 - Dataverse model (Source table and keys)
+
+- The flow does not use the new source column or the key yet. Until the duplicate-handling block is built, a resend reaches SaveLead and is refused by the key (an error), instead of bumping duplicate_count.
+- "Business required" stops people on Microsoft's screens, not flows or the API. The flow must always write source and external_id.
+- Two resends at the same instant could both look, both find nothing, both try to add: the key refuses the second (no duplicate row), but that run errors. Handling belongs to the Try/Catch block.
+- Source rows (website_form, event_form) are data, not design: they do not travel in the solution export and must be created in each new environment.
+- Key columns that are empty are not checked for duplicates. All 12 existing rows were given website_form before the key was built.

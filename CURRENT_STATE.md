@@ -1,8 +1,15 @@
-# CURRENT STATE - updated 2026-10-15 (evening) - RESUME HERE
+# CURRENT STATE - updated 2026-10-16 (night) - RESUME HERE
 
 Per AI_HANDOFF_PROTOCOL.md this file is overwritten each session. Earlier states are in git history and the weekly logs.
 
-## Objective
+## Resume point (2026-10-16)
+Dataverse rebuild of the SQLite model, **part 1 done**: Source table (rows website_form, event_form; key on name), Lead.source lookup (Business required), all 12 existing Lead rows updated to website_form, external_id cut to max 100 and Business required, Lead key **Unique lead per source** (external_id + source) **Active**. Details: decisions.md 2026-10-16; field map and SQLite-to-Dataverse table in power-automate/README.md.
+
+**Start next session at step 4: duplicate handling in the flow plus test.** Teach first (look-up-then-add-or-update, the same idea as n8n's CheckLeadExists; why Upsert can't add 1), then pass/fail rules approved before the test: a resend of an existing external_id + source bumps duplicate_count on that row and creates no second row (closes Gate 1 #7 UPDATE note). Also in the flow: read `source` from the JSON (missing = website_form), look it up in Source, unknown name = 400. Stretch: WorkflowRun record with the flow run ID. Then re-export the solution (the repo zip is still v1.0.0.1, before Source and the keys).
+
+Claude now has **vision** in the blue window: Claude in Chrome extension installed in the blue "jdmaurer Labs" profile (signed in to Claude by email code, not Google). Claude can only see tabs in its own tab group; Josh works in that tab. Claude looks, Josh clicks.
+
+## Earlier objective
 2026-10-15 (afternoon): Gate 1 #8 (Reliability) closed in n8n, and **Gate 1 is PASSED**: 9 of 10, all four mandatory items pass. Only #5 (Python) is open, and it is folded into upcoming builds rather than worked on separately (see Gate rules below).
 
 What changed in the n8n build (version names "v2.8 correlation ID" and "v2.8 timeout 60s" inside the n8n workflow still named "Rivertown - Lead Intake v2.7"):
@@ -66,13 +73,13 @@ Carried forward from Gate 1 (close inside these builds, not separately):
 | Miss | Closes in | Evidence |
 |---|---|---|
 | #5 Python | A small Python utility used in a real build, written by AI, supervised and explained by Josh: e.g., read a Data Table export and flag rows with no `execution_id`, handling three failure types (missing file, malformed JSON/CSV, missing column) | Script in the repo, Josh explains what it does and what each failure path prints |
-| #7 UPDATE | Dataverse rebuild: updating duplicate_count and status is an UPDATE | Test showing a resend updates the existing row |
+| #7 UPDATE | Dataverse rebuild: updating duplicate_count and status is an UPDATE | Test showing a resend updates the existing row. Progress 2026-10-16: key Active; existing rows updated by hand; flow test still to do |
 | #8 alert | Power Automate Try/Catch block | A forced failure produces a visible alert |
 
 ## Where things stand
 - SQLite (2026-10-15): command-line tool 3.53.4 installed with winget. Files in cases/rivertown-lead-intake/sqlite/: schema.sql, seed.sql, test-duplicate.sql, test-invalid-reference.sql, README.md (evidence). rivertown.db is generated and git-ignored; the README has the one-line rebuild command. Every file starts with PRAGMA foreign_keys = ON (SQLite ignores foreign keys without it).
 - Microsoft: own organization joshmaurer.onmicrosoft.com ("jdmaurer Labs"), Power Apps Developer Plan environment "Josh Maurer's Environment" (750 flow runs/month; disabled after 30 days unused). See microsoft-environment-decision.md.
-- Solution "Rivertown Lead Intake" (RivertownLeadIntake), publisher jdmaurer Labs, prefix jdm. Contains: table Lead (jdm_lead), flow "Rivertown - Lead Intake (Power Automate) v1", Dataverse connection reference.
+- Solution "Rivertown Lead Intake" (RivertownLeadIntake), publisher jdmaurer Labs, prefix jdm. Contains: tables Lead (jdm_lead) and Source (jdm_source, added 2026-10-16), flow "Rivertown - Lead Intake (Power Automate) v1", Dataverse connection reference. Keys: Source "Unique source name" (name); Lead "Unique lead per source" (external_id + source), Active. The environment's preferred solution is still "Common Data Services Default Solution": anything created outside the solution lands there (logged; making Rivertown preferred is a one-minute safety net).
 - Flow: HTTP trigger ("Anyone") -> NormalizeLead -> ValidateRequiredFields -> SaveLead + RespondSuccess (200) / RespondFail (400). Same contract as n8n (D4, D5). Diagram, terms table, and field map: cases/rivertown-lead-intake/power-automate/README.md.
 - Tests T1-T3 passed 2026-09-30 (test-cases.md). Postman collection "Rivertown Lead Intake (Power Automate)" (T1, T2, T3) lives in Postman only; never export it to the repo.
 - The flow's web address is the password ("Anyone"). Stored in $HOME\rivertown-eval\pa-intake-url.txt only. To use: Get-Content "$HOME\rivertown-eval\pa-intake-url.txt" | Set-Clipboard
@@ -85,7 +92,7 @@ Carried forward from Gate 1 (close inside these builds, not separately):
 - SQL remediation coursework: DataCamp Introduction to SQL complete; Intermediate SQL completed 2026-10-05; Joining Data in SQL completed 2026-10-06; Introduction to Relational Databases in SQL completed 2026-10-10. JOIN reasoning and relational concepts are substantially stronger than exact syntax retrieval. Concepts that held: primary vs foreign keys, 1:N and N:M relationships, referential integrity, CASCADE behavior, UNIQUE vs DISTINCT, JOIN logic, filtering/grouping. Syntax that needs delayed-recall practice includes ADD CONSTRAINT, SET NOT NULL, RENAME COLUMN, INSERT INTO ... VALUES, INSERT INTO ... SELECT DISTINCT ... FROM, UPDATE ... SET ... FROM ... WHERE, ALTER COLUMN ... TYPE, and FOREIGN KEY ... REFERENCES. Do not quiz table/column names; provide the names and test the SQL pattern and logic.
 
 ## Next
-1. Recreate the SQL data model in Dataverse (the reason the SQL was learned). The SQLite schema in cases/rivertown-lead-intake/sqlite/schema.sql is the blueprint: UNIQUE (external_id, source_id) becomes an alternate key; Lead and WorkflowRun become tables; WorkflowRun.execution_id holds the run ID as n8n now does. Includes an UPDATE (resend bumps duplicate_count), closing the Gate 1 #7 note. Also: field map (display vs technical names), rename the custom "status" display name to lead_status, malformed-email test.
+1. Finish the Dataverse rebuild (part 1, tables and keys, done 2026-10-16; see Resume point). Part 2: the flow uses source and the key; a resend bumps duplicate_count (UPDATE), closing the Gate 1 #7 note; invalid source refused (400). Stretch: WorkflowRun table with the flow run ID, as n8n's execution_id. Also: rename the custom "status" display name to lead_status, malformed-email test, re-export the solution.
 2. Remaining Power Automate blocks: approvals (write approval-map.md here, decision 2), Try/Catch scopes (closes the #8 alert note), same-case comparison with n8n including licensing. End with the 2-minute screen recording (decision 3).
 3. Python #5 folded into a build (see carried-forward table): Claude teaches the few pieces the script needs on Josh's own Rivertown export, AI writes it, Josh explains it back. Do not start Intermediate Python as a separate track.
 4. Add the "What I can deliver now" section to README.md (decision 6).
@@ -115,6 +122,7 @@ Carried forward from Gate 1 (close inside these builds, not separately):
 | **Orange "Joshua"** | joshuadmaurer@gmail.com | GitHub, Claude, ChatGPT, Gmail, Google Drive, n8n at localhost:5678 |
 | **Blue "jdmaurer Labs"** | josh@joshmaurer.onmicrosoft.com | Everything Microsoft: Power Apps, Power Automate, Copilot Studio, Entra, admin center |
 - Never do Microsoft work in the orange window.
+- Exception logged 2026-10-16: the Claude in Chrome extension is installed and signed in to Claude (Gmail account, email code) inside the blue window, so Claude can see Power Apps. The Claude sign-in is separate from the Microsoft account. Claude only sees tabs in its own tab group; work in that tab.
 - Postman: desktop app. Decline the Windows Firewall prompt; sending works without it.
 - Chrome forced dark mode is on (chrome://flags/#enable-force-dark). Power Automate web has no dark mode of its own.
 

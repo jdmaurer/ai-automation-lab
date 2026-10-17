@@ -151,3 +151,11 @@ TBD.
 - Workflow settings (timeout, timezone) take effect without republishing.
 - To test the timeout: set Timeout After to 1 second, send one "Other" lead, then set it back to 1 minute and reopen Settings to confirm. Never leave it at 1 s: every AI lead would fail.
 - Workflow timezone is America/Chicago.
+
+
+## Added 2026-10-16 (Dataverse keys)
+
+- **New environment setup:** after importing the solution, add the Source rows by hand (Source table > Edit: website_form, event_form). Rows do not travel in the export. Then check both keys show **Active** (Lead > Keys, Source > Keys).
+- **Adding a form:** add one row to Source with the form's name. The form sends that name as `"source"`. No column or flow change.
+- **A key shows Failed:** usually existing duplicates or an empty key column. Find them in the data grid (sort by external_id), fix, then reactivate the key.
+- Key creation runs in the background (Pending, then Active). A "could not acquire Write lock" error while saving can mean the save actually went through: Cancel, Refresh, and check the list before trying again.
