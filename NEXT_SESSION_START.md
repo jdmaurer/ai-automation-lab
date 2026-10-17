@@ -11,11 +11,11 @@ cd "$HOME\ai-automation-lab"
 git pull --ff-only
 ```
 
-Expected result: "Fast-forward" (the 2026-10-16 closeout was pushed from Claude) or "Already up to date". If git reports local changes or an error, stop and inspect.
+Expected result: "Already up to date" (the pull is done the night before, at closeout). If git reports local changes or an error, stop and inspect.
 
 ## Before the build: give Claude eyes
 
-Open Chrome's blue "jdmaurer Labs" window. Claude in Chrome is installed there (orange Claude icon in the toolbar). Claude will open its own Power Apps tab in a colored tab group; do the Power Apps clicking in that tab.
+Open Chrome's blue "jdmaurer Labs" window. Claude in Chrome is installed there (orange Claude icon in the toolbar). The prompt below tells Claude to open its own Power Apps tab (in a colored tab group) as the first step; do the Power Apps clicking in that tab.
 
 ## Start the Dataverse part 2 chat
 
@@ -24,6 +24,8 @@ Paste this:
 You are my expert tutor for my 12-week AI skills intensive: patient, uplifting, and kind. Use the Socratic method where it teaches, and check that I understand. Read CURRENT_STATE.md (Resume point) and ASSISTANT_WORKING_CONTEXT.md (especially "Power Apps directions") from the live GitHub repo (github.com/jdmaurer/ai-automation-lab) first, then cases/rivertown-lead-intake/power-automate/README.md, the 2026-10-16 entry in cases/rivertown-lead-intake/decisions.md, and cases/rivertown-lead-intake/sqlite/schema.sql.
 
 Today: Dataverse rebuild part 2. Tables and keys are done (Source table, Lead.source lookup, Lead key "Unique lead per source" on external_id + source, Active). Now the flow "Rivertown - Lead Intake (Power Automate) v1" uses them: read source from the JSON (missing = website_form), look it up in Source, unknown name = 400; then look for an existing lead with the same external_id + source: found = UPDATE duplicate_count + 1 and no second row (closes the Gate 1 #7 UPDATE note), not found = add the row. Use Claude in Chrome to see my screen (blue window, Claude's tab group).
+
+First step, before any direction: use Claude in Chrome to open your own tab at make.powerapps.com in my blue "jdmaurer Labs" window, confirm "Josh Maurer's Environment" in the top right, and tell me which tab to work in. If the Claude in Chrome tools aren't available, tell me right away instead of guessing at my screen.
 
 Plan with time boxes:
 1. Re-orient on screen (10 min): open the flow from the solution and show me its steps next to the n8n CheckLeadExists idea.

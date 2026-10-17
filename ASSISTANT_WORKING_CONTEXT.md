@@ -151,5 +151,10 @@ Always check:
 4. `n8n-patterns.md` if a new n8n gotcha or course defect was found
 5. workflow export and case docs if the build changed
 6. commit and push
+7. **As part of closeout (added 2026-10-16):** have Josh run `git pull --ff-only` in his local repo the same night, after the final push, so nothing hangs over to the morning. Give the command in the closeout message.
+8. **Always paste the next session's kickoff prompt into the closeout message** in a copy box, not only in NEXT_SESSION_START.md. Josh sets up the next chat the night before.
 
 If GitHub was updated remotely, tell Josh to fast-forward the local clone before local repo work continues.
+
+### Vision at session start (added 2026-10-16)
+When the next build happens in Power Apps or Power Automate, the session opens its own tab with Claude in Chrome before the first direction: check the connected browser, open make.powerapps.com in the blue "jdmaurer Labs" window (Claude's own tab group), confirm "Josh Maurer's Environment" in the top right, and tell Josh which tab to work in. If the Claude in Chrome tools are not available in that session, say so at the start; don't guess at the screen.
