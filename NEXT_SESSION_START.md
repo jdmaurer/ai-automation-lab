@@ -1,6 +1,6 @@
 # NEXT SESSION START
 
-Updated: 2026-10-17 (after Dataverse rebuild part 2: duplicate handling and source; Gate 1 #7 closed)
+Updated: 2026-10-17, late (after Dataverse rebuild part 2 and the demo recording's raw take)
 
 ## Before local repo work
 
@@ -13,13 +13,12 @@ git pull --ff-only
 
 Expected result: "Already up to date" (the pull is done the night before, at closeout). If git reports local changes or an error, stop and inspect.
 
-## On your own, in a low-usage window: the 2-minute recording (decision 3)
+## On your own, in a low-usage window: finish the demo video (decision 3)
 
-Screen recording, no camera. Keep it to the business problem, not a tool tour. Do not show the flow's web address, the Postman URL bar, or the account email on the flow details page.
-1. The problem (20 s): a lead form gets resent (double-click, email plus form, a retry); the office gets two copies and calls the client twice.
-2. The build working (70 s): Postman sends a new lead -> 200 received; send it again -> 200 duplicate; the Lead table shows one row with duplicate_count 1. Then a made-up source -> 400 Unknown source, no row.
-3. What a person still does (30 s): nothing is approved automatically yet; routing and approvals come next. A person checks runs for refused submissions.
-Save it outside the repo for now. Voice or captions come later in the marketing track.
+The raw take is recorded (10-17, 3:25, MKV, saved outside the repo). It shows: T4 New Copy -> 200 received, resend -> 200 duplicate, Lead table Refresh -> one PA-DEMO-001 row with duplicate_count 1, T6 Unknown source Copy -> 400 Unknown source, Refresh -> no new row. Mouse circles mark the key parts; quiet stretches were left in case the circles get cut.
+1. OBS: File > Remux Recordings, pick the MKV, Remux (makes an MP4 without re-encoding).
+2. Trim to about 2 minutes. Keep it to the business problem: a resent form gets counted, not saved twice; a made-up source is refused.
+Voice or captions come later in the marketing track. For a re-shoot, use PA-DEMO-002 (PA-DEMO-001 is used) and run the "Screen Recording Layout" desktop icon first.
 
 ## Before the build: give Claude eyes
 

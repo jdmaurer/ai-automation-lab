@@ -254,4 +254,5 @@ Sent from the Postman desktop app (collection "Rivertown Lead Intake (Power Auto
 
 Closes the Gate 1 #7 note (UPDATE not exercised).
 Reading a run: a Condition that contains a Terminate shows "Cancelled" in run history; that is normal. Grey cards after it were skipped.
+Demo recording run (10-17, 11:25 PM, not a frozen test): T4 New Copy with PA-DEMO-001 -> 200 received; resend -> 200 duplicate; Lead table showed one PA-DEMO-001 row with duplicate_count 1; T6 Unknown source Copy -> 400 Unknown source, no new row. Same results as T4-T6. The Lead table now has 15 rows.
 Not yet tested: two resends at the same instant (the key refuses the second; that run errors), a source name containing an apostrophe, a malformed email against the Email column type.

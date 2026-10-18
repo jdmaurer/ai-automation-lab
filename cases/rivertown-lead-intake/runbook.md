@@ -167,3 +167,5 @@ TBD.
 - **Expected replies:** 200 received (new lead saved), 200 duplicate (resend counted, no new row), 400 rejected "Unknown source" (source not in the Source table), 400 rejected "Missing required field" (no external_id or email).
 - **Editing filters:** paste the whole filter as one line with `@{...}` expressions; do not type text next to a chip (a hidden space breaks the match).
 - **Designer quirks (older designer, opened from a solution):** no + above the first action inside a branch; use the + on an arrow between cards. With Chrome's forced dark mode on, the Expression bar's cursor is invisible (black on black); click the middle of the bar and paste anyway, or turn forced dark mode off.
+
+- **Postman sends need the environment.** The requests that use `{{pa_intake_url}}` (T4 New Copy, T6 Unknown source, T6 Unknown source Copy) only work with environment "Rivertown Power Automate" selected (top right in Postman). With "No Environment", the URL won't resolve.

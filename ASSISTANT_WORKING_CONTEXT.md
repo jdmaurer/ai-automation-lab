@@ -181,5 +181,11 @@ Power Automate facts learned 2026-10-17 (older designer, opened from a solution)
 - Never rename the HTTP trigger: its name is part of the flow's web address.
 - Debug from the run record: open the run, click the card, read the exact inputs it sent (found the space bug in two clicks).
 
+### Screen and recording help (added 2026-10-17)
+- **When Josh says he can't see something he needs, fix his view first.** During OBS setup he said about five times that he needed to see the OBS frame while sizing windows; Claude kept measuring from screenshots instead. Once a Preview Projector was on his second monitor, he sized both windows in about two seconds. Listen to the pushback the first time.
+- **Explain what a button does before asking him to click it** (he asked what Workspaces' Capture does; it only records window positions and closes nothing).
+- **Computer-use screenshots hide every window that isn't approved** (VS Code, Word, Terminal were hidden during a check). Don't screenshot in the middle of arranging a layout; ask him to check the OBS preview instead, and release the lock right after any screenshot.
+- When copying a request in Postman, say which one to edit (the copy) and why the original stays as the test record.
+
 ### Vision at session start (added 2026-10-16)
 When the next build happens in Power Apps or Power Automate, the session opens its own tab with Claude in Chrome before the first direction: check the connected browser, open make.powerapps.com in the blue "jdmaurer Labs" window (Claude's own tab group), confirm "Josh Maurer's Environment" in the top right, and tell Josh which tab to work in. If the Claude in Chrome tools are not available in that session, say so at the start; don't guess at the screen.

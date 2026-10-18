@@ -172,3 +172,9 @@ Honest time: the plan was half a day; it took a full day on the clock, about fiv
 Day two in Power Automate after three n8n certificates. Mixing up card names is a day-two problem, not a learning problem.
 
 Next: record the 2-minute demo of the duplicate handling, then the approvals block with the approval map.
+
+### Late Saturday 10.17.26 - the demo recording
+
+Set up OBS and recorded the raw take of the duplicate demo the same night, because it's quicker while I'm already in the software. New scene collection, a 2560x1440 frame in the middle of the ultrawide, output 1920x1080. The OBS preview went black and only a restart fixed it. The big lesson: I needed to see the frame while sizing windows. Once the Preview Projector was on my second monitor, I sized Postman and Chrome in about two seconds, after a long stretch of guessing. Saved the layout with PowerToys Workspaces ("Screen Recording Layout", desktop icon; sometimes it takes a second click), so this is a one-time job. The secret in the flow address is hidden behind a Postman variable, `{{pa_intake_url}}`. The take ran 3:25 and shows new -> received, resend -> duplicate with duplicate_count 1, made-up source -> 400, no new row. Saved as MKV; remux and trim to about 2 minutes later.
+
+Independent: the duplicate-the-request idea for T6, naming the workspace for future layouts (a talking-head one later), circling key parts with the mouse but leaving quiet time in case I cut the circles, and MKV for crash safety. With help: OBS canvas and output settings, the Postman environment variable, Workspaces.
