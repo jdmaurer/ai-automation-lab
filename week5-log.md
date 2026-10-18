@@ -159,3 +159,16 @@ What went wrong: the first source column landed on the Source table instead of L
 Teaching lessons: button name first in bold, then where on screen (far left, middle, top, bottom) and it has to be accurate, then what I'll see, and the why at the bottom. Copy boxes right under the line that says paste. One click per message while navigating. Say whether a screenshot is needed. Label recommendations as build fit or client fit so I know if the advice is for the build or for a real client. Rules added to ASSISTANT_WORKING_CONTEXT.md.
 
 Next: the flow learns to use the key. A resend bumps duplicate_count on the existing row instead of making a second one (the Gate 1 #7 UPDATE note), with pass/fail rules first.
+
+
+## Saturday 10.17.26 - Dataverse rebuild, part 2: the flow uses source and the key; Gate 1 #7 closed
+
+The flow now does what the SQLite model does. NormalizeLead adds the source (blank means website_form). GetSource looks the name up in the Source table; an unknown name gets a 400 and stops. CheckLeadExists looks for the same form number from the same source; if it is there, IncrementDuplicateCount adds 1, the form gets 200 "duplicate", and the run stops. Only new leads reach the required-fields check and SaveLead, which now writes the source too. Four tests with rules approved first: new, resend, unknown source, missing source. All passed. T4 failed on its first run: the GetSource filter had a hidden space (' website_form'). The run record showed the exact filter it sent, NormalizeLead's output was clean, so the box was the culprit; pasting the filter as one line fixed it. T5 shows the same row created at 3:02 and modified at 3:05 with duplicate_count 1. That is the UPDATE the SQL gate note asked for. Re-exported the solution as 1.0.0.2, scanned clean, and set Rivertown as the preferred solution.
+
+Independent: fixing the misplaced expression chip, finding that the Expression bar takes a paste with no visible cursor, working out why (Chrome's forced dark mode leaves the cursor black on black), designing IsDuplicate as "does it match an old paper? yes = duplicate", reasoning that Condition is the IF and Response hands the paper back, and explaining the duplicate path end to end like I would to a manager. With help: navigation, card names, what GetSource is for (it took a second analogy), the filter syntax, where to insert cards, and reading the run record.
+
+Honest time: the plan was half a day; it took a full day on the clock, about five and a half hours of work. The ideas were not the problem. The messages were too long, the designer had no + where the directions said, and the dark-mode cursor hid the Expression bar. What fixed it: the action on its own ▶ DO line with the screen position, the why only for real choices, analogy first (the homework drop-box worked: section = source, turned in twice = duplicate), then n8n, then the Power Automate name, one command per message in the terminal, and explaining each major step back. The duplicate half took about an hour once the format changed. Rules added to ASSISTANT_WORKING_CONTEXT.md.
+
+Day two in Power Automate after three n8n certificates. Mixing up card names is a day-two problem, not a learning problem.
+
+Next: record the 2-minute demo of the duplicate handling, then the approvals block with the approval map.

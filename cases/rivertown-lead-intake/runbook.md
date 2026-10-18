@@ -159,3 +159,11 @@ TBD.
 - **Adding a form:** add one row to Source with the form's name. The form sends that name as `"source"`. No column or flow change.
 - **A key shows Failed:** usually existing duplicates or an empty key column. Find them in the data grid (sort by external_id), fix, then reactivate the key.
 - Key creation runs in the background (Pending, then Active). A "could not acquire Write lock" error while saving can mean the save actually went through: Cancel, Refresh, and check the list before trying again.
+
+## Added 2026-10-17 (Power Automate duplicate handling)
+
+- **Never rename the trigger** ("When a HTTP request is received"). Its name is part of the flow's web address; renaming it changes the address and breaks every sender (Postman, the form).
+- **Reading a run:** flow details page > 28-day run history > click the run > click a card to see its inputs and outputs. Green check = ran; grey = skipped. A Condition with a Terminate inside shows "Cancelled": normal. To debug a lookup, open the List rows card and read the exact Filter rows text it sent.
+- **Expected replies:** 200 received (new lead saved), 200 duplicate (resend counted, no new row), 400 rejected "Unknown source" (source not in the Source table), 400 rejected "Missing required field" (no external_id or email).
+- **Editing filters:** paste the whole filter as one line with `@{...}` expressions; do not type text next to a chip (a hidden space breaks the match).
+- **Designer quirks (older designer, opened from a solution):** no + above the first action inside a branch; use the + on an arrow between cards. With Chrome's forced dark mode on, the Expression bar's cursor is invisible (black on black); click the middle of the bar and paste anyway, or turn forced dark mode off.

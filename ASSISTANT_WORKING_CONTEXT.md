@@ -106,7 +106,7 @@ When a concept lives in a tool, send Josh to the screen where he can see it (n8n
 Josh has spent only a few hours in Power Apps; navigation, not the ideas, ate most of the 2026-10-16 time (a column built on the wrong table, then a relationship cleanup). In n8n Claude's directions were seamless; in Power Apps Claude often did not know what was on screen. Rules:
 - Use vision first: Claude in Chrome is installed in the blue window. Claude can see only tabs in its own tab group, so Josh works in that tab. Look before each direction; Josh clicks, Claude never does.
 - Screenshots and menus: a Claude screenshot briefly takes over the tab and closes any open dropdown. Never look while a menu is open: tell Josh what to pick inside the menu, he picks it right away, says "done", then Claude looks.
-- Message format for each step: **bold action with the button name first** ("Click Objects"), then Where (screen position: far left, middle, top, bottom; must be accurate, Josh's monitor is a wide 34-inch), then You'll see, then Why at the bottom. Mark each step "Screenshot: yes/no". Josh replies "d" for done.
+- Message format for each step: superseded 2026-10-17 (see "Power Apps directions, revised" below).
 - Copy boxes go directly under the line that says to paste. Never several steps with the copy box far below.
 - One click per message while navigating. Group only form fields he has filled before (then a small table of box/value works well).
 - "Click external_id" means click the name itself. Three ways open a column's panel: click the name; row ⋮ > Edit; select the row, then Edit at the top. The row's ⋮ menu has an "Advanced" that is not the panel's "Advanced options".
@@ -155,6 +155,31 @@ Always check:
 8. **Always paste the next session's kickoff prompt into the closeout message** in a copy box, not only in NEXT_SESSION_START.md. Josh sets up the next chat the night before.
 
 If GitHub was updated remotely, tell Josh to fast-forward the local clone before local repo work continues.
+
+### Power Apps directions, revised (added 2026-10-17)
+
+The 2026-10-17 build ran a full day for half a day of planned work; nearly all of the extra time was message format and navigation, not the ideas. Josh's rules from that session:
+- **Format:** the action goes on its own line starting `▶ DO:` (bold does not stand out on Josh's screen; use the ▶ DO marker and caps labels like WHERE, WHY). Then `WHERE:` as a position on the **screen** (top right, middle, lower left, "below and outside the If yes box"); never "on the flow", because "flow" sends his eyes into the workflow. End with a standalone line: `Done: reply d`. No "Screenshot: yes/no" line. No "You'll see" unless it matters for a check.
+- **Why only when it matters:** give a short WHY when choosing an operation, a table, a rule, or a value, not for every click. A page of text before a + button is the failure mode; Josh stops reading and misses the important part.
+- **Teaching order:** analogy first (fifth-grade), then what we did in n8n, then the Power Automate name. One analogy that landed: homework drop-box (section = source, gradebook list = Source table, same paper turned in twice = duplicate). The library and mailroom analogies landed less.
+- **Analogies must say which side is which.** A two-sided analogy ("helper who reads vs writes blind") must map each side to a named action in a table, or it reads as n8n vs Power Automate.
+- **Socratic after teaching:** once a piece is taught, ask what he would choose before telling (e.g., A/B choice of operator). One simple question; put it directly under the content it is about, with nothing emphasized in between (he answered the bolded line above the question instead of the question).
+- **Explain-back after every major step,** in manager language. He wants to be able to explain each card to a manager and rebuild it himself.
+- **Example values must not look like real ones** ("webform" next to "website_form" caused a 10-minute detour). Use obviously wrong values ("section 120").
+- **Do not ask him to look back** in a long conversation; repeat whatever he needs in the message.
+- **When a card or table opens, describe everything on it at once** (small table of box / value), then give all routine fields in one ▶ DO.
+- **Cursor-dependent steps go in one message,** start to finish; never put "reply d" in the middle (going back to the chat moves the cursor out of the box).
+- **Terminal commands: one command per message,** with "tell me what you see" directly under it and nothing after.
+- **Claude may move its own tab to a page by address** (view-only) to save navigation clicks. Josh clicks every control.
+- **Track independent vs with help** in the closeout (he asked for the tally).
+
+Power Automate facts learned 2026-10-17 (older designer, opened from a solution):
+- No + above the first action inside a Condition branch. Use the + on an arrow between cards, or design so the new step goes there.
+- Steps are a stack: after a Condition the run continues to the next card. A special branch needs Terminate (n8n's dead end needs nothing).
+- Paste filters and bodies as one line with `@{...}` expressions; the box converts them to chips. Typing text next to a chip can insert a hidden space.
+- The Expression bar accepts only a pure expression (no `@{}`), and with Chrome forced dark mode its cursor is invisible; click the middle and paste.
+- Never rename the HTTP trigger: its name is part of the flow's web address.
+- Debug from the run record: open the run, click the card, read the exact inputs it sent (found the space bug in two clicks).
 
 ### Vision at session start (added 2026-10-16)
 When the next build happens in Power Apps or Power Automate, the session opens its own tab with Claude in Chrome before the first direction: check the connected browser, open make.powerapps.com in the blue "jdmaurer Labs" window (Claude's own tab group), confirm "Josh Maurer's Environment" in the top right, and tell Josh which tab to work in. If the Claude in Chrome tools are not available in that session, say so at the start; don't guess at the screen.

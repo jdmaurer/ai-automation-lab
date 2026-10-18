@@ -1,13 +1,13 @@
-# CURRENT STATE - updated 2026-10-16 (night) - RESUME HERE
+# CURRENT STATE - updated 2026-10-17 (evening) - RESUME HERE
 
 Per AI_HANDOFF_PROTOCOL.md this file is overwritten each session. Earlier states are in git history and the weekly logs.
 
-## Resume point (2026-10-16)
-Dataverse rebuild of the SQLite model, **part 1 done**: Source table (rows website_form, event_form; key on name), Lead.source lookup (Business required), all 12 existing Lead rows updated to website_form, external_id cut to max 100 and Business required, Lead key **Unique lead per source** (external_id + source) **Active**. Details: decisions.md 2026-10-16; field map and SQLite-to-Dataverse table in power-automate/README.md.
+## Resume point (2026-10-17)
+Dataverse rebuild of the SQLite model is **done** (part 1 tables and keys 10-16; part 2 the flow 10-17). The flow "Rivertown - Lead Intake (Power Automate) v1" now: NormalizeLead adds source (blank = website_form) -> GetSource -> SourceFound? (no = 400 Unknown source, Terminate) -> CheckLeadExists (external_id + source) -> IsDuplicate? (yes = IncrementDuplicateCount, 200 duplicate, Terminate) -> ValidateRequiredFields -> SaveLead (with source) -> 200. Tests T4-T7 all PASS with rules approved first (T4 needed a second run: a typed space in the GetSource filter, found in the run record). **Gate 1 #7 UPDATE note closed.** Export v1.0.0.2 (unmanaged) scanned clean and committed; 1.0.0.1 removed (in git history). Preferred solution is now Rivertown Lead Intake. Details: decisions.md and test-cases.md 2026-10-17; diagram in power-automate/README.md.
 
-**Start next session at step 4: duplicate handling in the flow plus test.** Teach first (look-up-then-add-or-update, the same idea as n8n's CheckLeadExists; why Upsert can't add 1), then pass/fail rules approved before the test: a resend of an existing external_id + source bumps duplicate_count on that row and creates no second row (closes Gate 1 #7 UPDATE note). Also in the flow: read `source` from the JSON (missing = website_form), look it up in Source, unknown name = 400. Stretch: WorkflowRun record with the flow run ID. Then re-export the solution (the repo zip is still v1.0.0.1, before Source and the keys).
+**Next session:** the 2-minute screen recording of the duplicate handling (decision 3; Josh can do it in a low-usage window), then the next Power Automate block: **approvals**, with `approval-map.md` (decision 2). Small items to fold in when convenient: WorkflowRun record with the flow run ID (deferred stretch), rename the custom "status" display name to lead_status, malformed-email test, and turn off Chrome forced dark mode (it hides the Expression bar cursor).
 
-Claude now has **vision** in the blue window: Claude in Chrome extension installed in the blue "jdmaurer Labs" profile (signed in to Claude by email code, not Google). Claude can only see tabs in its own tab group; Josh works in that tab. Claude looks, Josh clicks.
+Claude has **vision** in the blue window (Claude in Chrome, Claude's own tab group). Claude looks and may move its own tab to a page by address to save clicks; Josh clicks every control.
 
 ## Earlier objective
 2026-10-15 (afternoon): Gate 1 #8 (Reliability) closed in n8n, and **Gate 1 is PASSED**: 9 of 10, all four mandatory items pass. Only #5 (Python) is open, and it is folded into upcoming builds rather than worked on separately (see Gate rules below).
@@ -64,7 +64,7 @@ Result: **PASSED**. 9 pass, 1 fail. Pass needs 8 of 10 plus the four mandatory i
 | 4 | Git and GitHub | Pass | Skills exercise (branch, PR, merge); tag; revert drill commits b7637e4 + 4d96295 |
 | 5 | Python | Fail | Carried forward into builds (below) |
 | 6 | Workflow | Pass | Rivertown n8n build |
-| 7 | SQL and state | Pass (re-scored 2026-10-15) | SQLite schema, duplicate and invalid-reference tests (cases/rivertown-lead-intake/sqlite/README.md). Note: UPDATE not exercised; carried into the Dataverse build |
+| 7 | SQL and state | Pass (re-scored 2026-10-15) | SQLite schema, duplicate and invalid-reference tests (cases/rivertown-lead-intake/sqlite/README.md). UPDATE note closed 2026-10-17: Dataverse T5, a resend updated the existing row (duplicate_count 1, Modified On changed), no second row |
 | 8 | Reliability (mandatory) | Pass (re-scored 2026-10-15) | 60 s timeout (TO-1: run #356 canceled, caller got 500, no row); retry limit 3 tries; error path to review (test K); correlation ID `execution_id` on every new row (CID-A to E); review queue; no silent success. Note: no failure alert (allowed: "alert or review queue"); carried into Power Automate Try/Catch |
 | 9 | Security (mandatory) | Pass | Full-history secret scan clean; threat-model.md |
 | 10 | Evidence | Pass | README, runbook, limitations, 37 frozen cases, tagged release |
@@ -73,17 +73,17 @@ Carried forward from Gate 1 (close inside these builds, not separately):
 | Miss | Closes in | Evidence |
 |---|---|---|
 | #5 Python | A small Python utility used in a real build, written by AI, supervised and explained by Josh: e.g., read a Data Table export and flag rows with no `execution_id`, handling three failure types (missing file, malformed JSON/CSV, missing column) | Script in the repo, Josh explains what it does and what each failure path prints |
-| #7 UPDATE | Dataverse rebuild: updating duplicate_count and status is an UPDATE | Test showing a resend updates the existing row. Progress 2026-10-16: key Active; existing rows updated by hand; flow test still to do |
+| #7 UPDATE | CLOSED 2026-10-17 | test-cases.md 2026-10-17, T5 |
 | #8 alert | Power Automate Try/Catch block | A forced failure produces a visible alert |
 
 ## Where things stand
 - SQLite (2026-10-15): command-line tool 3.53.4 installed with winget. Files in cases/rivertown-lead-intake/sqlite/: schema.sql, seed.sql, test-duplicate.sql, test-invalid-reference.sql, README.md (evidence). rivertown.db is generated and git-ignored; the README has the one-line rebuild command. Every file starts with PRAGMA foreign_keys = ON (SQLite ignores foreign keys without it).
 - Microsoft: own organization joshmaurer.onmicrosoft.com ("jdmaurer Labs"), Power Apps Developer Plan environment "Josh Maurer's Environment" (750 flow runs/month; disabled after 30 days unused). See microsoft-environment-decision.md.
-- Solution "Rivertown Lead Intake" (RivertownLeadIntake), publisher jdmaurer Labs, prefix jdm. Contains: tables Lead (jdm_lead) and Source (jdm_source, added 2026-10-16), flow "Rivertown - Lead Intake (Power Automate) v1", Dataverse connection reference. Keys: Source "Unique source name" (name); Lead "Unique lead per source" (external_id + source), Active. The environment's preferred solution is still "Common Data Services Default Solution": anything created outside the solution lands there (logged; making Rivertown preferred is a one-minute safety net).
-- Flow: HTTP trigger ("Anyone") -> NormalizeLead -> ValidateRequiredFields -> SaveLead + RespondSuccess (200) / RespondFail (400). Same contract as n8n (D4, D5). Diagram, terms table, and field map: cases/rivertown-lead-intake/power-automate/README.md.
-- Tests T1-T3 passed 2026-09-30 (test-cases.md). Postman collection "Rivertown Lead Intake (Power Automate)" (T1, T2, T3) lives in Postman only; never export it to the repo.
+- Solution "Rivertown Lead Intake" (RivertownLeadIntake), publisher jdmaurer Labs, prefix jdm, v1.0.0.2. Contains: tables Lead (jdm_lead) and Source (jdm_source), flow "Rivertown - Lead Intake (Power Automate) v1", Dataverse connection reference. Keys: Source "Unique source name" (name); Lead "Unique lead per source" (external_id + source), Active. Preferred solution set to Rivertown Lead Intake (2026-10-17).
+- Flow (2026-10-17): HTTP trigger ("Anyone") -> NormalizeLead -> GetSource -> SourceFound -> CheckLeadExists -> IsDuplicate -> ValidateRequiredFields -> SaveLead + RespondSuccess (200) / RespondFail (400); RespondUnknownSource (400) and RespondDuplicate (200) each end with Terminate. Same contract as n8n (D4, D5) plus source. Diagram, terms table, and field map: cases/rivertown-lead-intake/power-automate/README.md. Never rename the trigger (it changes the web address).
+- Tests T1-T3 passed 2026-09-30; T4-T7 passed 2026-10-17 (test-cases.md). Postman collection "Rivertown Lead Intake (Power Automate)" (T1-T3, T4 New, T6 Unknown source, T7 Missing source) lives in Postman only; never export it to the repo. Lead table: 14 rows (12 + PA-DUP-001, PA-DUP-003).
 - The flow's web address is the password ("Anyone"). Stored in $HOME\rivertown-eval\pa-intake-url.txt only. To use: Get-Content "$HOME\rivertown-eval\pa-intake-url.txt" | Set-Clipboard
-- Export: cases/rivertown-lead-intake/power-automate/RivertownLeadIntake_1_0_0_1.zip (unmanaged, v1.0.0.1), scanned clean (no flow address, no sig, no account names).
+- Export: cases/rivertown-lead-intake/power-automate/RivertownLeadIntake_1_0_0_2.zip (unmanaged, v1.0.0.2, 2026-10-17), scanned clean (no flow address, no sig, no account names). Scan command: unzip to $env:TEMP and Select-String for 'sig=','logic.azure.com','joshmaurer','onmicrosoft','gmail','Josh Maurer'.
 - Practice flows (outside the solution): Toy 1 Manual (on), Toy 2 Scheduled (OFF; never leave it on), Toy 3 Automated on Contacts (confirm it is off). Connection "Dataverse - Josh Maurer (dev)". Contacts has one test row, Toy3 TestContact.
 - Rivertown n8n build: v2.8 (execution_id correlation ID, 60 s timeout, Chicago timezone), export lead-intake-v2.8.json. The n8n workflow is still named "Rivertown - Lead Intake v2.7"; version names start "v2.8". Unpublished after testing. v2.7 tag: lead-intake-v0.2-evaluated.
 - Workflow settings (timeout, timezone) saved straight into the published workflow without a republish.
@@ -92,14 +92,16 @@ Carried forward from Gate 1 (close inside these builds, not separately):
 - SQL remediation coursework: DataCamp Introduction to SQL complete; Intermediate SQL completed 2026-10-05; Joining Data in SQL completed 2026-10-06; Introduction to Relational Databases in SQL completed 2026-10-10. JOIN reasoning and relational concepts are substantially stronger than exact syntax retrieval. Concepts that held: primary vs foreign keys, 1:N and N:M relationships, referential integrity, CASCADE behavior, UNIQUE vs DISTINCT, JOIN logic, filtering/grouping. Syntax that needs delayed-recall practice includes ADD CONSTRAINT, SET NOT NULL, RENAME COLUMN, INSERT INTO ... VALUES, INSERT INTO ... SELECT DISTINCT ... FROM, UPDATE ... SET ... FROM ... WHERE, ALTER COLUMN ... TYPE, and FOREIGN KEY ... REFERENCES. Do not quiz table/column names; provide the names and test the SQL pattern and logic.
 
 ## Next
-1. Finish the Dataverse rebuild (part 1, tables and keys, done 2026-10-16; see Resume point). Part 2: the flow uses source and the key; a resend bumps duplicate_count (UPDATE), closing the Gate 1 #7 note; invalid source refused (400). Stretch: WorkflowRun table with the flow run ID, as n8n's execution_id. Also: rename the custom "status" display name to lead_status, malformed-email test, re-export the solution.
-2. Remaining Power Automate blocks: approvals (write approval-map.md here, decision 2), Try/Catch scopes (closes the #8 alert note), same-case comparison with n8n including licensing. End with the 2-minute screen recording (decision 3).
+1. DONE 2026-10-17: Dataverse rebuild (tables, keys, flow uses source and the key; #7 closed). Still owed from it: the 2-minute screen recording (decision 3). Deferred: WorkflowRun table with the flow run ID; rename the custom "status" display name to lead_status; malformed-email test.
+2. Remaining Power Automate blocks: approvals (write approval-map.md here, decision 2), Try/Catch scopes (closes the #8 alert note; also the two-resends-at-once error), same-case comparison with n8n including licensing. End each with the 2-minute screen recording (decision 3).
 3. Python #5 folded into a build (see carried-forward table): Claude teaches the few pieces the script needs on Josh's own Rivertown export, AI writes it, Josh explains it back. Do not start Intermediate Python as a separate track.
 4. Add the "What I can deliver now" section to README.md (decision 6).
 5. Later: a short mixed SQL + Python retention check in review format (show finished code, ask what it does), on Rivertown data.
 
 ## Open items - Power Automate build
-- status, routed_to, duplicate_count are not written yet (later blocks). Choice columns will need Microsoft's option numbers.
+- status and routed_to are not written yet (later blocks). Choice columns will need Microsoft's option numbers. duplicate_count is written on resends (2026-10-17).
+- Order differs from n8n: duplicate check runs before the required-fields check (decisions.md 2026-10-17).
+- Source names are not escaped in the GetSource filter (an apostrophe would break it).
 - Two "status" columns (custom jdm_inquirystatus and Microsoft's statecode). Rename the custom one's display name.
 - The import AI chose technical names that differ from display names (message is jdm_inquirymessage, received_at is jdm_receivedtimestamp). The field map must list both.
 - Single-line text columns default to 100 characters; check each against real input. message raised to 4000.
@@ -124,7 +126,7 @@ Carried forward from Gate 1 (close inside these builds, not separately):
 - Never do Microsoft work in the orange window.
 - Exception logged 2026-10-16: the Claude in Chrome extension is installed and signed in to Claude (Gmail account, email code) inside the blue window, so Claude can see Power Apps. The Claude sign-in is separate from the Microsoft account. Claude only sees tabs in its own tab group; work in that tab.
 - Postman: desktop app. Decline the Windows Firewall prompt; sending works without it.
-- Chrome forced dark mode is on (chrome://flags/#enable-force-dark). Power Automate web has no dark mode of its own.
+- Chrome forced dark mode is on (chrome://flags/#enable-force-dark). Power Automate web has no dark mode of its own. Found 2026-10-17: it makes the Expression bar's cursor invisible (black on black). Pasting still works. Plan: turn it off (needs a Chrome restart; do it with no unsaved work).
 
 ## Working rules
 - Learning first. Before any gate item, ask what skill it checks and design the activity around that skill. Cut activities that only produce a check mark.
@@ -151,4 +153,5 @@ Carried forward from Gate 1 (close inside these builds, not separately):
 - Josh came back to this build after two weeks away; after a gap, re-orient with the real screen first, and explain like a fifth grader when he asks.
 - Planning talks (agreed 2026-10-15): baby steps, one item at a time, one short screen per message. For each item give thoughts, then pushback, then one simple question, and end with a bold KEY MESSAGE. Keep a numbered "Approved so far" list in the chat and save it at closeout. When he asks for the fifth-grader version, use an everyday analogy (the diagnostic is a doctor's checkup) and give both the good and the watch-outs.
 - Microsoft work only in the "jdmaurer Labs" profile. No billing edits right before a trial sign-up.
+- Power Apps message format (2026-10-17, details in ASSISTANT_WORKING_CONTEXT.md): a line starting "▶ DO:" for the action, WHERE as a screen position (never "the flow"), WHY only for real choices, a standalone "Done: reply d" line; bold does not stand out on Josh's screen, so actions are marked with ▶ DO and caps labels. Analogy first, then n8n, then the Power Automate name. Explain-back after each major step.
 - Power Apps / Power Automate sessions (2026-10-16): before the first direction, open Claude's own tab at make.powerapps.com with Claude in Chrome (blue window), confirm "Josh Maurer's Environment", and tell Josh which tab to work in. If the Claude in Chrome tools aren't available, say so at the start; never guess at his screen. Applies whether or not the kickoff prompt mentions it.

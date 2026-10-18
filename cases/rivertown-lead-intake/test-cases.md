@@ -238,3 +238,20 @@ Sent from the Postman desktop app (collection "Rivertown Lead Intake v2", new re
 
 All four Insert nodes proven by real runs. Timeout restored to 60 s after TO-1 and confirmed by reopening Settings.
 Finding: the 500 body includes a stack trace with the local username and install path (threat-model F1).
+
+
+## 2026-10-17 - Power Automate duplicate handling and source (Dataverse rebuild part 2)
+
+Sent from the Postman desktop app (collection "Rivertown Lead Intake (Power Automate)", new requests T4 New, T6 Unknown source, T7 Missing source; T5 = T4 sent again). Pass/fail rules approved by Josh before the runs. Checked in the flow's run history (each card's inputs and outputs) and the Lead table (14 rows after the tests: 12 before + T4 + T7).
+
+| Test | external_id | Input | Pass rule | Result |
+|---|---|---|---|---|
+| T4 New (run 1) | PA-DUP-001 | source website_form, complete lead | 200 received; 1 row, source website_form | FAIL. 400 Unknown source. Run 2:41 PM: GetSource filter read `jdm_name eq ' website_form'` (a space typed next to the chip). NormalizeLead output was clean. Fixed by pasting the filter as one line with `@{...}` |
+| T4 New (run 2) | PA-DUP-001 | Same body | Same | PASS. 200 `{"status": "received", "external_id": "PA-DUP-001"}`, 1.86 s. Row created 10/17 3:02 PM, source website_form |
+| T5 Resend | PA-DUP-001 | Same body again | 200 duplicate; still 1 row; duplicate_count 1 | PASS. 200 `{"status": "duplicate", ...  "No new record created."}`, 1.24 s. Run: IsDuplicate yes -> IncrementDuplicateCount -> RespondDuplicate -> Terminate; ValidateRequiredFields (SaveLead) skipped. Row: duplicate_count 1, Created On 20:02 UTC, Modified On 20:05 UTC. One PA-DUP-001 row in the table |
+| T6 Unknown source | PA-DUP-002 | source `webform` | 400 Unknown source; no row | PASS. 400 `{"status": "rejected", "reason": "Unknown source"}`, 893 ms. No PA-DUP-002 row |
+| T7 Missing source | PA-DUP-003 | No source field | 200 received; row with source website_form | PASS. 200 received, 1.06 s. Row created 3:17 PM, source website_form |
+
+Closes the Gate 1 #7 note (UPDATE not exercised).
+Reading a run: a Condition that contains a Terminate shows "Cancelled" in run history; that is normal. Grey cards after it were skipped.
+Not yet tested: two resends at the same instant (the key refuses the second; that run errors), a source name containing an apostrophe, a malformed email against the Email column type.

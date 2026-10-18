@@ -134,8 +134,17 @@ ambiguous path.
 
 ## 2026-10-16 - Dataverse model (Source table and keys)
 
-- The flow does not use the new source column or the key yet. Until the duplicate-handling block is built, a resend reaches SaveLead and is refused by the key (an error), instead of bumping duplicate_count.
+- RESOLVED 2026-10-17: the flow now uses source and the key; a resend bumps duplicate_count (test-cases.md T5).
 - "Business required" stops people on Microsoft's screens, not flows or the API. The flow must always write source and external_id.
 - Two resends at the same instant could both look, both find nothing, both try to add: the key refuses the second (no duplicate row), but that run errors. Handling belongs to the Try/Catch block.
 - Source rows (website_form, event_form) are data, not design: they do not travel in the solution export and must be created in each new environment.
 - Key columns that are empty are not checked for duplicates. All 12 existing rows were given website_form before the key was built.
+
+
+## 2026-10-17 - Power Automate duplicate handling and source
+
+- The duplicate check runs before the required-fields check (n8n does the reverse). A resend of an existing lead that is missing its email gets 200 duplicate, not 400. The original row is already saved.
+- The source name is placed inside quotes in the GetSource filter without escaping. A source name containing an apostrophe would break the filter and error the run. Source names are set by Rivertown (website_form, event_form), not by the public.
+- Unknown-source and duplicate runs end Succeeded (green). They are visible only by opening the run; nothing alerts anyone. Rejected and duplicate submissions leave no record outside the 28-day run history until a WorkflowRun table exists.
+- duplicate_count is empty (not 0) on new rows; the increment treats empty as 0.
+- Two simultaneous resends: both may find nothing and both try to add; the key refuses the second and that run errors (still open; Try/Catch block).
