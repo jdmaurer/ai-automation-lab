@@ -148,3 +148,15 @@ ambiguous path.
 - Unknown-source and duplicate runs end Succeeded (green). They are visible only by opening the run; nothing alerts anyone. Rejected and duplicate submissions leave no record outside the 28-day run history until a WorkflowRun table exists.
 - duplicate_count is empty (not 0) on new rows; the increment treats empty as 0.
 - Two simultaneous resends: both may find nothing and both try to add; the key refuses the second and that run errors (still open; Try/Catch block).
+
+
+## 2026-10-18 - Power Automate approvals
+
+- Approving writes a status only. No email reaches the prospect: there is no send step after Send draft, and the instant "we got it" email (map row 8a) is not built.
+- The draft is a fixed template, not written from the message by AI.
+- One fixed approver (the test account). A client build would pick the team lead from routing; routed_to is not written by this flow yet.
+- The 5-minute time limit is for testing.
+- "needs routing" and "overdue" are statuses only. Nothing re-routes the lead or alerts a backup person (map rows 6 and 13).
+- If ApproveFirstReply fails (rather than times out), the lead keeps an empty status and nobody is told; SetOverdue runs only on a timeout. Try/Catch block.
+- The approval request appears in Power Automate > Approvals. Email or Teams notices depend on the approver's account having them; not tested.
+- Wrong team and Not a fit were built but not run in a test.

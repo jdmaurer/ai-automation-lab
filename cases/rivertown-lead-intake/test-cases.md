@@ -256,3 +256,20 @@ Closes the Gate 1 #7 note (UPDATE not exercised).
 Reading a run: a Condition that contains a Terminate shows "Cancelled" in run history; that is normal. Grey cards after it were skipped.
 Demo recording run (10-17, 11:25 PM, not a frozen test): T4 New Copy with PA-DEMO-001 -> 200 received; resend -> 200 duplicate; Lead table showed one PA-DEMO-001 row with duplicate_count 1; T6 Unknown source Copy -> 400 Unknown source, no new row. Same results as T4-T6. The Lead table now has 15 rows.
 Not yet tested: two resends at the same instant (the key refuses the second; that run errors), a source name containing an apostrophe, a malformed email against the Email column type.
+
+
+## 2026-10-18 - Power Automate approval before the first reply (approvals block)
+
+Sent from the Postman desktop app (collection "Rivertown Lead Intake (Power Automate)", new requests T8 Send draft, T9 Write it myself, T10 No response; copies of T4 New). Pass/fail rules approved by Josh before the runs. Recorded on screen as DEMO-02 (demos/demo-02-approval-before-reply.md). Approval answered in Power Automate > Approvals (environment Josh Maurer's Environment). Time limit on ApproveFirstReply: PT5M (test only). Design: approval-map.md row 8b; decisions.md 2026-10-18.
+
+Shared pass rules: 200 received within seconds, before anyone clicks; an approval titled "First reply to lead <external_id> needs approval" reaches the approver with four buttons and the draft; exactly one row for the external_id.
+
+| Test | external_id | Action | Status rule | Result |
+|---|---|---|---|---|
+| T8 Send draft (run 1) | PA-APR-001 | Send | reply approved | FAIL. Run 2:22 PM failed in 10 s at ApproveFirstReply: `InvalidApprovalCreateRequestAssignedToMissing` ("Required field 'assignedTo' is missing or empty"). SaveLead and RespondSuccess had already run (200 received, row saved, status empty). The name-picker chip in Assigned to displayed but saved empty. Fixed by entering the address as an expression chip (`'...'` in the Expression tab). Test row deleted before re-recording; the failure stays in run history |
+| T8 Send draft (run 2) | PA-APR-004 | Send draft clicked | reply approved | PASS. Run 2:48 PM Succeeded (4:50, answered just inside the limit). Status reply approved |
+| T9 I'll write it myself | PA-APR-002 | I'll write it myself clicked | writing personal reply | PASS. Status writing personal reply |
+| T10 No response | PA-APR-003 | Nothing clicked for 5+ min | overdue | PASS. Request left the Approvals list after the limit; status overdue (SetOverdue ran after the timeout) |
+
+Not tested today (same Switch, different case): Wrong team -> needs routing, Not a fit -> closed.
+Finding: a failure inside ApproveFirstReply (not a timeout) leaves the lead with an empty status and alerts no one. SetOverdue runs only on "has timed out". Goes to the Try/Catch block (Gate 1 #8 alert note).

@@ -4,7 +4,7 @@
 |---|---|
 | Build | [Rivertown lead intake](../cases/rivertown-lead-intake/): Power Automate flow "Rivertown - Lead Intake (Power Automate) v1" with Dataverse, solution 1.0.0.2 |
 | Recorded | 2026-10-17. Raw take 3:25, silent, 1920x1080 at 30 fps, MKV |
-| Raw file | On Josh's computer, outside the repo (OBS recording folder) |
+| Raw file | On Josh's computer, outside the repo: `Videos\Demos\DEMO-01_raw_2026-10-17.mp4` (remuxed from MKV 2026-10-18) |
 | Status | Raw recorded. Editing, voice, captions, and publishing: marketing track, `scripts/demo-01-duplicate-handling.md` (private) |
 
 Written after recording (the shot list below is the plan that was run). From DEMO-02 on, records are written before recording.

@@ -189,3 +189,21 @@ Power Automate facts learned 2026-10-17 (older designer, opened from a solution)
 
 ### Vision at session start (added 2026-10-16)
 When the next build happens in Power Apps or Power Automate, the session opens its own tab with Claude in Chrome before the first direction: check the connected browser, open make.powerapps.com in the blue "jdmaurer Labs" window (Claude's own tab group), confirm "Josh Maurer's Environment" in the top right, and tell Josh which tab to work in. If the Claude in Chrome tools are not available in that session, say so at the start; don't guess at the screen.
+
+### Power Apps directions, update (added 2026-10-18)
+- **No bold for anything that must stand out.** Josh can't read bold light text; it took him minutes to find a dropdown choice buried in a sentence. Mark with ★ or put it on its own line.
+- **Step layout:** each action on its own line naming the box and the exact value ("Approval type → Approve/Reject - First to respond"), with WHERE as a bullet directly under it. Rename comes first in every card's steps (as in n8n). End with a one-line "What we're doing:" (fifth-grade plain) right before "Done: reply d".
+- **Give the click-to-insert way, not only code.** Dynamic content panel = n8n's drag-and-drop: the gray heading is the card (`outputs('Card')`), the item is the line (`['body/x']`). Its search box finds items, not headings.
+- **Claude in Chrome: always pass the tab ID** on navigate. A navigate without one moved Josh's working tab on 10-18. Use a separate Claude tab for look-ups.
+- **Check the flow before saying it works:** the run record shows the failing card's exact error in one line (T8 run 1: assignedTo missing).
+- **Plans must leave room for real decisions.** The approval map ran an hour over 25 minutes because the decisions were real; say so in one line instead of rushing. Vague labels (row 8 "first reply to prospect") cost more time than they save; give a concrete example in the first message.
+- **Demo recordings:** record the tests themselves, pausing between shots (Josh pauses OBS freely; waits and fixes get cut). Before recording: one app at a time maximized, zoom in, Leads sorted by Created On (newest at the bottom), status column added. No mic in OBS. Caveats don't go in voice-overs (limitations.md holds the gaps); the only line not to cross is saying something happens that doesn't.
+
+Power Automate facts learned 2026-10-18:
+- Approvals: "Start and wait for an approval" (type `approval`). Custom Responses gives your own buttons; Outcome holds the clicked text. Answer at Power Automate > Approvals: tick the request, the buttons appear on the top bar (or open it and pick from the dropdown, then Confirm).
+- Assigned to: the name picker can display a chip and save empty. Enter the address as an expression (`'name@domain'` in the Expression tab).
+- Timeout: card ⋯ > Settings > Timeout, ISO 8601 (PT5M). A timed-out card skips the cards after it; a parallel branch with Configure run after = "has timed out" catches it (red dashed arrow). "has failed" is a separate box.
+- Update a row needs the row's own ID (SaveLead's `jdm_leadid`), not external_id.
+- Searching `rows` lists all the Dataverse row actions.
+- Solution export: Overview > Export (the ⋯ on the Objects page only offers "Switch to classic").
+- A new connector in a solution flow adds its own connection reference (Standard approvals).

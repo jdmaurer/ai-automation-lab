@@ -4,13 +4,15 @@ The first half of the n8n Lead Intake build (receive, clean, check, save, reply)
 
 Added 2026-10-17: source lookup (unknown source = 400, missing = website_form) and duplicate handling (a resend bumps duplicate_count; no second row).
 
-Not included yet (later blocks): AI triage, routing, audit trail (WorkflowRun), approvals, Try/Catch.
+Added 2026-10-18: a person signs off before the first reply (approval map row 8b). After the 200, the team lead gets an approval with the draft reply and four buttons; the choice is written to the lead's status; no answer in 5 minutes = overdue. Design: [../approval-map.md](../approval-map.md); decisions.md 2026-10-18.
+
+Not included yet (later blocks): AI triage, routing, audit trail (WorkflowRun), Try/Catch, sending the approved reply.
 
 ## Files
 
 | File | Contents |
 |---|---|
-| `RivertownLeadIntake_1_0_0_2.zip` | Unmanaged solution export (2026-10-17): Lead and Source tables with their keys, the flow with source lookup and duplicate handling, the Dataverse connection reference. Scanned before commit: no flow address, no signature, no account names. Source rows are data and are not in the export (see runbook). v1.0.0.1 (2026-09-30) is in git history. |
+| `RivertownLeadIntake_1_0_0_3.zip` | Unmanaged solution export (2026-10-18): Lead and Source tables with their keys, the flow with source lookup, duplicate handling, and the approval, and two connection references (Dataverse, Standard approvals). Scanned before commit: no flow address, no signature; one expected hit, the approver address in ApproveFirstReply (decisions.md 2026-10-18). Source rows are data and are not in the export (see runbook). Earlier versions are in git history. |
 
 ## The flow
 
@@ -25,37 +27,48 @@ flowchart TD
     G -- If yes --> H["IncrementDuplicateCount<br/>Update a row: duplicate_count + 1"] --> I["RespondDuplicate<br/>200 {status: duplicate}"] --> I2["Terminate (Succeeded)"]
     G -- If no --> J{"ValidateRequiredFields (Condition)<br/>external_id and cleaned email not blank"}
     J -- If yes --> K["SaveLead (Add a new row: Leads)<br/>includes source lookup"] --> L["RespondSuccess<br/>200 {status: received, external_id}"]
+    L --> N["ApproveFirstReply (Start and wait for an approval)<br/>Custom Responses, draft reply in Details<br/>timeout PT5M"]
+    N --> O{"RouteByDecision (Switch on Outcome)"}
+    O -- Send draft --> O1["SetReplyApproved<br/>status = reply approved"]
+    O -- I'll write it myself --> O2["SetWritingPersonalReply<br/>status = writing personal reply"]
+    O -- Wrong team --> O3["SetNeedsRouting<br/>status = needs routing"]
+    O -- Not a fit --> O4["SetClosed<br/>status = closed"]
+    N -. has timed out .-> P["SetOverdue<br/>status = overdue"]
     J -- If no --> M["RespondFail<br/>400 {status: rejected, reason}"]
 ```
 
-In Power Automate, steps are stacked and a run continues past a Condition to the next card, so each special branch ends with Terminate. Decisions: decisions.md, 2026-10-17.
+In Power Automate, steps are stacked and a run continues past a Condition to the next card, so each special branch ends with Terminate. The approval sits after RespondSuccess so the form never waits for a person. SetOverdue runs only when ApproveFirstReply times out (Configure run after). Decisions: decisions.md, 2026-10-17 and 2026-10-18.
 
 Same contract as the n8n build: only external_id and email are required (decision D4), and cleaning happens before the check (D5).
 
 ## n8n to Power Automate terms
 
-| n8n | Power Automate | Note |
-|---|---|---|
-| Workflow | Cloud flow | |
-| Node | Action (the first one is the trigger) | |
-| Webhook node | When a HTTP request is received | Premium |
-| Header Auth credential (API key in a header) | "Who can trigger: Anyone": a signed web address (`sig=`) is the key | Tenant options require an OAuth token from the organization |
-| Credential | Connection (the stored key) and connection reference (the label inside a solution) | The reference travels in the export; each environment plugs in its own connection |
-| Edit Fields (Set) | Compose | |
-| IF | Condition (If yes / If no) | |
-| Respond to Webhook | Response | Premium |
-| Data Table Get (CheckLeadExists) | List rows (Dataverse) | Always returns a list (`body/value`); found = `length(...) > 0` |
-| Data Table Insert | Add a new row | |
-| Data Table Update (IncrementDuplicateCount) | Update a row | Needs the row ID; read first, then write (Upsert cannot add 1) |
-| A branch that just ends | Terminate | n8n stops at a dead end; Power Automate continues to the next card unless told to stop |
-| Data Table | Dataverse table | Dataverse enforces column types, lengths, and dependencies |
-| Expression `{{ }}`, `$json.body.x` | Expression (fx tag), `triggerBody()?['x']` | Typed text is literal; only an fx tag is evaluated |
-| `$('Node').item.json.x` | `outputs('Node')?['x']` | Needed when the step is not the previous one |
-| `?.` and `?? ''` | `?[...]` and `coalesce(x, '')` | Missing field gives empty, not an error |
-| Executions list | 28-day run history | Duration alone showed which path ran |
-| Execution ID | Run's client tracking ID | Power Automate stamps it on every run |
-| Publish / unpublish | Save turns the flow on; Turn off / Turn on | |
-| Workflow JSON export | Solution export (zip), unmanaged | |
+| n8n | Power Automate | Type in search | Note |
+|---|---|---|---|
+| Workflow | Cloud flow |  | |
+| Node | Action (the first one is the trigger) |  | |
+| Webhook node | When a HTTP request is received | `http request` | Premium |
+| Header Auth credential (API key in a header) | "Who can trigger: Anyone": a signed web address (`sig=`) is the key |  | Tenant options require an OAuth token from the organization |
+| Credential | Connection (the stored key) and connection reference (the label inside a solution) |  | The reference travels in the export; each environment plugs in its own connection |
+| Edit Fields (Set) | Compose | `compose` | |
+| IF | Condition (If yes / If no) | `condition` | |
+| Respond to Webhook | Response | `response` | Premium |
+| Data Table Get (CheckLeadExists) | List rows (Dataverse) | `rows` or `dataverse` | Always returns a list (`body/value`); found = `length(...) > 0` |
+| Data Table Insert | Add a new row | `rows` | |
+| Data Table Update (IncrementDuplicateCount) | Update a row | `rows` | Needs the row ID; read first, then write (Upsert cannot add 1) |
+| A branch that just ends | Terminate | `terminate` | n8n stops at a dead end; Power Automate continues to the next card unless told to stop |
+| Data Table | Dataverse table |  | Dataverse enforces column types, lengths, and dependencies |
+| Expression `{{ }}`, `$json.body.x` | Expression (fx tag), `triggerBody()?['x']` |  | Typed text is literal; only an fx tag is evaluated |
+| `$('Node').item.json.x` | `outputs('Node')?['x']` |  | Needed when the step is not the previous one |
+| `?.` and `?? ''` | `?[...]` and `coalesce(x, '')` |  | Missing field gives empty, not an error |
+| Executions list | 28-day run history |  | Duration alone showed which path ran |
+| Execution ID | Run's client tracking ID |  | Power Automate stamps it on every run |
+| Publish / unpublish | Save turns the flow on; Turn off / Turn on |  | |
+| Workflow JSON export | Solution export (zip), unmanaged |  | |
+| Switch node | Switch (one Case per value, plus Default) | `switch` | Equals must match exactly, capitals included |
+| Wait node / "Send and wait for response" | Start and wait for an approval (Approvals connector) | `approval` | Answered in Power Automate > Approvals; returns Outcome |
+| Error output (v2.7 ClassifyMessage) | Configure run after (card ⋯ menu): has failed / has timed out / is skipped | | A red dashed arrow marks a non-success path |
+| Node Settings > Timeout | Card Settings > Timeout, ISO 8601 (PT5M = 5 minutes, P1D = 1 day) | | |
 
 ## Lead table field map
 
@@ -73,7 +86,7 @@ Same contract as the n8n build: only external_id and email are required (decisio
 | message | jdm_inquirymessage | Text, max 4,000 | Form, as received |
 | submitted_at | jdm_submissiontimestamp | Date and time | Form, as received |
 | received_at | jdm_receivedtimestamp | Date and time | NormalizeLead (utcNow) |
-| status | jdm_inquirystatus | Choice | Not written yet |
+| status | jdm_inquirystatus | Choice: new, contacted, closed, reply approved, writing personal reply, needs routing, overdue | Approval cards (2026-10-18); see the flow diagram |
 | routed_to | jdm_routeddepartment | Choice | Not written yet |
 | duplicate_count | jdm_duplicatecount | Whole number | Empty on a new row; IncrementDuplicateCount adds 1 on each resend (2026-10-17) |
 
@@ -100,10 +113,12 @@ Not yet in Dataverse: Company (company stays as text on Lead), WorkflowRun, Revi
 Pass/fail rules were written before the runs.
 - 2026-09-30, T1-T3 (save, missing field, cleaning): all passed. test-cases.md, "2026-09-30 - Power Automate rebuild".
 - 2026-10-17, T4-T7 (new, resend, unknown source, missing source): all passed; T4 needed a second run after a filter fix. test-cases.md, "2026-10-17". Closes the Gate 1 #7 UPDATE note.
+- 2026-10-18, T8-T10 (Send draft, I'll write it myself, no response): all passed; T8 needed a second run after the Assigned to fix. test-cases.md, "2026-10-18". Recorded as DEMO-02.
 
 ## Running it
 
 - The flow's web address is the password. It is kept outside the repo; never paste it into chat, screenshots, or the repo.
 - Send with the Postman desktop app: POST, Body raw JSON, header Content-Type application/json.
 - Importing this solution elsewhere generates a new web address and asks for a Dataverse connection for the connection reference.
-- Licensing: the HTTP trigger, Response, and Dataverse are Premium. Free in the Developer Plan; a paid license cost for a real client.
+- The approver answers in Power Automate > Approvals (blue window, environment Josh Maurer's Environment): tick the request, then a button appears on the top bar.
+- Licensing: the HTTP trigger, Response, and Dataverse are Premium; Approvals is standard. Free in the Developer Plan; a paid license cost for a real client.

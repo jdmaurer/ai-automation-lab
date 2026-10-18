@@ -6,8 +6,11 @@ Every build ends with a short screen recording (decision 3 in [CURRENT_STATE.md]
 
 | ID | Shows | Build | Recorded | Raw | Status |
 |---|---|---|---|---|---|
-| [DEMO-01](demo-01-duplicate-handling.md) | A resent form is counted, not saved twice; an unknown source is refused | [Rivertown lead intake](../cases/rivertown-lead-intake/), Power Automate + Dataverse | 2026-10-17 | 3:25, silent, MKV | Raw recorded; editing and voice in the marketing track |
+| [DEMO-01](demo-01-duplicate-handling.md) | A resent form is counted, not saved twice; an unknown source is refused | [Rivertown lead intake](../cases/rivertown-lead-intake/), Power Automate + Dataverse | 2026-10-17 | 3:30, silent, MP4 | Raw recorded; editing and voice in the marketing track |
+| [DEMO-02](demo-02-approval-before-reply.md) | A person signs off before the first reply goes out; no answer marks the lead overdue | [Rivertown lead intake](../cases/rivertown-lead-intake/), Power Automate + Dataverse + Approvals | 2026-10-18 | 10:48, silent, MP4 | Raw recorded; editing and voice in the marketing track |
 
 ## New record checklist
 
 Copy the headings from DEMO-01. Before recording, fill in: the business problem, what it proves, the shot list (on screen, proof to see), must never appear, claim limits, and the re-shoot setup. Each record also carries a plain name and the script (a first-draft voice-over), so Josh only has to record. No file names or timestamps needed afterward.
+
+Raw footage lives on Josh's computer in `Videos\Demos`, named `DEMO-NN_raw_YYYY-MM-DD.mp4` (remuxed from OBS's MKV in OBS: File > Remux Recordings).
