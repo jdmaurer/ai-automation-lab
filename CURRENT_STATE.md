@@ -54,6 +54,12 @@ Status against this plan. Build demos for the problems that come up most, not al
 | Not knowing what customers think | Gap (Blazing Zebra only) |
 After week 12: competitor watch (marketing decision), then the gaps above, chosen by which ones prospects bring up.
 
+## Carry to the marketing track (logged 2026-10-17; copy into the marketing repo when that track starts)
+- OBS on the Dell S3425DW (3440x1440): new Scene Collection "Josh's Studio 2026" (old collection kept as backup). Scene "Screen Capture": canvas 2560x1440, output 1920x1080, 30 fps, Bicubic; Display Capture of the Dell, centered (the middle 2560 px of the screen is recorded). Size app windows to fit the frame (un-maximize), since maximized apps put menus outside it.
+- Try later: a second scene that records the full ultrawide (canvas 3440x1440) to compare; and PowerToys FancyZones with a saved "recording layout" (Postman left half, Chrome right half of the frame).
+- Still to build: a "Camera" scene (the Elgato was in the old collection's Scene 4).
+- Postman: store the flow address in an environment variable so the URL bar shows {{pa_intake_url}} in recordings.
+
 ## Gate 1 (scored 2026-09-30; re-scored 2026-10-15)
 Result: **PASSED**. 9 pass, 1 fail. Pass needs 8 of 10 plus the four mandatory items (2, 3, 8, 9).
 | # | Criterion | Result | Evidence or gap |
