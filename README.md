@@ -20,7 +20,7 @@ Each case folder holds the workflow export, seed data, test cases with
 results, a decision log with reasoning, a limitations statement, and a
 runbook.
 
-All cases use synthetic data only.
+All examples use synthetic data from a fictitious company.
 
 ---
 
@@ -33,7 +33,6 @@ All cases use synthetic data only.
 | AI literacy workshops, prompting, and executive briefings | Available | Teaching and strategy background |
 | Workflow-opportunity review: find the repeat work, map the process, rank what to try first | Available | Strategy and management background |
 | Paid diagnostic (the Team AI Map plus cost, outside interviews, process fixes, and a recommendation) | Once the form exists and has had one free test run | Week 11 discovery work on Rivertown |
-| Workflow prototypes, like the cases above (all examples use synthetic data) | Available (confirmed by Josh 2026-10-18) | Rivertown lead intake: tests, runbook, threat model |
 | Approval workflows in Power Automate | After the approvals build | Rivertown Power Automate build |
 
 Not offered: production AI systems, enterprise governance, autonomous agents, or Microsoft tenant administration.
