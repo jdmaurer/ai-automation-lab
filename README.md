@@ -33,7 +33,7 @@ All cases use synthetic data only.
 | AI literacy workshops, prompting, and executive briefings | Available | Teaching and strategy background |
 | Workflow-opportunity review: find the repeat work, map the process, rank what to try first | Available | Strategy and management background |
 | Paid diagnostic (the Team AI Map plus cost, outside interviews, process fixes, and a recommendation) | Once the form exists and has had one free test run | Week 11 discovery work on Rivertown |
-| Prototype or low-risk pilot of a simple workflow on test data, in a test account the client owns, with acceptance criteria agreed up front, a person reviewing results, and a limited support period; not for production | Available (Gate 1 passed 2026-10-15; confirmed by Josh 2026-10-18; Python carried into builds) | Rivertown lead intake: tests, runbook, threat model |
+| Workflow prototypes, like the cases above (all examples use synthetic data) | Available (confirmed by Josh 2026-10-18) | Rivertown lead intake: tests, runbook, threat model |
 | Approval workflows in Power Automate | After the approvals build | Rivertown Power Automate build |
 
 Not offered: production AI systems, enterprise governance, autonomous agents, or Microsoft tenant administration.
