@@ -46,6 +46,7 @@ Not offered: production AI systems, enterprise governance, autonomous agents, or
 |---|---|
 | [`n8n-patterns.md`](n8n-patterns.md) | n8n gotchas and course documentation defects — the things worth not relearning |
 | [`CURRENT_STATE.md`](CURRENT_STATE.md) | Where work resumes |
+| [`demos/`](demos/) | One record per demo video: the problem, what it proves, the shot list, and claim limits |
 | [`AI_HANDOFF_PROTOCOL.md`](AI_HANDOFF_PROTOCOL.md) | How sessions open and close across ChatGPT and Claude |
 
 ---

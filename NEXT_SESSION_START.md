@@ -13,12 +13,9 @@ git pull --ff-only
 
 Expected result: "Already up to date" (the pull is done the night before, at closeout). If git reports local changes or an error, stop and inspect.
 
-## On your own, in a low-usage window: finish the demo video (decision 3)
+## The demo video (decision 3)
 
-The raw take is recorded (10-17, 3:25, MKV, saved outside the repo). It shows: T4 New Copy -> 200 received, resend -> 200 duplicate, Lead table Refresh -> one PA-DEMO-001 row with duplicate_count 1, T6 Unknown source Copy -> 400 Unknown source, Refresh -> no new row. Mouse circles mark the key parts; quiet stretches were left in case the circles get cut.
-1. OBS: File > Remux Recordings, pick the MKV, Remux (makes an MP4 without re-encoding).
-2. Trim to about 2 minutes. Keep it to the business problem: a resent form gets counted, not saved twice; a made-up source is refused.
-Voice or captions come later in the marketing track. For a re-shoot, use PA-DEMO-002 (PA-DEMO-001 is used) and run the "Screen Recording Layout" desktop icon first.
+The raw take is recorded (10-17, 3:25, MKV, outside the repo). Its record, with the shot list and claim limits, is `demos/demo-01-duplicate-handling.md`. When you watch it, add the raw file name and the time each shot starts. Editing, voice, and captions happen together in the marketing track (`scripts/demo-01-duplicate-handling.md` there has a first-draft voice-over); remux the MKV right before editing (OBS File > Remux Recordings).
 
 ## Before the build: give Claude eyes
 
@@ -41,7 +38,8 @@ Plan with time boxes:
 4. Build one approval (45 min).
 5. Pass/fail rules approved before the test, then test (30 min): approve, reject, and no response.
 6. Re-export the solution and scan it.
-7. Closeout (20 min), only when I say I'm ready.
+7. Before closeout: write the demo record for this build in demos/ (copy DEMO-01's headings; shot list first), so the recording follows it.
+8. Closeout (20 min), only when I say I'm ready.
 
 How to run it: follow ASSISTANT_WORKING_CONTEXT.md "Power Apps directions, revised": the action on its own "▶ DO:" line, WHERE as a screen position (never "the flow"), WHY only for real choices, a standalone "Done: reply d" line. Analogy first, then n8n, then the Power Automate name. Cursor-dependent steps in one message. One terminal command per message. Explain-back after each major step. Don't ask me to look back; repeat what I need. Label recommendations Build fit or Client fit. Name side issues and ask now or log. Track what I do independently vs. with help. Don't start Intermediate Python.
 
