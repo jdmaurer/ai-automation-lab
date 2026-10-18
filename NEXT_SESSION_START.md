@@ -38,7 +38,7 @@ Plan with time boxes:
 4. Build one approval (45 min).
 5. Pass/fail rules approved before the test, then test (30 min): approve, reject, and no response.
 6. Re-export the solution and scan it.
-7. Before closeout: write the demo record for this build in demos/ (copy DEMO-01's headings; shot list first), so the recording follows it.
+7. Before closeout: write the demo record for this build in demos/ (copy DEMO-01's headings; shot list first), so the recording follows it. After I record, attach jdmaurer/marketing-track and write a full first-draft voice-over in its scripts/ folder (like scripts/demo-01), with my step-by-step account of what I did and why.
 8. Closeout (20 min), only when I say I'm ready.
 
 How to run it: follow ASSISTANT_WORKING_CONTEXT.md "Power Apps directions, revised": the action on its own "▶ DO:" line, WHERE as a screen position (never "the flow"), WHY only for real choices, a standalone "Done: reply d" line. Analogy first, then n8n, then the Power Automate name. Cursor-dependent steps in one message. One terminal command per message. Explain-back after each major step. Don't ask me to look back; repeat what I need. Label recommendations Build fit or Client fit. Name side issues and ask now or log. Track what I do independently vs. with help. Don't start Intermediate Python.
