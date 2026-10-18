@@ -10,4 +10,4 @@ Every build ends with a short screen recording (decision 3 in [CURRENT_STATE.md]
 
 ## New record checklist
 
-Copy the headings from DEMO-01. Before recording, fill in: the business problem, what it proves, the shot list (on screen, proof to see), must never appear, claim limits, and the re-shoot setup. After recording: the raw file name, its length, and the time each shot starts in the raw file.
+Copy the headings from DEMO-01. Before recording, fill in: the business problem, what it proves, the shot list (on screen, proof to see), must never appear, claim limits, and the re-shoot setup. Each record also carries a plain name and the script (a first-draft voice-over), so Josh only has to record. No file names or timestamps needed afterward.

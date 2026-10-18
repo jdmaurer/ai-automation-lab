@@ -4,7 +4,7 @@
 |---|---|
 | Build | [Rivertown lead intake](../cases/rivertown-lead-intake/): Power Automate flow "Rivertown - Lead Intake (Power Automate) v1" with Dataverse, solution 1.0.0.2 |
 | Recorded | 2026-10-17. Raw take 3:25, silent, 1920x1080 at 30 fps, MKV |
-| Raw file | On Josh's computer, outside the repo (OBS recording folder). File name: *to fill in* |
+| Raw file | On Josh's computer, outside the repo (OBS recording folder) |
 | Status | Raw recorded. Editing, voice, captions, and publishing: marketing track, `scripts/demo-01-duplicate-handling.md` (private) |
 
 Written after recording (the shot list below is the plan that was run). From DEMO-02 on, records are written before recording.
@@ -21,13 +21,13 @@ A lead form gets sent twice: a double click, a retry after a slow connection, or
 
 ## Shot list (as recorded)
 
-| # | On screen | Proof to see | Starts in raw (fill in) |
-|---|---|---|---|
-| 1 | Postman, request "T4 New Copy", Body tab (external_id PA-DEMO-001): Send | 200, "received" | |
-| 2 | Same request: Send again | 200, "duplicate" | |
-| 3 | Chrome, Power Apps, Leads table: Refresh; row highlighted across to duplicate_count | One PA-DEMO-001 row, duplicate_count 1 | |
-| 4 | Postman, "T6 Unknown source Copy": Send | 400, "Unknown source" | |
-| 5 | Chrome: Refresh | No new row (15 rows) | |
+| # | On screen | Proof to see |
+|---|---|---|
+| 1 | Postman, request "T4 New Copy", Body tab (external_id PA-DEMO-001): Send | 200, "received" |
+| 2 | Same request: Send again | 200, "duplicate" |
+| 3 | Chrome, Power Apps, Leads table: Refresh; row highlighted across to duplicate_count | One PA-DEMO-001 row, duplicate_count 1 |
+| 4 | Postman, "T6 Unknown source Copy": Send | 400, "Unknown source" |
+| 5 | Chrome: Refresh | No new row (15 rows) |
 
 Mouse circles mark the key parts. Quiet stretches were left in so the circles can be cut if they don't work.
 
