@@ -12,7 +12,7 @@ Not included yet (later blocks): AI triage, routing, audit trail (WorkflowRun), 
 
 | File | Contents |
 |---|---|
-| `RivertownLeadIntake_1_0_0_3.zip` | Unmanaged solution export (2026-10-18): Lead and Source tables with their keys, the flow with source lookup, duplicate handling, and the approval, and two connection references (Dataverse, Standard approvals). Scanned before commit: no flow address, no signature; one expected hit, the approver address in ApproveFirstReply (decisions.md 2026-10-18). Source rows are data and are not in the export (see runbook). Earlier versions are in git history. |
+| `RivertownLeadIntake_1_0_0_4.zip` | Unmanaged solution export (2026-11-03): Lead and Source tables with their keys, the flow with source lookup, duplicate handling, the approval, and the Try/Catch block (Try scope, Catch scope with RaiseFailureAlert and MarkRunFailed, EndOverdueCleanly after SetOverdue), and two connection references (Dataverse, Standard approvals). Scanned before commit: no flow address, no signature, no Gmail; two expected hits, the approver address in ApproveFirstReply and RaiseFailureAlert. Source rows are data and are not in the export (see runbook). Earlier versions are in git history. |
 
 ## The flow
 
