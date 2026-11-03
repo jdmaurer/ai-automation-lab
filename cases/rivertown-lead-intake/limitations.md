@@ -160,3 +160,15 @@ ambiguous path.
 - If ApproveFirstReply fails (rather than times out), the lead keeps an empty status and nobody is told; SetOverdue runs only on a timeout. Try/Catch block.
 - The approval request appears in Power Automate > Approvals. Email or Teams notices depend on the approver's account having them; not tested.
 - Wrong team and Not a fit were built but not run in a test.
+
+
+## 2026-11-03 - Power Automate Try/Catch
+
+- The alert is a request in Power Automate > Approvals, not an email or text: the lab account has no mailbox, the Mail connector is refused for this new tenant, and Google blocks a personal Gmail in a flow with Dataverse or Approvals. Someone has to open Approvals to see it. A client build would send an Outlook email from their own mailbox.
+- One fixed recipient (the test account), the same as the approver. A client build sends it to a shared admin mailbox or team.
+- The alert names the lead and the run ID, not which card failed; the person opens the run history to see that.
+- When the crash happens before RespondSuccess, the form gets 502 Bad Gateway with Microsoft's error text, not a Rivertown message.
+- Overdue leads are marked only; nothing sends them back to the sorting pile yet (approval map row 13).
+- A timed-out approval request stays in the Approvals list after the flow stops waiting (PA-APR-003, PA-APR-006). Clicking it later does nothing.
+- Two resends at the same instant: the key refusal now fails inside Try, so it should raise the alert, but this was not tested.
+- Wrong team and Not a fit are still built but not run in a test.

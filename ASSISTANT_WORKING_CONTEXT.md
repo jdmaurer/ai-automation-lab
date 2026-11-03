@@ -207,3 +207,25 @@ Power Automate facts learned 2026-10-18:
 - Searching `rows` lists all the Dataverse row actions.
 - Solution export: Overview > Export (the ⋯ on the Objects page only offers "Switch to classic").
 - A new connector in a solution flow adds its own connection reference (Standard approvals).
+
+### Power Apps directions, update (added 2026-11-03)
+The Try/Catch session ran about 6.5 hours for a 3.5-hour plan. Josh's rules from it:
+- **Every tab change gets its own line:** "Switch tabs: <exact tab title>, at the top of the blue window" (or "Go to Postman"). He spent minutes looking for "Approvals" inside a table because the switch wasn't named.
+- **Quotes mean "type this".** Never put button or panel names in quotes ("add an action" got typed into the search box). Anything to type goes in a copy box.
+- **Never "the same way as" an earlier session.** Give the clicks from the screen he is on.
+- **Baby steps in new places:** one click per message when navigating menus (New > Automation > Cloud flow > Instant took three messages). Short messages; a page of text is the failure mode, but each step still says what it is for in one fifth-grade line.
+- **Socratic guesses are single-step only** ("what goes in the box next?"), never "which five of these". When he's rusty, make the call and move on.
+- **Before any delete, double-check** what uses it (dependencies, which flows use a connection) and say what's lost; he asked for this explicitly.
+- **Demo tables:** sort by a date column, oldest first, so new rows land at the bottom; zoom only as far as the status column still shows.
+- **Check the build against the platform before choosing a channel:** the lab tenant has no mailbox; Mail V3 is refused; personal Gmail can't share a flow with Dataverse or Approvals. Approvals works. Ask "what does the client run on?" first.
+- When a fix route hits a second wall, stop and offer the proven option (Approvals here) instead of a third workaround.
+
+Power Automate facts learned 2026-11-03 (new designer, opened from a solution, `?v3=true`):
+- Scope = a box of cards (`scope`). Drag a whole Condition into a Scope: grab its dark title bar and drop it on the + inside the Scope.
+- Rename: click the card's title at the top left of its panel, Ctrl+A, type, Enter (clicking once didn't always take).
+- After Save, the side panel sometimes shows empty code (`{"inputs": {}}`) or "Not connected". Refresh the page (it's saved) and reopen the card's Code view to check.
+- Code view is the reliable check that a chip (an address in To or Assigned to) really saved.
+- A timed-out card fails its container (Condition or Scope), so the run turns red even when a "has timed out" branch handled it. End that branch with Terminate (Succeeded).
+- Create an approval doesn't wait (use it as an alert); Start and wait does.
+- The new-designer flow list from a solution sometimes opens the classic designer in a new browser tab, outside Claude's tab group.
+- Run history rows link to `/runs/<id>`; Claude can read a run by moving its own tab there.

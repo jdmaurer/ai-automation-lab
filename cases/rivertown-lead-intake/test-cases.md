@@ -273,3 +273,19 @@ Shared pass rules: 200 received within seconds, before anyone clicks; an approva
 
 Not tested today (same Switch, different case): Wrong team -> needs routing, Not a fit -> closed.
 Finding: a failure inside ApproveFirstReply (not a timeout) leaves the lead with an empty status and alerts no one. SetOverdue runs only on "has timed out". Goes to the Try/Catch block (Gate 1 #8 alert note).
+
+
+## 2026-11-03 - Power Automate Try/Catch (failure alert)
+
+Sent from the Postman desktop app (collection "Rivertown Lead Intake (Power Automate)", new requests T11 Crash, T12 Normal, T13 No answer; copies of T4 New). Pass/fail rules approved by Josh before the runs, then updated when the alert moved from email to Approvals (same rules, new place to look). Recorded on screen as DEMO-03 (demos/demo-03-failure-alert.md). Design: decisions.md 2026-11-03.
+
+| Test | external_id | Input / action | Pass rule | Result |
+|---|---|---|---|---|
+| T11 Crash (run 1) | PA-ERR-001-TOO-LONG-X... (101 characters; the column holds 100) | Send | No received; no row; alert with the lead ID; run Failed | FAIL. Run 2:27 PM: SaveLead failed as planned (max length 100, got 101), Catch ran, but SendFailureAlert (Mail V3) returned Unauthorized: no alert. Alert moved to Approvals (decisions.md 2026-11-03) |
+| T11 Crash (run 2) | Same body | Send | Same, alert in Approvals | PASS. Run 3:37 PM Failed (12 s). Postman 502 Bad Gateway. No new row (last row still from 10/18). Approvals: "ALERT: Rivertown lead intake failed - lead PA-ERR-001-..." with the lead ID, run ID 08584078650228221721603065358CU05 (matches the run) and Got it; answered Got it |
+| T12 Normal | PA-APR-005 | Send, then Send draft | 200 received; status reply approved; no alert | PASS. Run 3:50 PM Succeeded. Status reply approved. No ALERT in Approvals |
+| T13 No answer | PA-APR-006 | Send, nothing clicked for 6 min | status overdue; no alert | PASS. Run 4:00 PM Succeeded (5:02), green; the same kind of run on 10-18 (T10) was red. Status overdue. No ALERT in Approvals |
+
+Closes the Gate 1 #8 alert note: a forced failure produced a visible alert.
+Lead table: 20 rows (18 + PA-APR-005, 006). Next unused IDs: PA-APR-007 and PA-ERR-002.
+Not tested: two resends at the same instant (should now raise the alert), Wrong team, Not a fit.

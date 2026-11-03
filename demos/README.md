@@ -8,6 +8,7 @@ Every build ends with a short screen recording (decision 3 in [CURRENT_STATE.md]
 |---|---|---|---|---|---|
 | [DEMO-01](demo-01-duplicate-handling.md) | A resent form is counted, not saved twice; an unknown source is refused | [Rivertown lead intake](../cases/rivertown-lead-intake/), Power Automate + Dataverse | 2026-10-17 | 3:30, silent, MP4 | Raw recorded; editing and voice in the marketing track |
 | [DEMO-02](demo-02-approval-before-reply.md) | A person signs off before the first reply goes out; no answer marks the lead overdue | [Rivertown lead intake](../cases/rivertown-lead-intake/), Power Automate + Dataverse + Approvals | 2026-10-18 | 10:48, silent, MP4 | Raw recorded; editing and voice in the marketing track |
+| [DEMO-03](demo-03-failure-alert.md) | A breakdown raises an alert; a normal lead and a slow team lead don't | [Rivertown lead intake](../cases/rivertown-lead-intake/), Power Automate + Dataverse + Approvals | 2026-11-03 | silent, MP4 | Raw recorded; editing and voice in the marketing track |
 
 ## New record checklist
 

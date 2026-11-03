@@ -26,7 +26,8 @@ Three columns:
 | 10 | Delete or merge leads | A person does it | Not built | Destroys or combines records |
 | 11 | Assign the lead to a named consultant | A person does it (team lead) | Not built | Depends on workload and fit, which the workflow cannot see |
 | 12 | Mark "contact made" | A person does it (consultant) | Not built (status column exists, not written) | Only the consultant knows; this is how the lead "comes back" into the record |
-| 13 | Flag a stale lead as urgent to a backup person | Runs alone | Not built | Covers 8b's time limit and row 11/12 delays (the "follow-ups that slip" problem) |
+| 13 | Send an overdue lead back to the sorting pile (review queue) | Runs alone | Not built | Covers 8b's time limit and row 11/12 delays (the "follow-ups that slip" problem). Changed 2026-11-03 (Josh): a small firm may have no backup lead, so overdue goes where unclear leads already go. Client-dependent |
+| 14 | Alert the person who looks after the workflow when a step breaks | Runs alone | Power Automate (2026-11-03; tests T11 to T13) | A breakdown must be seen without anyone checking run history. Only for breakdowns, not slow people (row 13 handles those) |
 
 ## Decisions behind the map (2026-10-18)
 

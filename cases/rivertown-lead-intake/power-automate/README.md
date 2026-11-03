@@ -6,7 +6,9 @@ Added 2026-10-17: source lookup (unknown source = 400, missing = website_form) a
 
 Added 2026-10-18: a person signs off before the first reply (approval map row 8b). After the 200, the team lead gets an approval with the draft reply and four buttons; the choice is written to the lead's status; no answer in 5 minutes = overdue. Design: [../approval-map.md](../approval-map.md); decisions.md 2026-10-18.
 
-Not included yet (later blocks): AI triage, routing, audit trail (WorkflowRun), Try/Catch, sending the approved reply.
+Added 2026-11-03: Try/Catch. The bottom half sits in a Try box; if any card in it breaks, Catch raises an alert in Power Automate > Approvals (the lead and run ID, one button: Got it) and marks the run Failed. A planned timeout now ends cleanly (green) after writing overdue, so red means broken. Design: decisions.md 2026-11-03.
+
+Not included yet (later blocks): AI triage, routing, audit trail (WorkflowRun), sending the approved reply, overdue back to the sorting pile (approval map row 13).
 
 ## Files
 
@@ -33,11 +35,12 @@ flowchart TD
     O -- I'll write it myself --> O2["SetWritingPersonalReply<br/>status = writing personal reply"]
     O -- Wrong team --> O3["SetNeedsRouting<br/>status = needs routing"]
     O -- Not a fit --> O4["SetClosed<br/>status = closed"]
-    N -. has timed out .-> P["SetOverdue<br/>status = overdue"]
+    N -. has timed out .-> P["SetOverdue<br/>status = overdue"] --> P2["EndOverdueCleanly<br/>Terminate (Succeeded)"]
+    J -. "Try fails (has failed)" .-> Q["Catch: RaiseFailureAlert<br/>Create an approval: ALERT + lead + run ID, button Got it"] --> Q2["MarkRunFailed<br/>Terminate (Failed)"]
     J -- If no --> M["RespondFail<br/>400 {status: rejected, reason}"]
 ```
 
-In Power Automate, steps are stacked and a run continues past a Condition to the next card, so each special branch ends with Terminate. The approval sits after RespondSuccess so the form never waits for a person. SetOverdue runs only when ApproveFirstReply times out (Configure run after). Decisions: decisions.md, 2026-10-17 and 2026-10-18.
+In Power Automate, steps are stacked and a run continues past a Condition to the next card, so each special branch ends with Terminate. The approval sits after RespondSuccess so the form never waits for a person. SetOverdue runs only when ApproveFirstReply times out (Configure run after). Everything from ValidateRequiredFields down sits inside the Scope Try; the Scope Catch runs only when Try has failed. Decisions: decisions.md, 2026-10-17, 2026-10-18 and 2026-11-03.
 
 Same contract as the n8n build: only external_id and email are required (decision D4), and cleaning happens before the check (D5).
 
@@ -69,6 +72,9 @@ Same contract as the n8n build: only external_id and email are required (decisio
 | Wait node / "Send and wait for response" | Start and wait for an approval (Approvals connector) | `approval` | Answered in Power Automate > Approvals; returns Outcome |
 | Error output (v2.7 ClassifyMessage) | Configure run after (card ⋯ menu): has failed / has timed out / is skipped | | A red dashed arrow marks a non-success path |
 | Node Settings > Timeout | Card Settings > Timeout, ISO 8601 (PT5M = 5 minutes, P1D = 1 day) | | |
+| Error workflow (one catcher for the whole workflow) | Try/Catch: Scope Try + Scope Catch with Configure run after = has failed | `scope` | A Scope is a box of cards; if any card inside fails, the box fails |
+| (none) | Terminate with a status (Succeeded / Failed / Cancelled) | `terminate` | Also sets the run's final grade; a handled crash ends green unless Catch ends with Terminate Failed |
+| Send an alert | Create an approval (does not wait) | `create an approval` | Used as the alert in this lab (no mailbox); a client would use Office 365 Outlook Send an email (V2) |
 
 ## Lead table field map
 

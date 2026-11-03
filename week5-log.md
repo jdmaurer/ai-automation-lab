@@ -193,3 +193,20 @@ Independent: explaining the flow back (three small fixes), finding which cards c
 Honest time: about 7.5 hours on the clock for a 3-hour plan. The map ran an hour over its 25 minutes. That was worth it, because the decisions were real, but some of it was my message format (bold I can't read, a vague row 8). What worked: every action on its own line with WHERE under it, renaming first, a "what we're doing" line before "done", and recording during the tests instead of after.
 
 Next: Try/Catch scopes. A failed approval left a lead with an empty status and told no one; that's the Gate 1 #8 alert note.
+
+
+## Tuesday 11.03.26 - Try/Catch: a breakdown raises an alert
+
+Back after two weeks away. Re-oriented through the T10 replay first and got all four approval buttons back from memory. The job was Gate 1 #8: a real failure has to tell someone, not sit as a red line nobody opens. Before building we split two things that look alike: the system breaking, and a person being slow. The alarm is only for breaking. Slow already marks the lead overdue, and if the team lead is on vacation for a week, those overdue leads should go back to the sorting pile, like the AI's unclear leads, because a small firm may not have a backup lead.
+
+Built it in the new designer, since that's where Microsoft is going. A Scope is just a box of cards: Try holds the real work, and Catch wakes up only if something in Try fails. I'd spotted at the start that T10 (the no-answer test, on purpose) showed red in the history. That turned out to matter: a timeout fails its box, so Catch would have rung for a slow person. The fix was one Terminate (Succeeded) after SetOverdue, the same pattern the duplicate branch already uses. Now red means broken.
+
+The alarm itself took three tries. Email was refused (Microsoft's mail service is blocked for new tenants, and my lab account has no mailbox). A small Gmail child flow couldn't be turned on, because Google won't let a personal Gmail run next to Dataverse or Approvals. The fix: Approvals, which already works here. Catch now drops an ALERT with the lead and run ID into the Approvals inbox and marks the run Failed. For a real client it's one card: Outlook from their own mailbox. The lesson is a discovery question: what does the client already run on?
+
+Three tests with rules approved first, recorded live as DEMO-03: a crash on purpose (an ID one character too long to save), a normal lead, and nobody answering. All passed; the no-answer run is green this time. Cleaned out the dead email pieces after a double-check, exported 1.0.0.4, scanned clean.
+
+Independent: recalling the four buttons, catching that T10 was deliberate (which led to the red-run fix), the vacation example and sending overdue to the sorting pile, choosing the new designer over the old one, pushing back on whether the child flow was worth the time, setting up the alerts Gmail, sorting the demo table by date so new rows land at the bottom, fixing the zoom that hid the status column, recording all three tests, and the double-check-before-delete rule. With help: what a Scope and Catch are, run after, Terminate as the run's grade, card names and search words, the mail and Gmail blocks, navigation, and the cleanup.
+
+Honest time: about 6.5 hours of work for a 3.5-hour plan. Two things ate it. Directions were too long and sometimes wrong (no tab switches named, quotes that meant "type this", "same as before"), and 40 minutes went to email routes the lab account blocks. What worked: one click per message from the screen I'm on, every tab switch on its own line, copy boxes only for what I type, and the fifth-grade line before "done".
+
+Next: the same-case comparison, n8n vs Power Automate, including licensing, and the "What I can deliver now" list on the README.
