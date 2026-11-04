@@ -20,13 +20,13 @@ We built a fix in each of two tools. They share the basics and differ in what el
 
 ## Bottom line
 
-Both cost under $25 a month. The real difference is who will look after it.
+Both options cost $15 to $25 a month in licenses, so price won't decide this. What will decide it is who on your staff will look after it.
 
-If someone already looks after your Microsoft 365, Power Automate is the better home: staff use the sign-in they already have, the leads stay inside your own Microsoft account, a person approves the first reply before it goes out, and you're told when something breaks. What it doesn't do yet is send each lead to the right department; that would be added.
+Power Automate is Microsoft's automation tool. It works inside the Microsoft 365 account you already use for email and files, so it fits best if someone already manages that account, whether a staff member or an outside IT provider. Your staff sign in as they do now, and your leads stay in your own account. A department head approves each first reply before it goes out, and you get an alert if something breaks. It does not yet send each lead to the right department; that part would still need to be built.
 
-n8n sends leads to the right department today, including reading unclear messages with AI and passing anything uncertain to a person. The trade-off is a second tool, with its own login, that someone on your staff learns and looks after.
+n8n is a separate automation service. It already sends each lead to the right department, using AI to read unclear messages and passing anything uncertain to a person. In exchange, someone on your staff would need to learn and manage a second system with its own login.
 
-The questions at the end decide which fits you.
+The questions at the end of this memo will help you decide.
 
 ## What each one does today
 
