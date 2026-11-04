@@ -32,20 +32,25 @@ The questions at the end of this memo will help you decide.
 
 These are working samples, not finished products. Each one shows a different set of features.
 
+Yes = built and tested in the sample. Can be added = not in this sample.
+
 | | n8n | Power Automate |
 |---|---|---|
 | Receives each new lead within seconds and saves it | Yes | Yes |
 | Keeps one entry when the same lead arrives twice | Yes. Notes the repeat on the original lead, so it isn't handled twice | Yes. Same |
-| Records where each lead came from, such as your website or an event | No | Yes, so you can tell which places bring in leads |
-| Blocks leads from places you haven't approved | No | Yes, so junk or fake leads stay off your list |
-| Decides which department each lead belongs to | Yes, with AI help for unclear messages | Not built |
-| A person approves the first reply before it goes out | Not built | Yes. Four choices: send the draft, write it myself, wrong department, not a fit. If nobody answers in time, the lead is marked overdue and nothing is sent |
-| Tells someone when it breaks | No. A stuck run is stopped after 60 seconds, but someone has to check the run list to notice | Yes. An alert naming the lead and the run's reference number |
-| Not built yet in either | Emailing the department head about a new lead, sending the approved reply, and the security steps needed before real leads (see the last section) | |
+| Records where each lead came from, such as your website or an event | Can be added | Yes, so you can tell which places bring in leads |
+| Blocks leads from places you haven't approved | Can be added | Yes, so junk or fake leads stay off your list |
+| Decides which department each lead belongs to | Yes, with AI help for unclear messages | Can be added |
+| A department head approves each first reply to a prospect | Can be added | Yes |
+| Alerts someone if it breaks | Can be added | Yes |
+| Emails the department head about a new lead | Can be added | Can be added |
+| Sends the approved reply to the prospect | Can be added | Can be added |
+
+Both need a few security steps before real leads (see the last section).
 
 How they were tested:
 - n8n: 37 test leads, 10 of them kept aside until the end so the system had never seen them. Two AI systems from different companies must agree before a lead is sorted. None went to the wrong department. 18 of 23 clear requests were sorted with no person needed; the rest went to a person, as designed.
-- Power Automate: 13 tests covering new leads, resends, unknown sources, the approval, a slow approver, and a forced breakdown. All passed.
+- Power Automate: 13 tests covering new leads, repeat leads, leads from unapproved places, the approval, a slow approver, and a forced breakdown. All passed.
 
 ## What it costs
 
@@ -79,7 +84,7 @@ In both: a person deletes or merges leads, assigns a lead to a named person in t
 
 A person adds any new place leads can come from. Until they do, Power Automate turns those leads away.
 
-Power Automate: a department head approves the real first reply before the prospect sees it. A wrong reply can't reach a prospect without a person's OK.
+Power Automate: a department head reviews a drafted first reply and chooses: send the draft, write their own, wrong department, or not a fit. If no one answers in time, nothing is sent and the lead is marked overdue. A wrong reply can't reach a prospect without a person's OK.
 
 n8n: a person picks the department for every lead the AI isn't sure about. No reply to the prospect is built yet, so nothing reaches a prospect at all.
 
