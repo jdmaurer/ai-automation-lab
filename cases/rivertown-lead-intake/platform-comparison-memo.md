@@ -26,6 +26,8 @@ Power Automate is Microsoft's automation tool. It works inside the Microsoft 365
 
 n8n is a separate automation service. It already decides which department each lead belongs to, using AI to read unclear messages and passing anything uncertain to a person. In exchange, someone on your staff would need to learn and manage a second system with its own login.
 
+If your firm isn't on Microsoft 365, or you want AI sorting right away, n8n is usually the stronger choice.
+
 The questions at the end of this memo will help you decide.
 
 ## What each one does today
@@ -45,6 +47,7 @@ Yes = built and tested in the sample. Can be added = not in this sample.
 | Alerts someone if it breaks | Can be added | Yes |
 | Emails the department head about a new lead | Can be added | Can be added |
 | Sends the approved reply to the prospect | Can be added | Can be added |
+| Puts each lead into your CRM, such as HubSpot or Salesforce | Can be added | Can be added |
 
 Both need a few security steps before real leads (see the last section).
 
@@ -54,25 +57,24 @@ How they were tested:
 
 ## What it costs
 
-Prices checked November 3, 2026, from the companies' published prices.
+Prices as of November 3, 2026.
 
 | | Power Automate | n8n (Cloud Starter plan) |
 |---|---|---|
-| License | $15 a month, paid yearly (about $180 a year). Most likely one license, for the person who owns the flow. Staff who only click approval buttons need none. | $20 a month paid yearly, or $24 month to month (about $240 a year). Up to 2,500 runs a month; one form is one run. |
-| Storage for the leads | Included with the license (250 MB). Lead forms are small text; ask first if you expect thousands a month. | Included |
-| AI | None yet | Paid to the AI provider. Our estimate is well under a cent per lead read by AI; not measured on real traffic. |
-| What you already pay for | Your Microsoft 365 covers staff sign-in and the approvals inbox | Nothing carries over |
+| License | About $180 a year ($15 a month, paid yearly). Likely one license, for the person who owns the automation. Staff who only approve replies don't need one. Covers well over 1,000 leads a day | About $240 a year ($20 a month paid yearly, or $24 month to month). Covers up to 2,500 leads a month |
+| Storage for your leads | Included | Included |
+| AI | Can be added; price to check with Microsoft | Paid per use to the AI company. Our estimate: well under a cent per lead |
+| What you already pay for | Your Microsoft 365 covers staff sign-in | Nothing carries over |
 
-Notes:
-- Power Automate: confirm the license count with your Microsoft reseller before buying. The flow, the form connection, and the lead table use paid Microsoft features; basic Microsoft 365 doesn't include them.
-- n8n: n8n can also run on your own server. The software is free, but a server, backups, and updates cost about $50 to $150 a month by one estimate, before anyone's time. That makes sense only if you already pay an IT provider who runs servers.
-- How we built the sample (Build fit): we tested n8n on our own machine, not on n8n's Cloud plan. It's the same software, but before going live on Cloud we would re-run the full test set there.
+- Before buying, confirm the license count with whoever sells you Microsoft 365. Basic Microsoft 365 doesn't include the features this uses.
+- n8n can also run on your own server. The software is free, but the server, backups, and updates add roughly $50 to $150 a month, plus someone's time. Worth it only if you already pay an IT provider who manages servers.
+- We tested n8n on our own computer, not on n8n's Cloud plan. It's the same software, but we'd re-run every test on Cloud before going live.
 
 ## Who keeps it running
 
 This is the question that decides it.
 
-Power Automate: someone comfortable in your Microsoft 365 account, often the person or outside IT provider who already looks after it. The flow runs on one named person's license, so decide who owns it and who takes over if they leave. Microsoft keeps 28 days of run history to check what happened.
+Power Automate: someone comfortable in your Microsoft 365 account, often the person or outside IT provider who already looks after it. The automation runs on one named person's license, so decide who owns it and who takes over if they leave. Microsoft keeps 28 days of run history to check what happened.
 
 n8n: someone on your staff learns a second tool and its login. One of the two AI models we used is a preview that the provider can retire at short notice. If that happens, someone swaps the model and re-runs the 37-message test before turning it back on.
 
@@ -90,7 +92,7 @@ n8n: a person picks the department for every lead the AI isn't sure about. No re
 
 ## What happens when it breaks
 
-Power Automate: a breakdown raises an alert naming the lead, so it doesn't sit unnoticed. A slow approver is not treated as a breakdown; the lead is marked overdue and no alarm goes off. In our sample the alert lands in the Power Automate approvals list, because our test account has no mailbox. For your firm it would be an email from your own mailbox to whoever looks after the flow (Client fit; the email itself wasn't tested).
+Power Automate: a breakdown raises an alert naming the lead, so it doesn't sit unnoticed. A slow approver is not treated as a breakdown; the lead is marked overdue and no alarm goes off. In our sample the alert lands in the Power Automate approvals list, because our test account has no mailbox. For your firm it would be an email from your own mailbox to whoever looks after the automation (Client fit; the email itself wasn't tested).
 
 n8n: if the AI fails, the lead goes to a person instead of being lost. Every saved lead carries the reference number of the run that made it. But if a run gets stuck, it is stopped after 60 seconds, the form gets an error, nothing is saved, and nobody is told. Someone would need to check the run list, or an alert would need to be added.
 
@@ -102,13 +104,17 @@ n8n Cloud: in n8n's service, a separate company. When AI reads a message, that m
 
 ## Questions to ask before deciding
 
-1. Who looks after your Microsoft 365 today: a staff member, an outside IT provider, or no one?
-2. Who will own the flow and its license, and who takes over if they leave?
-3. Who decides which department gets a new lead today, and who would approve first replies?
+1. Do you use a CRM such as HubSpot or Salesforce, or plan to? If so, your leads should probably end up there, and its own tools may already cover part of this.
+2. Who looks after your Microsoft 365 today: a staff member, an outside IT provider, or no one?
+3. Who will own the automation and its license, and who takes over if they leave?
 4. How many website leads come in a month, and how many are unclear enough to need sorting?
 5. Is sorting unclear leads with AI worth adding a second tool, or can a person sort them for now?
 6. Do any client contracts limit where prospect information is stored or who processes it?
-7. Who should get the alert when something breaks, and who approves first replies when the department head is away?
+
+## Decisions to make once you've chosen
+
+1. Who decides which department gets a new lead today, and who would approve first replies?
+2. Who should get the alert when something breaks, and who approves first replies when the department head is away?
 
 ## Before any real leads
 
