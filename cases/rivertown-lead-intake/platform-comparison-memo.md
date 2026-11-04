@@ -1,0 +1,109 @@
+# Website leads: two ways to build it
+
+For: the owner of Rivertown Professional Services
+Date: November 4, 2026
+Prepared by: Josh Maurer
+
+All examples use synthetic data from a fictitious company.
+
+---
+
+## The problem
+
+Right now, when a prospect fills in the form on your website, someone on your staff has to notice it, type it into a spreadsheet, and decide which department should get it. That causes four problems:
+- Leads wait until that person has time, and a waiting lead goes cold.
+- A prospect who sends the form twice shows up twice.
+- You can't tell how long a lead waited.
+- A department head can't see why a lead was sent to them.
+
+We built a fix in each of two tools. They share the basics and differ in what else they do. Both are tested. This memo is to help you choose one.
+
+## Bottom line
+
+Both cost under $25 a month. The real difference is who will look after it.
+
+If someone already looks after your Microsoft 365, Power Automate is the better home: staff use the sign-in they already have, the leads stay inside your own Microsoft account, a person approves the first reply before it goes out, and you're told when something breaks. What it doesn't do yet is send each lead to the right department; that would be added.
+
+n8n sends leads to the right department today, including reading unclear messages with AI and passing anything uncertain to a person. The trade-off is a second tool, with its own login, that someone on your staff learns and looks after.
+
+The questions at the end decide which fits you.
+
+## What each one does today
+
+| | n8n | Power Automate |
+|---|---|---|
+| Answers the form within seconds and saves the lead | Yes | Yes |
+| Spots a resent form, counts it, and keeps one copy | Yes | Yes |
+| Turns away a form from a source it doesn't recognize | No (one form only) | Yes |
+| Sends each lead to the right department | Yes. By the service the prospect picked; unclear messages are read by two AI models that must agree; anything uncertain goes to a person | Not built |
+| A person approves the first reply before it goes out | Not built | Yes. Four choices: send the draft, write it myself, wrong department, not a fit. If nobody answers in time, the lead is marked overdue and nothing is sent |
+| Tells someone when it breaks | No. A stuck run is stopped after 60 seconds, but someone has to check the run list to notice | Yes. An alert naming the lead and the run's reference number |
+| Not built yet in either | Emailing the department head about a new lead, sending the approved reply, and the security steps needed before real leads (see the last section) | |
+
+How they were tested:
+- n8n: 37 test messages, including 10 held back until the final run. None went to the wrong department. 18 of 23 straightforward requests were sent to a department with no person needed; the rest went to a person by design.
+- Power Automate: 13 tests covering new leads, resends, unknown sources, the approval, a slow approver, and a forced breakdown. All passed.
+
+## What it costs
+
+Prices checked November 3, 2026, from the companies' published prices.
+
+| | Power Automate | n8n (Cloud Starter plan) |
+|---|---|---|
+| License | $15 a month, paid yearly (about $180 a year). Most likely one license, for the person who owns the flow. Staff who only click approval buttons need none. | $20 a month paid yearly, or $24 month to month (about $240 a year). Up to 2,500 runs a month; one form is one run. |
+| Storage for the leads | Included with the license (250 MB). Lead forms are small text; ask first if you expect thousands a month. | Included |
+| AI | None yet | Paid to the AI provider. Our estimate is well under a cent per lead read by AI; not measured on real traffic. |
+| What you already pay for | Your Microsoft 365 covers staff sign-in and the approvals inbox | Nothing carries over |
+
+Notes:
+- Power Automate: confirm the license count with your Microsoft reseller before buying. The flow, the form connection, and the lead table use paid Microsoft features; basic Microsoft 365 doesn't include them.
+- n8n: n8n can also run on your own server. The software is free, but a server, backups, and updates cost about $50 to $150 a month by one estimate, before anyone's time. That makes sense only if you already pay an IT provider who runs servers.
+- How we built the sample (Build fit): we tested n8n on our own machine, not on n8n's Cloud plan. It's the same software, but before going live on Cloud we would re-run the full test set there.
+
+## Who keeps it running
+
+This is the question that decides it.
+
+Power Automate: someone comfortable in your Microsoft 365 account, often the person or outside IT provider who already looks after it. The flow runs on one named person's license, so decide who owns it and who takes over if they leave. Microsoft keeps 28 days of run history to check what happened.
+
+n8n: someone on your staff learns a second tool and its login. One of the two AI models we used is a preview that the provider can retire at short notice. If that happens, someone swaps the model and re-runs the 37-message test before turning it back on.
+
+What we'd do for your firm (Client fit): choose the tool that the person who will look after it already knows.
+
+## What a person still approves
+
+In both: a person adds any new form source, deletes or merges leads, assigns a lead to a named person in the department, and marks when contact is made. The tool never does these.
+
+Power Automate: a department head approves the real first reply before the prospect sees it. A wrong reply can't reach a prospect without a person's OK.
+
+n8n: a person picks the department for every lead the AI isn't sure about. No reply to the prospect is built yet, so nothing reaches a prospect at all.
+
+## What happens when it breaks
+
+Power Automate: a breakdown raises an alert naming the lead, so it doesn't sit unnoticed. A slow approver is not treated as a breakdown; the lead is marked overdue and no alarm goes off. In our sample the alert lands in the Power Automate approvals list, because our test account has no mailbox. For your firm it would be an email from your own mailbox to whoever looks after the flow (Client fit; the email itself wasn't tested).
+
+n8n: if the AI fails, the lead goes to a person instead of being lost. Every saved lead carries the reference number of the run that made it. But if a run gets stuck, it is stopped after 60 seconds, the form gets an error, nothing is saved, and nobody is told. Someone would need to check the run list, or an alert would need to be added.
+
+## Where the data lives
+
+Power Automate: inside your own Microsoft 365 account, under the same sign-in and permissions as your files and email.
+
+n8n Cloud: in n8n's service, a separate company. When AI reads a message, that message is also sent to the AI provider. Ask first where n8n stores data, and whether any of your client contracts limit where prospect information goes.
+
+## Questions to ask before deciding
+
+1. Who looks after your Microsoft 365 today: a staff member, an outside IT provider, or no one?
+2. Who will own the flow and its license, and who takes over if they leave?
+3. Who decides which department gets a new lead today, and who would approve first replies?
+4. How many website leads come in a month, and how many are unclear enough to need sorting?
+5. Is sorting unclear leads with AI worth adding a second tool, or can a person sort them for now?
+6. Do any client contracts limit where prospect information is stored or who processes it?
+7. Who should get the alert when something breaks, and who approves first replies when the department head is away?
+
+## Before any real leads
+
+Both samples use made-up data and are not ready for real prospects until a few security steps are done:
+- Power Automate: a stronger lock on the form's address. Right now the address itself is the password.
+- n8n: unguessable form IDs, a note on the form asking people not to include sensitive details, a limit on how long leads are kept, and plain error messages that don't reveal anything about the system.
+
+What we did not test: real data or real traffic; n8n on the Cloud plan; Power Automate outside Microsoft's free developer environment (real use needs the paid licenses above); the "wrong department" and "not a fit" approval choices; the alert as an email.
