@@ -22,13 +22,15 @@ We built a fix in each of two tools. They share the basics and differ in what el
 
 Both options cost $15 to $25 a month in licenses, so price won't decide this. What will decide it is who on your staff will look after it.
 
-Power Automate is Microsoft's automation tool. It works inside the Microsoft 365 account you already use for email and files, so it fits best if someone already manages that account, whether a staff member or an outside IT provider. Your staff sign in as they do now, and your leads stay in your own account. A department head approves each first reply before it goes out, and you get an alert if something breaks. It does not yet send each lead to the right department; that part would still need to be built.
+Power Automate is Microsoft's automation tool. It works inside the Microsoft 365 account you already use for email and files, so it fits best if someone already manages that account, whether a staff member or an outside IT provider. Your staff sign in as they do now, and your leads stay in your own account. A department head approves each first reply before it goes out, and you get an alert if something breaks. It does not yet decide which department each lead belongs to; that part would still need to be built.
 
-n8n is a separate automation service. It already sends each lead to the right department, using AI to read unclear messages and passing anything uncertain to a person. In exchange, someone on your staff would need to learn and manage a second system with its own login.
+n8n is a separate automation service. It already decides which department each lead belongs to, using AI to read unclear messages and passing anything uncertain to a person. In exchange, someone on your staff would need to learn and manage a second system with its own login.
 
 The questions at the end of this memo will help you decide.
 
 ## What each one does today
+
+These are working samples, not finished products. Each one shows a different set of features.
 
 | | n8n | Power Automate |
 |---|---|---|
@@ -36,13 +38,13 @@ The questions at the end of this memo will help you decide.
 | Keeps one entry when the same lead arrives twice | Yes. Notes the repeat on the original lead, so it isn't handled twice | Yes. Same |
 | Records where each lead came from, such as your website or an event | No | Yes, so you can tell which places bring in leads |
 | Blocks leads from places you haven't approved | No | Yes, so junk or fake leads stay off your list |
-| Sends each lead to the right department | Yes. By the service the prospect picked; unclear messages are read by two AI models that must agree; anything uncertain goes to a person | Not built |
+| Decides which department each lead belongs to | Yes, with AI help for unclear messages | Not built |
 | A person approves the first reply before it goes out | Not built | Yes. Four choices: send the draft, write it myself, wrong department, not a fit. If nobody answers in time, the lead is marked overdue and nothing is sent |
 | Tells someone when it breaks | No. A stuck run is stopped after 60 seconds, but someone has to check the run list to notice | Yes. An alert naming the lead and the run's reference number |
 | Not built yet in either | Emailing the department head about a new lead, sending the approved reply, and the security steps needed before real leads (see the last section) | |
 
 How they were tested:
-- n8n: 37 test messages, including 10 held back until the final run. None went to the wrong department. 18 of 23 straightforward requests were sent to a department with no person needed; the rest went to a person by design.
+- n8n: 37 test leads, 10 of them kept aside until the end so the system had never seen them. Two AI systems from different companies must agree before a lead is sorted. None went to the wrong department. 18 of 23 clear requests were sorted with no person needed; the rest went to a person, as designed.
 - Power Automate: 13 tests covering new leads, resends, unknown sources, the approval, a slow approver, and a forced breakdown. All passed.
 
 ## What it costs
