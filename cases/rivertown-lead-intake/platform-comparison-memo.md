@@ -12,7 +12,7 @@ All examples use synthetic data from a fictitious company.
 
 Right now, when a prospect fills in the form on your website, someone on your staff has to notice it, type it into a spreadsheet, and decide which department should get it. That causes four problems:
 - Leads wait until that person has time, and a waiting lead goes cold.
-- A prospect who sends the form twice shows up twice.
+- The same lead can end up on your list twice.
 - You can't tell how long a lead waited.
 - A department head can't see why a lead was sent to them.
 
@@ -32,9 +32,10 @@ The questions at the end of this memo will help you decide.
 
 | | n8n | Power Automate |
 |---|---|---|
-| Answers the form within seconds and saves the lead | Yes | Yes |
-| Spots a resent form, counts it, and keeps one copy | Yes | Yes |
-| Turns away a form from a source it doesn't recognize | No (one form only) | Yes |
+| Receives each new lead within seconds and saves it | Yes | Yes |
+| Keeps one entry when the same lead arrives twice | Yes. Notes the repeat on the original lead, so it isn't handled twice | Yes. Same |
+| Records where each lead came from, such as your website or an event | No | Yes, so you can tell which places bring in leads |
+| Blocks leads from places you haven't approved | No | Yes, so junk or fake leads stay off your list |
 | Sends each lead to the right department | Yes. By the service the prospect picked; unclear messages are read by two AI models that must agree; anything uncertain goes to a person | Not built |
 | A person approves the first reply before it goes out | Not built | Yes. Four choices: send the draft, write it myself, wrong department, not a fit. If nobody answers in time, the lead is marked overdue and nothing is sent |
 | Tells someone when it breaks | No. A stuck run is stopped after 60 seconds, but someone has to check the run list to notice | Yes. An alert naming the lead and the run's reference number |
@@ -72,7 +73,9 @@ What we'd do for your firm (Client fit): choose the tool that the person who wil
 
 ## What a person still approves
 
-In both: a person adds any new form source, deletes or merges leads, assigns a lead to a named person in the department, and marks when contact is made. The tool never does these.
+In both: a person deletes or merges leads, assigns a lead to a named person in the department, and marks when contact is made. The tool never does these.
+
+A person adds any new place leads can come from. Until they do, Power Automate turns those leads away.
 
 Power Automate: a department head approves the real first reply before the prospect sees it. A wrong reply can't reach a prospect without a person's OK.
 
@@ -106,4 +109,4 @@ Both samples use made-up data and are not ready for real prospects until a few s
 - Power Automate: a stronger lock on the form's address. Right now the address itself is the password.
 - n8n: unguessable form IDs, a note on the form asking people not to include sensitive details, a limit on how long leads are kept, and plain error messages that don't reveal anything about the system.
 
-What we did not test: real data or real traffic; n8n on the Cloud plan; Power Automate outside Microsoft's free developer environment (real use needs the paid licenses above); the "wrong department" and "not a fit" approval choices; the alert as an email.
+What we did not test: a real website (we sent test leads to each tool directly); real data or real traffic; n8n on the Cloud plan; Power Automate outside Microsoft's free developer environment (real use needs the paid licenses above); the "wrong department" and "not a fit" approval choices; the alert as an email.
