@@ -104,17 +104,18 @@ n8n Cloud: in n8n's service, a separate company. When AI reads a message, that m
 
 ## Questions to ask before deciding
 
-1. Do you use a CRM such as HubSpot or Salesforce, or plan to? If so, your leads should probably end up there, and its own tools may already cover part of this.
+1. Do you use, or plan to use, a CRM such as HubSpot or Salesforce? If so, leads should go into it, and it may already handle part of this work.
 2. Who looks after your Microsoft 365 today: a staff member, an outside IT provider, or no one?
-3. Who will own the automation and its license, and who takes over if they leave?
-4. How many website leads come in a month, and how many are unclear enough to need sorting?
-5. Is sorting unclear leads with AI worth adding a second tool, or can a person sort them for now?
-6. Do any client contracts limit where prospect information is stored or who processes it?
+3. Who will own the automation and its license, and who would take over if that person leaves?
+4. How many leads arrive in a typical month, and how many don't clearly fit one department?
+5. Is having AI sort those leads worth adding a second system, or can a staff member sort them for now?
+6. Do any client contracts or regulations limit where prospect information is stored or who handles it?
 
 ## Decisions to make once you've chosen
 
-1. Who decides which department gets a new lead today, and who would approve first replies?
-2. Who should get the alert when something breaks, and who approves first replies when the department head is away?
+1. Who decides which department gets a lead the automation can't sort?
+2. Who approves first replies, and who covers when that person is away?
+3. Who should be alerted when something breaks?
 
 ## Before any real leads
 
