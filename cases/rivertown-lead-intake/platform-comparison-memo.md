@@ -124,10 +124,25 @@ n8n Cloud: on n8n's own servers, run by a separate company. When the AI reads a 
 2. Who approves first replies, and who covers when that person is away?
 3. Who should be alerted when something breaks?
 
-## Before any real leads
+## Before real use
 
-Both samples use made-up data and are not ready for real prospects until a few security steps are done:
-- Power Automate: a stronger lock on the form's address. Right now the address itself is the password.
-- n8n: unguessable form IDs, a note on the form asking people not to include sensitive details, a limit on how long leads are kept, and plain error messages that don't reveal anything about the system.
+Both samples use made-up leads.
 
-What we did not test: a real website (we sent test leads to each tool directly); real data or real traffic; n8n on the Cloud plan; Power Automate outside Microsoft's free developer environment (real use needs the paid licenses above); the "wrong department" and "not a fit" approval choices; the alert as an email.
+Your part:
+- Have your website form give each lead a random reference number.
+- Add a note to the form asking people not to share sensitive details.
+- Decide how long to keep leads.
+
+Our part:
+- Add a password-style lock so only your website can send leads, and hide technical error messages from outsiders.
+- Add any features you choose from the "Can be added" list.
+
+What we haven't tested yet:
+- A real website form (we sent test leads straight to each tool)
+- Real leads, or many at once
+- n8n's monthly Cloud plan (we ran it on our own computer)
+- Power Automate on a paid license (we used Microsoft's free developer version)
+- Two of the four approval choices: wrong department and not a fit
+- The alert sent as an email
+
+Before going live, we re-run every test on the systems you'll actually use.
