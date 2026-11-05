@@ -134,8 +134,8 @@ Your part:
 - Decide how long to keep leads.
 
 Our part:
-- Add a password-style lock so only your website can send leads, and hide technical error messages from outsiders.
 - Add any features you choose from the "Can be added" list.
+- Add a password-style lock so only your website can send leads, and hide technical error messages from outsiders.
 
 What we haven't tested yet:
 - A real website form (we sent test leads straight to each tool)
