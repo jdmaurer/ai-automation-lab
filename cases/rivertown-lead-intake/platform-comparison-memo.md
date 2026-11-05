@@ -61,7 +61,7 @@ Prices as of November 3, 2026.
 
 | | Power Automate | n8n (Cloud Starter plan) |
 |---|---|---|
-| License | About $180 a year ($15 a month, paid yearly). Likely one license, for the person who owns the automation. Staff who only approve replies don't need one. Covers well over 1,000 leads a day | About $240 a year ($20 a month paid yearly, or $24 month to month). Covers up to 2,500 leads a month |
+| License | About $180 a year ($15 a month, paid yearly). Likely one license, for the person who owns the automation. Staff who only approve replies don't need one. Handles tens of thousands of leads a month. | About $240 a year ($20 a month paid yearly, or $24 month to month). Handles up to 2,500 leads a month. |
 | Storage for your leads | Included | Included |
 | AI | Can be added; price to check with Microsoft | Paid per use to the AI company. Our estimate: well under a cent per lead |
 | What you already pay for | Your Microsoft 365 covers staff sign-in | Nothing carries over |
