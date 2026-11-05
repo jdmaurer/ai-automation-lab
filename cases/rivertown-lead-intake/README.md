@@ -153,6 +153,7 @@ See [limitations.md](limitations.md) and [threat-model.md](threat-model.md). In 
 | `runbook.md` | Operation, kill switch, rollback, failure modes |
 | `rivertown_leads_seed.csv` | Seed data for the v1 Data Table |
 | `sqlite/` | Relational model in SQLite (5 tables, keys, `UNIQUE (external_id, source_id)`), with duplicate and invalid-reference tests and their results |
+| `platform-comparison-memo.md` | Client-facing comparison of the n8n and Power Automate builds for the owner, including licensing (2026-11-04) |
 | `power-automate/` | Power Automate rebuild (v1): solution export, flow diagram, n8n-to-Power Automate terms, field map |
 
 ## Planned next
@@ -161,5 +162,4 @@ See [limitations.md](limitations.md) and [threat-model.md](threat-model.md). In 
 - Close the three security items required before real client data: random form IDs, a form note plus a retention limit, and disabled detailed error responses ([threat-model.md](threat-model.md), *Recommendations*)
 - As-is and to-be process maps
 - Architecture diagram
-- Operating cost assumptions
 - Delivery of routed leads to each team (email), with the threat model revisited first

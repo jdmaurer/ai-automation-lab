@@ -1,20 +1,22 @@
-# CURRENT STATE - updated 2026-11-03 (evening) - RESUME HERE
+# CURRENT STATE - updated 2026-11-04 (late evening) - RESUME HERE
 
 Per AI_HANDOFF_PROTOCOL.md this file is overwritten each session. Earlier states are in git history and the weekly logs.
 
-## In progress (2026-11-04, mid-session; replaced at closeout)
-Comparison memo draft: `cases/rivertown-lead-intake/platform-comparison-memo.md` (pushed). Reviewed and approved with Josh: sections 1-4 and both question lists. Paused at section 5 ("Who keeps it running"); Claude's proposed rewrite (plain words, no "Client fit" label, "early release" instead of "preview", ends "Our advice: choose the tool that the person who will look after it already knows") is awaiting Josh's OK. Then sections 6-8 and "Before any real leads", then README "What I can deliver now", then closeout.
-Wording rules agreed: "department"/"department head" (never team/consultant), "lead" for what arrives, "automation" not "flow", table key "Yes = built and tested in the sample. Can be added = not in this sample." No internal labels (Build fit, runs, MB) in client text.
-Logged for closeout: Power Automate README still lists "AI triage, routing" as later blocks (department sorting in Power Automate is not planned in the lab; built per client); approval button says "Wrong team", memo says "wrong department"; master calendar Week 7 is an internal policy agent, not lead routing.
+## Resume point (2026-11-04)
+The Power Automate weeks are done. Same-case comparison finished: `cases/rivertown-lead-intake/platform-comparison-memo.md`, a client memo to Rivertown's owner comparing the n8n and Power Automate builds, including licensing (prices as of 2026-11-03), reviewed section by section with Josh and by an independent skeptical-IT-manager read. README "What I can deliver now" confirmed with Josh (decision 6): five rows, led by "teach your people to teach themselves AI"; the automation row names capabilities with Rivertown as the example. Decisions and limitations entries 2026-11-04.
 
-## Resume point (2026-11-03)
+Working rules cut to six and approved (ASSISTANT_WORKING_CONTEXT.md, "Working rules, revised 2026-11-04"; they win over older lines). The two that change sessions most: AI drafts builds and Josh tests, fixes, and owns them; rules are used only for what they were made for.
+
+**Next session:** Week 7, Copilot Studio (master calendar: internal synthetic-policy agent with grounded answers, one review-request action, refusal and escalation, 30-case evaluation). First day: sign up for the Copilot Studio trial in the blue window. Kickoff prompt: NEXT_SESSION_START.md.
+
+## Earlier resume point (2026-11-03)
 Power Automate **Try/Catch block done: when the lead workflow breaks, someone now hears about it, instead of the lead sitting silently with an empty status** (closes the Gate 1 #8 alert note). The bottom half (ValidateRequiredFields and everything in it) sits in a Scope "Try"; a Scope "Catch" (run after: has failed) holds RaiseFailureAlert (Create an approval: "ALERT: Rivertown lead intake failed - lead <external_id>", run ID in the details, one button Got it) and MarkRunFailed (Terminate, Failed). EndOverdueCleanly (Terminate, Succeeded) after SetOverdue, so a planned timeout ends green and only real breakdowns are red and alert. Tests T11 (forced crash: 101-character external_id), T12 (normal lead), T13 (nobody answers) PASS with rules approved first; T11 run 1 failed because email was refused (below). Recorded as DEMO-03 (`demos/demo-03-failure-alert.md`; raw `Videos\Demos\DEMO-03_raw_2026-11-03.mp4`); first-draft voice-over in marketing-track `scripts/demo-03-failure-alert.md`. Export 1.0.0.4 scanned (two expected hits: the approver address in ApproveFirstReply and RaiseFailureAlert) and committed. Details: decisions.md, test-cases.md, limitations.md 2026-11-03.
 
 Why the alert is in Approvals, not email: the lab account has no mailbox; the Mail connector (Send an email notification V3) returned Unauthorized (new-tenant restriction); a child flow with personal Gmail can't be turned on (Google's rule for personal accounts with non-Google services). Approvals was already proven here. Client fit: Outlook from the client's mailbox (Gmail for Google Workspace clients). Dead pieces were deleted after a double-check (child flow, Gmail and Mail references and connections).
 
-**Next session:** same-case comparison, n8n vs Power Automate for Rivertown lead intake, including licensing (the last Power Automate block), plus the README "What I can deliver now" section (decision 6). AI drafts the client-facing memo; Josh reviews. Kickoff prompt: NEXT_SESSION_START.md.
+(The comparison and README items named here were done 2026-11-04.)
 
-Small items to fold in when convenient: overdue back to the sorting pile (approval map row 13, Josh 2026-11-03); MarkRunFailed's message still says "Alert email sent" (change to "Alert sent to Approvals"); remove Microsoft Power Platform from the alerts Gmail's Google third-party access; OneDrive "josh - Personal" shows a red X (sync); timed-out approval requests linger in Approvals (PA-APR-003, 006); rename the custom "status" display name; malformed-email test; two-resends-at-once test (should now alert); Wrong team / Not a fit cases not run; turn off Chrome forced dark mode; confirm the onmicrosoft password is saved where Josh keeps credentials.
+Small items to fold in when convenient: the built approval button says "Wrong team" while client writing says "wrong department"; department sorting in Power Automate is not planned in the lab (built per client); overdue back to the sorting pile (approval map row 13, Josh 2026-11-03); MarkRunFailed's message still says "Alert email sent" (change to "Alert sent to Approvals"); remove Microsoft Power Platform from the alerts Gmail's Google third-party access; OneDrive "josh - Personal" shows a red X (sync); timed-out approval requests linger in Approvals (PA-APR-003, 006); rename the custom "status" display name; malformed-email test; two-resends-at-once test (should now alert); Wrong team / Not a fit cases not run; turn off Chrome forced dark mode; confirm the onmicrosoft password is saved where Josh keeps credentials.
 
 Claude has **vision** in the blue window (Claude in Chrome, Claude's own tab group). Claude looks and may move its own tab to a page by address to save clicks (always naming the tab; on 10-18 a command without one moved Josh's tab); Josh clicks every control. Claude can also reach Josh's Downloads folder through the desktop app link (used for the export pickup and scan).
 
@@ -106,9 +108,9 @@ Carried forward from Gate 1 (close inside these builds, not separately):
 
 ## Next
 1. DONE 2026-11-03: Try/Catch block (Gate 1 #8 closed, DEMO-03 recorded). DONE 2026-10-18: approvals block (approval map, approval, T8-T10, DEMO-02 recorded). DONE 2026-10-17: Dataverse rebuild (tables, keys, flow uses source and the key; #7 closed). Recording: raw take done 10-17 (3:25, MKV, outside the repo), record in demos/DEMO-01; editing and voice in the marketing track (decision 3). Deferred: WorkflowRun table with the flow run ID; rename the custom "status" display name to lead_status; malformed-email test.
-2. Remaining Power Automate block: same-case comparison with n8n including licensing (next session). End each with the 2-minute screen recording (decision 3).
+2. DONE 2026-11-04: same-case comparison memo (platform-comparison-memo.md). No demo recording: it is a memo, not a build.
 3. Python #5 folded into a build (see carried-forward table): Claude teaches the few pieces the script needs on Josh's own Rivertown export, AI writes it, Josh explains it back. Do not start Intermediate Python as a separate track.
-4. Add the "What I can deliver now" section to README.md (decision 6).
+4. DONE 2026-11-04: README "What I can deliver now" confirmed with Josh (decision 6).
 5. Later: a short mixed SQL + Python retention check in review format (show finished code, ask what it does), on Rivertown data.
 
 ## Open items - Power Automate build

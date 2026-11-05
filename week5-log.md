@@ -210,3 +210,21 @@ Independent: recalling the four buttons, catching that T10 was deliberate (which
 Honest time: about 6.5 hours of work for a 3.5-hour plan. Two things ate it. Directions were too long and sometimes wrong (no tab switches named, quotes that meant "type this", "same as before"), and 40 minutes went to email routes the lab account blocks. What worked: one click per message from the screen I'm on, every tab switch on its own line, copy boxes only for what I type, and the fifth-grade line before "done".
 
 Next: the same-case comparison, n8n vs Power Automate, including licensing, and the "What I can deliver now" list on the README.
+
+## Tuesday-Wednesday 11.03-11.04.26 - The comparison memo and the sell list
+
+The last Power Automate block wasn't a build. It was a memo to Rivertown's owner: here are the two versions of your lead intake, and here's how to choose. We wrote it for one owner on purpose, so any small-business owner can sit in that chair and read it. Where Rivertown, being made up, has no real answer (who looks after their Microsoft 365, how many leads they get), the memo asks instead of guessing.
+
+The big shift came from me asking "why would anyone ever buy n8n?" once the prices were side by side. Both cost under $25 a month, so price doesn't decide it. What does: how deep the firm already is in Microsoft. If your email, Teams, and files live in Microsoft 365, Power Automate is one more line on the same bill. If you only use Word and Excel, it buys you little, and n8n connects to almost anything. And nobody buys either one for a single automation; you're picking a platform. Most firms I talk to also have HubSpot or Salesforce, so the first question is now whether their CRM already does part of this.
+
+Most of the work was making it read right to a manager. "Not built" became "Can be added" (I'd never tell an owner something can't be done when it just wasn't in the sample). "Team" became "department," because a consultant reading about consultants at a consulting firm was confusing. The "who does what" section had to start with what the tool does, or it looked like it did nothing. Then an outside reviewer read it cold as a skeptical IT manager. It caught real things (Power Automate's HubSpot connector isn't official; "1,000 a day" next to "2,500 a month" reads backwards) and some things I overruled (you don't tell a client about a typo you fixed in testing).
+
+Then the README's "What I can deliver now." It now leads with what sets us apart: teaching teams to teach themselves AI. The automation line describes what I can build, with Rivertown as the example, not "only forms exactly like this one."
+
+Two changes in how I work going forward. AI drafts the builds and I test, fix, and own them; the manual hours were worth it, because now I can tell when a draft is wrong. And rules only get used for what they're for. Too much of tonight went to defending things nobody was questioning. We cut the working rules to six.
+
+Independent: who the memo is for; cost has to show early; AI is missing from the Power Automate build; "Can be added" instead of "Not built"; "department head"; the "why buy n8n" question; Microsoft changes too, so n8n shouldn't carry all the risk; Word and Excel alone aren't a reason for Power Automate; the bottom line repeating the table; the tool-looks-idle problem; the CRM question; decision questions vs setup questions; several automations means choosing a platform; the random reference number belongs in the memo; "if you choose" lines; Zapier and Make raising questions we can't answer; the sell list being too narrow; AI-drafted builds; rules taken out of context; trimming the rules. With help: the licensing research and request limits, checking every claim against the test files, the independent review, and the connector facts.
+
+Honest time: about 5.5 hours for a 2-hour plan. Rules applied where they didn't fit and long rounds on wording took most of it. The workspace also reset twice and lost the first draft, so drafts now go to GitHub as they're written.
+
+Next: Week 7, Copilot Studio.

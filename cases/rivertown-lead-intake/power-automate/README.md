@@ -8,7 +8,7 @@ Added 2026-10-18: a person signs off before the first reply (approval map row 8b
 
 Added 2026-11-03: Try/Catch. The bottom half sits in a Try box; if any card in it breaks, Catch raises an alert in Power Automate > Approvals (the lead and run ID, one button: Got it) and marks the run Failed. A planned timeout now ends cleanly (green) after writing overdue, so red means broken. Design: decisions.md 2026-11-03.
 
-Not included yet (later blocks): AI triage, routing, audit trail (WorkflowRun), sending the approved reply, overdue back to the sorting pile (approval map row 13).
+Not included: AI triage and routing (not planned in the lab; built per client, in the tool the client picks), audit trail (WorkflowRun), sending the approved reply, overdue back to the sorting pile (approval map row 13). Comparison with the n8n build: [../platform-comparison-memo.md](../platform-comparison-memo.md) (2026-11-04).
 
 ## Files
 

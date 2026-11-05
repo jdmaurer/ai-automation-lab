@@ -172,3 +172,10 @@ ambiguous path.
 - A timed-out approval request stays in the Approvals list after the flow stops waiting (PA-APR-003, PA-APR-006). Clicking it later does nothing.
 - Two resends at the same instant: the key refusal now fails inside Try, so it should raise the alert, but this was not tested.
 - Wrong team and Not a fit are still built but not run in a test.
+
+## 2026-11-04 - Comparison memo
+
+- Prices are a dated snapshot (2026-11-03). n8n's prices come from two third-party reviews that agree, not from n8n's own page.
+- Power Automate's lead capacity ("tens of thousands a month") comes from Microsoft's 40,000 steps a day per license and a hand count of about 15 steps per lead, not a measurement.
+- The AI cost per lead ("well under a cent") is an estimate from published token prices, not measured on real traffic.
+- Neither build was run on n8n Cloud, a paid Power Automate license, a real website form, or with a CRM. The memo's "Can be added" items are not built.
