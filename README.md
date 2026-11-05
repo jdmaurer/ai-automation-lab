@@ -13,7 +13,7 @@ prototyping.
 
 | Case | What it is | Status |
 |---|---|---|
-| [`cases/rivertown-lead-intake/`](cases/rivertown-lead-intake/) | Webhook-driven lead intake, deduplication, and routing for a synthetic 30-person B2B consulting firm | Built and tested; Power Automate rebuild in progress |
+| [`cases/rivertown-lead-intake/`](cases/rivertown-lead-intake/) | Webhook-driven lead intake, deduplication, and routing for a synthetic 30-person B2B consulting firm | Built and tested in n8n and Power Automate, with a [client comparison memo](cases/rivertown-lead-intake/platform-comparison-memo.md) |
 | [`cases/eval-summary-drafter/`](cases/eval-summary-drafter/) | Drafts one-page client summaries from AI test results; a person reviews every draft | Built and tested (v9) |
 
 Each case folder holds the workflow export, seed data, test cases with
@@ -26,14 +26,16 @@ All examples use synthetic data from a fictitious company.
 
 ## What I can deliver now
 
-<!-- DRAFT 2026-10-15: Josh to confirm each line before it goes public. Updated at each gate and after each finished build; the marketing track's claims follow this list. Sources: the master calendar's responsible-monetization table and the claim rules. -->
+<!-- Confirmed by Josh 2026-11-04. Updated at each gate and after each finished build; the marketing track's claims follow this list. -->
 
 | Offer | Status | Backed by |
 |---|---|---|
-| AI literacy workshops, prompting, and executive briefings | Available | Teaching and strategy background |
+| Team sessions that teach your people to teach themselves AI, starting with their own real work; plus AI literacy workshops and executive briefings | Available | Teaching and strategy background |
 | Workflow-opportunity review: find the repeat work, map the process, rank what to try first | Available | Strategy and management background |
 | Paid diagnostic (the Team AI Map plus cost, outside interviews, process fixes, and a recommendation) | Once the form exists and has had one free test run | Week 11 discovery work on Rivertown |
-| Approval workflows in Power Automate | After the approvals build | Rivertown Power Automate build |
+| Approval workflows in Power Automate: a person signs off before anything reaches a client, and someone is alerted if a step breaks | Available | Rivertown Power Automate build (approval, overdue handling, failure alert; tests T8 to T13) |
+| Lead intake with AI sorting: most leads are assigned to the right department automatically, with AI reading unclear messages and a person reviewing any it isn't sure about. New leads are saved within seconds, and repeats are caught | Available | Rivertown lead intake, built in both n8n and Power Automate (37 test leads, none sent to the wrong department) |
+| Choosing an automation tool: a plain-language comparison of Power Automate and n8n for your firm, covering cost, upkeep, and where your data lives | Available | [Rivertown comparison memo](cases/rivertown-lead-intake/platform-comparison-memo.md), built from both tested samples |
 
 Not offered: production AI systems, enterprise governance, autonomous agents, or Microsoft tenant administration.
 
