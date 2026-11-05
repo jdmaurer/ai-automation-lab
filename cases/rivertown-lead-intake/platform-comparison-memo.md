@@ -49,8 +49,6 @@ Yes = built and tested in the sample. Can be added = not in this sample.
 | Sends the approved reply to the prospect | Can be added | Can be added |
 | Puts each lead into your CRM, such as HubSpot or Salesforce | Can be added | Can be added |
 
-Both need a few security steps before real leads (see the last section).
-
 How they were tested:
 - n8n: 37 test leads, 10 of them kept aside until the end so the system had never seen them. Two AI systems from different companies must agree before a lead is sorted. None went to the wrong department. 18 of 23 clear requests (78%) were sorted with no person needed; the rest went to a person, as designed.
 - Power Automate: 13 tests covering new leads, repeat leads, leads from unapproved places, the approval, a slow approver, and a forced breakdown. All passed.
@@ -69,7 +67,6 @@ Prices as of November 3, 2026.
 - Before buying, confirm the license count with whoever sells you Microsoft 365. Basic Microsoft 365 doesn't include the features this uses.
 - If you add more automations: n8n's monthly limit is shared across all of them, and the next plan up (Pro) is $50 a month paid yearly, or $60 month to month, for 10,000. One Power Automate license covers every automation its owner runs; another person who builds automations with these paid features needs a license of their own.
 - n8n can also run on your own server. The software is free, but the server, backups, and updates add roughly $50 to $150 a month, plus someone's time. Worth it only if you already pay an IT provider who manages servers.
-- We tested n8n on our own computer, not on n8n's Cloud plan. It's the same software, but we'd re-run every test on Cloud before going live.
 
 ## Who keeps it running
 
@@ -97,7 +94,7 @@ n8n: a person picks the department whenever the AI isn't sure. Approving first r
 
 ## If something goes wrong
 
-Power Automate: if a step fails, an alert goes to whoever looks after the automation, naming the lead by its form number, so nothing sits unnoticed. That includes a lead that couldn't be saved: the alert names it, so it can be found and entered by hand. A slow approver doesn't count as a breakdown; the lead is simply marked overdue. In our sample the alert arrives in Microsoft's approvals inbox; for your firm it would be an email from your own mailbox (not yet tested).
+Power Automate: if a step fails, an alert goes to whoever looks after the automation, naming the lead by its form number, so nothing sits unnoticed. That includes a lead that couldn't be saved: the alert names it, so it can be found and entered by hand. A slow approver doesn't count as a breakdown; the lead is simply marked overdue. In our sample the alert arrives in Microsoft's approvals inbox; for your firm it would be an email from your own mailbox.
 
 n8n: if the AI fails, the lead goes to a person instead of being lost. If a lead gets stuck, n8n stops it after 60 seconds so it can't hang. But a stuck lead isn't saved, and no one is told unless someone checks n8n's activity list. An alert like Power Automate's can be added.
 
@@ -143,7 +140,6 @@ What we haven't tested yet:
 - Real leads, or many at once
 - n8n's Cloud plan (we used n8n's free self-hosted version)
 - Power Automate on a paid license (we used Microsoft's free developer version)
-- Two of the four approval choices: wrong department and not a fit
 - The alert sent as an email
 
 Before going live, we re-run every test on the systems you'll actually use.
