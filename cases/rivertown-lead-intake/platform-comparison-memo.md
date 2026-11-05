@@ -22,11 +22,11 @@ We built a fix in each of two tools. They share the basics and differ in what el
 
 ## Bottom line
 
-Both options cost $15 to $25 a month in licenses, so price won't decide this. Two things will: where your company email runs, and who on your staff will look after it.
+Both options cost $15 to $25 a month in licenses, so price won't decide this.
 
-Power Automate is Microsoft's automation tool. It fits best when your email runs on Outlook through Microsoft 365. It plugs into Outlook, Teams, and SharePoint, your staff sign in as they do now, your leads stay in your own account, and whoever manages your Microsoft 365 can control it with the same settings as everything else. In our sample, a department head approves each first reply, and you get an alert if something breaks. Sorting leads by department can be added.
+If your firm already runs its email, Teams, and shared files on Microsoft 365, Power Automate is usually the easier choice. It's one more line on the Microsoft bill you already pay, your staff sign in as they do now, and whoever manages your Microsoft 365 can look after it too.
 
-n8n is an automation service that works with almost any app, including Gmail, Google Workspace, and HubSpot. It fits best when your email runs on Gmail or another service, or when you use Microsoft only for Word, Excel, and PowerPoint. In our sample, it already sorts each lead to a department, using AI for unclear messages and passing anything uncertain to a person, and you can switch AI companies whenever you like. It is a separate system with its own login, so someone learns it and looks after it.
+If much of your work runs outside Microsoft, n8n is usually the better fit. It works with almost any app, including Outlook, Gmail, and HubSpot, and you can switch AI companies whenever you like. It's a separate system with its own login and bill, so someone learns it and looks after it.
 
 The questions at the end of this memo will help you decide.
 
@@ -72,8 +72,6 @@ Prices as of November 3, 2026.
 
 ## Who keeps it running
 
-This is what decides it.
-
 Power Automate: usually the person or outside IT provider who already manages your Microsoft 365. It sits beside tools they already use, and Microsoft keeps a record of everything it did for the last 28 days, so problems can be traced. It runs under one named person's license, so it's handed over when that person leaves.
 
 n8n: someone who learns n8n, a separate system with its own login. Every saved lead carries the reference number of the run that handled it, so problems can be traced, and you can switch AI companies whenever you like.
@@ -107,7 +105,7 @@ n8n Cloud: in n8n's service, a separate company. When AI reads a message, that m
 ## Questions to ask before deciding
 
 1. Do you use, or plan to use, a CRM such as HubSpot or Salesforce? If so, leads should go into it, and it may already handle part of this work.
-2. Does your company email run on Outlook through Microsoft 365, or on Gmail or another service?
+2. How much of your work runs on Microsoft 365: email, Teams, and shared files, or only Word, Excel, and PowerPoint?
 3. Who looks after your Microsoft 365 or other systems today: a staff member, an outside IT provider, or no one?
 4. Who will own the automation and its license, and who would take over if that person leaves?
 5. How many leads arrive in a typical month, and how many don't clearly fit one department?
