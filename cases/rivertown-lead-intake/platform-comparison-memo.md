@@ -41,7 +41,7 @@ Yes = built and tested in the sample. Can be added = not in this sample.
 | Receives each new lead within seconds and saves it | Yes | Yes |
 | Keeps one entry when the same lead arrives twice | Yes. Notes the repeat on the original lead, so it isn't handled twice | Yes. Same |
 | Records where each lead came from, such as your website or an event | Can be added | Yes, so you can tell which places bring in leads |
-| Blocks leads from places you haven't approved | Can be added | Yes, so junk or fake leads stay off your list |
+| Blocks leads from places you haven't approved | Can be added | Yes, so leads from unknown places are turned away |
 | Decides which department each lead belongs to | Yes, with AI help for unclear messages | Can be added |
 | A department head approves each first reply to a prospect | Can be added | Yes |
 | Alerts someone if it breaks | Can be added | Yes |
