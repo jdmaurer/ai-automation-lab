@@ -28,7 +28,7 @@ If your firm already runs its email, Teams, and shared files on Microsoft 365, P
 
 If much of your work runs outside Microsoft, n8n is usually the better fit. It works with almost any app, including Outlook, Gmail, and HubSpot, and you can switch AI companies whenever you like. It's a separate system with its own login and bill, so someone learns it and looks after it.
 
-The questions at the end of this memo will help you decide.
+Most firms end up using the same tool for several automations, so choose the one that fits the rest of your work, not just leads. The questions at the end of this memo will help you decide.
 
 ## What each one does today
 
@@ -67,6 +67,7 @@ Prices as of November 3, 2026.
 | What you already pay for | Your Microsoft 365 covers staff sign-in | Nothing carries over |
 
 - Before buying, confirm the license count with whoever sells you Microsoft 365. Basic Microsoft 365 doesn't include the features this uses.
+- If you add more automations: n8n's monthly limit is shared across all of them, and the next plan up (Pro) is $50 a month paid yearly, or $60 month to month, for 10,000. One Power Automate license covers every automation its owner runs; another person who builds automations with these paid features needs a license of their own.
 - n8n can also run on your own server. The software is free, but the server, backups, and updates add roughly $50 to $150 a month, plus someone's time. Worth it only if you already pay an IT provider who manages servers.
 - We tested n8n on our own computer, not on n8n's Cloud plan. It's the same software, but we'd re-run every test on Cloud before going live.
 
@@ -100,11 +101,11 @@ Power Automate: if a step fails, an alert goes to whoever looks after the automa
 
 n8n: if the AI fails, the lead goes to a person instead of being lost. If a lead gets stuck, n8n stops it after 60 seconds so it can't hang. But a stuck lead isn't saved, and no one is told unless someone checks n8n's activity list. An alert like Power Automate's can be added.
 
-## Where the data lives
+## Where your data lives
 
-Power Automate: inside your own Microsoft 365 account, under the same sign-in and permissions as your files and email.
+Power Automate: inside your own Microsoft 365 account, protected by the same sign-in and permissions as your email and files.
 
-n8n Cloud: in n8n's service, a separate company. When AI reads a message, that message is also sent to the AI provider. Ask first where n8n stores data, and whether any of your client contracts limit where prospect information goes.
+n8n Cloud: on n8n's own servers, run by a separate company. When the AI reads a message, that message is also sent to the AI company. If you need your leads kept on your own equipment, n8n can also run on your own server.
 
 ## Questions to ask before deciding
 
@@ -114,7 +115,8 @@ n8n Cloud: in n8n's service, a separate company. When AI reads a message, that m
 4. Who will own the automation and its license, and who would take over if that person leaves?
 5. How many leads arrive in a typical month, and how many don't clearly fit one department?
 6. Is having AI sort those leads worth adding a second system, or can a staff member sort them for now?
-7. Do any client contracts or regulations limit where prospect information is stored or who handles it?
+7. What else would you like to automate in the next year or two?
+8. Do any client contracts or regulations limit where prospect information is stored or who handles it?
 
 ## Decisions to make once you've chosen
 
