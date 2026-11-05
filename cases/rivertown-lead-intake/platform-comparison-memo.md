@@ -126,7 +126,7 @@ n8n Cloud: on n8n's own servers, run by a separate company. When the AI reads a 
 
 ## Before real use
 
-Both samples use made-up leads.
+Before real prospects use either sample, a few steps remain.
 
 Your part:
 - Have your website form give each lead a random reference number.
@@ -140,7 +140,7 @@ Our part:
 What we haven't tested yet:
 - A real website form (we sent test leads straight to each tool)
 - Real leads, or many at once
-- n8n's monthly Cloud plan (we ran it on our own computer)
+- n8n's Cloud plan (we used n8n's free self-hosted version)
 - Power Automate on a paid license (we used Microsoft's free developer version)
 - Two of the four approval choices: wrong department and not a fit
 - The alert sent as an email
