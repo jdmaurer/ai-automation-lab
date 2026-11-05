@@ -52,7 +52,7 @@ Yes = built and tested in the sample. Can be added = not in this sample.
 Both need a few security steps before real leads (see the last section).
 
 How they were tested:
-- n8n: 37 test leads, 10 of them kept aside until the end so the system had never seen them. Two AI systems from different companies must agree before a lead is sorted. None went to the wrong department. 18 of 23 clear requests were sorted with no person needed; the rest went to a person, as designed.
+- n8n: 37 test leads, 10 of them kept aside until the end so the system had never seen them. Two AI systems from different companies must agree before a lead is sorted. None went to the wrong department. 18 of 23 clear requests (78%) were sorted with no person needed; the rest went to a person, as designed.
 - Power Automate: 13 tests covering new leads, repeat leads, leads from unapproved places, the approval, a slow approver, and a forced breakdown. All passed.
 
 ## What it costs
