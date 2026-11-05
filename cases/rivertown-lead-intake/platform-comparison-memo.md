@@ -96,9 +96,11 @@ n8n: a person picks the department whenever the AI isn't sure. Approving first r
 
 ## What happens when it breaks
 
-Power Automate: a breakdown raises an alert naming the lead, so it doesn't sit unnoticed. A slow approver is not treated as a breakdown; the lead is marked overdue and no alarm goes off. In our sample the alert lands in the Power Automate approvals list, because our test account has no mailbox. For your firm it would be an email from your own mailbox to whoever looks after the automation (Client fit; the email itself wasn't tested).
+Power Automate: if a step fails, an alert goes to whoever looks after the automation, naming the lead by its form number, so nothing sits unnoticed. That includes a lead that couldn't be saved: the alert names it, so it can be found and entered by hand. A slow approver doesn't count as a breakdown; the lead is simply marked overdue. In our sample the alert arrives in Microsoft's approvals inbox; for your firm it would be an email from your own mailbox (not yet tested).
 
-n8n: if the AI fails, the lead goes to a person instead of being lost. Every saved lead carries the reference number of the run that made it. But if a run gets stuck, it is stopped after 60 seconds, the form gets an error, nothing is saved, and nobody is told. Someone would need to check the run list, or an alert would need to be added.
+n8n: if the AI fails, the lead goes to a person instead of being lost. If a lead gets stuck, n8n stops it after 60 seconds so it can't hang. But a stuck lead isn't saved, and no one is told unless someone checks n8n's activity list. An alert like Power Automate's can be added.
+
+In both, if something breaks before a lead is saved, your website is told the submission failed instead of receiving a confirmation.
 
 ## Where the data lives
 
