@@ -80,15 +80,19 @@ Both tools change over time. Microsoft is moving everyone to a new design screen
 
 Our advice: choose the tool that the person who will look after it already knows.
 
-## What a person still approves
+## What the tool does, and what people decide
 
-In both: a person deletes or merges leads, assigns a lead to a named person in the department, and marks when contact is made. The tool never does these.
+The tool handles the routine work on its own: it receives each lead within seconds, saves it, and catches repeats. n8n also sorts each lead to a department when its AI is sure.
 
-A person adds any new place leads can come from. Until they do, Power Automate turns those leads away.
+People keep the decisions that need judgment:
+- Choosing who in the department takes the lead
+- Marking when contact has been made
+- Deleting or merging leads
+- Adding a new place leads can come from (until then, Power Automate turns those leads away)
 
 Power Automate: a department head reviews a drafted first reply and chooses: send the draft, write their own, wrong department, or not a fit. If no one answers in time, nothing is sent and the lead is marked overdue. A wrong reply can't reach a prospect without a person's OK.
 
-n8n: a person picks the department for every lead the AI isn't sure about. No reply to the prospect is built yet, so nothing reaches a prospect at all.
+n8n: a person picks the department whenever the AI isn't sure. Approving first replies can be added.
 
 ## What happens when it breaks
 
