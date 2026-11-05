@@ -26,7 +26,7 @@ Both options cost $15 to $25 a month in licenses, so price won't decide this.
 
 If your firm already runs its email, Teams, and shared files on Microsoft 365, Power Automate is usually the easier choice. It's one more line on the Microsoft bill you already pay, your staff sign in as they do now, and whoever manages your Microsoft 365 can look after it too.
 
-If much of your work runs outside Microsoft, n8n is usually the better fit. It works with almost any app, including Outlook, Gmail, and HubSpot, and you can choose which AI company it uses. It's a separate system with its own login and bill, so someone learns it and looks after it.
+If much of your work runs outside Microsoft, n8n is usually the better fit. It connects to Microsoft apps like Outlook and Teams, and it has built-in connections for Gmail, HubSpot, and most other apps. You can also choose which AI company it uses. It's a separate system with its own login and bill, so someone learns it and looks after it.
 
 Most firms end up using the same tool for several automations, so choose the one that fits the rest of your work, not just leads. The questions at the end of this memo will help you decide.
 
