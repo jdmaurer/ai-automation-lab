@@ -73,7 +73,7 @@ Prices as of November 3, 2026.
 
 ## Who keeps it running
 
-Power Automate: usually the person or outside IT provider who already manages your Microsoft 365. It sits beside tools they already use, and Microsoft keeps a record of everything it did for the last 28 days, so problems can be traced. It runs under one named person's license, so it's handed over when that person leaves.
+Power Automate: usually the person or outside IT provider who already manages your Microsoft 365. It sits beside tools they already use, and Microsoft keeps a record of everything it did for the last 28 days, so problems can be traced. It runs under one person's license, so plan who takes it over if they leave.
 
 n8n: someone who learns n8n, a separate system with its own login. Every saved lead carries the reference number of the run that handled it, so problems can be traced, and you can switch AI companies.
 
