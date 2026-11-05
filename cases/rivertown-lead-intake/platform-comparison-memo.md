@@ -135,7 +135,8 @@ Your part:
 
 Our part:
 - Add any features you choose from the "Can be added" list.
-- Add a password-style lock so only your website can send leads, and hide technical error messages from outsiders.
+- If you choose Power Automate: add a password-style lock so only your website can send it leads. n8n already has one.
+- If you choose n8n: hide technical error messages from outsiders.
 
 What we haven't tested yet:
 - A real website form (we sent test leads straight to each tool)
