@@ -26,7 +26,7 @@ Both options cost $15 to $25 a month in licenses, so price won't decide this.
 
 If your firm already runs its email, Teams, and shared files on Microsoft 365, Power Automate is usually the easier choice. It's one more line on the Microsoft bill you already pay, your staff sign in as they do now, and whoever manages your Microsoft 365 can look after it too.
 
-If much of your work runs outside Microsoft, n8n is usually the better fit. It works with almost any app, including Outlook, Gmail, and HubSpot, and you can switch AI companies whenever you like. It's a separate system with its own login and bill, so someone learns it and looks after it.
+If much of your work runs outside Microsoft, n8n is usually the better fit. It works with almost any app, including Outlook, Gmail, and HubSpot, and you can choose which AI company it uses. It's a separate system with its own login and bill, so someone learns it and looks after it.
 
 Most firms end up using the same tool for several automations, so choose the one that fits the rest of your work, not just leads. The questions at the end of this memo will help you decide.
 
@@ -75,7 +75,7 @@ Prices as of November 3, 2026.
 
 Power Automate: usually the person or outside IT provider who already manages your Microsoft 365. It sits beside tools they already use, and Microsoft keeps a record of everything it did for the last 28 days, so problems can be traced. It runs under one named person's license, so it's handed over when that person leaves.
 
-n8n: someone who learns n8n, a separate system with its own login. Every saved lead carries the reference number of the run that handled it, so problems can be traced, and you can switch AI companies whenever you like.
+n8n: someone who learns n8n, a separate system with its own login. Every saved lead carries the reference number of the run that handled it, so problems can be traced, and you can switch AI companies.
 
 Both tools change over time. Microsoft is moving everyone to a new design screen and has retired license plans before. n8n updates often, and AI companies replace their services. Whoever looks after it keeps up with those changes and re-checks the test leads after any big one.
 
