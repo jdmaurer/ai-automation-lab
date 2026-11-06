@@ -1,8 +1,15 @@
-# CURRENT STATE - updated 2026-11-04 (late evening) - RESUME HERE
+# CURRENT STATE - updated 2026-11-06 (afternoon) - RESUME HERE
 
 Per AI_HANDOFF_PROTOCOL.md this file is overwritten each session. Earlier states are in git history and the weekly logs.
 
-## Resume point (2026-11-04)
+## Resume point (2026-11-06)
+Week 7, Copilot Studio, day 1 done. Trial active (Copilot Studio Viral Trial license, admin center) in Josh Maurer's Environment. New client and case: `cases/bluffside-handbook-helper/` (Bluffside Heating & Plumbing, fictitious ~40-person contractor; employee handbook helper; why in its decisions.md). Solution "Bluffside Handbook Helper" (BluffsideHandbookHelper, publisher jdmaurer Labs, prefix jdm), set as preferred. Standard agent "Bluffside Handbook Helper" (schema jdm_BluffsideHandbookHelper) inside it: five handbook files as knowledge (HB-03 v1 marked REPLACED on purpose), instructions v1 (agent-config/instructions-v1.md), Web Search off.
+
+Baseline test (test-cases.md, rules approved first): should-answer 11 of 11; should-not-answer 5 of 9. Failures: the built-in Escalate system topic answered N6 (legal), N7 (gas smell, CRITICAL) and N10 (prompt injection) with Microsoft's placeholder text; N8 (pilot light) refused without naming Dana. N3 (groceries) was a test defect, moved to should-answer. The helper is shown to no one, demo included, until an emergency script passes.
+
+**Next session:** Week 7 day 2. Fix first: a fixed emergency topic (911 line only) and the Escalate topic's message (Dana hand-off); rerun N6, N7, N8, N10. Then grow the handbook a little with one planted conflict and run the harder tests. Kickoff prompt: NEXT_SESSION_START.md.
+
+## Earlier resume point (2026-11-04)
 The Power Automate weeks are done. Same-case comparison finished: `cases/rivertown-lead-intake/platform-comparison-memo.md`, a client memo to Rivertown's owner comparing the n8n and Power Automate builds, including licensing (prices as of 2026-11-03), reviewed section by section with Josh and by an independent skeptical-IT-manager read. README "What I can deliver now" confirmed with Josh (decision 6): five rows, led by "teach your people to teach themselves AI"; the automation row names capabilities with Rivertown as the example. Decisions and limitations entries 2026-11-04.
 
 Working rules cut to six and approved (ASSISTANT_WORKING_CONTEXT.md, "Working rules, revised 2026-11-04"; they win over older lines). The two that change sessions most: AI drafts builds and Josh tests, fixes, and owns them; rules are used only for what they were made for.
@@ -103,7 +110,7 @@ Carried forward from Gate 1 (close inside these builds, not separately):
 - Rivertown n8n build: v2.8 (execution_id correlation ID, 60 s timeout, Chicago timezone), export lead-intake-v2.8.json. The n8n workflow is still named "Rivertown - Lead Intake v2.7"; version names start "v2.8". Unpublished after testing. v2.7 tag: lead-intake-v0.2-evaluated.
 - Workflow settings (timeout, timezone) saved straight into the published workflow without a republish.
 - Data table rivertown leads v2: 327 rows after today's tests. Use the Search box to find a row by external_id.
-- Copilot Studio trial: NOT started. Sign up on the first day of Week 7.
+- Copilot Studio trial: active since 2026-11-05 (Copilot Studio Viral Trial license). Its new look puts the environment switcher at the bottom left. Agent: Bluffside Handbook Helper (see Resume point).
 - SQL remediation coursework: DataCamp Introduction to SQL complete; Intermediate SQL completed 2026-10-05; Joining Data in SQL completed 2026-10-06; Introduction to Relational Databases in SQL completed 2026-10-10. JOIN reasoning and relational concepts are substantially stronger than exact syntax retrieval. Concepts that held: primary vs foreign keys, 1:N and N:M relationships, referential integrity, CASCADE behavior, UNIQUE vs DISTINCT, JOIN logic, filtering/grouping. Syntax that needs delayed-recall practice includes ADD CONSTRAINT, SET NOT NULL, RENAME COLUMN, INSERT INTO ... VALUES, INSERT INTO ... SELECT DISTINCT ... FROM, UPDATE ... SET ... FROM ... WHERE, ALTER COLUMN ... TYPE, and FOREIGN KEY ... REFERENCES. Do not quiz table/column names; provide the names and test the SQL pattern and logic.
 
 ## Next

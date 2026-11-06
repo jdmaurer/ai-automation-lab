@@ -12,6 +12,12 @@ College professor with a strategy and management background, building toward SME
 
 Explicitly not claiming to be a production AI engineer, security specialist, Microsoft tenant architect, or autonomous-agent expert.
 
+## Business context (added 2026-11-06; the marketing-track repo is the master for business decisions)
+- The business is Chill & Shine; Brain and Bot is going away. Public work runs under Josh's own name at joshuadmaurer.com.
+- On Microsoft and other sign-up forms: title Founder, organization Joshua Maurer, phone is the Google Voice number in the marketing repo (never his personal number).
+- Before each build, ask who will use it: Josh's own business (build it for real, e.g. on his website) or a client (build a client demo with a fictitious company that would realistically hire him).
+- Example clients: Rivertown Professional Services (lead intake, finished) and Bluffside Heating & Plumbing (Week 7 handbook helper). Spread future examples across industries.
+
 ## Repository
 
 Canonical record: `github.com/jdmaurer/ai-automation-lab`
