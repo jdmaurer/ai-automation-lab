@@ -4,15 +4,18 @@ A Copilot Studio helper for the staff of Bluffside Heating & Plumbing, a fictiti
 
 All examples use synthetic data from a fictitious company.
 
-## Status (2026-11-06)
-- Built: agent in its own solution, five handbook files as knowledge, instructions v1, Web Search off.
-- Baseline test: should-answer 11 of 11, should-not-answer 5 of 9 (see test-cases.md). Next: fix the built-in Escalate topic and add a fixed emergency script.
+## Status (2026-11-06, evening)
+- Built: agent in its own solution; six handbook files as knowledge (HB-05 added with one planted conflict); instructions v2; three topics (Emergency, Escalate message replaced, Repair questions); Web Search off.
+- Baseline (instructions v1): should-answer 11 of 11, should-not-answer 5 of 9.
+- After fixes: emergency 5 of 5, baseline failures 3 of 3, repair 3 of 3, harder test 10 of 10 (conflict needed two fixes). See test-cases.md.
+- Next: a self-grading test set in Copilot Studio Evaluate, full rerun, then the time-off request action.
 
 ## Files
-- handbook/ - the five policy files, including one REPLACED version on purpose
-- agent-config/instructions-v1.md - the rules pasted into Copilot Studio
+- handbook/ - six policy files, including one REPLACED version and one planted conflict (HB-04 vs HB-05 on phones while driving), on purpose
+- agent-config/instructions-v1.md, instructions-v2.md - the rules in Copilot Studio
+- agent-config/topics.md - the fixed scripts (topics)
 - test-cases.md, decisions.md, limitations.md
-- evidence/ - baseline screenshots
+- evidence/ - test screenshots
 
 ## The same build, tuned to other needs
 Field tech helper (warranty, pricing approvals, complaints), new-hire onboarding, IT help desk basics, equipment-manual helper, sales helper (approved pricing and messaging).

@@ -1,8 +1,20 @@
-# CURRENT STATE - updated 2026-11-06 (afternoon) - RESUME HERE
+# CURRENT STATE - updated 2026-11-06 (late evening) - RESUME HERE
 
 Per AI_HANDOFF_PROTOCOL.md this file is overwritten each session. Earlier states are in git history and the weekly logs.
 
-## Resume point (2026-11-06)
+## Resume point (2026-11-06, late evening)
+Week 7 day 2 done. Bluffside Handbook Helper (`cases/bluffside-handbook-helper/`) is fixed and passes every test so far, and is safe to show (still unpublished; trial can't publish to staff).
+- Topics (agent-config/topics.md): Emergency (new; Josh's 911 wording), Escalate (Microsoft's placeholder replaced with the Dana hand-off), Repair questions (new; "ask your service manager"). Each ends with End all topics.
+- Instructions v2 (agent-config/instructions-v2.md): emergency line matches the topic; repair line names the service manager; new conflict rule (show both policies, send to Dana, no yes or no). Tidy: in Copilot Studio the conflict rule shares a line with the REPLACED rule.
+- Knowledge: six files; HB-05 (customer homes, uniform, phones) added, roles not names, with a planted conflict vs HB-04 (hands-free phones while driving).
+- Tests (test-cases.md 2026-11-06 evening): emergency 5/5, baseline failures 3/3, repair 3/3, harder 10/10 after two fixes to H4. Evidence screenshots in evidence/.
+- Not yet: a full rerun after three instruction edits.
+
+**Next session:** build the test set in Copilot Studio's Evaluate (all baseline, emergency, repair, and harder cases; Claude writes the file), run it, fix anything that regressed. Then master calendar Wednesday: the create_review_request action (time-off request the office manager approves). Kickoff prompt: NEXT_SESSION_START.md.
+
+Claude in Chrome: two browsers connect; Browser 1 is the blue "jdmaurer Labs" window (checked 2026-11-06: Copilot Studio signed in as Josh Maurer, Josh Maurer's Environment).
+
+## Earlier resume point (2026-11-06)
 Week 7, Copilot Studio, day 1 done. Trial active (Copilot Studio Viral Trial license, admin center) in Josh Maurer's Environment. New client and case: `cases/bluffside-handbook-helper/` (Bluffside Heating & Plumbing, fictitious ~40-person contractor; employee handbook helper; why in its decisions.md). Solution "Bluffside Handbook Helper" (BluffsideHandbookHelper, publisher jdmaurer Labs, prefix jdm), set as preferred. Standard agent "Bluffside Handbook Helper" (schema jdm_BluffsideHandbookHelper) inside it: five handbook files as knowledge (HB-03 v1 marked REPLACED on purpose), instructions v1 (agent-config/instructions-v1.md), Web Search off.
 
 Baseline test (test-cases.md, rules approved first): should-answer 11 of 11; should-not-answer 5 of 9. Failures: the built-in Escalate system topic answered N6 (legal), N7 (gas smell, CRITICAL) and N10 (prompt injection) with Microsoft's placeholder text; N8 (pilot light) refused without naming Dana. N3 (groceries) was a test defect, moved to should-answer. The helper is shown to no one, demo included, until an emergency script passes.

@@ -244,3 +244,14 @@ The comparison-memo session ran about 5.5 hours for a 2-hour plan. Most of the e
 4. **Client writing:** start with what we did for them, then what they need to do; use words the client already knows, so it's easy to understand; describe each option the same way, and say each thing once; for something we can do but left out, say "Can be added", and if we can't do something, say so plainly; check the plan before promising anything "later". Before handing Josh any client document to review, read it once asking: is any line here because of a rule, rather than because it helps the reader? (Added 2026-11-05: four such lines were cut from the memo after review.) The Rivertown comparison memo is the model.
 5. **Showing a change:** say where it is (which section), and show the changed text with a few lines before and after it, enough to judge whether it fits; a short paragraph is shown whole. Never "..." in place of the text around a change. Show before and after when wording changes.
 6. **Saving work:** push to GitHub when a draft is written, when a piece of work is approved, and at closeout; not after every small edit. (The workspace reset twice on 11-04; the first memo draft was lost because it was never pushed.)
+
+### Message format, update (added 2026-11-06, Copilot Studio session)
+Josh closed the session for an hour after a page-and-a-half opening message. What worked once he came back:
+- Open with three lines: where we are, the goal, one action. Teaching goes in one or two lines next to the step it explains.
+- Every step: one short "What we're doing" line on top, then each step with a bullet under it saying where his eyes go, by the label or the exact text on screen ("the gray text 'Escalating to a representative is not currentl...' in the second card, the one labeled Message, not the Trigger card above it"). "Click the Message card's text" was not enough; he pasted into the wrong box.
+- Several simple steps inside one card are fine in one message (Josh's request); navigation into new places stays one or two clicks.
+- Check an icon before naming it (zoom or hover the tooltip). A "circle arrow" that was really a square with a + cost a round.
+- When he misses something, name exactly which item is missing ("the SYSTEM NOTE question wasn't sent"), not "it isn't in this chat."
+- Shift+Home selects only the wrapped visual line. For replacing a long line: click just before its first character, Shift+click just after its last.
+- Pass/fail rules in a small table, approved before running; then he pastes the questions and Claude reads the answers from its own tab.
+- Two Chrome browsers connect to Claude; Browser 1 is the blue window. If unsure, Claude opens its own tab and checks the signed-in account itself rather than asking Josh which is which.

@@ -10,3 +10,11 @@ Append-only, newest at the bottom.
 - Answers come only from the handbook files. It gives no legal advice and no repair instructions.
 - A "use general knowledge" switch was not found in this version of Copilot Studio; the instructions forbid outside knowledge, and the baseline showed no outside answers.
 - Synthetic data from a fictitious company.
+
+## 2026-11-06 (evening)
+- The emergency wording is ours, written for a fictitious company. A real client's safety procedure (and their gas utility's guidance) sets the words.
+- The AI decides which topic to use. The words inside a topic are fixed, but whether it fires can change from run to run; tested with paraphrases, not guaranteed.
+- After tonight's three instruction edits, only the targeted questions were rerun. Full regression is next session.
+- A Repair questions topic catches repair and how-to questions; the AI may still route some to Escalate (Dana) instead. Both are safe; neither gives repair steps.
+- HB-01 to HB-04 name the office manager; HB-05 names roles only. A real client's handbook would name roles throughout.
+- When knowledge is searched, the REPLACED expense file still shows up among the files searched (it was not used in any answer).
