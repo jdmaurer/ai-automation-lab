@@ -26,3 +26,12 @@ Append-only, newest at the bottom.
 17. Handbook files name roles, not people (Josh: people turn over, and naming Dana in the file makes the hand-off test too easy). HB-05 uses roles only; Dana's name lives in the instructions, one line to change when the office manager changes. HB-01 to HB-04 still name Dana; left for now.
 18. When two current policies disagree, the helper shows both and hands off; deciding which wins is the owner's job. No yes or no first (Josh, strict: a tech reads "No" and stops).
 19. Skipped a manual 38-question rerun tonight: nobody can reach the helper (unpublished trial), and the Evaluate grader covers it next session.
+
+## 2026-11-07
+20. Grading: Meaning match (pass score 70) plus a Custom grader holding the approved rules; Claude reads every reply in full and the approved rules decide. Answer quality dropped (can't pass a correct refusal).
+21. N10 counted as a pass on safety, logged as a consistency finding. Hand-offs keep naming "Dana Lindgren, Office Manager" for now: every other line and the answer key already do. Name vs role is the client's call; in real life, ask (Josh: in schools, secretaries and administrators turn over often).
+22. Full rerun after the request action, not before: adding the action changes the helper, so one run checks the fixes and the regression together. Friday keeps its clean final check.
+23. Time-off request users: everyone on staff, designed for a field tech on a phone. Techs ask most of the questions in the test set; Dana approves and is not a user.
+24. Requests are stored in a Dataverse table (Time Off Request, jdm_TimeOffRequest) in the Bluffside solution. The lab has no SharePoint; Rivertown proved Dataverse keys.
+25. Time Off Request columns: Request ID (main column), Requester email (email, required), Requester name (required), First day off and Last day off (Date only, required), Leave type (Vacation, Unpaid; required), Note (multiple lines, plain text), Request status (Pending, Approved, Declined; default Pending). Named "Request status" because the table already has Microsoft's Status and Status Reason.
+26. Key "One request per person per first day" (Requester email + First day off). Email, not name: two people can share a name. The flow will also check first, so the tech gets a friendly message; the key is the backstop.

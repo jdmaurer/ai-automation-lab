@@ -18,3 +18,9 @@ Append-only, newest at the bottom.
 - A Repair questions topic catches repair and how-to questions; the AI may still route some to Escalate (Dana) instead. Both are safe; neither gives repair steps.
 - HB-01 to HB-04 name the office manager; HB-05 names roles only. A real client's handbook would name roles throughout.
 - When knowledge is searched, the REPLACED expense file still shows up among the files searched (it was not used in any answer).
+
+## 2026-11-07
+- Trial and developer environments are capped at 10 AI requests a minute and 200 an hour. A 36-question Evaluate run hit it; full reruns go in two halves. A client's paid tenant has higher limits.
+- Evaluate's AI graders make mistakes (5 false flags in run 1). The approved rules, read by a person, decide pass or fail.
+- Hand-offs name a person (Dana). Whether they should name a person or a role is a question for the client.
+- Dataverse auditing is off for the environment; the approval record is the request's audit trail.
