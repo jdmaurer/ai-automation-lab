@@ -68,21 +68,33 @@ Source material: an accelerator's Q3 lessons from ~1,150 AI agencies plus member
 6. Sell list lives in README.md ("What I can deliver now"); the marketing track points to it.
 7. The diagnostic, competitor watch, and offer path are marketing-track decisions (marketing repo). The intensive's Week 11 discovery kit is where the diagnostic gets practiced on Rivertown.
 
+## Plan additions (approved by Josh 2026-11-07)
+Source: four research runs (Claude, ChatGPT, Gemini, Perplexity) in the marketing repo, `research/what-gets-built-2026-11*.md`, read against the forum and Blazing Zebra list below. Judged by evidence, not a strict count across runs. Nothing is removed, and Week 7 is unchanged. The 12 weeks are a guide; adding a short block is fine.
+- Week 8, added inside the inbox triage: (1) quote-request emails, if the client is a service firm or trade: the draft uses an approved price sheet, flags missing details, and never invents a price; (2) a weekly summary as the measurement handoff: formulas count drafts approved, edited, and rejected by category, and AI writes a short summary. The marketing stats report teaches the same skill; whichever is built first, the other reuses its pattern.
+- New quick-build block after Week 8, before Week 9: three n8n builds. AI drafts the workflow JSON, Josh imports it, tests, and owns it. About 2 to 4 hours each, including the 2-minute demo; time-boxed. Ask first who will use each (Josh's own business or a client demo).
+  1. Meeting notes: transcript in, then decisions, owners, dates, and open questions out; a person approves; tasks go to a table.
+  2. Payment reminders: scheduled, fixed message, no AI needed (part of the point: not every job needs AI).
+  3. Invoice PDFs: fields pulled out; totals checked by formula; duplicate check on vendor + invoice number; each row marked ready or flagged for a person.
+- Python (Gate 1 #5: can Josh read and check a small script AI writes for a client) still closes in Week 9, inside the Python message classifier.
+- Decide when we get there: Week 10 could reuse Bluffside's handbook as its documents (saves building a new set); the Week 11 teaching session could have the beginner build a small handbook helper (the most common hands-on workshop activity in the research).
+- Evidence strength: lead intake and inbox triage have the best paid-work evidence; the additions are backed by many sellers offering them and owners asking for them, with few confirmed sales. Small builds, so worth it.
+
 ## Problems clients pay to remove (forum + Blazing Zebra)
-Status against this plan. Build demos for the problems that come up most, not all of them.
+Status against this plan. Build demos for the problems that come up most, not all of them. Updated 2026-11-07 with the plan additions above.
 | Problem | Status |
 |---|---|
 | Leads go cold; slow follow-up | Built (Rivertown lead intake) |
 | Drowning in email | Planned (Week 8 inbox triage) |
-| Knowledge lives in one person's head | Planned (Week 10 SOP lookup) |
+| Knowledge lives in one person's head | In progress (Week 7 Bluffside handbook helper); Week 10 SOP lookup |
 | Messy process nobody fixes before automating | Planned (Week 11 discovery; the paid diagnostic) |
 | Content takes forever | Marketing track, Phase 4 |
-| Chasing people for money or missing documents | Gap (in both sources; "a person approves every one" on the approval map) |
-| Building the same report every week | Gap (marketing stats report covers Josh's own) |
-| Meeting notes that never become tasks | Gap (one of the calendar's five Rivertown cases; no week assigned) |
-| Reminders and follow-ups that slip | Gap (in both sources) |
+| Chasing people for money or missing documents | Planned (quick-build block: payment reminders, invoice PDFs) |
+| Building the same report every week | Planned (Week 8 weekly summary; marketing stats report covers Josh's own) |
+| Meeting notes that never become tasks | Planned (quick-build block) |
+| Reminders and follow-ups that slip | Planned in part (quick-build block, payment reminders) |
+| Quotes take too long | Planned (Week 8, quote-request drafts) (added 2026-11-07, from the research) |
 | Not knowing what customers think | Gap (Blazing Zebra only) |
-After week 12: competitor watch (marketing decision), then the gaps above, chosen by which ones prospects bring up.
+After week 12: competitor watch (marketing decision), then the remaining gaps (customer feedback, client onboarding, booking), chosen by which ones prospects bring up.
 
 ## Recording setup (moved 2026-10-17)
 Raw footage: Josh's computer, `Videos\Demos`, named `DEMO-NN_raw_YYYY-MM-DD.mp4` (remux in OBS first). Record tests live and pause between shots; one app at a time, maximized; zoom in; Leads sorted by Created On. The OBS settings, the PowerToys Workspaces layout ("Screen Recording Layout"), the Postman variable `{{pa_intake_url}}`, and the pre-recording checklist now live in the marketing repo: `sops/screen-recording-setup.md` (private). The marketing track owns the studio. Demo records: `demos/`.
