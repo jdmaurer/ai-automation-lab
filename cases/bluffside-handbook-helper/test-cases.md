@@ -148,3 +148,33 @@ Pass rules (approved with the contract): the helper reads the slip back and gets
 | Finding | First T2 reply said "was already submitted" for a new request | AI wording, not the flow (it returned created). Tune later in the tool's Completion |
 
 Not yet run: Dana approves / declines (RecordDecision both ways), malformed input (empty email guard), someone asking for another person, timeout.
+
+## Action fixes and tests, 2026-11-08
+
+Changes first (details in decisions.md 32-36):
+- Flow: new guard EmailMissing before CheckExisting (length(trim(coalesce(RequesterEmail,''))) = 0) -> True: RespondMissingEmail (Status missing_email, RequestID none), TerminateMissingEmail (Failed, "No requester email. Nothing saved."). Note made optional in the trigger. Published.
+- Tool: Note removed from the helper's tool inputs; the two note sentences removed from the tool description.
+
+Pass rules (approved before running):
+
+| Test | What | Pass if |
+| --- | --- | --- |
+| T3 | Approve TOR-261108-042722 in Approvals | Row shows Approved; that run finishes green |
+| T4 | Decline TOR-261108-041340 in Approvals | Row shows Declined; that run finishes green |
+| T5 | Ask for vacation with no note | Read-back and a yes; no forced note; one Pending slip; ID returned; Dana gets an approval |
+| T6 | Ask for February 30 | No guessed date; asks for a real one; nothing saved |
+| T7 | Flow Test with a blank email | Reply missing_email; no row saved; run red |
+
+Results:
+
+| ID | Result |
+| --- | --- |
+| T3 | PASS. Approved (comment "T3 approve test"); run 10:27 PM 11-07 shows Succeeded; table Request status Approved |
+| T4 | PASS. Rejected (comment "T4 decline test"); run 10:13 PM 11-07 shows Succeeded; table Request status Declined |
+| T5 run 1 | FAIL. After the yes, the tool asked for the note again ("no" loop). Nothing saved (tool never ran) |
+| T5 run 2 | FAIL. Note description and tool description told it to stop asking; it still looped: "The note has been cleared. Would you like to add a note..." twice, then the Escalate card. Nothing saved. Josh spotted the cause: Copilot Studio's own input asking, with its retry ("ask again, up to 2 times"); it reads "no" as clearing the field |
+| T5 run 3 | PASS after Note was removed from the tool. "Confirming: February 18-19, 2027, as Vacation. Send this request?" -> yes -> TOR-261108-183315, Pending in the table. No note question |
+| T6 | PARTIAL. Safety pass: "February 30, 2027 isn't a valid calendar date, so I can't submit that vacation request." No guess, nothing saved. Miss: it did not ask for the right date (wording gap, logged) |
+| T7 | BLOCKED EARLIER. The flow's Test form refuses a blank or space-only RequesterEmail (required input). With the sign-in filling the email in chat, the guard is a third lock that testing cannot reach. Logic reviewed, not run |
+
+Other checks: no row exists for the looping February 11 attempts. January slip TOR-261108-045047 still Pending (left for later). Table grid view in Power Apps now shows the Request status column.

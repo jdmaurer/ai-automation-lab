@@ -29,3 +29,11 @@ Append-only, newest at the bottom.
 - The request ID uses the server's clock (UTC), so a late-evening request in Winona shows tomorrow's date in the ID.
 - "Business required" on a Dataverse column applies to forms, not to flows; the flow itself has to check required values (empty-email guard coming next session).
 - Tested only as one user (Josh). "Someone asking for another person" is blocked by design (identity from the sign-in) but not yet tested with a second account.
+
+## 2026-11-08
+- No note on time-off requests. A tech who wants to explain tells Dana directly. A note can be added back through a topic with buttons (decision 34).
+- The empty-email guard is a backstop that testing cannot reach: the chat always fills the email from the sign-in and the flow refuses a blank. Reviewed, not run.
+- Given an impossible date, the helper refuses but does not ask for the right one; the tech starts over.
+- Timeout not tested. Approvals wait up to 30 days; a slip nobody answers stays Pending.
+- Someone acting for another person is blocked by design (identity from the sign-in) but untested: the lab has one user. Access blocker, not a pass.
+- After a failed publish, the agent-flow designer may show "Illegal state: resolveOrgUrl: instanceUrl is undefined" and offer "Recover flow" with an older copy. Save draft, refresh, then publish; do not recover a copy older than the last save.
