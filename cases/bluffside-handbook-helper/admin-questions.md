@@ -13,18 +13,19 @@ Draft 2026-11-08, for Josh's review. These are the things the lab couldn't settl
 6. Should everyone see the same handbook, or do some groups need different documents? If different, which SharePoint groups match?
 7. Who should approve time-off requests: one office manager, a shared mailbox, or each person's manager?
 8. Is there a second test account we can use to check that one person can't file for another?
+9. Which service account should the request flow's connections (Dataverse and Approvals) run under? In the lab they run under the builder's account. In your tenant they should run under an account Bluffside owns, so requests don't depend on one person's login.
 
 ## Data and records
-9. Where does the official handbook live today, and who owns changes to it?
-10. How long should time-off requests be kept, and who can see them?
-11. Is Dataverse auditing on (or can it be turned on) for the requests table?
-12. Are there words or topics your safety procedure requires in an emergency message? (Our 911 wording is a placeholder for your procedure.)
+10. Where does the official handbook live today, and who owns changes to it?
+11. How long should time-off requests be kept, and who can see them?
+12. Is Dataverse auditing on (or can it be turned on) for the requests table?
+13. Are there words or topics your safety procedure requires in an emergency message? (Our 911 wording is a placeholder for your procedure.)
 
 ## Running it
-13. Who maintains the helper day to day after handover, and how much admin access will they have?
-14. Which Microsoft 365 data loss prevention (DLP) policies apply to Power Platform connectors here?
-15. Any rules about AI features in your organization (approved uses, content filtering, logging) that we should follow?
-16. What's the process if the helper has to be switched off quickly?
+14. Who maintains the helper day to day after handover, and how much admin access will they have?
+15. Which Microsoft 365 data loss prevention (DLP) policies apply to Power Platform connectors here?
+16. Any rules about AI features in your organization (approved uses, content filtering, logging) that we should follow?
+17. What's the process if the helper has to be switched off quickly?
 
 ## What we'll bring
 - The exported solution (agent, flow, table) and the handbook files.

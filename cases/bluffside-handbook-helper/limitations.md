@@ -41,3 +41,6 @@ Append-only, newest at the bottom.
 - Topic choice still varies between runs: A9 passed on 11-07 and failed on 11-08 until the Repair topic was narrowed. Re-test topic edits on both the target questions and nearby ones.
 - The tech isn't told when Dana answers. Her decision is recorded in the table; she tells the tech herself. Can be added: a message back to the tech when Dana answers.
 - The duplicate check matches person + first day only. Overlapping requests with different first days (17-19, then 19) are both filed; Dana sees both. A repeat with the same first day but new dates returns the old ID and files nothing. Dates can't be changed through the helper; the tech tells Dana. Can be added: an overlap check on the date range.
+- The lab has one environment. Moving a change from a development copy to a live one (export, then import as a managed solution) is described in the maker guide but the import half is untested here.
+- Switching the helper off from the Teams channel wasn't checked, because the trial can't publish. Blocking the app in the Teams admin center is the standard admin control for switching it off.
+- The request tool runs on the author's (builder's) credentials, per Copilot Studio's publish check. In a client tenant the flow's connections move to a service account the client owns (admin question 9).
