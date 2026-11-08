@@ -1,6 +1,6 @@
 # Bluffside Handbook Helper — Guide for staff
 
-Draft 2026-11-08, for Josh's review. Written for Bluffside's employees: a field tech on a phone first, office staff second.
+Written for Bluffside's employees: a field tech on a phone first, office staff second.
 
 ## What it is
 
@@ -29,6 +29,7 @@ Good to know:
 - Asking twice for the same first day gives you the ID you already have. It won't file a second slip.
 - Sick time isn't requested here. Tell the office, as the handbook says (HB-02).
 - If you want to explain a request, tell Dana directly. The request has no note line.
+- To change dates, tell Dana.
 
 ## When it says "Please ask Dana"
 
