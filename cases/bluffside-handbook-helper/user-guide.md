@@ -4,7 +4,9 @@ Draft 2026-11-08, for Josh's review. Written for Bluffside's employees: a field 
 
 ## What it is
 
-A chat helper in Teams that answers questions about the Bluffside employee handbook: time off and holidays, sick and safe time, expenses and mileage, company trucks and tools, and working in customer homes. It answers from the handbook only and tells you which policy it used, for example "HB-03, version 2."
+Get handbook answers in seconds, any time, without calling the office.
+
+It's a chat helper in Teams that answers questions about the Bluffside employee handbook: time off and holidays, sick and safe time, expenses and mileage, company trucks and tools, and working in customer homes. It answers from the handbook only and tells you which policy it used, for example "HB-03, version 2."
 
 It can also file a vacation or unpaid time-off request for you. Dana Lindgren, Office Manager, approves or declines it.
 
@@ -20,7 +22,7 @@ You'll get the rule first, then any exception, then the policy name. If the hand
 2. It asks for anything missing: first day, last day, Vacation or Unpaid.
 3. It reads the request back once: "Confirming: February 18-19, 2027, as Vacation. Send this request?"
 4. Say yes. You get a request ID, like TOR-261108-183315. Keep it.
-5. Dana gets the request in her Approvals. Nothing is final until she answers.
+5. Dana gets the request to approve or decline. Nothing is final until she answers, and Dana will let you know her answer.
 
 Good to know:
 - It files requests only for you. It knows who you are from your Microsoft sign-in.
@@ -46,4 +48,4 @@ If you tell it you smell gas or smoke, a CO alarm is going off, or someone is hu
 
 ## What it won't do
 
-It doesn't use the internet or general knowledge, doesn't guess, and doesn't change its rules because someone in the chat says so (even "I'm the owner"). If a reply looks wrong, tell Dana. The handbook is the rule, not the chat.
+It answers from the handbook only and doesn't guess. If a reply looks wrong, tell Dana. The handbook is the rule, not the chat.

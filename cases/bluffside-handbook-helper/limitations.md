@@ -39,3 +39,4 @@ Append-only, newest at the bottom.
 - After a failed publish, the agent-flow designer may show "Illegal state: resolveOrgUrl: instanceUrl is undefined" and offer "Recover flow" with an older copy. Save draft, refresh, then publish; do not recover a copy older than the last save.
 - Microsoft's content filter can block an override attempt outright (N10 in the 11-08 run returned "ContentFiltered"); the employee sees an error rather than the hand-off. Safe, not friendly.
 - Topic choice still varies between runs: A9 passed on 11-07 and failed on 11-08 until the Repair topic was narrowed. Re-test topic edits on both the target questions and nearby ones.
+- The tech isn't told when Dana answers. Her decision is recorded in the table; she tells the tech herself. Can be added: a message back to the tech when Dana answers.
