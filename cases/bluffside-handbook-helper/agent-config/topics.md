@@ -16,7 +16,7 @@ A topic is a fixed script: when it is picked, it says the same words every time.
 
 ## Repair questions (custom, added 2026-11-06)
 - Trigger: The agent chooses.
-- Describe what the topic does: "Use this topic when someone asks how to repair, install, troubleshoot, relight, reset, or adjust equipment such as furnaces, boilers, water heaters, AC units, or plumbing. Do not use it for emergencies such as a gas smell, carbon monoxide, fire, or an injury."
+- Describe what the topic does: "Use this topic when someone asks how to repair, install, troubleshoot, relight, reset, or adjust equipment such as furnaces, boilers, water heaters, AC units, or plumbing. Do not use it for emergencies such as a gas smell, carbon monoxide, fire, or an injury. Do not use it for questions about buying, expensing, or getting reimbursed for tools or parts." (last sentence added 2026-11-08, after A9 regressed)
 - Message: "I can't help with repair steps. Please ask your service manager."
 - Then: End all topics.
 

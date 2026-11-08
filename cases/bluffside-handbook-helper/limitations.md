@@ -37,3 +37,5 @@ Append-only, newest at the bottom.
 - Timeout not tested. Approvals wait up to 30 days; a slip nobody answers stays Pending.
 - Someone acting for another person is blocked by design (identity from the sign-in) but untested: the lab has one user. Access blocker, not a pass.
 - After a failed publish, the agent-flow designer may show "Illegal state: resolveOrgUrl: instanceUrl is undefined" and offer "Recover flow" with an older copy. Save draft, refresh, then publish; do not recover a copy older than the last save.
+- Microsoft's content filter can block an override attempt outright (N10 in the 11-08 run returned "ContentFiltered"); the employee sees an error rather than the hand-off. Safe, not friendly.
+- Topic choice still varies between runs: A9 passed on 11-07 and failed on 11-08 until the Repair topic was narrowed. Re-test topic edits on both the target questions and nearby ones.
