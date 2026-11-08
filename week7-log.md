@@ -57,3 +57,21 @@ Independent: who the users really are (after pushback), names vs roles is the cl
 With help: navigating Evaluate, Power Apps columns and keys, the agent flow designer (fx boxes, rename, Code view), adding the tool and its settings, reading the table rows.
 
 Honest time: about 9 hours across the day with a nap, for a 4-hour plan. Lost time: Claude's stray tab groups from earlier sessions (one tab per session now), directions that named the wrong box or the wrong button (Settings vs the settings page, Add new Workflows vs the Workflows chip), Copilot's half-built flow, and the confirm loop.
+
+## Sunday 11.08.26 - A guard at the door, a note that wouldn't take no, and 36 of 36
+
+Started by finishing the time-off clerk. Two fixes: let a tech skip the note, and refuse a slip with no email. Claude asked where the email check should go and I said first, before anything touches the table. If the slip isn't signed, stop right there. The first publish failed with a strange error, then a real one: every reply card in a flow has to send the exact same form, descriptions included. Copied the descriptions over and it published.
+
+The note was the fight of the day. Making it optional in the flow made it vanish from the helper entirely. Adding it back as optional made the helper ask about the note, I said no, and it asked again, and again, and then handed me to Dana. Claude tried rewording the instructions; I thought it was the built-in "ask again up to 2 times" setting, and I was right: Copilot Studio reads "no" as "erase the field" and asks again. Two fixes in, I asked the real question: why is it optional at all? Either Dana needs it or she doesn't. We removed it. In the field, if a client wants notes, the fix is a topic with two buttons, not fighting the automatic asking. Dropping a field you don't need also counts as data minimization for Gate 2.
+
+Tests with rules first: Dana approved one December slip and declined the other, and the table recorded both. A request with no note went through clean. February 30th was refused (it should have asked for a real date; logged). A blank email can't even get in: the sign-in fills it and the flow refuses a blank, so the guard is a third lock.
+
+Then the queued fixes: the "approve my day off" refusal now names Dana, and the grader got the 911 script's real words. Full rerun: 36 of 36 after one fix. A new failure showed up: "Can I expense a new wrench?" got the repair answer, because the AI saw "wrench". Yesterday it passed. Narrowed the repair card's description and rechecked both the wrench and the real repair questions. The trial's rate limit and Microsoft's content filter blocked five rows; I asked those by hand.
+
+The hard part today wasn't Copilot Studio, it was the directions. Two sides of the screen mixed up, steps with two actions on one line (I almost said yes to the note), a page opened the wrong way so the inputs didn't show. We set the format: each numbered step is one action, and where to look comes before the click, by screen area. I want to learn by repetition, so Claude keeps telling me where to click; I'll learn it by doing it again.
+
+Independent: the email guard goes first; the retry setting was the loop; "why is the note optional at all?"; is this going in my portfolio and does it miss a gate; whether to force the blank-email test; asking if the Dana fix was actually made before moving on; ending the chat to save usage.
+
+With help: getting around Copilot Studio (Tools list vs tool page, the test pane, Evaluate's test methods), the reply-card match, the publish glitch and recover banner, pasting the grader rubric, reading results.
+
+Honest time: about 4 hours and 15 minutes (9:07 to 1:20) for steps 1 to 3, planned at 1.5 hours. Lost time: the note loop (two fixes before removing it), the publish glitch, and directions I had to correct. The three guides and the demo record were drafted by Claude during my break.

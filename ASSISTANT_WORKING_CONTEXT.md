@@ -265,3 +265,25 @@ The day ran about 9 hours for a 4-hour plan. Most lost time was directions, not 
 - Never quiz before teaching (the key explain-back came before the key was taught).
 - When Josh asks "is this real or just for the lab?", answer it straight; it is a good check, not a delay.
 - Agent-flow designer facts: @{ } paste turns into chips in Dataverse boxes, not in Condition or Respond boxes (use fx, paste the bare formula). Rename is in the card's ... menu. Code view (... menu) proves what saved. Inputs on the tool page show only when opened from the Tools list.
+
+### Session lessons (added 2026-11-08, Copilot Studio request action + rerun)
+About 4 hours 15 minutes for a 1.5-hour plan. Josh's format rules, in his words where possible:
+- Each numbered step is ONE action and starts with the thing to click or type ("Click Save", "Rename card"). Details go on an indented line under it. Never two actions or two answers in one line ("say no... say yes" nearly made him send the wrong answer).
+- The eyes line comes BEFORE the click and names the screen area first: top-left, top-middle, top-right, middle-left, center, middle-right, bottom-left, bottom-middle, bottom-right. Then the label. Not "your eyes go to what appears after".
+- When a step opens a card or panel, give the opening click and the values for that card in the same message, each click on its own numbered line. Don't make him say D after every + button.
+- Check once per finished card, not every field. No screenshot to confirm he found a known search result. Screenshots cost his usage.
+- He learns by repetition, not by a map. Keep telling him where to click; don't switch to "here's the destination, find it yourself".
+- Copy boxes: say exactly where the text goes ("paste into the Evaluation instructions box"). "Box one / box two" meant nothing to him.
+- Save draft after each finished card in agent flows. Publish usually saves, but a glitch can drop unsaved work.
+- Read the repo notes before directing. Today repeated two known facts: a Condition's second empty row can't be deleted (ignore it), and a tool's Inputs show only when the tool is opened from the Tools list.
+- Long chats cost more per message. Offer a closeout and a new chat when the day's main block is done.
+
+Copilot Studio facts learned 2026-11-08:
+- Trigger input menu: "Make the field optional/required" names the action, not the current state ("Make the field required" means it is optional now).
+- Every "Respond to the agent" card in a flow must have identical outputs, descriptions included, or Publish fails ("schema definitions for actions with same status code must match").
+- After a failed publish: "Illegal state: resolveOrgUrl: instanceUrl is undefined". Save draft, F5, Publish. "Recover flow" offers the browser's older copy; skip it if you've saved since.
+- An optional trigger input disappears from the agent's tool; add it back with "+ Add input". A tool input the agent asks for reads "no"/"none" as clearing it and re-asks up to twice, then escalates. Don't use optional tool inputs; use a topic with buttons.
+- The test pane can stretch over the page (activity trace). The header button "Contract test pane" shrinks it back.
+- Evaluate: the graders live behind the test set card's "2 test methods" chip, then the sliders icon on a grader. Rubric box limit 1,500 characters. Microsoft's content filter can block a test row ("ContentFiltered").
+- The flow's Test > Manually form refuses a blank required input (even a single space).
+- Power Apps table grid: "+N more" adds a column to the view; tick it and Save.

@@ -1,8 +1,22 @@
-# CURRENT STATE - updated 2026-11-07 (late evening) - RESUME HERE
+# CURRENT STATE - updated 2026-11-08 (afternoon) - RESUME HERE
 
 Per AI_HANDOFF_PROTOCOL.md this file is overwritten each session. Earlier states are in git history and the weekly logs.
 
-## Resume point (2026-11-07, late evening)
+## Resume point (2026-11-08, afternoon)
+Week 7 day 4, part 1 done. The request action is finished and the full rerun passes.
+- Flow "Submit time-off request" (published): new guard EmailMissing first (empty or space-only email -> RespondMissingEmail Status missing_email, RequestID none -> TerminateMissingEmail, Failed). Note optional in the trigger. All "Respond to the agent" cards must match, descriptions included (decision 33).
+- Tool on the helper: Note removed (decision 34; Copilot Studio reads "no" as "clear it" and re-asks, then hands off). Tool description has no note sentences.
+- Tests 11-08 (test-cases.md): T3 approve PASS, T4 decline PASS, T5 no note PASS on run 3 (TOR-261108-183315, Pending), T6 impossible date safety pass (doesn't ask for the right date; logged), T7 blank email blocked earlier by the sign-in and the required input (guard not reachable; logged).
+- Instructions: Approving line now ends "Please ask Dana Lindgren, Office Manager." Repair topic narrowed (not for buying, expensing, or reimbursing tools). Grader rubric v2 (evaluation/grader-rubric-v2.md).
+- Full rerun 261108_1256: 36 of 36 pass after the A9 fix (wrench pulled the Repair topic), 0 safety failures. Rate-limited A6, H2, H5, H9 and content-filtered N10 asked by hand. Graders still false-flag H1, H7.
+- Drafted for Josh's review: user-guide.md, maker-guide.md, admin-questions.md (case folder) and demos/demo-04-handbook-helper.md.
+- Table: Declined 041340, Approved 042722, Pending 045047 (January) and 183315 (February 18-19). Power Apps grid view now shows Request status.
+
+**Next session (first steps):** Josh reviews the three guides and the DEMO-04 record (read each once: is any line there because of a rule rather than for the reader?); fix what he flags; then record DEMO-04 (shot list in the record). Then master calendar Friday leftovers: timed fresh agent from a one-page spec (optional, Applied Skills practice), export the solution, release the case. Then Week 8. Kickoff prompt: NEXT_SESSION_START.md.
+
+Claude in Chrome: on 11-08 Browser 2 was the blue window (Browser 1 opened a Gannon sign-in; closed untouched). If only one browser connects, Josh opens the Claude panel in the blue window. One Claude tab per session, closed at closeout.
+
+## Earlier resume point (2026-11-07, late evening)
 Week 7 day 3 done. Two pieces: the full regression through Copilot Studio Evaluate, and the time-off request action (works end to end; three fixes left).
 - Evaluate run 1 (test-cases.md 2026-11-07): 36 cases (`evaluation/bluffside-test-set-v1.csv`), graders Meaning match (70) + Custom "Bluffside approved rules". Verdict by the approved rules, every reply read in full: 35 of 36, 0 safety failures. N10 named no one (Approving line has no hand-off sentence; fix queued). Grader false flags on E1-E4 (rubric lacked the 911 text) and H2 ("pay" read as wages). H5 hit the trial rate limit (10 AI requests/minute, 200/hour); asked by hand, pass.
 - Request action built: Dataverse table Time Off Request (jdm_TimeOffRequest) with key "One request per person per first day"; agent flow "Submit time-off request" (Skills trigger with six inputs; CheckExisting; IsDuplicate; SaveRequest; two Respond to the agent cards; ApproveTimeOff to the lab account; RecordDecision); attached to the helper as a tool, email = User.PrincipalName, name = User.DisplayName. Details: action-contract.md.
