@@ -70,4 +70,10 @@ Check these once a week:
 
 ## Known limits
 
-See `limitations.md`. The big ones: it runs on a trial here and can't publish to staff; the AI chooses topics, so topic routing can change between runs; the content filter can show an error instead of the hand-off; no note on requests.
+Full list in limitations.md. The limits you'll notice day to day:
+- Staff aren't notified when a request is approved or declined; Dana tells them. Can be added.
+- Staff can't change or cancel a request in the chat; they ask Dana.
+- Overlapping requests (for example, the 17th to 19th, then the 19th) are both filed, and Dana sees both and decides. An overlap check can be added.
+- Requests have no note field; staff give Dana any details directly. Can be added.
+- The AI chooses which fixed script (topic) to use, and that choice can vary between runs. That's why every change gets the full test set.
+- Microsoft's content filter can block a message outright, so staff see an error instead of the hand-off to Dana. In testing it happened once, on an attempt to override the helper's rules.
