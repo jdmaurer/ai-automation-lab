@@ -24,3 +24,8 @@ Append-only, newest at the bottom.
 - Evaluate's AI graders make mistakes (5 false flags in run 1). The approved rules, read by a person, decide pass or fail.
 - Hand-offs name a person (Dana). Whether they should name a person or a role is a question for the client.
 - Dataverse auditing is off for the environment; the approval record is the request's audit trail.
+- The time-off confirm is the AI's read-back, not a hard stop; Dana's approval is the hard stop. A mistaken slip reaches Dana as Pending and is declined.
+- Note is required until the next session's fix; a tech who has no note has to type something.
+- The request ID uses the server's clock (UTC), so a late-evening request in Winona shows tomorrow's date in the ID.
+- "Business required" on a Dataverse column applies to forms, not to flows; the flow itself has to check required values (empty-email guard coming next session).
+- Tested only as one user (Josh). "Someone asking for another person" is blocked by design (identity from the sign-in) but not yet tested with a second account.

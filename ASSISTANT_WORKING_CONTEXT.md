@@ -255,3 +255,13 @@ Josh closed the session for an hour after a page-and-a-half opening message. Wha
 - Shift+Home selects only the wrapped visual line. For replacing a long line: click just before its first character, Shift+click just after its last.
 - Pass/fail rules in a small table, approved before running; then he pastes the questions and Claude reads the answers from its own tab.
 - Two Chrome browsers connect to Claude; Browser 1 is the blue window. If unsure, Claude opens its own tab and checks the signed-in account itself rather than asking Josh which is which.
+
+### Session lessons (added 2026-11-07, Copilot Studio grader + request action)
+The day ran about 9 hours for a 4-hour plan. Most lost time was directions, not ideas. Josh's points:
+- Look before directing. Read the screen (zoom on the exact boxes) before naming any box or button. Josh: "The whole point of having you in my screen is to make sure you don't give me crappy directions." Two lookalikes cost rounds: the trigger input's name box (left) vs description box (right); "Add new Workflows" card vs the "Workflows" filter chip; "settings page" vs the Settings button.
+- One Claude tab per session, closed at closeout. Old tab groups (saved groups on the bookmarks bar) piled up from earlier sessions and confused everything. Check which browser is the blue window by opening one tab and reading the account (Browser 2 on 11-07).
+- Open dropdowns and pickers close when Claude screenshots. For menus, ask Josh for a picture.
+- No backup plans in the same message. Give one way; if it fails, give the next step then.
+- Never quiz before teaching (the key explain-back came before the key was taught).
+- When Josh asks "is this real or just for the lab?", answer it straight; it is a good check, not a delay.
+- Agent-flow designer facts: @{ } paste turns into chips in Dataverse boxes, not in Condition or Respond boxes (use fx, paste the bare formula). Rename is in the card's ... menu. Code view (... menu) proves what saved. Inputs on the tool page show only when opened from the Tools list.

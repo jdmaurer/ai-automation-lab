@@ -1,8 +1,19 @@
-# CURRENT STATE - updated 2026-11-06 (late evening) - RESUME HERE
+# CURRENT STATE - updated 2026-11-07 (late evening) - RESUME HERE
 
 Per AI_HANDOFF_PROTOCOL.md this file is overwritten each session. Earlier states are in git history and the weekly logs.
 
-## Resume point (2026-11-06, late evening)
+## Resume point (2026-11-07, late evening)
+Week 7 day 3 done. Two pieces: the full regression through Copilot Studio Evaluate, and the time-off request action (works end to end; three fixes left).
+- Evaluate run 1 (test-cases.md 2026-11-07): 36 cases (`evaluation/bluffside-test-set-v1.csv`), graders Meaning match (70) + Custom "Bluffside approved rules". Verdict by the approved rules, every reply read in full: 35 of 36, 0 safety failures. N10 named no one (Approving line has no hand-off sentence; fix queued). Grader false flags on E1-E4 (rubric lacked the 911 text) and H2 ("pay" read as wages). H5 hit the trial rate limit (10 AI requests/minute, 200/hour); asked by hand, pass.
+- Request action built: Dataverse table Time Off Request (jdm_TimeOffRequest) with key "One request per person per first day"; agent flow "Submit time-off request" (Skills trigger with six inputs; CheckExisting; IsDuplicate; SaveRequest; two Respond to the agent cards; ApproveTimeOff to the lab account; RecordDecision); attached to the helper as a tool, email = User.PrincipalName, name = User.DisplayName. Details: action-contract.md.
+- Tests: T1 new request PASS (TOR-261108-042722, Dana's approval arrived); T2 duplicate PASS after the email fix (TOR-261108-045047 returned on the repeat). Found and fixed: User.Email is empty in the test chat (two slips saved with no email, duplicate slipped through); built-in confirm looped on "yes" (turned off; hard confirm dropped with a reason, decision 29).
+- Three Pending slips sit in the table and in Approvals (two December with empty email, one January). Use the December two for approve/decline tests.
+
+**Next session (first clicks):** in the flow, make Note optional and add the empty-email guard (no email: reply error, save nothing); republish. Then approve one December slip and decline the other (RecordDecision both ways), the malformed-input test, the Approving hand-off line, the grader's two gaps, and the full rerun in two halves. Then master calendar Friday (user guide, maker guide, admin questions, demo). Kickoff prompt: NEXT_SESSION_START.md.
+
+Claude in Chrome: Browser 2 was the blue window on 2026-11-07 (Browser 1 showed a Gannon sign-in page; not used). Check by opening one tab and reading the signed-in account. One Claude tab per session, closed at closeout.
+
+## Earlier resume point (2026-11-06, late evening)
 Week 7 day 2 done. Bluffside Handbook Helper (`cases/bluffside-handbook-helper/`) is fixed and passes every test so far, and is safe to show (still unpublished; trial can't publish to staff).
 - Topics (agent-config/topics.md): Emergency (new; Josh's 911 wording), Escalate (Microsoft's placeholder replaced with the Dana hand-off), Repair questions (new; "ask your service manager"). Each ends with End all topics.
 - Instructions v2 (agent-config/instructions-v2.md): emergency line matches the topic; repair line names the service manager; new conflict rule (show both policies, send to Dana, no yes or no). Tidy: in Copilot Studio the conflict rule shares a line with the REPLACED rule.
@@ -134,7 +145,7 @@ Carried forward from Gate 1 (close inside these builds, not separately):
 - Rivertown n8n build: v2.8 (execution_id correlation ID, 60 s timeout, Chicago timezone), export lead-intake-v2.8.json. The n8n workflow is still named "Rivertown - Lead Intake v2.7"; version names start "v2.8". Unpublished after testing. v2.7 tag: lead-intake-v0.2-evaluated.
 - Workflow settings (timeout, timezone) saved straight into the published workflow without a republish.
 - Data table rivertown leads v2: 327 rows after today's tests. Use the Search box to find a row by external_id.
-- Copilot Studio trial: active since 2026-11-05 (Copilot Studio Viral Trial license). Its new look puts the environment switcher at the bottom left. Agent: Bluffside Handbook Helper (see Resume point).
+- Copilot Studio trial: active since 2026-11-05 (Copilot Studio Viral Trial license). Its new look puts the environment switcher at the bottom left. Agent: Bluffside Handbook Helper (see Resume point). Trial rate limit: 10 AI requests a minute, 200 an hour.
 - SQL remediation coursework: DataCamp Introduction to SQL complete; Intermediate SQL completed 2026-10-05; Joining Data in SQL completed 2026-10-06; Introduction to Relational Databases in SQL completed 2026-10-10. JOIN reasoning and relational concepts are substantially stronger than exact syntax retrieval. Concepts that held: primary vs foreign keys, 1:N and N:M relationships, referential integrity, CASCADE behavior, UNIQUE vs DISTINCT, JOIN logic, filtering/grouping. Syntax that needs delayed-recall practice includes ADD CONSTRAINT, SET NOT NULL, RENAME COLUMN, INSERT INTO ... VALUES, INSERT INTO ... SELECT DISTINCT ... FROM, UPDATE ... SET ... FROM ... WHERE, ALTER COLUMN ... TYPE, and FOREIGN KEY ... REFERENCES. Do not quiz table/column names; provide the names and test the SQL pattern and logic.
 
 ## Next

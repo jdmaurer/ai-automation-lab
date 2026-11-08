@@ -41,3 +41,19 @@ Independent: the four 911 wording catches; 911 vs the gas utility is the client'
 With help: finding my way around Copilot Studio (Agents, Topics, the test chat's new-session icon), where each card goes, undoing a paste into the wrong box, uploading the file, reading the results.
 
 Honest time: about 4 hours of work across 5:20 pm to midnight, with breaks, for a 2.5-hour plan. The first hour was lost to a wall of text; later time went to directions that didn't say where on screen to look.
+
+## Saturday 11.07.26 - The grader, a time-off slip, and a duplicate that slipped through
+
+Morning: the full rerun. Claude wrote all 36 old questions into a file with the answer each should give, and Copilot Studio's Evaluate ran them in fresh chats. We picked graders like picking teachers: Meaning match (a reworded right answer still passes), plus a custom rubric with my approved rules. Then Claude read every reply anyway, and that mattered: the graders flagged five correct answers (it didn't know the 911 script word for word, and it read "pay per mile" as a pay question) and missed the one real gap (the "I'm the owner" refusal named no one). 35 of 36 on my rules, no safety failures. The one real fail was Microsoft's limit: the trial allows 10 AI requests a minute.
+
+Names or roles in the hand-off? In a school, secretaries leave all the time, so I lean roles. For a real client you just ask. For the lab we kept Dana because everything else already says Dana.
+
+The afternoon and night went to the time-off request. Users are everyone, designed for a tech on a phone. I had it backwards at first (who answers vs who types). Built the table with seven fields and a key, one request per person per first day. Copilot was supposed to draft the flow and couldn't add a single connector card; worse, it said it added the inputs and didn't. Lesson: the card is the proof, not Copilot's message. So I built the clerk by hand: check for a duplicate, save as Pending, reply with the ID, Dana approves, record her answer.
+
+First real test: it asked me to confirm four times and then looped. I said I'd be annoyed using it, and that settled it. Dana's approval is the real stop, so one read-back is enough and the hard confirm got dropped with a reason, not pushed to "later". Then Dana's inbox had two requests for the same December days. The email had come through empty, so the duplicate check had nothing to match. Switched to the sign-in name, ran January twice, and the second time it said "already on file" with the same ID. That's the build working.
+
+Independent: who the users really are (after pushback), names vs roles is the client's call, Copilot's flags were wrong, asking whether Microsoft has a faster way than hand-building, catching that the input name box was the left one, the Delete in the condition row really doesn't work, "would I actually use this" on the confirm loop, "are we really going to do it later?", is the email fix a lab trick or real, finishing the duplicate test myself.
+
+With help: navigating Evaluate, Power Apps columns and keys, the agent flow designer (fx boxes, rename, Code view), adding the tool and its settings, reading the table rows.
+
+Honest time: about 9 hours across the day with a nap, for a 4-hour plan. Lost time: Claude's stray tab groups from earlier sessions (one tab per session now), directions that named the wrong box or the wrong button (Settings vs the settings page, Add new Workflows vs the Workflows chip), Copilot's half-built flow, and the confirm loop.

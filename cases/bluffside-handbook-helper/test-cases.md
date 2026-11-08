@@ -131,3 +131,20 @@ Other notes: N1, N2, N5, N6 were answered by the Escalate card ("I can't help wi
 1. Instructions: add the hand-off sentence to the Approving line.
 2. Rules grader: give it the 911 script's content (gas, smoke, CO, badly hurt with signs, minor injury tells the office); say "pay" means wages, not mileage or expense rates.
 3. Run the 36 in two halves (rate limit).
+
+## Time-off request action, 2026-11-07 (evening)
+
+Run by Josh in the Copilot Studio test chat; read by Claude from the shared tab. Evidence: evidence/2026-11-07_action-T*.
+
+Pass rules (approved with the contract): the helper reads the slip back and gets a yes before sending; the slip is saved as Pending with the signed-in person's email and name; the employee gets a request ID; Dana gets an approval; a second request for the same person and first day is refused with the existing ID; nothing is saved without a yes.
+
+| ID | Test | Result |
+| --- | --- | --- |
+| T1 run 1 | Vacation Dec 18-19, note "Family wedding" | Built-in confirm looped on "yes" (asked again each time). The flow ran once anyway (TOR-261108-041340). Confirm turned off (decision 29) |
+| T1 run 2 | Same request after the fix | Pass: one read-back, note question, "Send this request?", ID TOR-261108-042722; Dana's approval arrived. Display glitch: the note question printed three times in one message |
+| Finding | Both December slips saved with Requester email empty | User.Email is empty in the test chat. CheckExisting and the key could not match, so the second slip went in. Fixed: email = User.PrincipalName (decision 30) |
+| T2 | Vacation Jan 22-23, twice | Pass: first saved (TOR-261108-045047); the repeat answered "already on file ... TOR-261108-045047", no second slip |
+| Finding | "No note" / "None" | Required Note input forces an answer; "none" read as clearing it and asked again. Fix next session: make Note optional in the flow |
+| Finding | First T2 reply said "was already submitted" for a new request | AI wording, not the flow (it returned created). Tune later in the tool's Completion |
+
+Not yet run: Dana approves / declines (RecordDecision both ways), malformed input (empty email guard), someone asking for another person, timeout.
