@@ -3,9 +3,9 @@
 | | |
 |---|---|
 | Build | [Bluffside Handbook Helper](../cases/bluffside-handbook-helper/): Copilot Studio agent plus the "Submit time-off request" agent flow (2026-11-05 to 11-08) |
-| Recorded | Next session, first thing (setup steps were skipped on 2026-11-08, so no take yet) |
-| Raw file | On Josh's computer, outside the repo: `Videos\Demos\DEMO-04_raw_YYYY-MM-DD.mp4` (remux in OBS first) |
-| Status | Record checked 2026-11-08. Silent screen take (no mic yet). After the take, Claude fills in Raw file and Recorded here and writes the first-draft voice-over in the marketing repo's `scripts/demo-04-handbook-helper.md` |
+| Recorded | 2026-11-08, about 11:09 PM to 11:45 PM, one take, paused between shots |
+| Raw file | On Josh's computer, outside the repo: `Videos\Demos\DEMO-04_raw_2026-11-08.mp4` (remuxed from OBS; the MKV stays in the OBS folder until Premiere opens the MP4) |
+| Status | Raw recorded (silent, no mic yet). First-draft voice-over and edit notes: marketing repo `scripts/demo-04-handbook-helper.md` |
 
 ## Before recording (do these in order; no shots until all are done)
 
@@ -21,8 +21,7 @@ From the marketing repo's `sops/screen-recording-setup.md`.
    - Power Apps, Tables > Custom > Time Off Request (shot 8). The view shows Request ID, Created On, Request status; no email column
    - Copilot Studio, Evaluation, the 11-08 run (shot 9)
 6. Ctrl + plus on each tab until the text reads in the projector.
-7. Hide the address bar: F11 (full screen), or crop in the edit.
-8. Check the table: March 18-19, 2027 isn't already there.
+7. Check the table: March 18-19, 2027 isn't already there.
 
 ## After recording
 
@@ -61,8 +60,9 @@ Pick dates that aren't already in the table (March 18-19, 2027 is free as of 11-
 
 ## Must never appear
 
-- Email addresses: the Evaluate summary's "User profile" line, the tool's inputs, the activity trace ("only visible to makers"), and the approval panel. Keep the test pane at normal width so the trace doesn't open.
-- The browser address bar (environment ID). Use full-screen or crop.
+- Email addresses: the Evaluate summary's "User profile" line, the tool's inputs, the activity trace ("only visible to makers"), and the approval panel. On the 2026-11-08 take the test pane was widened on purpose so the chat reads on video, which opens the trace: check shots 5 to 7 and blur any email in the edit.
+- The address bar may show: it holds Microsoft's IDs for the environment and the agent, which aren't secrets and don't give access (Josh, 2026-11-08; earlier demos didn't crop it either). Don't use F11 mid-setup: it breaks the fitted window.
+- The "Claude is active in this tab group" banner (bottom-center of the browser): crop or blur.
 - Row 18 (N10) and the rate-limit rows in the Evaluate results. Scroll past them or show the top of the table only; they're explained in test-cases.md, not in a 2-minute video.
 
 ## Claim check

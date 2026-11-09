@@ -304,4 +304,5 @@ Copilot Studio and Power Apps facts learned 2026-11-08 (evening):
 - Channels page: "Not published" on the trial; the publish check warns "Your agent runs tools that use the author's credentials."
 - A /channels address bounced back to Overview; the Channels tab works when clicked.
 - Power Apps Tables: the Custom chip lists our tables; the table link has no address (href #), so Josh clicks it. The purple search bar at top-middle searches all of Power Apps, not the list.
+- (Late 11-08, recording) Josh's recording setup choices are deliberate (he widened the test pane so the chat reads on video). Don't change his setup to dodge a blur; note the blur for the edit instead. Don't suggest F11 mid-setup: it breaks the fitted window and can cover OBS. The demo record's own "must never appear" notes belong in the pre-recording checklist so they're raised before shot 1, not discovered mid-take.
 
