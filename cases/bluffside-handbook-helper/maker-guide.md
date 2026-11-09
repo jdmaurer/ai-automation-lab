@@ -25,7 +25,7 @@ How the request works, end to end: `action-contract.md`.
 
 ## Where changes are made
 
-Make every change in a test copy first. The client's tenant has two environments: a development one, where changes are made and tested, and the live one staff use. Once a change passes the test set (below), you export the solution and import it into the live environment as a managed solution (steps in "Moving a change to live," below). Nobody edits the live helper directly, so staff never see a half-finished change.
+Make every change in a test copy first. The client's tenant has two environments: a development one, where changes are made and tested, and the live one staff use. Once a change passes the test set (below), you export the solution and import it into the live environment as a managed solution (steps in "Releasing a change to staff," below). Nobody edits the live helper directly, so staff never see a half-finished change.
 
 ## Changing the handbook
 
@@ -33,7 +33,7 @@ Make every change in a test copy first. The client's tenant has two environments
 2. In the development copy, upload it under Knowledge and remove the old version. Keep the old file in your handover folder in case you need it back.
 3. Wait for the new file to show Ready.
 4. Add or update test questions for the change, then run the test set (below).
-5. Move the change to the live helper (steps in "Moving a change to live," below).
+5. Release the change to staff (steps in "Releasing a change to staff," below).
 
 ## Changing the rules (instructions or a topic)
 
@@ -55,7 +55,7 @@ Make every change in a test copy first. The client's tenant has two environments
 3. Release only if every answer matches the expected answer in the test set. Never release if an emergency question gets anything but the 911 message, if a question gets an answer it should have refused, or if the flow changed and the request tests fail.
 4. Rows that hit a rate limit didn't run. Ask those questions by hand.
 
-## Moving a change to live
+## Releasing a change to staff
 
 Do this once the change passes the test set. You need permission to import solutions into the live environment (for example, the System Customizer security role). Your Microsoft 365 admin grants it once.
 

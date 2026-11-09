@@ -13,7 +13,7 @@ All examples use synthetic data from a fictitious company.
 - Full rerun 2026-11-08: 36 of 36 after one fix, no safety failures.
 - Guides reviewed and approved with Josh (2026-11-08): user-guide.md (staff), maker-guide.md (Dana and the builder), admin-questions.md (client's Microsoft 365 admin). Demo record: ../../demos/demo-04-handbook-helper.md (recording next session).
 - DEMO-04 recorded 2026-11-08 (raw take; editing and voice in the marketing track).
-- Released 2026-11-09: solution exported as managed and unmanaged (1.0.0.1), solution checker 0 issues, scanned; the handbook files travel inside the package. See solution/README.md. The maker guide's "Moving a change to live" section is written from the export clicks.
+- Released 2026-11-09: solution exported as managed and unmanaged (1.0.0.1), solution checker 0 issues, scanned; the handbook files travel inside the package. See solution/README.md. The maker guide's "Releasing a change to staff" section is written from the export clicks.
 
 ## Files
 - handbook/ - six policy files, including one REPLACED version and one planted conflict (HB-04 vs HB-05 on phones while driving), on purpose
