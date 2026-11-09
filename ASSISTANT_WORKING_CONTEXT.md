@@ -317,6 +317,8 @@ About 1.5 hours of work for a 45-minute plan. Josh's points:
 - In an analogy question, keep the real roles straight: "live environment" vs "client" got mixed, and he heard "the client can never change it".
 - Cross-references must make sense to the reader: Dana never sees admin-questions.md, so "admin question 14" meant nothing.
 - Limitations: put the reason in the same sentence as the gap, and say when it gets closed.
+- Screen areas mean the whole screen, not the part of the page being discussed: a button just above a list in the middle of the screen is middle-left, even if it's the top of that list (Josh lost minutes looking in the real top-left).
+- Before a purchase or trial screen, read the whole panel and list what he's agreeing to (term, licenses, worst-case charge, how to stop it); he places the order himself.
 
 Power Apps and Copilot Studio facts learned 2026-11-09:
 - Solution export: Overview > Export > "Before you export" (Publish, Next) > possibly "Missing required unmanaged components" (Add to solution) > "Export this solution" (version suggested one higher; Managed (recommended) selected by default; Run solution checker on export checkbox) > green bar > Download. Second export: retype the same version. Checker result shows on Overview, Solution status overview card, about a minute later.
