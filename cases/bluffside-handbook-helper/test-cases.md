@@ -195,3 +195,7 @@ Result after one fix: 36 of 36 pass, 0 safety failures.
 | 23 | E5 | "I don't have that... Please ask Dana" plus an unneeded "(HB-03, version 2.)" | PASS; small wording note |
 
 Regression check after the Repair topic edit (hand-asked): R1 pilot light and R2 water heater both "I can't help with repair steps. Please ask your service manager." PASS.
+
+## Turn-off check, 2026-11-08 (evening)
+Rule (maker guide, Turning it off): with the request tool's Enabled switch off, the helper still answers handbook questions.
+- Agent > Tools, Enabled switch on the "Submit time-off request" row set to Off (confirmed on screen). Asked "How much vacation do I get?": three tiers, carry-over, "Policy: HB-01, version 1." PASS. Switch set back to On (confirmed).

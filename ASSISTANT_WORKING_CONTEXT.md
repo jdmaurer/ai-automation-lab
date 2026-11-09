@@ -287,3 +287,21 @@ Copilot Studio facts learned 2026-11-08:
 - Evaluate: the graders live behind the test set card's "2 test methods" chip, then the sliders icon on a grader. Rubric box limit 1,500 characters. Microsoft's content filter can block a test row ("ContentFiltered").
 - The flow's Test > Manually form refuses a blank required input (even a single space).
 - Power Apps table grid: "+N more" adds a column to the view; tick it and Save.
+
+### Session lessons (added 2026-11-08, evening: guide reviews + a lost recording)
+About 3 hours of work for a 1.5-hour plan; the recording didn't happen. Josh's points:
+- Reviews: one small piece per message, shown already revised (never the original plus "changes I'd make"; he hasn't read it yet). Plain text, no copy boxes for text to review (they scroll sideways). End with: reply "d" to keep, or tell me what to change.
+- Before showing a piece, check it yourself against four tests: right reader, accurate (build, screen, sources), professional wording, and would an expert reading the portfolio raise an eyebrow. He asked "double-check" on nearly every piece; that check is Claude's job before showing.
+- Check unverified labels on screen instead of flagging them again and again (Claude can move its own tab and read the page). Repeated "not sure" made him worry about the whole document.
+- Short messages: the piece, plus one line only if something is unchecked. No usage notes, process notes, or side options stacked on a review message (a five-line message with three directions lost him).
+- Know the process from the repo before asking. Demo process: silent screen take (no mic yet); Claude writes where the raw file lives in the demo record and the first-draft voice-over in the marketing repo `scripts/`. The finished video is the marketing track's, weeks later.
+- Recording: attach jdmaurer/marketing-track at session start and read `sops/screen-recording-setup.md`. Walk the demo record's pre-recording checklist in order (layout, window fits the OBS frame in the projector, zoom) before shot 1. Tonight's take was lost because shots started without it.
+- Client writing: describe what the product does once set up; never promise what it doesn't do. Honest gaps go in limitations as setup steps, not confessions (a service-account question reads as expertise).
+
+Copilot Studio and Power Apps facts learned 2026-11-08 (evening):
+- The tool's Enabled switch is on the agent's Tools list (Enabled column). Turning it off leaves handbook answers working.
+- Agent tabs: Overview, Knowledge, Tools, Agents, Topics, Activity, Evaluation, Monitor, Channels. Workflows is in the left menu. The flow's Overview shows "28-day run history". No Version history found.
+- Channels page: "Not published" on the trial; the publish check warns "Your agent runs tools that use the author's credentials."
+- A /channels address bounced back to Overview; the Channels tab works when clicked.
+- Power Apps Tables: the Custom chip lists our tables; the table link has no address (href #), so Josh clicks it. The purple search bar at top-middle searches all of Power Apps, not the list.
+

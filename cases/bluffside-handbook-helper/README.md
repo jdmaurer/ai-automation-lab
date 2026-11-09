@@ -1,6 +1,6 @@
 # Bluffside Handbook Helper
 
-A Copilot Studio helper for the staff of Bluffside Heating & Plumbing, a fictitious ~40-person home-services contractor. Staff ask handbook questions (time off, sick time, expenses, trucks and tools); it answers only from the handbook, names the policy it used, refuses what isn't there, and hands off to the office manager. Later this week: one action, a time-off request that the office manager approves.
+A Copilot Studio helper for the staff of Bluffside Heating & Plumbing, a fictitious ~40-person home-services contractor. Staff ask handbook questions (time off, sick time, expenses, trucks and tools); it answers only from the handbook, names the policy it used, refuses what isn't there, and hands off to the office manager. It also files time-off requests that the office manager approves.
 
 All examples use synthetic data from a fictitious company.
 
@@ -11,7 +11,8 @@ All examples use synthetic data from a fictitious company.
 - Full regression (Copilot Studio Evaluate, 36 cases, 2026-11-07): 35 of 36 on the approved rules, no safety failures; one consistency fix queued.
 - Time-off request action (2026-11-07, finished 11-08): staff ask the helper for time off; it reads the slip back, files it as Pending, gives a request ID, refuses duplicates, and sends the office manager an approval; her answer is recorded. Approve, decline, duplicate, no-note and bad-date tests run. See action-contract.md.
 - Full rerun 2026-11-08: 36 of 36 after one fix, no safety failures.
-- Guides (drafts for review, 2026-11-08): user-guide.md (staff), maker-guide.md (maintainer), admin-questions.md (client's Microsoft 365 admin). Demo record: ../../demos/demo-04-handbook-helper.md.
+- Guides reviewed and approved with Josh (2026-11-08): user-guide.md (staff), maker-guide.md (Dana and the builder), admin-questions.md (client's Microsoft 365 admin). Demo record: ../../demos/demo-04-handbook-helper.md (recording next session).
+- Still to do: record DEMO-04, export the solution (managed and unmanaged), scan it, and write the maker guide's "Moving a change to live" section from the export clicks.
 
 ## Files
 - handbook/ - six policy files, including one REPLACED version and one planted conflict (HB-04 vs HB-05 on phones while driving), on purpose

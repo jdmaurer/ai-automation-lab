@@ -1,8 +1,19 @@
-# CURRENT STATE - updated 2026-11-08 (afternoon) - RESUME HERE
+# CURRENT STATE - updated 2026-11-08 (evening) - RESUME HERE
 
 Per AI_HANDOFF_PROTOCOL.md this file is overwritten each session. Earlier states are in git history and the weekly logs.
 
-## Resume point (2026-11-08, afternoon)
+## Resume point (2026-11-08, evening)
+Week 7 day 4, part 2. The three guides are reviewed and approved with Josh; DEMO-04 is not recorded yet; the export is not done.
+- user-guide.md (staff), maker-guide.md (Dana + builder), admin-questions.md (client's admin, 15 questions): reviewed piece by piece, approved, pushed. Decisions 40-46; limitations 2026-11-08 extended (no answer back to staff, overlapping dates, can't change or cancel, one environment, Teams off switch unchecked, author's credentials).
+- Checked on screen: Workflows (left menu), Agent > Activity, the tool's Enabled switch (on the Tools list), flow Overview "28-day run history". Not found: flow Version history (guide now says import the last released solution). Turn-off check passed (test-cases.md 2026-11-08 evening). Copilot Studio Channels: "Not published"; publish check warns the tool runs on the author's credentials (action-contract.md corrected; admin question 9).
+- DEMO-04 record now opens with a pre-recording checklist (from marketing `sops/screen-recording-setup.md`) and shot 7 approves from the list (the panel shows an email). Recording moved to next session (decision 47).
+- The maker guide's step "Move the change to the live helper" points to a section "Moving a change to live" that is written during the export.
+
+**Next session (in this order, before Week 8):** 1) Record DEMO-04: walk the record's checklist first, then the shot list. 2) Claude writes the raw file location in the record and the voice-over draft in the marketing repo `scripts/demo-04-handbook-helper.md`. 3) Export the Bluffside solution as managed and unmanaged, scan it, check whether the handbook files are inside, commit; write "Moving a change to live" from the export clicks. 4) Then Week 8. Kickoff prompt: NEXT_SESSION_START.md. Attach jdmaurer/marketing-track at the start (recording notes and scripts live there).
+
+Claude in Chrome: Browser 2 was the blue window on 11-08 evening. copilotstudio.microsoft.com refused Claude's first screenshot, then worked after the page loaded in Josh's view. The four recording tabs (Copilot Studio agent, Approvals, Time Off Request table, Evaluation) were left open at Josh's request so the setup is ready for the take; a new chat's Claude tab group won't include them, so Josh records in them directly and the new chat opens one tab of its own to look.
+
+## Earlier resume point (2026-11-08, afternoon)
 Week 7 day 4, part 1 done. The request action is finished and the full rerun passes.
 - Flow "Submit time-off request" (published): new guard EmailMissing first (empty or space-only email -> RespondMissingEmail Status missing_email, RequestID none -> TerminateMissingEmail, Failed). Note optional in the trigger. All "Respond to the agent" cards must match, descriptions included (decision 33).
 - Tool on the helper: Note removed (decision 34; Copilot Studio reads "no" as "clear it" and re-asks, then hands off). Tool description has no note sentences.

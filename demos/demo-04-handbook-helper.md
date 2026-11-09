@@ -3,13 +3,36 @@
 | | |
 |---|---|
 | Build | [Bluffside Handbook Helper](../cases/bluffside-handbook-helper/): Copilot Studio agent plus the "Submit time-off request" agent flow (2026-11-05 to 11-08) |
-| Recorded | Planned for the next session, as one finished run |
+| Recorded | Next session, first thing (setup steps were skipped on 2026-11-08, so no take yet) |
 | Raw file | On Josh's computer, outside the repo: `Videos\Demos\DEMO-04_raw_YYYY-MM-DD.mp4` (remux in OBS first) |
-| Status | Record written before recording (2026-11-08, draft for Josh's review). First-draft voice-over goes in the marketing track's `scripts/` after the take |
+| Status | Record checked 2026-11-08. Silent screen take (no mic yet). After the take, Claude fills in Raw file and Recorded here and writes the first-draft voice-over in the marketing repo's `scripts/demo-04-handbook-helper.md` |
+
+## Before recording (do these in order; no shots until all are done)
+
+From the marketing repo's `sops/screen-recording-setup.md`.
+
+1. Zoom, D&D, and any other windows on the second monitor, not the Dell.
+2. Open the blue "jdmaurer Labs" Chrome window yourself.
+3. OBS: scene "Screen Capture." Right-click the preview > Open Preview Projector > second monitor.
+4. Click the "Screen Recording Layout" desktop icon. Check the projector: the blue window fills the OBS frame. If it doesn't, maximize the blue window on the Dell instead.
+5. Four tabs in the blue window, in shot order:
+   - Copilot Studio, Bluffside Handbook Helper, test pane open at normal width (shots 1-6)
+   - Power Automate, Approvals (shot 7)
+   - Power Apps, Tables > Custom > Time Off Request (shot 8). The view shows Request ID, Created On, Request status; no email column
+   - Copilot Studio, Evaluation, the 11-08 run (shot 9)
+6. Ctrl + plus on each tab until the text reads in the projector.
+7. Hide the address bar: F11 (full screen), or crop in the edit.
+8. Check the table: March 18-19, 2027 isn't already there.
+
+## After recording
+
+1. OBS: File > Remux Recordings, add the take, Remux.
+2. Move the MP4 to `Videos\Demos`, renamed `DEMO-04_raw_YYYY-MM-DD.mp4`. The MKV stays in the OBS folder as a backup.
+3. Claude: update Recorded and Raw file above; write the voice-over draft in the marketing repo.
 
 ## The business problem
 
-At a 40-person heating and plumbing company, techs call the office all day with the same handbook questions, and time-off requests arrive as texts and sticky notes. The office manager answers the same five questions and keeps track of slips by hand. Bluffside Heating & Plumbing is a made-up company; all data is synthetic.
+At a 40-person heating and plumbing company, techs call the office all day with the same handbook questions, and time-off requests arrive as texts and sticky notes. The office manager answers the same few questions and keeps track of requests by hand. Bluffside Heating & Plumbing is a made-up company; all data is synthetic.
 
 ## What it proves
 
@@ -30,7 +53,7 @@ One app at a time, maximized; pause between shots. Start a new test session befo
 | 4 | Same chat: "How much does Mike in the office make?" | "Please contact Dana Lindgren, Office Manager." |
 | 5 | New session: "I'd like vacation March 18 to 19, 2027." then "yes" | The read-back, then the request ID |
 | 6 | Same chat: send the same request again | "Already on file" with the same ID |
-| 7 | Power Automate, Approvals: Refresh, open the new request, Approve, Confirm | The request with the dates |
+| 7 | Power Automate, Approvals: Refresh, tick the new request, Approve on the top bar | The request with the dates. Don't open the request panel (it shows an email); if a panel opens, pause |
 | 8 | Power Apps, Time Off Requests table: Refresh | The new row, Request status Approved |
 | 9 | Copilot Studio, Evaluation: the 11-08 run results | 36 test cases; the result columns |
 

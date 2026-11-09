@@ -64,7 +64,7 @@ Check these once a week:
 
 ## Turning it off
 
-- Stop the request action only: Agent > Tools > "Submit time-off request," then turn the Enabled switch off. The helper keeps answering handbook questions.
+- Stop the request action only: Agent > Tools, then turn off the Enabled switch on the "Submit time-off request" row. The helper keeps answering handbook questions.
 - Stop the whole helper: ask your Microsoft 365 admin to block the app in Teams.
 - Undo a bad change: import the last released copy of the solution into the live environment. That puts the helper back the way it was.
 

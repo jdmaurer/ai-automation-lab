@@ -75,3 +75,22 @@ Independent: the email guard goes first; the retry setting was the loop; "why is
 With help: getting around Copilot Studio (Tools list vs tool page, the test pane, Evaluate's test methods), the reply-card match, the publish glitch and recover banner, pasting the grader rubric, reading results.
 
 Honest time: about 4 hours and 15 minutes (9:07 to 1:20) for steps 1 to 3, planned at 1.5 hours. Lost time: the note loop (two fixes before removing it), the publish glitch, and directions I had to correct. The three guides and the demo record were drafted by Claude during my break.
+
+## Sunday 11.08.26 (evening) - Reading the guides like a client would
+
+Reviewed the three guides one small piece at a time. My test for every piece: who actually reads this, and would someone who knows this work raise an eyebrow? That test did most of the work.
+
+Staff guide: the helper is described as it would run in Teams, because that's true once it's set up; the trial status lives in the README and limits. I found a real gap by asking a simple question: what if someone asks for the 17th to 19th, then the 19th? The duplicate check only matches the first day, so both get filed, and a repeat with new dates just hands back the old ID. Not unsafe (Dana sees every request), but it's in the limits now, and the guide says "to change dates, tell Dana." Also: nothing tells the tech when Dana answers. Dana tells them; a message back can be added.
+
+Maker guide: decided the reader is Dana, trained to look after it, plus me. Two things I pushed on. "Ask the builder to move it live" made the client sound dependent on me, so the trained person releases changes herself with the right permission. And keeping the old REPLACED policy: that's our safety test, not how anyone should maintain a handbook, so the guide says remove old versions. Claude checked the screen labels in Copilot Studio instead of guessing, and we proved the off switch for the request tool works while questions keep working. The Channels page also showed the request tool runs on my account; for a client that moves to their own service account. That's a setup question, not a confession.
+
+Admin questions: rewritten to talk to the client's admin, cut from 17 to 15 by merging repeats, and the licensing question checked against current Microsoft pricing.
+
+Then the recording fell apart. We started shooting without the setup steps (the layout, fitting the window to the OBS frame), and we ran out of time before D&D. Recording is first thing next session, and the demo record now starts with the checklist so it doesn't depend on anyone's memory. We do the recording and the export before Week 8, so videos never pile up.
+
+Independent: the overlapping-dates gap; where the "change dates" line goes; who would actually read each guide; the portfolio-reader test; "ask the builder" makes the client dependent; why keep the old policy file; "a few days" isn't a number; the "no" wording would scare an owner; would the credentials note make us look bad; the Teams off-switch wording; redundant admin questions; whether the offline part belongs in 4 or 14; calling out the skipped recording setup; keeping the order (record and export before Week 8).
+
+With help: Copilot Studio labels and the off-switch test, finding the table (Custom chip), current licensing facts, what Dataverse auditing is.
+
+Honest time: about 3 hours of work (2:00 to 2:05, then 4:20 to 7:20) for a plan of 20 minutes of review, 45 of recording, and 20 of export. The reviews took the time; the decisions in them were real. Lost time: Claude showing originals plus proposed changes instead of finished pieces, long messages, flagging unchecked labels instead of checking them, and the recording steps it didn't follow.
+
