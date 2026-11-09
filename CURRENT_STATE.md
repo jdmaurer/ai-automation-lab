@@ -1,8 +1,19 @@
-# CURRENT STATE - updated 2026-11-08 (evening) - RESUME HERE
+# CURRENT STATE - updated 2026-11-09 - RESUME HERE
 
 Per AI_HANDOFF_PROTOCOL.md this file is overwritten each session. Earlier states are in git history and the weekly logs.
 
-## Resume point (2026-11-08, evening)
+## Resume point (2026-11-09)
+Week 7 is finished. The Bluffside Handbook Helper case is released.
+- Exported 1.0.0.1 as managed (the release for a live environment) and unmanaged (the editable source copy): `cases/bluffside-handbook-helper/solution/`. Solution checker on the managed export: 0 issues (evidence/2026-11-09_solution-checker_1.0.0.1.png). Scan: one expected hit, the approver address in ApproveTimeOff; nothing else. The six handbook files travel inside the package (same text as handbook/, CRLF line endings). The test set (36 questions) and the Time Off Request table (design only, no rows) are inside too.
+- The export listed the flow's two connection references (Standard approvals, Microsoft Dataverse) as missing; they were added to the solution.
+- Maker guide finished: "Moving a change to live" (15 steps: package in development, install in live, publish, check from a test account); "Where changes are made" now says the trained person releases; the undo line fixed (a live environment refuses a lower managed version, so undo is a corrected forward release). Decisions 48-53; limitations line on the untested import (one environment) reworded.
+- Every piece of writing reviewed and approved with Josh.
+
+**Next session: Week 8 day 1 (master calendar Monday: human-supervised M365 inbox triage).** First two decisions, one at a time: (1) who will use it, Josh's own business or a client demo (which fictitious client); (2) the lab has no mailbox (microsoft-environment-decision.md): Business Basic trial, a design-only treatment of the Outlook steps, or another route. Then the triage charter, 30 labeled synthetic messages, and admin questions. Week 8 additions (plan additions below): quote-request drafts and the weekly summary; adoption plan with "when adoption stalls". Kickoff prompt: NEXT_SESSION_START.md.
+
+Claude in Chrome: on 11-09 Browser 1 was the blue window (Browser 2 opened a Gannon sign-in; closed untouched). Check by opening one tab and reading the account. Claude reached Josh's Downloads through the desktop app (folder access granted in the session) to scan the exports.
+
+## Earlier resume point (2026-11-08, evening)
 Week 7 day 4, part 2. The three guides are reviewed and approved with Josh; DEMO-04 is not recorded yet; the export is not done.
 - user-guide.md (staff), maker-guide.md (Dana + builder), admin-questions.md (client's admin, 15 questions): reviewed piece by piece, approved, pushed. Decisions 40-46; limitations 2026-11-08 extended (no answer back to staff, overlapping dates, can't change or cancel, one environment, Teams off switch unchecked, author's credentials).
 - Checked on screen: Workflows (left menu), Agent > Activity, the tool's Enabled switch (on the Tools list), flow Overview "28-day run history". Not found: flow Version history (guide now says import the last released solution). Turn-off check passed (test-cases.md 2026-11-08 evening). Copilot Studio Channels: "Not published"; publish check warns the tool runs on the author's credentials (action-contract.md corrected; admin question 9).

@@ -96,3 +96,19 @@ Honest time: about 3 hours of work (2:00 to 2:05, then 4:20 to 7:20) for a plan 
 
 Later that night (11:05 PM), after D&D: recorded DEMO-04 in one take, checklist first this time. Nine shots, paused between each. The helper did everything on camera: vacation tiers, the replaced mileage policy, 911 for gas, Dana for someone's pay, a March request filed, the duplicate refused with the same ID, Dana's approval, and the table showing Approved. I widened the test pane so the chat reads on video; that shows my email in the activity steps, so it gets blurred in the edit. Claude talked me into shrinking it and then had to talk me back. Lesson for Claude: my setup choices are deliberate; ask before changing them. Raw file: Videos\Demos\DEMO-04_raw_2026-11-08.mp4. About 45 minutes.
 
+
+## Monday 11.09.26 - Releasing the helper
+
+Packaged the Bluffside helper so it can move. Two files from one export screen: managed and unmanaged, both version 1.0.0.1. I got the first question wrong. I thought the client should get the copy they can change, because who wants a jar they can never open, and what if Dana leaves tomorrow? The answer is that they get both. The unmanaged copy is the workshop where any trained person makes and tests changes; the managed copy is the sealed jar staff use, replaced by a new jar for each release. Nobody is stuck with Dana or with me.
+
+The export flagged two "missing components": the flow's connection references, which are labeled key hooks, not keys. Added them so the client can hang its own service account's keys at import. The solution checker found 0 issues; I asked for a screenshot as evidence. The scan found only the expected approver address. The handbook files travel inside the package, and the table travels without rows, which is right: their own data, not our fake slips with my email on them.
+
+Then the maker guide's last section, "Moving a change to live", written from the clicks we just made. Claude checked Microsoft's documentation and found a real error in the guide I'd approved: you can't import an older version over a newer one, so "import the last released copy" to undo a change wouldn't work. Undo is now a corrected release. I cut a reference to "admin question 14" that Dana would never see, and "if the development environment is ever lost" sounded ominous, so it now says what actually causes it. The limits line now gives the reason (one lab environment) right next to the gap, because a reader would ask why half was untested.
+
+Independent: who'd want a jar they can't change, and Dana leaving; why the table should arrive empty; asking for the checker screenshot; checking the version box for a stray space before exporting; "admin question 14" means nothing to Dana; "lost" sounds ominous; the vague test-request step; the limits line needs its reason next to the gap; calling out review messages that mixed Claude's notes with the guide's text; asking why close out now.
+
+With help: managed vs unmanaged (I had it backwards at first), connection references, the export panels, Microsoft's no-downgrade rule, the import steps (from Microsoft's documentation; the lab has one environment), the scan.
+
+Honest time: about 1.5 hours of work (9:47 to 10:49, then 12:02 to 12:18, plus closeout) for a 45-minute plan. Lost time: review messages that mixed Claude's notes and the guide's bullets, records shown without a plain one-line summary, and a fix shown before telling me which approved text it changed.
+
+Next: Week 8, inbox triage.

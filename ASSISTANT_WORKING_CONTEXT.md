@@ -306,3 +306,21 @@ Copilot Studio and Power Apps facts learned 2026-11-08 (evening):
 - Power Apps Tables: the Custom chip lists our tables; the table link has no address (href #), so Josh clicks it. The purple search bar at top-middle searches all of Power Apps, not the list.
 - (Late 11-08, recording) Josh's recording setup choices are deliberate (he widened the test pane so the chat reads on video). Don't change his setup to dodge a blur; note the blur for the edit instead. Don't suggest F11 mid-setup: it breaks the fitted window and can cover OBS. The demo record's own "must never appear" notes belong in the pre-recording checklist so they're raised before shot 1, not discovered mid-take.
 
+
+### Session lessons (added 2026-11-09, Bluffside release)
+About 1.5 hours of work for a 45-minute plan. Josh's points:
+- Review messages: the text under review must stand apart from Claude's notes. Never put Claude's notes in bullets when the piece itself has bullets (he couldn't find the guide's three bullets among eight). Notes are a few plain sentences above; the piece follows under a plain label.
+- Open every review piece with one plain sentence saying what it does ("this just marks the to-do as done"). He had to decode a README change that amounted to "remove the to-do line".
+- When fixing text he already approved, say so first, show what's in the file now, then the proposal. Showing only the proposal read as "you changed something behind my back".
+- Portfolio-facing text (README, limitations) is never written without showing him; decisions.md is internal.
+- Check every piece before showing it (reader, accuracy, professional, expert eyebrow). He asked "double-check" on most pieces again.
+- In an analogy question, keep the real roles straight: "live environment" vs "client" got mixed, and he heard "the client can never change it".
+- Cross-references must make sense to the reader: Dana never sees admin-questions.md, so "admin question 14" meant nothing.
+- Limitations: put the reason in the same sentence as the gap, and say when it gets closed.
+
+Power Apps and Copilot Studio facts learned 2026-11-09:
+- Solution export: Overview > Export > "Before you export" (Publish, Next) > possibly "Missing required unmanaged components" (Add to solution) > "Export this solution" (version suggested one higher; Managed (recommended) selected by default; Run solution checker on export checkbox) > green bar > Download. Second export: retype the same version. Checker result shows on Overview, Solution status overview card, about a minute later.
+- An agent flow's connection references, created in Copilot Studio, land outside the solution; the export flags them.
+- The export carries knowledge files (botcomponents/...file.../filedata, CRLF), topics, the evaluation test set (componenttype 19), the agent flow, and table design without rows.
+- A live environment refuses a managed solution with a lower version than the installed one (Microsoft Learn); undo is a corrected forward release. An imported agent must be published before staff can use it (Microsoft Learn).
+- Browser 1 was the blue window on 11-09. With folder access granted, Claude can stage files from Josh's Downloads and scan them.
