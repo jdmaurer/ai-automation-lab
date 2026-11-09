@@ -41,6 +41,14 @@ Use my own Microsoft organization (`joshmaurer.onmicrosoft.com`, display name **
 - **Organization legal name is locked.** On this billing account type the organization name on the sold-to address is not editable in the admin center; Microsoft Support has to change it.
 - **Display names are cached.** After renaming the user, the admin center kept the old name until I signed out and back in. The environment takes its name from the display name at sign-up, so rename first.
 
+## Week 8 update: Business Basic trial (2026-11-09)
+Week 8's inbox triage needs a real mailbox, so the fallback above was taken, with three differences from the plan:
+- **Added to the existing organization, not a new one.** Signed up from the admin center (Marketplace > Microsoft 365 Business Basic > plan "Microsoft 365 Business Basic (Trial)" > Start free trial), signed in as josh@joshmaurer.onmicrosoft.com. The mailbox sits in jdmaurer Labs, next to Josh Maurer's Environment and the flows.
+- **Billing profile "Joshua Maurer"** created at checkout (Add new; the card already on file). No account review was triggered.
+- **No charge.** Trial Nov 9 to Dec 8, 2026, $0. Renewal settings chosen at checkout: 1 license, 1 month, monthly ($8.40), so the worst case was $8.40, not a year. Then recurring billing was set to "Cancel on expiration" (Your products > Microsoft 365 Business Basic > Edit recurring billing > Cancel on expiration > Save > Yes). The page reads "Expires on December 9, 2026"; a paid plan starts only if recurring billing is turned back on.
+- **License:** one of 25 trial licenses assigned to Josh Maurer (Billing > Licenses > Microsoft 365 Business Basic > Assign licenses). Outlook on the web showed "Something went wrong" right after assignment, while the mailbox was still being created.
+- Plan the inbox work so it finishes before Dec 8, 2026, when the mailbox goes away.
+
 ## Fallback architecture
 If the environment is disabled or access is lost: the n8n Lead Intake build (v2.7) remains the working implementation, and the Microsoft design is documented from Microsoft Learn plus the artifacts built so far. Second route: a Business Basic trial, which requires a card and converts to a paid plan when the trial month ends.
 
