@@ -1,33 +1,32 @@
-# Bluffside Handbook Helper — Questions for the client's Microsoft 365 admin
+# Bluffside Handbook Helper — Setup questions for your Microsoft 365 admin
 
-Draft 2026-11-08, for Josh's review. These are the things the lab couldn't settle because they depend on the client's tenant. Ask them before quoting a rollout.
+To plan the setup and give you an accurate licensing estimate, please answer the questions below about your Microsoft 365 environment. Answer what you can; we'll go through the rest together at the setup meeting.
 
-## Licensing and access
-1. Which Microsoft 365 plans do staff have, and does anyone already have Copilot or Copilot Studio licenses?
-2. Who can create environments and solutions in Power Platform? Can we have our own environment for Bluffside's helpers (development and production)?
-3. Is the Dataverse table allowed in that environment, or do you prefer SharePoint Lists for request records?
-4. Who can publish an agent to Teams, and who approves new Teams apps?
+## Licensing and environments
+1. Which Microsoft 365 plans do your staff have, and does anyone already have a Microsoft 365 Copilot license? About how many staff will use the helper? Copilot Studio is billed by usage (Copilot Credits), except for staff with a Microsoft 365 Copilot license, so these answers set the estimate.
+2. Who can create Power Platform environments? We recommend two for the helper: a development environment for changes and testing, and a production environment that staff use.
+3. May we use Dataverse in those environments for time-off records, or do you prefer SharePoint Lists?
+4. Who approves new apps in the Teams admin center? We'll ask them to approve the helper for your staff. They can also take it offline quickly if it's ever needed.
 
-## Identity and permissions
-5. Do field techs sign in to Teams on their phones with their work accounts? (The helper knows who's asking from that sign-in.)
-6. Should everyone see the same handbook, or do some groups need different documents? If different, which SharePoint groups match?
-7. Who should approve time-off requests: one office manager, a shared mailbox, or each person's manager?
-8. Is there a second test account we can use to check that one person can't file for another?
-9. Which service account should the request flow's connections (Dataverse and Approvals) run under? In the lab they run under the builder's account. In your tenant they should run under an account Bluffside owns, so requests don't depend on one person's login.
+## Identity and access
+5. Do field staff sign in to Teams on their phones with their work accounts? The helper identifies each person from that sign-in.
+6. Should all staff see the same handbook, or do some groups need different documents? If different, which Microsoft 365 or SharePoint groups should see which documents?
+7. Who approves time-off requests: one office manager, a small group where anyone can answer, or each person's manager?
+8. Can you provide two test accounts (not real staff) for setup testing? We use them to confirm each person's requests are filed under their own name.
+9. Which account should the request flow's connections (Dataverse and Approvals) run under? We recommend a dedicated service account Bluffside owns, so requests don't depend on one person's sign-in. During the build they run under the builder's account.
 
 ## Data and records
-10. Where does the official handbook live today, and who owns changes to it?
-11. How long should time-off requests be kept, and who can see them?
-12. Is Dataverse auditing on (or can it be turned on) for the requests table?
-13. Are there words or topics your safety procedure requires in an emergency message? (Our 911 wording is a placeholder for your procedure.)
+10. Where does the official handbook live today, and who approves changes to it?
+11. How long should time-off records be kept, and who should be able to see them?
+12. We recommend turning on Dataverse auditing (a log of who changed each record, and when) for the time-off table. It uses some of your Dataverse storage, so it needs your approval. May we turn it on?
+13. Does your safety procedure require specific wording in an emergency message? The helper's current 911 wording is a placeholder until you confirm yours.
 
-## Running it
-14. Who maintains the helper day to day after handover, and how much admin access will they have?
-15. Which Microsoft 365 data loss prevention (DLP) policies apply to Power Platform connectors here?
-16. Any rules about AI features in your organization (approved uses, content filtering, logging) that we should follow?
-17. What's the process if the helper has to be switched off quickly?
+## Ongoing support
+14. Who will look after the helper after handover? We'd like them to release approved changes themselves. That needs permission to import solutions into the production environment (for example, the System Customizer security role). Can they have it?
+15. Which policies should the helper follow? For example, data loss prevention (DLP) policies for Power Platform connectors, or rules on AI use such as approved uses, content filtering, and logging.
 
-## What we'll bring
-- The exported solution (agent, flow, table) and the handbook files.
-- The 36-question test set and results, the user guide, and the maintainer guide.
-- A licensing estimate once questions 1 to 4 are answered.
+## What you'll receive
+- The helper, packaged as a managed solution ready to import into your environment: the agent, the request flow, and the time-off table.
+- The handbook files.
+- The 36-question test set and its results, written tests for the time-off request, the staff guide, and the maintenance guide.
+- A licensing estimate once questions 1 to 3 are answered.
