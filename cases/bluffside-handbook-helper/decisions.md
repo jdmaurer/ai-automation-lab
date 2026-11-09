@@ -58,3 +58,11 @@ Append-only, newest at the bottom.
 45. In a client tenant the request flow's connections run under a service account the client owns. Copilot Studio's publish check shows the tool runs on the author's credentials; action-contract.md corrected (it said end user).
 46. Admin questions cut from 17 to 15 (merged two overlapping pairs). Licensing question written against current pricing: Copilot Studio is billed by usage in Copilot Credits; staff with a Microsoft 365 Copilot license are included.
 47. DEMO-04 recording moved to the next session after setup steps were skipped (Josh). Order stays: record DEMO-04, then export and release, before Week 8, so demos never pile up.
+
+## 2026-11-09
+48. Released as both: managed (the release for the live environment) and unmanaged (the editable source copy for development and the handover folder), same version number, 1.0.0.1. Josh first read "managed" as "the client can never change it"; the client changes it in the development copy and releases a new version, so nobody is locked out when the office manager changes (Josh: "Dana might leave tomorrow").
+49. The flow's two connection references (Standard approvals, Microsoft Dataverse) were outside the solution; the export listed them as missing and they were added. They hold no sign-in, so the client connects its own service account at import.
+50. The table travels without rows, on purpose (Josh): the client starts with its own data, not lab test slips, and the test slips carried the builder's email.
+51. Release gate in the maker guide: don't release with a critical or high solution-checker issue (Josh agreed).
+52. Undo is a forward release: the live environment refuses a managed solution with a lower version number than the one installed (Microsoft Learn), so the maker guide's "import the last released copy" was wrong. A bad change is fixed in the development copy and released with the next version; the Tools switch and the Teams block cover the meantime.
+53. The maker guide names the import permission itself (System Customizer security role) instead of pointing to admin question 14, which Dana never sees (Josh).

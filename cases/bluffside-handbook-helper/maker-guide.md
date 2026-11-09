@@ -89,7 +89,7 @@ Check these once a week:
 
 - Stop the request action only: Agent > Tools, then turn off the Enabled switch on the "Submit time-off request" row. The helper keeps answering handbook questions.
 - Stop the whole helper: ask your Microsoft 365 admin to block the app in Teams.
-- Undo a bad change: import the last released copy of the solution into the live environment. That puts the helper back the way it was.
+- Undo a bad change: in the development copy, restore the earlier version (the handbook file, instructions, or topic from your handover folder), run the test set, and release it with the next version number. The live environment doesn't accept an older version number, so a change is undone by releasing a corrected version. If staff are affected in the meantime, use one of the two options above.
 
 ## Known limits
 
