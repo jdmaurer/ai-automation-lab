@@ -2,6 +2,22 @@
 
 Per AI_HANDOFF_PROTOCOL.md this file is overwritten each session. Earlier states are in git history and the weekly logs.
 
+## Resume point (2026-11-09, evening)
+Week 8 day 1 planning is complete. Active case: `cases/driftless-inbox-triage/`. No inbox workflow has been built yet.
+
+- Client: Driftless Print and Sign, fictional owner-operated print/sign shop. The owner is the inbox user; do not invent a separate office-manager layer.
+- Scope: inbox triage + quote-request drafts from approved synthetic pricing + weekly inbox-activity summary.
+- Mailbox: Microsoft 365 Business Basic trial in the jdmaurer Labs organization, Nov 9-Dec 8, 2026, one license on josh@joshmaurer.onmicrosoft.com, recurring billing set to cancel on expiration. Finish the mailbox work before Dec 8.
+- Process the main Inbox directly. No second triage folder. Exclude Sent Items, Drafts, Deleted Items, Junk Email, and Archive. Use `Needs Owner Review` for explicit human-review cases; messages stay in the Inbox.
+- No auto-send, forward, delete, archive, move, or auto-resolve. The owner sends replies manually and makes final decisions on custom pricing, payments, order changes, discounts, turnaround, installation, and delivery commitments.
+- Taxonomy fixed: business category and priority are separate. Categories = Sales, Support, Finance, General, Internal, Unknown. Priority = Urgent or Routine. Evaluation-only stress flags stay out of the live taxonomy unless the build truly needs them.
+- Synthetic price sheet frozen in `approved-price-sheet.md`; no invented prices or extras.
+- Frozen evaluation set v1: 30 messages in `evaluation/frozen-test-set-v1.csv`, with answer key fixed before model testing. Counts: 9 Sales, 7 Support, 4 Finance, 4 General, 2 Internal, 4 Unknown; 7 Urgent, 23 Routine; 4 adversarial, 5 ambiguous, 6 important attachments, 4 missing-detail quotes, 2 custom quotes, 3 false-urgent decoys, 2 false-safe cases, one duplicate/resend pair.
+- Acceptance target: 27/30 correct category or expected-review outcomes; 0 critical safety failures; >=80% drafts usable without major factual correction (90% target); exact summary counts; 20% time reduction target, not a hard release threshold.
+- Client setup is split deliberately: four short business questions for the owner, technical permissions/security/retention/licensing questions for the Microsoft 365 administrator or IT provider.
+
+**Next session: Week 8 day 2.** Read this resume point and the Driftless case first. Build deterministic rules before adding AI. Use structured AI classification only when fixed rules do not resolve the message; validate required fields and allowed values before using AI output. Keep sensitive/suspicious/unknown/low-confidence/invalid/failure cases on the owner-review path without a reply draft. Preserve draft-only behavior and the frozen test answers. Start with the smallest end-to-end path that proves message input -> normalization -> deterministic rule gate -> classification/priority -> owner-review decision -> draft suggestion -> human review. Do not start Intermediate Python.
+
 ## Resume point (2026-11-09)
 Week 7 is finished. The Bluffside Handbook Helper case is released.
 - Exported 1.0.0.1 as managed (the release for a live environment) and unmanaged (the editable source copy): `cases/bluffside-handbook-helper/solution/`. Solution checker on the managed export: 0 issues (evidence/2026-11-09_solution-checker_1.0.0.1.png). Scan: one expected hit, the approver address in ApproveTimeOff; nothing else. The six handbook files travel inside the package (same text as handbook/, CRLF line endings). The test set (36 questions) and the Time Off Request table (design only, no rows) are inside too.

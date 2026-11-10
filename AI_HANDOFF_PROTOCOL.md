@@ -39,7 +39,7 @@ Each case folder holds:
 | `<name>-vN.json` | Workflow export |
 | seed data | Fixed baseline for resetting test state |
 
-Active case: `cases/rivertown-lead-intake/`
+Active case: `cases/driftless-inbox-triage/`
 
 ## How Josh learns
 State the purpose and expected result before giving any instruction — what
