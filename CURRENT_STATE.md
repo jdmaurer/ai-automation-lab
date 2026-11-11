@@ -1,22 +1,27 @@
-# CURRENT STATE - updated 2026-11-09 - RESUME HERE
+# CURRENT STATE - updated 2026-11-10 - RESUME HERE
 
 Per AI_HANDOFF_PROTOCOL.md this file is overwritten each session. Earlier states are in git history and the weekly logs.
 
-## Resume point (2026-11-09, evening)
-Week 8 day 1 planning is complete. Active case: `cases/driftless-inbox-triage/`. No inbox workflow has been built yet.
+## Resume point (2026-11-10, late evening)
+Week 8 day 2 is in progress. Active case: `cases/driftless-inbox-triage/`. Power Automate flow `Driftless Inbox Triage` is saved as a Draft and has not been published or trigger-tested yet.
 
-- Client: Driftless Print and Sign, fictional owner-operated print/sign shop. The owner is the inbox user; do not invent a separate office-manager layer.
-- Scope: inbox triage + quote-request drafts from approved synthetic pricing + weekly inbox-activity summary.
-- Mailbox: Microsoft 365 Business Basic trial in the jdmaurer Labs organization, Nov 9-Dec 8, 2026, one license on josh@joshmaurer.onmicrosoft.com, recurring billing set to cancel on expiration. Finish the mailbox work before Dec 8.
-- Process the main Inbox directly. No second triage folder. Exclude Sent Items, Drafts, Deleted Items, Junk Email, and Archive. Use `Needs Owner Review` for explicit human-review cases; messages stay in the Inbox.
-- No auto-send, forward, delete, archive, move, or auto-resolve. The owner sends replies manually and makes final decisions on custom pricing, payments, order changes, discounts, turnaround, installation, and delivery commitments.
-- Taxonomy fixed: business category and priority are separate. Categories = Sales, Support, Finance, General, Internal, Unknown. Priority = Urgent or Routine. Evaluation-only stress flags stay out of the live taxonomy unless the build truly needs them.
-- Synthetic price sheet frozen in `approved-price-sheet.md`; no invented prices or extras.
-- Frozen evaluation set v1: 30 messages in `evaluation/frozen-test-set-v1.csv`, with answer key fixed before model testing. Counts: 9 Sales, 7 Support, 4 Finance, 4 General, 2 Internal, 4 Unknown; 7 Urgent, 23 Routine; 4 adversarial, 5 ambiguous, 6 important attachments, 4 missing-detail quotes, 2 custom quotes, 3 false-urgent decoys, 2 false-safe cases, one duplicate/resend pair.
-- Acceptance target: 27/30 correct category or expected-review outcomes; 0 critical safety failures; >=80% drafts usable without major factual correction (90% target); exact summary counts; 20% time reduction target, not a hard release threshold.
-- Client setup is split deliberately: four short business questions for the owner, technical permissions/security/retention/licensing questions for the Microsoft 365 administrator or IT provider.
+Built and saved today:
+- Office 365 Outlook trigger `Trigger - New Inbox Email`, Inbox only, Include Attachments = No, Only with Attachments = No, Importance = Any.
+- `Normalize - Email Fields` Compose with message_id, received_at, sender, subject, body, has_attachments, and literal folder = Inbox.
+- Boolean variable `needs_owner_review`, initialized false.
+- Deterministic `Rule - Has Attachment?`; True sets `needs_owner_review = true`. Attachment presence causes review but does not by itself block a safe draft. Attachment content is never interpreted.
+- AI Builder `Run a prompt` using custom prompt `Driftless Inbox Classifier`, fed the normalized email record.
+- Prompt returns exactly 11 structured fields: category, priority, confidence, personal, sensitive, suspicious, adversarial, context_sufficient, custom_quote_needed, record_change_requested, draft_candidate.
+- `Validate - AI Output` Condition checks category in Sales/Support/Finance/General/Internal/Unknown, priority in Urgent/Routine, and confidence between 0 and 1. Invalid output -> `Set - Needs Owner Review - Invalid AI`.
+- Inside the valid-output True branch, `Rule - Confidence High Enough?` checks AI confidence >= .8.
+- Low-confidence False branch -> `Set - Needs Owner Review - Low Confidence` with `needs_owner_review = true`.
+- Draft saved successfully after the low-confidence branch was finished.
 
-**Next session: Week 8 day 2.** Read this resume point and the Driftless case first. Build deterministic rules before adding AI. Use structured AI classification only when fixed rules do not resolve the message; validate required fields and allowed values before using AI output. Keep sensitive/suspicious/unknown/low-confidence/invalid/failure cases on the owner-review path without a reply draft. Preserve draft-only behavior and the frozen test answers. Start with the smallest end-to-end path that proves message input -> normalization -> deterministic rule gate -> classification/priority -> owner-review decision -> draft suggestion -> human review. Do not start Intermediate Python.
+Important design note: 0.80 is a provisional pilot threshold chosen during the build, not a threshold that existed in the frozen case documents. Below 0.80 means owner review and no ordinary draft. Evaluate the threshold against the frozen 30-message set; do not move the answer key to fit the model.
+
+**Next session: resume inside the True branch of `Rule - Confidence High Enough?`.** Build the deterministic safety/review policy for high-confidence output, keeping review triggers separate from draft blockers. Review triggers include Urgent, Unknown, personal, sensitive, suspicious, adversarial, context_sufficient=false, Finance/Internal, custom_quote_needed, record_change_requested, plus attachment presence already handled. Draft blockers include invalid/failed/low-confidence output, Unknown, personal, sensitive, suspicious, adversarial, context_sufficient=false, Finance, Internal, or draft_candidate=false. Urgent, attachment presence, custom_quote_needed, and record_change_requested do not by themselves block a safe draft.
+
+Before publishing/testing, add an explicit model-failure fallback for `Run a prompt` failure/timeout/unavailable cases. A validation False branch does not catch an action that never returns structured output. Tuesday tests still required: prompt injection, model unavailable, wrong schema, and unexpected attachment/fields. Preserve draft-only behavior and frozen test answers. Do not start Intermediate Python.
 
 ## Resume point (2026-11-09)
 Week 7 is finished. The Bluffside Handbook Helper case is released.
