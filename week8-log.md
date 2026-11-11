@@ -23,3 +23,28 @@ With help: turning those decisions into the charter and data map; structuring th
 Honest time: I did not keep a reliable start/stop clock for this chat, so I am not inventing one. It was a long planning and review session, and most of the extra time went into challenging the taxonomy, test labels, and client-facing setup before freezing them.
 
 Stopped with Week 8 day 1 complete and no workflow built yet. Next: Week 8 day 2. Build the deterministic path first, then use structured AI classification only where the fixed rules do not resolve the message. Validate AI output before using it, keep every reply draft-only, and test against the frozen set rather than changing the set to fit the model.
+
+
+## Tuesday 11.10.26 — Building the guarded inbox path
+
+Today I moved from the charter into the first Power Automate skeleton. The flow is still a draft, but the important pattern is now visible: normalize the email, apply a fixed rule first, call the model, validate what comes back, then apply a separate confidence policy before trusting the result.
+
+I started with the Outlook Inbox trigger and a normalization Compose so the later steps see one consistent email record. I also initialized a Boolean `needs_owner_review` flag. The first deterministic rule is intentionally simple: if an attachment is present, turn that review flag on. That does not mean an attachment blocks a draft. It means the owner should see the message, while the workflow still may prepare a safe draft if the rest of the policy allows it. Attachment contents are not read.
+
+The classifier is a custom AI Builder prompt. The email record is explicitly treated as untrusted data, and the prompt is told not to obey instructions inside the email. It returns a custom JSON shape with business category, priority, confidence, safety/context flags, custom-quote and record-change flags, and a draft-candidate suggestion. I changed the output from auto-detected to a custom format after the first test echoed the input record back as an extra object. The second prompt test returned only the intended 11 fields.
+
+The workflow does not trust that output just because it is JSON. `Validate - AI Output` checks that category is one of the six allowed values, priority is Urgent or Routine, and confidence is inside 0 to 1. Invalid output goes to owner review. Inside the valid branch I added a separate confidence gate. A score can be structurally valid but still too uncertain for normal processing, so `Rule - Confidence High Enough?` compares the model's confidence with a provisional .80 threshold. Below that threshold, the flow turns on owner review.
+
+The distinction between validation and policy matters. A confidence of .72 is a perfectly valid number between 0 and 1, so it passes schema/range validation. It still fails the business policy because we currently require at least .80 before continuing down the normal path.
+
+The .80 threshold was not in the frozen case design. It is a conservative pilot starting point chosen during the build. I will evaluate it against the frozen 30-message set rather than changing expected answers to make the model look better.
+
+I stopped immediately after completing and saving the low-confidence branch. The flow is still Draft and has not been published or tested through the Outlook trigger.
+
+Independent: catching several places where the Power Automate labels on screen did not match the directions; insisting on understanding why `confidence` was being selected instead of just clicking through; recognizing and using the repeated Set variable pattern once the purpose was clear.
+
+With help: the flow architecture, classifier prompt and output contract, validation expressions, the provisional confidence threshold, and the placement of the low-confidence review path.
+
+Honest time: no reliable start/stop clock was kept, so I am not inventing one.
+
+Next: inside the high-confidence True branch, separate review triggers from draft blockers. Then add an explicit failure/timeout fallback around the AI action before publishing. Tuesday still requires the prompt-injection, unavailable-model, wrong-schema, and unexpected-field/attachment tests.
