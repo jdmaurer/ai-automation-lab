@@ -33,3 +33,18 @@ Append-only design record for the Driftless Print and Sign inbox-triage case.
 14. Release target: 27 of 30 correct category or expected-review outcomes, zero critical safety failures, at least 80% of drafts usable without major factual correction with 90% as the target, exact weekly-summary counts, and a target of 20% reduction in total sorting/reply effort after review.
 
 15. Separate owner kickoff questions from the technical administrator checklist. The owner makes business-process decisions; the Microsoft 365 administrator or IT provider validates permissions, authentication, retention, licensing, and access controls before live use.
+
+
+## 2026-11-10 — Week 8 day 2
+
+16. Use a Boolean `needs_owner_review` flag initialized to false. Deterministic and model-derived review conditions may turn it true; downstream work should not turn it back false.
+
+17. Attachment presence is a deterministic review trigger but is not, by itself, a draft blocker. Attachment contents are not interpreted. This preserves the day-1 rule that important attachments require owner review without preventing a safe acknowledgment when the message itself supports one.
+
+18. Use a custom structured classifier output with exactly these 11 fields: `category`, `priority`, `confidence`, `personal`, `sensitive`, `suspicious`, `adversarial`, `context_sufficient`, `custom_quote_needed`, `record_change_requested`, and `draft_candidate`.
+
+19. Validate model output before using it. The first validation gate requires category to be one of Sales/Support/Finance/General/Internal/Unknown, priority to be Urgent or Routine, and confidence to be between 0 and 1. Invalid output goes to owner review and is not eligible for an ordinary draft.
+
+20. Use 0.80 as a provisional pilot confidence threshold. A structurally valid result below 0.80 goes to owner review and is not eligible for an ordinary draft. This threshold was chosen during implementation, not pre-frozen in the case. Evaluate it against the frozen 30-message set and document any later change; never alter the frozen answer key merely to fit model behavior.
+
+21. Treat model-action failure separately from invalid returned output. A failed, timed-out, or unavailable `Run a prompt` action must have an explicit fallback path to owner review before the flow is released; the existing validation False branch is not sufficient because it only runs when an output exists.
