@@ -327,3 +327,14 @@ Power Apps and Copilot Studio facts learned 2026-11-09:
 - The export carries knowledge files (botcomponents/...file.../filedata, CRLF), topics, the evaluation test set (componenttype 19), the agent flow, and table design without rows.
 - A live environment refuses a managed solution with a lower version than the installed one (Microsoft Learn); undo is a corrected forward release. An imported agent must be published before staff can use it (Microsoft Learn).
 - Browser 1 was the blue window on 11-09. With folder access granted, Claude can stage files from Josh's Downloads and scan them.
+
+### Browser-guided directions, added 2026-11-12
+
+Josh explicitly wants browser-connected guidance to prevent bad navigation directions:
+- Before giving any direction in Power Automate, Power Apps, Copilot Studio, Outlook, or another connected web app, **read the live browser tab first**. Do not ask Josh for a screenshot when the connected tab exposes the needed state.
+- If the browser connector cannot expose the actual interactive state, say that plainly before directing; do not guess from memory or documentation.
+- Every click instruction must identify the screen region first using one of these labels: **top left, top middle, top right, middle left, middle middle, middle right, bottom left, bottom middle, bottom right**. The region refers to the whole visible screen, not the local panel.
+- Then give the exact visible label to click. Example: `WHERE: middle left — Solutions`.
+- Read the page again after navigation before giving the next non-routine direction.
+- Do not make Josh relay page state that the browser connection can already read. The reason he opened the working tabs to the assistant is so directions are grounded in the live interface.
+
