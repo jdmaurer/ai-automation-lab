@@ -79,3 +79,22 @@ Independent: pushing back when the proposed failure-test plan would have broken 
 With help: Power Automate expressions and routing, prompt revisions, live run inspection, repair of AI Builder input wiring, drafting-policy logic, and documenting the working/failing behaviors.
 
 Stopped with the current published flow still intact. Next session begins by resolving the solution/export packaging issue without guessing, preserving a recoverable baseline, then completing the remaining required controls and batch evaluation.
+
+## Thursday 11.12.26 — Browser visibility failed before the build started
+
+This morning did not materially change the Driftless flow. The session mostly exposed a tooling problem: the normal Chat browser connector could read Outlook well enough to see the real Microsoft Power Automate failure notification, but Power Automate's center workspace was not consistently available to the reader. Josh could see the prompt cards and recent items while the assistant could often see only the shell and left navigation. That made navigation directions unreliable and recreated exactly the problem the browser connection was supposed to eliminate.
+
+One useful clarification did come out of the discussion. The automated-mail defect is narrow. The Inbox should stay intact; the workflow is not supposed to move, delete, archive, or reorganize mail. The defect is simply that an obvious automated/non-replyable informational message created an unnecessary reply draft. The next build change should suppress that draft generally, not block only Microsoft or rework classification.
+
+Josh also reset the preservation/testing order. We are not spending more time on solution export before finishing the normal build. The sequence is: finish normal controls, run the repeatable frozen 30-message evaluation, fix ordinary defects, preserve/export the finished working baseline, then perform isolated deliberate failure tests such as model unavailable or wrong schema. The working version must not be intentionally broken before that preserved baseline exists.
+
+For future browser-guided work, the repo now says to read the live page before every non-routine direction and to identify every click by whole-screen region first. If the connected page is not actually visible to the assistant, the assistant must say so rather than guessing.
+
+The next session should use ChatGPT Work in the current desktop app if available, with Power Automate and Outlook in the built-in browser so Josh and the assistant are looking at the same page. Codex remains useful for code, terminal, and repository work; this Power Automate/Outlook build is primarily browser/app work.
+
+Independent: recognizing that the Inbox behavior itself was correct; narrowing the defect to unnecessary automated reply drafts; stopping another export detour; insisting that unreliable browser visibility be fixed before more navigation directions.
+
+With help: diagnosing the difference between Outlook visibility and Power Automate visibility; documenting the new browser-direction rules; checking the current OpenAI desktop/Work setup.
+
+No flow logic changed today.
+
