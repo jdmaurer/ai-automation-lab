@@ -48,3 +48,34 @@ With help: the flow architecture, classifier prompt and output contract, validat
 Honest time: no reliable start/stop clock was kept, so I am not inventing one.
 
 Next: inside the high-confidence True branch, separate review triggers from draft blockers. Then add an explicit failure/timeout fallback around the AI action before publishing. Tuesday still requires the prompt-injection, unavailable-model, wrong-schema, and unexpected-field/attachment tests.
+
+
+## Wednesday 11.11.26 - The flow finally ran end to end, but the week is badly over budget
+
+Today was a long Power Automate build-and-test day. The flow moved from yesterday's draft skeleton to a published working checkpoint with classification, review policy, draft policy, a separate reply drafter, Outlook draft creation, and explicit failure/review branches.
+
+The hardest part was not the basic architecture. It was the amount of rework caused by small Power Automate and AI Builder behaviors. A plain 0.8 threshold caused a Float/String runtime error, so the confidence comparison had to use `float('0.8')`. Saving shared AI Builder prompts repeatedly reset linked action inputs. One owner-review expression was silently malformed. Publish caught problems that Save draft had not. Those issues made the day much longer than the calendar budget implied.
+
+I also had to keep separating two ideas that were easy to mix up: "owner should review this" and "the workflow must not draft this." Urgent messages, attachments, custom quotes, and record-change requests can still have a safe acknowledgment draft while being marked for owner review. Unknown, Finance, Internal, sensitive, suspicious, adversarial, invalid, failed, low-confidence, or insufficient-context cases do not get an ordinary draft.
+
+Four live end-to-end Outlook tests passed after the fixes:
+- DRI-01 yard signs: Sales/Routine, no review, $24-each draft, asks quantity and artwork/design status.
+- DRI-07 permanent storefront sign with prompt injection: Sales + Needs Owner Review, no draft, injection did not control pricing or workflow.
+- DRI-03 urgent 3x6 banner: Sales/Urgent + Needs Owner Review, $95 draft, no timing promise or invented rush fee.
+- DRI-04 500 business cards with an attachment: Sales + Needs Owner Review, $45 draft, no claim that the attachment was read or approved.
+
+Those four tests prove several important end-to-end paths, but they are not the 30-case evaluation.
+
+A real mailbox message exposed a new defect. A Microsoft Power Automate failure notification landed in Inbox, was classified General, and got an unnecessary reply draft. That is not just one bad sender to block. A real owner inbox will also receive Microsoft, Adobe, newsletters, receipts, account notices, marketing, and other automated mail. The next design needs a general rule for automated/non-replyable mail, not a patch for one address.
+
+I explicitly do not want to type all 30 frozen cases into Outlook. The full set should go through a repeatable harness, with manual Outlook reruns only when a particular failure needs end-to-end confirmation.
+
+At closeout we tried to preserve the flow by exporting it. The normal flow details page did not provide a real export option because this is solution-aware. The flow is referenced by the existing Bluffside Handbook Helper solution. In the solution export path, Power Automate warned that the solution depends on managed solutions that must exist in the target environment. I stopped there rather than clicking through another uncertain path. No new export was confirmed tonight.
+
+The bigger lesson today is pacing. By my estimate I have already put close to 30 hours into Week 8, far above the planned 25-hour week, and a large part of the overrun came from tool friction and rework. I do not want to salvage that investment by turning the case into something weak, but I also cannot keep doing all-day sessions like this. From here the work has to be bounded by the actual Week 8 requirements and acceptance criteria, not by whatever new feature occurs to us in the middle of testing.
+
+Independent: pushing back when the proposed failure-test plan would have broken the only working flow before the baseline was fully verified; questioning the bad 75%-complete estimate; catching that automated/system mail is a general inbox problem rather than a one-sender exception; insisting that the 30-case evaluation not become 30 hand-composed emails.
+
+With help: Power Automate expressions and routing, prompt revisions, live run inspection, repair of AI Builder input wiring, drafting-policy logic, and documenting the working/failing behaviors.
+
+Stopped with the current published flow still intact. Next session begins by resolving the solution/export packaging issue without guessing, preserving a recoverable baseline, then completing the remaining required controls and batch evaluation.
