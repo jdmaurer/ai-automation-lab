@@ -48,3 +48,24 @@ Append-only design record for the Driftless Print and Sign inbox-triage case.
 20. Use 0.80 as a provisional pilot confidence threshold. A structurally valid result below 0.80 goes to owner review and is not eligible for an ordinary draft. This threshold was chosen during implementation, not pre-frozen in the case. Evaluate it against the frozen 30-message set and document any later change; never alter the frozen answer key merely to fit model behavior.
 
 21. Treat model-action failure separately from invalid returned output. A failed, timed-out, or unavailable `Run a prompt` action must have an explicit fallback path to owner review before the flow is released; the existing validation False branch is not sufficient because it only runs when an output exists.
+
+
+## 2026-11-11 - Week 8 working checkpoint and verification decisions
+
+22. Keep owner-review triggers separate from draft blockers. Urgent priority, attachment presence, custom-quote need, and record-change requests may require owner review while still allowing a safe acknowledgment draft. Invalid or failed AI output, low confidence, Unknown, Finance, Internal, personal/sensitive/suspicious/adversarial content, insufficient context, or `draft_candidate=false` block an ordinary draft. Reason: review is a human-attention decision; draft eligibility is a separate safety decision.
+
+23. Ground the reply drafter only in the normalized email record, the structured classification record, and the approved synthetic price sheet. Standard listed products use the exact approved base price; custom work receives no invented price. Drafts must not claim an attachment was inspected or that an action, timing, refund, reprint, record change, or production change has already happened unless the workflow actually performed it.
+
+24. Treat AI Builder prompt edits as a deployment-risk event. After every save to a shared classifier or drafter prompt, inspect the linked Power Automate action inputs before Save/Publish. Reason: prompt saves were observed resetting action input wiring during this build.
+
+25. Do not manually run the entire frozen 30-message set by composing Outlook emails. Use a repeatable batch/evaluation harness for the full frozen set, and reserve live Outlook tests for representative end-to-end paths and targeted regression checks. Reason: manual composition is slow, error-prone, and does not scale as a regression method.
+
+26. Preserve a verified working baseline before deliberate failure injection. Model-unavailable and wrong-schema tests must not be performed by casually breaking the only working flow. Prefer an isolated copy/test version after the baseline is exported or otherwise preserved.
+
+27. Do not patch the Power Automate notification defect with one sender address. The design must handle automated/non-replyable/system/vendor/marketing mail as a general inbox class or policy, with a small synthetic test set defined before implementation. Reason: a real SME inbox will receive many automated senders, and some automated messages may still deserve owner attention even when they should never receive a reply draft.
+
+28. Treat the current flow as a working checkpoint, not a release. Four representative live tests passed, but the frozen 30, duplicate behavior, model failure/wrong-schema tests, audit/correlation controls, feedback capture, and final export/handoff are still incomplete.
+
+29. Stop the 2026-11-11 export attempt at the solution dependency warning. The flow is referenced by the existing `Bluffside Handbook Helper` solution, and the solution export warned that import will fail without dependent managed solutions in the target environment. Do not click through or claim a portable backup until the solution contents/dependencies and correct packaging path are inspected next session.
+
+30. From this point forward, add implementation work only when it is required by the Week 8 calendar, fixes an observed defect, or is necessary to pass the frozen acceptance criteria. Reason: Week 8 has materially exceeded its intended time budget, and opportunistic feature growth would worsen the overrun without improving the evidence proportionally.
