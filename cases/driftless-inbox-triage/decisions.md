@@ -69,3 +69,11 @@ Append-only design record for the Driftless Print and Sign inbox-triage case.
 29. Stop the 2026-11-11 export attempt at the solution dependency warning. The flow is referenced by the existing `Bluffside Handbook Helper` solution, and the solution export warned that import will fail without dependent managed solutions in the target environment. Do not click through or claim a portable backup until the solution contents/dependencies and correct packaging path are inspected next session.
 
 30. From this point forward, add implementation work only when it is required by the Week 8 calendar, fixes an observed defect, or is necessary to pass the frozen acceptance criteria. Reason: Week 8 has materially exceeded its intended time budget, and opportunistic feature growth would worsen the overrun without improving the evidence proportionally.
+
+## 2026-11-12 — Normal-build sequence and automated-mail rule
+
+31. Superseding decision 29's immediate-next-session export timing: finish and test required normal controls, run the repeatable frozen 30, fix ordinary defects, preserve/export the finished baseline, then perform isolated deliberate failure tests. Do not revisit the solution-export dependency warning now. Reason: Josh explicitly chose to finish the normal build before further packaging work.
+
+32. Use existing draft_candidate rather than a sender-specific block or new category to suppress ordinary replies to automated/system notifications, vendor notices, receipts, newsletters, or marketing messages that do not call for a human reply. A genuine vendor question can still be a draft candidate; an automated alert can remain Urgent while receiving no ordinary reply draft. Three prompt-only checks passed; end-to-end confirmation remains required.
+
+33. When Outlook access and connector/OAuth operations fail together, inspect official service health early before altering connection mappings. Preserve saved draft changes. November 12 troubleshooting did not establish which of the two existing Outlook solution references the trigger used; no reference edit/deletion is authorized by that evidence alone.
