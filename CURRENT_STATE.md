@@ -1,12 +1,16 @@
-# CURRENT STATE - updated 2026-11-12 - RESUME HERE
+# CURRENT STATE - updated 2026-11-13 - RESUME HERE
 
 Per AI_HANDOFF_PROTOCOL.md this file is overwritten each session. Earlier states are in git history and the weekly logs.
 
-## Resume point (2026-11-12, morning)
+## Resume point (2026-11-13, morning, approximately 10:30 Central)
 
-Week 8 technical build is in progress. Active case: `cases/driftless-inbox-triage/`.
+Week 8 technical build remains in progress: `cases/driftless-inbox-triage/`.
 
-The Power Automate flow `Driftless Inbox Triage` remains the same working published checkpoint from 2026-11-11. No flow logic was changed on 2026-11-12. It is not release-ready and the full frozen 30-message evaluation has not been run.
+On November 12, the shared AI Builder classifier prompt was saved with the general automated-mail draft suppression rule. Three targeted prompt-only tests passed. The linked Run a prompt input was immediately inspected and remained wired to `outputs('Normalize_-_Email_Fields')` (visible Body chip).
+
+The flow was saved as a DRAFT, but Publish failed with a broken connection for `Trigger - New Inbox Email`. A broad Microsoft 365 service degradation was subsequently observed on the official status page. Do not assume a configuration defect before checking recovery. Josh reports on November 13 that Outlook now opens after being down for the rest of November 12.
+
+The last successful flow publication remains November 11. However, the shared classifier prompt was saved November 12, so do not claim its live behavior is wholly unchanged. No end-to-end automated-mail regression or full frozen 30 evaluation has passed yet.
 
 ### What is working now
 
@@ -41,16 +45,31 @@ Four representative end-to-end Outlook smoke tests passed on 2026-11-11:
 
 These are smoke tests only, not the frozen 30-message evaluation.
 
-### Observed defect to fix next
+### Automated-mail fix and tests completed November 12
 
-A real Microsoft Power Automate notification email (`2 of your flow(s) have failed`) reached Inbox, was classified General, and caused an unnecessary reply draft.
+Added under the existing classifier section `Set draft_candidate to false for:`:
+`- automated/system notifications, vendor notices, receipts, newsletters, or marketing messages that do not call for a human reply`
 
-The narrow requirement is now clear:
-- Do not reclassify the inbox or move/delete/archive messages.
-- Do not patch only one Microsoft sender.
-- Obvious automated/system/vendor/marketing informational messages that do not call for a human reply must not create an ordinary reply draft.
-- The likely existing control is `draft_candidate=false`; inspect the current classifier prompt before deciding the smallest wording change.
-- The real Microsoft message from 2026-11-11 is evidence of the defect. A synthetic "automated notification / do not reply" message can verify the rule; it does not need to impersonate Microsoft.
+No taxonomy change or sender-specific patch. Three AI Builder prompt-only tests passed:
+- AUTO-01 informational automated usage report: General/Routine, draft_candidate false.
+- AUTO-02 same sender with a real vendor question: General/Routine, draft_candidate true.
+- AUTO-03 automated failed-job alert with a real deadline: General/Urgent, draft_candidate false.
+
+Inputs and observed results are in test-cases.md. These do not prove Outlook end-to-end behavior. Prompt Save was confirmed; wiring inspection followed immediately. A redundant literal email_record line survived alongside the dynamic input chip; do not redo the prompt for that cosmetic issue.
+
+### Outage troubleshooting: preserve evidence, avoid repeating detours
+
+Publish error: `You have a broken connection for 'Trigger - New Inbox Email'. Please fix connection.`
+
+- Trigger's existing Outlook connection reference appeared disabled/unselectable in Change connection.
+- Underlying `Outlook - jdmaurer Labs` connection showed Connected and listed Driftless Inbox Triage as using it. Healthy connection ID: `shared-office365-b5c0547a-cd9e-4973-99cb-d7aa40ff6718`.
+- Save/reload and Publish retry did not fix it.
+- Existing Bluffside Handbook Helper solution has two Outlook references: `new_sharedoffice365_9a16a` points at another connection; `new_sharedoffice365_a7390` points at Outlook - jdmaurer Labs. Which reference the trigger actually uses was NOT established. Trigger code's shared_office365 is an alias, not proof.
+- No reference was changed or deleted. Do not speculate that the first reference should be changed/deleted.
+- Switching to classic required removing or publishing the saved draft. Dialog was cancelled; no draft removed or classic switch completed.
+- Attempt to add connection `Outlook - Driftless` stalled, then failed: `Failed to create OAuth connection: ClientError: Test connection failed. Details: An unexpected error occurred.` Cancelled; no replacement connection confirmed.
+- Outlook refresh then hung. Official status.cloud.microsoft showed broad Microsoft 365 degradation including Exchange Online on November 12. This was consistent with the failures; exact causality was not proven.
+- The solution-export dependency warning was not resolved and must not be revisited now.
 
 ### Testing and preservation order decided 2026-11-12
 
@@ -67,33 +86,30 @@ Order from here:
 
 Do not inject deliberate failure into the only working version before step 5.
 
-### Browser/tooling issue found 2026-11-12
-
-The normal Chat browser connector could read Outlook fully, including the real Microsoft Power Automate failure email, but Power Automate's center workspace became inconsistently exposed: the reader could see the shell/left navigation while Josh could see the actual center content.
-
-New permanent guidance was added to `ASSISTANT_WORKING_CONTEXT.md`:
-- read the live browser tab before browser directions;
-- every click direction identifies screen region first;
-- do not ask Josh to relay page state the browser can already read;
-- if the connector cannot expose the actual page state, say so and do not guess.
-
-For the next Power Automate build session, use ChatGPT Work in the current ChatGPT desktop app if available. OpenAI's current desktop app combines Chat, Work, and Codex. Work is the preferred mode for this browser-heavy Power Automate/Outlook task; Codex remains the better fit for repository/code/terminal work. In the desktop app, Work can use the built-in browser where Josh and ChatGPT can see the same page.
-
 ### Exact next session start
 
-1. Start from this file and the active Driftless case files.
-2. Use ChatGPT Work in the desktop app if available.
-3. Open Power Automate and Outlook in Work's built-in browser and confirm the assistant can actually read the center Power Automate workspace before giving build directions.
-4. Inspect `Driftless Inbox Classifier` without changing or saving it.
-5. Make the smallest change needed so obvious automated/non-replyable informational mail yields no ordinary reply draft, using existing fields if possible.
-6. After any prompt save, immediately inspect the linked `Run a prompt` input wiring before publishing.
-7. Continue remaining required normal controls: correlation ID, review/audit logging, duplicate/resend protection, feedback capture, and weekly-summary path as required.
-8. Build/use a repeatable harness for the frozen 30.
-9. Export/preserve the finished normal baseline before deliberate break tests.
+1. Read live GitHub CURRENT_STATE.md first, active case files, AI_HANDOFF_PROTOCOL.md and ASSISTANT_WORKING_CONTEXT.md.
+2. Inspect current live browser and Microsoft service health before directing Josh. Confirm the actual Power Automate center workspace is readable; if not, say so immediately.
+3. Inspect saved flow draft and current trigger connection state after recovery. Check for any partial new connection before creating another. Use current evidence rather than repeating yesterday's detours.
+4. Resolve any remaining connection problem, then publish the saved normal draft. Do not discard draft changes.
+5. Run a targeted synthetic end-to-end automated-mail regression with supplied test data. Confirm no ordinary reply draft, while attention-worthy alerts still receive required owner attention.
+6. Continue required normal controls: correlation ID, audit/review log, duplicate/resend protection including DRI-10/DRI-15, feedback capture, required weekly-summary path.
+7. Build/use the repeatable frozen-30 harness once the normal processing contract is settled; fix ordinary defects.
+8. Preserve/export finished normal baseline before isolated deliberate breaks.
+
+### Teaching and pacing
+
+Read the live page after navigation. Every click direction begins with whole-screen region, then exact visible label. State purpose and expected result; give one instruction at a time except routine steps without a decision.
+
+For prompt edits, supply a full copy/paste replacement. Do not make Josh search two pages for shorthand such as draft_candidate=false; the actual old heading was near the bottom and that poor direction wasted several minutes. If locating text is necessary, give exact beginning and location.
+
+Check service health early when both OAuth/connector operations and Outlook fail. Do not spend another session on speculative connection fixes during a service outage. No log/harness implementation was done November 12. Harness implementation before the remaining contract settles risks rework; review logging is required work and is not inherently wasted. Do not claim either certainty of rework or certainty that retries will fix things.
+
+Do not start Intermediate Python. Track independent versus assisted work honestly.
 
 ### Open items
 
-- Automated/non-replyable mail draft suppression.
+- End-to-end verification of saved automated/non-replyable mail prompt fix; prompt-only tests passed.
 - Duplicate/resend protection, including DRI-10 / DRI-15.
 - Correlation ID and audit/review logging.
 - Feedback capture.
