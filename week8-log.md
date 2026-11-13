@@ -98,3 +98,25 @@ With help: diagnosing the difference between Outlook visibility and Power Automa
 
 No flow logic changed today.
 
+
+## Thursday 11.12.26 — Later build session: prompt fix passed; publishing stalled during Microsoft outage
+
+The later session made one narrow classifier change: automated/system/vendor/marketing informational messages that do not call for a human reply now set draft_candidate false. The existing 11-field contract and categories stayed the same. AI Builder prompt tests passed for an informational usage notice (no draft), a genuine vendor question from the same sender (draft allowed), and an urgent automated failed-job alert (Urgent, no draft). These were prompt-only checks, not end-to-end Outlook tests or the frozen 30.
+
+The prompt Save was confirmed. Immediately afterward, we checked Run a prompt: its Body input still referred to Normalize - Email Fields. The flow draft saved, but Publish reported a broken connection for Trigger - New Inbox Email.
+
+Too much time went into connection troubleshooting before we checked broader service health. The underlying Outlook - jdmaurer Labs connection showed Connected, yet the designer would not accept the trigger reference. Reload/retry did not fix it. We inspected two existing solution references without changing either; we never established which reference the trigger used. Switching to classic was cancelled when it required removing or publishing draft changes. A new Outlook - Driftless connection attempt stalled and failed its OAuth connection test; it was cancelled, with no replacement confirmed.
+
+Outlook itself then stalled on refresh. The official Microsoft status page showed widespread Microsoft 365 degradation, including Exchange Online. This was consistent with the errors, although it does not prove every error had the same cause. Josh reports November 13 that the outage lasted the rest of the day and Outlook now opens.
+
+A teaching failure also cost time: the assistant asked me to find draft_candidate=false in a long prompt, although the actual line began "Set draft_candidate to false for:" near the bottom. Future prompt edits need a complete replacement to paste, or the exact beginning and location. I should not have to scan two pages to interpret the assistant's shorthand.
+
+No correlation log, duplicate protection, feedback capture, weekly-summary path, or evaluation harness was built. No export or deliberate break test occurred. We kept the order: finish/test normal controls, frozen 30 via repeatable harness, ordinary fixes, preserve/export baseline, then isolated deliberate failures. Preparing the harness before the processing contract settles could create rework; required review logging is not inherently wasted work.
+
+Independent: noticing stalled sign-in and publishing problems; questioning why we were exporting before finishing; challenging whether outage-time substitute work would create rework; insisting on usable prompt-edit directions.
+With help: classifier wording, targeted tests, input-wiring inspection, browser navigation, and connection diagnosis.
+Time: no reliable full-session clock; do not invent one.
+
+## Friday 11.13.26 — Morning handoff
+
+At approximately 10:30 Central, Josh reported Outlook opens again and asked whether to start a fresh chat. Recommendation: fresh chat with this canonical handoff, preserving the saved flow draft. Resume by checking service health and the live trigger connection, then publish and verify the automated-mail fix end to end. Do not assume the old error still exists or repeat speculative repairs. No new build or test was performed during this handoff.
