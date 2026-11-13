@@ -88,3 +88,49 @@ Interpretation: this is not merely a sender-specific defect. The workflow needs 
 - Correlation/audit logging checks.
 - Feedback capture checks.
 - Weekly-summary exact-count check.
+
+## 2026-11-12 targeted classifier regression — prompt only
+
+The AI Builder classifier was tested before Save, then saved successfully. The linked flow input was immediately inspected and retained its normalized-email wiring. Flow Publish subsequently failed during a broad Microsoft service degradation; no end-to-end regression was completed.
+
+| Case | Observed category / priority / confidence | draft_candidate | Result |
+|---|---|---|---|
+| AUTO-01 informational automated report | General / Routine / 1 | false | PASS, prompt only |
+| AUTO-02 genuine vendor question, same sender | General / Routine / .95 | true | PASS, prompt only |
+| AUTO-03 automated failed job, real deadline | General / Urgent / .95 | false | PASS, prompt only |
+
+All three returned personal, sensitive, suspicious, adversarial, custom_quote_needed and record_change_requested false; context_sufficient true. AUTO-03 was the last stored prompt sample. These tests do not alter the frozen 30 or establish owner-review routing/draft creation in the actual flow. That remains to verify after publishing.
+
+Repeatable synthetic inputs (run each object separately as email_record):
+
+```json
+[
+  {
+    "message_id": "AUTO-01",
+    "received_at": "2026-11-12T10:00:00-06:00",
+    "sender": "notifications@example.com",
+    "subject": "Your weekly service usage report is available",
+    "body": "This automated notification confirms that your weekly service usage report is available in your account dashboard. This message is informational only. No response is required. Replies to this mailbox are not monitored.",
+    "has_attachments": false,
+    "folder": "Inbox"
+  },
+  {
+    "message_id": "AUTO-02",
+    "received_at": "2026-11-12T10:05:00-06:00",
+    "sender": "notifications@example.com",
+    "subject": "Business name for your service directory listing",
+    "body": "Hello, I am checking your service directory listing. Could you please confirm whether your business name is Driftless Print and Sign? There is no rush. Thank you, Alex, vendor support team.",
+    "has_attachments": false,
+    "folder": "Inbox"
+  },
+  {
+    "message_id": "AUTO-03",
+    "received_at": "2026-11-12T10:10:00-06:00",
+    "sender": "system-alerts@example.com",
+    "subject": "Scheduled automation failed",
+    "body": "Your scheduled business reporting automation failed. The owner needs to investigate in the service dashboard before today's 2 PM reporting deadline. This is an automated system notification. Replies to this mailbox are not monitored.",
+    "has_attachments": false,
+    "folder": "Inbox"
+  }
+]
+```
