@@ -161,6 +161,22 @@ Draft ID width was saved 4000 -> 3999 -> 4000 and Publish table invoked. Its fin
 
 The same row, 3fb010cb-eddf-f111-84e9-000d3a367f8a, was recovered manually. A separate newly loaded table view confirmed General/Routine; Processing Outcome Failed; Draft Created true; full Draft ID; Needs Owner Review true; Follow-up Open true; Review Outcome Pending; Final Category Unknown; Reviewed At blank; Feedback: Assisted recovery: draft created; automatic completion log failed. Owner review pending.
 
-Outlook directly showed exactly one draft. Its body: Hello, Thank you for reaching out. Yes, our business name is Driftless Print and Sign. Please let us know if you need any additional information. Best regards. Owner review decision remains pending; no draft was sent.
+Outlook directly showed exactly one draft. Its body: Hello, Thank you for reaching out. Yes, our business name is Driftless Print and Sign. Please let us know if you need any additional information. Best regards. Josh subsequently accepted the synthetic draft unchanged, with a caveat that unfamiliar sender context would need checking before a real reply. Power Apps saved Review Outcome Accepted Unchanged, Final Category General, Reviewed At November 14 2026 09:00 Central, and the caveat plus assisted-recovery feedback. Follow-up stayed open; no draft was sent.
 
 Result: REVIEW-01 remains FAIL for automatic end-to-end logging, with draft creation verified and recovery storage verified separately. Use one fresh normal message/new Message ID for the automatic completion-log check. Do not resubmit REVIEW-01: its row and draft now exist. Exact-ID enforcement, DRI-10/15, weekly summary, and frozen-30 results remain pending. No deliberate failure was injected.
+
+
+### LOG-02 — fresh automatic completion-log check (prepared, not sent)
+
+Purpose: verify the actual automatic completion write after repairing field storage. This is a targeted normal regression, not a repeated model-quality test or frozen-30 result.
+
+```json
+{
+  "to": "josh@joshmaurer.onmicrosoft.com",
+  "subject": "LOG-02 - Event listing name confirmation",
+  "body": "Hello, I'm preparing the exhibitor list for our community event. Please confirm that your business name should appear as Driftless Print and Sign. There is no rush. Thank you.",
+  "has_attachments": false
+}
+```
+
+Outlook assigns the real Message ID/time on sending. Expected: General/Routine; one new reply draft; automatic completion log Completed with full Draft ID, Draft Created true, Pending review, and Follow-up Open true. This is separate from the existing REVIEW-01 draft. Status: addressed/filled/saved in Outlook only; Josh's Send and runtime inspection pending.
