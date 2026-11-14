@@ -92,3 +92,10 @@ Append-only design record for the Driftless Print and Sign inbox-triage case.
 38. Use a shared Boolean explicit-resend-language flag for the frozen DRI-10/DRI-15 requirement. It requires owner review, blocks a second draft, and records Possible Resend without discarding the new email. This is a bounded flagging rule, not historical semantic duplicate matching; unannounced paraphrased repeats remain outside its detection. Frozen runtime results are still pending.
 
 39. Initialize owner-review follow-up as open when the workflow requires review or creates a draft awaiting review. Capture review outcome separately; only the owner decides whether follow-up is closed. Accepting a draft never sends it.
+
+
+## 2026-11-14 — Observed storage repairs and partial-run recovery
+
+40. Superseding decision 36's exact width: Message ID is now 401 characters after a minimal saved width change and publication resolved a rejected 152-character ID. The alternate key remains the chosen design; do not shorten IDs to hide write errors. Draft ID remains 4000 after a saved 4000 -> 3999 -> 4000 change and successful full-ID write/read. Displayed limits alone were not reliable proof of accepted storage; no specific backend cause was established.
+
+41. When draft creation succeeds but completion logging fails, recover the actual result in the existing row and preserve Failed plus an assisted-recovery note. Do not replay that message to test repaired logging: its Message ID is already recorded and its draft exists. Use a fresh normal message for automatic completion verification. Owner review stays pending until Josh decides; manual recovery does not count as an end-to-end pass.
