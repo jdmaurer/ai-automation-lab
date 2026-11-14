@@ -1,12 +1,16 @@
-# CURRENT STATE - updated 2026-11-13 - RESUME HERE
+# CURRENT STATE - updated 2026-11-14 - RESUME HERE
 
 Canonical baton under AI_HANDOFF_PROTOCOL.md. Active Week 8 build: `cases/driftless-inbox-triage/`. This is a working checkpoint, not a completed release.
 
 ## Current checkpoint
 
-The automated-mail prompt fix was successfully published November 13 after Josh challenged unnecessary renewed connection troubleshooting. No Outlook connection/reference changes were needed. AUTO-01 then passed a live end-to-end test. Subsequent correlation, Dataverse logging, duplicate, and explicit-resend controls were saved, then published successfully. The first publication attempt exposed a leading control character in Rule - Duplicate Message; replacing the full title with the clean name resolved InvalidWorkflowRunActionName. The additions are published. REVIEW-01's first runtime attempts failed at initial Dataverse logging; classification/draft creation and review capture have not passed. Flow checker most recently showed 0 errors and 0 warnings. Do not confuse that with runtime verification.
+The automated-mail prompt fix was published November 13 without Outlook connection changes; AUTO-01 passed live. Correlation, Dataverse logging, exact-ID duplicate, and explicit-resend controls were then saved and published. The leading control character in Rule - Duplicate Message's name was removed to resolve InvalidWorkflowRunActionName. Flow checker showed 0 errors/0 warnings, but runtime verification remains incomplete.
 
-Next work: owner feedback/review capture using the existing Driftless Inbox Log fields, then the required weekly-summary path, a repeatable frozen-30 harness, and ordinary defect fixes. Power Apps' editable table exposes the five human review fields and currently has no processing records. Latest UI: Power Automate run 08584069727813331938580416649CU19 is open with Resubmit ready. REVIEW-01 was already sent; do not send another email. A fresh column-width update (400 to 401) was saved and the table published successfully. Josh's next action is Resubmit, then OK; inspect the resulting run before further changes. Do not click Test/Manually and wait before preparing the email. Confirm current UI before directing.
+REVIEW-01 progressed through classification and successfully created one Outlook reply draft after the Message ID storage repair. Its automatic completion log then failed on Draft ID storage. Both field storage problems were addressed without shortening either identifier. The existing record was recovered manually and independently read back from a separate table view: General/Routine, Failed, Draft Created true, full Draft ID, Needs Owner Review true, Follow-up Open true, Review Outcome Pending, Final Category Unknown, Reviewed At blank. Feedback identifies assisted recovery and pending owner review. This is NOT an automatic end-to-end logging pass.
+
+Exact next step: Josh reviews the existing REVIEW-01 draft, already open in Outlook. An unanswered review question offers Accept unchanged / Needs an edit / Reject; no decision has been recorded yet. Record only his actual decision and keep follow-up separate. Then use ONE fresh synthetic normal email with a new Message ID to verify automatic completion logging after the field repairs. Supply complete test data before instructing any send. Do not resubmit REVIEW-01 or send that test again: its row and draft already exist.
+
+Latest UI: Outlook's REVIEW-01 draft is open. The original Power Apps editable table remains open; a Refresh prompt about pending changes was cancelled rather than discarding work. A separate newly loaded table view independently confirmed the recovered row, including Failed. Do not discard the original tab's pending changes merely to refresh. No new email, resubmit, or draft was created during interruption recovery.
 
 ## Evidence already established
 
@@ -17,7 +21,7 @@ Next work: owner feedback/review capture using the existing Driftless Inbox Log 
 - AUTO-02 genuine vendor question and AUTO-03 urgent automated alert remain prompt-only evidence. No full frozen-30 result exists.
 - Microsoft public status still described residual degradation during the earlier November 13 check. Outlook recovery and successful publication did not establish the exact cause of yesterday's errors. Do not repeat speculative connection repairs.
 
-## Published additions, not yet runtime-tested
+## Published additions — partial runtime evidence
 
 ### Correlation and logging
 
@@ -57,13 +61,14 @@ Choice numeric values: Category Sales/Support/Finance/General/Internal/Unknown =
 
 ## Next steps and guardrails
 
-1. Confirm latest save and inspect live review fields/table view; complete feedback capture and a usable review process.
-2. Unique Message ID key is Active; verify enforcement during normal duplicate testing. No speculative connection/reference changes.
-3. Finish weekly summary from recorded processing/review activity with exact calculated counts and owner-reviewed explanation.
-4. Publish required normal additions when ready, verify normal paths, build/use repeatable frozen-30 harness. Do not hand-compose 30 emails.
-5. Fix ordinary defects; preserve/export the finished working baseline into the repo.
-6. Only then run isolated model-unavailable/wrong-schema deliberate failure tests. No new export was produced at this checkpoint; export packaging is deferred by Josh's explicit sequence.
-7. Finish runbook/operator reference, governance/adoption handoff, metrics, Gate 2.
+1. Capture Josh's review of the existing REVIEW-01 draft; acceptance records review only and never sends it. Do not assume follow-up is closed.
+2. Use one fresh normal test with a new Message ID to verify automatic Log - Complete Email Processing after the column repairs. Existing REVIEW-01 must not be resubmitted.
+3. Repair observed ordinary failure routing: prevent the AI-failure fallback from setting an uninitialized variable after skipped initialization; ensure a completion-log failure is visibly recoverable. Do not claim failure coverage is complete.
+4. Unique Message ID key is Active; verify exact-ID enforcement and DRI-10/DRI-15 behavior during normal testing, including the required concurrency/race behavior. No speculative connection/reference changes.
+5. Finish weekly summary from recorded processing/review activity with exact calculated counts and owner-reviewed explanation. Build/use the repeatable frozen-30 harness; do not hand-compose 30 emails.
+6. Fix ordinary defects and preserve/export the finished working baseline into the repo.
+7. Only then run isolated model-unavailable/wrong-schema deliberate failure tests. No new export was produced at this checkpoint; export packaging is deferred by Josh's explicit sequence.
+8. Finish runbook/operator reference, governance/adoption handoff, metrics, Gate 2.
 
 Do not revisit the solution-export dependency warning now. Do not start Intermediate Python. No auto-send/forward, no moving/deleting/archiving originals, no shadow archive of full email bodies/attachments.
 
@@ -82,12 +87,14 @@ GitHub is updated remotely at this checkpoint; fast-forward the local clone befo
 
 Publication UI note: after successful Publish, the designer briefly retained an old Condition details panel. Closing/reopening Rule - Duplicate Message displayed its correct condition without any logic change. Do not interpret a designer spinner alone as a runtime failure.
 
-## REVIEW-01 runtime blocker — latest diagnostic checkpoint
+## REVIEW-01 — runtime evidence and recovery, November 13–14
 
-- Synthetic REVIEW-01 was sent to the lab inbox, subject REVIEW-01 - Business name confirmation, body: Hello, could you confirm that your business name is Driftless Print and Sign for our vendor directory? There is no rush. Thank you. No attachments.
-- Original run 08584069732027549680878527902CU04 failed in Log - Start Email Processing. Raw input showed the exact Outlook Message ID is 152 characters; correlation ID 33, received timestamp 25. No AI/draft action ran and no log row was created.
-- Server code 0x80090429 / StringOrBinaryTruncation names jdm_Table1Base.jdm_MessageID. Live column editor independently still showed maximum 400 and correct schema jdm_MessageID/logical jdm_messageid. Do not truncate the identifier or claim it exceeded 400.
-- Table Publish succeeded, but resubmission 08584069727813331938580416649CU19 failed identically. Publication alone did not resolve it.
-- A minimal actual schema change 400 -> 401 was then saved successfully and Publish table reported Publish succeeded. Its runtime effect is NOT yet verified. The next resubmit is a bounded check of this repair, not a new test email. If unchanged, stop repeating reruns and preserve the precise blocker.
-- A secondary defect was observed: initial logging failure skips Initialize - Needs Owner Review, yet Set - Needs Owner Review - AI Failure runs because Run a prompt is skipped and attempts the uninitialized variable. This is a separate ordinary failure-routing defect to repair after resolving the first rejected field; do not mistake it for model/Outlook failure or claim failure coverage is complete.
-- No successful new log record, generated reply draft, or human-feedback capture has been verified. Weekly summary and frozen-30 harness remain outstanding. No deliberate failure was injected.
+- Synthetic email to josh@joshmaurer.onmicrosoft.com: subject REVIEW-01 - Business name confirmation; body: Hello, could you confirm that your business name is Driftless Print and Sign for our vendor directory? There is no rush. Thank you. No attachments.
+- Original run 08584069732027549680878527902CU04 failed at Log - Start Email Processing: 0x80090429 / StringOrBinaryTruncation on jdm_MessageID. Actual Outlook ID was 152 characters despite live maximum 400. No row/draft was created. Publishing the table alone did not fix it; resubmit 08584069727813331938580416649CU19 failed identically.
+- A saved fresh Message ID width change 400 -> 401 followed by confirmed Publish succeeded resolved the initial write in run 08584069721053204433787343518CU25. Do not truncate actual IDs. This is evidence of a metadata/storage mismatch, not proof of a specific backend root cause.
+- That run created row 3fb010cb-eddf-f111-84e9-000d3a367f8a (correlation 08584069721053204433787343518CU25), classified General/Routine, and successfully created an Outlook reply draft. Log - Complete Email Processing failed with truncation on jdm_DraftID; its actual ID was also 152 characters although the live maximum read 4000. Validate - AI Output's parent ActionFailed / No dependent actions succeeded was not the root cause.
+- Draft ID width was saved 4000 -> 3999 -> 4000 and Publish table was invoked. No final publish toast was captured for that operation. The full Draft ID was subsequently stored and read back successfully, proving the field accepts it. Final maxima: Message ID 401, Draft ID 4000.
+- Assisted recovery updated the SAME row with the actual General/Routine/draft result, Processing Outcome Failed, Needs Owner Review and Follow-up Open true, Pending review, Unknown Final Category, blank Reviewed At, and Feedback: Assisted recovery: draft created; automatic completion log failed. Owner review pending. A separate newly loaded table view independently confirmed all these values after interruption. Automatic logging is still unverified; do not count the manual recovery as a pass.
+- Existing draft inspected directly in Outlook: Hello, Thank you for reaching out. Yes, our business name is Driftless Print and Sign. Please let us know if you need any additional information. Best regards. Owner acceptance/edit/rejection remains pending. No send occurred.
+- Secondary ordinary defect remains: initial logging failure skips Initialize - Needs Owner Review, yet Set - Needs Owner Review - AI Failure runs after a skipped Run a prompt and attempts an uninitialized variable. A completion-log failure also required manual review marking here. Repair bounded failure routing; do not attribute these failures to Outlook or the model.
+- One fresh normal message is required to verify automatic completion logging after repair. Exact-ID duplicate enforcement, DRI-10/15, weekly summary and the frozen-30 harness remain unverified. No deliberate failure was injected and no baseline export was produced.
