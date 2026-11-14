@@ -12,11 +12,15 @@ LOG-02 now PASSED the targeted automatic logging regression. Run 085840693789052
 
 The AI-failure fallback repair has now been SAVED and PUBLISHED. The saved-draft banner was observed, the assistant clicked Publish, and the designer showed Published / Your flow is ready to go. Its run-after accepts only TimedOut/Failed from Run_a_prompt. LOG-02 was not repeated.
 
-Exact next step: Josh clicks Save draft and waits for the saved-draft confirmation for TWO new completion-log failure actions. They are configured, Code-view checked, and Flow checker shows Errors (0), Warnings (0), but these additions are UNSAVED and UNPUBLISHED. After confirming save, publish. No deliberate failure injection yet.
+The two completion-log failure actions were then saved by Josh and PUBLISHED by the assistant. Both the saved-draft banner and Published / Your flow is ready to go were observed. Main triage flow now includes Category - Owner Review - Log Failure and Log - Completion Write Failure. Configuration checker was 0 errors/0 warnings; deliberate runtime failure verification remains deferred. LOG-02 was not repeated.
 
-Latest UI: Power Automate designer is on Log - Completion Write Failure with Flow checker open (0 errors/0 warnings); Save draft is enabled. The added sequence is Log - Complete Email Processing -> Category - Owner Review - Log Failure -> Log - Completion Write Failure, all inside Validate True. The first new action runs ONLY after completion logging Failed/TimedOut; the second accepts category action Succeeded/Failed/TimedOut, never Skipped. This prevents normal successful runs from being overwritten as Failed.
+Exact next step: Josh clicks SAVE (not Save draft) in the new Driftless Weekly Inbox Summary editor, waits for completion, then confirms. Its initial four-card foundation is configured and Peek-code checked, and Flow checker shows Errors 0 / Warnings 0, but the new summary flow is NOT YET SAVED. Do not run a partial summary test or claim the summary is finished.
 
-The original Power Apps editable table and Outlook remain open. Do not discard the earlier Power Apps pending-changes prompt merely to refresh. REVIEW-01's owner review remains Accepted Unchanged with the sender-context caveat and follow-up open; its processing record remains Failed. LOG-02's automatically created reply remains Pending review, unsent.
+Latest UI: separate Chrome tab 156966164, Power Automate solution page, contains an embedded classic designer named Driftless Weekly Inbox Summary. Its toolbar has Save at the top right. The flow is still at /flows/new inside the widget, so no persisted resource ID has been established. Keep this tab open/marked for handoff. Original triage designer tab 156966006 remains published and intact.
+
+After saving, continue summary construction: guard against truncated retrieval, calculate exact category/review/pending counts from the log, then pass only calculated aggregates to a short AI explanation and create an owner-reviewed summary output. Counts and explanation/delivery are NOT implemented yet. Do not change shared classifier/drafter prompts. Inspect flow input wiring immediately after saving any future AI Builder summary prompt.
+
+The original Power Apps table and Outlook remain open. Do not discard the earlier Power Apps pending-changes prompt merely to refresh. REVIEW-01's owner review remains Accepted Unchanged with the sender-context caveat and follow-up open; processing remains Failed. LOG-02's automatic reply remains Pending review, unsent.
 
 ## Evidence already established
 
@@ -45,13 +49,13 @@ The original Power Apps editable table and Outlook remain open. Do not discard t
 - Log - Invalid AI Output: in Validate False, after the existing invalid-output Outlook category action. Unknown, Failed, no draft, Needs Owner Review/Follow-up Open true, Pending. Runs after that category action succeeds, fails, times out, or is skipped within the selected invalid-output branch.
 - Log - AI Request Failure: top-level AI-failure path, same field values. Runs after the AI-failure Outlook category action succeeds/fails/times out, NOT when skipped. That exclusion prevents overwriting successful processing.
 
-### Completion-log failure recovery — configured, not saved/published
+### Completion-log failure recovery — published; runtime failure verification pending
 
 - Category - Owner Review - Log Failure: Outlook AssignCategory on triggerOutputs()?['body/id'], category Needs Owner Review. runAfter Log_-_Complete_Email_Processing = Failed/TimedOut only. This marks the original email without sending or creating a replacement draft.
 - Log - Completion Write Failure: Dataverse UpdateOnlyRecord, entity jdm_table1s, row ID body('Log_-_Start_Email_Processing')?['jdm_table1id']. Writes only Draft Created = equals(actions('Create_-_Outlook_Draft')?['status'],'Succeeded'), Follow-up Open true, Needs Owner Review true, Processing Outcome Failed (832990002).
 - Minimal update deliberately does not retry the long Draft ID or overwrite human feedback, Final Category, or Reviewed At. Existing IDs/categories remain in the record; a failed original completion write may still leave its suggested Category Unknown until recovery.
 - Its runAfter Category_-_Owner_Review_-_Log_Failure accepts Succeeded/TimedOut/Failed, NOT Skipped. This attempts the failure log even if applying the Outlook marker fails, while leaving normal successful runs untouched.
-- Code views inspected for both actions; Flow checker Errors (0), Warnings (0). No runtime pass is claimed. If Dataverse is unavailable, that recovery write can also fail; the independent Outlook marker and failed run remain the available signals when Outlook is available.
+- Code views inspected for both actions; Flow checker Errors (0), Warnings (0). Josh saved and the assistant published; saved-draft and Published/ready banners were observed. No runtime failure pass is claimed. If Dataverse is unavailable, that recovery write can also fail; the independent Outlook marker and failed run remain the available signals when Outlook is available.
 
 ### Exact duplicate check
 
@@ -73,13 +77,29 @@ The original Power Apps editable table and Outlook remain open. Do not discard t
 
 Choice numeric values: Category Sales/Support/Finance/General/Internal/Unknown = 832990000 through 832990005. Priority Urgent/Routine = 832990000/832990001. Processing Started/Completed/Failed/Duplicate/Possible Resend = 832990000 through 832990004. Review Pending/Accepted Unchanged/Edited/Rejected/Reclassified/No Draft = 832990000 through 832990005. UI yes/no labels are Yes and No.
 
+## Weekly summary — initial foundation, UNSAVED
+
+- Separate on-demand helper named Driftless Weekly Inbox Summary, created through existing solution New -> Automation -> Cloud flow -> Instant. It opened an embedded CLASSIC designer even though the launch URL included v3=true. No existing draft was discarded or designer switched.
+- Manually trigger a flow: one required Date input, title Week starting (Monday), actual internal property date, format date. Schema was inspected.
+- Window - Week Start UTC (Compose): convertToUtc(concat(triggerBody()?['date'],'T00:00:00'),'Central Standard Time').
+- Window - Week End UTC (Compose): convertToUtc(concat(addDays(triggerBody()?['date'],7,'yyyy-MM-dd'),'T00:00:00'),'Central Standard Time').
+- Boundaries are Central local midnight at start and seven days later, converted independently to UTC so DST does not shift the reporting week. Range is start inclusive / end exclusive. These expressions were inspected in Peek code, not runtime-tested.
+- Read - Weekly Log Rows: Dataverse ListRecords using existing shared_commondataserviceforapps connection, entity jdm_table1s.
+- Select columns: jdm_table1id,jdm_category,jdm_finalcategory,jdm_reviewedat,jdm_processingoutcome,jdm_reviewoutcome,jdm_draftcreated,jdm_followupopen,jdm_needsownerreview,jdm_receivedat.
+- Filter rows: jdm_receivedat ge @{outputs('Window_-_Week_Start_UTC')} and jdm_receivedat lt @{outputs('Window_-_Week_End_UTC')}.
+- Sort By: jdm_receivedat asc,jdm_table1id asc. No message bodies/attachments selected. No Row count override.
+- Pagination On, threshold 100000; Peek code confirms runtimeConfiguration.paginationPolicy.minimumItemCount = 100000. STILL REQUIRED before reporting: stop/flag if retrieval reaches the cap or exposes an unhandled continuation token; do not present truncated counts as complete.
+- Counts, category/review grouping, AI explanation and final owner-reviewed output have not yet been added. The charter requires per-category processed messages and drafts accepted unchanged/edited/rejected, plus separately counted processed messages awaiting owner review including no-draft cases. Keep processing status, review decisions, and follow-up distinct; failed attempts must not be represented as successful processing.
+- No weekly summary runtime test or exact-count result exists. After construction use a supplied selected-week test input; do not send new Inbox test emails merely to exercise summary retrieval.
+- Official references checked: https://learn.microsoft.com/en-us/power-automate/dataverse/list-rows ; https://learn.microsoft.com/en-us/power-automate/convert-time-zone ; https://learn.microsoft.com/en-us/power-automate/data-operations .
+
 ## Next steps and guardrails
 
 1. REVIEW-01 review capture is saved: Accepted Unchanged with sender-context caveat, Final Category General, Reviewed At November 14 09:00 Central. Follow-up remains open; no send occurred.
 2. LOG-02 automatic completion logging and actual reply draft are verified PASS. Do not repeat the test or resubmit REVIEW-01.
-3. The narrow AI-failure fallback repair is now published. Save/publish the two configured completion-log failure actions next. Full runtime failure coverage remains unverified; deliberate failure testing stays after finished-baseline preservation.
+3. Both the narrow AI-failure fallback repair and completion-log failure recovery route are published. Full runtime failure coverage remains unverified; deliberate failure testing stays after finished-baseline preservation.
 4. Unique Message ID key is Active; verify exact-ID enforcement and DRI-10/DRI-15 behavior during normal testing, including the required concurrency/race behavior. No speculative connection/reference changes.
-5. Finish weekly summary from recorded processing/review activity with exact calculated counts and owner-reviewed explanation. Build/use the repeatable frozen-30 harness; do not hand-compose 30 emails.
+5. Save the new weekly-summary foundation, then finish its exact calculated counts and owner-reviewed explanation/output. Build/use the repeatable frozen-30 harness; do not hand-compose 30 emails.
 6. Fix ordinary defects and preserve/export the finished working baseline into the repo.
 7. Only then run isolated model-unavailable/wrong-schema deliberate failure tests. No new export was produced at this checkpoint; export packaging is deferred by Josh's explicit sequence.
 8. Finish runbook/operator reference, governance/adoption handoff, metrics, Gate 2.
@@ -110,5 +130,5 @@ Publication UI note: after successful Publish, the designer briefly retained an 
 - Draft ID width was saved 4000 -> 3999 -> 4000 and Publish table was invoked. No final publish toast was captured for that operation. The full Draft ID was subsequently stored and read back successfully, proving the field accepts it. Final maxima: Message ID 401, Draft ID 4000.
 - Assisted recovery updated the SAME row with the actual General/Routine/draft result, Processing Outcome Failed, Needs Owner Review and Follow-up Open true, Pending review, Unknown Final Category, blank Reviewed At, and Feedback: Assisted recovery: draft created; automatic completion log failed. Owner review pending. A separate newly loaded table view independently confirmed all these values after interruption. Automatic logging is still unverified; do not count the manual recovery as a pass.
 - Existing draft inspected directly in Outlook: Hello, Thank you for reaching out. Yes, our business name is Driftless Print and Sign. Please let us know if you need any additional information. Best regards. Josh accepted this unchanged for the synthetic test with a caveat about unfamiliar sender context before a real reply. Review Outcome Accepted Unchanged, Final Category General, and Reviewed At November 14 09:00 Central were saved. Follow-up remains open and Processing Outcome remains Failed. No send occurred.
-- The secondary ordinary defect was traced to initial logging failure skipping initialization while the AI-failure setter accepted a Skipped Run a prompt. The assistant has now unchecked Is skipped and read Code view showing only TimedOut/Failed; this change was subsequently saved and published. Completion-log visibility/recovery additions are configured but await Save/Publish, as described above; do not attribute these failures to Outlook or the model.
+- The secondary ordinary defect was traced to initial logging failure skipping initialization while the AI-failure setter accepted a Skipped Run a prompt. The assistant has now unchecked Is skipped and read Code view showing only TimedOut/Failed; this change was subsequently saved and published. Completion-log visibility/recovery additions were subsequently saved and published, as described above; do not attribute these failures to Outlook or the model.
 - The fresh LOG-02 run above subsequently verified automatic completion logging after the storage repairs. Exact-ID duplicate enforcement, DRI-10/15, weekly summary and the frozen-30 harness remain unverified. No deliberate failure was injected and no baseline export was produced.
