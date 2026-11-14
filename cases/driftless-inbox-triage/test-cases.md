@@ -134,3 +134,14 @@ Repeatable synthetic inputs (run each object separately as email_record):
   }
 ]
 ```
+
+
+## 2026-11-13 — Automated-mail live regression and saved normal-control draft
+
+- AUTO-01 informational automated usage report: PASS, live Outlook end to end. General/Routine/confidence 1; draft_candidate false; risk flags false; context_sufficient true. Draft generation and routine owner-review paths skipped. Outlook Drafts directly inspected and empty.
+- Received timestamp 2026-11-13T17:12:40+00:00; client tracking ID 08584070169088727932205415585CU07. Josh sent the synthetic test to the lab mailbox itself. No connection changes were needed to publish after recovery.
+- AUTO-02 and AUTO-03 remain prompt-only evidence from November 12.
+- Correlation, processing/review logs, exact-ID lookup/stop, and explicit-language Possible Resend controls were added to the saved draft. Flow checker showed 0 errors and 0 warnings. This does NOT establish runtime pass results for those controls.
+- DRI-10/DRI-15 runtime test, alternate-key enforcement/concurrency behavior, feedback capture, weekly-summary exact counts, and full frozen 30 remain unverified. No deliberate failure tests were run.
+
+- Unique Message ID alternate key subsequently confirmed Active in Power Apps. This confirms index activation, not runtime duplicate-test success.
