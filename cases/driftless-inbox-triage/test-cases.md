@@ -166,7 +166,7 @@ Outlook directly showed exactly one draft. Its body: Hello, Thank you for reachi
 Result: REVIEW-01 remains FAIL for automatic end-to-end logging, with draft creation verified and recovery storage verified separately. Use one fresh normal message/new Message ID for the automatic completion-log check. Do not resubmit REVIEW-01: its row and draft now exist. Exact-ID enforcement, DRI-10/15, weekly summary, and frozen-30 results remain pending. No deliberate failure was injected.
 
 
-### LOG-02 — fresh automatic completion-log check (prepared, not sent)
+### LOG-02 — fresh automatic completion-log check — PASS, November 14
 
 Purpose: verify the actual automatic completion write after repairing field storage. This is a targeted normal regression, not a repeated model-quality test or frozen-30 result.
 
@@ -179,4 +179,12 @@ Purpose: verify the actual automatic completion write after repairing field stor
 }
 ```
 
-Outlook assigns the real Message ID/time on sending. Expected: General/Routine; one new reply draft; automatic completion log Completed with full Draft ID, Draft Created true, Pending review, and Follow-up Open true. This is separate from the existing REVIEW-01 draft. Status: addressed/filled/saved in Outlook only; Josh's Send and runtime inspection pending.
+Outlook assigns the real Message ID/time on sending. Expected: General/Routine; one new reply draft; automatic completion log Completed with full Draft ID, Draft Created true, Pending review, and Follow-up Open true. This is separate from the existing REVIEW-01 draft. Result: PASS. Josh sent it; run 08584069378905225699918187276CU13 succeeded in 15 seconds. Normalize confirmed subject/body and received timestamp 2026-11-14T15:09:38+00:00. Log - Complete Email Processing succeeded with HTTP 200 and persisted row c4dd1c73-3de0-f111-84ea-000d3a367f8a: General/Routine, Completed, Draft Created true, full 152-character Draft ID, Needs Owner Review false, Review Pending, Follow-up Open true, Final Category Unknown.
+
+Outlook directly showed one new LOG-02 reply and the existing REVIEW-01 reply, two drafts total. Generated LOG-02 text: Hello, Thank you for reaching out. Yes, please list our business name as Driftless Print and Sign for the exhibitor list. If you need any further information, feel free to ask. Best regards. No owner quality rating for LOG-02 has been recorded and no reply was sent.
+
+This verifies the repaired normal automatic completion-log path. It does not establish duplicate/resend enforcement, full failure handling, or frozen-30 success. No rerun is needed merely to re-prove this check.
+
+### Bounded ordinary failure-routing repair — unsaved/unpublished draft
+
+After LOG-02 passed, the assistant removed Is skipped from Set - Needs Owner Review - AI Failure's run-after settings. Code view confirmed Run_a_prompt statuses [TimedOut, Failed], while inputs still set needs_owner_review true. This prevents skipped upstream work from invoking the setter after skipped initialization. Save draft/Publish are pending; no deliberate failure test was run.
