@@ -145,3 +145,12 @@ Repeatable synthetic inputs (run each object separately as email_record):
 - DRI-10/DRI-15 runtime test, alternate-key enforcement/concurrency behavior, feedback capture, weekly-summary exact counts, and full frozen 30 remain unverified. No deliberate failure tests were run.
 
 - Unique Message ID alternate key subsequently confirmed Active in Power Apps. This confirms index activation, not runtime duplicate-test success.
+
+
+### REVIEW-01 — first runtime attempts after control publication
+
+The normal controls were published after a leading control character was removed from Rule - Duplicate Message's title. REVIEW-01 was a synthetic General/Routine business-name confirmation request to the lab mailbox, intended to create one draft and a log record for review.
+
+Observed FAIL before AI: Log - Start Email Processing rejected a 152-character Outlook Message ID with server code 0x80090429/StringOrBinaryTruncation on jdm_MessageID, despite the live maximum being 400. Original run: 08584069732027549680878527902CU04. Publishing the table succeeded, but resubmission 08584069727813331938580416649CU19 failed identically. No draft or processing row was created. A secondary uninitialized needs_owner_review failure came from the AI-failure fallback running after a skipped AI step.
+
+A fresh 400-to-401 character-width update was saved and the table published; the subsequent resubmit is pending. No runtime pass may be claimed yet. No email ID was shortened and no deliberate failure was injected.
