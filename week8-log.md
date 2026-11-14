@@ -161,3 +161,12 @@ I accepted the REVIEW-01 reply unchanged for the synthetic case after seeing the
 This captures a real owner review decision, but it does not repair the earlier automatic logging failure. The assistant prepared a separate LOG-02 email about a community-event exhibitor listing to check automatic completion after the storage repairs. It is addressed to the lab mailbox and saved, not sent. Next is one Send and inspection of that new run. No additional REVIEW-01 resubmit occurred.
 
 Independent: judging the draft and raising sender-context concerns. Assisted: recording review fields, preserving the open follow-up flag, and preparing the targeted test.
+
+
+### Saturday 11.14.26 — Automatic completion logging passed
+
+I sent the prepared LOG-02 test. Its run succeeded in 15 seconds. The assistant verified the message identity and the actual completion response: General/Routine, Completed, full Draft ID saved, draft created, review Pending and follow-up open. Outlook showed exactly one new LOG-02 reply alongside the existing REVIEW-01 reply. That closes the targeted normal logging check; the manually recovered REVIEW-01 record still correctly records its earlier failure.
+
+The assistant then made one bounded repair for the secondary error we had actually observed: Set - Needs Owner Review - AI Failure should run after a failed or timed-out AI request, not a skipped request. Code view now shows only TimedOut and Failed. The edit still needs me to Save draft, wait for confirmation, and publish. It has not been deployed or failure-tested.
+
+Independent: sending the prepared synthetic test. Assisted: inspecting the run, saved record and Outlook result, and changing/verifying the failure setting. No frozen-30 pass, baseline export, or deliberate failure test is claimed. Next: save/publish this repair, then continue the remaining required normal controls.
