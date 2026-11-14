@@ -170,3 +170,12 @@ I sent the prepared LOG-02 test. Its run succeeded in 15 seconds. The assistant 
 The assistant then made one bounded repair for the secondary error we had actually observed: Set - Needs Owner Review - AI Failure should run after a failed or timed-out AI request, not a skipped request. Code view now shows only TimedOut and Failed. The edit still needs me to Save draft, wait for confirmation, and publish. It has not been deployed or failure-tested.
 
 Independent: sending the prepared synthetic test. Assisted: inspecting the run, saved record and Outlook result, and changing/verifying the failure setting. No frozen-30 pass, baseline export, or deliberate failure test is claimed. Next: save/publish this repair, then continue the remaining required normal controls.
+
+
+### Saturday 11.14.26 — Published the fallback correction; filled the completion-failure gap
+
+I saved the narrow AI-failure setting change. The assistant confirmed the saved banner, published it, and observed the Published / ready-to-go result. We did not repeat LOG-02.
+
+The earlier REVIEW-01 partial failure showed another required gap: when the reply draft was created but its completion log failed, the original email was not marked for owner attention. The assistant added an Outlook Needs Owner Review action that runs only after failed/timed-out completion logging, followed by a minimal update of the same record to Failed with its actual draft-created status and follow-up/review open. That update can still run if the Outlook marker fails, but it must not run when the marker is skipped on a successful normal path.
+
+Both definitions were inspected and Flow checker showed 0 errors/0 warnings. The additions still need my Save and publication. This is assisted construction, not a demonstrated runtime failure-recovery pass. Deliberate failures stay deferred until the finished baseline is preserved.
