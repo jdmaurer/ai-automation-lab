@@ -152,3 +152,12 @@ A separate ordinary failure-routing defect remains: if initial logging fails bef
 With help: diagnosing run inputs/errors, field changes, full-ID recovery, record verification, and checkpoint documentation. I sent the synthetic test and performed instructed publication/resubmit steps. This was assisted implementation and recovery, not independent construction or a frozen-30 pass. No reliable total session clock was kept.
 
 Stopped with the existing record saved and the generated draft awaiting my review. Next: record that review, then one fresh normal message/new Message ID to verify automatic completion logging. Do not resubmit the existing message and risk another draft. Weekly summary, duplicate/resend runtime verification, the repeatable frozen-30 harness, ordinary fixes, finished-baseline export, and isolated deliberate failures remain in the agreed order.
+
+
+### Saturday 11.14.26 — Owner review recorded
+
+I accepted the REVIEW-01 reply unchanged for the synthetic case after seeing the original request: it only asked whether the public business name was Driftless Print and Sign. I was cautious about the unfamiliar vendor context; I would want that context before sending a real reply. The assistant recorded that caveat with Accepted Unchanged, Final Category General, and the review timestamp. Follow-up remains open, the processing record still says Failed, and the draft was not sent.
+
+This captures a real owner review decision, but it does not repair the earlier automatic logging failure. The assistant prepared a separate LOG-02 email about a community-event exhibitor listing to check automatic completion after the storage repairs. It is addressed to the lab mailbox and saved, not sent. Next is one Send and inspection of that new run. No additional REVIEW-01 resubmit occurred.
+
+Independent: judging the draft and raising sender-context concerns. Assisted: recording review fields, preserving the open follow-up flag, and preparing the targeted test.
