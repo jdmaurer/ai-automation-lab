@@ -137,3 +137,18 @@ With help: expressions, Dataverse schema/choice mapping, routing/logging impleme
 Time: no reliable session-duration measurement; do not invent one.
 
 Checkpoint: saved normal-control draft; next is feedback capture and the weekly-summary path, followed by normal runtime verification and a repeatable frozen-30 evaluation. Keep the preserved-baseline-before-deliberate-failure order.
+
+
+## Friday night into Saturday 11.14.26 — Published controls, storage defects, and recovery
+
+The new normal controls were published after we removed a leading control character from the duplicate condition's name. The next synthetic test, REVIEW-01, exposed actual Dataverse write errors. A 152-character Message ID was rejected even though the editor showed a 400-character limit. Publishing the table alone did not help. Saving a fresh width change to 401 and publishing let the next run create its record and proceed.
+
+That run classified the request General/Routine and created a reply draft. The completion log then failed on the 152-character Draft ID even though that column showed 4000. We saved a small width change and restored it to 4000, then recovered the same record using the actual draft result. Both identifiers stayed complete. These observations show a mismatch between the displayed column settings and accepted storage, but we did not establish the backend cause.
+
+The recovered record says Failed, Draft Created, owner review open, and review Pending. A separate newly loaded table view confirmed the saved fields after usage interrupted the work. It was a manual assisted recovery, so it does not count as a successful automatic completion-log test. The existing draft is open in Outlook for my review; no accept/edit/reject decision has been recorded and nothing was sent.
+
+A separate ordinary failure-routing defect remains: if initial logging fails before the review variable is initialized, the AI-failure fallback can run after a skipped AI step and attempt that uninitialized variable. The completion-log failure also required manual review marking. Neither should be described as an Outlook outage or model failure.
+
+With help: diagnosing run inputs/errors, field changes, full-ID recovery, record verification, and checkpoint documentation. I sent the synthetic test and performed instructed publication/resubmit steps. This was assisted implementation and recovery, not independent construction or a frozen-30 pass. No reliable total session clock was kept.
+
+Stopped with the existing record saved and the generated draft awaiting my review. Next: record that review, then one fresh normal message/new Message ID to verify automatic completion logging. Do not resubmit the existing message and risk another draft. Weekly summary, duplicate/resend runtime verification, the repeatable frozen-30 harness, ordinary fixes, finished-baseline export, and isolated deliberate failures remain in the agreed order.
