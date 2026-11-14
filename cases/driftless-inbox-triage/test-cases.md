@@ -196,4 +196,11 @@ Two actions were added after Log - Complete Email Processing inside Validate Tru
 - Category - Owner Review - Log Failure applies Needs Owner Review to the trigger Message ID only after the completion action fails/times out.
 - Log - Completion Write Failure updates the existing Log Start row with Processing Failed, actual Draft Created status, Needs Owner Review true, and Follow-up Open true. It deliberately does not retry the long Draft ID or overwrite human review data.
 
-The recovery update runs after the Outlook marker succeeds/fails/times out, NOT when skipped. Normal successful completion therefore skips both new actions. Code-view definitions were inspected; Flow checker reported Errors (0), Warnings (0). Status: UNSAVED/UNPUBLISHED, awaiting Josh's Save checkpoint. Runtime failure evidence remains pending the agreed isolated testing stage; no intentional failure was introduced.
+The recovery update runs after the Outlook marker succeeds/fails/times out, NOT when skipped. Normal successful completion therefore skips both new actions. Code-view definitions were inspected; Flow checker reported Errors (0), Warnings (0). Status: subsequently saved by Josh and published by the assistant. Both saved-draft and Published / ready-to-go confirmations were observed. Runtime failure evidence remains pending the agreed isolated testing stage; no intentional failure was introduced.
+
+
+### Weekly-summary foundation — configuration only, not a reporting pass
+
+A separate on-demand Driftless Weekly Inbox Summary helper has a required Week starting (Monday) Date input; independently converted Central-midnight start/end UTC boundaries; and a Dataverse query of the existing log for start-inclusive/end-exclusive receipt dates. It selects metadata/review fields only, sorts by receipt time and row ID, and has pagination enabled with threshold 100000. Trigger/Compose/query definitions were inspected; Flow checker Errors 0, Warnings 0.
+
+The new helper is UNSAVED in its initial embedded classic designer. Category/review counts, a retrieval-cap guard, AI explanation and final output are not implemented. No test was run and no exact-count summary pass is claimed. This does not replace the frozen-30 harness.
