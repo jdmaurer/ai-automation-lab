@@ -185,6 +185,15 @@ Outlook directly showed one new LOG-02 reply and the existing REVIEW-01 reply, t
 
 This verifies the repaired normal automatic completion-log path. It does not establish duplicate/resend enforcement, full failure handling, or frozen-30 success. No rerun is needed merely to re-prove this check.
 
-### Bounded ordinary failure-routing repair — unsaved/unpublished draft
+### Bounded ordinary AI-failure routing repair — subsequently published
 
-After LOG-02 passed, the assistant removed Is skipped from Set - Needs Owner Review - AI Failure's run-after settings. Code view confirmed Run_a_prompt statuses [TimedOut, Failed], while inputs still set needs_owner_review true. This prevents skipped upstream work from invoking the setter after skipped initialization. Save draft/Publish are pending; no deliberate failure test was run.
+After LOG-02 passed, the assistant removed Is skipped from Set - Needs Owner Review - AI Failure's run-after settings. Code view confirmed Run_a_prompt statuses [TimedOut, Failed], while inputs still set needs_owner_review true. This prevents skipped upstream work from invoking the setter after skipped initialization. Josh saved this repair; the saved-draft banner was observed. The assistant then published it and observed Published / Your flow is ready to go. No deliberate failure test was run and LOG-02 was not repeated.
+
+
+### Completion-log failure recovery — configuration check only
+
+Two actions were added after Log - Complete Email Processing inside Validate True:
+- Category - Owner Review - Log Failure applies Needs Owner Review to the trigger Message ID only after the completion action fails/times out.
+- Log - Completion Write Failure updates the existing Log Start row with Processing Failed, actual Draft Created status, Needs Owner Review true, and Follow-up Open true. It deliberately does not retry the long Draft ID or overwrite human review data.
+
+The recovery update runs after the Outlook marker succeeds/fails/times out, NOT when skipped. Normal successful completion therefore skips both new actions. Code-view definitions were inspected; Flow checker reported Errors (0), Warnings (0). Status: UNSAVED/UNPUBLISHED, awaiting Josh's Save checkpoint. Runtime failure evidence remains pending the agreed isolated testing stage; no intentional failure was introduced.
