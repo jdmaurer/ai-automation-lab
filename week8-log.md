@@ -190,3 +190,14 @@ The assistant then started a separate on-demand Driftless Weekly Inbox Summary h
 This new editor opened as an embedded classic designer. Its save button says Save, not Save draft. The foundation still needs my Save; counts, the cap guard, AI explanation and final reviewed output come afterward. There is no weekly-summary test result yet.
 
 Independent: saving the completed triage change. Assisted: publication/verification, choosing the repeatable on-demand report setup, and constructing/checking the date/query foundation. No reliable full-session duration was measured.
+
+
+### Saturday 11.14.26 — Weekly-summary guard interrupted
+
+The assistant added an empty weekly_summary_rows Array and verified its initialization. The next completeness Condition did not accept its compound expression. No category counts or report output were built. I cancelled the Leave site prompt to preserve the open work and dismissed the expression-error alert.
+
+The browser connection then repeatedly timed out/reset. Native Chrome inspection could read the formula, but editing/acceptance was not reliable, so we stopped automated entry. It also revealed that the summary had opened in a background tab; directions to me must be based on the tab actually visible, not just an accessible background page.
+
+The next proposed entry is the simpler check that fetched rows are below the configured 100000 pagination cap. It is not yet accepted or saved. The guard still needs its Boolean comparison and failure/stop path before any counting. The initial foundation had shown Edit/Test enabled after my save report, but its durable resource ID/save confirmation was not established; later edits remain unconfirmed saved.
+
+This was assisted construction and tool troubleshooting, not an independent build or a weekly-summary test pass. No test email, main-flow logic change, deliberate failure test, or export occurred in this block.
