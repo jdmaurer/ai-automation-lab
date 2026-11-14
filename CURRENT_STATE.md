@@ -4,9 +4,9 @@ Canonical baton under AI_HANDOFF_PROTOCOL.md. Active Week 8 build: `cases/driftl
 
 ## Current checkpoint
 
-The automated-mail prompt fix was successfully published November 13 after Josh challenged unnecessary renewed connection troubleshooting. No Outlook connection/reference changes were needed. AUTO-01 then passed a live end-to-end test. Subsequent correlation, Dataverse logging, duplicate, and explicit-resend controls have been saved as a DRAFT. They have not yet been published or runtime-tested. Flow checker most recently showed 0 errors and 0 warnings. Do not confuse that with runtime verification.
+The automated-mail prompt fix was successfully published November 13 after Josh challenged unnecessary renewed connection troubleshooting. No Outlook connection/reference changes were needed. AUTO-01 then passed a live end-to-end test. Subsequent correlation, Dataverse logging, duplicate, and explicit-resend controls were saved, then published successfully. The first publication attempt exposed a leading control character in Rule - Duplicate Message; replacing the full title with the clean name resolved InvalidWorkflowRunActionName. The additions are published but have not yet been runtime-tested. Flow checker most recently showed 0 errors and 0 warnings. Do not confuse that with runtime verification.
 
-Next work: owner feedback/review capture using the existing Driftless Inbox Log fields, then the required weekly-summary path, a repeatable frozen-30 harness, and ordinary defect fixes. The assistant has just reopened Power Apps to inspect the table's review surface. Confirm current UI before directing.
+Next work: owner feedback/review capture using the existing Driftless Inbox Log fields, then the required weekly-summary path, a repeatable frozen-30 harness, and ordinary defect fixes. Power Apps' editable table exposes the five human review fields and currently has no processing records. Latest UI: Outlook has a complete unsent synthetic REVIEW-01 - Business name confirmation email addressed to josh@joshmaurer.onmicrosoft.com, prepared by the assistant. Josh's next action is Send; inspect its flow run and log, then record a human review. Do not click Test/Manually and wait before preparing the email. Confirm current UI before directing.
 
 ## Evidence already established
 
@@ -17,7 +17,7 @@ Next work: owner feedback/review capture using the existing Driftless Inbox Log 
 - AUTO-02 genuine vendor question and AUTO-03 urgent automated alert remain prompt-only evidence. No full frozen-30 result exists.
 - Microsoft public status still described residual degradation during the earlier November 13 check. Outlook recovery and successful publication did not establish the exact cause of yesterday's errors. Do not repeat speculative connection repairs.
 
-## Saved draft additions, not yet runtime-tested
+## Published additions, not yet runtime-tested
 
 ### Correlation and logging
 
@@ -79,3 +79,5 @@ Do not revisit the solution-export dependency warning now. Do not start Intermed
 - Do not give a confident time/percent-complete estimate without evidence.
 
 GitHub is updated remotely at this checkpoint; fast-forward the local clone before subsequent local repository work. Sync the GitHub source in Claude Project before switching assistants.
+
+Publication UI note: after successful Publish, the designer briefly retained an old Condition details panel. Closing/reopening Rule - Duplicate Message displayed its correct condition without any logic change. Do not interpret a designer spinner alone as a runtime failure.
