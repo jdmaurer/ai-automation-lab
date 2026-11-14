@@ -338,3 +338,14 @@ Josh explicitly wants browser-connected guidance to prevent bad navigation direc
 - Read the page again after navigation before giving the next non-routine direction.
 - Do not make Josh relay page state that the browser connection can already read. The reason he opened the working tabs to the assistant is so directions are grounded in the live interface.
 
+
+
+### Josh's updated browser/build preferences — 2026-11-13 (supersedes conflicting older directions)
+
+- Announce every tab switch before acting or directing. Read the live UI; use compact text/control readings when sufficient, screenshots when visual context is needed.
+- Josh is colorblind. Bold alone is not a sufficient action cue. Put the action first with a clear marker (e.g. ▶ CLICK: Save draft), and WHERE on the next line with the whole-screen region and exact label.
+- Give routine fields on one card together, in the order displayed. When opening a card, provide its name/table/values together once observed. Use the visible Yes/No labels rather than True/False for Dataverse UI choices.
+- The assistant should perform routine navigation, inspection, and repetitive wiring itself. Explain meaningful logic and let Josh focus on decisions and testing. Do not turn field entry into repeated d exchanges or label assisted construction independent.
+- After a complete change, explicitly leave time for Josh to Save draft and confirm “We saved your draft flow” before moving on. Microsoft has been slow; do not rush past save checkpoints.
+- Check only settings that matter to correctness/current work. An exhaustive field-by-field audit after table creation wasted time; the Message ID key width and choice mappings mattered, redundant routine checks did not.
+- After Outlook recovery, a straightforward Publish retry succeeded without connection edits. Josh insisted on it; do not repeat speculative connection repair in the absence of a current failure.
