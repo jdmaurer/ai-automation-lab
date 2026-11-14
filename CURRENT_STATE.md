@@ -14,13 +14,19 @@ The AI-failure fallback repair has now been SAVED and PUBLISHED. The saved-draft
 
 The two completion-log failure actions were then saved by Josh and PUBLISHED by the assistant. Both the saved-draft banner and Published / Your flow is ready to go were observed. Main triage flow now includes Category - Owner Review - Log Failure and Log - Completion Write Failure. Configuration checker was 0 errors/0 warnings; deliberate runtime failure verification remains deferred. LOG-02 was not repeated.
 
-Exact next step: Josh clicks SAVE (not Save draft) in the new Driftless Weekly Inbox Summary editor, waits for completion, then confirms. Its initial four-card foundation is configured and Peek-code checked, and Flow checker shows Errors 0 / Warnings 0, but the new summary flow is NOT YET SAVED. Do not run a partial summary test or claim the summary is finished.
+Weekly-summary construction then added Initialize variable: weekly_summary_rows, type Array, value [] (Peek code confirmed). A new Condition was added for a retrieval-completeness guard. It remains UNFINISHED: both comparison sides are blank; its left-side Expression popup contains a rejected draft formula. No counting actions or report output have been built.
 
-Latest UI: separate Chrome tab 156966164, Power Automate solution page, contains an embedded classic designer named Driftless Weekly Inbox Summary. Its toolbar has Save at the top right. The flow is still at /flows/new inside the widget, so no persisted resource ID has been established. Keep this tab open/marked for handoff. Original triage designer tab 156966006 remains published and intact.
+Exact next step: Josh replaces the ENTIRE formula in the open Expression tab with less(length(body('Read_-_Weekly_Log_Rows')?['value']),100000), then clicks that popup's OK. This is a proposed simpler entry, NOT yet accepted or saved. After acceptance, finish the Boolean comparison using an actual Boolean true, inspect its definition, name the condition, and add a fail/stop path before summary counting. Do not run an incomplete summary.
 
-After saving, continue summary construction: guard against truncated retrieval, calculate exact category/review/pending counts from the log, then pass only calculated aggregates to a short AI explanation and create an owner-reviewed summary output. Counts and explanation/delivery are NOT implemented yet. Do not change shared classifier/drafter prompts. Inspect flow input wiring immediately after saving any future AI Builder summary prompt.
+Current visible Chrome tab: Microsoft Power Automate, helper Driftless Weekly Inbox Summary, embedded classic editor, main page URL remains the existing solution URL. The required Date input, two UTC-window Composes, List rows query, Initialize variable and unfinished Condition remain visible. Earlier save was reported by Josh and the frame showed Edit / Test enabled, but no durable flow resource ID or explicit summary save banner was established. Later variable/guard edits are not confirmed saved.
 
-The original Power Apps table and Outlook remain open. Do not discard the earlier Power Apps pending-changes prompt merely to refresh. REVIEW-01's owner review remains Accepted Unchanged with the sender-context caveat and follow-up open; processing remains Failed. LOG-02's automatic reply remains Pending review, unsent.
+The source of the entry problem is NOT established. The rejected Expression editor visibly contains and(less(length(body('Read_-_Weekly_Log_Rows')?['value']),100000),empty(body('Read_-_Weekly_Log_Rows')?['@odata.nextLink'])). It triggered The expression is invalid. Native re-entry showed the same text; acceptance was not confirmed. The proposed simpler count check matches the configured paged-query threshold. Do not claim the guard is fixed or blame connections/model/outage.
+
+Browser control is currently unreliable: old browser 4 became unavailable; available inventory showed Chrome 2, but binding the known summary tab timed out and reset the session. CUA native Windows could read Chrome window 852810 and its full formula; native input/focus/acceptance was unreliable. Never type into native Chrome while focus reads Address and search bar. Do not repeat long reconnect loops, navigate away, refresh, or discard unsaved changes. Josh cancelled a Leave site prompt to preserve the helper, then dismissed the invalid-expression alert.
+
+Foreground-tab mismatch was observed: the summary had opened in the background while the visible window still showed triage. Bring the actual summary tab into view before further Save directions. Do not rely on reading a background page as proof Josh can see it.
+
+The main triage flow's publication and LOG-02 pass remain prior established evidence. No new main-flow logic change, rerun, deliberate failure injection, weekly-summary count pass, or export occurred during this interrupted guard work. Next summary work after finishing/saving the guard: repeatable category/review counts, aggregate-only AI explanation, owner-reviewed output, exact-count test with complete supplied input data.
 
 ## Evidence already established
 
@@ -77,7 +83,7 @@ The original Power Apps table and Outlook remain open. Do not discard the earlie
 
 Choice numeric values: Category Sales/Support/Finance/General/Internal/Unknown = 832990000 through 832990005. Priority Urgent/Routine = 832990000/832990001. Processing Started/Completed/Failed/Duplicate/Possible Resend = 832990000 through 832990004. Review Pending/Accepted Unchanged/Edited/Rejected/Reclassified/No Draft = 832990000 through 832990005. UI yes/no labels are Yes and No.
 
-## Weekly summary — initial foundation, UNSAVED
+## Weekly summary — foundation configured; current variable/guard edits UNFINISHED
 
 - Separate on-demand helper named Driftless Weekly Inbox Summary, created through existing solution New -> Automation -> Cloud flow -> Instant. It opened an embedded CLASSIC designer even though the launch URL included v3=true. No existing draft was discarded or designer switched.
 - Manually trigger a flow: one required Date input, title Week starting (Monday), actual internal property date, format date. Schema was inspected.
@@ -90,6 +96,7 @@ Choice numeric values: Category Sales/Support/Finance/General/Internal/Unknown =
 - Sort By: jdm_receivedat asc,jdm_table1id asc. No message bodies/attachments selected. No Row count override.
 - Pagination On, threshold 100000; Peek code confirms runtimeConfiguration.paginationPolicy.minimumItemCount = 100000. STILL REQUIRED before reporting: stop/flag if retrieval reaches the cap or exposes an unhandled continuation token; do not present truncated counts as complete.
 - Counts, category/review grouping, AI explanation and final owner-reviewed output have not yet been added. The charter requires per-category processed messages and drafts accepted unchanged/edited/rejected, plus separately counted processed messages awaiting owner review including no-draft cases. Keep processing status, review decisions, and follow-up distinct; failed attempts must not be represented as successful processing.
+- A subsequent Initialize variable (weekly_summary_rows, Array, []) was Peek-code verified. The next completeness Condition is unfinished and its Expression popup rejected the compound entry; proposed simplified entry and connection blocker are at the top of this baton.
 - No weekly summary runtime test or exact-count result exists. After construction use a supplied selected-week test input; do not send new Inbox test emails merely to exercise summary retrieval.
 - Official references checked: https://learn.microsoft.com/en-us/power-automate/dataverse/list-rows ; https://learn.microsoft.com/en-us/power-automate/convert-time-zone ; https://learn.microsoft.com/en-us/power-automate/data-operations .
 
