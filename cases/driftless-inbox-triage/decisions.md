@@ -77,3 +77,18 @@ Append-only design record for the Driftless Print and Sign inbox-triage case.
 32. Use existing draft_candidate rather than a sender-specific block or new category to suppress ordinary replies to automated/system notifications, vendor notices, receipts, newsletters, or marketing messages that do not call for a human reply. A genuine vendor question can still be a draft candidate; an automated alert can remain Urgent while receiving no ordinary reply draft. Three prompt-only checks passed; end-to-end confirmation remains required.
 
 33. When Outlook access and connector/OAuth operations fail together, inspect official service health early before altering connection mappings. Preserve saved draft changes. November 12 troubleshooting did not establish which of the two existing Outlook solution references the trigger used; no reference edit/deletion is authorized by that evidence alone.
+
+
+## 2026-11-13 — Recovery, traceability, and duplicate/resend controls (draft build)
+
+34. After Outlook recovered, retry Publish before changing working connection mappings. Publication succeeded with no connection changes; AUTO-01 then passed live. Josh identified the simpler next step. Exact outage causality remains unproven.
+
+35. Use a dedicated correlation Compose and a minimal Dataverse processing/review record. Store IDs, timestamps, classifications, statuses, and human feedback rather than email bodies/attachments. Start a record before AI processing and update that same Dataverse row with the outcome. Processing completion and human follow-up are separate.
+
+36. Prevent exact-ID duplicates with an escaped Message ID lookup and a Succeeded Terminate when found, backed by a Message ID alternate key once its index is Active. Message ID is limited to 400 characters for that index; IDs must never be truncated. Key activation was subsequently confirmed Active; enforcement and concurrency/race behavior still require runtime proof.
+
+37. Log invalid AI output and AI request failure as Failed/Unknown/no draft with owner review open. An AI-failure logging action must not run when its top-level failure path is skipped, or it could overwrite a successful result. This was checked in the draft definition. Failure logging still needs runtime verification.
+
+38. Use a shared Boolean explicit-resend-language flag for the frozen DRI-10/DRI-15 requirement. It requires owner review, blocks a second draft, and records Possible Resend without discarding the new email. This is a bounded flagging rule, not historical semantic duplicate matching; unannounced paraphrased repeats remain outside its detection. Frozen runtime results are still pending.
+
+39. Initialize owner-review follow-up as open when the workflow requires review or creates a draft awaiting review. Capture review outcome separately; only the owner decides whether follow-up is closed. Accepting a draft never sends it.
