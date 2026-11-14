@@ -99,3 +99,10 @@ Append-only design record for the Driftless Print and Sign inbox-triage case.
 40. Superseding decision 36's exact width: Message ID is now 401 characters after a minimal saved width change and publication resolved a rejected 152-character ID. The alternate key remains the chosen design; do not shorten IDs to hide write errors. Draft ID remains 4000 after a saved 4000 -> 3999 -> 4000 change and successful full-ID write/read. Displayed limits alone were not reliable proof of accepted storage; no specific backend cause was established.
 
 41. When draft creation succeeds but completion logging fails, recover the actual result in the existing row and preserve Failed plus an assisted-recovery note. Do not replay that message to test repaired logging: its Message ID is already recorded and its draft exists. Use a fresh normal message for automatic completion verification. Owner review stays pending until Josh decides; manual recovery does not count as an end-to-end pass.
+
+
+## 2026-11-14 — Bounded failure routing
+
+42. An AI-request failure handler accepts Failed/TimedOut, not Skipped: skipped initialization must not be followed by a setter using that uninitialized variable. This repair was saved/published after the observed initial logging failures; it does not establish runtime failure-test success.
+
+43. If final completion logging fails after processing, mark the original email Needs Owner Review independently through Outlook, then attempt a minimal Failed/review-open update on the existing Dataverse row. Preserve the actual draft-created status, do not create another draft, and do not retry the rejected Draft ID or overwrite human review data. The record update accepts the Outlook action's success/failure/timeout, but never Skipped, so successful normal runs cannot be overwritten as Failed. Configuration/checker inspection is complete; Save/Publish and isolated runtime verification remain pending. If Dataverse itself is unavailable, the recovery update can fail too; do not claim durable logging in that case.
