@@ -204,3 +204,10 @@ The recovery update runs after the Outlook marker succeeds/fails/times out, NOT 
 A separate on-demand Driftless Weekly Inbox Summary helper has a required Week starting (Monday) Date input; independently converted Central-midnight start/end UTC boundaries; and a Dataverse query of the existing log for start-inclusive/end-exclusive receipt dates. It selects metadata/review fields only, sorts by receipt time and row ID, and has pagination enabled with threshold 100000. Trigger/Compose/query definitions were inspected; Flow checker Errors 0, Warnings 0.
 
 The new helper is UNSAVED in its initial embedded classic designer. Category/review counts, a retrieval-cap guard, AI explanation and final output are not implemented. No test was run and no exact-count summary pass is claimed. This does not replace the frozen-30 harness.
+
+
+### Weekly-summary completeness guard — unfinished editor entry
+
+Initialize variable weekly_summary_rows (Array, []) was added and Peek-code verified. The subsequent Condition rejected the compound formula entry with The expression is invalid. No guard acceptance, checker pass after this addition, runtime count result, or summary output is claimed.
+
+The open editor is preserved. The proposed simpler left-side expression is less(length(body('Read_-_Weekly_Log_Rows')?['value']),100000), matching the configured pagination cap; acceptance and the Boolean comparison/failure path remain pending. Browser editing became unreliable and the assistant handed this entry to Josh rather than continuing blind input. No deliberate runtime failure was injected.
