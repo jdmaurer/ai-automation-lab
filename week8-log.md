@@ -120,3 +120,20 @@ Time: no reliable full-session clock; do not invent one.
 ## Friday 11.13.26 — Morning handoff
 
 At approximately 10:30 Central, Josh reported Outlook opens again and asked whether to start a fresh chat. Recommendation: fresh chat with this canonical handoff, preserving the saved flow draft. Resume by checking service health and the live trigger connection, then publish and verify the automated-mail fix end to end. Do not assume the old error still exists or repeat speculative repairs. No new build or test was performed during this handoff.
+
+
+## Friday 11.13.26 — Published after recovery; normal controls drafted
+
+I pushed back when the assistant started revisiting connection troubleshooting after Outlook recovered. We tried Publish, and it worked without changing connections. The automated informational usage-report case (AUTO-01) then passed through the live flow: General/Routine, no owner review, no reply draft. We checked both the run and Outlook Drafts. AUTO-02/03 remain prompt-only tests; this was not a full frozen-30 pass.
+
+We then built a correlation Compose and the Driftless Inbox Log Dataverse table. The flow creates a Started record, updates its classification and draft result, and keeps human review/follow-up separate. Invalid classification and AI-request failures have explicit log updates. We added a Message ID lookup/stop and an alternate key, which was Pending during the build and later confirmed Active in Power Apps. The saved resend rule flags explicit resend language, sends it to owner review, blocks another draft, and labels the outcome Possible Resend. DRI-10/15 still need runtime testing.
+
+All of these additions after the AUTO-01 publication are saved draft work, not published/runtime-verified controls. Flow checker showed zero errors/warnings at the completed checkpoints. Feedback/review capture, weekly summary, repeatable frozen-30 harness, normal defect fixes, baseline preservation, and isolated deliberate failures remain ahead. No new workflow export was made and no deliberate failure was injected.
+
+Too much time went into repetitive field-by-field checking and directions. I asked for same-card values together in screen order, exact Yes/No labels, explicit tab-switch announcements, and assistant handling of routine wiring. I am colorblind; bold alone is hard to spot, so actions need a clear marker and a WHERE line. I also asked for time to save after a complete change, especially with Microsoft responding slowly. Those preferences are now part of the handoff.
+
+Independent: challenging unnecessary connection troubleshooting; choosing to stop exact duplicates; questioning the extra correlation card and inefficient checking; setting practical pacing/accessibility/save requirements.
+With help: expressions, Dataverse schema/choice mapping, routing/logging implementation, code/reference inspection, and test evidence. Microsoft's Copilot helped draft the table. The assistant entered the later repetitive completion/failure/resend mappings. These are assisted builds, not independent implementation.
+Time: no reliable session-duration measurement; do not invent one.
+
+Checkpoint: saved normal-control draft; next is feedback capture and the weekly-summary path, followed by normal runtime verification and a repeatable frozen-30 evaluation. Keep the preserved-baseline-before-deliberate-failure order.
