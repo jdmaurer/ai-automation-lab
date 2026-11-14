@@ -179,3 +179,14 @@ I saved the narrow AI-failure setting change. The assistant confirmed the saved 
 The earlier REVIEW-01 partial failure showed another required gap: when the reply draft was created but its completion log failed, the original email was not marked for owner attention. The assistant added an Outlook Needs Owner Review action that runs only after failed/timed-out completion logging, followed by a minimal update of the same record to Failed with its actual draft-created status and follow-up/review open. That update can still run if the Outlook marker fails, but it must not run when the marker is skipped on a successful normal path.
 
 Both definitions were inspected and Flow checker showed 0 errors/0 warnings. The additions still need my Save and publication. This is assisted construction, not a demonstrated runtime failure-recovery pass. Deliberate failures stay deferred until the finished baseline is preserved.
+
+
+### Saturday 11.14.26 — Published completion-failure recovery; started the weekly summary
+
+I saved the two completion-failure actions. The assistant confirmed the save, published them, and observed the ready-to-go banner. This completes their configuration/publication checkpoint, not their deliberate runtime failure tests. We kept the earlier normal LOG-02 pass and did not repeat it.
+
+The assistant then started a separate on-demand Driftless Weekly Inbox Summary helper in the existing solution. It takes the week's starting date and calculates the seven-day Central-time window, converting each midnight boundary separately to UTC. The query reads only the selected week's tracking metadata/review fields from Driftless Inbox Log, in a stable order, with pagination enabled. The trigger schema and formulas/query were checked; Flow checker reported 0 errors/0 warnings.
+
+This new editor opened as an embedded classic designer. Its save button says Save, not Save draft. The foundation still needs my Save; counts, the cap guard, AI explanation and final reviewed output come afterward. There is no weekly-summary test result yet.
+
+Independent: saving the completed triage change. Assisted: publication/verification, choosing the repeatable on-demand report setup, and constructing/checking the date/query foundation. No reliable full-session duration was measured.
