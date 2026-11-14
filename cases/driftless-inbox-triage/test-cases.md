@@ -153,4 +153,14 @@ The normal controls were published after a leading control character was removed
 
 Observed FAIL before AI: Log - Start Email Processing rejected a 152-character Outlook Message ID with server code 0x80090429/StringOrBinaryTruncation on jdm_MessageID, despite the live maximum being 400. Original run: 08584069732027549680878527902CU04. Publishing the table succeeded, but resubmission 08584069727813331938580416649CU19 failed identically. No draft or processing row was created. A secondary uninitialized needs_owner_review failure came from the AI-failure fallback running after a skipped AI step.
 
-A fresh 400-to-401 character-width update was saved and the table published; the subsequent resubmit is pending. No runtime pass may be claimed yet. No email ID was shortened and no deliberate failure was injected.
+The saved Message ID width change 400 -> 401 plus publication resolved initial record creation in run 08584069721053204433787343518CU25. That run classified General/Routine and created one Outlook reply draft, then failed Log - Complete Email Processing: StringOrBinaryTruncation on jdm_DraftID, actual length 152 despite displayed maximum 4000. The parent Validate - AI Output message was a dependent-action failure, not a rejected classification.
+
+Draft ID width was saved 4000 -> 3999 -> 4000 and Publish table invoked. Its final publish toast was not captured; a subsequent successful full-ID write/read establishes storage acceptance. No identifier was shortened.
+
+### November 14 interruption recovery — assisted, not an automatic pass
+
+The same row, 3fb010cb-eddf-f111-84e9-000d3a367f8a, was recovered manually. A separate newly loaded table view confirmed General/Routine; Processing Outcome Failed; Draft Created true; full Draft ID; Needs Owner Review true; Follow-up Open true; Review Outcome Pending; Final Category Unknown; Reviewed At blank; Feedback: Assisted recovery: draft created; automatic completion log failed. Owner review pending.
+
+Outlook directly showed exactly one draft. Its body: Hello, Thank you for reaching out. Yes, our business name is Driftless Print and Sign. Please let us know if you need any additional information. Best regards. Owner review decision remains pending; no draft was sent.
+
+Result: REVIEW-01 remains FAIL for automatic end-to-end logging, with draft creation verified and recovery storage verified separately. Use one fresh normal message/new Message ID for the automatic completion-log check. Do not resubmit REVIEW-01: its row and draft now exist. Exact-ID enforcement, DRI-10/15, weekly summary, and frozen-30 results remain pending. No deliberate failure was injected.
