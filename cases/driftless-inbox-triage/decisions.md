@@ -106,3 +106,10 @@ Append-only design record for the Driftless Print and Sign inbox-triage case.
 42. An AI-request failure handler accepts Failed/TimedOut, not Skipped: skipped initialization must not be followed by a setter using that uninitialized variable. This repair was saved/published after the observed initial logging failures; it does not establish runtime failure-test success.
 
 43. If final completion logging fails after processing, mark the original email Needs Owner Review independently through Outlook, then attempt a minimal Failed/review-open update on the existing Dataverse row. Preserve the actual draft-created status, do not create another draft, and do not retry the rejected Draft ID or overwrite human review data. The record update accepts the Outlook action's success/failure/timeout, but never Skipped, so successful normal runs cannot be overwritten as Failed. Configuration/checker inspection is complete; Save/Publish and isolated runtime verification remain pending. If Dataverse itself is unavailable, the recovery update can fail too; do not claim durable logging in that case.
+
+
+## 2026-11-14 — Weekly-summary foundation
+
+44. Build the weekly summary as a separate on-demand helper during lab verification, with a required selected week-start date. This makes the same reporting period repeatable without running reporting once per incoming email. The current helper has no recurrence schedule.
+
+45. Use a start-inclusive/end-exclusive seven-day receipt window in Central time and convert both local-midnight boundaries independently to UTC. Query only needed tracking/review metadata. Formula-based counts must come from those records; AI receives calculated aggregates for explanation rather than inventing totals. Enable paged retrieval and add a cap/continuation guard before producing counts. Foundation configuration is checked but unsaved; report calculations/output and runtime verification remain pending.
