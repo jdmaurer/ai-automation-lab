@@ -113,3 +113,8 @@ Append-only design record for the Driftless Print and Sign inbox-triage case.
 44. Build the weekly summary as a separate on-demand helper during lab verification, with a required selected week-start date. This makes the same reporting period repeatable without running reporting once per incoming email. The current helper has no recurrence schedule.
 
 45. Use a start-inclusive/end-exclusive seven-day receipt window in Central time and convert both local-midnight boundaries independently to UTC. Query only needed tracking/review metadata. Formula-based counts must come from those records; AI receives calculated aggregates for explanation rather than inventing totals. Enable paged retrieval and add a cap/continuation guard before producing counts. Foundation configuration is checked but unsaved; report calculations/output and runtime verification remain pending.
+
+
+## 2026-11-14 — Weekly category grouping
+
+46. Josh explicitly chose final category after owner review, otherwise suggested category, for weekly grouping. The implementation uses Reviewed At to identify recorded review and falls back to Unknown for a null category. Processing completion remains distinct from draft-review decisions and open follow-up. Counting work is a partial saved draft only; no runtime accuracy or completed aggregate output is claimed.
