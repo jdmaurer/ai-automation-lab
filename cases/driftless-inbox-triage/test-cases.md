@@ -211,3 +211,42 @@ The new helper is UNSAVED in its initial embedded classic designer. Category/rev
 Initialize variable weekly_summary_rows (Array, []) was added and Peek-code verified. The subsequent Condition rejected the compound formula entry with The expression is invalid. No guard acceptance, checker pass after this addition, runtime count result, or summary output is claimed.
 
 The open editor is preserved. The proposed simpler left-side expression is less(length(body('Read_-_Weekly_Log_Rows')?['value']),100000), matching the configured pagination cap; acceptance and the Boolean comparison/failure path remain pending. Browser editing became unreliable and the assistant handed this entry to Josh rather than continuing blind input. No deliberate runtime failure was injected.
+
+
+## WS-01 — Published weekly-count runtime check — PASS (bounded), November 14
+
+This supersedes earlier unsaved/incomplete count configuration notes. The helper's repaired source links and six-category count collection were saved, checked at 0 errors/0 warnings, then published with the Published / ready-to-go confirmation. It was run once, without sending new messages or replaying triage tests.
+
+Complete trigger input:
+
+```json
+{"date":"2026-11-09"}
+```
+
+Run/client tracking ID: 08584068931978893152198699997CU21. Run monitor: Your flow ran successfully. Query: jdm_receivedat ge 2026-11-09T06:00:00.0000000Z and jdm_receivedat lt 2026-11-16T06:00:00.0000000Z. Read succeeded in 0.7 seconds, category loop in 2.6 seconds; False-branch stop skipped. These are action durations, not a measured full-session duration.
+
+Raw query output contained exactly two records and no @odata.nextLink. Ground truth at this run:
+
+| Record | Suggested/final category | Processing | Draft | Review | Needs review | Reviewed At UTC |
+|---|---|---|---|---|---|---|
+| REVIEW-01 / 3fb010cb-eddf-f111-84e9-000d3a367f8a | General / General | Failed | true | Accepted Unchanged | true | 2026-11-14T15:00:00Z |
+| LOG-02 / c4dd1c73-3de0-f111-84ea-000d3a367f8a | General / Unknown | Completed | true | Pending | false | absent |
+
+Receipts: REVIEW-01 2026-11-14T05:21:06Z; LOG-02 2026-11-14T15:09:38Z. Both fall inside the selected week. REVIEW-01 Follow-up Open read false in this snapshot; LOG-02 true. The assistant made no record edit and did not investigate why REVIEW-01 differs from the earlier follow-up checkpoint.
+
+Independent expected totals were established from these records before inspecting the actual appended count objects. Expected AND actual:
+
+| Category | Processed | Accepted unchanged | Edited | Rejected | Awaiting review |
+|---|---:|---:|---:|---:|---:|
+| Sales | 0 | 0 | 0 | 0 | 0 |
+| Support | 0 | 0 | 0 | 0 | 0 |
+| Finance | 0 | 0 | 0 | 0 | 0 |
+| General | 1 | 1 | 0 | 0 | 1 |
+| Internal | 0 | 0 | 0 | 0 | 0 |
+| Unknown | 0 | 0 | 0 | 0 | 0 |
+
+Each of the six successful Collect - Category Summary Row iteration input objects was read directly from the run UI and compared field by field. All matched; no duplicate/missing category. Append exposes no output body, so this check uses the actual successful appended objects, not a claim of directly reading a downstream final variable output.
+
+PASS scope: exact two-record selected-week counts, zero categories, successful processing separate from accepted draft after a processing failure, suggested-category fallback for an unreviewed row, pending draft with Needs Owner Review false, and successful uncapped retrieval path.
+
+Uncovered: nonzero Edited/Rejected, Pending without a draft, changed final category, Possible Resend, empty week, start/end/DST edges, and cap/continuation failure path. Those require necessary fixture/evaluation coverage; do not repeat this two-record check solely to re-prove it. This is not full frozen-30 success or a completed weekly-summary release. Aggregate-only AI explanation and owner-reviewed report output still need building.
