@@ -2,7 +2,17 @@
 
 Canonical baton under AI_HANDOFF_PROTOCOL.md. Active Week 8 case: `cases/driftless-inbox-triage/`. Scope frozen: evaluated/documented SME prototype, no extra features or production-perfection work. This checkpoint supersedes earlier November 14 build-state notes; detailed historical evidence remains in week8-log.md, case test-cases.md and append-only decisions.md.
 
-## Exact stopping point: frozen-30 setup PREPARED; live helper NOT SAVED
+## Latest live wiring checkpoint — November 15, 2026; clipboard dialog handoff
+
+Continue the existing Chrome helper tab, NOT a new flow. Current browser ID5 / tab156966477, titled Driftless Frozen 30 Evaluation, full-page classic designer. URL still ends in solutions/~preferred/flows/new?newFlowName=Driftless%20Frozen%2030%20Evaluation...v3=false&v3survey=true; no saved helper ID read yet. The main flow list was inspected before creation; no saved evaluation helper was listed then.
+
+Configured in the UI: required batch_json/internal text and run_label/internal text_1 (Peek code confirmed required keys); Initialize - Evaluation Results / evaluation_results / Array / []; Initialize - Needs Owner Review / needs_owner_review / Boolean / false. Do not rebuild these. A “Your flow is ready to go. We recommend you test it” banner was visible on resume, but subsequent full wiring/save is NOT confirmed. No batch run occurred.
+
+An empty Scope was added as a temporary wiring container. Classic My clipboard contains that Scope and the results initializer. The prepared blueprint's Parse/ForEach/Export block was packaged as Evaluate_-_Frozen_Batch and pasted through the supported clipboard UI. A Chrome JavaScript prompt appeared: “Copy to clipboard: Ctrl+C, Enter”, with the prepared action JSON selected. Do not paste/insert it again without checking whether it already exists. If the populated block is inserted successfully, remove only the unused empty Scope from this new helper and verify the existing AI Builder bindings; do not touch the main flow or shared connections.
+
+Browser control stalled while accepting that clipboard prompt (focus commands timed out). Input stopped under Josh's existing rule. An async user question asks him to close the visible clipboard dialog with Enter, or report No dialog visible. The tab is marked for handoff. NEXT: after Josh answers, inspect this actual tab once, confirm whether the dialog/block is present, finish only remaining wiring, run checker, save and confirm status. No full helper save/checker/publication/runtime pass claimed. Existing evaluation pack/16 tooling checks unchanged; no completed tests rerun or mail sent.
+
+## Prior pack checkpoint — superseded for live UI progress by November 15 above
 
 Josh requested repeatable evaluation using the existing frozen 30 and no repeated completed tests. After a sender-fidelity limitation was explained, he explicitly selected an isolated batch preserving original inputs, with mailbox/logging checks separate. Do not send all cases from Josh and call that the unchanged frozen set.
 
