@@ -212,3 +212,8 @@ I authorized the If no branch to stop incomplete reporting. The assistant added 
 The assistant saved and published it, observing both the saved-draft and Published / ready-to-go confirmations. Flow checker showed 0 errors and 0 warnings. This is configuration/publication evidence only: no report was run and no runtime guard or exact-count pass is claimed. The True branch remains empty; deterministic counts and the reviewed explanation/output are next. Main triage, LOG-02, connections, and export warnings were left alone. No export or deliberate failure test occurred.
 
 Independent: saving/opening the helper and authorizing the incomplete-retrieval stop. Assisted: browser recovery, inspecting the saved expression, adding/configuring the stop action, and saving/publishing/checking it. Finished-baseline export remains deferred until the normal build/evaluation is complete.
+
+
+### Saturday 11.14.26 — Counts started; partial draft saved after browser timeout
+
+I chose to group reviewed messages by my final category, otherwise by the suggestion. The assistant started a six-category loop and entered category and successful-processing filters. The accepted-unchanged draft filter is incomplete; edited, rejected, pending-review filters and the final aggregate rows are not built. Browser input timed out again, so the assistant stopped configuration as requested. It saved a partial draft and verified the saved-draft banner; it did not publish the unfinished counts. Expected required-field alerts remain on the unfinished filter. The published completeness guard/stop remains the deployed version. No runtime counting pass or main-flow retest occurred. This was assisted construction; my independent contribution was the category-grouping decision.
