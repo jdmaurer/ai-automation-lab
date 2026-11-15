@@ -2,6 +2,16 @@
 
 Canonical baton under AI_HANDOFF_PROTOCOL.md. Active Week 8 build: `cases/driftless-inbox-triage/`. This is a working checkpoint, not a completed release.
 
+## Latest recovery — Chrome update/relaunch; review filters saved, counts still partial
+
+Josh used Chrome's Update / Relaunch. The assistant reconnected to browser 4 / summary tab 156966426 (same saved flow URL). Reading and several edits worked, but a later CDP Runtime.evaluate timeout while selecting Filter array demonstrated that the update did NOT establish reliable control or its root cause. Do not ask Josh to keep restarting/closing tabs speculatively.
+
+The previously incomplete Filter - Drafts Accepted Unchanged is now completed: From body('Filter_array'), advanced query @and(equals(item()?['jdm_draftcreated'],true),equals(item()?['jdm_reviewoutcome'],832990001)). Added Filter - Drafts Edited and Filter - Drafts Rejected with the same From and respective outcome values 832990002 and 832990003. Filter_array is the category filter's actual saved internal node ID shown by live UI; the earlier friendly-name references in other filters/loop have not been validated. No existing category/processed filters were rebuilt.
+
+The attempt to add the pending-review Filter array timed out while the Discovery action picker was still open; no pending action was added. The assistant closed the picker, saved the draft, and observed Draft / "We saved your draft flow. You can test and run it after you publish." The three draft-decision filters are saved. No publication, checker pass, runtime counts, AI explanation, final output, export, or main-triage change is claimed.
+
+Next REQUIRED work: add Filter - Awaiting Owner Review over the processed-category filter's actual output (Filter_array_1 before publication): Pending (832990000) AND (Draft Created true OR Needs Owner Review true), including no-draft cases. Then append one object for each of the six categories to weekly_summary_rows, with category and numeric length(...) counts for processed / accepted unchanged / edited / rejected / awaiting owner review. Verify actual action IDs/references, sequential loop behavior, and checker; save and publish only when complete. Count results still need the agreed exact-count runtime test. The earlier partial-draft section below is historical where it says accepted is incomplete.
+
 ## Latest checkpoint — November 14, category counts PARTIAL DRAFT
 
 Supersedes the earlier statement that True is empty. Josh authorized building category/review counts and explicitly chose final category after review, otherwise suggested category. The assistant added For Each - Summary Category in True, with json array of six {name,value} objects (Sales through Unknown, choice values 832990000–832990005). Inside it, Filter - Category Rows reads body('Read_-_Weekly_Log_Rows')?['value'] and compares coalesce(if(empty(item()?['jdm_reviewedat']),item()?['jdm_category'],item()?['jdm_finalcategory']),832990005) to items('For_Each_-_Summary_Category')?['value']. Code view verified this filter. Filter - Processed Category Rows reads body('Filter_-_Category_Rows') and accepts Processing Outcome Completed (832990001) or Possible Resend (832990004); failed/started are excluded. Both filter expressions were entered; no runtime counts are claimed.
