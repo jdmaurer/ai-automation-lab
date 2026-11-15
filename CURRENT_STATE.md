@@ -1,31 +1,41 @@
-# CURRENT STATE — updated 2026-11-14 — RESUME HERE
+# CURRENT STATE — updated 2026-11-15 — RESUME HERE
 
-Canonical baton under AI_HANDOFF_PROTOCOL.md. Active Week 8 case: `cases/driftless-inbox-triage/`. Scope frozen: evaluated/documented SME prototype, no extra features or production-perfection work. This checkpoint supersedes earlier November 14 build-state notes; detailed historical evidence remains in week8-log.md, case test-cases.md and append-only decisions.md.
+Canonical baton under AI_HANDOFF_PROTOCOL.md. Active Week 8 case: `cases/driftless-inbox-triage/`. Scope frozen: evaluated/documented SME prototype; no added features or production-perfection work. Detailed history is in week8-log.md, test-cases.md and decisions.md.
 
-## Latest live wiring checkpoint — November 15, 2026; clipboard dialog handoff
+## Exact stopping point — isolated frozen-30 helper WIRED AND SAVED AS DRAFT
 
-Continue the existing Chrome helper tab, NOT a new flow. Current browser ID5 / tab156966477, titled Driftless Frozen 30 Evaluation, full-page classic designer. URL still ends in solutions/~preferred/flows/new?newFlowName=Driftless%20Frozen%2030%20Evaluation...v3=false&v3survey=true; no saved helper ID read yet. The main flow list was inspected before creation; no saved evaluation helper was listed then.
+**Driftless Frozen 30 Evaluation** now exists: b073b5f4-92ca-e6ad-e255-6a264c4891f0. [Open saved helper](https://make.powerautomate.com/environments/88301e40-6106-ee47-900c-67a24cbc121e/solutions/~preferred/flows/b073b5f4-92ca-e6ad-e255-6a264c4891f0?v3=true). Current browser5 / tab156966477 is marked for continuation.
 
-Configured in the UI: required batch_json/internal text and run_label/internal text_1 (Peek code confirmed required keys); Initialize - Evaluation Results / evaluation_results / Array / []; Initialize - Needs Owner Review / needs_owner_review / Boolean / false. Do not rebuild these. A “Your flow is ready to go. We recommend you test it” banner was visible on resume, but subsequent full wiring/save is NOT confirmed. No batch run occurred.
+Final save confirmed through “We saved your draft flow. You can test and run it after you publish.” Flow checker then showed **Errors (0), Warnings (0)**. Complete wiring is a SAVED DRAFT; it has NOT been published or runtime-tested. An earlier classic-editor Save published only the partial input/initializer skeleton; that is not the completed evaluator. No batch run, real score, model-quality pass or overall release is claimed.
 
-An empty Scope was added as a temporary wiring container. Classic My clipboard contains that Scope and the results initializer. The prepared blueprint's Parse/ForEach/Export block was packaged as Evaluate_-_Frozen_Batch and pasted through the supported clipboard UI. A Chrome JavaScript prompt appeared: “Copy to clipboard: Ctrl+C, Enter”, with the prepared action JSON selected. Do not paste/insert it again without checking whether it already exists. If the populated block is inserted successfully, remove only the unused empty Scope from this new helper and verify the existing AI Builder bindings; do not touch the main flow or shared connections.
+**Single next action: publish the completed helper draft**, then perform the first formal frozen-30 batch with the prepared packet and capture actual results for Josh's owner review. Do not rebuild saved wiring or repeat earlier tests.
 
-Browser control stalled while accepting that clipboard prompt (focus commands timed out). Input stopped under Josh's existing rule. An async user question asks him to close the visible clipboard dialog with Enter, or report No dialog visible. The tab is marked for handoff. NEXT: after Josh answers, inspect this actual tab once, confirm whether the dialog/block is present, finish only remaining wiring, run checker, save and confirm status. No full helper save/checker/publication/runtime pass claimed. Existing evaluation pack/16 tooling checks unchanged; no completed tests rerun or mail sent.
+### Saved configuration inspected
 
-## Prior pack checkpoint — superseded for live UI progress by November 15 above
+- Required Text inputs batch_json/internal text and run_label/internal text_1, Peek-code checked. Initializers: evaluation_results Array []; needs_owner_review Boolean false.
+- Evaluate - Frozen Batch contains Parse - Frozen Batch, For Each - Frozen Message, Export - Evaluation Results. Saved scope has 17 actions including nested actions. The temporary empty Scope was reused/renamed, not left as a duplicate.
+- Parser content @json(triggerBody()?['text']); strict schema exactly matches the blueprint, array minItems/maxItems30, original normalized fields only, no expected labels.
+- Loop @body('Parse_-_Frozen_Batch'); Concurrency control Off. UI explicitly states loops execute sequentially by default. Reset - Owner Review starts each case using that case's has_attachments Boolean; Normalize reuses the original email_record. No shared cross-case review state carries forward.
+- Explicit-language resend rule retained. Run a prompt uses existing classifier 614118d4-6ca8-4344-b945-8659eb8bb3d8 with @outputs('Normalize_-_Email_Fields').
+- Existing validation, 0.80 confidence, owner-review and draft predicates reused. The UI represents predicates as compiled compound expressions compared to actual Boolean @true; these saved expressions were compared to the source predicates after normalizing line endings. Three required review setters store Boolean true (policy, low confidence, invalid output).
+- Draft - Generate Reply uses existing drafter e9c13e46-ec62-4cd4-b52f-b2f596db5821, original email_record and stringified actual classification_record. Existing Dataverse connection selected automatically; no shared connection or prompt edits.
+- Collect - Actual Result appends one typed object to evaluation_results: ID, category, priority, confidence, needs_owner_review, possible_resend, draft_generated, draft_text, processing_status, classifier_status, drafter_status and raw classification. It runs after Validate succeeds, fails, times out or skips.
+- Export - Evaluation Results follows the loop for all four statuses, returning scope isolated-batch, run label, real helper/flow-run IDs, frozen fingerprint, source/prompt IDs, actual submitted input_messages and collected results. setProperty expressions preserve JSON types and text without manually assembling escaped JSON.
+- Saved Scope Code view read through UI and inspected: no unresolved action references, two AI Builder calls only, no Outlook action, row write or static/mock output. Limited configuration record: evaluation/saved-helper-scope-2026-11-15.json. This is not a complete flow export/recoverable baseline and does not replace later baseline preservation.
 
-Josh requested repeatable evaluation using the existing frozen 30 and no repeated completed tests. After a sender-fidelity limitation was explained, he explicitly selected an isolated batch preserving original inputs, with mailbox/logging checks separate. Do not send all cases from Josh and call that the unchanged frozen set.
+### Resume/test packet
 
-GitHub `cases/driftless-inbox-triage/evaluation/README.md` is the setup/run guide. Prepared:
-- Original frozen-test-set-v1.csv unchanged; LF-normalized SHA256 d3241136e45fc8c26ff935e63bcf5aee1637fa2f4b67e3449572ec64fa178f06.
-- Dependency-free Node prepare/scoring tool, 16 passing offline tooling/structure checks. These are NOT model/workflow evaluation results.
-- Complete answer-free 30-case batch input, manifest and blank owner review under `evaluation/runs/run-2026-11-14-frozen-v1/`. Original sender/body/subject/attachment-presence and DRI-10-before-15 order preserved; labels/expected behavior excluded from model input.
-- Limited source configuration read in main flow Code view: normalization, classifier/drafter IDs, validation/confidence/review/draft expressions and explicit-resend rule. No main-flow edits.
-- Rebuildable helper blueprint with two existing AI Builder prompt references, sequential per-case reset, result collection and provenance. NO Outlook operation or Dataverse row write. This is a construction blueprint, NOT an importable package, saved flow, verified baseline/export or runtime-proven definition.
+Guide: cases/driftless-inbox-triage/evaluation/README.md. Prepared run: evaluation/runs/run-2026-11-14-frozen-v1/.
+- batch_json = entire prepared batch-input.json.
+- run_label = run-2026-11-14-frozen-v1.
+- Original frozen v1 unchanged: LF SHA256 d3241136e45fc8c26ff935e63bcf5aee1637fa2f4b67e3449572ec64fa178f06.
+- Preparation/scoring tools and 16 prior offline tooling/structure checks retained, not rerun here. No actual-results.json or real score exists. Josh's owner-review judgments remain blank/null.
+- Preserve original senders/subjects/bodies/attachment-presence and DRI-10-before-15 order. Never feed the answer key or owner-review form to the prompts.
+- Batch tests shared prompts/mirrored routing and generated text; mailbox markers, real Outlook drafts, Dataverse/alternate-key/concurrency and live resend behavior remain separate evidence.
 
-Cloud creation stopped when browser editing could not reliably reach new helper controls. The unsaved wizard was named Driftless Frozen 30 Evaluation; no saved helper ID/checker/publication/run was confirmed. No main or weekly flow changes, mail sends, logging replay, connection changes, export investigation or failure injection occurred. No actual-results.json, real score or frozen-30 pass exists.
+### Browser recovery resolved
 
-**Single next action:** inspect the live solution's flow list, then finish creating/saving the isolated on-demand **Driftless Frozen 30 Evaluation** helper from the blueprint. Check for a persisted wizard result first to avoid duplicates. Use required Text inputs batch_json and run_label; verify their actual internal keys in Code view. Follow the evaluation README; only batch-input.json goes to the model-side helper. Confirm saved status and checker before publication/run. Do not call setup complete until a live helper is saved.
+Josh reported that switching to Outlook made the prior clipboard dialog disappear. Assistant confirmed the helper fields survived and the block was only in My clipboard. Classic insertion did not reliably work; a display error was observed without proving a specific root cause. The assistant saved the partial helper, switched to the full-page new designer, and completed missing wiring through normal cards. Monaco schema entry required native paste; final saved parser schema was inspected and matches the blueprint. No pending clipboard dialog remains. Do not recreate the helper, paste the old clipboard block again, or resume the earlier stalled wizard.
 
 ## Established evidence — preserve, do not repeat
 
@@ -53,7 +63,7 @@ WS-02 run 08584068916602989636218220553CU01, same date: new report-output path P
 
 ## Remaining work — agreed order
 
-1. Finish/save helper; run and score frozen 30 once with actual shared prompt outputs and Josh's draft ratings. Inspect misses; only necessary ordinary defects. Batch pass does not establish Outlook/Dataverse side effects.
+1. Publish the saved complete helper draft; run and score frozen 30 once with actual shared prompt outputs and Josh's draft ratings. Inspect misses; only necessary ordinary defects. Batch pass does not establish Outlook/Dataverse side effects.
 2. Necessary unproven normal integration checks: exact-ID/alternate-key/concurrency and live resend behavior; required new weekly fixtures (nonzero Edited/Rejected, pending no-draft review, changed final category, empty/date-boundary cases as needed). Preserve proven WS-01/WS-02 instead of repeating them.
 3. Preserve/export the finished working baseline into the repo. Do NOT revisit solution dependency warning before this agreed stage; no new baseline/export exists.
 4. Isolated deliberate model unavailable/wrong schema/completion-write/retrieval completeness failure testing, after baseline preservation. Never casually break the only working flow.

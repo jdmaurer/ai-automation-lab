@@ -1,6 +1,6 @@
 # Frozen 30-message evaluation
 
-Status, November 14, 2026: **pack prepared; cloud helper NOT saved/published; no 30-message run or release pass.** Browser editing stopped when the new helper controls could not be reached reliably. No live triage/report change, mail sending, logging replay, export investigation or failure injection was performed.
+Status, November 15, 2026: **complete cloud helper SAVED AS DRAFT; checker 0 errors/0 warnings; not yet published or runtime-tested.** [Open Driftless Frozen 30 Evaluation](https://make.powerautomate.com/environments/88301e40-6106-ee47-900c-67a24cbc121e/solutions/~preferred/flows/b073b5f4-92ca-e6ad-e255-6a264c4891f0?v3=true), ID b073b5f4-92ca-e6ad-e255-6a264c4891f0. The final saved-draft banner was observed. No frozen-30 result or release pass exists. No main triage/report change, sending, completed-test replay, connection remapping, export investigation or failure injection occurred.
 
 Josh chose an isolated batch preserving the original inputs, with mailbox/logging checks kept separate. An initially offered lab-mailbox delivery route was rejected after inspection: the existing Outlook connection would replace all synthetic senders with Josh. Do not use that altered envelope as an unchanged frozen-set result.
 
@@ -15,11 +15,11 @@ Josh chose an isolated batch preserving the original inputs, with mailbox/loggin
 
 The complete pin data is already in the prepared `batch-input.json`; nobody needs to compose 30 emails or paste one case at a time.
 
-## Finish the cloud helper — next action
+## Saved live helper — next action is publication
 
-When browser control works, open the existing solution and create one Instant flow named **Driftless Frozen 30 Evaluation**, with **Manually trigger a flow**. The previous creation wizard was unsaved; inspect the solution list first to avoid duplicating a helper if it later appears.
+The existing helper is now wired; do not create another one. Publish its completed saved draft, then run the first formal batch using the full pin-data packet below. The previously published skeleton does not contain the complete evaluator. The following list is a construction reference, not unfinished work.
 
-Use the blueprint as the exact configuration plan:
+Completed configuration, checked against the blueprint's rules:
 
 1. Required Text inputs `batch_json` (internal `text`) and `run_label` (internal `text_1`). Check Code view for the actual input keys; adjust helper references if the UI assigns different keys.
 2. Initialize `evaluation_results` Array `[]` and `needs_owner_review` Boolean `false`. Parse the supplied JSON using the blueprint's answer-free schema.
@@ -45,7 +45,7 @@ For the already prepared first run, use:
 - `batch_json`: the **entire** contents of `runs/run-2026-11-14-frozen-v1/batch-input.json`.
 - `run_label`: `run-2026-11-14-frozen-v1`.
 
-After the cloud helper is saved/checked/published, one complete batch provides the first formal frozen-30 results. The four earlier live DRI smoke tests are historical evidence, not substitutes for missing batch results. Do not rerun LOG-02, AUTO-01, WS-01 or WS-02 merely to re-prove them. Do not rerun an entire batch automatically for one failure; retain the original run and investigate each miss first. A later retest uses a new run label and records the changed configuration and cases.
+After publishing the saved complete helper draft, one complete batch provides the first formal frozen-30 results. The four earlier live DRI smoke tests are historical evidence, not substitutes for missing batch results. Do not rerun LOG-02, AUTO-01, WS-01 or WS-02 merely to re-prove them. Do not rerun an entire batch automatically for one failure; retain the original run and investigate each miss first. A later retest uses a new run label and records the changed configuration and cases.
 
 Export **Export - Evaluation Results** raw output as `actual-results.json` in the same run directory. Keep the actual flow-run ID and full 30-case input/result envelope. The scorer checks the submitted inputs/order against the source, prompt/source/helper provenance, unique IDs, actual Boolean types and draft flag/text consistency. A changed source, input, missing provenance or duplicate result is rejected. Incomplete results cannot pass.
 
@@ -74,4 +74,13 @@ Still required where not already proven: Outlook markers/actual draft creation a
 
 ## Setup verification, not evaluation results
 
-November 14: **16 tooling/structure checks passed**. They cover multiline parsing, input/answer separation, frozen-key tampering, missing/duplicate IDs, pending human review, safety overrides, quote review, provenance, low-confidence draft blocking, exact mirrored expression trees, sequential reset and absence of mailbox/table writes. Artificial self-test fixtures stay inside test code and do not create `actual-results.json` or a real score. No AI Builder batch, new live helper checker/save/publication or model-quality result has occurred.
+November 14: **16 tooling/structure checks passed**. They cover multiline parsing, input/answer separation, frozen-key tampering, missing/duplicate IDs, pending human review, safety overrides, quote review, provenance, low-confidence draft blocking, exact mirrored expression trees, sequential reset and absence of mailbox/table writes. Artificial self-test fixtures stay inside test code and do not create `actual-results.json` or a real score. Subsequently, live wiring was saved as a draft and its checker returned 0 errors/0 warnings. No publication of the completed draft, AI Builder batch or model-quality result has occurred.
+
+
+## November 15 live wiring evidence
+
+Final banner: “We saved your draft flow. You can test and run it after you publish.” Flow checker Errors (0), Warnings (0). Browser5/tab156966477 retained for continuation. The temporary clipboard route was abandoned after insertion/display problems; normal new-designer cards completed the existing helper. No pending clipboard dialog remains.
+
+[saved-helper-scope-2026-11-15.json](saved-helper-scope-2026-11-15.json) is the actual Scope Code view read after saving. It records 17 actions including nested gates; two existing shared prompt references; the strict 30-record schema; per-case attachment/review reset; and all-status collection/export. It is a limited configuration record, not an importable package or baseline backup.
+
+UI conditions wrap the source compound predicates in an equality to Boolean @true. Collector/export use typed setProperty expressions instead of literal input objects, preserving the same fields. Loop concurrency is Off: the UI explicitly documents sequential execution as default. Saved schema, normalization/classifier/drafter inputs, routing predicates, Boolean review flags and all-status links were inspected against the blueprint. All action references resolve. The Scope has no Outlook actions, Dataverse row writes or static/mock outputs. These checks establish configuration only; runtime results remain pending.

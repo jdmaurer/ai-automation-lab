@@ -1,6 +1,6 @@
 # Limitations
 
-Current prototype limitations, updated 2026-11-14. Detailed dated evidence is in test-cases.md.
+Current prototype limitations, updated 2026-11-15. Detailed dated evidence is in test-cases.md.
 
 - This is a synthetic demonstration case. No real client email or sensitive client data is used in the evaluation set.
 - No automatic external sending or forwarding. The owner sends replies manually.
@@ -12,7 +12,7 @@ Current prototype limitations, updated 2026-11-14. Detailed dated evidence is in
 - The observed automated-notification drafting defect was addressed through the shared draft_candidate policy. AUTO-01 passed live; AUTO-02/03 remain prompt-only evidence. This is bounded verification, not proof for every automated sender.
 - Exact-ID lookup/stop, an Active alternate key and explicit-language Possible Resend control are published but runtime enforcement/concurrency and the live DRI-10/15 pair remain unverified. Resend detection flags explicit language; it is not historical semantic matching.
 - Correlation/minimal tracking and owner feedback are implemented with bounded normal evidence: LOG-02 passed; REVIEW-01 required assisted recovery and remains an automatic-logging failure. Do not treat recovery as an automatic pass.
-- The frozen-30 evaluation pack is prepared with 16 passing tooling/structure checks; the cloud batch helper is NOT saved/published/runtime-verified, and no actual30 results or score exist. The isolated batch preserves inputs and tests shared prompts/mirrored routing; it cannot prove live Outlook/Dataverse side effects. Four earlier live DRI smoke checks remain bounded evidence.
+- The frozen-30 evaluation pack is prepared with 16 passing tooling/structure checks; the complete cloud batch helper is now saved as a draft with checker 0 errors/0 warnings, but is not yet published/runtime-verified, and no actual30 results or score exist. The isolated batch preserves inputs and tests shared prompts/mirrored routing; it cannot prove live Outlook/Dataverse side effects. Four earlier live DRI smoke checks remain bounded evidence.
 - Model-unavailable and wrong-schema behavior has not yet been deliberately verified. These tests should be run on an isolated test copy/checkpoint after the working baseline is preserved.
 - Weekly summary is published; WS-01/WS-02 passed the existing two-record week and unsent report output. It measures inbox/review activity, not revenue or completed orders. Nonzero Edited/Rejected, pending no-draft, changed final category, empty/date edges and retrieval failure coverage remain pending. Josh's final report-wording review remains outstanding.
 - A clean recoverable baseline/export is not yet confirmed. By Josh's explicit sequence, finish normal evaluation/ordinary defects first; only then preserve/export the finished baseline and perform isolated deliberate failures. Do not revisit the earlier solution dependency warning ahead of that stage. The limited routing reference/helper blueprint is not a baseline export.
