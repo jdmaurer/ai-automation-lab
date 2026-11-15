@@ -201,3 +201,14 @@ The browser connection then repeatedly timed out/reset. Native Chrome inspection
 The next proposed entry is the simpler check that fetched rows are below the configured 100000 pagination cap. It is not yet accepted or saved. The guard still needs its Boolean comparison and failure/stop path before any counting. The initial foundation had shown Edit/Test enabled after my save report, but its durable resource ID/save confirmation was not established; later edits remain unconfirmed saved.
 
 This was assisted construction and tool troubleshooting, not an independent build or a weekly-summary test pass. No test email, main-flow logic change, deliberate failure test, or export occurred in this block.
+
+
+### Saturday 11.14.26 — Recovered browser access; published the weekly-summary stop
+
+I saved the weekly summary and opened it from the solution list. That created a fresh tab the assistant could control after the old tab kept reporting ownership by the previous chat. Opening side panels alone had not cleared that problem. The assistant reopened the saved helper and checked that the original compound completeness expression was intact and compared to Boolean true. The saved flow was Published and had no run history.
+
+I authorized the If no branch to stop incomplete reporting. The assistant added Stop - Incomplete Weekly Retrieval, a Terminate action with Failed status, code IncompleteWeeklyLogRetrieval, and a clear message that reaching the 100000-row limit or returning a continuation link means the counts may be incomplete and no summary was produced. This makes an incomplete retrieval visible rather than allowing it to look like a successful report.
+
+The assistant saved and published it, observing both the saved-draft and Published / ready-to-go confirmations. Flow checker showed 0 errors and 0 warnings. This is configuration/publication evidence only: no report was run and no runtime guard or exact-count pass is claimed. The True branch remains empty; deterministic counts and the reviewed explanation/output are next. Main triage, LOG-02, connections, and export warnings were left alone. No export or deliberate failure test occurred.
+
+Independent: saving/opening the helper and authorizing the incomplete-retrieval stop. Assisted: browser recovery, inspecting the saved expression, adding/configuring the stop action, and saving/publishing/checking it. Finished-baseline export remains deferred until the normal build/evaluation is complete.
