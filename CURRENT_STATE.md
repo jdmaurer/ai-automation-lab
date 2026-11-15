@@ -2,6 +2,16 @@
 
 Canonical baton under AI_HANDOFF_PROTOCOL.md. Active Week 8 build: `cases/driftless-inbox-triage/`. This is a working checkpoint, not a completed release.
 
+## NEWEST checkpoint — pending rule saved; demonstrated source-reference defects block completion
+
+Summary saved editor reopened at new Chrome browser 4 / tab 156966473, same summary resource URL. The old tab 156966426 was closed. Assistant added Filter - Awaiting Owner Review after Rejected within the category loop. Its entered advanced query is @and(equals(item()?['jdm_reviewoutcome'],832990000),or(equals(item()?['jdm_draftcreated'],true),equals(item()?['jdm_needsownerreview'],true))). Its From was entered as body('Filter_array_1'), which is WRONG against the restored draft's actual friendly action IDs; must use body('Filter_-_Processed_Category_Rows').
+
+A complete read of the loop's Code view exposed earlier source defects, not merely cosmetic names: Accepted Unchanged, Edited, and Rejected each have From @body('Filter_-_Drafts_Edited'), including Edited's self-reference. All three MUST instead read @body('Filter_-_Category_Rows'). Their outcome predicates are correct and do not need rebuilding. Category Rows and Processed Category Rows definitions read correctly: category data comes from Read_-_Weekly_Log_Rows value, final-category-if-reviewed rule matches Josh's decision, and processed is Completed OR Possible Resend. The loop's actual internal name is For_Each_-_Summary_Category and its six-item array is intact.
+
+The assistant began source correction at Accepted Unchanged, but browser input timed out again (CDP Runtime.evaluate during Insert expression). Reobservation showed Accepted Unchanged's original WRONG From token remained unchanged, not blank. Stopped further configuration, saved draft, and confirmed "We saved your draft flow. You can test and run it after you publish." NO publication/checker pass/runtime pass. Do NOT publish this draft with these defects. Final aggregate rows are NOT built.
+
+NEXT: correct ONLY the four source links above using exact friendly saved internal IDs, add Append to array variable weekly_summary_rows inside the sequential category loop with category name plus numeric lengths of Processed, Accepted Unchanged, Edited, Rejected, Awaiting filters. Then verify the complete saved references, checker and Save/Publish before a separate exact-count test. Keep no-draft pending cases, separate draft decisions from failed processing, and final category after review. The original completeness comparison and False termination remain the published baseline. No main-flow changes, LOG-02 rerun, export, deliberate failure test, or extra feature occurred.
+
 ## Latest recovery — Chrome update/relaunch; review filters saved, counts still partial
 
 Josh used Chrome's Update / Relaunch. The assistant reconnected to browser 4 / summary tab 156966426 (same saved flow URL). Reading and several edits worked, but a later CDP Runtime.evaluate timeout while selecting Filter array demonstrated that the update did NOT establish reliable control or its root cause. Do not ask Josh to keep restarting/closing tabs speculatively.
