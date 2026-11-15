@@ -118,3 +118,8 @@ Append-only design record for the Driftless Print and Sign inbox-triage case.
 ## 2026-11-14 — Weekly category grouping
 
 46. Josh explicitly chose final category after owner review, otherwise suggested category, for weekly grouping. The implementation uses Reviewed At to identify recorded review and falls back to Unknown for a null category. Processing completion remains distinct from draft-review decisions and open follow-up. Counting work is a partial saved draft only; no runtime accuracy or completed aggregate output is claimed.
+
+
+## 2026-11-14 — Owner-review weekly report destination
+
+47. Josh explicitly selected an unsent Outlook draft for weekly report review. Format the existing six-category aggregates as an HTML table; use a separate short-text AI prompt receiving only dates and counts for explanation. Preserve the classifier/drafter prompts, separate processing from human review/follow-up, label generated wording for owner checking, escape AI text in HTML, and create a draft rather than sending. This keeps the output in the owner's existing review workflow and preserves final human control. Prompt and flow configuration saved, checker 0 errors/0 warnings; publication, actual draft rendering and AI-output quality remain unverified.
