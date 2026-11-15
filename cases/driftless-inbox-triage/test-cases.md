@@ -250,3 +250,36 @@ Each of the six successful Collect - Category Summary Row iteration input object
 PASS scope: exact two-record selected-week counts, zero categories, successful processing separate from accepted draft after a processing failure, suggested-category fallback for an unreviewed row, pending draft with Needs Owner Review false, and successful uncapped retrieval path.
 
 Uncovered: nonzero Edited/Rejected, Pending without a draft, changed final category, Possible Resend, empty week, start/end/DST edges, and cap/continuation failure path. Those require necessary fixture/evaluation coverage; do not repeat this two-record check solely to re-prove it. This is not full frozen-30 success or a completed weekly-summary release. Aggregate-only AI explanation and owner-reviewed report output still need building.
+
+
+## WS-02 — Weekly report output and Outlook draft — PASS (bounded), November 14
+
+Josh authorized publication and one targeted output test, explicitly prohibiting sending and repeated completed tests. Publication was confirmed by Published / ready-to-go. The run wizard showed the existing Outlook reference Valid; no connection changes were made.
+
+Complete test input:
+
+```json
+{"date":"2026-11-09"}
+```
+
+Run/client tracking ID 08584068916602989636218220553CU01. Run monitor showed success. Action durations: retrieval 0.1s, category loop 1.7s, Explain 3.1s, DraftEmail 1.2s. False termination skipped. These are individual action durations, not total session effort.
+
+DraftEmail returned HTTP 200, the expected subject, recipient and HTML report. Created UTC 2026-11-15T04:00:31+00:00 (November 14 10:00:31 PM Central). Draft ID: AAMkAGU4ZDE3Yzk1LTdkOWQtNDBhOS04ZTZhLTgzYzE2N2YxMzAwNgBGAAAAAAB7PhsQ6xs8R54jFyDrVEtyBwCA8yrlcZkjTb116hwG51KxAAAAAAEPAACA8yrlcZkjTb116hwG51KxAAJEdT_vAAA=. No IsDraft property was exposed in that response, so draft status was verified directly in Outlook.
+
+| Check | Result / observed evidence |
+|---|---|
+| Unsent report exists | PASS: Outlook Drafts directly showed exactly one new OWNER REVIEW - Driftless weekly inbox summary - 2026-11-09, plus REVIEW-01 and LOG-02; three drafts total |
+| Recipient and reporting dates | PASS: lab owner mailbox; November 9–15 Central; correct subject |
+| Table rendering | PASS: all six columns and category rows readable in Outlook |
+| Table values | PASS: General 1 processed / 1 accepted unchanged / 0 edited / 0 rejected / 1 awaiting review; each other category all zero; matches WS-01 established expected values |
+| AI explanation | PASS for this sample: 3 sentences, under 90 words, accurately identifies General counts and other categories' zero processing/pending counts, ends with owner-review requirement |
+| Human control | PASS: explicit UNSENT DRAFT / OWNER REVIEW REQUIRED, AI-written label, count definitions, review/edit/manual-send instructions; no Send operation or UI send used |
+| Existing work preserved | PASS: no triage replay/test email or changes to verified counting logic; the one new run exercised newly added report output |
+
+Actual explanation:
+
+> For the week starting November 9, 2026, there was 1 message processed in the General category, with 1 draft accepted unchanged and 1 message awaiting owner review. All other categories—Sales, Support, Finance, Internal, and Unknown—show zero counts for processed messages and awaiting owner review. Owner review required before sharing.
+
+The receipt-cohort/current-review-status note, processing-versus-draft definitions, before-sharing checklist and synthetic-prototype label were also rendered. Screenshots inspected the count table and AI paragraph. The assistant did not send, discard, delete or edit the report. Josh's own final owner acceptance is still pending.
+
+Coverage is limited to the normal existing two-record period. Nonzero edited/rejected, pending no-draft review, changed final category, resend/duplicate/concurrency, empty/date-boundary cases, retrieval failure and AI/schema/failure paths remain under their required evaluation stages. Ordinary plain text rendered; adversarial markup escaping was not separately exercised. This does not establish full frozen-30 success or overall release readiness. Do not repeat this proven normal report-output check solely to re-prove it.
