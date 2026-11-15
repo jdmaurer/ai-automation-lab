@@ -1,0 +1,424 @@
+{
+  "artifact_status": "BLUEPRINT_NOT_IMPORTED_OR_RUNTIME_VERIFIED",
+  "display_name": "Driftless Frozen 30 Evaluation",
+  "purpose": "Test-only helper: shared prompts plus mirrored normal routing; no Outlook operations or table writes",
+  "connection_binding": "Bind AI Builder actions through the existing Dataverse connection in the UI; never modify shared connection mappings",
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {
+      "manual": {
+        "type": "Request",
+        "kind": "Button",
+        "inputs": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string",
+                "title": "batch_json",
+                "x-ms-dynamically-added": true,
+                "description": "Paste the complete prepared batch-input.json; no answer key"
+              },
+              "text_1": {
+                "type": "string",
+                "title": "run_label",
+                "x-ms-dynamically-added": true,
+                "description": "Use the manifest run label"
+              }
+            },
+            "required": [
+              "text",
+              "text_1"
+            ]
+          }
+        }
+      }
+    },
+    "actions": {
+      "Initialize_-_Evaluation_Results": {
+        "type": "InitializeVariable",
+        "inputs": {
+          "variables": [
+            {
+              "name": "evaluation_results",
+              "type": "array",
+              "value": []
+            }
+          ]
+        },
+        "runAfter": {}
+      },
+      "Initialize_-_Needs_Owner_Review": {
+        "type": "InitializeVariable",
+        "inputs": {
+          "variables": [
+            {
+              "name": "needs_owner_review",
+              "type": "boolean",
+              "value": false
+            }
+          ]
+        },
+        "runAfter": {
+          "Initialize_-_Evaluation_Results": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Parse_-_Frozen_Batch": {
+        "type": "ParseJson",
+        "inputs": {
+          "content": "@json(triggerBody()?['text'])",
+          "schema": {
+            "type": "array",
+            "minItems": 30,
+            "maxItems": 30,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "id",
+                "email_record"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "email_record": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "message_id",
+                    "received_at",
+                    "sender",
+                    "subject",
+                    "body",
+                    "has_attachments",
+                    "folder"
+                  ],
+                  "properties": {
+                    "message_id": {
+                      "type": "string"
+                    },
+                    "received_at": {
+                      "type": "string"
+                    },
+                    "sender": {
+                      "type": "string"
+                    },
+                    "subject": {
+                      "type": "string"
+                    },
+                    "body": {
+                      "type": "string"
+                    },
+                    "has_attachments": {
+                      "type": "boolean"
+                    },
+                    "folder": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "runAfter": {
+          "Initialize_-_Needs_Owner_Review": [
+            "Succeeded"
+          ]
+        }
+      },
+      "For_Each_-_Frozen_Message": {
+        "type": "Foreach",
+        "foreach": "@body('Parse_-_Frozen_Batch')",
+        "actions": {
+          "Reset_-_Owner_Review": {
+            "type": "SetVariable",
+            "inputs": {
+              "name": "needs_owner_review",
+              "value": "@items('For_Each_-_Frozen_Message')?['email_record']?['has_attachments']"
+            },
+            "runAfter": {}
+          },
+          "Normalize_-_Email_Fields": {
+            "type": "Compose",
+            "inputs": "@items('For_Each_-_Frozen_Message')?['email_record']",
+            "runAfter": {
+              "Reset_-_Owner_Review": [
+                "Succeeded"
+              ]
+            }
+          },
+          "Flag_-_Possible_Resend": {
+            "type": "Compose",
+            "inputs": "@or(contains(toLower(coalesce(outputs('Normalize_-_Email_Fields')?['subject'],'')),'resending'),contains(toLower(coalesce(outputs('Normalize_-_Email_Fields')?['subject'],'')),'resend:'),contains(toLower(coalesce(outputs('Normalize_-_Email_Fields')?['body'],'')),'just resending'),contains(toLower(coalesce(outputs('Normalize_-_Email_Fields')?['body'],'')),'resending this'),contains(toLower(coalesce(outputs('Normalize_-_Email_Fields')?['body'],'')),'sending this again'))",
+            "runAfter": {
+              "Normalize_-_Email_Fields": [
+                "Succeeded"
+              ]
+            }
+          },
+          "Run_a_prompt": {
+            "type": "OpenApiConnection",
+            "inputs": {
+              "parameters": {
+                "recordId": "614118d4-6ca8-4344-b945-8659eb8bb3d8",
+                "item/requestv2/email_record": "@outputs('Normalize_-_Email_Fields')"
+              },
+              "host": {
+                "apiId": "providers/Microsoft.ProcessSimple/operationGroups/aibuilder",
+                "connection": "shared_commondataserviceforapps",
+                "operationId": "aibuilderpredict_customprompt"
+              }
+            },
+            "runAfter": {
+              "Flag_-_Possible_Resend": [
+                "Succeeded"
+              ]
+            }
+          },
+          "Decision_-_Valid_Output": {
+            "type": "Compose",
+            "inputs": "@and(equals(contains(createArray('Sales','Support','Finance','General','Internal','Unknown'), outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/category']),true),equals(contains(createArray('Urgent','Routine'), outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/priority']),true),greaterOrEquals(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/confidence'],0),lessOrEquals(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/confidence'],1))",
+            "runAfter": {
+              "Run_a_prompt": [
+                "Succeeded"
+              ]
+            }
+          },
+          "Validate_-_AI_Output": {
+            "type": "If",
+            "expression": {
+              "equals": [
+                "@outputs('Decision_-_Valid_Output')",
+                true
+              ]
+            },
+            "runAfter": {
+              "Decision_-_Valid_Output": [
+                "Succeeded"
+              ]
+            },
+            "actions": {
+              "Rule_-_Confidence_High_Enough": {
+                "type": "If",
+                "expression": {
+                  "and": [
+                    {
+                      "greaterOrEquals": [
+                        "@outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/confidence']",
+                        "@float('0.8')"
+                      ]
+                    }
+                  ]
+                },
+                "actions": {
+                  "Rule_-_Owner_Review_Required": {
+                    "type": "If",
+                    "expression": {
+                      "or": [
+                        {
+                          "equals": [
+                            "@outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/priority']",
+                            "Urgent"
+                          ]
+                        },
+                        {
+                          "equals": [
+                            "@contains(createArray('Unknown','Finance','Internal'), outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/category'])",
+                            true
+                          ]
+                        },
+                        {
+                          "equals": [
+                            "@contains(\r\n  createArray(\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/personal'],\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/sensitive'],\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/suspicious'],\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/adversarial'],\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/custom_quote_needed'],\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/record_change_requested']\r\n  ),\r\n  true\r\n)",
+                            true
+                          ]
+                        },
+                        {
+                          "equals": [
+                            "@outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/context_sufficient']",
+                            false
+                          ]
+                        },
+                        {
+                          "equals": [
+                            "@outputs('Flag_-_Possible_Resend')",
+                            true
+                          ]
+                        }
+                      ]
+                    },
+                    "actions": {
+                      "Set_-_Needs_Owner_Review_-_Policy": {
+                        "type": "SetVariable",
+                        "inputs": {
+                          "name": "needs_owner_review",
+                          "value": true
+                        },
+                        "runAfter": {}
+                      }
+                    },
+                    "else": {
+                      "actions": {}
+                    }
+                  },
+                  "Rule_-_Draft_Allowed": {
+                    "type": "If",
+                    "expression": {
+                      "and": [
+                        {
+                          "equals": [
+                            "@contains(createArray('Unknown','Finance','Internal'), outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/category'])",
+                            false
+                          ]
+                        },
+                        {
+                          "equals": [
+                            "@contains(\r\n  createArray(\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/personal'],\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/sensitive'],\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/suspicious'],\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/adversarial']\r\n  ),\r\n  true\r\n)",
+                            false
+                          ]
+                        },
+                        {
+                          "equals": [
+                            "@outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/context_sufficient']",
+                            true
+                          ]
+                        },
+                        {
+                          "equals": [
+                            "@outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/draft_candidate']",
+                            true
+                          ]
+                        },
+                        {
+                          "equals": [
+                            "@outputs('Flag_-_Possible_Resend')",
+                            false
+                          ]
+                        }
+                      ]
+                    },
+                    "runAfter": {
+                      "Rule_-_Owner_Review_Required": [
+                        "Succeeded"
+                      ]
+                    },
+                    "actions": {
+                      "Draft_-_Generate_Reply": {
+                        "type": "OpenApiConnection",
+                        "inputs": {
+                          "parameters": {
+                            "recordId": "e9c13e46-ec62-4cd4-b52f-b2f596db5821",
+                            "item/requestv2/classification_record": "@string(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput'])",
+                            "item/requestv2/email_record": "@outputs('Normalize_-_Email_Fields')"
+                          },
+                          "host": {
+                            "apiId": "providers/Microsoft.ProcessSimple/operationGroups/aibuilder",
+                            "connection": "shared_commondataserviceforapps",
+                            "operationId": "aibuilderpredict_customprompt"
+                          }
+                        }
+                      }
+                    },
+                    "else": {
+                      "actions": {}
+                    }
+                  }
+                },
+                "else": {
+                  "actions": {
+                    "Set_-_Needs_Owner_Review_-_Low_Confidence": {
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "needs_owner_review",
+                        "value": true
+                      },
+                      "runAfter": {}
+                    }
+                  }
+                }
+              }
+            },
+            "else": {
+              "actions": {
+                "Set_-_Needs_Owner_Review_-_Invalid_AI": {
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "needs_owner_review",
+                    "value": true
+                  },
+                  "runAfter": {}
+                }
+              }
+            }
+          },
+          "Collect_-_Actual_Result": {
+            "type": "AppendToArrayVariable",
+            "runAfter": {
+              "Validate_-_AI_Output": [
+                "Succeeded",
+                "Failed",
+                "TimedOut",
+                "Skipped"
+              ]
+            },
+            "inputs": {
+              "name": "evaluation_results",
+              "value": {
+                "id": "@items('For_Each_-_Frozen_Message')?['id']",
+                "category": "@coalesce(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput']?['category'],'Unknown')",
+                "priority": "@coalesce(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput']?['priority'],'Routine')",
+                "confidence": "@coalesce(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput']?['confidence'],0)",
+                "needs_owner_review": "@or(variables('needs_owner_review'),not(equals(actions('Run_a_prompt')?['status'],'Succeeded')),equals(actions('Draft_-_Generate_Reply')?['status'],'Failed'),equals(actions('Draft_-_Generate_Reply')?['status'],'TimedOut'),equals(actions('Validate_-_AI_Output')?['status'],'Failed'),equals(actions('Validate_-_AI_Output')?['status'],'TimedOut'))",
+                "possible_resend": "@outputs('Flag_-_Possible_Resend')",
+                "draft_generated": "@equals(actions('Draft_-_Generate_Reply')?['status'],'Succeeded')",
+                "draft_text": "@if(equals(actions('Draft_-_Generate_Reply')?['status'],'Succeeded'),coalesce(outputs('Draft_-_Generate_Reply')?['body/responsev2/predictionOutput/text'],''),'')",
+                "processing_status": "@if(equals(actions('Run_a_prompt')?['status'],'TimedOut'),'TimedOut',if(not(equals(actions('Run_a_prompt')?['status'],'Succeeded')),'Failed',if(equals(outputs('Decision_-_Valid_Output'),false),'Invalid',if(or(equals(actions('Draft_-_Generate_Reply')?['status'],'Failed'),equals(actions('Draft_-_Generate_Reply')?['status'],'TimedOut'),equals(actions('Validate_-_AI_Output')?['status'],'Failed'),equals(actions('Validate_-_AI_Output')?['status'],'TimedOut')),'Failed','Succeeded'))))",
+                "classifier_status": "@actions('Run_a_prompt')?['status']",
+                "drafter_status": "@coalesce(actions('Draft_-_Generate_Reply')?['status'],'Skipped')",
+                "classification": "@coalesce(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput'],json('{}'))"
+              }
+            }
+          }
+        },
+        "runAfter": {
+          "Parse_-_Frozen_Batch": [
+            "Succeeded"
+          ]
+        },
+        "runtimeConfiguration": {
+          "concurrency": {
+            "repetitions": 1
+          }
+        }
+      },
+      "Export_-_Evaluation_Results": {
+        "type": "Compose",
+        "runAfter": {
+          "For_Each_-_Frozen_Message": [
+            "Succeeded",
+            "Failed",
+            "TimedOut",
+            "Skipped"
+          ]
+        },
+        "inputs": {
+          "scope": "isolated-batch",
+          "run_label": "@triggerBody()?['text_1']",
+          "flow_run_id": "@workflow()?['run']?['name']",
+          "helper_flow_id": "@workflow()?['name']",
+          "source_sha256_lf": "d3241136e45fc8c26ff935e63bcf5aee1637fa2f4b67e3449572ec64fa178f06",
+          "source_flow_id": "53209c07-ca63-bcd9-c7f3-04b29c1f562a",
+          "classifier_prompt_id": "614118d4-6ca8-4344-b945-8659eb8bb3d8",
+          "drafter_prompt_id": "e9c13e46-ec62-4cd4-b52f-b2f596db5821",
+          "input_messages": "@body('Parse_-_Frozen_Batch')",
+          "results": "@variables('evaluation_results')"
+        }
+      }
+    }
+  }
+}

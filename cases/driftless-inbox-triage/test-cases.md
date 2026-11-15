@@ -283,3 +283,15 @@ Actual explanation:
 The receipt-cohort/current-review-status note, processing-versus-draft definitions, before-sharing checklist and synthetic-prototype label were also rendered. Screenshots inspected the count table and AI paragraph. The assistant did not send, discard, delete or edit the report. Josh's own final owner acceptance is still pending.
 
 Coverage is limited to the normal existing two-record period. Nonzero edited/rejected, pending no-draft review, changed final category, resend/duplicate/concurrency, empty/date-boundary cases, retrieval failure and AI/schema/failure paths remain under their required evaluation stages. Ordinary plain text rendered; adversarial markup escaping was not separately exercised. This does not establish full frozen-30 success or overall release readiness. Do not repeat this proven normal report-output check solely to re-prove it.
+
+## EVAL-SETUP-01 — Repeatable frozen-30 preparation — November 14
+
+**PREPARED, CLOUD SETUP PENDING; NOT AN EVALUATION PASS.** Josh selected an isolated batch preserving original normalized inputs, with live mailbox/logging checks separate. An all-from-Josh mailbox batch was rejected as changing the frozen sender envelope.
+
+See [evaluation setup/run guide](evaluation/README.md). Unchanged frozen v1 has LF-normalized SHA256 d3241136e45fc8c26ff935e63bcf5aee1637fa2f4b67e3449572ec64fa178f06. Prepared full input/manifest/blank owner review are in evaluation/runs/run-2026-11-14-frozen-v1/. Answer labels never enter batch-input.json. The tool rejects changed inputs/key, missing/duplicate IDs, wrong provenance and unreviewed judgments. The primary metric uses exact category or pre-labelled ambiguous safe owner-review/no-draft outcomes; priority and review correctness remain separately visible. Original release targets unchanged.
+
+Sixteen OFFLINE TOOLING/STRUCTURE checks passed: quoted/multiline parsing, all30/order/sender/attachment-presence preservation, no label leakage, frozen/input tamper rejection, missing/duplicate result rejection, blank-owner-review handling, urgency/prohibited-draft/low-confidence/resend/quote safety gates, provenance, expression parity, sequential reset, and absence of Outlook/table-write operations in the blueprint. Artificial scorer fixtures are test code only; they establish no model-quality result.
+
+Main flow Code-view definitions were read without changes. Shared classifier 614118d4-6ca8-4344-b945-8659eb8bb3d8 and drafter e9c13e46-ec62-4cd4-b52f-b2f596db5821 are referenced by the isolated blueprint. It is NOT imported, saved, published, checker-validated or runtime-proven. Browser creation stopped when the new helper controls could not be reached reliably; no saved helper ID confirmed. No actual-results.json, real score or full30 pass exists.
+
+No main/weekly flow change, completed-test rerun, send, connection remapping, export investigation or deliberate failure injection. Next is live helper wiring/check/save, then one formal batch and owner scoring. Outlook/Dataverse integration, exact-ID/concurrency, live resend and remaining necessary weekly fixtures remain separate unverified coverage.

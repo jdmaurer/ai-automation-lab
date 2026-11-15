@@ -1,0 +1,167 @@
+{
+  "observed_date_local": "2026-11-14",
+  "source_flow_id": "53209c07-ca63-bcd9-c7f3-04b29c1f562a",
+  "observation": "Read through designer Code view; no edit or runtime test performed",
+  "normalize": {
+    "type": "Compose",
+    "inputs": {
+      "message_id": "@{triggerOutputs()?['body/id']}",
+      "received_at": "@{triggerOutputs()?['body/receivedDateTime']}",
+      "sender": "@{triggerOutputs()?['body/from']}",
+      "subject": "@{triggerOutputs()?['body/subject']}",
+      "body": "@{triggerOutputs()?['body/body']}",
+      "has_attachments": "@triggerOutputs()?['body/hasAttachments']",
+      "folder": "Inbox"
+    },
+    "runAfter": {}
+  },
+  "classifier": {
+    "type": "OpenApiConnection",
+    "inputs": {
+      "parameters": {
+        "recordId": "614118d4-6ca8-4344-b945-8659eb8bb3d8",
+        "item/requestv2/email_record": "@outputs('Normalize_-_Email_Fields')"
+      },
+      "host": {
+        "apiId": "providers/Microsoft.ProcessSimple/operationGroups/aibuilder",
+        "connection": "shared_commondataserviceforapps",
+        "operationId": "aibuilderpredict_customprompt"
+      }
+    },
+    "runAfter": {
+      "Rule_-_Has_Attachment": [
+        "Succeeded"
+      ]
+    }
+  },
+  "resend": {
+    "type": "Compose",
+    "inputs": "@or(contains(toLower(coalesce(triggerOutputs()?['body/subject'],'')),'resending'),contains(toLower(coalesce(triggerOutputs()?['body/subject'],'')),'resend:'),contains(toLower(coalesce(triggerOutputs()?['body/body'],'')),'just resending'),contains(toLower(coalesce(triggerOutputs()?['body/body'],'')),'resending this'),contains(toLower(coalesce(triggerOutputs()?['body/body'],'')),'sending this again'))",
+    "runAfter": {
+      "Initialize_-_Needs_Owner_Review": [
+        "Succeeded"
+      ]
+    }
+  },
+  "validation_expression": {
+    "and": [
+      {
+        "equals": [
+          "@contains(createArray('Sales','Support','Finance','General','Internal','Unknown'), outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/category'])",
+          true
+        ]
+      },
+      {
+        "equals": [
+          "@contains(createArray('Urgent','Routine'), outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/priority'])",
+          true
+        ]
+      },
+      {
+        "greaterOrEquals": [
+          "@outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/confidence']",
+          0
+        ]
+      },
+      {
+        "lessOrEquals": [
+          "@outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/confidence']",
+          1
+        ]
+      }
+    ]
+  },
+  "confidence_expression": {
+    "and": [
+      {
+        "greaterOrEquals": [
+          "@outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/confidence']",
+          "@float('0.8')"
+        ]
+      }
+    ]
+  },
+  "owner_review_expression": {
+    "or": [
+      {
+        "equals": [
+          "@outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/priority']",
+          "Urgent"
+        ]
+      },
+      {
+        "equals": [
+          "@contains(createArray('Unknown','Finance','Internal'), outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/category'])",
+          true
+        ]
+      },
+      {
+        "equals": [
+          "@contains(\r\n  createArray(\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/personal'],\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/sensitive'],\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/suspicious'],\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/adversarial'],\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/custom_quote_needed'],\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/record_change_requested']\r\n  ),\r\n  true\r\n)",
+          true
+        ]
+      },
+      {
+        "equals": [
+          "@outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/context_sufficient']",
+          false
+        ]
+      },
+      {
+        "equals": [
+          "@outputs('Flag_-_Possible_Resend')",
+          true
+        ]
+      }
+    ]
+  },
+  "draft_expression": {
+    "and": [
+      {
+        "equals": [
+          "@contains(createArray('Unknown','Finance','Internal'), outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/category'])",
+          false
+        ]
+      },
+      {
+        "equals": [
+          "@contains(\r\n  createArray(\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/personal'],\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/sensitive'],\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/suspicious'],\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/adversarial']\r\n  ),\r\n  true\r\n)",
+          false
+        ]
+      },
+      {
+        "equals": [
+          "@outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/context_sufficient']",
+          true
+        ]
+      },
+      {
+        "equals": [
+          "@outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/draft_candidate']",
+          true
+        ]
+      },
+      {
+        "equals": [
+          "@outputs('Flag_-_Possible_Resend')",
+          false
+        ]
+      }
+    ]
+  },
+  "drafter": {
+    "type": "OpenApiConnection",
+    "inputs": {
+      "parameters": {
+        "recordId": "e9c13e46-ec62-4cd4-b52f-b2f596db5821",
+        "item/requestv2/classification_record": "@string(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput'])",
+        "item/requestv2/email_record": "@outputs('Normalize_-_Email_Fields')"
+      },
+      "host": {
+        "apiId": "providers/Microsoft.ProcessSimple/operationGroups/aibuilder",
+        "connection": "shared_commondataserviceforapps",
+        "operationId": "aibuilderpredict_customprompt"
+      }
+    }
+  }
+}

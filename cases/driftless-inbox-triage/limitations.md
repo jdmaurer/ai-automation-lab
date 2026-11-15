@@ -1,6 +1,6 @@
 # Limitations
 
-Current implementation-stage limitations, updated 2026-11-11.
+Current prototype limitations, updated 2026-11-14. Detailed dated evidence is in test-cases.md.
 
 - This is a synthetic demonstration case. No real client email or sensitive client data is used in the evaluation set.
 - No automatic external sending or forwarding. The owner sends replies manually.
@@ -9,13 +9,13 @@ Current implementation-stage limitations, updated 2026-11-11.
 - Quote drafting is limited to the approved synthetic price sheet and information present in the message or approved shop data.
 - The current workflow detects attachment presence but does not interpret attachment contents. Drafts must not claim an attachment was opened, inspected, interpreted, or approved.
 - Personal, sensitive, suspicious, unknown, low-confidence, invalid, failed, Finance, and Internal cases are not eligible for an ordinary reply draft under the current policy.
-- A real Microsoft Power Automate notification that landed in Inbox was classified as General and produced an unnecessary draft. General automated/non-replyable/system/vendor/marketing mail handling is therefore an unresolved design gap. Do not patch only one sender; define and test a general policy.
-- Duplicate/resend protection is not yet implemented or verified. The frozen DRI-10 / DRI-15 pair still needs a deterministic duplicate outcome.
-- Correlation ID, review/audit logging, and feedback capture are not yet complete.
-- The full frozen 30-message evaluation has not been run. Four representative live end-to-end tests passed on 2026-11-11, but this is not release evidence for the entire set.
+- The observed automated-notification drafting defect was addressed through the shared draft_candidate policy. AUTO-01 passed live; AUTO-02/03 remain prompt-only evidence. This is bounded verification, not proof for every automated sender.
+- Exact-ID lookup/stop, an Active alternate key and explicit-language Possible Resend control are published but runtime enforcement/concurrency and the live DRI-10/15 pair remain unverified. Resend detection flags explicit language; it is not historical semantic matching.
+- Correlation/minimal tracking and owner feedback are implemented with bounded normal evidence: LOG-02 passed; REVIEW-01 required assisted recovery and remains an automatic-logging failure. Do not treat recovery as an automatic pass.
+- The frozen-30 evaluation pack is prepared with 16 passing tooling/structure checks; the cloud batch helper is NOT saved/published/runtime-verified, and no actual30 results or score exist. The isolated batch preserves inputs and tests shared prompts/mirrored routing; it cannot prove live Outlook/Dataverse side effects. Four earlier live DRI smoke checks remain bounded evidence.
 - Model-unavailable and wrong-schema behavior has not yet been deliberately verified. These tests should be run on an isolated test copy/checkpoint after the working baseline is preserved.
-- The weekly summary measures inbox activity and review outcomes; it is not a sales, revenue, or completed-order report. Its exact-count verification is still pending if the summary path has not yet been implemented.
-- A clean portable export has not yet been confirmed. The flow is solution-aware and is referenced by the existing `Bluffside Handbook Helper` solution. The 2026-11-11 solution export attempt stopped at a managed-solution dependency warning; the correct packaging path must be resolved before claiming a recoverable export.
+- Weekly summary is published; WS-01/WS-02 passed the existing two-record week and unsent report output. It measures inbox/review activity, not revenue or completed orders. Nonzero Edited/Rejected, pending no-draft, changed final category, empty/date edges and retrieval failure coverage remain pending. Josh's final report-wording review remains outstanding.
+- A clean recoverable baseline/export is not yet confirmed. By Josh's explicit sequence, finish normal evaluation/ordinary defects first; only then preserve/export the finished baseline and perform isolated deliberate failures. Do not revisit the earlier solution dependency warning ahead of that stage. The limited routing reference/helper blueprint is not a baseline export.
 - A runbook/operator quick reference is not yet complete.
 - The 30-day tracking period is a pilot rule, not a universal client retention recommendation. A real client's owner and Microsoft 365 administrator or IT provider set final retention and deletion rules.
 - A real client deployment requires confirmation of tenant permissions, authentication/consent, security policies, licensing, retention, monitoring, ownership, and shutdown/rollback procedures.
