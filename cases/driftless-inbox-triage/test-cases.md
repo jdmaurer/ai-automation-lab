@@ -347,3 +347,11 @@ Four actual classifier prompt calls under policy-v2-meaning-first-fixed-support-
 ## November 16 — manual publication verified, no test replay
 
 Josh manually published both implementation-B drafts. Assistant independently read Published/ready in both tabs, verified exact checked main draft-selection/helper Scope match and original classifier/other-drafter input references. New additive evidence: evaluation/runs/policy-v2-meaning-first-fixed-support-2026-11-16-b/publication-verification.json. No configuration edits, model calls or workflow tests during verification. Earlier 3/4 exact /4/4 scoped local decisions, category miss and all prior failed results remain unchanged; publication does not establish runtime/overall release.
+
+## November 16 — Policy-v2 contract tooling only, 12/12 PASS
+
+Added a separate machine-readable scoring contract, `evaluate-policy-v2.mjs`, its new test suite and [guide](evaluation/POLICY_V2_SCORING.md). Ran only `node --test evaluation-setup/evaluate-policy-v2.test.mjs`: 12 tests, 12 passed, 0 failed (exit0). All fixtures/ratings were artificial, with temporary artifacts removed; not model/workflow results or Josh's judgments.
+
+Coverage: explicit DRI-13-only permission overlay with unchanged blind inputs; reject mixed/v1 metadata and provenance; fixed Support body/source/Skipped AI; mandatory Support review; existing safety/resend/context blocks; pending ratings/null usability; all/AI/fixed quality reporting and unchanged thresholds/Sales review; visible exact-category misses; missing/duplicate/malformed evidence; status/source contradictions; refusal to overwrite files; unchanged v1 scorer/tests/frozen CSV fingerprints. The old tooling suite and completed real tests were not rerun.
+
+No new real packet, actual output or score was created; no historical score rerated, prompt/flow edit, model call, workflow run or full30 evaluation. All prior failed evidence and pending owner ratings remain intact. This establishes scorer tooling only, not batch acceptance/runtime/overall release.

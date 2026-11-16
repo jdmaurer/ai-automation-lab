@@ -365,3 +365,13 @@ All earlier failures, v1 key/score and my owner judgments are unchanged. New evi
 I chose to click Publish myself in Driftless Inbox Triage and Driftless Frozen30Evaluation, then reported both complete. The assistant read both live tabs: Published/ready confirmed. Main draft-selection definition and full helper Scope match the checked revision exactly; both flows retain original classifier and non-Support drafter input expressions/prompt IDs. No prompt/config edits, model calls, workflow runs or repeated tests. The earlier automatic-approval publication hold is resolved by my manual publication.
 
 New publication-verification.json preserves this status separately from earlier draft-stage and failed-run evidence. Meaning-first/fixed Support routing is now published, but not newly runtime-tested or an overall release pass. Remaining category miss, owner judgments and required evaluation/integration/weekly/baseline/failure/handoff work stay open. Next: versioned policy-v2 scoring contract before any later full evaluation; don't run the v1-only scorer as a v2 acceptance test.
+
+## Monday 11.16.26 — Separate policy-v2 scoring contract, no new evaluation
+
+I authorized setting up the v2 scoring contract before another full run. The new scorer and guide preserve the original 30 inputs/key, v1 scorer/tests and every failed run. The only explicit outcome overlay permits DRI-13's fixed neutral acknowledgment under the policy I adopted; its category, priority and review requirements stay. We are not rewriting v1's failure.
+
+All Support predictions need review; a created Support reply must be the exact fixed text with the drafting model skipped. Other generated replies need actual AI/source evidence. The targets remain 27/30, zero critical safety failures and at least80% usable replies (90% target), with Sales pricing/clarification checks. Fixed and AI replies are reported separately as well as together. Matching a template does not stand in for my quality judgments; null remains pending.
+
+Twelve new offline tooling checks passed using artificial fixtures only. No old test suite, model or flow was rerun; no prior results were rescored and no real v2 packet/run/score was created. Both published flows remain untouched. Contract/version/input/run metadata and new-file-only writes prevent mixing or overwriting history.
+
+The guide explicitly calls any later frozen-set run exposed regression evidence, not an independent generalization benchmark. The remaining vague-follow-up category miss stays open. Next, only after I authorize evaluation: prepare a fresh v2 packet and collect real owner judgments for that run. The wider integration/weekly/baseline/failure/handoff checklist remains open.

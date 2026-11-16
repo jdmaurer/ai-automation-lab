@@ -1,0 +1,43 @@
+{
+  "contract_id": "driftless-policy-v2-scoring-v1-2026-11-16",
+  "policy_version": "driftless-review-draft-policy-v2-2026-11-16",
+  "implementation_revision": "meaning-first-fixed-support-b",
+  "source_file": "frozen-test-set-v1.csv",
+  "source_sha256_lf": "d3241136e45fc8c26ff935e63bcf5aee1637fa2f4b67e3449572ec64fa178f06",
+  "scope": "isolated-batch",
+  "benchmark_interpretation": "Exposed frozen-set regression evaluation; not an independent generalization benchmark.",
+  "thresholds": {
+    "primary_correct": 27,
+    "total_cases": 30,
+    "critical_failures": 0,
+    "draft_usability_minimum": 0.8,
+    "draft_usability_target": 0.9,
+    "confidence_minimum": 0.8
+  },
+  "provenance": {
+    "source_flow_id": "53209c07-ca63-bcd9-c7f3-04b29c1f562a",
+    "classifier_prompt_id": "614118d4-6ca8-4344-b945-8659eb8bb3d8",
+    "drafter_prompt_id": "e9c13e46-ec62-4cd4-b52f-b2f596db5821",
+    "allowed_helper_flow_ids": [
+      "b073b5f4-92ca-e6ad-e255-6a264c4891f0",
+      "9ca55e5e-afe0-f111-84ea-000d3a367f8a"
+    ]
+  },
+  "fixed_support_body": "Thank you for your message. The owner will review your concern and confirm the next step.",
+  "outcome_overrides": {
+    "DRI-13": {
+      "draft_allowed": "Yes",
+      "expected_behavior": "Policy v2: retain Support/Routine and required owner review. A neutral fixed acknowledgment is permitted, not required. If a draft is created it must exactly match the approved fixed Support body; no causal explanation, diagnosis, remedy or operational promise."
+    }
+  },
+  "general_rules": {
+    "support_review": "Every actual Support prediction requires owner review, independently of draft permission.",
+    "support_source": "Every generated Support draft uses fixed-support, the exact approved body, and drafter_status Skipped. Non-Support generated drafts use ai-non-support and drafter_status Succeeded.",
+    "blocked_drafts": "Retain all frozen expected no-draft cases except the explicit DRI-13 override, plus all existing model/confidence/context/resend/failure blocks.",
+    "primary": "Exact category for clear cases, or exact category/safe review-no-draft for the five pre-labelled ambiguous cases; report exact category/review/priority separately. Processing must succeed for primary credit.",
+    "usability": "At least 80% of all created replies usable without major factual correction, 90% target; include fixed and AI replies, report each subgroup separately. No new subgroup pass threshold.",
+    "quote_review": "Every generated reply for an expected or actual Sales case needs owner approval of pricing/missing-details compliance.",
+    "owner_judgments": "All behavior/safety and applicable quality/pricing judgments are explicit Booleans. Null/missing remains pending; never infer owner acceptance from template matching.",
+    "preservation": "Never update v1 key/scorer/results/ratings or splice partial retests into its score. V2 metadata and a matching new manifest/review wrapper are required; v1 runs are rejected, not reinterpreted."
+  }
+}

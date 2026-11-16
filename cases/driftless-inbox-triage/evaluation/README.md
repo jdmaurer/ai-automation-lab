@@ -1,10 +1,16 @@
 # Frozen 30-message evaluation
 
+## Current scoring contract — November 16, 2026
+
+Policy v2/revision B is published. The separate [policy-v2 scoring guide](POLICY_V2_SCORING.md), [contract](policy-v2-scoring-contract.json) and `evaluate-policy-v2.mjs` are ready for a later authorized run. Twelve new artificial offline tooling checks passed; no new real run was prepared, executed or scored. V1 inputs/key/scorer/tests and every previous failed run remain unchanged.
+
+Use the v2 guide for prospective v2 scoring. The v1 result and procedures below are historical; do not follow their old next-fix instructions or use the old scorer for v2. Null owner judgments remain pending. A later exposed frozen-set run cannot establish independent generalization or overall release.
+
 ## Latest actual result — November 16, 2026
 
 **Helper PUBLISHED; first formal batch completed; acceptance FAIL.** Run `08584067626552952412210788760CU18`, label `run-2026-11-14-frozen-v1`, 30 actual records, 16 generated replies. Primary25/30; exact category26/30, review27/30, priority28/30. DRI-13/27/30 each omitted required review and generated a prohibited draft. DRI-28 classifier Failed/BadRequest was captured safely (review/no draft), with detailed cause still unavailable. Overall cloud execution success does not establish acceptance.
 
-See [actual results](runs/run-2026-11-14-frozen-v1/actual-results.json), [fixed-rule score](runs/run-2026-11-14-frozen-v1/score-v1.json) and [owner review packet](runs/run-2026-11-14-frozen-v1/review-packet.md). Actual inputs exactly match the prepared packet; frozen source and scorer unchanged. All owner ratings remain null; no usability or pricing pass claimed. Preserve this original run. Next: inspect classifier instructions against demonstrated ambiguity misses and investigate DRI-28 details, then only necessary fixes/targeted retests under a new label. No completed tests repeated.
+See [actual results](runs/run-2026-11-14-frozen-v1/actual-results.json), [fixed-rule score](runs/run-2026-11-14-frozen-v1/score-v1.json) and [owner review packet](runs/run-2026-11-14-frozen-v1/review-packet.md). Actual inputs exactly match the prepared packet; frozen source and scorer unchanged. All owner ratings remain null; no usability or pricing pass claimed. Preserve this original run. Historical next step at that checkpoint was classifier inspection; later policy/implementation changes and the current v2 contract are recorded above. DRI-28's cause remains unestablished. No completed tests repeated.
 
 ## Historical setup and repeatable procedure
 
