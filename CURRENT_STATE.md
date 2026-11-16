@@ -2,20 +2,20 @@
 
 Canonical baton under AI_HANDOFF_PROTOCOL.md. Active Week 8 case: `cases/driftless-inbox-triage/`. Scope frozen: evaluated/documented SME prototype, no extra features.
 
-## Latest November 16 checkpoint — meaning-first/fixed Support revision B SAVED DRAFTS; publication approval REQUIRED
+## Latest November 16 checkpoint — meaning-first/fixed Support revision B PUBLISHED; verified after Josh's manual publication
 
 Josh authorized applying the general meaning-first classifier and fixed Support acknowledgment, verifying both flows' references/saves, and only necessary targeted checks. Policy remains v2, implementation revision `meaning-first-fixed-support-b`. Plan+blind inputs preregistered before changes/tests in619528489847d697ad25f3a623b0943bd8b4d16c. [Run plan/evidence folder](cases/driftless-inbox-triage/evaluation/runs/policy-v2-meaning-first-fixed-support-2026-11-16-b/).
 
-**Implemented and saved:**
+**Implemented, saved and now published:**
 - Shared classifier meaning check consolidated/moved before category definitions, with no sample phrases/IDs. Saved/reopened text verified.11fields/schema/0.80/other safety and quote rules unchanged. This shared prompt Save already applies to shared usage.
-- Both flow **drafts** keep existing eligibility gates. Within them, Support → fixed Compose acknowledgment; other eligible categories → existing shared AI drafter. Shared reply-body selector feeds existing Outlook draft or helper collection. Old unconditional AI action removed.
+- Both published flows keep existing eligibility gates. Within them, Support → fixed Compose acknowledgment; other eligible categories → existing shared AI drafter. Shared reply-body selector feeds existing Outlook draft or helper collection. Old unconditional AI action removed.
 - Fixed body: “Thank you for your message. The owner will review your concern and confirm the next step.”
 - Main failure handling follows selected reply body timeout/skipped/failure. Completion logging still uses actual Outlook draft success/ID. Recipients/subject/DraftEmail/no-send behavior retained.
 - Helper honestly records actual AI drafter Skipped for fixed Support, typed draft fields/source, and adds policy/revision provenance. Strict30 parser unchanged; no mailbox/table-write action.
 - Both flows' classifier and other-drafter prompt IDs/email/classification inputs verified in Code view. Matching selector/body definitions and unchanged eligibility gates checked. Existing connections retained.
-- Both draft-save banners and checker **0errors/0warnings** confirmed. **New routing NOT PUBLISHED.** Existing published flow versions remain older routing; do not claim fixed Support is already live.
+- Both draft-save banners/checker **0errors/0warnings** were confirmed. Josh then manually published both flows. Assistant independently verified **Published/ready** in each live tab; main draft-selection definition and full helper Scope exactly match the checked revision. Classifier and other-drafter input references remain intact in both. **New routing is now published**, without a fresh runtime-pass claim.
 
-**Publication blocker:** Automatic approval review rejected the attempted main publication, stating publication of this revision was not explicitly authorized. No retry/workaround. Helper publication not attempted; held for the same explicit approval. Publishing would activate the new live reply-source routing. Need Josh's explicit approval to **publish both checked saved drafts**.
+**Publication hold resolved:** Automatic approval review had rejected the assistant's main publication attempt. Josh chose manual publication, clicked Publish in both flows and reported completion. Assistant performed read-only UI/Code-view verification; no publication retry/workaround, prompt/configuration edit, model call or workflow test. Separate evidence: evaluation/runs/policy-v2-meaning-first-fixed-support-2026-11-16-b/publication-verification.json.
 
 **Targeted results:** four actual classifier prompt tests only; no Support/other drafter calls, no unplanned preview, mailbox/full30 run, send, completed integration/report replay or failure injection.
 - Prior PV2-U02 vague follow-up now contextfalse/candidatefalse → review/no draft, but still category Support rather than expected Unknown: **remaining category miss**, retained.
@@ -28,16 +28,16 @@ Josh authorized applying the general meaning-first classifier and fixed Support 
 
 **Preserved:** frozen-v1 CSV/key/hash, formal08584067626552952412210788760CU18 FAIL25/30/manifest/owner form, earlier ambiguity-v2/v3 and policy-v2-targeted-a failures unchanged. No rerating/spliced scores. evaluate.mjs still v1-only; owner judgments pending.
 
-**Single next action:** obtain explicit approval to publish both existing saved drafts, then publish/confirm status and references without rerunning these model tests. Keep remaining category miss and all other evaluation/integration/weekly/baseline/failure/handoff work open. No export warning revisit.
+**Single next action:** establish the explicit policy-v2 scoring contract before any later full evaluation (existing evaluate.mjs remains v1-only). Keep the remaining category miss, Josh's pending quality judgments and other required integration/weekly/baseline/failure/handoff work open. Do not repeat these checks or claim publication establishes release.
 
-Browser2 main tab156966424 Draft, draft-eligibility Code view; helper156966477 Draft, helper Scope Code view/checker0/0. Temporary prompt test samples exited Cancel; both marked for continuation.
+Browser2 main156966424 Published, classifier Code view; helper156966477 Published, full helper Scope Code view. Both marked for continuation. No tests/model calls during publication verification.
 
 ## Earlier evaluation evidence — retained, not rerun
 
 - Formal frozen-v1 run08584067626552952412210788760CU18: FAIL25/30 primary,26/30 exact category,27/30 review,28/30 priority;16 replies awaiting owner ratings. DRI-13/27/30 each violated v1 review/no-draft requirements. DRI-26/29 category misses and DRI-10/15 overcalled urgency remain historical. DRI-28 classifier Failed/BadRequest safely captured review/no draft; exact cause unavailable. Original key/input/manifest/results/score/owner form unchanged.
 - Earlier ambiguity prompt-v2/v3 targeted failures remain in their original folders. No JSON-schema conflict was found: schema specifies types only. Repeated prohibitions did not repair DRI-13; do not claim knowledge of model internals.
 - Owner adopted policy v2 prospectively: all Support review; neutral acknowledgments permitted for identifiable concerns. Preregistered implementation-A run policy-v2-targeted-2026-11-16-a: new vague PV2-U02 wrongly draft-eligible, and DRI-13 reply still offered causes. Four classifier/two drafter calls, saved/published-A configuration preserved. [A results/diagnosis](cases/driftless-inbox-triage/evaluation/policy-v2-targeted-results-and-diagnosis-2026-11-16.md).
-- Shared classifier has now been updated to meaning-first B, but both new workflow-routing drafts are not published. Their existing published versions still use earlier routing. Fixed Support source becomes live only after authorized publication.
+- Meaning-first implementation B and fixed Support routing were subsequently manually published by Josh and verified by the assistant. Earlier A and draft-stage snapshots remain historical evidence, not current publication status.
 - Limited action/Scope snapshots are configuration references, not full recoverable baselines. Prior clipboard/classic insertion problems are obsolete; do not rebuild/paste the old block.
 
 ## Established evidence — preserve, do not repeat
@@ -66,7 +66,7 @@ WS-02 run 08584068916602989636218220553CU01, same date: new report-output path P
 
 ## Remaining work — agreed order
 
-1. Obtain explicit approval and publish both saved implementation-B drafts; confirm status/references without repeating model checks. Keep remaining category miss and all failed evidence. Before any later full policy-v2 evaluation, establish the versioned scoring contract (existing evaluate.mjs is v1-only); obtain Josh's real draft/behavior/pricing judgments. Do not splice targeted checks into the original FAIL25/30 score.
+1. Implementation B is Published and references verified; no publication work remains. Before any later full policy-v2 evaluation, establish the versioned scoring contract (evaluate.mjs is v1-only) and obtain Josh's real draft/behavior/pricing judgments. Keep the remaining category miss and all failed evidence; no splicing partial checks into original FAIL25/30.
 2. Necessary unproven normal integration checks: exact-ID/alternate-key/concurrency and live resend behavior; required new weekly fixtures (nonzero Edited/Rejected, pending no-draft review, changed final category, empty/date-boundary cases as needed). Preserve proven WS-01/WS-02 instead of repeating them.
 3. Preserve/export the finished working baseline into the repo. Do NOT revisit solution dependency warning before this agreed stage; no new baseline/export exists.
 4. Isolated deliberate model unavailable/wrong schema/completion-write/retrieval completeness failure testing, after baseline preservation. Never casually break the only working flow.

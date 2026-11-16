@@ -1,0 +1,30 @@
+{
+  "policy_version": "driftless-review-draft-policy-v2-2026-11-16",
+  "implementation_revision": "meaning-first-fixed-support-b",
+  "publication_performed_by": "Josh manually clicked Publish in both flows and reported completion",
+  "main_published_ui_verified": true,
+  "helper_published_ui_verified": true,
+  "main_draft_definition_matches_checked": true,
+  "helper_scope_matches_checked": true,
+  "main_classifier_reference": {
+    "recordId": "614118d4-6ca8-4344-b945-8659eb8bb3d8",
+    "item/requestv2/email_record": "@outputs('Normalize_-_Email_Fields')"
+  },
+  "main_other_drafter_reference": {
+    "recordId": "e9c13e46-ec62-4cd4-b52f-b2f596db5821",
+    "item/requestv2/classification_record": "@string(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput'])",
+    "item/requestv2/email_record": "@outputs('Normalize_-_Email_Fields')"
+  },
+  "helper_classifier_reference": {
+    "recordId": "614118d4-6ca8-4344-b945-8659eb8bb3d8",
+    "item/requestv2/email_record": "@outputs('Normalize_-_Email_Fields')"
+  },
+  "helper_other_drafter_reference": {
+    "recordId": "e9c13e46-ec62-4cd4-b52f-b2f596db5821",
+    "item/requestv2/classification_record": "@string(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput'])",
+    "item/requestv2/email_record": "@outputs('Normalize_-_Email_Fields')"
+  },
+  "model_calls": 0,
+  "workflow_runs": 0,
+  "scope": "Read-only publication and configuration verification; not runtime testing"
+}

@@ -1,14 +1,14 @@
 # Meaning-first classifier and fixed Support drafts — implementation revision B
 
-Date: November16,2026. Policy remains driftless-review-draft-policy-v2-2026-11-16. Revision: meaning-first-fixed-support-b. **Shared classifier saved; both flow revisions SAVED AS DRAFT, NOT PUBLISHED.**
+Date: November16,2026. Policy remains driftless-review-draft-policy-v2-2026-11-16. Revision: meaning-first-fixed-support-b. **Both flow revisions now PUBLISHED by Josh and independently verified. No additional tests or runtime-pass claim.**
 
-## Authorization and publication stop
+## Authorization and publication history
 
 Josh authorized applying the meaning-first rule and fixed Support acknowledgment, checking both flows' inputs/saves, and necessary targeted checks while preserving failures/avoiding overfitting. Plan and blind inputs were committed first in619528489847d697ad25f3a623b0943bd8b4d16c.
 
-Both flow drafts saved with **checker0errors/0warnings**. An attempt to publish the main flow was rejected by automatic approval review: it stated that publication of this new revision was not explicitly authorized. The rejected tool block did not execute its later UI actions. No publication retry or workaround occurred. Helper publication was not attempted; it is also held for explicit approval. Publishing would activate the new reply-source routing in the live flows. **Next required action: explicit user approval to publish both checked saved drafts.**
+Both flow drafts initially saved with **checker0errors/0warnings**. An attempt to publish the main flow was rejected by automatic approval review: it stated that publication of this new revision was not explicitly authorized. The rejected tool block did not execute its later UI actions. No publication retry or workaround occurred. Helper publication was not attempted; it is also held for explicit approval. Publishing would activate the new reply-source routing in the live flows. Josh subsequently chose manual publication and reported both complete. Assistant verified Published/ready in both live tabs, exact main draft-selection/full helper Scope match against the checked revision, and intact classifier/other-drafter references. See publication-verification.json; the hold is resolved.
 
-The shared classifier prompt Save did complete and was reopened/verified. That prompt is shared with existing published flow versions. The fixed Support routing exists only in the saved flow drafts until publication; do not claim it is already live.
+The shared classifier prompt Save did complete and was reopened/verified. That prompt is shared with existing published flow versions. The fixed Support routing was draft-only at that checkpoint and is now published after Josh's manual action.
 
 ## Exact bounded changes
 
@@ -43,7 +43,7 @@ Collector uses selected reply-body success/text to record draft_generated/draft_
 - Classifier in both flows: existing prompt614118d4-6ca8-4344-b945-8659eb8bb3d8; email_record=@outputs('Normalize_-_Email_Fields').
 - Other-reply AI in both: existing prompt e9c13e46-ec62-4cd4-b52f-b2f596db5821; email_record same; classification_record=@string(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput']). Existing connections retained.
 - Support selectors/reply-body expressions match between flows. Original eligibility gates unchanged. Fixed body exact. Main selected-body failure statuses are timeout/skipped/failed, not successful. Typed helper collection/source/version tags inspected; no old unconditional-drafter reference remains in the helper.
-- Main and helper each showed the saved-draft banner and checker0errors/0warnings. Status is **Draft**, not runtime-passed or published. UI snapshots are limited configuration evidence, not full recoverable baseline exports.
+- Main and helper each showed the saved-draft banner and checker0errors/0warnings. Those draft-status snapshots are historical; separate later publication verification confirms Published. No runtime pass is inferred. UI snapshots are limited configuration evidence, not full recoverable baseline exports.
 
 ## Only the preregistered checks
 
@@ -68,6 +68,10 @@ The existing general missing-context rule was reorganized, not patched with samp
 
 All frozen-v1 inputs/key/hash, formal run08584067626552952412210788760CU18 and FAIL25/30 score, owner judgments, earlier ambiguity-v2/v3 failures, and policy-v2-targeted-2026-11-16-a failures remain unchanged. No retroactive pass or spliced full score. Existing evaluate.mjs remains v1-only. Owner quality review/full v2 evaluation and unproven integration/weekly/baseline/failure/handoff work remain open.
 
-## Resume
+## Resume after verified publication
 
-Ask Josh to explicitly authorize **publishing both saved flow drafts**; explain the automatic-review rejection and that publication activates live reply-source routing. Do not retry publication without approval. After approval, publish each existing draft and confirm status/references; do not repeat these model checks merely to re-prove them. Preserve category miss as open, along with other original batch misses/DRI-28 details and owner judgments. No overall release claim.
+No publication work remains. Establish the explicit versioned policy-v2 scoring contract before a later full evaluation; existing evaluate.mjs is v1-only. Keep the remaining category miss, owner judgments and required integration/weekly/baseline/failure/handoff work open. Do not replay completed checks merely to re-prove publication, and do not treat publication as release.
+
+## Publication verification — no tests repeated
+
+Josh manually clicked Publish in both existing flow tabs. Assistant verified Published/ready; main draft-selection JSON exactly matched checked main-draft-before-after.json, and full helper Scope exactly matched helper-scope-after.json. Both classifier email_record and non-Support drafter email_record/classification_record inputs retain their original expressions and shared prompt IDs. No edits, model calls, flow runs or new test results during this read-only verification. Publication-verification.json is additive; earlier draft/failed-run records remain unchanged.
