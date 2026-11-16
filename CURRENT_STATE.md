@@ -1,49 +1,33 @@
 # CURRENT STATE — updated 2026-11-16 — RESUME HERE
 
-Canonical baton under AI_HANDOFF_PROTOCOL.md. Active Week 8 case: `cases/driftless-inbox-triage/`. Scope frozen: evaluated/documented SME prototype; no added features or production-perfection work. Detailed history is in week8-log.md, test-cases.md and decisions.md.
+Canonical baton under AI_HANDOFF_PROTOCOL.md. Active Week 8 case: `cases/driftless-inbox-triage/`. Scope frozen: evaluated/documented SME prototype, no extra features.
 
-## November 16 access check — no evaluation run started
+## November 16 — helper PUBLISHED; first formal frozen-30 run completed; acceptance FAIL
 
-Josh resumed in ChatGPT and requested live publication inspection and the first frozen-30 evaluation. The assistant read LIVE CURRENT_STATE.md first, then evaluation/README.md and the prepared batch-input.json (30 cases). No newer run/result is recorded in those files.
+Josh finished the desktop Windows setup. Local/browser access then worked. Read LIVE CURRENT_STATE first, evaluation guide and prepared packet; inspected the existing helper, intentionally refreshed the saved cloud draft, and confirmed its parser/loop/export survived. No rebuild or connection changes.
 
-Browser inspection could not start: the local execution environment reported “registered runtime ownership is missing”; one fresh CUA reset/connection attempt also exited. Stop further connection retries under Josh's existing rule. This is not evidence of a Power Automate/OAuth/flow defect; do not alter working connections or wiring.
+**Driftless Frozen 30 Evaluation**: designer/solution ID b073b5f4-92ca-e6ad-e255-6a264c4891f0. Verified **Published** plus “Your flow is ready to go.” One manual submission of the full prepared batch_json and run_label `run-2026-11-14-frozen-v1`.
 
-**Current publication status is UNVERIFIED.** November 15's saved-draft status below is the last verified checkpoint, not proof of today's UI status. An async question asks Josh whether the helper currently shows Published, Draft, or is unavailable. No Publish/Test action, model call, evaluation score or completed-test replay occurred on November 16. NEXT: restore browser access and inspect actual status; publish only if the completed draft still needs publication, then run the first formal prepared batch. Do not recreate the helper or blindly republish/retest.
+- Actual run **08584067626552952412210788760CU18**; scope duration **1m28s**, export completed Nov16 09:51:58 Central. [Open run](https://make.powerautomate.com/environments/88301e40-6106-ee47-900c-67a24cbc121e/flows/9ca55e5e-afe0-f111-84ea-000d3a367f8a/runs/08584067626552952412210788760CU18).
+- Runtime/history ID 9ca55e5e-afe0-f111-84ea-000d3a367f8a differs from solution/designer ID above; both were observed through UI. Do not recreate the helper because of these IDs.
+- **30/30 actual records captured**, actual submitted inputs exactly match live prepared packet including original senders/bodies/attachment flags/order. Existing scorer accepted source fingerprint, provenance, Boolean types, unique IDs and draft consistency. Frozen v1 SHA256 unchanged: d3241136e45fc8c26ff935e63bcf5aee1637fa2f4b67e3449572ec64fa178f06.
+- **Acceptance FAIL:** primary25/30 (required27), exact category26/30, review flag27/30, priority28/30. **16 generated replies.**
+- **DRI-13/27/30** each missed required owner review and generated a prohibited draft: six fixed-rule critical violations across three cases. Classifier marked context_sufficient=true and draft_candidate=true at confidence .95/.80/.90, and routing followed those flags. Investigate classifier instruction coverage/interpretation; do not blindly raise the confidence threshold or rewrite routing.
+- DRI-26 Sales→Support and DRI-29 Unknown→Finance retained review/no draft. DRI-10/15 overcalled Urgent instead of Routine. DRI-15 safely flagged possible resend, review=true/no draft.
+- DRI-28 classifier action **Failed / BadRequest**; fallback Unknown, confidence0, review=true/no draft. Existing iteration28 inspected. Detail panel then said “Error loading operation data”; exact cause unverified. Do not infer content-filter/connection failure. Overall run success does not mean every case's classifier succeeded.
+- **Josh's owner-review.json fields remain null.** No draft-usability percentage, approved-pricing pass or overall release claimed. Review wording concerns in DRI-04/06/22 along with the rest of actual replies; assistant flags are not owner judgments.
+- Evidence: `evaluation/runs/run-2026-11-14-frozen-v1/actual-results.json`, `score-v1.json`, `review-packet.md` (original messages + expected behavior + unchanged actual drafts together). No artificial outputs, scoring-code changes or relabeling.
+- No completed smoke/LOG-02/AUTO-01/WS-01/WS-02 replay, sending, shared prompt edits, routing edits, remapping, export investigation or deliberate failure injection.
 
-## Last verified checkpoint, November 15 — isolated helper WIRED AND SAVED AS DRAFT
+**Exact next action:** Review the three ambiguity misses against existing classifier instructions before proposing the smallest necessary correction; inspect DRI-28 detailed error when available. Preserve original failed run. Use a new label for any later targeted retest. Obtain Josh's actual behavior/safety/pricing/usability judgments; do not fill them for him.
 
-**Driftless Frozen 30 Evaluation** now exists: b073b5f4-92ca-e6ad-e255-6a264c4891f0. [Open saved helper](https://make.powerautomate.com/environments/88301e40-6106-ee47-900c-67a24cbc121e/solutions/~preferred/flows/b073b5f4-92ca-e6ad-e255-6a264c4891f0?v3=true). Current browser5 / tab156966477 is marked for continuation.
+Browser2/tab156966477 retained on existing run, case28 classifier panel. Browser control worked; new-view action details had a data-loading error. Do not resubmit the run. Prior clipboard/import issue is resolved and obsolete; do not paste/rebuild the old block.
 
-Final save confirmed through “We saved your draft flow. You can test and run it after you publish.” Flow checker then showed **Errors (0), Warnings (0)**. Complete wiring is a SAVED DRAFT; it has NOT been published or runtime-tested. An earlier classic-editor Save published only the partial input/initializer skeleton; that is not the completed evaluator. No batch run, real score, model-quality pass or overall release is claimed.
+### Saved helper and scope boundaries
 
-**After the November 16 access check above: verify live publication and publish the completed draft only if needed**, then perform the first formal frozen-30 batch with the prepared packet and capture actual results for Josh's owner review. Do not rebuild saved wiring or repeat earlier tests.
+November15 saved wiring/checker0errors0warnings is historical configuration evidence; November16 publication/run supersedes draft-only status. Limited saved Scope record `evaluation/saved-helper-scope-2026-11-15.json` is not a full export/recoverable baseline. Two existing shared prompts only; sequential loop with per-case review reset; original normalized inputs; source validation/confidence/review/draft rules; all-status result collection/export. No Outlook action or live Dataverse row write. Details in evaluation/README.md. Frozen CSV/answer key/owner review never fed to prompts.
 
-### Saved configuration inspected
-
-- Required Text inputs batch_json/internal text and run_label/internal text_1, Peek-code checked. Initializers: evaluation_results Array []; needs_owner_review Boolean false.
-- Evaluate - Frozen Batch contains Parse - Frozen Batch, For Each - Frozen Message, Export - Evaluation Results. Saved scope has 17 actions including nested actions. The temporary empty Scope was reused/renamed, not left as a duplicate.
-- Parser content @json(triggerBody()?['text']); strict schema exactly matches the blueprint, array minItems/maxItems30, original normalized fields only, no expected labels.
-- Loop @body('Parse_-_Frozen_Batch'); Concurrency control Off. UI explicitly states loops execute sequentially by default. Reset - Owner Review starts each case using that case's has_attachments Boolean; Normalize reuses the original email_record. No shared cross-case review state carries forward.
-- Explicit-language resend rule retained. Run a prompt uses existing classifier 614118d4-6ca8-4344-b945-8659eb8bb3d8 with @outputs('Normalize_-_Email_Fields').
-- Existing validation, 0.80 confidence, owner-review and draft predicates reused. The UI represents predicates as compiled compound expressions compared to actual Boolean @true; these saved expressions were compared to the source predicates after normalizing line endings. Three required review setters store Boolean true (policy, low confidence, invalid output).
-- Draft - Generate Reply uses existing drafter e9c13e46-ec62-4cd4-b52f-b2f596db5821, original email_record and stringified actual classification_record. Existing Dataverse connection selected automatically; no shared connection or prompt edits.
-- Collect - Actual Result appends one typed object to evaluation_results: ID, category, priority, confidence, needs_owner_review, possible_resend, draft_generated, draft_text, processing_status, classifier_status, drafter_status and raw classification. It runs after Validate succeeds, fails, times out or skips.
-- Export - Evaluation Results follows the loop for all four statuses, returning scope isolated-batch, run label, real helper/flow-run IDs, frozen fingerprint, source/prompt IDs, actual submitted input_messages and collected results. setProperty expressions preserve JSON types and text without manually assembling escaped JSON.
-- Saved Scope Code view read through UI and inspected: no unresolved action references, two AI Builder calls only, no Outlook action, row write or static/mock output. Limited configuration record: evaluation/saved-helper-scope-2026-11-15.json. This is not a complete flow export/recoverable baseline and does not replace later baseline preservation.
-
-### Resume/test packet
-
-Guide: cases/driftless-inbox-triage/evaluation/README.md. Prepared run: evaluation/runs/run-2026-11-14-frozen-v1/.
-- batch_json = entire prepared batch-input.json.
-- run_label = run-2026-11-14-frozen-v1.
-- Original frozen v1 unchanged: LF SHA256 d3241136e45fc8c26ff935e63bcf5aee1637fa2f4b67e3449572ec64fa178f06.
-- Preparation/scoring tools and 16 prior offline tooling/structure checks retained, not rerun here. No actual-results.json or real score exists. Josh's owner-review judgments remain blank/null.
-- Preserve original senders/subjects/bodies/attachment-presence and DRI-10-before-15 order. Never feed the answer key or owner-review form to the prompts.
-- Batch tests shared prompts/mirrored routing and generated text; mailbox markers, real Outlook drafts, Dataverse/alternate-key/concurrency and live resend behavior remain separate evidence.
-
-### Browser recovery resolved
-
-Josh reported that switching to Outlook made the prior clipboard dialog disappear. Assistant confirmed the helper fields survived and the block was only in My clipboard. Classic insertion did not reliably work; a display error was observed without proving a specific root cause. The assistant saved the partial helper, switched to the full-page new designer, and completed missing wiring through normal cards. Monaco schema entry required native paste; final saved parser schema was inspected and matches the blueprint. No pending clipboard dialog remains. Do not recreate the helper, paste the old clipboard block again, or resume the earlier stalled wizard.
+Isolated batch establishes shared-prompt/mirrored-routing outcomes only. Live Outlook/Dataverse/duplicate/concurrency, remaining weekly fixtures and main-flow failure handlers remain separate required evidence.
 
 ## Established evidence — preserve, do not repeat
 
@@ -71,7 +55,7 @@ WS-02 run 08584068916602989636218220553CU01, same date: new report-output path P
 
 ## Remaining work — agreed order
 
-1. Publish the saved complete helper draft; run and score frozen 30 once with actual shared prompt outputs and Josh's draft ratings. Inspect misses; only necessary ordinary defects. Batch pass does not establish Outlook/Dataverse side effects.
+1. First frozen-30 batch is completed and acceptance FAIL. Review saved actual results/ambiguity misses, inspect the DRI-28 BadRequest details when available, resolve demonstrated ordinary defects only, and obtain Josh's final behavior/pricing/draft ratings. Any later targeted retest uses a new label and preserves the failed original. Do not rerun the entire batch automatically. Batch evidence does not establish Outlook/Dataverse side effects.
 2. Necessary unproven normal integration checks: exact-ID/alternate-key/concurrency and live resend behavior; required new weekly fixtures (nonzero Edited/Rejected, pending no-draft review, changed final category, empty/date-boundary cases as needed). Preserve proven WS-01/WS-02 instead of repeating them.
 3. Preserve/export the finished working baseline into the repo. Do NOT revisit solution dependency warning before this agreed stage; no new baseline/export exists.
 4. Isolated deliberate model unavailable/wrong schema/completion-write/retrieval completeness failure testing, after baseline preservation. Never casually break the only working flow.

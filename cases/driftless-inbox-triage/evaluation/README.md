@@ -1,5 +1,13 @@
 # Frozen 30-message evaluation
 
+## Latest actual result — November 16, 2026
+
+**Helper PUBLISHED; first formal batch completed; acceptance FAIL.** Run `08584067626552952412210788760CU18`, label `run-2026-11-14-frozen-v1`, 30 actual records, 16 generated replies. Primary25/30; exact category26/30, review27/30, priority28/30. DRI-13/27/30 each omitted required review and generated a prohibited draft. DRI-28 classifier Failed/BadRequest was captured safely (review/no draft), with detailed cause still unavailable. Overall cloud execution success does not establish acceptance.
+
+See [actual results](runs/run-2026-11-14-frozen-v1/actual-results.json), [fixed-rule score](runs/run-2026-11-14-frozen-v1/score-v1.json) and [owner review packet](runs/run-2026-11-14-frozen-v1/review-packet.md). Actual inputs exactly match the prepared packet; frozen source and scorer unchanged. All owner ratings remain null; no usability or pricing pass claimed. Preserve this original run. Next: inspect classifier instructions against demonstrated ambiguity misses and investigate DRI-28 details, then only necessary fixes/targeted retests under a new label. No completed tests repeated.
+
+## Historical setup and repeatable procedure
+
 Status, November 15, 2026: **complete cloud helper SAVED AS DRAFT; checker 0 errors/0 warnings; not yet published or runtime-tested.** [Open Driftless Frozen 30 Evaluation](https://make.powerautomate.com/environments/88301e40-6106-ee47-900c-67a24cbc121e/solutions/~preferred/flows/b073b5f4-92ca-e6ad-e255-6a264c4891f0?v3=true), ID b073b5f4-92ca-e6ad-e255-6a264c4891f0. The final saved-draft banner was observed. No frozen-30 result or release pass exists. No main triage/report change, sending, completed-test replay, connection remapping, export investigation or failure injection occurred.
 
 Josh chose an isolated batch preserving the original inputs, with mailbox/logging checks kept separate. An initially offered lab-mailbox delivery route was rejected after inspection: the existing Outlook connection would replace all synthetic senders with Josh. Do not use that altered envelope as an unchanged frozen-set result.
@@ -15,9 +23,9 @@ Josh chose an isolated batch preserving the original inputs, with mailbox/loggin
 
 The complete pin data is already in the prepared `batch-input.json`; nobody needs to compose 30 emails or paste one case at a time.
 
-## Saved live helper — next action is publication
+## Historical saved draft checkpoint — publication completed November 16
 
-The existing helper is now wired; do not create another one. Publish its completed saved draft, then run the first formal batch using the full pin-data packet below. The previously published skeleton does not contain the complete evaluator. The following list is a construction reference, not unfinished work.
+The existing helper was wired and subsequently published and run on November 16; do not create another one or repeat publication/first-run setup. The earlier published skeleton was incomplete. The following list is a construction reference, not unfinished work.
 
 Completed configuration, checked against the blueprint's rules:
 

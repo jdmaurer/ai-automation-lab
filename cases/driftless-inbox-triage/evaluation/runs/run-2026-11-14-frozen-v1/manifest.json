@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "run_label": "run-2026-11-14-frozen-v1",
-  "status": "PREPARED_NOT_RUN",
+  "status": "RUN_COMPLETED_ACCEPTANCE_FAIL_OWNER_REVIEW_PENDING",
   "source": "frozen-test-set-v1.csv",
   "source_sha256_lf": "d3241136e45fc8c26ff935e63bcf5aee1637fa2f4b67e3449572ec64fa178f06",
   "case_order": [
@@ -41,5 +41,12 @@
   "classifier_prompt_id": "614118d4-6ca8-4344-b945-8659eb8bb3d8",
   "drafter_prompt_id": "e9c13e46-ec62-4cd4-b52f-b2f596db5821",
   "scope": "Isolated shared-prompt and mirrored routing batch; excludes Outlook and Dataverse side effects",
-  "created_at": "2026-11-15T04:22:58.557Z"
+  "created_at": "2026-11-15T04:22:58.557Z",
+  "flow_run_id": "08584067626552952412210788760CU18",
+  "runtime_flow_id": "9ca55e5e-afe0-f111-84ea-000d3a367f8a",
+  "helper_flow_id": "b073b5f4-92ca-e6ad-e255-6a264c4891f0",
+  "completed_at": "2026-11-16T15:51:58Z",
+  "actual_results": "actual-results.json",
+  "score": "score-v1.json",
+  "review_packet": "review-packet.md"
 }

@@ -299,3 +299,18 @@ Next is publication of this completed draft and the first formal 30-case run, th
 I decided to continue in ChatGPT and asked it to read the live baton, check whether the evaluator was published and proceed with the frozen30. The assistant read the live checkpoint, evaluation guide and complete 30-case input packet. Browser control failed before Power Automate could be inspected: the local execution environment was unavailable, including one fresh CUA reset attempt. Further retries stopped. This did not establish a flow or connection defect.
 
 Today's publication status remains unverified; the last verified complete-helper state is the November 15 saved draft with checker 0 errors/0 warnings. I was asked which status the actual helper tab shows. No publication, Test click, model evaluation, score, mail send, workflow change or completed-test replay occurred. Next is restoring live access, checking actual publication status and running the first formal packet only when ready. The prepared inputs and frozen answer key are unchanged.
+
+
+## Monday 11.16.26 — The first full batch ran, and it failed the gate
+
+I finished the Windows setup that the desktop app was requesting. After that, browser access worked again. The helper was still a saved Draft. The assistant refreshed the cloud copy, confirmed the completed parser/loop/export, published it, and verified Published before submitting the prepared 30-message packet once. Nothing was rebuilt and none of the working connections were changed.
+
+The cloud run finished in 1m28s: 08584067626552952412210788760CU18. All 30 original inputs and actual outputs were captured. The fixed scorer accepted the unchanged source/provenance/input checks, but the evaluation failed: primary25/30 against27 required; exact category26/30, review27/30 and priority28/30. There were16 generated replies. A successful cloud run did not mean the acceptance test passed.
+
+DRI-13,27 and30 each generated a draft when the frozen rules required review and no draft. The raw classifier said there was enough context and that a draft was appropriate; the routing followed those flags. That gives us a concrete diagnostic direction instead of an excuse to rebuild everything or move the answer key. DRI-26/29 had category misses but kept review/no draft; DRI-10/15 were overcalled Urgent. DRI-15 was safely flagged as a resend with no second draft.
+
+DRI-28's classifier failed with BadRequest. The helper retained a failed result, owner review and no draft. The assistant opened that existing iteration, but Power Automate could not load the detailed operation data. We do not know the exact cause yet. No speculative connection repair or automatic retry.
+
+My final behavior/safety, pricing and draft-usability ratings are still blank. The assistant preserved actual-results.json, score-v1.json and a review packet putting original messages, expected behavior and actual replies together. Potential wording concerns were flagged for my review, not scored as my judgments. No sends, shared prompt edits, full-batch rerun, completed-test replay, baseline export or deliberate failure testing occurred.
+
+Independent: completing Windows setup and keeping the frozen scope/testing constraint. Assistant-operated: publication, first batch, evidence extraction, fixed scoring and documentation. Next: inspect the ambiguity misses against the classifier instructions, recover DRI-28's detailed error when available, make only demonstrated necessary corrections, then targeted retests under a new label and my actual owner ratings. Preserve this failed first run.
