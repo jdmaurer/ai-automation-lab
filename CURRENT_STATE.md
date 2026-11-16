@@ -19,9 +19,16 @@ Josh finished the desktop Windows setup. Local/browser access then worked. Read 
 - Evidence: `evaluation/runs/run-2026-11-14-frozen-v1/actual-results.json`, `score-v1.json`, `review-packet.md` (original messages + expected behavior + unchanged actual drafts together). No artificial outputs, scoring-code changes or relabeling.
 - No completed smoke/LOG-02/AUTO-01/WS-01/WS-02 replay, sending, shared prompt edits, routing edits, remapping, export investigation or deliberate failure injection.
 
-**Exact next action:** Review the three ambiguity misses against existing classifier instructions before proposing the smallest necessary correction; inspect DRI-28 detailed error when available. Preserve original failed run. Use a new label for any later targeted retest. Obtain Josh's actual behavior/safety/pricing/usability judgments; do not fill them for him.
+## November 16 follow-up — classifier ambiguity inspected; correction PROPOSED ONLY
 
-Browser2/tab156966477 retained on existing run, case28 classifier panel. Browser control worked; new-view action details had a data-loading error. Do not resubmit the run. Prior clipboard/import issue is resolved and obsolete; do not paste/rebuild the old block.
+Live classifier instructions (GPT-4.1 mini) were read through the main flow action's prompt editor and exited with Cancel; Save was disabled. No text, wiring, prompt version or flow publication changed; no model calls/tests. Original failed frozen run and its files are unchanged.
+
+Diagnosis: DRI-27/30 outputs conflict with the existing Unknown/missing-prior-context rule; the generic clarification allowance can be overgeneralized. DRI-13 has a clear Support purpose but competing explanations requiring owner assessment, which the current no-guessing wording does not explicitly prioritize over a generic acknowledgment. This is an evidence-based interpretation, not known internal model reasoning.
+
+[Diagnosis and exact proposed wording](cases/driftless-inbox-triage/evaluation/classifier-ambiguity-diagnosis-2026-11-16.md); adjacent JSON preserves the full live instruction text as inspected. Proposed addition after context_sufficient rules: missing-prior-context follow-ups → Unknown/contextfalse/draftfalse; complaints with competing explanations needing owner assessment → retain supported category/contextfalse/draftfalse. Preserve clear-quote missing-detail exception. Existing false-context routing already marks review and blocks drafts. No confidence threshold/schema/action changes.
+
+**Next action:** Apply this bounded clarification only when instructed, then inspect classifier email_record inputs in both main and helper because prior prompt saves reset bindings. Use new-label targeted checks of the failures/necessary exception boundaries; do not overwrite/replay the failed first batch. Detailed DRI-28 error and Josh's owner ratings remain pending.
+
 
 ### Saved helper and scope boundaries
 

@@ -314,3 +314,12 @@ DRI-28's classifier failed with BadRequest. The helper retained a failed result,
 My final behavior/safety, pricing and draft-usability ratings are still blank. The assistant preserved actual-results.json, score-v1.json and a review packet putting original messages, expected behavior and actual replies together. Potential wording concerns were flagged for my review, not scored as my judgments. No sends, shared prompt edits, full-batch rerun, completed-test replay, baseline export or deliberate failure testing occurred.
 
 Independent: completing Windows setup and keeping the frozen scope/testing constraint. Assistant-operated: publication, first batch, evidence extraction, fixed scoring and documentation. Next: inspect the ambiguity misses against the classifier instructions, recover DRI-28's detailed error when available, make only demonstrated necessary corrections, then targeted retests under a new label and my actual owner ratings. Preserve this failed first run.
+
+
+## Monday 11.16.26 follow-up — Reading the ambiguity instructions before changing anything
+
+I asked for inspection and the smallest correction, with the failed run preserved. The assistant opened the live shared classifier through the main flow and read the full instructions; displayed model GPT-4.1 mini. Save stayed disabled and it exited with Cancel. No tests, model calls, prompt edits or flow saves/publications.
+
+The prompt already has Unknown/missing-context rules. DRI-27/30 contradicted those by treating an unspecified repeat/follow-up as enough context for an ordinary clarification. DRI-13 correctly identified Support but treated the unclear cause as safe for a generic reply. The gap is the boundary between ordinary missing quote details and missing context/owner assessment. The proposed small addition makes that boundary explicit using context_sufficient and draft_candidate; it retains supported categories and the clear-quote exception. No threshold/schema/routing rebuild proposed. This explains the evidence without claiming to know the model's internal reasoning.
+
+The original failed batch, score and owner ratings stayed unchanged. Full inspected instructions and an exact proposed block are preserved in evaluation/classifier-instructions-inspected-2026-11-16.json and classifier-ambiguity-diagnosis-2026-11-16.md. The correction is not applied or runtime-proven. Next: apply only when instructed, inspect both linked classifier inputs after a prompt save, then necessary targeted new-label retests. No full30 replay.
