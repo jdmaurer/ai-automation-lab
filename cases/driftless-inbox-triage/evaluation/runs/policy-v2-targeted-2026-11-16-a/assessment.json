@@ -1,0 +1,23 @@
+{
+  "policy_version": "driftless-review-draft-policy-v2-2026-11-16",
+  "status": "FAIL_TARGETED_POLICY_V2_CHECKS",
+  "classifier_and_rule_checks_passed": 3,
+  "classifier_and_rule_checks_total": 4,
+  "draft_checks": [
+    {
+      "id": "DRI-13",
+      "assistant_policy_check": "FAIL",
+      "reason": "Reply introduces possible screen/lighting causes instead of staying within neutral acknowledgment and deferring assessment."
+    },
+    {
+      "id": "PV2-U01",
+      "assistant_policy_check": "REVIEW_REQUIRED",
+      "reason": "No cause is selected and no remedy/deadline is promised, but the reply outlines a diagnostic investigation/follow-up rather than a strictly neutral owner-deferred acknowledgment. Do not invent an owner acceptance or categorical safety judgment."
+    }
+  ],
+  "owner_quality_judgments": "PENDING; no existing owner ratings changed",
+  "overall_release": "NOT_ESTABLISHED",
+  "full_v1_score": "UNCHANGED FAIL25/30",
+  "generalization": "The unseen-at-preregistration vague follow-up exposed a real generalization miss. Small probes are not an independent benchmark; no further tuning/retests were performed.",
+  "rule_analysis_scope": "Saved configuration equivalence comparison plus manual truth analysis; no main/helper workflow executed"
+}

@@ -324,3 +324,12 @@ Shared prompt saved/reopened; both classifier action references verified. Main r
 | targeted-2026-11-16-classifier-ambiguity-v3 | One complaint-sentence refinement; DRI-13 + DRI-10 clear-damage boundary | DRI-13 FAIL again; DRI-10 boundary PASS |
 
 Four passing v2 checks not repeated on v3. Seven intentional classifier calls, no actual drafter/Outlook/workflow test; downstream owner-review/draft-block implications follow unchanged inspected gates, not new runtime evidence. One mistaken stored-sample AUTO-03 preview separately preserved as unscored. The original formal30 result remains FAIL25/30 and is not updated by combining partial retests. No automatic rerun or owner ratings invented. [Full report and scope](evaluation/classifier-clarification-targeted-results-2026-11-16.md).
+
+
+## November 16 — adopted policy v2; preregistered targeted checks FAIL
+
+Policy/overlay/inputs committed before configuration and calls. Both review rules add Support; classifier context and drafter Support sections saved/reopened; both flows' classifier/drafter references verified; both saved/checker0/0/Published. Original frozen-v1 key, formal FAIL25/30, owner form and prior targeted artifacts unchanged.
+
+Four classifier + two drafter prompt-only calls, run label policy-v2-targeted-2026-11-16-a. DRI-13, new clear-concern PV2-U01 and clear-quote PV2-U03 matched their classifier/rule expectations; vague prior-context PV2-U02 failed (guessed Support/contexttrue/candidatetrue/record_changetrue). Manual saved-rule analysis gives reviewtrue/drafttrue for all three Support outputs; quote reviewfalse/drafttrue. This is not workflow runtime. DRI-13 generated a causal explanation: FAIL neutral-draft bound. PV2-U01 reply needs owner assessment; no final quality rating/acceptance assigned. **FAIL_TARGETED_POLICY_V2_CHECKS**, no full v2 score or overall release.
+
+[Policy](policy-v2-2026-11-16.md), [preregistered plan](evaluation/policy-v2-targeted-plan-2026-11-16.json), [results/diagnosis](evaluation/policy-v2-targeted-results-and-diagnosis-2026-11-16.md). Raw configuration, classifiers/replies, saved-text verification and scoped analysis in evaluation/runs/policy-v2-targeted-2026-11-16-a/. Six planned calls only; no completed mailbox/main/report run replay, unplanned previews, sends or failure injection. Subsequent diagnosis made no live edits or model calls. Do not run the v1-only scorer as if it applies policy v2, and do not splice partial retests into the original score.

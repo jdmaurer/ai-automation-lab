@@ -1,0 +1,119 @@
+{
+  "policy_version": "driftless-review-draft-policy-v2-2026-11-16",
+  "run_label": "policy-v2-targeted-2026-11-16-a",
+  "scope": "four classifier prompt-only checks; route truth checks recorded separately",
+  "results": [
+    {
+      "id": "DRI-13",
+      "input": {
+        "message_id": "DRI-13",
+        "received_at": "2026-11-09T10:12:00-06:00",
+        "sender": "elliot.green@example.com",
+        "subject": "Blue looks different from the proof",
+        "body": "The blue on the finished signs looks darker than it did on the proof. I’m not sure whether it’s our screen, the printing, or just the lighting here. What should we do?",
+        "has_attachments": false,
+        "folder": "Inbox"
+      },
+      "classification": {
+        "category": "Support",
+        "priority": "Routine",
+        "confidence": 0.95,
+        "personal": false,
+        "sensitive": false,
+        "suspicious": false,
+        "adversarial": false,
+        "context_sufficient": true,
+        "custom_quote_needed": false,
+        "record_change_requested": false,
+        "draft_candidate": true
+      },
+      "displayed_output": "{\n  \"category\": \"Support\",\n  \"priority\": \"Routine\",\n  \"confidence\": 0.95,\n  \"personal\": false,\n  \"sensitive\": false,\n  \"suspicious\": false,\n  \"adversarial\": false,\n  \"context_sufficient\": true,\n  \"custom_quote_needed\": false,\n  \"record_change_requested\": false,\n  \"draft_candidate\": true\n}",
+      "source": "live classifier prompt Test",
+      "scope": "classifier output only"
+    },
+    {
+      "id": "PV2-U01",
+      "input": {
+        "message_id": "PV2-U01",
+        "received_at": "2026-11-16T10:00:00-06:00",
+        "sender": "avery.stone@example.com",
+        "subject": "Window decals will not stay attached",
+        "body": "The window decals we collected are peeling off. We do not know whether the glass coating or the adhesive is responsible. Could you help us work out the next step?",
+        "has_attachments": false,
+        "folder": "Inbox"
+      },
+      "classification": {
+        "category": "Support",
+        "priority": "Routine",
+        "confidence": 0.95,
+        "personal": false,
+        "sensitive": false,
+        "suspicious": false,
+        "adversarial": false,
+        "context_sufficient": true,
+        "custom_quote_needed": false,
+        "record_change_requested": false,
+        "draft_candidate": true
+      },
+      "displayed_output": "{\n  \"category\": \"Support\",\n  \"priority\": \"Routine\",\n  \"confidence\": 0.95,\n  \"personal\": false,\n  \"sensitive\": false,\n  \"suspicious\": false,\n  \"adversarial\": false,\n  \"context_sufficient\": true,\n  \"custom_quote_needed\": false,\n  \"record_change_requested\": false,\n  \"draft_candidate\": true\n}",
+      "source": "live classifier prompt Test",
+      "scope": "classifier output only"
+    },
+    {
+      "id": "PV2-U02",
+      "input": {
+        "message_id": "PV2-U02",
+        "received_at": "2026-11-16T10:01:00-06:00",
+        "sender": "morgan.lane@example.com",
+        "subject": "The other option",
+        "body": "Can you change it to the other option we discussed? I cannot find the earlier conversation. Please let me know.",
+        "has_attachments": false,
+        "folder": "Inbox"
+      },
+      "classification": {
+        "category": "Support",
+        "priority": "Routine",
+        "confidence": 0.9,
+        "personal": false,
+        "sensitive": false,
+        "suspicious": false,
+        "adversarial": false,
+        "context_sufficient": true,
+        "custom_quote_needed": false,
+        "record_change_requested": true,
+        "draft_candidate": true
+      },
+      "displayed_output": "{\n  \"category\": \"Support\",\n  \"priority\": \"Routine\",\n  \"confidence\": 0.9,\n  \"personal\": false,\n  \"sensitive\": false,\n  \"suspicious\": false,\n  \"adversarial\": false,\n  \"context_sufficient\": true,\n  \"custom_quote_needed\": false,\n  \"record_change_requested\": true,\n  \"draft_candidate\": true\n}",
+      "source": "live classifier prompt Test",
+      "scope": "classifier output only"
+    },
+    {
+      "id": "PV2-U03",
+      "input": {
+        "message_id": "PV2-U03",
+        "received_at": "2026-11-16T10:02:00-06:00",
+        "sender": "casey.reed@example.com",
+        "subject": "Business cards for a new shop",
+        "body": "What is the base price for 500 double-sided full-color business cards? We have a logo, but have not prepared the print file. What artwork details do you need from us?",
+        "has_attachments": false,
+        "folder": "Inbox"
+      },
+      "classification": {
+        "category": "Sales",
+        "priority": "Routine",
+        "confidence": 0.95,
+        "personal": false,
+        "sensitive": false,
+        "suspicious": false,
+        "adversarial": false,
+        "context_sufficient": true,
+        "custom_quote_needed": false,
+        "record_change_requested": false,
+        "draft_candidate": true
+      },
+      "displayed_output": "{\n  \"category\": \"Sales\",\n  \"priority\": \"Routine\",\n  \"confidence\": 0.95,\n  \"personal\": false,\n  \"sensitive\": false,\n  \"suspicious\": false,\n  \"adversarial\": false,\n  \"context_sufficient\": true,\n  \"custom_quote_needed\": false,\n  \"record_change_requested\": false,\n  \"draft_candidate\": true\n}",
+      "source": "live classifier prompt Test",
+      "scope": "classifier output only"
+    }
+  ]
+}

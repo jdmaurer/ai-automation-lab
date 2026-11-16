@@ -1,0 +1,111 @@
+{
+  "policy_version": "driftless-review-draft-policy-v2-2026-11-16",
+  "run_label": "policy-v2-targeted-2026-11-16-a",
+  "equivalence": {
+    "helper_review_matches_main": true,
+    "helper_draft_matches_unchanged_reference": true,
+    "both_classifier_inputs_intact": true,
+    "both_drafter_inputs_intact": true
+  },
+  "scope": "Saved configuration equivalence comparison plus manual truth analysis; no main/helper workflow executed",
+  "results": [
+    {
+      "id": "DRI-13",
+      "classification": {
+        "category": "Support",
+        "priority": "Routine",
+        "confidence": 0.95,
+        "personal": false,
+        "sensitive": false,
+        "suspicious": false,
+        "adversarial": false,
+        "context_sufficient": true,
+        "custom_quote_needed": false,
+        "record_change_requested": false,
+        "draft_candidate": true
+      },
+      "valid_output": true,
+      "confidence_gate": true,
+      "owner_review": true,
+      "draft_eligible": true,
+      "scope": "Manual truth analysis of the saved predicates on already recorded model outputs; no workflow runtime or new model/test call",
+      "check": "PASS",
+      "failures": []
+    },
+    {
+      "id": "PV2-U01",
+      "classification": {
+        "category": "Support",
+        "priority": "Routine",
+        "confidence": 0.95,
+        "personal": false,
+        "sensitive": false,
+        "suspicious": false,
+        "adversarial": false,
+        "context_sufficient": true,
+        "custom_quote_needed": false,
+        "record_change_requested": false,
+        "draft_candidate": true
+      },
+      "valid_output": true,
+      "confidence_gate": true,
+      "owner_review": true,
+      "draft_eligible": true,
+      "scope": "Manual truth analysis of the saved predicates on already recorded model outputs; no workflow runtime or new model/test call",
+      "check": "PASS",
+      "failures": []
+    },
+    {
+      "id": "PV2-U02",
+      "classification": {
+        "category": "Support",
+        "priority": "Routine",
+        "confidence": 0.9,
+        "personal": false,
+        "sensitive": false,
+        "suspicious": false,
+        "adversarial": false,
+        "context_sufficient": true,
+        "custom_quote_needed": false,
+        "record_change_requested": true,
+        "draft_candidate": true
+      },
+      "valid_output": true,
+      "confidence_gate": true,
+      "owner_review": true,
+      "draft_eligible": true,
+      "scope": "Manual truth analysis of the saved predicates on already recorded model outputs; no workflow runtime or new model/test call",
+      "check": "FAIL",
+      "failures": [
+        "category: expected Unknown, actual Support",
+        "context_sufficient: expected false, actual true",
+        "draft_candidate: expected false, actual true",
+        "draft_eligible: expected false, actual true"
+      ]
+    },
+    {
+      "id": "PV2-U03",
+      "classification": {
+        "category": "Sales",
+        "priority": "Routine",
+        "confidence": 0.95,
+        "personal": false,
+        "sensitive": false,
+        "suspicious": false,
+        "adversarial": false,
+        "context_sufficient": true,
+        "custom_quote_needed": false,
+        "record_change_requested": false,
+        "draft_candidate": true
+      },
+      "valid_output": true,
+      "confidence_gate": true,
+      "owner_review": false,
+      "draft_eligible": true,
+      "scope": "Manual truth analysis of the saved predicates on already recorded model outputs; no workflow runtime or new model/test call",
+      "check": "PASS",
+      "failures": []
+    }
+  ],
+  "analysis_note": "An initial working calculation used category for a priority-membership comparison and incorrectly marked all outputs invalid. That calculation was discarded as an analysis error, not a flow failure; no raw model result was altered."
+}

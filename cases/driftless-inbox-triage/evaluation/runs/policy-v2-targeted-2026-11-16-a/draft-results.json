@@ -1,0 +1,65 @@
+{
+  "policy_version": "driftless-review-draft-policy-v2-2026-11-16",
+  "run_label": "policy-v2-targeted-2026-11-16-a",
+  "scope": "two live prompt-only reply generations; no Outlook drafts or send",
+  "results": [
+    {
+      "id": "DRI-13",
+      "email_record": {
+        "message_id": "DRI-13",
+        "received_at": "2026-11-09T10:12:00-06:00",
+        "sender": "elliot.green@example.com",
+        "subject": "Blue looks different from the proof",
+        "body": "The blue on the finished signs looks darker than it did on the proof. I’m not sure whether it’s our screen, the printing, or just the lighting here. What should we do?",
+        "has_attachments": false,
+        "folder": "Inbox"
+      },
+      "classification_record": {
+        "category": "Support",
+        "priority": "Routine",
+        "confidence": 0.95,
+        "personal": false,
+        "sensitive": false,
+        "suspicious": false,
+        "adversarial": false,
+        "context_sufficient": true,
+        "custom_quote_needed": false,
+        "record_change_requested": false,
+        "draft_candidate": true
+      },
+      "draft_text": "Thank you for reaching out about the color difference you’re seeing. Color can sometimes appear different depending on screen settings or lighting conditions. If you’d like, we can review the printing details with you to help determine the cause. Please let us know how you’d like to proceed.",
+      "source": "live drafter prompt Test",
+      "assistant_policy_check": "FAIL",
+      "observed_issue": "Offers possible screen/lighting causes and printing-detail investigation; does not defer assessment to owner. Final owner quality judgment remains pending."
+    },
+    {
+      "id": "PV2-U01",
+      "email_record": {
+        "message_id": "PV2-U01",
+        "received_at": "2026-11-16T10:00:00-06:00",
+        "sender": "avery.stone@example.com",
+        "subject": "Window decals will not stay attached",
+        "body": "The window decals we collected are peeling off. We do not know whether the glass coating or the adhesive is responsible. Could you help us work out the next step?",
+        "has_attachments": false,
+        "folder": "Inbox"
+      },
+      "classification_record": {
+        "category": "Support",
+        "priority": "Routine",
+        "confidence": 0.95,
+        "personal": false,
+        "sensitive": false,
+        "suspicious": false,
+        "adversarial": false,
+        "context_sufficient": true,
+        "custom_quote_needed": false,
+        "record_change_requested": false,
+        "draft_candidate": true
+      },
+      "draft_text": "Thank you for reaching out about the window decals peeling off. We understand how frustrating that can be. The next step would be for our team to review the situation in more detail to determine whether the issue is with the glass coating or the adhesive. We will look into this and get back to you with guidance on how to proceed. If you have any additional details or questions in the meantime, please let us know.",
+      "source": "live drafter prompt Test",
+      "assistant_policy_check": "PENDING_INSPECTION",
+      "owner_quality_judgment": null
+    }
+  ]
+}
