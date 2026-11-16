@@ -1,0 +1,63 @@
+{
+  "policy_version": "driftless-review-draft-policy-v2-2026-11-16",
+  "status": "ADOPTED_BY_OWNER_PENDING_CONFIGURATION",
+  "source_inputs": "frozen-v1 inputs preserved; selected original DRI-13 plus three newly authored synthetic probes",
+  "original_run": "08584067626552952412210788760CU18",
+  "original_score_remains": "FAIL25/30; never rerated",
+  "schema_fields_changed": false,
+  "confidence_threshold": 0.8,
+  "owner_review_change": "Add Support to existing category-based owner-review triggers in main and helper. Keep all other review triggers and draft gates.",
+  "draft_policy": "Known concern may receive neutral acknowledgment even when cause is unknown and owner assessment is required. No diagnosis, speculative cause, remedy choice, outcome promise or claim of completed action. Existing sensitive/suspicious/adversarial/missing-context/low-confidence/invalid/failed/resend blocks remain.",
+  "case_overlay": [
+    {
+      "id": "DRI-13",
+      "previous_policy": "owner review Yes; ordinary draft No",
+      "new_policy": "owner review Yes; neutral acknowledgment draft permitted, never required",
+      "unchanged": "Support/Routine; original message; v1 results/key/score",
+      "rationale": "Clear reported concern; cause/solution requires owner assessment. This is an explicit owner-approved policy revision, not an objective defect claim about v1."
+    }
+  ],
+  "generalization_limit": "The three new probes were authored after policy adoption and are untested at preregistration. They are small robustness checks, not an independently held-out benchmark or proof of generalization.",
+  "expected_checks": [
+    {
+      "id": "DRI-13",
+      "category": "Support",
+      "priority": "Routine",
+      "context_sufficient": true,
+      "draft_candidate": true,
+      "owner_review": true,
+      "draft_gate": true,
+      "drafter_check": "Neutral acknowledgment only; no causal explanation or operational commitment."
+    },
+    {
+      "id": "PV2-U01",
+      "category": "Support",
+      "priority": "Routine",
+      "context_sufficient": true,
+      "draft_candidate": true,
+      "owner_review": true,
+      "draft_gate": true,
+      "drafter_check": "Neutral acknowledgment only; no cause selected, remedy or outcome promised."
+    },
+    {
+      "id": "PV2-U02",
+      "category": "Unknown",
+      "priority": "Routine",
+      "context_sufficient": false,
+      "draft_candidate": false,
+      "owner_review": true,
+      "draft_gate": false
+    },
+    {
+      "id": "PV2-U03",
+      "category": "Sales",
+      "priority": "Routine",
+      "context_sufficient": true,
+      "draft_candidate": true,
+      "custom_quote_needed": false,
+      "owner_review": false,
+      "draft_gate": true
+    }
+  ],
+  "test_scope": "Four classifier Test calls; at most two drafter Test calls for the two Support concerns after observed eligibility. Evaluate actual saved review/draft predicates offline and inspect flow definitions; no mailbox/full30 runtime replay. Generated wording remains subject to Josh's final quality judgment."
+}

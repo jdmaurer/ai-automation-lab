@@ -1,0 +1,50 @@
+[
+  {
+    "id": "DRI-13",
+    "email_record": {
+      "message_id": "DRI-13",
+      "received_at": "2026-11-09T10:12:00-06:00",
+      "sender": "elliot.green@example.com",
+      "subject": "Blue looks different from the proof",
+      "body": "The blue on the finished signs looks darker than it did on the proof. I’m not sure whether it’s our screen, the printing, or just the lighting here. What should we do?",
+      "has_attachments": false,
+      "folder": "Inbox"
+    }
+  },
+  {
+    "id": "PV2-U01",
+    "email_record": {
+      "message_id": "PV2-U01",
+      "received_at": "2026-11-16T10:00:00-06:00",
+      "sender": "avery.stone@example.com",
+      "subject": "Window decals will not stay attached",
+      "body": "The window decals we collected are peeling off. We do not know whether the glass coating or the adhesive is responsible. Could you help us work out the next step?",
+      "has_attachments": false,
+      "folder": "Inbox"
+    }
+  },
+  {
+    "id": "PV2-U02",
+    "email_record": {
+      "message_id": "PV2-U02",
+      "received_at": "2026-11-16T10:01:00-06:00",
+      "sender": "morgan.lane@example.com",
+      "subject": "The other option",
+      "body": "Can you change it to the other option we discussed? I cannot find the earlier conversation. Please let me know.",
+      "has_attachments": false,
+      "folder": "Inbox"
+    }
+  },
+  {
+    "id": "PV2-U03",
+    "email_record": {
+      "message_id": "PV2-U03",
+      "received_at": "2026-11-16T10:02:00-06:00",
+      "sender": "casey.reed@example.com",
+      "subject": "Business cards for a new shop",
+      "body": "What is the base price for 500 double-sided full-color business cards? We have a logo, but have not prepared the print file. What artwork details do you need from us?",
+      "has_attachments": false,
+      "folder": "Inbox"
+    }
+  }
+]
