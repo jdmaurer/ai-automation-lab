@@ -2,6 +2,25 @@
 
 Canonical baton under AI_HANDOFF_PROTOCOL.md. Active Week 8 case: `cases/driftless-inbox-triage/`. Scope frozen: evaluated/documented SME prototype, no extra features.
 
+## Latest November 16 checkpoint — clarification SAVED; references intact; targeted DRI-13 still FAIL
+
+Josh authorized the clarification, input-reference checks and only necessary targeted checks. Shared classifier614118d4-6ca8-4344-b945-8659eb8bb3d8 (GPT-4.1 mini) updated with the agreed block; after v2 DRI-13 failure, only the complaint sentence was strengthened once. Final saved text reopened/verified (Save disabled). Threshold0.80/schema/routing/connections/drafter/weekly flow unchanged.
+
+**Both flows verified:** main input was reset by shared-prompt saves; restored exact @outputs('Normalize_-_Email_Fields'), inspected Code view, confirmed draft-save banner and **Published / ready** after final repair. Helper retained same shared prompt/input; verified again after final saves and fresh reload, still Published; no helper edit needed. Limited classifier-bindings.json snapshots in targeted directories.
+
+**Classifier-only targeted checks (no30 replay, no drafter/Outlook runtime):**
+- v2 `targeted-2026-11-16-classifier-ambiguity-v2`: DRI-27/30 correctly Unknown/contextfalse/draftfalse; DRI-02 clear-quote and DRI-11 urgent-Support exceptions passed. DRI-13 FAIL: Support/.95/contexttrue/drafttrue.
+- v3 `targeted-2026-11-16-classifier-ambiguity-v3`: only complaint sentence refined; DRI-13 **FAIL again**, same unsafe flags. DRI-10 clear-damage boundary passed (Support/Routine/.95/contexttrue/drafttrue). Four passing v2 cases not repeated on v3; do not relabel as final-version reruns.
+- Seven intentional targeted calls, plus **one accidental persisted AUTO-03 prompt preview** before setting the first case. Disclosed/captured separately as unscored; not acceptance evidence. No completed mailbox/main-flow/weekly tests replayed.
+- The strict30 helper was not changed to accept subsets. Original frozen inputs/order preserved for selected cases; no answer key supplied. Per-case checks/output text retained.
+- **Safety defect remains:** unchanged routing would allow DRI-13 to draft; no actual reply generated in these classifier-only retests. Do not claim repaired acceptance/overall pass or change/splice the original full-batch score.
+
+[Full change/results report](cases/driftless-inbox-triage/evaluation/classifier-clarification-targeted-results-2026-11-16.md). Separate v2/v3 inputs, raw classifier results, instruction snapshots and binding evidence are under evaluation/runs/. Original failed run08584067626552952412210788760CU18, score/key/manifest/owner ratings are unchanged.
+
+**Single next action:** inspect structured-output definitions/any conflicting context_sufficient/draft_candidate guidance before proposing another change. Stop further prompt tuning/repeated DRI-13 calls until a new explained correction. No failure cause invented. Other formal-run misses and DRI-28 detail remain open.
+
+Browser2 main tab156966424 is Published, classifier Parameters with normalized input; helper156966477 Published, classifier Code view. Prompt test panel exited Cancel; no unsaved test sample changes. Keep owner judgments pending.
+
 ## November 16 — helper PUBLISHED; first formal frozen-30 run completed; acceptance FAIL
 
 Josh finished the desktop Windows setup. Local/browser access then worked. Read LIVE CURRENT_STATE first, evaluation guide and prepared packet; inspected the existing helper, intentionally refreshed the saved cloud draft, and confirmed its parser/loop/export survived. No rebuild or connection changes.
@@ -19,7 +38,7 @@ Josh finished the desktop Windows setup. Local/browser access then worked. Read 
 - Evidence: `evaluation/runs/run-2026-11-14-frozen-v1/actual-results.json`, `score-v1.json`, `review-packet.md` (original messages + expected behavior + unchanged actual drafts together). No artificial outputs, scoring-code changes or relabeling.
 - No completed smoke/LOG-02/AUTO-01/WS-01/WS-02 replay, sending, shared prompt edits, routing edits, remapping, export investigation or deliberate failure injection.
 
-## November 16 follow-up — classifier ambiguity inspected; correction PROPOSED ONLY
+## Historical November 16 inspection — before the applied correction
 
 Live classifier instructions (GPT-4.1 mini) were read through the main flow action's prompt editor and exited with Cancel; Save was disabled. No text, wiring, prompt version or flow publication changed; no model calls/tests. Original failed frozen run and its files are unchanged.
 
@@ -27,7 +46,7 @@ Diagnosis: DRI-27/30 outputs conflict with the existing Unknown/missing-prior-co
 
 [Diagnosis and exact proposed wording](cases/driftless-inbox-triage/evaluation/classifier-ambiguity-diagnosis-2026-11-16.md); adjacent JSON preserves the full live instruction text as inspected. Proposed addition after context_sufficient rules: missing-prior-context follow-ups → Unknown/contextfalse/draftfalse; complaints with competing explanations needing owner assessment → retain supported category/contextfalse/draftfalse. Preserve clear-quote missing-detail exception. Existing false-context routing already marks review and blocks drafts. No confidence threshold/schema/action changes.
 
-**Next action:** Apply this bounded clarification only when instructed, then inspect classifier email_record inputs in both main and helper because prior prompt saves reset bindings. Use new-label targeted checks of the failures/necessary exception boundaries; do not overwrite/replay the failed first batch. Detailed DRI-28 error and Josh's owner ratings remain pending.
+The proposed correction was subsequently authorized/applied and tested; see the latest checkpoint above. This section preserves the prior inspection reasoning. Detailed DRI-28 error and owner ratings remain pending.
 
 
 ### Saved helper and scope boundaries

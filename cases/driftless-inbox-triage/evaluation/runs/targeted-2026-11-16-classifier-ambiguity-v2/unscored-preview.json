@@ -1,0 +1,13 @@
+{
+  "reason": "Assistant clicked Test before replacing persisted sample; accidental extra preview, excluded from targeted checks",
+  "input": {
+    "message_id": "AUTO-03",
+    "received_at": "2026-11-12T10:10:00-06:00",
+    "sender": "system-alerts@example.com",
+    "subject": "Scheduled automation failed",
+    "body": "Your scheduled business reporting automation failed. The owner needs to investigate in the service dashboard before today's 2 PM reporting deadline. This is an automated system notification. Replies to this mailbox are not monitored.",
+    "has_attachments": false,
+    "folder": "Inbox"
+  },
+  "output_text": "{\n  \"category\": \"General\",\n  \"priority\": \"Urgent\",\n  \"confidence\": 0.95,\n  \"personal\": false,\n  \"sensitive\": false,\n  \"suspicious\": false,\n  \"adversarial\": false,\n  \"context_sufficient\": true,\n  \"custom_quote_needed\": false,\n  \"record_change_requested\": false,\n  \"draft_candidate\": false\n}"
+}

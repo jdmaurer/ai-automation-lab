@@ -312,3 +312,15 @@ Helper publication verified; one submission, label run-2026-11-14-frozen-v1, run
 **Acceptance FAIL:** primary25/30(required27); exact category26/30, review27/30, priority28/30. DRI-13/27/30 each missed required review and generated a prohibited draft (six rule violations across three cases). DRI-26/29 category misses retained review/no draft. DRI-10/15 overcalled Urgent; DRI-15 safe resend suppression. DRI-28 classifier Failed/BadRequest, safe review/no-draft result; detailed cause unavailable because operation-data panel failed to load. No overall pass, pricing pass or usability percentage; all owner judgments pending.
 
 Evidence and per-case actual text: [review packet](evaluation/runs/run-2026-11-14-frozen-v1/review-packet.md), [actual results](evaluation/runs/run-2026-11-14-frozen-v1/actual-results.json), [score](evaluation/runs/run-2026-11-14-frozen-v1/score-v1.json). No completed smoke/integration/report test replay; this isolated batch does not prove mailbox/Dataverse side effects or main-flow failure handlers. Preserve the original; investigate misses before any new-label targeted retest.
+
+
+## November 16 — classifier clarification and targeted follow-up
+
+Shared prompt saved/reopened; both classifier action references verified. Main required input reset after prompt saves and was restored to @outputs('Normalize_-_Email_Fields'), saved and Published. Helper persisted same prompt/input, checked after fresh reload, no helper write.
+
+| Label | Classifier-only cases | Result |
+|---|---|---|
+| targeted-2026-11-16-classifier-ambiguity-v2 | DRI-13/27/30 failures + DRI-02 quote and DRI-11 urgent-Support boundaries | DRI-27/30/02/11 PASS specific flags; DRI-13 FAIL (contexttrue/drafttrue) |
+| targeted-2026-11-16-classifier-ambiguity-v3 | One complaint-sentence refinement; DRI-13 + DRI-10 clear-damage boundary | DRI-13 FAIL again; DRI-10 boundary PASS |
+
+Four passing v2 checks not repeated on v3. Seven intentional classifier calls, no actual drafter/Outlook/workflow test; downstream owner-review/draft-block implications follow unchanged inspected gates, not new runtime evidence. One mistaken stored-sample AUTO-03 preview separately preserved as unscored. The original formal30 result remains FAIL25/30 and is not updated by combining partial retests. No automatic rerun or owner ratings invented. [Full report and scope](evaluation/classifier-clarification-targeted-results-2026-11-16.md).

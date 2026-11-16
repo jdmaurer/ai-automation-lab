@@ -1,0 +1,62 @@
+[
+  {
+    "id": "DRI-13",
+    "email_record": {
+      "message_id": "DRI-13",
+      "received_at": "2026-11-09T10:12:00-06:00",
+      "sender": "elliot.green@example.com",
+      "subject": "Blue looks different from the proof",
+      "body": "The blue on the finished signs looks darker than it did on the proof. I’m not sure whether it’s our screen, the printing, or just the lighting here. What should we do?",
+      "has_attachments": false,
+      "folder": "Inbox"
+    }
+  },
+  {
+    "id": "DRI-27",
+    "email_record": {
+      "message_id": "DRI-27",
+      "received_at": "2026-11-09T10:26:00-06:00",
+      "sender": "wesley.hart@example.com",
+      "subject": "Same thing as last time",
+      "body": "Can you do the same thing as last time? I’ll probably need it soon. Let me know.",
+      "has_attachments": false,
+      "folder": "Inbox"
+    }
+  },
+  {
+    "id": "DRI-30",
+    "email_record": {
+      "message_id": "DRI-30",
+      "received_at": "2026-11-09T10:29:00-06:00",
+      "sender": "taylor.knox@example.com",
+      "subject": "Following up",
+      "body": "Hi, just following up from before. Are we still on? Please let me know.",
+      "has_attachments": false,
+      "folder": "Inbox"
+    }
+  },
+  {
+    "id": "DRI-02",
+    "email_record": {
+      "message_id": "DRI-02",
+      "received_at": "2026-11-09T10:01:00-06:00",
+      "sender": "kevin.ortiz@example.com",
+      "subject": "Banner for summer festival",
+      "body": "Could you make us a banner for our festival next summer? I’m thinking around 3 by 6 feet, but I need to check with the committee. We have some artwork somewhere. Can you give me an idea what this would cost?",
+      "has_attachments": false,
+      "folder": "Inbox"
+    }
+  },
+  {
+    "id": "DRI-11",
+    "email_record": {
+      "message_id": "DRI-11",
+      "received_at": "2026-11-09T10:10:00-06:00",
+      "sender": "grant.miller@example.com",
+      "subject": "Need pickup confirmation before 5",
+      "body": "We were told our 50 signs would be ready around 3 today, but our event starts at 5. Can someone please confirm whether they’re ready before we head over?",
+      "has_attachments": false,
+      "folder": "Inbox"
+    }
+  }
+]

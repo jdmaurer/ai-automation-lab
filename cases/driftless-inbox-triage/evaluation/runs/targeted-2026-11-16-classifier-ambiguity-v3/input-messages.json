@@ -1,0 +1,26 @@
+[
+  {
+    "id": "DRI-13",
+    "email_record": {
+      "message_id": "DRI-13",
+      "received_at": "2026-11-09T10:12:00-06:00",
+      "sender": "elliot.green@example.com",
+      "subject": "Blue looks different from the proof",
+      "body": "The blue on the finished signs looks darker than it did on the proof. I’m not sure whether it’s our screen, the printing, or just the lighting here. What should we do?",
+      "has_attachments": false,
+      "folder": "Inbox"
+    }
+  },
+  {
+    "id": "DRI-10",
+    "email_record": {
+      "message_id": "DRI-10",
+      "received_at": "2026-11-09T10:09:00-06:00",
+      "sender": "priya.shah@example.com",
+      "subject": "Several signs arrived damaged",
+      "body": "We picked up our yard signs yesterday and four have bent corners. I attached a photo. What should we do?",
+      "has_attachments": true,
+      "folder": "Inbox"
+    }
+  }
+]

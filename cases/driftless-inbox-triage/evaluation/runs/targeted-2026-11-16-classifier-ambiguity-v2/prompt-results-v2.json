@@ -1,0 +1,152 @@
+{
+  "run_label": "targeted-2026-11-16-classifier-ambiguity-v2",
+  "scope": "five classifier prompt-only checks; no workflow runtime or drafter call",
+  "status": "FAIL",
+  "results": [
+    {
+      "id": "DRI-13",
+      "input": {
+        "message_id": "DRI-13",
+        "received_at": "2026-11-09T10:12:00-06:00",
+        "sender": "elliot.green@example.com",
+        "subject": "Blue looks different from the proof",
+        "body": "The blue on the finished signs looks darker than it did on the proof. I’m not sure whether it’s our screen, the printing, or just the lighting here. What should we do?",
+        "has_attachments": false,
+        "folder": "Inbox"
+      },
+      "classification": {
+        "category": "Support",
+        "priority": "Routine",
+        "confidence": 0.95,
+        "personal": false,
+        "sensitive": false,
+        "suspicious": false,
+        "adversarial": false,
+        "context_sufficient": true,
+        "custom_quote_needed": false,
+        "record_change_requested": false,
+        "draft_candidate": true
+      },
+      "displayed_output": "{\n  \"category\": \"Support\",\n  \"priority\": \"Routine\",\n  \"confidence\": 0.95,\n  \"personal\": false,\n  \"sensitive\": false,\n  \"suspicious\": false,\n  \"adversarial\": false,\n  \"context_sufficient\": true,\n  \"custom_quote_needed\": false,\n  \"record_change_requested\": false,\n  \"draft_candidate\": true\n}",
+      "source": "live prompt editor Test",
+      "expected_check": "Support; context_sufficient=false; draft_candidate=false",
+      "pass": false
+    },
+    {
+      "id": "DRI-27",
+      "input": {
+        "message_id": "DRI-27",
+        "received_at": "2026-11-09T10:26:00-06:00",
+        "sender": "wesley.hart@example.com",
+        "subject": "Same thing as last time",
+        "body": "Can you do the same thing as last time? I’ll probably need it soon. Let me know.",
+        "has_attachments": false,
+        "folder": "Inbox"
+      },
+      "classification": {
+        "category": "Unknown",
+        "priority": "Routine",
+        "confidence": 0.6,
+        "personal": false,
+        "sensitive": false,
+        "suspicious": false,
+        "adversarial": false,
+        "context_sufficient": false,
+        "custom_quote_needed": false,
+        "record_change_requested": false,
+        "draft_candidate": false
+      },
+      "displayed_output": "{\n  \"category\": \"Unknown\",\n  \"priority\": \"Routine\",\n  \"confidence\": 0.6,\n  \"personal\": false,\n  \"sensitive\": false,\n  \"suspicious\": false,\n  \"adversarial\": false,\n  \"context_sufficient\": false,\n  \"custom_quote_needed\": false,\n  \"record_change_requested\": false,\n  \"draft_candidate\": false\n}",
+      "source": "live prompt editor Test",
+      "expected_check": "Unknown; context_sufficient=false; draft_candidate=false",
+      "pass": true
+    },
+    {
+      "id": "DRI-30",
+      "input": {
+        "message_id": "DRI-30",
+        "received_at": "2026-11-09T10:29:00-06:00",
+        "sender": "taylor.knox@example.com",
+        "subject": "Following up",
+        "body": "Hi, just following up from before. Are we still on? Please let me know.",
+        "has_attachments": false,
+        "folder": "Inbox"
+      },
+      "classification": {
+        "category": "Unknown",
+        "priority": "Routine",
+        "confidence": 0.7,
+        "personal": false,
+        "sensitive": false,
+        "suspicious": false,
+        "adversarial": false,
+        "context_sufficient": false,
+        "custom_quote_needed": false,
+        "record_change_requested": false,
+        "draft_candidate": false
+      },
+      "displayed_output": "{\n  \"category\": \"Unknown\",\n  \"priority\": \"Routine\",\n  \"confidence\": 0.7,\n  \"personal\": false,\n  \"sensitive\": false,\n  \"suspicious\": false,\n  \"adversarial\": false,\n  \"context_sufficient\": false,\n  \"custom_quote_needed\": false,\n  \"record_change_requested\": false,\n  \"draft_candidate\": false\n}",
+      "source": "live prompt editor Test",
+      "expected_check": "Unknown; context_sufficient=false; draft_candidate=false",
+      "pass": true
+    },
+    {
+      "id": "DRI-02",
+      "input": {
+        "message_id": "DRI-02",
+        "received_at": "2026-11-09T10:01:00-06:00",
+        "sender": "kevin.ortiz@example.com",
+        "subject": "Banner for summer festival",
+        "body": "Could you make us a banner for our festival next summer? I’m thinking around 3 by 6 feet, but I need to check with the committee. We have some artwork somewhere. Can you give me an idea what this would cost?",
+        "has_attachments": false,
+        "folder": "Inbox"
+      },
+      "classification": {
+        "category": "Sales",
+        "priority": "Routine",
+        "confidence": 0.95,
+        "personal": false,
+        "sensitive": false,
+        "suspicious": false,
+        "adversarial": false,
+        "context_sufficient": true,
+        "custom_quote_needed": false,
+        "record_change_requested": false,
+        "draft_candidate": true
+      },
+      "displayed_output": "{\n  \"category\": \"Sales\",\n  \"priority\": \"Routine\",\n  \"confidence\": 0.95,\n  \"personal\": false,\n  \"sensitive\": false,\n  \"suspicious\": false,\n  \"adversarial\": false,\n  \"context_sufficient\": true,\n  \"custom_quote_needed\": false,\n  \"record_change_requested\": false,\n  \"draft_candidate\": true\n}",
+      "source": "live prompt editor Test",
+      "expected_check": "Sales/Routine; confidence>=0.8; context_sufficient=true; custom_quote_needed=false; draft_candidate=true",
+      "pass": true
+    },
+    {
+      "id": "DRI-11",
+      "input": {
+        "message_id": "DRI-11",
+        "received_at": "2026-11-09T10:10:00-06:00",
+        "sender": "grant.miller@example.com",
+        "subject": "Need pickup confirmation before 5",
+        "body": "We were told our 50 signs would be ready around 3 today, but our event starts at 5. Can someone please confirm whether they’re ready before we head over?",
+        "has_attachments": false,
+        "folder": "Inbox"
+      },
+      "classification": {
+        "category": "Support",
+        "priority": "Urgent",
+        "confidence": 0.95,
+        "personal": false,
+        "sensitive": false,
+        "suspicious": false,
+        "adversarial": false,
+        "context_sufficient": true,
+        "custom_quote_needed": false,
+        "record_change_requested": false,
+        "draft_candidate": true
+      },
+      "displayed_output": "{\n  \"category\": \"Support\",\n  \"priority\": \"Urgent\",\n  \"confidence\": 0.95,\n  \"personal\": false,\n  \"sensitive\": false,\n  \"suspicious\": false,\n  \"adversarial\": false,\n  \"context_sufficient\": true,\n  \"custom_quote_needed\": false,\n  \"record_change_requested\": false,\n  \"draft_candidate\": true\n}",
+      "source": "live prompt editor Test",
+      "expected_check": "Support/Urgent; confidence>=0.8; context_sufficient=true; draft_candidate=true",
+      "pass": true
+    }
+  ]
+}
