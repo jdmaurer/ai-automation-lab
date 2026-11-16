@@ -1,14 +1,22 @@
-# CURRENT STATE — updated 2026-11-15 — RESUME HERE
+# CURRENT STATE — updated 2026-11-16 — RESUME HERE
 
 Canonical baton under AI_HANDOFF_PROTOCOL.md. Active Week 8 case: `cases/driftless-inbox-triage/`. Scope frozen: evaluated/documented SME prototype; no added features or production-perfection work. Detailed history is in week8-log.md, test-cases.md and decisions.md.
 
-## Exact stopping point — isolated frozen-30 helper WIRED AND SAVED AS DRAFT
+## November 16 access check — no evaluation run started
+
+Josh resumed in ChatGPT and requested live publication inspection and the first frozen-30 evaluation. The assistant read LIVE CURRENT_STATE.md first, then evaluation/README.md and the prepared batch-input.json (30 cases). No newer run/result is recorded in those files.
+
+Browser inspection could not start: the local execution environment reported “registered runtime ownership is missing”; one fresh CUA reset/connection attempt also exited. Stop further connection retries under Josh's existing rule. This is not evidence of a Power Automate/OAuth/flow defect; do not alter working connections or wiring.
+
+**Current publication status is UNVERIFIED.** November 15's saved-draft status below is the last verified checkpoint, not proof of today's UI status. An async question asks Josh whether the helper currently shows Published, Draft, or is unavailable. No Publish/Test action, model call, evaluation score or completed-test replay occurred on November 16. NEXT: restore browser access and inspect actual status; publish only if the completed draft still needs publication, then run the first formal prepared batch. Do not recreate the helper or blindly republish/retest.
+
+## Last verified checkpoint, November 15 — isolated helper WIRED AND SAVED AS DRAFT
 
 **Driftless Frozen 30 Evaluation** now exists: b073b5f4-92ca-e6ad-e255-6a264c4891f0. [Open saved helper](https://make.powerautomate.com/environments/88301e40-6106-ee47-900c-67a24cbc121e/solutions/~preferred/flows/b073b5f4-92ca-e6ad-e255-6a264c4891f0?v3=true). Current browser5 / tab156966477 is marked for continuation.
 
 Final save confirmed through “We saved your draft flow. You can test and run it after you publish.” Flow checker then showed **Errors (0), Warnings (0)**. Complete wiring is a SAVED DRAFT; it has NOT been published or runtime-tested. An earlier classic-editor Save published only the partial input/initializer skeleton; that is not the completed evaluator. No batch run, real score, model-quality pass or overall release is claimed.
 
-**Single next action: publish the completed helper draft**, then perform the first formal frozen-30 batch with the prepared packet and capture actual results for Josh's owner review. Do not rebuild saved wiring or repeat earlier tests.
+**After the November 16 access check above: verify live publication and publish the completed draft only if needed**, then perform the first formal frozen-30 batch with the prepared packet and capture actual results for Josh's owner review. Do not rebuild saved wiring or repeat earlier tests.
 
 ### Saved configuration inspected
 
