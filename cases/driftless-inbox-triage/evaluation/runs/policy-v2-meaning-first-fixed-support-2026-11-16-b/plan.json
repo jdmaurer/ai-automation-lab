@@ -1,0 +1,51 @@
+{
+  "policy_version": "driftless-review-draft-policy-v2-2026-11-16",
+  "implementation_revision": "meaning-first-fixed-support-b",
+  "run_label": "policy-v2-meaning-first-fixed-support-2026-11-16-b",
+  "status": "PREREGISTERED_BEFORE_CHANGES_AND_TESTS",
+  "fixed_support_body": "Thank you for your message. The owner will review your concern and confirm the next step.",
+  "change_scope": "Move/consolidate meaning check before category definitions. Within existing draft-eligibility gate select fixed Support Compose or existing non-Support AI prompt, merge one reply-body output, and reconnect draft-creation/failure/collector references. Keep policy v2 review rule,11classifier fields,0.80,price rules/connections unchanged.",
+  "expected": [
+    {
+      "id": "PV2-U02",
+      "category": "Unknown",
+      "context_sufficient": false,
+      "draft_candidate": false,
+      "owner_review": true,
+      "draft_allowed": false,
+      "reply_source": "none"
+    },
+    {
+      "id": "MF-U01",
+      "category": "Unknown",
+      "context_sufficient": false,
+      "draft_candidate": false,
+      "owner_review": true,
+      "draft_allowed": false,
+      "reply_source": "none"
+    },
+    {
+      "id": "MF-U02",
+      "category": "Support",
+      "context_sufficient": true,
+      "draft_candidate": true,
+      "owner_review": true,
+      "draft_allowed": true,
+      "reply_source": "fixed-support",
+      "reply_exact": "Thank you for your message. The owner will review your concern and confirm the next step."
+    },
+    {
+      "id": "MF-U03",
+      "category": "Sales",
+      "context_sufficient": true,
+      "draft_candidate": true,
+      "owner_review": false,
+      "draft_allowed": true,
+      "reply_source": "ai-non-support"
+    }
+  ],
+  "model_call_limit": "Four classifier prompt tests only. No Support model drafting call, no full30/mailbox/completed-report replay. Additional call only if a demonstrated reference defect makes it necessary; preserve outcomes first.",
+  "validation_scope": "UI saved definitions/references and focused local logic checks, plus four actual classifier outputs. Do not call this fresh Power Automate end-to-end runtime evidence.",
+  "generalization_limit": "Three new synthetic probes selected after the general rule and before tests, plus the prior failed vague probe. Not an independent benchmark; no iterative tuning to fit these cases.",
+  "preservation": "Never alter v1 CSV/key, formal failed run/score/owner ratings, prior ambiguity tests, or policy-v2-targeted-a failures."
+}

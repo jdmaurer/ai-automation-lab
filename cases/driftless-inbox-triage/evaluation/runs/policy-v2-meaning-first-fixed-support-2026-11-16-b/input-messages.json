@@ -1,0 +1,50 @@
+[
+  {
+    "id": "PV2-U02",
+    "email_record": {
+      "message_id": "PV2-U02",
+      "received_at": "2026-11-16T10:01:00-06:00",
+      "sender": "morgan.lane@example.com",
+      "subject": "The other option",
+      "body": "Can you change it to the other option we discussed? I cannot find the earlier conversation. Please let me know.",
+      "has_attachments": false,
+      "folder": "Inbox"
+    }
+  },
+  {
+    "id": "MF-U01",
+    "email_record": {
+      "message_id": "MF-U01",
+      "received_at": "2026-11-16T11:00:00-06:00",
+      "sender": "blair.moss@example.com",
+      "subject": "Regarding our earlier discussion",
+      "body": "Please use the version we settled on during the call. I do not have the earlier details with me. Can you take care of it?",
+      "has_attachments": false,
+      "folder": "Inbox"
+    }
+  },
+  {
+    "id": "MF-U02",
+    "email_record": {
+      "message_id": "MF-U02",
+      "received_at": "2026-11-16T11:01:00-06:00",
+      "sender": "jamie.holt@example.com",
+      "subject": "Pages missing from printed menus",
+      "body": "Two pages are missing from several of the menus we collected yesterday. Could the owner review this and let us know the next step?",
+      "has_attachments": false,
+      "folder": "Inbox"
+    }
+  },
+  {
+    "id": "MF-U03",
+    "email_record": {
+      "message_id": "MF-U03",
+      "received_at": "2026-11-16T11:02:00-06:00",
+      "sender": "alex.byrd@example.com",
+      "subject": "Quote for business cards",
+      "body": "We would like 500 double-sided full-color business cards. We have not finalized the print file. What is the base price and what artwork information do you need?",
+      "has_attachments": false,
+      "folder": "Inbox"
+    }
+  }
+]
