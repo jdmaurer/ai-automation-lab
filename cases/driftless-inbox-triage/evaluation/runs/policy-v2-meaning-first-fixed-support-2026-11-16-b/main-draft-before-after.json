@@ -1,0 +1,275 @@
+{
+  "before": {
+    "type": "If",
+    "expression": {
+      "and": [
+        {
+          "equals": [
+            "@contains(createArray('Unknown','Finance','Internal'), outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/category'])",
+            false
+          ]
+        },
+        {
+          "equals": [
+            "@contains(\r\n  createArray(\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/personal'],\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/sensitive'],\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/suspicious'],\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/adversarial']\r\n  ),\r\n  true\r\n)",
+            false
+          ]
+        },
+        {
+          "equals": [
+            "@outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/context_sufficient']",
+            true
+          ]
+        },
+        {
+          "equals": [
+            "@outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/draft_candidate']",
+            true
+          ]
+        },
+        {
+          "equals": [
+            "@outputs('Flag_-_Possible_Resend')",
+            false
+          ]
+        }
+      ]
+    },
+    "actions": {
+      "Draft_-_Generate_Reply": {
+        "type": "OpenApiConnection",
+        "inputs": {
+          "parameters": {
+            "recordId": "e9c13e46-ec62-4cd4-b52f-b2f596db5821",
+            "item/requestv2/classification_record": "@string(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput'])",
+            "item/requestv2/email_record": "@outputs('Normalize_-_Email_Fields')"
+          },
+          "host": {
+            "apiId": "providers/Microsoft.ProcessSimple/operationGroups/aibuilder",
+            "connection": "shared_commondataserviceforapps",
+            "operationId": "aibuilderpredict_customprompt"
+          }
+        }
+      },
+      "Create_-_Outlook_Draft": {
+        "type": "OpenApiConnection",
+        "inputs": {
+          "parameters": {
+            "draftMessage/To": "@triggerOutputs()?['body/from']",
+            "draftMessage/Subject": "@triggerOutputs()?['body/subject']",
+            "draftMessage/Body": "<p class=\"editor-paragraph\">@{outputs('Draft_-_Generate_Reply')?['body/responsev2/predictionOutput/text']}</p>",
+            "draftMessage/Importance": "Normal"
+          },
+          "host": {
+            "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
+            "connection": "shared_office365",
+            "operationId": "DraftEmail"
+          }
+        },
+        "runAfter": {
+          "Draft_-_Generate_Reply": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Set_-_Needs_Owner_Review_-_Draft_Failure": {
+        "type": "SetVariable",
+        "inputs": {
+          "name": "needs_owner_review",
+          "value": true
+        },
+        "runAfter": {
+          "Draft_-_Generate_Reply": [
+            "TimedOut",
+            "Skipped",
+            "Failed"
+          ]
+        }
+      },
+      "Category_-_Owner_Review_-_Draft_Failure": {
+        "type": "OpenApiConnection",
+        "inputs": {
+          "parameters": {
+            "messageId": "@triggerOutputs()?['body/id']",
+            "category": "Needs Owner Review"
+          },
+          "host": {
+            "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
+            "connection": "shared_office365",
+            "operationId": "AssignCategory"
+          }
+        },
+        "runAfter": {
+          "Set_-_Needs_Owner_Review_-_Draft_Failure": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "else": {
+      "actions": {}
+    },
+    "runAfter": {
+      "Rule_-_Owner_Review_Required": [
+        "Succeeded"
+      ]
+    }
+  },
+  "after": {
+    "type": "If",
+    "expression": {
+      "and": [
+        {
+          "equals": [
+            "@contains(createArray('Unknown','Finance','Internal'), outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/category'])",
+            false
+          ]
+        },
+        {
+          "equals": [
+            "@contains(\r\n  createArray(\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/personal'],\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/sensitive'],\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/suspicious'],\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/adversarial']\r\n  ),\r\n  true\r\n)",
+            false
+          ]
+        },
+        {
+          "equals": [
+            "@outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/context_sufficient']",
+            true
+          ]
+        },
+        {
+          "equals": [
+            "@outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/draft_candidate']",
+            true
+          ]
+        },
+        {
+          "equals": [
+            "@outputs('Flag_-_Possible_Resend')",
+            false
+          ]
+        }
+      ]
+    },
+    "actions": {
+      "Create_-_Outlook_Draft": {
+        "type": "OpenApiConnection",
+        "inputs": {
+          "parameters": {
+            "draftMessage/To": "@triggerOutputs()?['body/from']",
+            "draftMessage/Subject": "@triggerOutputs()?['body/subject']",
+            "draftMessage/Body": "<p class=\"editor-paragraph\">@{outputs('Draft_-_Reply_Body')}</p>",
+            "draftMessage/Importance": "Normal"
+          },
+          "host": {
+            "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
+            "connection": "shared_office365",
+            "operationId": "DraftEmail"
+          }
+        },
+        "runAfter": {
+          "Draft_-_Reply_Body": [
+            "SUCCEEDED"
+          ]
+        }
+      },
+      "Set_-_Needs_Owner_Review_-_Draft_Failure": {
+        "type": "SetVariable",
+        "inputs": {
+          "name": "needs_owner_review",
+          "value": true
+        },
+        "runAfter": {
+          "Draft_-_Reply_Body": [
+            "TIMEDOUT",
+            "SKIPPED",
+            "FAILED"
+          ]
+        }
+      },
+      "Category_-_Owner_Review_-_Draft_Failure": {
+        "type": "OpenApiConnection",
+        "inputs": {
+          "parameters": {
+            "messageId": "@triggerOutputs()?['body/id']",
+            "category": "Needs Owner Review"
+          },
+          "host": {
+            "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
+            "connection": "shared_office365",
+            "operationId": "AssignCategory"
+          }
+        },
+        "runAfter": {
+          "Set_-_Needs_Owner_Review_-_Draft_Failure": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Rule_-_Use_Support_Acknowledgment": {
+        "type": "If",
+        "expression": {
+          "and": [
+            {
+              "equals": [
+                "@outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/category']",
+                "Support"
+              ]
+            }
+          ]
+        },
+        "actions": {
+          "Draft_-_Support_Acknowledgment": {
+            "type": "Compose",
+            "inputs": "Thank you for your message. The owner will review your concern and confirm the next step."
+          }
+        },
+        "else": {
+          "actions": {
+            "Draft_-_Generate_Other_Reply": {
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "recordId": "e9c13e46-ec62-4cd4-b52f-b2f596db5821",
+                  "item/requestv2/classification_record": "@string(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput'])",
+                  "item/requestv2/email_record": "@outputs('Normalize_-_Email_Fields')"
+                },
+                "host": {
+                  "apiId": "providers/Microsoft.ProcessSimple/operationGroups/aibuilder",
+                  "connection": "shared_commondataserviceforapps",
+                  "operationId": "aibuilderpredict_customprompt"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Draft_-_Reply_Body": {
+        "type": "Compose",
+        "inputs": "@if(equals(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/category'],'Support'),outputs('Draft_-_Support_Acknowledgment'),outputs('Draft_-_Generate_Other_Reply')?['body/responsev2/predictionOutput/text'])",
+        "runAfter": {
+          "Rule_-_Use_Support_Acknowledgment": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "else": {
+      "actions": {}
+    },
+    "runAfter": {
+      "Rule_-_Owner_Review_Required": [
+        "Succeeded"
+      ]
+    }
+  },
+  "checks": {
+    "eligibilityGateUnchanged": true,
+    "fixedText": true,
+    "aiOnlyInElse": true,
+    "oldUnconditionalRemoved": true,
+    "selectedBody": true,
+    "outlookUsesSelected": true,
+    "failureAfterSelected": true
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "main_classifier": {
+    "type": "OpenApiConnection",
+    "inputs": {
+      "parameters": {
+        "recordId": "614118d4-6ca8-4344-b945-8659eb8bb3d8",
+        "item/requestv2/email_record": "@outputs('Normalize_-_Email_Fields')"
+      },
+      "host": {
+        "apiId": "providers/Microsoft.ProcessSimple/operationGroups/aibuilder",
+        "connection": "shared_commondataserviceforapps",
+        "operationId": "aibuilderpredict_customprompt"
+      }
+    },
+    "runAfter": {
+      "Rule_-_Has_Attachment": [
+        "Succeeded"
+      ]
+    }
+  },
+  "main_other_drafter": {
+    "type": "OpenApiConnection",
+    "inputs": {
+      "parameters": {
+        "recordId": "e9c13e46-ec62-4cd4-b52f-b2f596db5821",
+        "item/requestv2/classification_record": "@string(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput'])",
+        "item/requestv2/email_record": "@outputs('Normalize_-_Email_Fields')"
+      },
+      "host": {
+        "apiId": "providers/Microsoft.ProcessSimple/operationGroups/aibuilder",
+        "connection": "shared_commondataserviceforapps",
+        "operationId": "aibuilderpredict_customprompt"
+      }
+    }
+  },
+  "helper_classifier": {
+    "type": "OpenApiConnection",
+    "inputs": {
+      "parameters": {
+        "recordId": "614118d4-6ca8-4344-b945-8659eb8bb3d8",
+        "item/requestv2/email_record": "@outputs('Normalize_-_Email_Fields')"
+      },
+      "host": {
+        "apiId": "providers/Microsoft.ProcessSimple/operationGroups/aibuilder",
+        "connection": "shared_commondataserviceforapps",
+        "operationId": "aibuilderpredict_customprompt"
+      }
+    },
+    "runAfter": {
+      "Flag_-_Possible_Resend": [
+        "Succeeded"
+      ]
+    }
+  },
+  "helper_other_drafter": {
+    "type": "OpenApiConnection",
+    "inputs": {
+      "parameters": {
+        "recordId": "e9c13e46-ec62-4cd4-b52f-b2f596db5821",
+        "item/requestv2/classification_record": "@string(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput'])",
+        "item/requestv2/email_record": "@outputs('Normalize_-_Email_Fields')"
+      },
+      "host": {
+        "apiId": "providers/Microsoft.ProcessSimple/operationGroups/aibuilder",
+        "connection": "shared_commondataserviceforapps",
+        "operationId": "aibuilderpredict_customprompt"
+      }
+    }
+  },
+  "completion_log": {
+    "type": "OpenApiConnection",
+    "inputs": {
+      "parameters": {
+        "entityName": "jdm_table1s",
+        "recordId": "@body('Log_-_Start_Email_Processing')?['jdm_table1id']",
+        "item/jdm_category": "@coalesce(json('{\"Sales\":832990000,\"Support\":832990001,\"Finance\":832990002,\"General\":832990003,\"Internal\":832990004,\"Unknown\":832990005}')?[outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/category']],832990005)",
+        "item/jdm_draftcreated": "@equals(actions('Create_-_Outlook_Draft')?['status'],'Succeeded')",
+        "item/jdm_draftid": "@coalesce(outputs('Create_-_Outlook_Draft')?['body/id'],outputs('Create_-_Outlook_Draft')?['body/Id'],'')",
+        "item/jdm_followupopen": "@or(variables('needs_owner_review'),equals(actions('Create_-_Outlook_Draft')?['status'],'Succeeded'))",
+        "item/jdm_needsownerreview": "@variables('needs_owner_review')",
+        "item/jdm_priority": "@if(equals(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/priority'],'Urgent'),832990000,832990001)",
+        "item/jdm_processingoutcome": "@if(outputs('Flag_-_Possible_Resend'),832990004,832990001)",
+        "item/jdm_reviewoutcome": "@if(or(variables('needs_owner_review'),equals(actions('Create_-_Outlook_Draft')?['status'],'Succeeded')),832990000,832990005)"
+      },
+      "host": {
+        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+        "connection": "shared_commondataserviceforapps",
+        "operationId": "UpdateOnlyRecord"
+      }
+    },
+    "runAfter": {
+      "Rule_-_Confidence_High_Enough": [
+        "Succeeded"
+      ]
+    }
+  },
+  "main_checks": {
+    "eligibilityGateUnchanged": true,
+    "fixedText": true,
+    "aiOnlyInElse": true,
+    "oldUnconditionalRemoved": true,
+    "selectedBody": true,
+    "outlookUsesSelected": true,
+    "failureAfterSelected": true
+  },
+  "helper_checks": {
+    "eligibilityGateUnchanged": true,
+    "sameSourceSelector": true,
+    "sameReplyBody": true,
+    "collectorUpdated": true,
+    "exportVersioned": true,
+    "classifierInputIntact": true,
+    "drafterInputsIntact": true,
+    "noOldDrafterRefs": true,
+    "noOutlookOrTableWrites": true
+  },
+  "main_saved": true,
+  "helper_saved": true,
+  "main_checker": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "helper_checker": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "main_published": false,
+  "helper_published": false,
+  "publication_blocker": "Automatic approval review rejected publication because it did not recognize explicit authorization for this revision. Do not retry until user explicitly authorizes publication.",
+  "classifier_prompt_saved_and_reopened_verified": true,
+  "model_calls": {
+    "classifier": 4,
+    "drafter": 0,
+    "unplanned": 0
+  },
+  "runtime_scope": "No fresh mailbox/full30 workflow execution; fixed support and routing checks are saved-definition checks"
+}

@@ -1,0 +1,69 @@
+{
+  "policy_version": "driftless-review-draft-policy-v2-2026-11-16",
+  "revision": "meaning-first-fixed-support-b",
+  "run_label": "policy-v2-meaning-first-fixed-support-2026-11-16-b",
+  "status": "PARTIAL_CATEGORY_MISS",
+  "classification_exact": 3,
+  "total": 4,
+  "review_draft_source_checks": 4,
+  "support_model_calls": 0,
+  "workflow_runtime_proven": false,
+  "overall_release": "NOT_ESTABLISHED",
+  "results": [
+    {
+      "id": "PV2-U02",
+      "policy_route_check": true,
+      "classification_exact_check": "FAIL",
+      "failures": [
+        "category: expected Unknown, actual Support"
+      ],
+      "owner_review": true,
+      "draft_allowed": false,
+      "reply_source": "none",
+      "ai_drafter_status": "Skipped",
+      "processing_status": "Succeeded",
+      "collected_boolean_types": true,
+      "scope": "Offline execution of UI-read expressions on actual classifier outputs. Non-Support AI text uses an explicitly labeled wiring fixture, not a model generation or workflow run."
+    },
+    {
+      "id": "MF-U01",
+      "policy_route_check": true,
+      "classification_exact_check": "PASS",
+      "failures": [],
+      "owner_review": true,
+      "draft_allowed": false,
+      "reply_source": "none",
+      "ai_drafter_status": "Skipped",
+      "processing_status": "Succeeded",
+      "collected_boolean_types": true,
+      "scope": "Offline execution of UI-read expressions on actual classifier outputs. Non-Support AI text uses an explicitly labeled wiring fixture, not a model generation or workflow run."
+    },
+    {
+      "id": "MF-U02",
+      "policy_route_check": true,
+      "classification_exact_check": "PASS",
+      "failures": [],
+      "owner_review": true,
+      "draft_allowed": true,
+      "reply_source": "fixed-support",
+      "fixed_body": "Thank you for your message. The owner will review your concern and confirm the next step.",
+      "ai_drafter_status": "Skipped",
+      "processing_status": "Succeeded",
+      "collected_boolean_types": true,
+      "scope": "Offline execution of UI-read expressions on actual classifier outputs. Non-Support AI text uses an explicitly labeled wiring fixture, not a model generation or workflow run."
+    },
+    {
+      "id": "MF-U03",
+      "policy_route_check": true,
+      "classification_exact_check": "PASS",
+      "failures": [],
+      "owner_review": false,
+      "draft_allowed": true,
+      "reply_source": "ai-non-support",
+      "ai_drafter_status": "Succeeded",
+      "processing_status": "Succeeded",
+      "collected_boolean_types": true,
+      "scope": "Offline execution of UI-read expressions on actual classifier outputs. Non-Support AI text uses an explicitly labeled wiring fixture, not a model generation or workflow run."
+    }
+  ]
+}
