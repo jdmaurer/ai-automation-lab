@@ -1,0 +1,73 @@
+{
+  "type": "If",
+  "expression": {
+    "or": [
+      {
+        "equals": [
+          "@outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/priority']",
+          "Urgent"
+        ]
+      },
+      {
+        "equals": [
+          "@contains(createArray('Unknown','Finance','Internal','Support'), outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/category'])",
+          true
+        ]
+      },
+      {
+        "equals": [
+          "@contains(\r\n  createArray(\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/personal'],\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/sensitive'],\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/suspicious'],\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/adversarial'],\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/custom_quote_needed'],\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/record_change_requested']\r\n  ),\r\n  true\r\n)",
+          true
+        ]
+      },
+      {
+        "equals": [
+          "@outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/context_sufficient']",
+          false
+        ]
+      },
+      {
+        "equals": [
+          "@outputs('Flag_-_Possible_Resend')",
+          true
+        ]
+      }
+    ]
+  },
+  "actions": {
+    "Set_-_Needs_Owner_Review_-_Policy": {
+      "type": "SetVariable",
+      "inputs": {
+        "name": "needs_owner_review",
+        "value": true
+      }
+    },
+    "Category_-_Owner_Review_-_Policy": {
+      "type": "OpenApiConnection",
+      "inputs": {
+        "parameters": {
+          "messageId": "@triggerOutputs()?['body/id']",
+          "category": "Needs Owner Review"
+        },
+        "host": {
+          "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
+          "connection": "shared_office365",
+          "operationId": "AssignCategory"
+        }
+      },
+      "runAfter": {
+        "Set_-_Needs_Owner_Review_-_Policy": [
+          "Succeeded"
+        ]
+      }
+    }
+  },
+  "else": {
+    "actions": {}
+  },
+  "runAfter": {
+    "Category_-_Business_Classification": [
+      "Succeeded"
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "category": "Support",
+  "priority": "Routine",
+  "confidence": 0.9,
+  "personal": false,
+  "sensitive": false,
+  "suspicious": false,
+  "adversarial": false,
+  "context_sufficient": true,
+  "custom_quote_needed": false,
+  "record_change_requested": true,
+  "draft_candidate": true
+}

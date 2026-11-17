@@ -2,7 +2,21 @@
 
 Canonical baton under AI_HANDOFF_PROTOCOL.md. Active Week 8 case: `cases/driftless-inbox-triage/`. Scope frozen: evaluated/documented SME prototype, no extra features.
 
-## Latest November 16 checkpoint — consolidated review candidate FAILED first check; STOPPED, NOT SAVED
+## Latest November 16 checkpoint — order-change v3 candidate:3 order cases PASS, contact scope control FAIL; STOPPED, NOT SAVED
+
+Josh authorized every existing-order change (including proposed/question-form changes) => Urgent + manager review, independent of production timing. Five-check plan preregistered in `9c4e009709e8a0c4e704c5b38a5cdf8ff752128a`, [E evidence](cases/driftless-inbox-triage/evaluation/runs/order-change-policy-v3-targeted-2026-11-16-e/).
+
+**Five classifier calls:4 targeted passes,1 scope failure.** Original DRI-12, fresh future-dated quantity question and wording replacement all Support/change true/raw Urgent => proposed effective Urgent + review. Ordinary new quote Sales/change false/Routine => ordinary handling. Contact-only update with orders unchanged was wrongly Support/change true/raw Routine; proposed Support+change shortcut would make it Urgent instead of expected General/Routine. All tested order-change cases passed; failure is unrelated-record over-escalation, not a missed tested order change.
+
+Effective-priority/review results are **offline execution of preregistered proposed expressions and existing UI-read review predicates on actual classifier outputs**, not workflow runtime. The proposed priority fields were never installed.
+
+**Stopped at first failure (case5), no rewrite/retry/extra tests/full30/drafter/mailbox/workflow run.** Cancel discarded unsaved prompt candidate. No prompt Save, flow edit/Save/Publish, connection/schema change. **Rule not saved/deployed; published baseline unchanged.** Both flows' classifier/other-drafter IDs/email/classification references verified intact after cancellation; helper full Scope unchanged.
+
+[Report](cases/driftless-inbox-triage/evaluation/runs/order-change-policy-v3-targeted-2026-11-16-e/README.md), [results](cases/driftless-inbox-triage/evaluation/runs/order-change-policy-v3-targeted-2026-11-16-e/classifier-results.json), [status](cases/driftless-inbox-triage/evaluation/runs/order-change-policy-v3-targeted-2026-11-16-e/attempt-status.json). Before/candidate wording, original flow snippets, input evidence and offline expression source preserved. Earlier failed runs/key/scorers/contracts/owner forms unchanged. V1/v2 formal failures remain; human ratings pending; no overall release claim.
+
+**Single next action: stop implementation/testing and report the scope finding.** No second correction or full30 authorized here. Distinguish successful tested order-change handling from the false Urgent contact-update control. V3 is a prospective candidate, not an installed policy; do not use the v2 scorer unchanged for effective/raw-priority divergence.
+
+## Earlier November 16 checkpoint — consolidated review candidate FAILED first check; STOPPED, NOT SAVED
 
 Josh confirmed Cancel on prior urgency-C, clarified all changes require manager review regardless of timing, reviewed final consolidated wording, then authorized application/input verification/only targeted checks with stop-on-failure. Exact wording +6 blind inputs preregistered in `e57e16f16b131910664a9a4cbd4527bfd511980c`, [D evidence folder](cases/driftless-inbox-triage/evaluation/runs/consolidated-review-targeted-2026-11-16-d/).
 
@@ -12,7 +26,7 @@ Candidate applied only in prompt editor, input token retained and exact normaliz
 
 [Report](cases/driftless-inbox-triage/evaluation/runs/consolidated-review-targeted-2026-11-16-d/README.md), [actual targeted result](cases/driftless-inbox-triage/evaluation/runs/consolidated-review-targeted-2026-11-16-d/classifier-results.json), [status](cases/driftless-inbox-triage/evaluation/runs/consolidated-review-targeted-2026-11-16-d/attempt-status.json). Before/candidate wording and input-reference evidence preserved. All prior runs/key/scorers/contracts/owner forms unchanged; original v1 and full-v2 remain FAIL. Human ratings pending, overall release NOT_ESTABLISHED.
 
-**Single next action: stop implementation/testing and retain the urgency limitation for closeout.** No further repair/model call/full30 rerun under this authorization. Manager review was already present for DRI-12 in the full-v2 run; formal urgency correctness remains unresolved. Do not silently change acceptance criteria or save the failed candidate.
+**Historical stopping instruction (superseded by Josh's later order-change-policy authorization above):** stop implementation/testing and retain the urgency limitation for closeout. No further repair/model call/full30 rerun under this authorization. Manager review was already present for DRI-12 in the full-v2 run; formal urgency correctness remains unresolved. Do not silently change acceptance criteria or save the failed candidate.
 
 ## Earlier November 16 checkpoint — bounded urgency attempt STOPPED by browser control; zero tests, no save
 

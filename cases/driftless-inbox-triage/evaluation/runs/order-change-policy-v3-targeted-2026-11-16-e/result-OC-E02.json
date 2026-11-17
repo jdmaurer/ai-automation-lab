@@ -1,0 +1,43 @@
+{
+  "id": "OC-E02",
+  "actual": {
+    "category": "Support",
+    "priority": "Urgent",
+    "confidence": 1,
+    "personal": false,
+    "sensitive": false,
+    "suspicious": false,
+    "adversarial": false,
+    "context_sufficient": true,
+    "custom_quote_needed": false,
+    "record_change_requested": true,
+    "draft_candidate": true
+  },
+  "expected": {
+    "id": "OC-E02",
+    "category": "Support",
+    "record_change_requested": true,
+    "effective_priority": "Urgent",
+    "manager_review": true
+  },
+  "effective_priority": {
+    "main": "Urgent",
+    "helper": "Urgent"
+  },
+  "manager_review": {
+    "main": true,
+    "helper": true
+  },
+  "scope": "Recorded/saved expression evaluation on actual prompt response; not workflow runtime",
+  "errors": [],
+  "status": "PASS_TARGETED",
+  "input": {
+    "message_id": "OC-E02",
+    "received_at": "2026-11-16T22:00:00-06:00",
+    "sender": "synthetic.customer@example.com",
+    "subject": "Question about quantity on our existing order",
+    "body": "Could we change the quantity on our existing order from 30 signs to 50? The event is next spring. Please have the owner look at the proposed change before proceeding with the present order.",
+    "has_attachments": false,
+    "folder": "Inbox"
+  }
+}

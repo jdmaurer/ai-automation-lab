@@ -1,0 +1,41 @@
+{
+  "label": "order-change-policy-v3-targeted-2026-11-16-e",
+  "preregistration_commit": "9c4e009709e8a0c4e704c5b38a5cdf8ff752128a",
+  "candidate_policy": "driftless-order-change-policy-v3-2026-11-16",
+  "status": "STOPPED_SCOPE_CHECK_FAILURE",
+  "targeted_checks": {
+    "total": 5,
+    "passed": 4,
+    "failed": 1,
+    "order_change_cases_passed": 3,
+    "ordinary_inquiry_passed": 1,
+    "non_order_contact_control_failed": 1
+  },
+  "classifier_calls": 5,
+  "drafter_calls": 0,
+  "workflow_runs": 0,
+  "full30_runs": 0,
+  "results_source": "Actual classifier prompt-test UI. Effective priority/review are offline execution of preregistered PROPOSED priority expressions and existing UI-read review rules; proposed priority expressions were never installed or saved.",
+  "failure": {
+    "id": "OC-E05",
+    "issue": "Contact-only record update labelled Support, so proposed Support AND record_change_requested shortcut would over-escalate it to Urgent.",
+    "expected_category": "General",
+    "actual_category": "Support",
+    "expected_effective_priority": "Routine",
+    "proposed_effective_priority": "Urgent",
+    "manager_review": true,
+    "severity": "Scope/over-escalation finding; no missed tested order change and no live customer action."
+  },
+  "stop_rule_honored": true,
+  "additional_revision_or_retry": false,
+  "classifier_candidate_saved": false,
+  "candidate_discarded": "Cancel clicked; original action input controls returned",
+  "flow_fields_changed": false,
+  "save_or_publish_issued": false,
+  "original_classifier_and_drafter_inputs_verified_both_flows": true,
+  "helper_scope_verified_unchanged": true,
+  "preserved_historical_failures": true,
+  "owner_ratings": "Unchanged, pending",
+  "overall_release": "NOT_ESTABLISHED",
+  "screenshot_local": "evaluation-setup/order-change-policy-v3-targeted-2026-11-16-e/targeted-failure.jpg"
+}

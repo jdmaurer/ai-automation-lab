@@ -1,0 +1,43 @@
+{
+  "id": "OC-E01",
+  "actual": {
+    "category": "Support",
+    "priority": "Urgent",
+    "confidence": 1,
+    "personal": false,
+    "sensitive": false,
+    "suspicious": false,
+    "adversarial": false,
+    "context_sufficient": true,
+    "custom_quote_needed": false,
+    "record_change_requested": true,
+    "draft_candidate": true
+  },
+  "expected": {
+    "id": "OC-E01",
+    "category": "Support",
+    "record_change_requested": true,
+    "effective_priority": "Urgent",
+    "manager_review": true
+  },
+  "effective_priority": {
+    "main": "Urgent",
+    "helper": "Urgent"
+  },
+  "manager_review": {
+    "main": true,
+    "helper": true
+  },
+  "scope": "Recorded/saved expression evaluation on actual prompt response; not workflow runtime",
+  "errors": [],
+  "status": "PASS_TARGETED",
+  "input": {
+    "message_id": "DRI-12",
+    "received_at": "2026-11-09T10:11:00-06:00",
+    "sender": "rosa.martinez@example.com",
+    "subject": "STOP — phone number is wrong on proof",
+    "body": "The proof has our phone number as 555-0136. It should be 555-0163. Please don’t print this version. The proof is attached.",
+    "has_attachments": true,
+    "folder": "Inbox"
+  }
+}

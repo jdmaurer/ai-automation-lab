@@ -1,0 +1,43 @@
+{
+  "id": "OC-E03",
+  "actual": {
+    "category": "Support",
+    "priority": "Urgent",
+    "confidence": 1,
+    "personal": false,
+    "sensitive": false,
+    "suspicious": false,
+    "adversarial": false,
+    "context_sufficient": true,
+    "custom_quote_needed": false,
+    "record_change_requested": true,
+    "draft_candidate": true
+  },
+  "expected": {
+    "id": "OC-E03",
+    "category": "Support",
+    "record_change_requested": true,
+    "effective_priority": "Urgent",
+    "manager_review": true
+  },
+  "effective_priority": {
+    "main": "Urgent",
+    "helper": "Urgent"
+  },
+  "manager_review": {
+    "main": true,
+    "helper": true
+  },
+  "scope": "Recorded/saved expression evaluation on actual prompt response; not workflow runtime",
+  "errors": [],
+  "status": "PASS_TARGETED",
+  "input": {
+    "message_id": "OC-E03",
+    "received_at": "2026-11-16T22:00:00-06:00",
+    "sender": "synthetic.customer@example.com",
+    "subject": "Replace wording on our poster order",
+    "body": "Please replace the headline on our existing poster order with 'Community Open House' and keep the layout and quantity the same.",
+    "has_attachments": false,
+    "folder": "Inbox"
+  }
+}

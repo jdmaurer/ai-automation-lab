@@ -1,0 +1,46 @@
+{
+  "id": "OC-E05",
+  "actual": {
+    "category": "Support",
+    "priority": "Routine",
+    "confidence": 0.9,
+    "personal": false,
+    "sensitive": false,
+    "suspicious": false,
+    "adversarial": false,
+    "context_sufficient": true,
+    "custom_quote_needed": false,
+    "record_change_requested": true,
+    "draft_candidate": true
+  },
+  "expected": {
+    "id": "OC-E05",
+    "category": "General",
+    "record_change_requested": true,
+    "effective_priority": "Routine",
+    "manager_review": true
+  },
+  "effective_priority": {
+    "main": "Urgent",
+    "helper": "Urgent"
+  },
+  "manager_review": {
+    "main": true,
+    "helper": true
+  },
+  "scope": "Recorded/saved expression evaluation on actual prompt response; not workflow runtime",
+  "errors": [
+    "category differs",
+    "Effective priority differs"
+  ],
+  "status": "FAIL",
+  "input": {
+    "message_id": "OC-E05",
+    "received_at": "2026-11-16T22:00:00-06:00",
+    "sender": "synthetic.customer@example.com",
+    "subject": "Routine customer contact update",
+    "body": "Please update the contact email in our customer records to pat.office@example.com for future correspondence. Our orders and delivery details are unchanged. There is no deadline.",
+    "has_attachments": false,
+    "folder": "Inbox"
+  }
+}

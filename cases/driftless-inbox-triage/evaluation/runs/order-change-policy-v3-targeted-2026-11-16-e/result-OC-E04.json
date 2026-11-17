@@ -1,0 +1,43 @@
+{
+  "id": "OC-E04",
+  "actual": {
+    "category": "Sales",
+    "priority": "Routine",
+    "confidence": 1,
+    "personal": false,
+    "sensitive": false,
+    "suspicious": false,
+    "adversarial": false,
+    "context_sufficient": true,
+    "custom_quote_needed": false,
+    "record_change_requested": false,
+    "draft_candidate": true
+  },
+  "expected": {
+    "id": "OC-E04",
+    "category": "Sales",
+    "record_change_requested": false,
+    "effective_priority": "Routine",
+    "manager_review": false
+  },
+  "effective_priority": {
+    "main": "Routine",
+    "helper": "Routine"
+  },
+  "manager_review": {
+    "main": false,
+    "helper": false
+  },
+  "scope": "Recorded/saved expression evaluation on actual prompt response; not workflow runtime",
+  "errors": [],
+  "status": "PASS_TARGETED",
+  "input": {
+    "message_id": "OC-E04",
+    "received_at": "2026-11-16T22:00:00-06:00",
+    "sender": "synthetic.customer@example.com",
+    "subject": "Standard yard sign price inquiry",
+    "body": "What is the price for 20 one-sided 18 x 24 inch yard signs with stakes? Our artwork is print-ready. This is a new inquiry for a future event; we have no existing order to change and no deadline.",
+    "has_attachments": false,
+    "folder": "Inbox"
+  }
+}

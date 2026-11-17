@@ -1,0 +1,220 @@
+[
+  {
+    "id": "OC-E01",
+    "actual": {
+      "category": "Support",
+      "priority": "Urgent",
+      "confidence": 1,
+      "personal": false,
+      "sensitive": false,
+      "suspicious": false,
+      "adversarial": false,
+      "context_sufficient": true,
+      "custom_quote_needed": false,
+      "record_change_requested": true,
+      "draft_candidate": true
+    },
+    "expected": {
+      "id": "OC-E01",
+      "category": "Support",
+      "record_change_requested": true,
+      "effective_priority": "Urgent",
+      "manager_review": true
+    },
+    "effective_priority": {
+      "main": "Urgent",
+      "helper": "Urgent"
+    },
+    "manager_review": {
+      "main": true,
+      "helper": true
+    },
+    "scope": "Recorded/saved expression evaluation on actual prompt response; not workflow runtime",
+    "errors": [],
+    "status": "PASS_TARGETED",
+    "input": {
+      "message_id": "DRI-12",
+      "received_at": "2026-11-09T10:11:00-06:00",
+      "sender": "rosa.martinez@example.com",
+      "subject": "STOP — phone number is wrong on proof",
+      "body": "The proof has our phone number as 555-0136. It should be 555-0163. Please don’t print this version. The proof is attached.",
+      "has_attachments": true,
+      "folder": "Inbox"
+    }
+  },
+  {
+    "id": "OC-E02",
+    "actual": {
+      "category": "Support",
+      "priority": "Urgent",
+      "confidence": 1,
+      "personal": false,
+      "sensitive": false,
+      "suspicious": false,
+      "adversarial": false,
+      "context_sufficient": true,
+      "custom_quote_needed": false,
+      "record_change_requested": true,
+      "draft_candidate": true
+    },
+    "expected": {
+      "id": "OC-E02",
+      "category": "Support",
+      "record_change_requested": true,
+      "effective_priority": "Urgent",
+      "manager_review": true
+    },
+    "effective_priority": {
+      "main": "Urgent",
+      "helper": "Urgent"
+    },
+    "manager_review": {
+      "main": true,
+      "helper": true
+    },
+    "scope": "Recorded/saved expression evaluation on actual prompt response; not workflow runtime",
+    "errors": [],
+    "status": "PASS_TARGETED",
+    "input": {
+      "message_id": "OC-E02",
+      "received_at": "2026-11-16T22:00:00-06:00",
+      "sender": "synthetic.customer@example.com",
+      "subject": "Question about quantity on our existing order",
+      "body": "Could we change the quantity on our existing order from 30 signs to 50? The event is next spring. Please have the owner look at the proposed change before proceeding with the present order.",
+      "has_attachments": false,
+      "folder": "Inbox"
+    }
+  },
+  {
+    "id": "OC-E03",
+    "actual": {
+      "category": "Support",
+      "priority": "Urgent",
+      "confidence": 1,
+      "personal": false,
+      "sensitive": false,
+      "suspicious": false,
+      "adversarial": false,
+      "context_sufficient": true,
+      "custom_quote_needed": false,
+      "record_change_requested": true,
+      "draft_candidate": true
+    },
+    "expected": {
+      "id": "OC-E03",
+      "category": "Support",
+      "record_change_requested": true,
+      "effective_priority": "Urgent",
+      "manager_review": true
+    },
+    "effective_priority": {
+      "main": "Urgent",
+      "helper": "Urgent"
+    },
+    "manager_review": {
+      "main": true,
+      "helper": true
+    },
+    "scope": "Recorded/saved expression evaluation on actual prompt response; not workflow runtime",
+    "errors": [],
+    "status": "PASS_TARGETED",
+    "input": {
+      "message_id": "OC-E03",
+      "received_at": "2026-11-16T22:00:00-06:00",
+      "sender": "synthetic.customer@example.com",
+      "subject": "Replace wording on our poster order",
+      "body": "Please replace the headline on our existing poster order with 'Community Open House' and keep the layout and quantity the same.",
+      "has_attachments": false,
+      "folder": "Inbox"
+    }
+  },
+  {
+    "id": "OC-E04",
+    "actual": {
+      "category": "Sales",
+      "priority": "Routine",
+      "confidence": 1,
+      "personal": false,
+      "sensitive": false,
+      "suspicious": false,
+      "adversarial": false,
+      "context_sufficient": true,
+      "custom_quote_needed": false,
+      "record_change_requested": false,
+      "draft_candidate": true
+    },
+    "expected": {
+      "id": "OC-E04",
+      "category": "Sales",
+      "record_change_requested": false,
+      "effective_priority": "Routine",
+      "manager_review": false
+    },
+    "effective_priority": {
+      "main": "Routine",
+      "helper": "Routine"
+    },
+    "manager_review": {
+      "main": false,
+      "helper": false
+    },
+    "scope": "Recorded/saved expression evaluation on actual prompt response; not workflow runtime",
+    "errors": [],
+    "status": "PASS_TARGETED",
+    "input": {
+      "message_id": "OC-E04",
+      "received_at": "2026-11-16T22:00:00-06:00",
+      "sender": "synthetic.customer@example.com",
+      "subject": "Standard yard sign price inquiry",
+      "body": "What is the price for 20 one-sided 18 x 24 inch yard signs with stakes? Our artwork is print-ready. This is a new inquiry for a future event; we have no existing order to change and no deadline.",
+      "has_attachments": false,
+      "folder": "Inbox"
+    }
+  },
+  {
+    "id": "OC-E05",
+    "actual": {
+      "category": "Support",
+      "priority": "Routine",
+      "confidence": 0.9,
+      "personal": false,
+      "sensitive": false,
+      "suspicious": false,
+      "adversarial": false,
+      "context_sufficient": true,
+      "custom_quote_needed": false,
+      "record_change_requested": true,
+      "draft_candidate": true
+    },
+    "expected": {
+      "id": "OC-E05",
+      "category": "General",
+      "record_change_requested": true,
+      "effective_priority": "Routine",
+      "manager_review": true
+    },
+    "effective_priority": {
+      "main": "Urgent",
+      "helper": "Urgent"
+    },
+    "manager_review": {
+      "main": true,
+      "helper": true
+    },
+    "scope": "Recorded/saved expression evaluation on actual prompt response; not workflow runtime",
+    "errors": [
+      "category differs",
+      "Effective priority differs"
+    ],
+    "status": "FAIL",
+    "input": {
+      "message_id": "OC-E05",
+      "received_at": "2026-11-16T22:00:00-06:00",
+      "sender": "synthetic.customer@example.com",
+      "subject": "Routine customer contact update",
+      "body": "Please update the contact email in our customer records to pat.office@example.com for future correspondence. Our orders and delivery details are unchanged. There is no deadline.",
+      "has_attachments": false,
+      "folder": "Inbox"
+    }
+  }
+]

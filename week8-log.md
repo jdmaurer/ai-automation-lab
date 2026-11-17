@@ -405,3 +405,11 @@ The candidate retained the input token, categories, quote/context/safety rules a
 Assistant stopped immediately; other5 cases skipped, no second rewrite/retry/drafter/workflow/full30 run. Failed candidate was cancelled without Save, leaving published prompt unchanged. Both flows' classifier and non-Support drafter inputs/prompt IDs verified intact after cancellation. No connection/flow edits.
 
 One actual result, before/candidate text and reference evidence preserved in evaluation/runs/consolidated-review-targeted-2026-11-16-d/. All earlier runs/keys/scores/ratings intact; my judgments remain pending. Stop implementation/testing here and disclose the unresolved urgency limitation in closeout. No overall release claim or further prompt repair authorized by this attempt.
+
+## Monday 11.16.26 — Order-change urgency policy: order cases pass; unrelated-record scope fails
+
+I clarified that any proposed/requested change to an existing order should be Urgent and reviewed, without asking AI to infer production timing. Five checks were preregistered before calls. Candidate used existing Support+record_change fields for a deterministic priority shortcut and a small prompt clarification; no new output/schema/node/connection.
+
+Five actual classifier calls: original stop-print, future quantity question and wording replacement all identified as order changes; proposed priority/review expressions produce Urgent/review. New quote inquiry stayed ordinary. Contact-only record update was labelled Support, so the shortcut would unnecessarily escalate it to Urgent. Four scoped passes/one scope-control failure; no missed tested order change. These priority results are offline expression checks, not workflow execution.
+
+Stopped at first failure (last case), no further correction/retry/extra tests/full30. Unsaved prompt candidate cancelled. No workflow priority field edits, Save/Publish or deployed change; requested policy is not saved. Both flows' original classifier/drafter input IDs/expressions verified intact; helper Scope unchanged. All earlier failures/scores/ratings preserved, with my judgments pending. Evidence under evaluation/runs/order-change-policy-v3-targeted-2026-11-16-e/. Stop here and disclose both the successful order cases and unrelated-contact over-escalation.
