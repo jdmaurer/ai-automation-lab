@@ -2,7 +2,21 @@
 
 Canonical baton under AI_HANDOFF_PROTOCOL.md. Active Week 8 case: `cases/driftless-inbox-triage/`. Scope frozen: evaluated/documented SME prototype, no extra features.
 
-## Latest November 16 checkpoint — order-change policy v3 SAVED; limitation accepted; no new tests
+## Latest November 16 checkpoint — BOTH order-change v3 flow drafts PUBLISHED; inputs verified, no tests
+
+Josh explicitly authorized publishing both saved drafts and checking inputs/status, updating GitHub and preserving failed runs/accepted contact-update limitation. Published main and helper once each through their existing tabs.
+
+**Verified Published /ready in both flows.** Main completion-priority action exactly matches the checked saved JSON; full helper Scope exactly matches its checked saved JSON. Both classifier and non-Support drafter prompt IDs plus original normalized-email/classification input expressions match the canonical saved input verification. No input repair/configuration/prompt/connection/schema change during publication.
+
+The deterministic effective-priority override is now in the **published definitions**: Support + record_change_requested=true => Urgent; existing Support/change review rules require manager attention. Shared classifier wording was already saved. Helper retains raw model output separately and policy-v3/order-change-urgent-e metadata.
+
+[Publication evidence](cases/driftless-inbox-triage/evaluation/configuration/order-change-policy-v3-publication-2026-11-16/README.md), [verification](cases/driftless-inbox-triage/evaluation/configuration/order-change-policy-v3-publication-2026-11-16/publication-verification.json), [current policy/accepted limitation](cases/driftless-inbox-triage/policy-v3-order-change-2026-11-16.md). Contact-only update can still be over-escalated; Josh's accepted limitation remains. E's4/5 exact/3of3 order evidence and all earlier failed runs/results/scores/owner forms are unchanged.
+
+**Zero new classifier/drafter/manual workflow/mailbox/full30 tests, previews or rescoring.** Published status is not a new runtime/quality/release pass. Owner judgments pending, overall release NOT_ESTABLISHED. Limited snippets are not complete baseline exports.
+
+**Single next action:** publication is complete; stop this publication task. Continue only separately requested bounded owner-review/baseline/failure/handoff work. Do not rerun tests, tune the accepted false positive, relabel prior failures or use v2 scoring unchanged for v3 effective/raw-priority differences.
+
+## Earlier November 16 checkpoint — order-change policy v3 SAVED; limitation accepted; no new tests
 
 Josh explicitly authorized saving existing candidate E with contact-update false positive documented, verifying both inputs/status and GitHub closeout; **no more tests**.
 
@@ -16,7 +30,7 @@ Both classifier/drafter prompt IDs and original email/classification expressions
 
 **Zero new classifier/drafter/workflow/mailbox/full30 tests, previews or rescoring.** Owner judgments unchanged/pending. Full release NOT_ESTABLISHED. Limited snapshots are not complete baseline exports.
 
-**Single next action:** publish the two concrete saved drafts when authorized; no additional tests requested. Do not repeat E checks/full30, repair the accepted contact false positive, change old keys/scores or silently use v2 scoring for effective/raw-priority divergence.
+**Historical next action (now completed):** publish the two saved drafts; no additional tests requested. Do not repeat E checks/full30, repair the accepted contact false positive, change old keys/scores or silently use v2 scoring for effective/raw-priority divergence.
 
 ## Earlier November 16 checkpoint — order-change v3 candidate:3 order cases PASS, contact scope control FAIL; STOPPED, NOT SAVED
 
@@ -150,7 +164,7 @@ WS-02 run 08584068916602989636218220553CU01, same date: new report-output path P
 
 ## Remaining work — agreed order
 
-1. Implementation B is Published and references verified; no publication work remains. Versioned v2 scoring contract is now ready; the original evaluate.mjs remains v1-only. Fresh v2 full30 is complete and FAIL because DRI-12 missed urgency; Josh's judgments remain pending. Review the new packet before further decisions. Keep the remaining category miss and all failed evidence; no splicing partial checks into original FAIL25/30.
+1. Order-change policy v3 is Published in both flows and inputs verified; no publication work remains. Prior formal v1/v2 FAILs and pending owner draft-quality judgments remain. Any future formal v3 evaluation needs explicit prospective scoring for effective/raw-priority differences; no full30 or model tests authorized by this publication step. Preserve all failed evidence.
 2. Necessary unproven normal integration checks: exact-ID/alternate-key/concurrency and live resend behavior; required new weekly fixtures (nonzero Edited/Rejected, pending no-draft review, changed final category, empty/date-boundary cases as needed). Preserve proven WS-01/WS-02 instead of repeating them.
 3. Preserve/export the finished working baseline into the repo. Do NOT revisit solution dependency warning before this agreed stage; no new baseline/export exists.
 4. Isolated deliberate model unavailable/wrong schema/completion-write/retrieval completeness failure testing, after baseline preservation. Never casually break the only working flow.

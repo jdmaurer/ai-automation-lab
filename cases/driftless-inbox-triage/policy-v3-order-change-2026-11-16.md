@@ -10,6 +10,6 @@ Implementation uses existing classifier fields: Support + record_change_requeste
 
 Prior bounded evidence:3/3 tested order changes produced the required recognized/effective outcome, ordinary inquiry control passed, contact-update control failed;4/5 exact overall. No new testing during save. This is limited classifier/proposed-expression evidence, not a new runtime/full-batch/generalization or release pass.
 
-**Current status:** shared classifier saved and reopened/verified. Main/helper priority overrides saved as drafts, checker0/0 each, original input references intact; **not published**. [Save evidence](evaluation/configuration/order-change-policy-v3-save-2026-11-16/README.md). Shared prompt save already affects uses; flow overrides take effect after publication.
+**Current status:** shared classifier saved; main and helper overrides **Published /ready**, with original input references verified. Main priority action and full helper Scope match the checked saved drafts exactly. [Publication evidence](evaluation/configuration/order-change-policy-v3-publication-2026-11-16/README.md), [historical save evidence](evaluation/configuration/order-change-policy-v3-save-2026-11-16/README.md). No new tests or rescoring during publication; overall release remains unestablished.
 
 Preserve v1/v2 frozen key/scorers/contracts and every failed run/score/owner form. Any future v3 scoring must explicitly account for effective-priority overrides while retaining the raw model answer. No historical score is revised by this policy.

@@ -1,0 +1,7 @@
+{
+  "authorization": "Publish both saved flow drafts; verify inputs and Published status; update GitHub; preserve failed runs and accepted contact false positive; no tests.",
+  "saved_revision_commit": "b98ecbd2c40a5049b13ee59ab2eba59918e6a6e5",
+  "policy_version": "driftless-order-change-policy-v3-2026-11-16",
+  "implementation_revision": "order-change-urgent-e",
+  "scope": "Publication only of checked main/helper drafts. No edits or tests."
+}

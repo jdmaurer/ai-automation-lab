@@ -1,0 +1,42 @@
+{
+  "operation": "Publish two saved drafts only",
+  "authorization": "Explicit user instruction to publish both saved flow drafts and verify inputs/status, preserve failures/accepted limitation, no tests.",
+  "policy_version": "driftless-order-change-policy-v3-2026-11-16",
+  "implementation_revision": "order-change-urgent-e",
+  "source_saved_commit": "b98ecbd2c40a5049b13ee59ab2eba59918e6a6e5",
+  "main_flow": {
+    "id": "53209c07-ca63-bcd9-c7f3-04b29c1f562a",
+    "observed_status": "Published",
+    "ready_banner": true,
+    "publish_calls": 1,
+    "priority_action_matches_saved_json": true
+  },
+  "helper_flow": {
+    "runtime_id": "9ca55e5e-afe0-f111-84ea-000d3a367f8a",
+    "solution_id": "b073b5f4-92ca-e6ad-e255-6a264c4891f0",
+    "observed_status": "Published",
+    "ready_banner": true,
+    "publish_calls": 1,
+    "full_scope_matches_saved_json": true
+  },
+  "both_classifier_inputs_verified": true,
+  "both_drafter_inputs_verified": true,
+  "normalized_email_expression": "@outputs('Normalize_-_Email_Fields')",
+  "classification_expression": "@string(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput'])",
+  "configuration_edits": false,
+  "prompt_edits": false,
+  "connections_changed": false,
+  "new_classifier_calls": 0,
+  "new_drafter_calls": 0,
+  "new_manual_workflow_or_test_runs": 0,
+  "new_full30_runs": 0,
+  "rescoring": false,
+  "owner_ratings_changed": false,
+  "accepted_contact_false_positive": "Preserved as accepted noncritical limitation; not repaired or silently relabelled.",
+  "prior_failed_runs": "Preserved unchanged; publication does not change their results",
+  "overall_release": "NOT_ESTABLISHED",
+  "local_screenshots": [
+    "evaluation-setup/order-change-policy-v3-publication-2026-11-16/main-published.jpg",
+    "evaluation-setup/order-change-policy-v3-publication-2026-11-16/helper-published.jpg"
+  ]
+}
