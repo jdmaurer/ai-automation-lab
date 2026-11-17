@@ -1,0 +1,40 @@
+{
+  "case_id": "FI-01",
+  "status": "PREREGISTERED_NOT_RUN",
+  "copy_id": "bca4414b-abe2-f111-84ea-000d3a367f8a",
+  "source_baseline_commit": "d82930b6bd244488a665f767f1c176131d31d6ea",
+  "source_checkpoint_commit": "6bdbc73837573174ecb71267bf6d9a03535a3d5f",
+  "trigger": "Manually_trigger_a_flow / Request Button; fixture_json text input internal text",
+  "fixture_source": "New unsent DraftEmail addressed only to lab account; real ID injected into Normalize; does not enter Inbox",
+  "reply_destination": "josh@joshmaurer.onmicrosoft.com (unsent only)",
+  "injection": {
+    "action": "Run_a_prompt",
+    "parameter": "item/requestv2/email_record",
+    "expression": "@div(1,0)",
+    "expected_action_status": "Failed",
+    "mechanism": "Runtime expression failure before connector/model request; simulated classifier-action failure, not actual provider outage."
+  },
+  "expected": {
+    "needs_owner_review": true,
+    "source_marker": "Needs Owner Review",
+    "processing_category": 832990005,
+    "processing_outcome": 832990002,
+    "draft_created": false,
+    "review_outcome": 832990000,
+    "followup_open": true,
+    "reply_drafter": "Skipped",
+    "reply_draft_action": "Skipped",
+    "row": "Same synthetic Start row, identified by newly created source draft ID"
+  },
+  "bounds": {
+    "runs": 1,
+    "model_calls": 0,
+    "drafter_calls": 0,
+    "send": 0,
+    "completed_test_replay": 0
+  },
+  "definition_comparison": "Observed differences limited to fixture input adapters, new source-draft fixture, hardcoded lab-only unsent output and injected email input. Run-after capitalization normalized by designer. Recovery predicates/actions/fields otherwise unchanged.",
+  "accepted_contact_limitation": "Preserved unchanged",
+  "prior_failed_results": "Preserved unchanged",
+  "stop": "Stop on unexpected safety result or unreliable control; preserve result before proposed repair."
+}

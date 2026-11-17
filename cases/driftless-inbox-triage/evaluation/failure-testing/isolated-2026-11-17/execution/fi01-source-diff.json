@@ -1,0 +1,203 @@
+{
+  "Category_-_Owner_Review_-_AI_Failure": [
+    {
+      "path": "/inputs/parameters/messageId",
+      "copy": "@outputs('Normalize_-_Email_Fields')?['message_id']",
+      "baseline": "@triggerOutputs()?['body/id']"
+    }
+  ],
+  "Category_-_Owner_Review_-_Log_Failure": [
+    {
+      "path": "/inputs/parameters/messageId",
+      "copy": "@outputs('Normalize_-_Email_Fields')?['message_id']",
+      "baseline": "@triggerOutputs()?['body/id']"
+    }
+  ],
+  "Category_-_Owner_Review_-_Attachment": [
+    {
+      "path": "/inputs/parameters/messageId",
+      "copy": "@outputs('Normalize_-_Email_Fields')?['message_id']",
+      "baseline": "@triggerOutputs()?['body/id']"
+    }
+  ],
+  "Category_-_Owner_Review_-_Policy": [
+    {
+      "path": "/inputs/parameters/messageId",
+      "copy": "@outputs('Normalize_-_Email_Fields')?['message_id']",
+      "baseline": "@triggerOutputs()?['body/id']"
+    }
+  ],
+  "Category_-_Owner_Review_-_Draft_Failure": [
+    {
+      "path": "/inputs/parameters/messageId",
+      "copy": "@outputs('Normalize_-_Email_Fields')?['message_id']",
+      "baseline": "@triggerOutputs()?['body/id']"
+    }
+  ],
+  "Category_-_Owner_Review_-_Low_Confidence": [
+    {
+      "path": "/inputs/parameters/messageId",
+      "copy": "@outputs('Normalize_-_Email_Fields')?['message_id']",
+      "baseline": "@triggerOutputs()?['body/id']"
+    }
+  ],
+  "Category_-_Owner_Review_-_Invalid_AI": [
+    {
+      "path": "/inputs/parameters/messageId",
+      "copy": "@outputs('Normalize_-_Email_Fields')?['message_id']",
+      "baseline": "@triggerOutputs()?['body/id']"
+    }
+  ],
+  "Category_-_Business_Classification": [
+    {
+      "path": "/inputs/parameters/messageId",
+      "copy": "@outputs('Normalize_-_Email_Fields')?['message_id']",
+      "baseline": "@triggerOutputs()?['body/id']"
+    }
+  ],
+  "Create_-_Outlook_Draft": [
+    {
+      "path": "/inputs/parameters/draftMessage/To",
+      "copy": "josh@joshmaurer.onmicrosoft.com",
+      "baseline": "@triggerOutputs()?['body/from']"
+    },
+    {
+      "path": "/inputs/parameters/draftMessage/Subject",
+      "copy": "FI TEST ONLY - @{outputs('Normalize_-_Email_Fields')?['subject']}",
+      "baseline": "@triggerOutputs()?['body/subject']"
+    },
+    {
+      "path": "/runAfter/Draft_-_Reply_Body/0",
+      "copy": "Succeeded",
+      "baseline": "SUCCEEDED"
+    }
+  ],
+  "Rule_-_Has_Attachment": [
+    {
+      "path": "/expression/and/0/equals/0",
+      "copy": "@outputs('Normalize_-_Email_Fields')?['has_attachments']",
+      "baseline": "@triggerOutputs()?['body/hasAttachments']"
+    },
+    {
+      "path": "/actions/Category_-_Owner_Review_-_Attachment/inputs/parameters/messageId",
+      "copy": "@outputs('Normalize_-_Email_Fields')?['message_id']",
+      "baseline": "@triggerOutputs()?['body/id']"
+    }
+  ],
+  "Flag_-_Possible_Resend": [
+    {
+      "path": "/inputs",
+      "copy": "@or(contains(toLower(coalesce(outputs('Normalize_-_Email_Fields')?['subject'],'')),'resending'),contains(toLower(coalesce(outputs('Normalize_-_Email_Fields')?['subject'],'')),'resend:'),contains(toLower(coalesce(outputs('Normalize_-_Email_Fields')?['body'],'')),'just resending'),contains(toLower(coalesce(outputs('Normalize_-_Email_Fields')?['body'],'')),'resending this'),contains(toLower(coalesce(outputs('Normalize_-_Email_Fields')?['body'],'')),'sending this again'))",
+      "baseline": "@or(contains(toLower(coalesce(triggerOutputs()?['body/subject'],'')),'resending'),contains(toLower(coalesce(triggerOutputs()?['body/subject'],'')),'resend:'),contains(toLower(coalesce(triggerOutputs()?['body/body'],'')),'just resending'),contains(toLower(coalesce(triggerOutputs()?['body/body'],'')),'resending this'),contains(toLower(coalesce(triggerOutputs()?['body/body'],'')),'sending this again'))"
+    }
+  ],
+  "Normalize_-_Email_Fields": [
+    {
+      "path": "/inputs",
+      "copy": "@setProperty(json(triggerBody()?['text']),'message_id',coalesce(outputs('FI_-_Create_Source_Draft')?['body/id'],outputs('FI_-_Create_Source_Draft')?['body/Id']))",
+      "baseline": {
+        "message_id": "@{triggerOutputs()?['body/id']}",
+        "received_at": "@{triggerOutputs()?['body/receivedDateTime']}",
+        "sender": "@{triggerOutputs()?['body/from']}",
+        "subject": "@{triggerOutputs()?['body/subject']}",
+        "body": "@{triggerOutputs()?['body/body']}",
+        "has_attachments": "@triggerOutputs()?['body/hasAttachments']",
+        "folder": "Inbox"
+      }
+    },
+    {
+      "path": "/runAfter/FI_-_Create_Source_Draft",
+      "copy": [
+        "SUCCEEDED"
+      ]
+    }
+  ],
+  "Check_-_Existing_Message_ID": [
+    {
+      "path": "/inputs/parameters/$filter",
+      "copy": "jdm_messageid eq '@{replace(outputs('Normalize_-_Email_Fields')?['message_id'],decodeUriComponent('%27'),decodeUriComponent('%27%27'))}'",
+      "baseline": "jdm_messageid eq '@{replace(triggerOutputs()?['body/id'],decodeUriComponent('%27'),decodeUriComponent('%27%27'))}'"
+    }
+  ],
+  "Log_-_Start_Email_Processing": [
+    {
+      "path": "/inputs/parameters/item/jdm_messageid",
+      "copy": "@outputs('Normalize_-_Email_Fields')?['message_id']",
+      "baseline": "@triggerOutputs()?['body/id']"
+    },
+    {
+      "path": "/inputs/parameters/item/jdm_receivedat",
+      "copy": "@outputs('Normalize_-_Email_Fields')?['received_at']",
+      "baseline": "@triggerOutputs()?['body/receivedDateTime']"
+    }
+  ],
+  "Run_a_prompt": [
+    {
+      "path": "/inputs/parameters/item/requestv2/email_record",
+      "copy": "@div(1,0)",
+      "baseline": "@outputs('Normalize_-_Email_Fields')"
+    }
+  ],
+  "Validate_-_AI_Output": [
+    {
+      "path": "/actions/Rule_-_Confidence_High_Enough/actions/Rule_-_Owner_Review_Required/actions/Category_-_Owner_Review_-_Policy/inputs/parameters/messageId",
+      "copy": "@outputs('Normalize_-_Email_Fields')?['message_id']",
+      "baseline": "@triggerOutputs()?['body/id']"
+    },
+    {
+      "path": "/actions/Rule_-_Confidence_High_Enough/actions/Rule_-_Draft_Allowed/actions/Create_-_Outlook_Draft/inputs/parameters/draftMessage/To",
+      "copy": "josh@joshmaurer.onmicrosoft.com",
+      "baseline": "@triggerOutputs()?['body/from']"
+    },
+    {
+      "path": "/actions/Rule_-_Confidence_High_Enough/actions/Rule_-_Draft_Allowed/actions/Create_-_Outlook_Draft/inputs/parameters/draftMessage/Subject",
+      "copy": "FI TEST ONLY - @{outputs('Normalize_-_Email_Fields')?['subject']}",
+      "baseline": "@triggerOutputs()?['body/subject']"
+    },
+    {
+      "path": "/actions/Rule_-_Confidence_High_Enough/actions/Rule_-_Draft_Allowed/actions/Create_-_Outlook_Draft/runAfter/Draft_-_Reply_Body/0",
+      "copy": "Succeeded",
+      "baseline": "SUCCEEDED"
+    },
+    {
+      "path": "/actions/Rule_-_Confidence_High_Enough/actions/Rule_-_Draft_Allowed/actions/Set_-_Needs_Owner_Review_-_Draft_Failure/runAfter/Draft_-_Reply_Body/0",
+      "copy": "TimedOut",
+      "baseline": "TIMEDOUT"
+    },
+    {
+      "path": "/actions/Rule_-_Confidence_High_Enough/actions/Rule_-_Draft_Allowed/actions/Set_-_Needs_Owner_Review_-_Draft_Failure/runAfter/Draft_-_Reply_Body/1",
+      "copy": "Skipped",
+      "baseline": "SKIPPED"
+    },
+    {
+      "path": "/actions/Rule_-_Confidence_High_Enough/actions/Rule_-_Draft_Allowed/actions/Set_-_Needs_Owner_Review_-_Draft_Failure/runAfter/Draft_-_Reply_Body/2",
+      "copy": "Failed",
+      "baseline": "FAILED"
+    },
+    {
+      "path": "/actions/Rule_-_Confidence_High_Enough/actions/Rule_-_Draft_Allowed/actions/Category_-_Owner_Review_-_Draft_Failure/inputs/parameters/messageId",
+      "copy": "@outputs('Normalize_-_Email_Fields')?['message_id']",
+      "baseline": "@triggerOutputs()?['body/id']"
+    },
+    {
+      "path": "/actions/Rule_-_Confidence_High_Enough/actions/Category_-_Business_Classification/inputs/parameters/messageId",
+      "copy": "@outputs('Normalize_-_Email_Fields')?['message_id']",
+      "baseline": "@triggerOutputs()?['body/id']"
+    },
+    {
+      "path": "/actions/Rule_-_Confidence_High_Enough/else/actions/Category_-_Owner_Review_-_Low_Confidence/inputs/parameters/messageId",
+      "copy": "@outputs('Normalize_-_Email_Fields')?['message_id']",
+      "baseline": "@triggerOutputs()?['body/id']"
+    },
+    {
+      "path": "/actions/Category_-_Owner_Review_-_Log_Failure/inputs/parameters/messageId",
+      "copy": "@outputs('Normalize_-_Email_Fields')?['message_id']",
+      "baseline": "@triggerOutputs()?['body/id']"
+    },
+    {
+      "path": "/else/actions/Category_-_Owner_Review_-_Invalid_AI/inputs/parameters/messageId",
+      "copy": "@outputs('Normalize_-_Email_Fields')?['message_id']",
+      "baseline": "@triggerOutputs()?['body/id']"
+    }
+  ]
+}
