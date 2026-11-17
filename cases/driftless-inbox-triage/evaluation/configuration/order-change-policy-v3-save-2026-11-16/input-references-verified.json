@@ -1,0 +1,20 @@
+{
+  "main_classifier": {
+    "recordId": "614118d4-6ca8-4344-b945-8659eb8bb3d8",
+    "item/requestv2/email_record": "@outputs('Normalize_-_Email_Fields')"
+  },
+  "main_drafter": {
+    "recordId": "e9c13e46-ec62-4cd4-b52f-b2f596db5821",
+    "item/requestv2/classification_record": "@string(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput'])",
+    "item/requestv2/email_record": "@outputs('Normalize_-_Email_Fields')"
+  },
+  "helper_classifier": {
+    "recordId": "614118d4-6ca8-4344-b945-8659eb8bb3d8",
+    "item/requestv2/email_record": "@outputs('Normalize_-_Email_Fields')"
+  },
+  "helper_drafter": {
+    "recordId": "e9c13e46-ec62-4cd4-b52f-b2f596db5821",
+    "item/requestv2/classification_record": "@string(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput'])",
+    "item/requestv2/email_record": "@outputs('Normalize_-_Email_Fields')"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "operation": "Save accepted policy v3; no tests",
+  "policy_version": "driftless-order-change-policy-v3-2026-11-16",
+  "implementation_revision": "order-change-urgent-e",
+  "source_candidate": "evaluation/runs/order-change-policy-v3-targeted-2026-11-16-e/",
+  "shared_classifier": {
+    "saved": true,
+    "reopened_wording_matches_candidate_normalized": true,
+    "email_record_token_count": 1,
+    "applies_everywhere_shared_prompt_used": true
+  },
+  "main_flow": {
+    "saved_status": "Draft",
+    "saved_banner_observed": true,
+    "checker_errors": 0,
+    "checker_warnings": 0,
+    "priority_expression": "@if(or(and(equals(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/category'],'Support'),equals(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/record_change_requested'],true)),equals(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/priority'],'Urgent')),832990000,832990001)",
+    "published": false
+  },
+  "helper_flow": {
+    "saved_status": "Draft",
+    "saved_banner_observed": true,
+    "checker_errors": 0,
+    "checker_warnings": 0,
+    "collector_priority_expression": "if(and(equals(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/category'],'Support'),equals(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/record_change_requested'],true)),'Urgent',coalesce(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput']?['priority'],'Routine'))",
+    "raw_classification_preserved": true,
+    "policy_revision_tags_updated": true,
+    "published": false
+  },
+  "both_classifier_inputs_verified": true,
+  "both_other_drafter_inputs_verified": true,
+  "main_classifier_input_reset_repaired": "After shared prompt save designer cleared email_record. Restored exact original @outputs('Normalize_-_Email_Fields'), resaved and verified again after reopening saved prompt.",
+  "scope_diff_verified": "Main log priority only; helper collector priority and export metadata only. No review/draft predicate/schema/connection/node change.",
+  "configuration_entry_repair": "Main Dataverse numeric-choice input initially received literal formula during expression-popup editing. Corrected through custom field using full @ expression; exact Code-view read-back matched approved expression, other log fields unchanged, then saved.",
+  "accepted_limitation": "Contact-only record update can be labelled Support/change true and over-escalated to Urgent; accepted noncritical false positive by Josh. Historical targeted result remains4/5 exact,3/3 order cases; no retroactive pass.",
+  "new_classifier_calls": 0,
+  "new_drafter_calls": 0,
+  "new_workflow_runs": 0,
+  "new_full30_runs": 0,
+  "new_test_or_rescore": false,
+  "prior_failed_runs_and_owner_forms": "Preserved unchanged",
+  "overall_release": "NOT_ESTABLISHED",
+  "next_action": "Publish both saved flow drafts if authorized; priority overrides are not live until publication. No tests requested in this save-only turn.",
+  "local_screenshots": [
+    "evaluation-setup/order-change-policy-v3-save-2026-11-16/main-saved.jpg",
+    "evaluation-setup/order-change-policy-v3-save-2026-11-16/helper-saved.jpg"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "operation": "Save existing order-change policy v3 candidate without further tests",
+  "source_candidate_run": "order-change-policy-v3-targeted-2026-11-16-e",
+  "authorization": "Okay, save the order-change rule with the contact-update false positive documented as a limitation. Verify both flows’ inputs and saved status, update GitHub, preserve failed runs, and don’t run more tests.",
+  "accepted_limitation": "A contact-only update may be classified as Support with record_change_requested=true and consequently marked Urgent. This is accepted noncritical over-escalation for this prototype, not a failed order-change escalation or permission for autonomous action.",
+  "historical_evidence": "Targeted E remains4/5 exact,3/3 order changes; earlier formal FAILs and all ratings/keys/contracts unchanged. No rescoring or new tests authorized.",
+  "policy_version": "driftless-order-change-policy-v3-2026-11-16",
+  "implementation_revision": "order-change-urgent-e",
+  "save_scope": "Shared classifier candidate; main existing logged priority override; helper existing actual priority override and policy/revision metadata. Review predicates already cover Support/change requests. No new nodes/output fields/connections/schema/features.",
+  "publication_scope": "Save requested. Record actual draft/Published status explicitly; do not claim draft priority overrides are live.",
+  "test_calls": 0
+}

@@ -2,7 +2,23 @@
 
 Canonical baton under AI_HANDOFF_PROTOCOL.md. Active Week 8 case: `cases/driftless-inbox-triage/`. Scope frozen: evaluated/documented SME prototype, no extra features.
 
-## Latest November 16 checkpoint — order-change v3 candidate:3 order cases PASS, contact scope control FAIL; STOPPED, NOT SAVED
+## Latest November 16 checkpoint — order-change policy v3 SAVED; limitation accepted; no new tests
+
+Josh explicitly authorized saving existing candidate E with contact-update false positive documented, verifying both inputs/status and GitHub closeout; **no more tests**.
+
+**Saved and confirmed:** shared classifier candidate E saved/reopened, exact normalized wording matched with dynamic email_record token intact. Main and helper **saved as Draft**, both saved banners observed and **checker0 errors/0 warnings**. Main logged priority and helper effective priority force Urgent for Support+change true; existing review rule already requires manager attention. Helper raw classification retained and metadata tagged policy-v3/order-change-urgent-e. No other routing/draft/schema/connection/node changes.
+
+Both classifier/drafter prompt IDs and original email/classification expressions verified. Designer cleared main classifier email input after prompt Save; restored exact original normalized reference, resaved and checked again after reopening saved prompt. Main numeric-choice field read-back verified as actual @ expression before final save, other log fields unchanged.
+
+**Publication status:** flow overrides are **saved drafts, NOT PUBLISHED**. Shared prompt Save applies everywhere the prompt is used, including existing published flows; deterministic flow overrides require publishing both drafts. No runtime pass inferred.
+
+[Policy/accepted limitation](cases/driftless-inbox-triage/policy-v3-order-change-2026-11-16.md), [save evidence](cases/driftless-inbox-triage/evaluation/configuration/order-change-policy-v3-save-2026-11-16/README.md), [verification](cases/driftless-inbox-triage/evaluation/configuration/order-change-policy-v3-save-2026-11-16/save-verification.json). Contact-only update may be mislabeled Support/change true and unnecessarily marked Urgent; Josh accepts it as noncritical prototype limitation. Prior E remains4/5 exact,3/3 order cases; all old failures preserved unchanged.
+
+**Zero new classifier/drafter/workflow/mailbox/full30 tests, previews or rescoring.** Owner judgments unchanged/pending. Full release NOT_ESTABLISHED. Limited snapshots are not complete baseline exports.
+
+**Single next action:** publish the two concrete saved drafts when authorized; no additional tests requested. Do not repeat E checks/full30, repair the accepted contact false positive, change old keys/scores or silently use v2 scoring for effective/raw-priority divergence.
+
+## Earlier November 16 checkpoint — order-change v3 candidate:3 order cases PASS, contact scope control FAIL; STOPPED, NOT SAVED
 
 Josh authorized every existing-order change (including proposed/question-form changes) => Urgent + manager review, independent of production timing. Five-check plan preregistered in `9c4e009709e8a0c4e704c5b38a5cdf8ff752128a`, [E evidence](cases/driftless-inbox-triage/evaluation/runs/order-change-policy-v3-targeted-2026-11-16-e/).
 
@@ -14,7 +30,7 @@ Effective-priority/review results are **offline execution of preregistered propo
 
 [Report](cases/driftless-inbox-triage/evaluation/runs/order-change-policy-v3-targeted-2026-11-16-e/README.md), [results](cases/driftless-inbox-triage/evaluation/runs/order-change-policy-v3-targeted-2026-11-16-e/classifier-results.json), [status](cases/driftless-inbox-triage/evaluation/runs/order-change-policy-v3-targeted-2026-11-16-e/attempt-status.json). Before/candidate wording, original flow snippets, input evidence and offline expression source preserved. Earlier failed runs/key/scorers/contracts/owner forms unchanged. V1/v2 formal failures remain; human ratings pending; no overall release claim.
 
-**Single next action: stop implementation/testing and report the scope finding.** No second correction or full30 authorized here. Distinguish successful tested order-change handling from the false Urgent contact-update control. V3 is a prospective candidate, not an installed policy; do not use the v2 scorer unchanged for effective/raw-priority divergence.
+**Historical stopping point (superseded by Josh's explicit save-with-limitation authorization above):** stop implementation/testing and report the scope finding. No second correction or full30 authorized here. Distinguish successful tested order-change handling from the false Urgent contact-update control. V3 is a prospective candidate, not an installed policy; do not use the v2 scorer unchanged for effective/raw-priority divergence.
 
 ## Earlier November 16 checkpoint — consolidated review candidate FAILED first check; STOPPED, NOT SAVED
 

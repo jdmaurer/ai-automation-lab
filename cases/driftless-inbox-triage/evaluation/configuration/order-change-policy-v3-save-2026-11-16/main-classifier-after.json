@@ -1,0 +1,19 @@
+{
+  "type": "OpenApiConnection",
+  "inputs": {
+    "parameters": {
+      "recordId": "614118d4-6ca8-4344-b945-8659eb8bb3d8",
+      "item/requestv2/email_record": "@outputs('Normalize_-_Email_Fields')"
+    },
+    "host": {
+      "apiId": "providers/Microsoft.ProcessSimple/operationGroups/aibuilder",
+      "connection": "shared_commondataserviceforapps",
+      "operationId": "aibuilderpredict_customprompt"
+    }
+  },
+  "runAfter": {
+    "Rule_-_Has_Attachment": [
+      "Succeeded"
+    ]
+  }
+}

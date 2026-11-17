@@ -1,0 +1,27 @@
+{
+  "type": "OpenApiConnection",
+  "inputs": {
+    "parameters": {
+      "entityName": "jdm_table1s",
+      "recordId": "@body('Log_-_Start_Email_Processing')?['jdm_table1id']",
+      "item/jdm_category": "@coalesce(json('{\"Sales\":832990000,\"Support\":832990001,\"Finance\":832990002,\"General\":832990003,\"Internal\":832990004,\"Unknown\":832990005}')?[outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/category']],832990005)",
+      "item/jdm_draftcreated": "@equals(actions('Create_-_Outlook_Draft')?['status'],'Succeeded')",
+      "item/jdm_draftid": "@coalesce(outputs('Create_-_Outlook_Draft')?['body/id'],outputs('Create_-_Outlook_Draft')?['body/Id'],'')",
+      "item/jdm_followupopen": "@or(variables('needs_owner_review'),equals(actions('Create_-_Outlook_Draft')?['status'],'Succeeded'))",
+      "item/jdm_needsownerreview": "@variables('needs_owner_review')",
+      "item/jdm_priority": "@if(or(and(equals(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/category'],'Support'),equals(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/record_change_requested'],true)),equals(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/priority'],'Urgent')),832990000,832990001)",
+      "item/jdm_processingoutcome": "@if(outputs('Flag_-_Possible_Resend'),832990004,832990001)",
+      "item/jdm_reviewoutcome": "@if(or(variables('needs_owner_review'),equals(actions('Create_-_Outlook_Draft')?['status'],'Succeeded')),832990000,832990005)"
+    },
+    "host": {
+      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+      "connection": "shared_commondataserviceforapps",
+      "operationId": "UpdateOnlyRecord"
+    }
+  },
+  "runAfter": {
+    "Rule_-_Confidence_High_Enough": [
+      "Succeeded"
+    ]
+  }
+}

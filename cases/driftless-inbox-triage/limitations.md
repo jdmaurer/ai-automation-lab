@@ -20,3 +20,9 @@ Current prototype limitations, updated 2026-11-15. Detailed dated evidence is in
 - The 30-day tracking period is a pilot rule, not a universal client retention recommendation. A real client's owner and Microsoft 365 administrator or IT provider set final retention and deletion rules.
 - A real client deployment requires confirmation of tenant permissions, authentication/consent, security policies, licensing, retention, monitoring, ownership, and shutdown/rollback procedures.
 - The lab mailbox is available through the Microsoft 365 Business Basic trial that ends 2026-12-08. Finish the mailbox portion of the case before that date.
+
+## Accepted policy-v3 limitation — November16,2026
+
+Josh accepted that a contact-only update can be labelled Support with record_change_requested=true and therefore receive unnecessary Urgent priority under the order-change shortcut. It still requires manager review and may take the existing eligible fixed Support acknowledgment branch. This does not authorize any record/order change or send. Recognition still depends on model category/change flags; no guarantee every possible order-change wording is detected.
+
+Prior targeted evidence remains4/5 exact,3/3 order changes; original contact-control failure and formal v1/v2 FAILs preserved. Acceptance does not create a release pass. No additional tests during saving. Shared classifier is saved; main/helper deterministic overrides are saved drafts awaiting publication. [Policy and status](policy-v3-order-change-2026-11-16.md).
