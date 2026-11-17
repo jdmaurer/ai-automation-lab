@@ -1,0 +1,10 @@
+{
+  "case_id": "FI-02",
+  "message_id": "REPLACED_WITH_NEW_UNSENT_SOURCE_DRAFT_ID",
+  "received_at": "2026-11-17T18:30:00Z",
+  "sender": "fixture@example.com",
+  "subject": "FI-02 isolated malformed classification output",
+  "body": "Synthetic malformed-output fixture. No operational order or record change.",
+  "has_attachments": false,
+  "folder": "TEST_ONLY_MANUAL"
+}

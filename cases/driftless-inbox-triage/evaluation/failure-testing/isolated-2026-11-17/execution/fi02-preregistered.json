@@ -1,0 +1,13 @@
+{
+  "case_id": "FI-02",
+  "status": "PREREGISTERED_NOT_RUN",
+  "flow_id": "bca4414b-abe2-f111-84ea-000d3a367f8a",
+  "max_runs": 1,
+  "injection": "Replace copied classifier action with Compose named Run_a_prompt returning same response envelope and confidence string invalid; no model call.",
+  "gate_expression_unchanged": true,
+  "recovery_semantics_unchanged": true,
+  "expected": "No reply draft; source marked Needs Owner Review and same Start row recorded Failed/Unknown, needsownerreview true. Gate runtime error without recovery is FAIL and stop.",
+  "stop_on_unexpected_result": true,
+  "originals_untouched": true,
+  "preserve_earlier_runs": true
+}
