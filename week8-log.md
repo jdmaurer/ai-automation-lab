@@ -438,3 +438,12 @@ Power Automate reported export success. Browser control timed out after Download
 The export UI lists AI Solution default templates 202608.1.4.1 as a target dependency. This is a preserved configuration package, not a proven restore or backup of live mailbox/log data/connections/run history. We did not import, test, call a model, edit connections/prompts/flows, rescore results or supply owner ratings. Earlier failed runs and accepted contact-update over-escalation stay unchanged.
 
 [Baseline package, inventory and recovery notes](cases/driftless-inbox-triage/baselines/published-policy-v3-2026-11-17/README.md). Export task complete. Remaining owner-review, unproven integration/weekly evidence, separately authorized isolated failures and essential handoff stay open; no new release claim.
+
+
+## Tuesday 11.17.26 — Isolated failure checks prepared; browser blocked before creation
+
+I authorized separate-copy failure testing, keeping published flows, failed evidence and the accepted contact-update limitation intact. Four outstanding paths were scoped: classifier action failure, wrong-typed output, completion-write failure after one draft, and incomplete weekly retrieval.
+
+The browser inventory worked, but opening the Power Automate tab for copy controls returned Debugger unattached. We stopped without retries or alternate automation. No copy was created, no test/model ran, and no published flow, shared prompt, connection, mailbox or Dataverse row changed. The plan and fixture JSON are preserved in [the failure-check packet](cases/driftless-inbox-triage/evaluation/failure-testing/isolated-2026-11-17/README.md); actual results remain NOT RUN.
+
+Next is restoring browser access and creating verified manual-only copies before the four pending checks. No completed test replay, accepted-limitation tuning or new release claim.

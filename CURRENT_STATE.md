@@ -2,7 +2,17 @@
 
 Canonical baton under AI_HANDOFF_PROTOCOL.md. Active Week 8 case: `cases/driftless-inbox-triage/`. Scope frozen: evaluated/documented SME prototype, no extra features.
 
-## Latest November 17 checkpoint — published baseline EXPORTED and preserved; no tests
+## Latest November 17 checkpoint — isolated failure tests BLOCKED before copy creation
+
+Josh authorized isolated failure testing in separate copies, preserving published originals, all failed runs and the accepted contact-update limitation; no completed-test replay.
+
+Read the live baton, baseline source definitions and existing failure evidence. Prepared [four-check plan and pin data](cases/driftless-inbox-triage/evaluation/failure-testing/isolated-2026-11-17/plan.json): FI-01 classifier-action failure; FI-02 wrong-typed output; FI-03 completion-write failure after one unsent draft; FI-04 weekly continuation/incomplete-retrieval stop. [Attempt record](cases/driftless-inbox-triage/evaluation/failure-testing/isolated-2026-11-17/README.md).
+
+**Browser blocked before creation:** inventory succeeded, but the first Power Automate tab binding reported Debugger unattached. Stopped UI work without retries. **0 test copies, 0 tests/model calls, 0 published-flow/shared-prompt/connection edits, 0 mailbox/Dataverse writes.** No result/pass claimed. Baseline and all prior failed runs remain unchanged; accepted contact-update limitation retained.
+
+**Single next action:** restore live browser access; then create/verify separate manual-only copies, record exact injection/source diffs and IDs, and run only the four pending checks under the existing authorization. Do not activate an unmodified copied Inbox trigger, edit shared prompts, repeat completed checks or resubmit old runs. Exact injection configuration remains pending live UI inspection.
+
+## Earlier November 17 checkpoint — published baseline EXPORTED and preserved; no tests
 
 Josh authorized preserving/exporting the published baseline and GitHub update, preserving all failed runs and the accepted contact-update limitation; no tests.
 

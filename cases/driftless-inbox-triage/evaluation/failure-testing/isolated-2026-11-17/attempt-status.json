@@ -1,0 +1,16 @@
+{
+  "plan_id": "driftless-isolated-failure-checks-2026-11-17",
+  "status": "BLOCKED_BEFORE_COPY_CREATION",
+  "browser_failure": "First tab binding failed with Debugger unattached after inventory succeeded. UI actions stopped.",
+  "test_copies_created": 0,
+  "runtime_tests": 0,
+  "model_calls": 0,
+  "original_flow_edits": 0,
+  "shared_prompt_edits": 0,
+  "connection_changes": 0,
+  "mailbox_or_dataverse_writes": 0,
+  "failed_runs_preserved": true,
+  "accepted_limitation_preserved": true,
+  "result": "NOT_RUN",
+  "resume": "Restore live browser access, create/verify separate manual-only copies, record exact injections/diffs and copy IDs, then run only FI-01..FI-04 within the existing bounds. No completed test replay."
+}

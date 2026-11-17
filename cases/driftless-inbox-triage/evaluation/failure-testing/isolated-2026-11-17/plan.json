@@ -1,0 +1,123 @@
+{
+  "plan_id": "driftless-isolated-failure-checks-2026-11-17",
+  "authorization": "User authorized isolated failure tests using a separate copy; keep published flows intact; preserve failed runs and accepted contact-update limitation; do not repeat completed tests.",
+  "source_commit": "d82930b6bd244488a665f767f1c176131d31d6ea",
+  "baseline": "cases/driftless-inbox-triage/baselines/published-policy-v3-2026-11-17/",
+  "status": "PREPARED_NOT_EXECUTED_BROWSER_BLOCKED",
+  "isolation_requirements": [
+    "Create separate test copies; record their new IDs and verify identity before every edit/run.",
+    "Copies must have manual-only synthetic-fixture triggers before activation. No active copied Inbox subscription.",
+    "No shared prompt edits, original flow edits, original connection remaps, live table schema changes, full solution reimport or original-run resubmission.",
+    "Use fresh synthetic lab-only message/row identifiers with FI-20261117 prefix; preserve original test data, rows, drafts and failed runs.",
+    "Prefer injected outputs/faults at copied action boundaries; retain downstream validation, run-after and recovery definitions. Record each injection and source diff before execution.",
+    "Retain actual-versus-simulated evidence distinction. A simulated AI action failure is not proof of a real provider outage; a stub cannot prove actual Outlook/Dataverse side effects.",
+    "Do not call a shared AI model or drafter for these routing checks; use controlled fixtures and existing fixed Support acknowledgment where a draft is needed.",
+    "Before each run, verify copy identity, manual-only trigger, fixture destinations, original definitions unchanged and no send operation."
+  ],
+  "run_limit": "At most one runtime execution per listed case; four distinct failure cases maximum. No normal smoke/full30 replay. Stop on an unexpected safety result or unreliable browser; preserve result before any proposed repair.",
+  "cases": [
+    {
+      "id": "FI-01",
+      "name": "Classifier action failure",
+      "source_flow": "Driftless Inbox Triage",
+      "fault": "Deliberately fail only the copied Run_a_prompt action after successful initialization; preserve its Failed run-after downstream. Exact injection must be recorded before run.",
+      "expected": [
+        "Run_a_prompt actually Failed, not merely skipped.",
+        "needs_owner_review true; original synthetic lab message marked Needs Owner Review.",
+        "Existing synthetic processing row records Failed/Unknown/no draft, Pending review and Follow-up Open.",
+        "No reply drafter or Outlook draft action executed."
+      ]
+    },
+    {
+      "id": "FI-02",
+      "name": "Wrong-typed classifier output",
+      "source_flow": "Driftless Inbox Triage",
+      "fault": "Inject response-shaped structuredOutput with confidence='invalid' rather than a number; all remaining fields explicitly set in fixture. Record adapter/name/reference changes without altering downstream validation.",
+      "expected": [
+        "Invalid data cannot reach reply creation.",
+        "Owner-review flag/marker and failed/no-draft log are actually persisted through the appropriate failure path.",
+        "If the validation expression errors without recovery, record FAIL; do not convert no draft alone into a pass."
+      ]
+    },
+    {
+      "id": "FI-03",
+      "name": "Completion write failure after one draft",
+      "source_flow": "Driftless Inbox Triage",
+      "fault": "Use a controlled valid Support classification and fixed acknowledgment; after one real unsent synthetic lab draft is created, fail only the copied completion-write action. Do not break the shared connection, table schema or original draft.",
+      "expected": [
+        "Independent Needs Owner Review marker attempted even though completion write failed.",
+        "Fallback updates the same synthetic Start row: Failed, Needs Owner Review true, Follow-up Open true and Draft Created true.",
+        "Actual draft preserved; no duplicate draft/retry of rejected Draft ID.",
+        "Existing owner review fields not overwritten."
+      ]
+    },
+    {
+      "id": "FI-04",
+      "name": "Incomplete weekly retrieval",
+      "source_flow": "Driftless Weekly Inbox Summary",
+      "fault": "Inject a small metadata-only retrieval envelope with a nonempty @odata.nextLink; retain the original completeness condition and False branch.",
+      "expected": [
+        "Original guard selects False.",
+        "Terminate reports Failed / IncompleteWeeklyLogRetrieval.",
+        "Count aggregation, explanation model and Outlook summary-draft output are skipped."
+      ]
+    }
+  ],
+  "pin_data": {
+    "FI-01": {
+      "case_id": "FI-01",
+      "message_id": "FI-20261117-01-NEW-LAB-ID-REQUIRED",
+      "received_at": "2026-11-17T12:00:00-06:00",
+      "sender": "fixture@example.com",
+      "subject": "Isolated failure fixture FI-01",
+      "body": "Synthetic failure-path fixture. No operational order change.",
+      "has_attachments": false,
+      "folder": "TEST_ONLY_MANUAL"
+    },
+    "FI-02": {
+      "responsev2": {
+        "predictionOutput": {
+          "structuredOutput": {
+            "category": "Sales",
+            "priority": "Routine",
+            "confidence": "invalid",
+            "personal": false,
+            "sensitive": false,
+            "suspicious": false,
+            "adversarial": false,
+            "context_sufficient": true,
+            "custom_quote_needed": false,
+            "record_change_requested": false,
+            "draft_candidate": true
+          }
+        }
+      }
+    },
+    "FI-03": {
+      "responsev2": {
+        "predictionOutput": {
+          "structuredOutput": {
+            "category": "Support",
+            "priority": "Routine",
+            "confidence": 1,
+            "personal": false,
+            "sensitive": false,
+            "suspicious": false,
+            "adversarial": false,
+            "context_sufficient": true,
+            "custom_quote_needed": false,
+            "record_change_requested": false,
+            "draft_candidate": true
+          }
+        }
+      }
+    },
+    "FI-04": {
+      "value": [],
+      "@odata.nextLink": "https://example.invalid/isolated-fixture/continuation-not-fetched"
+    }
+  },
+  "preserved_policy": "All identified existing-order changes require Urgent plus manager review regardless of timing. Accepted contact-only Support/change false positive and eligible fixed acknowledgment routing remain unchanged.",
+  "preserved_history": "All earlier failed runs, raw outputs, scores, frozen keys, scorers and owner forms stay unchanged.",
+  "excluded": "No completed test replay, extra prompt/urgency tuning, acceptance-key changes, owner ratings, sending, actual operational order changes, deletion or production release claim."
+}
