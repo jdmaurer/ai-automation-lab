@@ -26,3 +26,10 @@ Current prototype limitations, updated 2026-11-17. Detailed dated evidence is in
 Josh accepted that a contact-only update can be labelled Support with record_change_requested=true and therefore receive unnecessary Urgent priority under the order-change shortcut. It still requires manager review and may take the existing eligible fixed Support acknowledgment branch. This does not authorize any record/order change or send. Recognition still depends on model category/change flags; no guarantee every possible order-change wording is detected.
 
 Prior targeted evidence remains4/5 exact,3/3 order changes; original contact-control failure and formal v1/v2 FAILs preserved. Acceptance does not create a release pass. No additional tests during saving. Shared classifier is saved; main/helper deterministic overrides are now Published, with saved-definition/input verification and no new tests. The accepted limitation remains unchanged. [Policy and status](policy-v3-order-change-2026-11-16.md).
+
+
+## Demonstrated malformed-output recovery gap — November17,2026
+
+FI-02 on the isolated main-flow copy returned wrong-typed confidence. Numeric validation threw InvalidTemplate instead of selecting its invalid-output False branch. That branch's owner-review setter/category marker/Failed log skipped, and the separate classifier-action failure handler skipped because the simulated response action succeeded. No reply draft/model call/send occurred, but required automatic review/failure recovery was absent: **acceptance FAIL**.
+
+[Actual run and evidence](evaluation/failure-testing/isolated-2026-11-17/execution/FI-02.md), run `08584066475931016390512579185CU11`. This was a controlled copied-flow response simulation, not a provider outage or original-flow runtime test. Existing source comparison retained validation/recovery structure; no repair was made after failure. FI-03/04 remain pending. Final Dataverse row values not independently reopened; only Start log success and skipped later writes observed. All previous failures and the accepted contact-update limitation above remain unchanged.

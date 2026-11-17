@@ -1,5 +1,14 @@
 # Isolated failure checks — November 17, 2026
 
+## Latest outcome — FI-02 FAIL; stopped
+
+FI-02 executed exactly once: `08584066475931016390512579185CU11`, cloud Failed3seconds. Validation threw on wrong-typed confidence; invalid-output review/failure and classifier-action failure recovery were Skipped. Reply draft/body/drafter Skipped; zero model calls/sends. **Acceptance FAIL**, because no reply without actual review/failure recovery is insufficient. [Report](execution/FI-02.md), [result](execution/fi02-result.json).
+
+Stopped without correction/retry/resubmit or FI-03/04. FI-01 PASS and all historical failures/accepted limitation unchanged; original published flows/shared prompts/connections intact. Test copy stays Published manual-only. No weekly copy. Further action awaits Josh's separate decision; no release pass.
+
+## Earlier continuation — historical
+
+
 ## Latest continuation — FI-01 scoped PASS; FI-02 Published, NOT RUN
 
 Existing triage copy `bca4414b-abe2-f111-84ea-000d3a367f8a` is now manual-only and Published (On / Instant); no Inbox subscription. A source fixture is a new unsent lab draft whose actual ID is used for lookup/log/review marker. Replies are also unsent and lab-restricted. Originals/shared prompts/connections unchanged.

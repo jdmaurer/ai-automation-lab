@@ -467,3 +467,14 @@ FI-01 ran once (`08584066687962115280420875208CU04`). Deliberate division by zer
 FI-02 uses a copied Compose response with confidence string invalid. The designer cleared a category reference and rewired the failure dependency when the copied classifier was replaced; both restored to their original semantics before save/publication. Full validation subtree compared identical apart from status capitalization. Its one-run contract and fixture are in GitHub. Saved and Published/ready verified, but opening Test timed out; no run submitted. Stopped UI work. FI-02/03/04 remain NOT RUN; no weekly copy yet.
 
 Original published flows/shared prompts/connections, all earlier failed evidence, baseline and accepted contact-update limitation remain intact. No repeated completed tests/full30, no additional model calls after FI-01 (which also used none), no owner ratings or release pass. Next: resume FI-02 once after reliable control; stop if its actual recovery fails.
+
+
+## Tuesday 11.17.26 — FI-02 ran once; malformed-output recovery failed, stopped
+
+I authorized FI-02 once if control worked, with no FI-01 repetition and stop on failure. Initial history showed only FI-01. The existing published manual-only test copy ran the exact saved fixture once: `08584066475931016390512579185CU11`, about5:48PM Central,3seconds.
+
+The simulated classifier boundary succeeded with malformed confidence. Validate failed because its numeric comparison received text and a number. The invalid-output False branch never ran; its review setter/category marker/Failed log were skipped. The separate classifier-action failure path also skipped because the boundary itself succeeded. No reply was created, but missing review/failure recovery makes this an acceptance FAIL, not a safe pass.
+
+One new unsent synthetic source draft and Start log succeeded. Reply creation/body/non-Support drafter skipped; zero model calls or sends. Final row values not separately reopened. The failed cloud run and [FI-02 evidence](cases/driftless-inbox-triage/evaluation/failure-testing/isolated-2026-11-17/execution/FI-02.md) are preserved.
+
+Stopped without repair, retry, resubmit, publication, FI-03/04 or completed/full30 tests. FI-01 PASS unchanged. Published originals/shared prompts/connections, baseline, previous failures and accepted contact-update limitation untouched. Next is my decision on this demonstrated validation-recovery gap; no additional work authorized by this stopped check.

@@ -2,7 +2,19 @@
 
 Canonical baton under AI_HANDOFF_PROTOCOL.md. Active Week 8 case: `cases/driftless-inbox-triage/`. Scope frozen: evaluated/documented SME prototype, no extra features.
 
-## Latest November 17 checkpoint — FI-01 scoped PASS; FI-02 setup Published, NOT RUN; browser stopped
+## Latest November 17 checkpoint — FI-02 ran ONCE and FAILED; STOPPED, no repair
+
+Josh authorized reconnecting and FI-02 once only, preserving originals/evidence/accepted limitation and stopping on failure. Read live baton and preregistered packet; copy run history initially showed only FI-01. Used existing manual-only **Driftless ISOLATED Failure Triage 2026-11-17**, ID `bca4414b-abe2-f111-84ea-000d3a367f8a`; no configuration edits.
+
+**FI-02 actual run `08584066475931016390512579185CU11`, Nov17 about 5:48PM Central, 3 seconds, cloud Failed. Acceptance FAIL.** Copied Compose returned malformed confidence `invalid` and Succeeded; Validate - AI Output failed with InvalidTemplate: greaterOrEquals received String and Integer. Invalid-output review setter/category marker/failure log all Skipped, as did the separate classifier-action failure recovery. Validation threw before selecting the invalid-output branch; the other recovery depends on classifier failure, but that action succeeded. **No automatic review/failure recovery.**
+
+Reply creation/body/non-Support drafter all Skipped. One new unsent synthetic source draft and successful Start log; zero reply drafts/model calls/sends. Final Dataverse row values not independently reopened; do not invent them. [FI-02 report](cases/driftless-inbox-triage/evaluation/failure-testing/isolated-2026-11-17/execution/FI-02.md), [actual result](cases/driftless-inbox-triage/evaluation/failure-testing/isolated-2026-11-17/execution/fi02-result.json). Failed cloud record retained, no resubmit.
+
+**Stopped immediately after establishing failure; only read-only evidence inspection/closeout followed.** No repair/save/publication, FI-01 repetition, FI-03/04 or full30/completed-test replay. FI-01 scoped simulated-action recovery PASS remains unchanged; FI-03/04 NOT RUN, weekly copy not created. Test copy remains Published manual-only. Original main/evaluator/weekly flows, shared prompts/connections, baseline, all prior failed runs and accepted contact-update limitation unchanged. Owner judgments pending; overall release NOT_ESTABLISHED.
+
+**Single next action:** stop execution work and present this demonstrated validation-recovery gap for Josh's decision. No further repair or testing under this authorization. Any later repair must address general wrong-type validation handling, preserve this failed run, use the isolated copy, and receive a separate bounded instruction before changes/tests.
+
+## Earlier November 17 checkpoint — FI-01 scoped PASS; FI-02 setup Published, NOT RUN; browser stopped
 
 Continued the existing isolated triage copy **Driftless ISOLATED Failure Triage 2026-11-17**, ID `bca4414b-abe2-f111-84ea-000d3a367f8a`. This supersedes the older disabled/incomplete-copy checkpoint below. Its published definition is now **manual-only**, not an Inbox subscription; publishing made it On / Instant. Original main, evaluator and weekly flows, shared prompts and connections were not edited.
 
