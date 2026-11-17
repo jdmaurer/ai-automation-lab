@@ -1,0 +1,445 @@
+{
+  "source_commit": "75f0ea9e8976b4c32c7808d353a2123940bbea0a",
+  "files": [
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/POLICY_V2_SCORING.md",
+      "git_blob_sha": "cd2bcd47669c90e47f9874220e92ac7fc8bd0c90"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/README.md",
+      "git_blob_sha": "377a3fdc65568e71285d84bd40cd43cad327aff2"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/batch-helper-blueprint.json",
+      "git_blob_sha": "23a044b7707424d249317e7be7a4e92b17f02793"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/build-helper.mjs",
+      "git_blob_sha": "ced10337ad48ff59f8f651581bea462104676cce"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/build-helper.test.mjs",
+      "git_blob_sha": "7ff931d5fe825b575a3b03d7ffdd6b825f5eabb4"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/classifier-ambiguity-diagnosis-2026-11-16.md",
+      "git_blob_sha": "35b386ae14429482567bf4618fea2ebe79f55e8c"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/classifier-clarification-targeted-results-2026-11-16.md",
+      "git_blob_sha": "17150ed81cf0dfd27f00d887f6c10d2eb875e760"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/classifier-instructions-inspected-2026-11-16.json",
+      "git_blob_sha": "6f391c5560030241639a7e784529cbbf61995627"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/configuration/order-change-policy-v3-publication-2026-11-16/README.md",
+      "git_blob_sha": "bc9d6c87499f3476c7db6b796af2633389b65908"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/configuration/order-change-policy-v3-publication-2026-11-16/authorization.json",
+      "git_blob_sha": "943eead7a579957025d581ddc5ddcb504b938a49"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/configuration/order-change-policy-v3-publication-2026-11-16/helper-scope-published.json",
+      "git_blob_sha": "3ae6b31f0527696598f3ed2c4225245fcf2e0662"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/configuration/order-change-policy-v3-publication-2026-11-16/input-references-verified.json",
+      "git_blob_sha": "d24ab7459d14d45a7b5f131e074b9635998d9bd3"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/configuration/order-change-policy-v3-publication-2026-11-16/main-log-published.json",
+      "git_blob_sha": "eeca7bc6e4a54e37679bc045b400fe919b679c21"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/configuration/order-change-policy-v3-publication-2026-11-16/publication-verification.json",
+      "git_blob_sha": "7557854fc630e0c781df96bafd7c4a4b4a6d80fb"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/configuration/order-change-policy-v3-save-2026-11-16/README.md",
+      "git_blob_sha": "1bd1688e4b66b5e21316cce6f3a1c4e1d98617e3"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/configuration/order-change-policy-v3-save-2026-11-16/authorization.json",
+      "git_blob_sha": "fbd82c34477391e0f965c5e4b10cf71aecda9788"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/configuration/order-change-policy-v3-save-2026-11-16/helper-scope-after.json",
+      "git_blob_sha": "3ae6b31f0527696598f3ed2c4225245fcf2e0662"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/configuration/order-change-policy-v3-save-2026-11-16/helper-scope-before.json",
+      "git_blob_sha": "24e35887e719ef96af3c2dae98949c818f9beecf"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/configuration/order-change-policy-v3-save-2026-11-16/input-reference-reset-before-repair.json",
+      "git_blob_sha": "8ac9047b84d0433b4e76560c9f230474772699de"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/configuration/order-change-policy-v3-save-2026-11-16/input-references-verified.json",
+      "git_blob_sha": "d24ab7459d14d45a7b5f131e074b9635998d9bd3"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/configuration/order-change-policy-v3-save-2026-11-16/instructions-applied.txt",
+      "git_blob_sha": "bc1d4d4ef1daad779999bd1f19ce1c67e1450f87"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/configuration/order-change-policy-v3-save-2026-11-16/instructions-before.txt",
+      "git_blob_sha": "1fccb69ed7164b5a9a0b0a1a3c157cbe36038d64"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/configuration/order-change-policy-v3-save-2026-11-16/instructions-saved-reopened.txt",
+      "git_blob_sha": "fe974678248323e98cf4538d989be2e19d864766"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/configuration/order-change-policy-v3-save-2026-11-16/main-classifier-after.json",
+      "git_blob_sha": "1474d52db73ab8b91e0165edf505d2632a4cf15e"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/configuration/order-change-policy-v3-save-2026-11-16/main-log-after.json",
+      "git_blob_sha": "eeca7bc6e4a54e37679bc045b400fe919b679c21"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/configuration/order-change-policy-v3-save-2026-11-16/main-log-before.json",
+      "git_blob_sha": "3202d8df1e149ecce833d17b17760cae4aef453b"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/configuration/order-change-policy-v3-save-2026-11-16/save-verification.json",
+      "git_blob_sha": "7d43d1b723e9414f070676e36b0e37efb2ec0f03"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/evaluate-policy-v2.mjs",
+      "git_blob_sha": "bdc1ca745df05002e595c6010cfe2ed12454b937"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/evaluate-policy-v2.test.mjs",
+      "git_blob_sha": "29cbb92b75f545d77abda2e0481eba9feec7bcf2"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/evaluate.mjs",
+      "git_blob_sha": "e441443234490845805e3dc73b7fbfc79ccc0e40"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/evaluate.test.mjs",
+      "git_blob_sha": "f55c52329152915a9de204afb85e07128d3cf084"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/frozen-test-set-v1.csv",
+      "git_blob_sha": "1d357726468a9406c7a4200714001ac17196874c"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/live-routing-reference-2026-11-14.json",
+      "git_blob_sha": "d61b703383aa5c336592befbecb561ea2e1614f6"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/meaning-first-fixed-support-results-2026-11-16.md",
+      "git_blob_sha": "be03893d5c28d7135bf2d9a544851cc4397ad765"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/policy-v2-scoring-contract.json",
+      "git_blob_sha": "a13379b8fd7816257083e124dcff95b40e9e67fb"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/policy-v2-targeted-plan-2026-11-16.json",
+      "git_blob_sha": "8e9f564316809a6439004c883088698637c9aca7"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/policy-v2-targeted-results-and-diagnosis-2026-11-16.md",
+      "git_blob_sha": "e5676b0be8b8b964fa7e56a4a8357c8e67047ac1"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/consolidated-review-targeted-2026-11-16-d/README.md",
+      "git_blob_sha": "ee3a52eecf09d7f7230754635959a5f53969fb63"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/consolidated-review-targeted-2026-11-16-d/approved-wording.txt",
+      "git_blob_sha": "2fe65e68b07a7fb233c3d6d669fc9c376fee2a27"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/consolidated-review-targeted-2026-11-16-d/attempt-status.json",
+      "git_blob_sha": "4510588a7c0471368296d6db9915270273d63893"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/consolidated-review-targeted-2026-11-16-d/classifier-results.json",
+      "git_blob_sha": "2f5a50c3c66ca135169b31af7824b20afc845f49"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/consolidated-review-targeted-2026-11-16-d/helper-scope-readonly.json",
+      "git_blob_sha": "24e35887e719ef96af3c2dae98949c818f9beecf"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/consolidated-review-targeted-2026-11-16-d/input-messages.json",
+      "git_blob_sha": "55e96e3870249d59a43e3f74f3b6e3dea24de233"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/consolidated-review-targeted-2026-11-16-d/input-references-verified.json",
+      "git_blob_sha": "d24ab7459d14d45a7b5f131e074b9635998d9bd3"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/consolidated-review-targeted-2026-11-16-d/instructions-before.txt",
+      "git_blob_sha": "1fccb69ed7164b5a9a0b0a1a3c157cbe36038d64"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/consolidated-review-targeted-2026-11-16-d/instructions-candidate.txt",
+      "git_blob_sha": "4c6c2958249282363ed1ee655f23f146fa760989"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/consolidated-review-targeted-2026-11-16-d/plan.json",
+      "git_blob_sha": "1a1d37de8a4793bd105882ba14381b17999b39c9"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/consolidated-review-targeted-2026-11-16-d/response-CRD-01-ui.txt",
+      "git_blob_sha": "1d9e0befa19ad1837fd71a508a9e5c18bf1ebf50"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/order-change-policy-v3-targeted-2026-11-16-e/README.md",
+      "git_blob_sha": "793327743d6f3784cae06afb7f1c60f62fb51fe2"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/order-change-policy-v3-targeted-2026-11-16-e/attempt-status.json",
+      "git_blob_sha": "e9b0c5a6614c50a334007960c88e74a6afd7a271"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/order-change-policy-v3-targeted-2026-11-16-e/classifier-results.json",
+      "git_blob_sha": "64a0e3d76aa2c0fd9eaebe3eb0bc99424645bcec"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/order-change-policy-v3-targeted-2026-11-16-e/helper-scope-before.json",
+      "git_blob_sha": "24e35887e719ef96af3c2dae98949c818f9beecf"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/order-change-policy-v3-targeted-2026-11-16-e/input-messages.json",
+      "git_blob_sha": "992b57d84fd0787fc7e063600c3c2a8744790ded"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/order-change-policy-v3-targeted-2026-11-16-e/input-references-verified.json",
+      "git_blob_sha": "d24ab7459d14d45a7b5f131e074b9635998d9bd3"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/order-change-policy-v3-targeted-2026-11-16-e/instructions-before.txt",
+      "git_blob_sha": "1fccb69ed7164b5a9a0b0a1a3c157cbe36038d64"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/order-change-policy-v3-targeted-2026-11-16-e/instructions-candidate.txt",
+      "git_blob_sha": "82e46dcfd410ff73470b95baf996788900f4c12e"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/order-change-policy-v3-targeted-2026-11-16-e/main-log-before.json",
+      "git_blob_sha": "3202d8df1e149ecce833d17b17760cae4aef453b"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/order-change-policy-v3-targeted-2026-11-16-e/main-review-before.json",
+      "git_blob_sha": "c95f7b2e034601c3220f90cef60cfbf5c2966afc"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/order-change-policy-v3-targeted-2026-11-16-e/offline-expression-check.mjs",
+      "git_blob_sha": "41da9089ffbaea9d48c93621a8d570dd2fde6c67"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/order-change-policy-v3-targeted-2026-11-16-e/plan.json",
+      "git_blob_sha": "acb657fcbded2cdc2e6203b3dafa3519d4fd18ff"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/order-change-policy-v3-targeted-2026-11-16-e/response-OC-E05-ui.txt",
+      "git_blob_sha": "99bb8e6ff99bd2322104483448bca9a84af17d57"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/order-change-policy-v3-targeted-2026-11-16-e/result-OC-E01.json",
+      "git_blob_sha": "6e5ad738d97e001d85ae0a9c0f7ac3fe60c89b4f"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/order-change-policy-v3-targeted-2026-11-16-e/result-OC-E02.json",
+      "git_blob_sha": "c4267ede6f2fd0d324e1f08df716425c25405b93"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/order-change-policy-v3-targeted-2026-11-16-e/result-OC-E03.json",
+      "git_blob_sha": "8c043c46a884e67d854806f23b6ddb5409240922"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/order-change-policy-v3-targeted-2026-11-16-e/result-OC-E04.json",
+      "git_blob_sha": "7b0738bb1594eeccf6d9ecc91d4ba0bd332b7187"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/order-change-policy-v3-targeted-2026-11-16-e/result-OC-E05.json",
+      "git_blob_sha": "31e7869607f2c69ad770fa15d41033fd3ec51b04"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/policy-v2-meaning-first-fixed-support-2026-11-16-b/classifier-instructions.json",
+      "git_blob_sha": "ffc8fa5705589fdc6281cf87f208a36f82e1a5e9"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/policy-v2-meaning-first-fixed-support-2026-11-16-b/classifier-results.json",
+      "git_blob_sha": "f52f541eaeea821c241212bc726baca6bfe04901"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/policy-v2-meaning-first-fixed-support-2026-11-16-b/helper-scope-after.json",
+      "git_blob_sha": "cea5c2e08bc1717aad5e08f4a6f7616ba0ea8de6"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/policy-v2-meaning-first-fixed-support-2026-11-16-b/input-messages.json",
+      "git_blob_sha": "d6d409bfce3fdf6500db4d37a8e644240290e541"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/policy-v2-meaning-first-fixed-support-2026-11-16-b/logic-checks.json",
+      "git_blob_sha": "6abbf7e37f9480e5a13d6c37c1cb563a8f1ec134"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/policy-v2-meaning-first-fixed-support-2026-11-16-b/main-draft-before-after.json",
+      "git_blob_sha": "633af02c744fac2fc5da6e1843f0da586d19fad5"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/policy-v2-meaning-first-fixed-support-2026-11-16-b/plan.json",
+      "git_blob_sha": "8159a5df5574eae4fddb9a8feff8f40fafbd3269"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/policy-v2-meaning-first-fixed-support-2026-11-16-b/publication-verification.json",
+      "git_blob_sha": "d9e373cdd08d4cae7881071bcdd4e7a97457a42a"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/policy-v2-meaning-first-fixed-support-2026-11-16-b/references-and-verification.json",
+      "git_blob_sha": "a609ea42195d2ca44b6b04eb3491dd39bd4e5a42"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/policy-v2-targeted-2026-11-16-a/assessment.json",
+      "git_blob_sha": "4a19112c441ba1ceb949a8fb5e39853ab476491e"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/policy-v2-targeted-2026-11-16-a/classifier-results.json",
+      "git_blob_sha": "e8e3549a569e829f3eb74d52cbf9ffac665346a7"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/policy-v2-targeted-2026-11-16-a/configuration.json",
+      "git_blob_sha": "2f13e9b7151daa3d72175e03737147cc707ca081"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/policy-v2-targeted-2026-11-16-a/draft-results.json",
+      "git_blob_sha": "fd4a20c4581ef4c3f183efdaa0fdffcaf0f21374"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/policy-v2-targeted-2026-11-16-a/input-messages.json",
+      "git_blob_sha": "5a8e1ea3470373a3f37524124ab510878c1f8447"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/policy-v2-targeted-2026-11-16-a/rule-analysis.json",
+      "git_blob_sha": "06a880ec151109b42437cd6a651cffa946caf843"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/policy-v2-targeted-2026-11-16-a/verification.json",
+      "git_blob_sha": "ec73f64690181c7f099e6d9c9ae64a5777cde09d"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/run-2026-11-14-frozen-v1/actual-results.json",
+      "git_blob_sha": "52abcf67e9a51452af086988a1fa28cc4f15e4ef"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/run-2026-11-14-frozen-v1/batch-input.json",
+      "git_blob_sha": "e41118b1b8570d155c163ccd09d3088dacfe6d21"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/run-2026-11-14-frozen-v1/manifest.json",
+      "git_blob_sha": "33ff5a1ef0ae3a4dfb9b7116dfc91d1f94bc09e1"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/run-2026-11-14-frozen-v1/owner-review.json",
+      "git_blob_sha": "b7c9c80017ecb453f5a94a315058f3ed8de4aa32"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/run-2026-11-14-frozen-v1/review-packet.md",
+      "git_blob_sha": "337b8f51372dee148e2c65a706cc954ee79defd4"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/run-2026-11-14-frozen-v1/score-v1.json",
+      "git_blob_sha": "a74fcd2182d3c611f3875528a4df9660fe420263"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/run-2026-11-16-frozen-policy-v2-b/actual-results.json",
+      "git_blob_sha": "2fbedfea1fc0337f491e4ed64ee7af6d52b1712c"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/run-2026-11-16-frozen-policy-v2-b/batch-input.json",
+      "git_blob_sha": "e41118b1b8570d155c163ccd09d3088dacfe6d21"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/run-2026-11-16-frozen-policy-v2-b/manifest.json",
+      "git_blob_sha": "3ce991645c02043778de5af43826563c5a97a5cc"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/run-2026-11-16-frozen-policy-v2-b/owner-review.json",
+      "git_blob_sha": "1af2c1a2d024f12a8ab4e33e32f976b0236625c2"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/run-2026-11-16-frozen-policy-v2-b/review-packet.md",
+      "git_blob_sha": "f3e922fe341a937b04265d750068851fe77bf71a"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/run-2026-11-16-frozen-policy-v2-b/run-evidence.json",
+      "git_blob_sha": "ead07b5c3795ec5401fbac7f1e47fed7902f0c4c"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/run-2026-11-16-frozen-policy-v2-b/score-policy-v2-pending-owner.json",
+      "git_blob_sha": "49eb43b7963479d2fc9de48d871477fd4d3e2f68"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/targeted-2026-11-16-classifier-ambiguity-v2/classifier-bindings.json",
+      "git_blob_sha": "1543f57d5ebfdb2220f7cfc0595378b073af744f"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/targeted-2026-11-16-classifier-ambiguity-v2/input-messages.json",
+      "git_blob_sha": "9093bdc0299c1b08027b84a1a2e8fe3cd46c9a31"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/targeted-2026-11-16-classifier-ambiguity-v2/prompt-results-v2.json",
+      "git_blob_sha": "94beedf4a9f72be91d2aedffd680714a44bf094d"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/targeted-2026-11-16-classifier-ambiguity-v2/saved-instructions-v2.json",
+      "git_blob_sha": "f1a1253ff4edc3f1af62c4648ee638217cc6338e"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/targeted-2026-11-16-classifier-ambiguity-v2/unscored-preview.json",
+      "git_blob_sha": "f651c1d85fe88418a244743b650962b490f59921"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/targeted-2026-11-16-classifier-ambiguity-v3/classifier-bindings.json",
+      "git_blob_sha": "1543f57d5ebfdb2220f7cfc0595378b073af744f"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/targeted-2026-11-16-classifier-ambiguity-v3/input-messages.json",
+      "git_blob_sha": "4263e21c972010f07940ea9edfb00773d8bf2e41"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/targeted-2026-11-16-classifier-ambiguity-v3/prompt-results-v3.json",
+      "git_blob_sha": "16493d56dc063654189e4870e23344a1695a844f"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/targeted-2026-11-16-classifier-ambiguity-v3/saved-instructions-v3.json",
+      "git_blob_sha": "4a82e1ae495f60a566769535ac032b808f962219"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/urgency-targeted-2026-11-16-c/README.md",
+      "git_blob_sha": "92956ced8fc3298f46d29062e3675733aecbd939"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/urgency-targeted-2026-11-16-c/attempt-status.json",
+      "git_blob_sha": "57eb1ba70366be861271490b730d9199f018e673"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/urgency-targeted-2026-11-16-c/input-messages.json",
+      "git_blob_sha": "1f1f6a4b36875ab0021ada7e31c99ab7f0fba337"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/urgency-targeted-2026-11-16-c/instructions-before.txt",
+      "git_blob_sha": "417965915d0c7bc2f65558c408e1a2be131f77da"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/runs/urgency-targeted-2026-11-16-c/plan.json",
+      "git_blob_sha": "334e62eb1da2fe2f2abcf979ec6a4d94ee83f4ea"
+    },
+    {
+      "path": "cases/driftless-inbox-triage/evaluation/saved-helper-scope-2026-11-15.json",
+      "git_blob_sha": "6013cfbf233e92a575dc3a43956cf373fb32c80f"
+    }
+  ]
+}

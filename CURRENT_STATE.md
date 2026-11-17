@@ -1,8 +1,24 @@
-# CURRENT STATE — updated 2026-11-16 — RESUME HERE
+# CURRENT STATE — updated 2026-11-17 — RESUME HERE
 
 Canonical baton under AI_HANDOFF_PROTOCOL.md. Active Week 8 case: `cases/driftless-inbox-triage/`. Scope frozen: evaluated/documented SME prototype, no extra features.
 
-## Latest November 16 checkpoint — BOTH order-change v3 flow drafts PUBLISHED; inputs verified, no tests
+## Latest November 17 checkpoint — published baseline EXPORTED and preserved; no tests
+
+Josh authorized preserving/exporting the published baseline and GitHub update, preserving all failed runs and the accepted contact-update limitation; no tests.
+
+**Completed:** exported the existing BluffsideHandbookHelper solution as unmanaged at retained version 1.0.0.1. Export success observed; original 126,545-byte ZIP downloaded and preserved, SHA-256 `8ce49ef52feab9aa19539749735785620f72a23f7c5461e9b4b929f7e8d88de5`. All 130 members read/hashed. Includes all three Driftless flows, all three shared AI prompts, inbox-log schema/alternate key and connection references; also includes existing synthetic Bluffside components because this is the existing mixed solution.
+
+[Baseline ZIP/inventory/recovery notes](cases/driftless-inbox-triage/baselines/published-policy-v3-2026-11-17/README.md), [manifest](cases/driftless-inbox-triage/baselines/published-policy-v3-2026-11-17/baseline-manifest.json), [configuration verification](cases/driftless-inbox-triage/baselines/published-policy-v3-2026-11-17/configuration-verification.json). Main priority action/helper Scope and all four classifier/drafter input parameter sets match published references (export host-key serialization normalized); classifier wording matches saved/reopened record. No config, prompt, connection or business-policy edits.
+
+**Dependency:** export UI lists AI Solution default templates `msdyn_AISolutionDefaultTemplates` version 202608.1.4.1. This is a configuration recovery package, not a tested portable restore or backup of live mailbox/Dataverse rows/authenticated connections. Import/restore NOT performed/proven. Browser control reset after Download; stopped UI actions. Archive was recovered from the completed download and verified on disk; no repeated export.
+
+All 72 prior evaluation run files and all other existing evaluation artifacts remain unchanged. Contact-update over-escalation remains an accepted noncritical limitation; no tuning or failed-check relabelling. Prior formal v1/v2 FAILs, E 4/5 exact / 3/3 tested order changes and pending owner judgments retained.
+
+**Zero new model/flow/mailbox/full30/scorer tests, previews, imports or failure injections.** No new release pass. Preservation/export is complete; overall release NOT_ESTABLISHED.
+
+**Single next action:** stop this export task. Later isolated failure work requires its own bounded authorization; never break the only working flow or shared live prompt. Remaining owner-review, unproven integration/weekly coverage and essential handoff items stay open.
+
+## Earlier November 16 checkpoint — BOTH order-change v3 flow drafts PUBLISHED; inputs verified, no tests
 
 Josh explicitly authorized publishing both saved drafts and checking inputs/status, updating GitHub and preserving failed runs/accepted contact-update limitation. Published main and helper once each through their existing tabs.
 
@@ -166,7 +182,7 @@ WS-02 run 08584068916602989636218220553CU01, same date: new report-output path P
 
 1. Order-change policy v3 is Published in both flows and inputs verified; no publication work remains. Prior formal v1/v2 FAILs and pending owner draft-quality judgments remain. Any future formal v3 evaluation needs explicit prospective scoring for effective/raw-priority differences; no full30 or model tests authorized by this publication step. Preserve all failed evidence.
 2. Necessary unproven normal integration checks: exact-ID/alternate-key/concurrency and live resend behavior; required new weekly fixtures (nonzero Edited/Rejected, pending no-draft review, changed final category, empty/date-boundary cases as needed). Preserve proven WS-01/WS-02 instead of repeating them.
-3. Preserve/export the finished working baseline into the repo. Do NOT revisit solution dependency warning before this agreed stage; no new baseline/export exists.
+3. Published configuration baseline exported/preserved on November 17; see the latest checkpoint. Restore/import is untested and the managed dependency/mixed-solution scope must be respected. No repeat export needed.
 4. Isolated deliberate model unavailable/wrong schema/completion-write/retrieval completeness failure testing, after baseline preservation. Never casually break the only working flow.
 5. Essential operator runbook, governance/adoption/retention/ownership/disable-recovery handoff, measured metrics and Gate 2. No invented productivity gain; 20% effort-reduction target is not measured.
 

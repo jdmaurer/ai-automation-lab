@@ -1,0 +1,763 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_office365": {
+        "api": {
+          "name": "shared_office365"
+        },
+        "connection": {
+          "connectionReferenceLogicalName": "new_sharedoffice365_a7390"
+        },
+        "runtimeSource": "embedded"
+      },
+      "shared_commondataserviceforapps": {
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        },
+        "connection": {
+          "connectionReferenceLogicalName": "new_sharedcommondataserviceforapps_e6f66"
+        },
+        "runtimeSource": "embedded"
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "Trigger_-_New_Inbox_Email": {
+          "type": "OpenApiConnectionNotification",
+          "inputs": {
+            "parameters": {
+              "includeAttachments": false,
+              "importance": "Any",
+              "fetchOnlyWithAttachment": false,
+              "folderPath": "Inbox"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
+              "operationId": "OnNewEmailV3",
+              "connectionName": "shared_office365"
+            }
+          },
+          "splitOn": "@triggerOutputs()?['body/value']"
+        }
+      },
+      "actions": {
+        "Normalize_-_Email_Fields": {
+          "type": "Compose",
+          "inputs": {
+            "message_id": "@{triggerOutputs()?['body/id']}",
+            "received_at": "@{triggerOutputs()?['body/receivedDateTime']}",
+            "sender": "@{triggerOutputs()?['body/from']}",
+            "subject": "@{triggerOutputs()?['body/subject']}",
+            "body": "@{triggerOutputs()?['body/body']}",
+            "has_attachments": "@triggerOutputs()?['body/hasAttachments']",
+            "folder": "Inbox"
+          },
+          "runAfter": {}
+        },
+        "Initialize_-_Needs_Owner_Review": {
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "needs_owner_review",
+                "type": "boolean",
+                "value": false
+              }
+            ]
+          },
+          "runAfter": {
+            "Log_-_Start_Email_Processing": [
+              "Succeeded"
+            ]
+          }
+        },
+        "Rule_-_Has_Attachment": {
+          "type": "If",
+          "expression": {
+            "and": [
+              {
+                "equals": [
+                  "@triggerOutputs()?['body/hasAttachments']",
+                  true
+                ]
+              }
+            ]
+          },
+          "actions": {
+            "Set_-_Needs_Owner_Review": {
+              "type": "SetVariable",
+              "inputs": {
+                "name": "needs_owner_review",
+                "value": true
+              }
+            },
+            "Category_-_Owner_Review_-_Attachment": {
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "messageId": "@triggerOutputs()?['body/id']",
+                  "category": "Needs Owner Review"
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
+                  "operationId": "AssignCategory",
+                  "connectionName": "shared_office365"
+                }
+              },
+              "runAfter": {
+                "Set_-_Needs_Owner_Review": [
+                  "Succeeded"
+                ]
+              }
+            }
+          },
+          "else": {
+            "actions": {}
+          },
+          "runAfter": {
+            "Flag_-_Possible_Resend": [
+              "Succeeded"
+            ]
+          }
+        },
+        "Run_a_prompt": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "recordId": "614118d4-6ca8-4344-b945-8659eb8bb3d8",
+              "item/requestv2/email_record": "@outputs('Normalize_-_Email_Fields')"
+            },
+            "host": {
+              "apiId": "providers/Microsoft.ProcessSimple/operationGroups/aibuilder",
+              "operationId": "aibuilderpredict_customprompt",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          },
+          "runAfter": {
+            "Rule_-_Has_Attachment": [
+              "Succeeded"
+            ]
+          }
+        },
+        "Validate_-_AI_Output": {
+          "type": "If",
+          "expression": {
+            "and": [
+              {
+                "equals": [
+                  "@contains(createArray('Sales','Support','Finance','General','Internal','Unknown'), outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/category'])",
+                  true
+                ]
+              },
+              {
+                "equals": [
+                  "@contains(createArray('Urgent','Routine'), outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/priority'])",
+                  true
+                ]
+              },
+              {
+                "greaterOrEquals": [
+                  "@outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/confidence']",
+                  0
+                ]
+              },
+              {
+                "lessOrEquals": [
+                  "@outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/confidence']",
+                  1
+                ]
+              }
+            ]
+          },
+          "actions": {
+            "Rule_-_Confidence_High_Enough": {
+              "type": "If",
+              "expression": {
+                "and": [
+                  {
+                    "greaterOrEquals": [
+                      "@outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/confidence']",
+                      "@float('0.8')"
+                    ]
+                  }
+                ]
+              },
+              "actions": {
+                "Rule_-_Owner_Review_Required": {
+                  "type": "If",
+                  "expression": {
+                    "or": [
+                      {
+                        "equals": [
+                          "@outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/priority']",
+                          "Urgent"
+                        ]
+                      },
+                      {
+                        "equals": [
+                          "@contains(createArray('Unknown','Finance','Internal','Support'), outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/category'])",
+                          true
+                        ]
+                      },
+                      {
+                        "equals": [
+                          "@contains(\r\n  createArray(\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/personal'],\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/sensitive'],\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/suspicious'],\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/adversarial'],\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/custom_quote_needed'],\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/record_change_requested']\r\n  ),\r\n  true\r\n)",
+                          true
+                        ]
+                      },
+                      {
+                        "equals": [
+                          "@outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/context_sufficient']",
+                          false
+                        ]
+                      },
+                      {
+                        "equals": [
+                          "@outputs('Flag_-_Possible_Resend')",
+                          true
+                        ]
+                      }
+                    ]
+                  },
+                  "actions": {
+                    "Set_-_Needs_Owner_Review_-_Policy": {
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "needs_owner_review",
+                        "value": true
+                      }
+                    },
+                    "Category_-_Owner_Review_-_Policy": {
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "parameters": {
+                          "messageId": "@triggerOutputs()?['body/id']",
+                          "category": "Needs Owner Review"
+                        },
+                        "host": {
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
+                          "operationId": "AssignCategory",
+                          "connectionName": "shared_office365"
+                        }
+                      },
+                      "runAfter": {
+                        "Set_-_Needs_Owner_Review_-_Policy": [
+                          "Succeeded"
+                        ]
+                      }
+                    }
+                  },
+                  "else": {
+                    "actions": {}
+                  },
+                  "runAfter": {
+                    "Category_-_Business_Classification": [
+                      "Succeeded"
+                    ]
+                  }
+                },
+                "Rule_-_Draft_Allowed": {
+                  "type": "If",
+                  "expression": {
+                    "and": [
+                      {
+                        "equals": [
+                          "@contains(createArray('Unknown','Finance','Internal'), outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/category'])",
+                          false
+                        ]
+                      },
+                      {
+                        "equals": [
+                          "@contains(\r\n  createArray(\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/personal'],\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/sensitive'],\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/suspicious'],\r\n    outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/adversarial']\r\n  ),\r\n  true\r\n)",
+                          false
+                        ]
+                      },
+                      {
+                        "equals": [
+                          "@outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/context_sufficient']",
+                          true
+                        ]
+                      },
+                      {
+                        "equals": [
+                          "@outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/draft_candidate']",
+                          true
+                        ]
+                      },
+                      {
+                        "equals": [
+                          "@outputs('Flag_-_Possible_Resend')",
+                          false
+                        ]
+                      }
+                    ]
+                  },
+                  "actions": {
+                    "Create_-_Outlook_Draft": {
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "parameters": {
+                          "draftMessage/To": "@triggerOutputs()?['body/from']",
+                          "draftMessage/Subject": "@triggerOutputs()?['body/subject']",
+                          "draftMessage/Body": "<p class=\"editor-paragraph\">@{outputs('Draft_-_Reply_Body')}</p>",
+                          "draftMessage/Importance": "Normal"
+                        },
+                        "host": {
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
+                          "operationId": "DraftEmail",
+                          "connectionName": "shared_office365"
+                        }
+                      },
+                      "runAfter": {
+                        "Draft_-_Reply_Body": [
+                          "SUCCEEDED"
+                        ]
+                      }
+                    },
+                    "Set_-_Needs_Owner_Review_-_Draft_Failure": {
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "needs_owner_review",
+                        "value": true
+                      },
+                      "runAfter": {
+                        "Draft_-_Reply_Body": [
+                          "TIMEDOUT",
+                          "SKIPPED",
+                          "FAILED"
+                        ]
+                      }
+                    },
+                    "Category_-_Owner_Review_-_Draft_Failure": {
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "parameters": {
+                          "messageId": "@triggerOutputs()?['body/id']",
+                          "category": "Needs Owner Review"
+                        },
+                        "host": {
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
+                          "operationId": "AssignCategory",
+                          "connectionName": "shared_office365"
+                        }
+                      },
+                      "runAfter": {
+                        "Set_-_Needs_Owner_Review_-_Draft_Failure": [
+                          "Succeeded"
+                        ]
+                      }
+                    },
+                    "Rule_-_Use_Support_Acknowledgment": {
+                      "type": "If",
+                      "expression": {
+                        "and": [
+                          {
+                            "equals": [
+                              "@outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/category']",
+                              "Support"
+                            ]
+                          }
+                        ]
+                      },
+                      "actions": {
+                        "Draft_-_Support_Acknowledgment": {
+                          "type": "Compose",
+                          "inputs": "Thank you for your message. The owner will review your concern and confirm the next step."
+                        }
+                      },
+                      "else": {
+                        "actions": {
+                          "Draft_-_Generate_Other_Reply": {
+                            "type": "OpenApiConnection",
+                            "inputs": {
+                              "parameters": {
+                                "recordId": "e9c13e46-ec62-4cd4-b52f-b2f596db5821",
+                                "item/requestv2/classification_record": "@string(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput'])",
+                                "item/requestv2/email_record": "@outputs('Normalize_-_Email_Fields')"
+                              },
+                              "host": {
+                                "apiId": "providers/Microsoft.ProcessSimple/operationGroups/aibuilder",
+                                "operationId": "aibuilderpredict_customprompt",
+                                "connectionName": "shared_commondataserviceforapps"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "Draft_-_Reply_Body": {
+                      "type": "Compose",
+                      "inputs": "@if(equals(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/category'],'Support'),outputs('Draft_-_Support_Acknowledgment'),outputs('Draft_-_Generate_Other_Reply')?['body/responsev2/predictionOutput/text'])",
+                      "runAfter": {
+                        "Rule_-_Use_Support_Acknowledgment": [
+                          "Succeeded"
+                        ]
+                      }
+                    }
+                  },
+                  "else": {
+                    "actions": {}
+                  },
+                  "runAfter": {
+                    "Rule_-_Owner_Review_Required": [
+                      "Succeeded"
+                    ]
+                  }
+                },
+                "Category_-_Business_Classification": {
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "parameters": {
+                      "messageId": "@triggerOutputs()?['body/id']",
+                      "category": "@outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/category']"
+                    },
+                    "host": {
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
+                      "operationId": "AssignCategory",
+                      "connectionName": "shared_office365"
+                    }
+                  }
+                }
+              },
+              "else": {
+                "actions": {
+                  "Set_-_Needs_Owner_Review_-_Low_Confidence": {
+                    "type": "SetVariable",
+                    "inputs": {
+                      "name": "needs_owner_review",
+                      "value": true
+                    }
+                  },
+                  "Category_-_Owner_Review_-_Low_Confidence": {
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "parameters": {
+                        "messageId": "@triggerOutputs()?['body/id']",
+                        "category": "Needs Owner Review"
+                      },
+                      "host": {
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
+                        "operationId": "AssignCategory",
+                        "connectionName": "shared_office365"
+                      }
+                    },
+                    "runAfter": {
+                      "Set_-_Needs_Owner_Review_-_Low_Confidence": [
+                        "Succeeded"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "Log_-_Complete_Email_Processing": {
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "entityName": "jdm_table1s",
+                  "recordId": "@body('Log_-_Start_Email_Processing')?['jdm_table1id']",
+                  "item/jdm_category": "@coalesce(json('{\"Sales\":832990000,\"Support\":832990001,\"Finance\":832990002,\"General\":832990003,\"Internal\":832990004,\"Unknown\":832990005}')?[outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/category']],832990005)",
+                  "item/jdm_draftcreated": "@equals(actions('Create_-_Outlook_Draft')?['status'],'Succeeded')",
+                  "item/jdm_draftid": "@coalesce(outputs('Create_-_Outlook_Draft')?['body/id'],outputs('Create_-_Outlook_Draft')?['body/Id'],'')",
+                  "item/jdm_followupopen": "@or(variables('needs_owner_review'),equals(actions('Create_-_Outlook_Draft')?['status'],'Succeeded'))",
+                  "item/jdm_needsownerreview": "@variables('needs_owner_review')",
+                  "item/jdm_priority": "@if(or(and(equals(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/category'],'Support'),equals(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/record_change_requested'],true)),equals(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/priority'],'Urgent')),832990000,832990001)",
+                  "item/jdm_processingoutcome": "@if(outputs('Flag_-_Possible_Resend'),832990004,832990001)",
+                  "item/jdm_reviewoutcome": "@if(or(variables('needs_owner_review'),equals(actions('Create_-_Outlook_Draft')?['status'],'Succeeded')),832990000,832990005)"
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                  "operationId": "UpdateOnlyRecord",
+                  "connectionName": "shared_commondataserviceforapps"
+                }
+              },
+              "runAfter": {
+                "Rule_-_Confidence_High_Enough": [
+                  "Succeeded"
+                ]
+              }
+            },
+            "Category_-_Owner_Review_-_Log_Failure": {
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "messageId": "@triggerOutputs()?['body/id']",
+                  "category": "Needs Owner Review"
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
+                  "operationId": "AssignCategory",
+                  "connectionName": "shared_office365"
+                }
+              },
+              "runAfter": {
+                "Log_-_Complete_Email_Processing": [
+                  "TimedOut",
+                  "Failed"
+                ]
+              }
+            },
+            "Log_-_Completion_Write_Failure": {
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "entityName": "jdm_table1s",
+                  "recordId": "@body('Log_-_Start_Email_Processing')?['jdm_table1id']",
+                  "item/jdm_draftcreated": "@equals(actions('Create_-_Outlook_Draft')?['status'],'Succeeded')",
+                  "item/jdm_followupopen": true,
+                  "item/jdm_needsownerreview": true,
+                  "item/jdm_processingoutcome": 832990002
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                  "operationId": "UpdateOnlyRecord",
+                  "connectionName": "shared_commondataserviceforapps"
+                }
+              },
+              "runAfter": {
+                "Category_-_Owner_Review_-_Log_Failure": [
+                  "Succeeded",
+                  "TimedOut",
+                  "Failed"
+                ]
+              }
+            }
+          },
+          "else": {
+            "actions": {
+              "Set_-_Needs_Owner_Review_-_Invalid_AI": {
+                "type": "SetVariable",
+                "inputs": {
+                  "name": "needs_owner_review",
+                  "value": true
+                }
+              },
+              "Category_-_Owner_Review_-_Invalid_AI": {
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "parameters": {
+                    "messageId": "@triggerOutputs()?['body/id']",
+                    "category": "Needs Owner Review"
+                  },
+                  "host": {
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
+                    "operationId": "AssignCategory",
+                    "connectionName": "shared_office365"
+                  }
+                },
+                "runAfter": {
+                  "Set_-_Needs_Owner_Review_-_Invalid_AI": [
+                    "Succeeded"
+                  ]
+                }
+              },
+              "Log_-_Invalid_AI_Output": {
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "parameters": {
+                    "entityName": "jdm_table1s",
+                    "recordId": "@body('Log_-_Start_Email_Processing')?['jdm_table1id']",
+                    "item/jdm_category": 832990005,
+                    "item/jdm_draftcreated": false,
+                    "item/jdm_followupopen": true,
+                    "item/jdm_needsownerreview": true,
+                    "item/jdm_processingoutcome": 832990002,
+                    "item/jdm_reviewoutcome": 832990000
+                  },
+                  "host": {
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                    "operationId": "UpdateOnlyRecord",
+                    "connectionName": "shared_commondataserviceforapps"
+                  }
+                },
+                "runAfter": {
+                  "Category_-_Owner_Review_-_Invalid_AI": [
+                    "Succeeded",
+                    "TimedOut",
+                    "Skipped",
+                    "Failed"
+                  ]
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "Run_a_prompt": [
+              "Succeeded"
+            ]
+          }
+        },
+        "Set_-_Needs_Owner_Review_-_AI_Failure": {
+          "type": "SetVariable",
+          "inputs": {
+            "name": "needs_owner_review",
+            "value": true
+          },
+          "runAfter": {
+            "Run_a_prompt": [
+              "TimedOut",
+              "Failed"
+            ]
+          }
+        },
+        "Category_-_Owner_Review_-_AI_Failure": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "messageId": "@triggerOutputs()?['body/id']",
+              "category": "Needs Owner Review"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
+              "operationId": "AssignCategory",
+              "connectionName": "shared_office365"
+            }
+          },
+          "runAfter": {
+            "Set_-_Needs_Owner_Review_-_AI_Failure": [
+              "Succeeded"
+            ]
+          }
+        },
+        "Track_-_Correlation_ID": {
+          "type": "Compose",
+          "inputs": "@workflow()?['run']?['name']",
+          "runAfter": {
+            "Normalize_-_Email_Fields": [
+              "Succeeded"
+            ]
+          }
+        },
+        "Log_-_Start_Email_Processing": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "jdm_table1s",
+              "item/jdm_category": 832990005,
+              "item/jdm_newcolumn": "@outputs('Track_-_Correlation_ID')",
+              "item/jdm_draftcreated": false,
+              "item/jdm_finalcategory": 832990005,
+              "item/jdm_followupopen": false,
+              "item/jdm_messageid": "@triggerOutputs()?['body/id']",
+              "item/jdm_needsownerreview": false,
+              "item/jdm_processingoutcome": 832990000,
+              "item/jdm_receivedat": "@triggerOutputs()?['body/receivedDateTime']",
+              "item/jdm_reviewoutcome": 832990000
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "CreateRecord",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          },
+          "runAfter": {
+            "Rule_-_Duplicate_Message": [
+              "Succeeded"
+            ]
+          }
+        },
+        "Check_-_Existing_Message_ID": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "jdm_table1s",
+              "$select": "jdm_messageid",
+              "$filter": "jdm_messageid eq '@{replace(triggerOutputs()?['body/id'],decodeUriComponent('%27'),decodeUriComponent('%27%27'))}'",
+              "$top": 1
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          },
+          "runAfter": {
+            "Track_-_Correlation_ID": [
+              "Succeeded"
+            ]
+          }
+        },
+        "Rule_-_Duplicate_Message": {
+          "type": "If",
+          "expression": {
+            "and": [
+              {
+                "greater": [
+                  "@length(body('Check_-_Existing_Message_ID')?['value'])",
+                  0
+                ]
+              }
+            ]
+          },
+          "actions": {
+            "Stop_-_Duplicate_Message": {
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Succeeded"
+              }
+            }
+          },
+          "else": {
+            "actions": {}
+          },
+          "runAfter": {
+            "Check_-_Existing_Message_ID": [
+              "Succeeded"
+            ]
+          }
+        },
+        "Log_-_AI_Request_Failure": {
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "jdm_table1s",
+              "recordId": "@body('Log_-_Start_Email_Processing')?['jdm_table1id']",
+              "item/jdm_category": 832990005,
+              "item/jdm_draftcreated": false,
+              "item/jdm_followupopen": true,
+              "item/jdm_needsownerreview": true,
+              "item/jdm_processingoutcome": 832990002,
+              "item/jdm_reviewoutcome": 832990000
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "UpdateOnlyRecord",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          },
+          "runAfter": {
+            "Category_-_Owner_Review_-_AI_Failure": [
+              "Succeeded",
+              "TimedOut",
+              "Failed"
+            ]
+          }
+        },
+        "Flag_-_Possible_Resend": {
+          "type": "Compose",
+          "inputs": "@or(contains(toLower(coalesce(triggerOutputs()?['body/subject'],'')),'resending'),contains(toLower(coalesce(triggerOutputs()?['body/subject'],'')),'resend:'),contains(toLower(coalesce(triggerOutputs()?['body/body'],'')),'just resending'),contains(toLower(coalesce(triggerOutputs()?['body/body'],'')),'resending this'),contains(toLower(coalesce(triggerOutputs()?['body/body'],'')),'sending this again'))",
+          "runAfter": {
+            "Initialize_-_Needs_Owner_Review": [
+              "Succeeded"
+            ]
+          }
+        }
+      },
+      "outputs": {}
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

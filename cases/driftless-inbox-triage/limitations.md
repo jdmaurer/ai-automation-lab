@@ -1,6 +1,6 @@
 # Limitations
 
-Current prototype limitations, updated 2026-11-16. Detailed dated evidence is in test-cases.md.
+Current prototype limitations, updated 2026-11-17. Detailed dated evidence is in test-cases.md.
 
 - This is a synthetic demonstration case. No real client email or sensitive client data is used in the evaluation set.
 - No automatic external sending or forwarding. The owner sends replies manually.
@@ -15,7 +15,7 @@ Current prototype limitations, updated 2026-11-16. Detailed dated evidence is in
 - The isolated frozen-30 helper is Published. Earlier formal v1 and policy-v2 runs remain FAIL (25/30 and 27/30 primary outcomes respectively); publication of the accepted policy-v3 drafts does not revise those scores or establish a new runtime/release pass. Owner quality judgments remain pending. The isolated batch preserves inputs and tests shared prompts/mirrored routing; it cannot prove live Outlook/Dataverse side effects. Four earlier live DRI smoke checks remain bounded evidence.
 - Model-unavailable and wrong-schema behavior has not yet been deliberately verified. These tests should be run on an isolated test copy/checkpoint after the working baseline is preserved.
 - Weekly summary is published; WS-01/WS-02 passed the existing two-record week and unsent report output. It measures inbox/review activity, not revenue or completed orders. Nonzero Edited/Rejected, pending no-draft, changed final category, empty/date edges and retrieval failure coverage remain pending. Josh's final report-wording review remains outstanding.
-- A clean recoverable baseline/export is not yet confirmed. By Josh's explicit sequence, finish normal evaluation/ordinary defects first; only then preserve/export the finished baseline and perform isolated deliberate failures. Do not revisit the earlier solution dependency warning ahead of that stage. The limited routing reference/helper blueprint is not a baseline export.
+- The published configuration baseline was exported and preserved on 2026-11-17 as the original unmanaged mixed-solution ZIP, with member hashes and saved-reference comparisons. Import/restore remains untested. Target environments require the export-UI-listed AI Solution default templates dependency; the package also contains earlier Bluffside components. It does not back up live mailbox/Dataverse rows, authentication or cloud run history. [Package and recovery notes](baselines/published-policy-v3-2026-11-17/README.md).
 - A runbook/operator quick reference is not yet complete.
 - The 30-day tracking period is a pilot rule, not a universal client retention recommendation. A real client's owner and Microsoft 365 administrator or IT provider set final retention and deletion rules.
 - A real client deployment requires confirmation of tenant permissions, authentication/consent, security policies, licensing, retention, monitoring, ownership, and shutdown/rollback procedures.

@@ -1,0 +1,82 @@
+{
+  "solutionName": "BluffsideHandbookHelper",
+  "version": "1.0.0.1",
+  "managed": "0",
+  "manifestMissingDependenciesEmpty": true,
+  "uiManagedDependency": {
+    "name": "msdyn_AISolutionDefaultTemplates",
+    "displayName": "AI Solution default templates",
+    "version": "202608.1.4.1"
+  },
+  "archiveMembers": 130,
+  "allMembersReadAndHashed": true,
+  "credentialValuePatternFindings": [],
+  "tables": [
+    {
+      "schemaName": "jdm_Table1",
+      "logicalName": "jdm_Table1",
+      "keys": [
+        {
+          "name": "jdm_uniquemessageid",
+          "attributes": [
+            "jdm_messageid"
+          ]
+        }
+      ],
+      "messageIdAttribute": [
+        "<attribute PhysicalName=\"jdm_MessageID\"><Type>nvarchar</Type><Name>jdm_messageid</Name><LogicalName>jdm_messageid</LogicalName><RequiredLevel>none</RequiredLevel><DisplayMask>ValidForForm|ValidForGrid</DisplayMask><ImeMode>auto</ImeMode><ValidForUpdateApi>1</ValidForUpdateApi><ValidForReadApi>1</ValidForReadApi><ValidForCreateApi>1</ValidForCreateApi><IsCustomField>1</IsCustomField><IsAuditEnabled>1</IsAuditEnabled><IsSecured>0</IsSecured><IntroducedVersion>1.0</IntroducedVersion><IsCustomizable>1</IsCustomizable><IsRenameable>1</IsRenameable><CanModifySearchSettings>1</CanModifySearchSettings><CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings><CanModifyAdditionalSettings>1</CanModifyAdditionalSettings><SourceType>0</SourceType><IsGlobalFilterEnabled>0</IsGlobalFilterEnabled><IsSortableEnabled>0</IsSortableEnabled><CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings><CanModifyIsSortableSettings>1</CanModifyIsSortableSettings><IsDataSourceSecret>0</IsDataSourceSecret><AutoNumberFormat></AutoNumberFormat><IsSearchable>0</IsSearchable><IsFilterable>0</IsFilterable><IsRetrievable>0</IsRetrievable><IsLocalizable>0</IsLocalizable><Format>text</Format><MaxLength>401</MaxLength><Length>802</Length><displaynames><displayname description=\"Message ID\" languagecode=\"1033\" /></displaynames><Descriptions><Description description=\"\" languagecode=\"1033\" /></Descriptions></attribute>"
+      ]
+    },
+    {
+      "schemaName": "jdm_TimeOffRequest",
+      "logicalName": "jdm_TimeOffRequest",
+      "keys": [
+        {
+          "name": "jdm_onerequestperpersonperfirstday",
+          "attributes": [
+            "jdm_firstdayoff",
+            "jdm_requesteremail"
+          ]
+        }
+      ],
+      "messageIdAttribute": []
+    }
+  ],
+  "flows": [
+    {
+      "name": "Submit time-off request",
+      "solutionWorkflowId": "{e581b489-12db-f111-84ea-000d3a367f8a}",
+      "stateCode": "1",
+      "statusCode": "2",
+      "jsonFile": "/Workflows/Submittime-offrequest-E581B489-12DB-F111-84EA-000D3A367F8A.json"
+    },
+    {
+      "name": "Driftless Inbox Triage",
+      "solutionWorkflowId": "{094af357-1cdd-f111-84ea-000d3a367f8a}",
+      "stateCode": "1",
+      "statusCode": "2",
+      "jsonFile": "/Workflows/DriftlessInboxTriage-094AF357-1CDD-F111-84EA-000D3A367F8A.json"
+    },
+    {
+      "name": "Driftless Weekly Inbox Summary",
+      "solutionWorkflowId": "{5712f23d-44e0-f111-84ea-000d3a367f8a}",
+      "stateCode": "1",
+      "statusCode": "2",
+      "jsonFile": "/Workflows/DriftlessWeeklyInboxSummary-5712F23D-44E0-F111-84EA-000D3A367F8A.json"
+    },
+    {
+      "name": "Driftless Frozen 30 Evaluation",
+      "solutionWorkflowId": "{9ca55e5e-afe0-f111-84ea-000d3a367f8a}",
+      "stateCode": "1",
+      "statusCode": "2",
+      "jsonFile": "/Workflows/DriftlessFrozen30Evaluation-9CA55E5E-AFE0-F111-84EA-000D3A367F8A.json"
+    }
+  ],
+  "connectionReferences": [
+    "<connectionreference connectionreferencelogicalname=\"jdm_sharedapprovals_b4670\"><connectionreferencedisplayname>Standard approvals RivertownLeadIntake-b4670</connectionreferencedisplayname><connectorid>/providers/Microsoft.PowerApps/apis/shared_approvals</connectorid><iscustomizable>1</iscustomizable><promptingbehavior>0</promptingbehavior><statecode>0</statecode><statuscode>1</statuscode></connectionreference>",
+    "<connectionreference connectionreferencelogicalname=\"new_sharedcommondataserviceforapps_e6f66\"><connectionreferencedisplayname>Microsoft Dataverse</connectionreferencedisplayname><connectorid>/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps</connectorid><iscustomizable>1</iscustomizable><promptingbehavior>0</promptingbehavior><statecode>0</statecode><statuscode>1</statuscode></connectionreference>",
+    "<connectionreference connectionreferencelogicalname=\"new_sharedoffice365_71c0b\"><connectionreferencedisplayname>Office 365 Outlook</connectionreferencedisplayname><connectorid>/providers/Microsoft.PowerApps/apis/shared_office365</connectorid><iscustomizable>1</iscustomizable><promptingbehavior>0</promptingbehavior><statecode>0</statecode><statuscode>1</statuscode></connectionreference>",
+    "<connectionreference connectionreferencelogicalname=\"new_sharedoffice365_9a16a\"><connectionreferencedisplayname>Office 365 Outlook</connectionreferencedisplayname><connectorid>/providers/Microsoft.PowerApps/apis/shared_office365</connectorid><iscustomizable>1</iscustomizable><promptingbehavior>0</promptingbehavior><statecode>0</statecode><statuscode>1</statuscode></connectionreference>",
+    "<connectionreference connectionreferencelogicalname=\"new_sharedoffice365_a7390\"><connectionreferencedisplayname>Office 365 Outlook</connectionreferencedisplayname><connectorid>/providers/Microsoft.PowerApps/apis/shared_office365</connectorid><iscustomizable>1</iscustomizable><promptingbehavior>0</promptingbehavior><statecode>0</statecode><statuscode>1</statuscode></connectionreference>"
+  ]
+}

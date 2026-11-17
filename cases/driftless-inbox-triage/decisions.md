@@ -196,3 +196,8 @@ Append-only design record for the Driftless Print and Sign inbox-triage case.
 71. Josh explicitly accepted the unrelated contact-update over-escalation and authorized saving the existing order-change rule without more tests. Retain targeted E's4/5 exact/3of3 order outcomes and all prior FAILs as observed; acceptance is a business decision, not retrospective test relabelling. This conservative false positive is not an automatic save blocker. Record model-dependent recognition and possible existing Support-acknowledgment routing as limitations; no autonomous operational action/send.
 
 72. Save shared classifier and minimal existing priority overrides/version tags in both flow drafts, preserve raw classification and all original fields/gates/connections. Confirm banner/checker0/0 and both inputs; restore main normalized-email binding cleared by prompt Save. Distinguish saved shared prompt (applies to existing uses) from unpublished flow overrides. No new tests, rescoring, code/schema/features or publication in this save-only step.
+
+
+## 2026-11-17 — Published configuration baseline preservation
+
+73. Preserve the existing mixed BluffsideHandbookHelper solution as an unmanaged 1.0.0.1 archive, retaining its current version and working connections. It already contains all Driftless flows/prompts/log schema; repackaging to separate prior Bluffside components would introduce unnecessary work and risk. Record the mixed scope, AI Solution default templates prerequisite, exact ZIP/member hashes and recovery boundaries. Preserve failed results and accepted contact-update limitation unchanged. Export inspection is not a model/workflow/restore test and does not establish release acceptance.

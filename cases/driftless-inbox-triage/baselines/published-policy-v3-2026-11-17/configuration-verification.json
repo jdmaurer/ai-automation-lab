@@ -1,0 +1,137 @@
+{
+  "main_classifier_inputs_match": true,
+  "main_drafter_inputs_match": true,
+  "helper_classifier_inputs_match": true,
+  "helper_drafter_inputs_match": true,
+  "actionCounts": {
+    "main": 37,
+    "helper": 23,
+    "weekly": 17
+  },
+  "weeklyActions": [
+    "Window_-_Week_Start_UTC",
+    "Window_-_Week_End_UTC",
+    "Read_-_Weekly_Log_Rows",
+    "Initialize_variable",
+    "Condition",
+    "For_Each_-_Summary_Category",
+    "Filter_-_Category_Rows",
+    "Filter_-_Processed_Category_Rows",
+    "Filter_-_Drafts_Accepted_Unchanged",
+    "Filter_-_Drafts_Edited",
+    "Filter_-_Drafts_Rejected",
+    "Filter_-_Awaiting_Owner_Review",
+    "Collect_-_Category_Summary_Row",
+    "Render_-_Weekly_Count_Table",
+    "Explain_-_Weekly_Inbox_Counts",
+    "Draft_-_Weekly_Report_for_Owner_Review",
+    "Stop_-_Incomplete_Weekly_Retrieval"
+  ],
+  "flowConnectionReferences": [
+    {
+      "name": "DriftlessFrozen30Evaluation-9CA55E5E-AFE0-F111-84EA-000D3A367F8A.json",
+      "refs": {
+        "shared_commondataserviceforapps": {
+          "api": {
+            "name": "shared_commondataserviceforapps"
+          },
+          "connection": {
+            "connectionReferenceLogicalName": "new_sharedcommondataserviceforapps_e6f66"
+          },
+          "runtimeSource": "embedded"
+        }
+      }
+    },
+    {
+      "name": "DriftlessInboxTriage-094AF357-1CDD-F111-84EA-000D3A367F8A.json",
+      "refs": {
+        "shared_office365": {
+          "api": {
+            "name": "shared_office365"
+          },
+          "connection": {
+            "connectionReferenceLogicalName": "new_sharedoffice365_a7390"
+          },
+          "runtimeSource": "embedded"
+        },
+        "shared_commondataserviceforapps": {
+          "api": {
+            "name": "shared_commondataserviceforapps"
+          },
+          "connection": {
+            "connectionReferenceLogicalName": "new_sharedcommondataserviceforapps_e6f66"
+          },
+          "runtimeSource": "embedded"
+        }
+      }
+    },
+    {
+      "name": "DriftlessWeeklyInboxSummary-5712F23D-44E0-F111-84EA-000D3A367F8A.json",
+      "refs": {
+        "shared_commondataserviceforapps": {
+          "api": {
+            "name": "shared_commondataserviceforapps"
+          },
+          "connection": {
+            "connectionReferenceLogicalName": "new_sharedcommondataserviceforapps_e6f66"
+          },
+          "runtimeSource": "embedded"
+        },
+        "shared_office365": {
+          "api": {
+            "name": "shared_office365"
+          },
+          "connection": {
+            "connectionReferenceLogicalName": "new_sharedoffice365_a7390"
+          },
+          "runtimeSource": "invoker"
+        }
+      }
+    }
+  ],
+  "main_priority_action_matches_published_after_export_host_key_normalization": true,
+  "helper_scope_matches_published_after_export_host_key_normalization": true,
+  "export_format_difference": "Export uses host.connectionName where designer snapshots use host.connection; values and configuration match after normalizing this serialization key.",
+  "classifier_instructions_match_saved_normalized": true,
+  "classifier_comparison_normalization": "Input-variable token rendered by its id; whitespace and literal newline escapes normalized, consistent with prior UI text capture.",
+  "operation": "Read-only export artifact inspection; no test execution",
+  "archive_sha256": "8ce49ef52feab9aa19539749735785620f72a23f7c5461e9b4b929f7e8d88de5",
+  "archive_git_blob_sha": "4b9665b359ee4e5f53e1f5c699125c46aa1dee79",
+  "shared_classifier_model": "gpt-41-mini",
+  "includedAIModels": [
+    {
+      "name": "Driftless Weekly Inbox Explanation",
+      "id": "{93a1dc08-e7e4-484e-98c6-0da214657570}",
+      "activeConfigurationId": "{372f840c-40c4-4827-abe0-40cc3bdb0e1b}",
+      "inputs": [
+        "weekly_aggregates"
+      ]
+    },
+    {
+      "name": "Driftless Inbox Classifier",
+      "id": "{614118d4-6ca8-4344-b945-8659eb8bb3d8}",
+      "activeConfigurationId": "{bde65489-a498-40c5-8922-3c220ad7ef45}",
+      "inputs": [
+        "email_record"
+      ]
+    },
+    {
+      "name": "Driftless Reply Drafter",
+      "id": "{e9c13e46-ec62-4cd4-b52f-b2f596db5821}",
+      "activeConfigurationId": "{da598891-1ca2-410d-b55d-359d7126b797}",
+      "inputs": [
+        "email_record",
+        "classification_record"
+      ]
+    }
+  ],
+  "workflow_tests": 0,
+  "model_calls": 0,
+  "import_or_restore_performed": false,
+  "solution_checker_run": false,
+  "configuration_edits": false,
+  "new_release_pass_claimed": false,
+  "accepted_contact_update_limitation_preserved": true,
+  "failed_runs_preserved": true,
+  "browser_note": "Export success observed. Download action timed out/reset browser control; no UI retry. New archive was found in Downloads, copied to workspace and all 130 archive members read and hashed successfully."
+}

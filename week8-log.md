@@ -427,3 +427,14 @@ Both priority overrides are saved drafts, not published. Shared prompt wording a
 I explicitly authorized publication of the two checked saved drafts. Main and helper each published once; Published/ready observed in both. Main logged-priority definition and complete helper Scope match saved GitHub evidence. Both classifier/drafter IDs and original normalized-email/classification expressions remain intact. No input repair or prompt/config/connection edits needed during publication.
 
 The order-change override is now in the published definitions. Contact-update over-escalation remains an accepted noncritical limitation; no attempt to repair it. All prior targeted/formal failed runs/scores/key/contracts/forms preserved. E stays4/5 exact,3/3 order cases; my quality judgments pending. Zero new model, drafter, workflow/mailbox/full30 tests, previews or rescoring. Publication establishes active configuration, not a new runtime/full release pass. Evidence in evaluation/configuration/order-change-policy-v3-publication-2026-11-16/. Publication complete; stop here without another test or tuning cycle.
+
+
+## Tuesday 11.17.26 — Preserved the published baseline, no new tests
+
+I authorized preserving/exporting the published configuration and updating GitHub, with failures and the accepted contact-update limitation kept intact. We used the existing solution rather than restructuring it: unmanaged version 1.0.0.1, containing all three Driftless flows, all three prompts, inbox-log schema/key and connection references, plus the earlier synthetic Bluffside components.
+
+Power Automate reported export success. Browser control timed out after Download; we stopped UI actions. The new 126,545-byte archive had reached Downloads. It was copied unchanged, all 130 members read/hashed, and the archive's Git blob matched the uploaded file. Main priority/helper Scope and all four prompt input parameter sets match the published record, accounting only for export serialization of the connection host key. Classifier instructions match the saved wording.
+
+The export UI lists AI Solution default templates 202608.1.4.1 as a target dependency. This is a preserved configuration package, not a proven restore or backup of live mailbox/log data/connections/run history. We did not import, test, call a model, edit connections/prompts/flows, rescore results or supply owner ratings. Earlier failed runs and accepted contact-update over-escalation stay unchanged.
+
+[Baseline package, inventory and recovery notes](cases/driftless-inbox-triage/baselines/published-policy-v3-2026-11-17/README.md). Export task complete. Remaining owner-review, unproven integration/weekly evidence, separately authorized isolated failures and essential handoff stay open; no new release claim.

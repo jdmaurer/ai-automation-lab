@@ -1,0 +1,36 @@
+{
+  "baseline_id": "driftless-published-policy-v3-2026-11-17",
+  "source_commit": "75f0ea9e8976b4c32c7808d353a2123940bbea0a",
+  "source_environment": "88301e40-6106-ee47-900c-67a24cbc121e",
+  "solution": {
+    "name": "BluffsideHandbookHelper",
+    "id": "90a43d55-5bd9-f111-a05d-000d3a367f8a",
+    "version": "1.0.0.1",
+    "managed": false,
+    "mixed_with_bluffside": true
+  },
+  "archive": {
+    "file": "BluffsideHandbookHelper_1_0_0_1_unmanaged.zip",
+    "bytes": 126545,
+    "sha256": "8ce49ef52feab9aa19539749735785620f72a23f7c5461e9b4b929f7e8d88de5",
+    "git_blob_sha": "4b9665b359ee4e5f53e1f5c699125c46aa1dee79",
+    "member_count": 130,
+    "original_bytes_unchanged": true
+  },
+  "export_status": "SUCCESS_OBSERVED_AND_DOWNLOADED",
+  "managed_dependency": {
+    "name": "msdyn_AISolutionDefaultTemplates",
+    "version": "202608.1.4.1",
+    "source": "Export UI; solution.xml MissingDependencies empty"
+  },
+  "recovery_status": "RESTORE_NOT_TESTED",
+  "configuration_only": true,
+  "new_tests": 0,
+  "new_model_calls": 0,
+  "import_performed": false,
+  "configuration_edits": false,
+  "working_connections_changed": false,
+  "failed_run_files_preserved": 72,
+  "accepted_contact_update_limitation": "Preserved unchanged",
+  "overall_release": "NOT_ESTABLISHED"
+}

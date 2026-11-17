@@ -1,0 +1,782 @@
+[
+  {
+    "path": "customizations.xml",
+    "bytes": 256410,
+    "sha256": "5298644f229e9d6f5936eafa60ee80784d82bc2602314d942d8c84c678e0ef8c",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "solution.xml",
+    "bytes": 5140,
+    "sha256": "00e043e90b713fbca4606d81ca357734165788a77eacc9f776402602b3a1dc3f",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "Workflows/Submittime-offrequest-E581B489-12DB-F111-84EA-000D3A367F8A.json",
+    "bytes": 13587,
+    "sha256": "3fcfd911eea1e1ebbf2cf1cd206ba882c7e92d50d6d773467feda016c91d4f62",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "Workflows/DriftlessInboxTriage-094AF357-1CDD-F111-84EA-000D3A367F8A.json",
+    "bytes": 31565,
+    "sha256": "5f780c16fcf647c123768c712c4a2c67b8205080d8f560b6d2a7facf7c2daaca",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "Workflows/DriftlessWeeklyInboxSummary-5712F23D-44E0-F111-84EA-000D3A367F8A.json",
+    "bytes": 15223,
+    "sha256": "e47ba5e10078e6b225187030c829a635168a50730e715097ead275dfc6eff52a",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "Workflows/DriftlessFrozen30Evaluation-9CA55E5E-AFE0-F111-84EA-000D3A367F8A.json",
+    "bytes": 21962,
+    "sha256": "50cf05f037d86c0fb8611d000fe22a6dfe0508fc1db0e44bd745e58a0bac8f4d",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.topic.Emergency/data",
+    "bytes": 899,
+    "sha256": "68adfb92f694948873cd485e823bc2f230e13bded275de22ea4f4546e15c2b67",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_c3f547a9-57ee-40f7-91a4-622e95f8e006/data",
+    "bytes": 271,
+    "sha256": "fce057a4a40ee5405553896a60360d0d2189d2e364e4b01f9d1c643799801283",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_d706574c-d62d-400c-919f-d7b3022bd45e/data",
+    "bytes": 223,
+    "sha256": "d6ceed71f366136b051be5568b396659367e83da6db9e62c7d9dd06dba990d58",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.gpt.default/data",
+    "bytes": 2827,
+    "sha256": "2bb568e9e7326edaf83b2b8008912ed0b7b6a3451169d69082cd7b3f620367c5",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_cda0713c-c70a-4596-9dcf-843f2f1477d2/data",
+    "bytes": 325,
+    "sha256": "c2fc5e36e3504320ce7015b35bbf1a02674558c999bfefde40cfd2dffab49d85",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_ebf896ff-a092-4f57-a24c-cab6c21c61be/data",
+    "bytes": 258,
+    "sha256": "a01e06b7cdb2b949038802f82709c66cec1da17e426085a10f843104731da188",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_3903d702-3ecb-4860-9ed8-40971dcc6198/data",
+    "bytes": 415,
+    "sha256": "5f640233020c5769ec19d476415310a4211eb877dce9ff46fa8b45a7098f99b2",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_81eb9787-e917-4f38-a47e-8166bbd432a7/data",
+    "bytes": 269,
+    "sha256": "3840b7d5b6c4c6b13dfcfd467f98c35b437f7a65dd171b983e2f2b2a0cbd3974",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_f3e3a1b6-dada-4510-84bf-189d6ce35e18/data",
+    "bytes": 251,
+    "sha256": "d71067730a6004a0692648d008b2ef829c5c8cb5c7ea270462610eb72a790c54",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.topic.ResetConversation/data",
+    "bytes": 427,
+    "sha256": "3827b847ce0b05f33f915e933516e420148926eb588357436f2e7a2185baec5e",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_b9231a16-80e3-4810-b66e-079621bd2e21/data",
+    "bytes": 258,
+    "sha256": "e162bdc77e50342b25c30a1a4bc89ab8ab9bc20a10ef82562d1a16e2e05a8873",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.topic.Fallback/data",
+    "bytes": 570,
+    "sha256": "3ca7eede00c080fe12f910e47c033669f190e37ea5e3ee505e86df60eb65c447",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_e96bc17e-e9ea-46ab-9c8f-dbff3c59b2f0/data",
+    "bytes": 305,
+    "sha256": "1caf1081b89ea6847f721ad3ddd6fcc5a6a9a29b9128f0bdaedd13ea4a1621a9",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_73ec32a6-8a7f-4ab9-a867-fb88bfaf16d0/data",
+    "bytes": 244,
+    "sha256": "efc7593ec64320b1701d94ba16de6dddc12298a6e34d67a325c229cbfb4b7e03",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.topic.Greeting/data",
+    "bytes": 550,
+    "sha256": "aa63bc51b1695a892edb5b070a250fbab629c3d8d843ecce3ec1e4128460db09",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_f6bd871b-9628-484b-90ec-bfb3c761ab6c/data",
+    "bytes": 256,
+    "sha256": "3bebdd0ba9d58963e9ad50ab5c3e6e23e69f90e16569393de06f2af5f53ab743",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_10198ca7-b7a5-4146-b6b8-57c51300359f/data",
+    "bytes": 233,
+    "sha256": "3cd53a8deea8f409d84c35f59273784428d661fb8f38a5d5ee49d2133075a9fb",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_ddffb74f-1f68-47a5-b52f-61ce982e7fcb/data",
+    "bytes": 286,
+    "sha256": "ebf31c9ac5704843baf48ac2fef05f74ce4962697b21d223554a004ec66644e7",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.topic.OnError/data",
+    "bytes": 1484,
+    "sha256": "4bf6c79b78b5274f0575ee377388fc1082007badc11b1e7ceb89c45220de6172",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_db7624a3-2446-44fb-a91e-947ebb417b4f/data",
+    "bytes": 281,
+    "sha256": "df5101649b7c0e24e3388d71c694b4287d4262e9c20cd38cdbb6fb630d2e6474",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.topic.Repairquestions/data",
+    "bytes": 696,
+    "sha256": "90bf3b35b93f762e773d9cb9ffd217aabec4becfd995eb64a3fab67d56d0a446",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.file.HB-03-expense-reimbursement-v2.md_fGe/filedata/HB-03-expense-reimbursement-v2.md",
+    "bytes": 1249,
+    "sha256": "263b1371aeb15f35420d76437d40593d981671307959afc19724a81c1928c9e6",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_ad469d83-729a-4589-8310-554de257b166/data",
+    "bytes": 306,
+    "sha256": "f37d196cad930e311073dd5544ccad9cce0248a6155f56f5b6ba58450f8cd1da",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_fb9f0d91-41b6-4242-be6a-c1ac2a5655b6/data",
+    "bytes": 317,
+    "sha256": "7f5543cd0d7cfcd65ed056b03c19a9b86ebade3ba1643d17842ffd2d4a26a2a8",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.action.Submittime-offrequest/data",
+    "bytes": 1037,
+    "sha256": "c2b045bca19c9dc85ae445f767c9bb2418fafa0621b09262b5db51426cdb48bf",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.file.HB-01-time-off-and-holidays.md_wO8/filedata/HB-01-time-off-and-holidays.md",
+    "bytes": 1677,
+    "sha256": "d12491ba6ad74f80c07fb8e4026440861b794279caf3502fd6a995635aa7f0e5",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_8cc2d2fd-d18b-4b00-8bf1-af1bc06fb294/data",
+    "bytes": 263,
+    "sha256": "b79ffb98d9b49104e7b93bed0e4bb4d601447e519de0bc8d9b6585ac3ce429ec",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.topic.StartOver/data",
+    "bytes": 928,
+    "sha256": "bd50dfad21653b81c17d725b92307bd75ee513c9bb52d0a8c5e875fa9d425aab",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.file.HB-03-expense-reimbursement-v1-REPLACED.md_ZAZ/filedata/HB-03-expense-reimbursement-v1-REPLACED.md",
+    "bytes": 1121,
+    "sha256": "696484ac14952e860ffc2a65232bdf204662e25d3b7841f6aa829a3103d941d9",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_675ed059-2b1a-4002-a163-c50287418304/data",
+    "bytes": 233,
+    "sha256": "5423c4f7b71d6f114981379e8901b0683f1eaaf63eaa8075946a12473c14ee28",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_d81dc35b-3f54-4d1d-82f6-0bb67a9bf7cd/data",
+    "bytes": 293,
+    "sha256": "6fc7cd1fd396fca72d0a2029f065133a76fab94c2d1189f4966af01a4356c581",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_83cf0567-aaec-4ee6-a099-99af7bf63d7d/data",
+    "bytes": 257,
+    "sha256": "e4005c732ba44a53d40c8679a2f3b18d9988c175972a607d09cedcfeec51b04a",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_38054c49-3db6-404a-89d7-1eaf4aa63664/data",
+    "bytes": 267,
+    "sha256": "0bfbde60a6abe2dce34e0fa1b6df3dd3e08329b938d56f234ed1ce770b9bbcfe",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_f2c36618-e810-4580-857d-fa7f77d9ab24/data",
+    "bytes": 1977,
+    "sha256": "9c7204d7dd9b0b238b8a83f591bffdec7d7b4cf1fcad378f09803b790dc2090a",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_0c5ee007-70b7-44c9-b6f9-a4283fbc1959/data",
+    "bytes": 231,
+    "sha256": "e16de3c047e443f7348fa7d692f3d375e7223efe96fea3006736c400d8041de1",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.topic.Escalate/data",
+    "bytes": 1930,
+    "sha256": "4fcb7b3ad1f2cf204f7ac4d36a8efd4af0d3a9b66d35ec7f440319274ef38fb1",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.topic.Goodbye/data",
+    "bytes": 1078,
+    "sha256": "2f0a20accebcd059eaaff3b3aaec1f1b2fb0f763d64e99b49fc10816055fdaea",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_b9f875c5-72b7-4154-b5bd-6d641e317713/data",
+    "bytes": 487,
+    "sha256": "645e6f3e393c8a9d411cfe9b3aa31dd1e3352bbf1d4df67ef1c4b1286cbf0797",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_ec58b759-0c00-452c-aa99-100fafed2e81/data",
+    "bytes": 258,
+    "sha256": "b1418c159ab38b578b7409526031e995d0ea773deb696e189b3f3ef8a83dd18f",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_64c3fe0f-7a9f-41f9-aa9b-9473138383ec/data",
+    "bytes": 342,
+    "sha256": "33f4ec918c11fbc28435357988cf35ca9e03b1d7a4f8a15eee70aa2abca48e97",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_4a552250-3367-4579-b0fb-8b4935f81825/data",
+    "bytes": 274,
+    "sha256": "5d590a6777e1095a2541108e0e5aac9dacf1c9807e5e0a4e21251aea83c0992b",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.topic.ConversationStart/data",
+    "bytes": 366,
+    "sha256": "75de989cc545080d1ff67b960675e15577abd4eb56fada3fcf682aa0ea52be81",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_1e5614ae-27d8-482b-8536-563e82d1ff0d/data",
+    "bytes": 252,
+    "sha256": "7287b1451704ba0871bd73651444b428e2c6414d215fec0db39c140f8c70ced3",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_ff0cae50-e8d7-4ce9-9e25-d429ce922d55/data",
+    "bytes": 462,
+    "sha256": "ba07d4eef0835e63db73a03fc521e30826b510bdeec8c4d6dc24c3dc3119aa56",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_3d3de6be-ce94-42c5-baee-a476ebc49f9b/data",
+    "bytes": 311,
+    "sha256": "407736892746837a8ccf8fdcc7be93c6ef725d99962ad9c80f2c745b3d666257",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_d09d69ed-e8e7-41f4-a37a-8d9cbcf40fa5/data",
+    "bytes": 299,
+    "sha256": "b4c8ffb0a80ce5c7526bbfb803a3098b5fbc7f06cab1314842d0b0d36e82af9c",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_322ac1d0-ac63-4bbd-9b63-fc1ba8072c1c/data",
+    "bytes": 468,
+    "sha256": "e58dc1a8bdc43c5440e2190210f230c1c36b6aab85728ecddfe21f66b0e241e0",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.file.HB-02-sick-and-safe-time.md_u5p/filedata/HB-02-sick-and-safe-time.md",
+    "bytes": 1200,
+    "sha256": "cd4840ba20efd05b0cbd1936ab8a77ef02fae715ec7cb289358e22eb280a4984",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_2cc8e4ab-125a-4942-9715-b87384dc60f2/data",
+    "bytes": 242,
+    "sha256": "e513bdd3d5e8d1d4e5b77badf3e348d11ffe62ab6c1b96407a5b6f2825f8494c",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.topic.Signin/data",
+    "bytes": 542,
+    "sha256": "c7f41b8b5b62ebeae95c9ca2a93e5331114d845da5ec5e97f59e80a753792d7e",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.topic.ThankYou/data",
+    "bytes": 344,
+    "sha256": "5b8de7b2911c4f3a7e8b54b10760afb037a9e9d53715fd5c7f024a653acbba25",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_be85027a-d0c9-4f5f-b828-9ea0b8651216/data",
+    "bytes": 260,
+    "sha256": "7363b0b28fb3cfb7f012a6c0332aaf036f693dac603c334f5f4edfab44d950b8",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.file.HB-04-company-trucks-and-tools.md_kIw/filedata/HB-04-company-trucks-and-tools.md",
+    "bytes": 1295,
+    "sha256": "6dcbce19c11a287b9880626fe20a74a5d1cab9f0ec5e2e25a24adfd5fa267ec0",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_6b5ddb6a-e53c-4230-9a04-f96b9a5e7d44/data",
+    "bytes": 474,
+    "sha256": "82ea5cc304a491ab0e0a25e984eeb9e71fb9895b291c2ea9d4b07dbcb05b5fc8",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.topic.Search/data",
+    "bytes": 505,
+    "sha256": "ba0dd867597bf52cd8be67627a956737494ec2133f17dd0f869faad3139f82aa",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.file.HB-05-working-in-customer-homes.md_YKJ/filedata/HB-05-working-in-customer-homes.md",
+    "bytes": 1308,
+    "sha256": "8df8d1e3200644bd48df4c568e1540c2adc7c503447a44990e25f4c787ef3ed8",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_7e49d83c-6e96-4167-9fd9-56783b12bcc1/data",
+    "bytes": 328,
+    "sha256": "6150f0cac5905b6cd38e0d021c5e8a4e68438aa97ac2672a1f4a21b95847905e",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_70bfd044-fc0c-4403-a192-bb46aa160a58/data",
+    "bytes": 306,
+    "sha256": "aefa782c3a32fe0f3fc2fc8ced49c384c12d0f07cf54e12409f6ee4db14d81db",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.topic.EndofConversation/data",
+    "bytes": 2336,
+    "sha256": "3c8e6334673e74898a3b0d0832d73a92380da2abac3bbfafb05103ecc178210c",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.topic.MultipleTopicsMatched/data",
+    "bytes": 1295,
+    "sha256": "032b62800a9967b7626caacbf7ab24dccc66265ff409d85bd7fdadd17dc603ca",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "bots/jdm_BluffsideHandbookHelper/configuration.json",
+    "bytes": 541,
+    "sha256": "ae447951b7f6b68e2179cfd3072d02d0db98911eb00d5d389a4af38478c4a258",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "bots/jdm_BluffsideHandbookHelper/bot.xml",
+    "bytes": 19842,
+    "sha256": "fa6da5ed1d4ab17844a71927ce4b149d7837ba9f01dc42e8d686173c5b64738a",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.topic.Emergency/botcomponent.xml",
+    "bytes": 339,
+    "sha256": "97ed9c330be8e5af5c5c1b8f561207135b2937540376d7673e1adfd97cf22444",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_c3f547a9-57ee-40f7-91a4-622e95f8e006/botcomponent.xml",
+    "bytes": 623,
+    "sha256": "06c3a53c545289c64de97b244bd96063dc1ca24a77b73f86a7d7538e771ae215",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_d706574c-d62d-400c-919f-d7b3022bd45e/botcomponent.xml",
+    "bytes": 579,
+    "sha256": "c7e27f37f5039aeb7d48fb7e1387d99eb5fcd9bda3eb90712b1b1fc86b9b288a",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.gpt.default/botcomponent.xml",
+    "bytes": 352,
+    "sha256": "da6276eef965d314c2f07005fc692a2021a9e5ccfbad3213d5332708e736e41a",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_cda0713c-c70a-4596-9dcf-843f2f1477d2/botcomponent.xml",
+    "bytes": 663,
+    "sha256": "54c4b288dae2a83c85dba3256a18245e298f1e1c0e3b7155ce18dd15d2222405",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_ebf896ff-a092-4f57-a24c-cab6c21c61be/botcomponent.xml",
+    "bytes": 615,
+    "sha256": "9ecc8265795891bce19b56ae6b5314adcf7dc45de7c8a6217cb78b78103e8208",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_3903d702-3ecb-4860-9ed8-40971dcc6198/botcomponent.xml",
+    "bytes": 623,
+    "sha256": "b858a1bc83c745ab2d323485e61fa308898344bf7531e2cdc7322ff0686aa49e",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_81eb9787-e917-4f38-a47e-8166bbd432a7/botcomponent.xml",
+    "bytes": 619,
+    "sha256": "6e8c82c7ccfa2780086493de6ed5b69a29da7f2313309f83d3d453dd03cf8f75",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_f3e3a1b6-dada-4510-84bf-189d6ce35e18/botcomponent.xml",
+    "bytes": 641,
+    "sha256": "0e3eee1a475bfb8e5e85a113dd780e60d271c9105314c8edcf78e1699fa52ae5",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.topic.ResetConversation/botcomponent.xml",
+    "bytes": 356,
+    "sha256": "b4ae6a1e61fe745d2501537610a19f721239dd6fab2079709866cff111928448",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_b9231a16-80e3-4810-b66e-079621bd2e21/botcomponent.xml",
+    "bytes": 637,
+    "sha256": "6b0cffdce8822759583859c49d059915874ba41238899a987e9e57bd4aea9946",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.topic.Fallback/botcomponent.xml",
+    "bytes": 456,
+    "sha256": "102ff9c01ca0238042abc3bc5c18244bbfc0ad4a50f0fcf73d04c4ded83affaf",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_e96bc17e-e9ea-46ab-9c8f-dbff3c59b2f0/botcomponent.xml",
+    "bytes": 637,
+    "sha256": "2e276a45df8496ca98fcd1c7b917ae0825c3b639c20e15256227086970c3757b",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_73ec32a6-8a7f-4ab9-a867-fb88bfaf16d0/botcomponent.xml",
+    "bytes": 589,
+    "sha256": "606fbf5014fb7610dbbb1dd22bcb5cf4f00cd22d336d7666d781460d1cb1e1dd",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.topic.Greeting/botcomponent.xml",
+    "bytes": 423,
+    "sha256": "70bf3c208737b18ca769d29b382dd1557add944acd4b4b28ac7aa3079fc9b6af",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_f6bd871b-9628-484b-90ec-bfb3c761ab6c/botcomponent.xml",
+    "bytes": 597,
+    "sha256": "4ddfe3546a709f70a0b3e71988c61318c1eb0e0f269cfe43ee3d7bf87debb3e4",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_10198ca7-b7a5-4146-b6b8-57c51300359f/botcomponent.xml",
+    "bytes": 581,
+    "sha256": "6dc0fb3d2f194025e487fdae0e8270d050710a32f3ac50a94f8cdf9fb758252a",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_ddffb74f-1f68-47a5-b52f-61ce982e7fcb/botcomponent.xml",
+    "bytes": 579,
+    "sha256": "9cdf3e8bda880e3a564a25b8a460ac0c195cc7d14b618f77db0e7ca7fd5cdd73",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.topic.OnError/botcomponent.xml",
+    "bytes": 501,
+    "sha256": "aaf334516bba748353febaade3330dfb500ee2a50d98ad10d2d1b7a61bc52bc1",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_db7624a3-2446-44fb-a91e-947ebb417b4f/botcomponent.xml",
+    "bytes": 621,
+    "sha256": "ae26b20f6a9dea5fa56aee17bab7cd0b2e7b39d752f0157b367264ad7c37599d",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.topic.Repairquestions/botcomponent.xml",
+    "bytes": 352,
+    "sha256": "888a46ee73f0e6fdc312769a91dd0347fdfe82c8a649eedc4727de3504732df0",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.file.HB-03-expense-reimbursement-v2.md_fGe/botcomponent.xml",
+    "bytes": 605,
+    "sha256": "d06fc393fa8230a66c8a5bd65d4a2b8f1b233fc41fd16bca8e113266579f78e7",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_ad469d83-729a-4589-8310-554de257b166/botcomponent.xml",
+    "bytes": 643,
+    "sha256": "43c24e068d83647a1831cd2d4836fd03decd45228b2cdb459b1a21c0d79a2e55",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_fb9f0d91-41b6-4242-be6a-c1ac2a5655b6/botcomponent.xml",
+    "bytes": 617,
+    "sha256": "4ed10cd7cd18e37fedf7b31829757a89894e76ea3cc34ab8155b21c8256c25db",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.action.Submittime-offrequest/botcomponent.xml",
+    "bytes": 366,
+    "sha256": "26569f1e8c93e4d61e373a7d42fb11d89654d8e54d02164cc5b8661aba2f69d3",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.file.HB-01-time-off-and-holidays.md_wO8/botcomponent.xml",
+    "bytes": 593,
+    "sha256": "290ab56842cfbb6e29a39e914cfbec4da7f5b74e5dc118079003986fdeedaf36",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_8cc2d2fd-d18b-4b00-8bf1-af1bc06fb294/botcomponent.xml",
+    "bytes": 635,
+    "sha256": "3b51c6e1bb103245d643e163c51a72fa37c673526907d4ed551e3577babe7447",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.topic.StartOver/botcomponent.xml",
+    "bytes": 340,
+    "sha256": "44fdb8cc263ca333aac3483d892c37e461571c086a12561996d1dcf272ceae3b",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.file.HB-03-expense-reimbursement-v1-REPLACED.md_ZAZ/botcomponent.xml",
+    "bytes": 641,
+    "sha256": "4552fac33d5ac666ac23e4d24841692cbc8b1a8582007840a89775f59e6fe56f",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_675ed059-2b1a-4002-a163-c50287418304/botcomponent.xml",
+    "bytes": 573,
+    "sha256": "dc6042df4fe1cf73382706c767f6796c4634bb96d33e22f385c91741c4ff936f",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_d81dc35b-3f54-4d1d-82f6-0bb67a9bf7cd/botcomponent.xml",
+    "bytes": 643,
+    "sha256": "6e814b36ec54d345b4786f8d9ac7fa64298f37663fadb6ebb881fcc4a05a8640",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_83cf0567-aaec-4ee6-a099-99af7bf63d7d/botcomponent.xml",
+    "bytes": 595,
+    "sha256": "19b016f3bc712b4fa8d7273144dfbd17aae7f48a9a68df29107c877554a563ce",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_38054c49-3db6-404a-89d7-1eaf4aa63664/botcomponent.xml",
+    "bytes": 615,
+    "sha256": "8bc14517533774c883b9108477a65cec8d23c9be8318913d295de6911035b7f1",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_f2c36618-e810-4580-857d-fa7f77d9ab24/botcomponent.xml",
+    "bytes": 449,
+    "sha256": "b3265874aaef20d2a358c4719338f041c2841968ff4cdc763a11718e4de9c60a",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_0c5ee007-70b7-44c9-b6f9-a4283fbc1959/botcomponent.xml",
+    "bytes": 599,
+    "sha256": "b40ad7f42316ec5a3e8d5e47165004a4a965c723516e43bf2432022a1a24a760",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.topic.Escalate/botcomponent.xml",
+    "bytes": 637,
+    "sha256": "5d852120b671ef98b3c28d9b7381aad4656fb38747fb35e4e2269f5290929594",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.topic.Goodbye/botcomponent.xml",
+    "bytes": 643,
+    "sha256": "1d21d953994f49bb0929a4565270d95c71927e048c80d82f2e6e51722a899198",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_b9f875c5-72b7-4154-b5bd-6d641e317713/botcomponent.xml",
+    "bytes": 663,
+    "sha256": "b3d5c1af641d6dc2456d86c5a859d1ed22c57999463125b5137c19587687eb55",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_ec58b759-0c00-452c-aa99-100fafed2e81/botcomponent.xml",
+    "bytes": 619,
+    "sha256": "050f7250645695c3f8882a622e9b8e0909cd754f25e803c90cc6dc62d0966e1f",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_64c3fe0f-7a9f-41f9-aa9b-9473138383ec/botcomponent.xml",
+    "bytes": 573,
+    "sha256": "38afc52d538b3e90cddb0647acf7023398fc8769ba1f1e5beb342fc1a2ee65c1",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_4a552250-3367-4579-b0fb-8b4935f81825/botcomponent.xml",
+    "bytes": 609,
+    "sha256": "5b9639992af7305beacef133c67ab520c93beb2c26a254cc91f746c290df4c47",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.topic.ConversationStart/botcomponent.xml",
+    "bytes": 576,
+    "sha256": "9820babcba7d42ea6d38a4be5b39fc50bce084daae999e03b29426fd3e9a042c",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_1e5614ae-27d8-482b-8536-563e82d1ff0d/botcomponent.xml",
+    "bytes": 625,
+    "sha256": "037775159a3920153e82a7c8e71f218a61ed5c86747aa409dd47f1befd709983",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_ff0cae50-e8d7-4ce9-9e25-d429ce922d55/botcomponent.xml",
+    "bytes": 613,
+    "sha256": "2e21a16e4e399e3969d97ed2b00b8f2b1c1d1d6640dc1d802e1704ea4ebbc67c",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_3d3de6be-ce94-42c5-baee-a476ebc49f9b/botcomponent.xml",
+    "bytes": 617,
+    "sha256": "b3a6f69393a987a99659ab7056d59fb317f30b5a90c73fac8d7f10b94ef0fa24",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_d09d69ed-e8e7-41f4-a37a-8d9cbcf40fa5/botcomponent.xml",
+    "bytes": 625,
+    "sha256": "66c706092bee6f6569be0e6d4d3dac05e9a12d9fc130bbcc20596eee4f74104f",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_322ac1d0-ac63-4bbd-9b63-fc1ba8072c1c/botcomponent.xml",
+    "bytes": 625,
+    "sha256": "1759b6634e29395667b7e5901173c84cd270dd41b0cf5e32da9fee135cc90345",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.file.HB-02-sick-and-safe-time.md_u5p/botcomponent.xml",
+    "bytes": 581,
+    "sha256": "e96bf8b6d91a2a7fda7d752d4d587ed2807be794fc983af88ec3ae94e64b05fd",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_2cc8e4ab-125a-4942-9715-b87384dc60f2/botcomponent.xml",
+    "bytes": 595,
+    "sha256": "4c604b1ba61c617566bae39c93d459233c57a6a3f0044665ed395d267b4cfead",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.topic.Signin/botcomponent.xml",
+    "bytes": 464,
+    "sha256": "502c6964b8930220334e23a187b62237026e3ae1f1074e5325a8aa704443f2a0",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.topic.ThankYou/botcomponent.xml",
+    "bytes": 418,
+    "sha256": "f3da42b04afe5a881427e37bfb25a2aa3fe123b7fbe48b1bcd01553a5101b46c",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_be85027a-d0c9-4f5f-b828-9ea0b8651216/botcomponent.xml",
+    "bytes": 577,
+    "sha256": "4992869f1655db86ca52064abf93563d4ebe3568ac9259061f6ff0a5bee9a80d",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.file.HB-04-company-trucks-and-tools.md_kIw/botcomponent.xml",
+    "bytes": 605,
+    "sha256": "edbe5e91361c93273be606a7aa121b6c57d3a62260986bb7e0631fe91964a2c7",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_6b5ddb6a-e53c-4230-9a04-f96b9a5e7d44/botcomponent.xml",
+    "bytes": 637,
+    "sha256": "6ba0b7475583d59a81fd440a0aaaa5221bfa65cce186899a43e5afaf6c2c243a",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.topic.Search/botcomponent.xml",
+    "bytes": 430,
+    "sha256": "ba159f5de7d3a524dc14e202324955fd2661f3ba9ded3d1301cf92b57ccc1b26",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.file.HB-05-working-in-customer-homes.md_YKJ/botcomponent.xml",
+    "bytes": 609,
+    "sha256": "11dbd7c2aae5cb9ce78969dc91aa2039066b540f5eed26e90512c0f214f7aa34",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_7e49d83c-6e96-4167-9fd9-56783b12bcc1/botcomponent.xml",
+    "bytes": 573,
+    "sha256": "39af7a0091d565e36a36172f0151cc59e5db66b0b0fde3ca540b31ed93eb67c5",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/mspva_70bfd044-fc0c-4403-a192-bb46aa160a58/botcomponent.xml",
+    "bytes": 759,
+    "sha256": "29050f7c875a966dd506bd68cd74fedb3015ee8865bfeafc695bc7927da69d30",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.topic.EndofConversation/botcomponent.xml",
+    "bytes": 516,
+    "sha256": "df27a944d7f20ffb57cc30f29366c3ce3a056640ec2495596b74c0d4c92cae75",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "botcomponents/jdm_BluffsideHandbookHelper.topic.MultipleTopicsMatched/botcomponent.xml",
+    "bytes": 539,
+    "sha256": "7c62ea12ab0218c6cec319599c01214aa7c1dfd3d538edceb078bb663f3198cf",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "Assets/botcomponent_workflowset.xml",
+    "bytes": 296,
+    "sha256": "85a366a2f93c41e19a60fb52e0a400d98cdc52fa4c3227b14f90f2de80455baa",
+    "credentialValuePatternFound": false
+  },
+  {
+    "path": "[Content_Types].xml",
+    "bytes": 7127,
+    "sha256": "b1c402b46651d590f2cdf45606a33b4de0a25658322464c262a429de81eef549",
+    "credentialValuePatternFound": false
+  }
+]
