@@ -1,0 +1,74 @@
+{
+  "label": "order-change-policy-v3-targeted-2026-11-16-e",
+  "policy_version": "driftless-order-change-policy-v3-2026-11-16",
+  "implementation_revision": "order-change-urgent-e",
+  "authorization": "Apply every existing-order change => Urgent and manager review, including proposed/question-form/conditional changes. Verify both inputs and saves; necessary targeted only; preserve failed runs; no full30; stop first failure.",
+  "scope": "Minimal shared classifier clarification plus deterministic priority override in existing main logged priority and helper actual priority. Existing manager-review rules already cover Support/change flag and stay unchanged; no new model output, schema, node, connection or draft policy.",
+  "replacements": [
+    {
+      "old": "Set record_change_requested to true when the sender asks the business to change or update stored information, including a customer contact, account information, payment information, or an existing order or production instruction.",
+      "new": "Set record_change_requested=true for requested, proposed, conditional or question-form changes to an existing order or production instruction, including artwork/images, wording, quantity, specifications, timing, pickup, delivery, holds or cancellation. Classify identifiable existing-order changes as Support. Do not require an explicit deadline or a confirmed production schedule. Also set record_change_requested=true for changes to stored customer, contact, account or payment information, retaining the appropriate business category."
+    },
+    {
+      "old": "A request merely asking for information does not by itself count as a record change.",
+      "new": "Ordinary product, pricing or options inquiries unconnected to changing an existing order do not by themselves set record_change_requested=true. A request or question about changing an existing order does count; missing essential details still require the existing context safeguards and manager review."
+    },
+    {
+      "old": "Use Urgent only when the actual message contains genuine near-term time pressure requiring prompt attention, such as action needed today, within hours, before an imminent deadline, or for a problem affecting tomorrow.",
+      "new": "ORDER-CHANGE POLICY V3: When category=\"Support\" and record_change_requested=true, priority is Urgent regardless of the stated timing. The workflow independently enforces Urgent and manager review for identified order changes; do not guess when production will happen. For other messages, use Urgent when the supplied record establishes genuine near-term time pressure requiring prompt attention."
+    },
+    {
+      "old": "Words such as \"urgent,\" \"ASAP,\" or similar language by themselves do not make a message Urgent when the actual timing is later, routine, or unclear.",
+      "new": "Outside the order-change rule, words such as \"urgent,\" \"ASAP,\" or similar language alone do not make a message Urgent when the actual timing is later, routine, or unclear."
+    }
+  ],
+  "predicate": "and(equals(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/category'],'Support'),equals(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/record_change_requested'],true))",
+  "main_priority_expression": "@if(or(and(equals(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/category'],'Support'),equals(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/record_change_requested'],true)),equals(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/priority'],'Urgent')),832990000,832990001)",
+  "helper_priority_expression": "if(and(equals(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/category'],'Support'),equals(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput/record_change_requested'],true)),'Urgent',coalesce(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput']?['priority'],'Routine'))",
+  "helper_export_tags": {
+    "policy_version": "driftless-order-change-policy-v3-2026-11-16",
+    "implementation_revision": "order-change-urgent-e"
+  },
+  "max_classifier_calls": 5,
+  "max_drafter_calls": 0,
+  "expectations": [
+    {
+      "id": "OC-E01",
+      "category": "Support",
+      "record_change_requested": true,
+      "effective_priority": "Urgent",
+      "manager_review": true
+    },
+    {
+      "id": "OC-E02",
+      "category": "Support",
+      "record_change_requested": true,
+      "effective_priority": "Urgent",
+      "manager_review": true
+    },
+    {
+      "id": "OC-E03",
+      "category": "Support",
+      "record_change_requested": true,
+      "effective_priority": "Urgent",
+      "manager_review": true
+    },
+    {
+      "id": "OC-E04",
+      "category": "Sales",
+      "record_change_requested": false,
+      "effective_priority": "Routine",
+      "manager_review": false
+    },
+    {
+      "id": "OC-E05",
+      "category": "General",
+      "record_change_requested": true,
+      "effective_priority": "Routine",
+      "manager_review": true
+    }
+  ],
+  "stop_rule": "Each listed case once in order. Raw model priority is diagnostic, not an order-change pass gate: effective saved-rule priority and manager review are the criteria. Stop further model calls at first recognition, typed-output or effective-routing failure; no tuning/retry/full30. Preserve failed candidate. Do not deploy a failed candidate.",
+  "verification": "Execute exact read-back expressions offline on actual classifier responses; review existing predicates; inspect both flow inputs; Save/checker. No fresh Outlook/Dataverse/workflow runtime claim unless actually executed. No old scores rescored; no owner ratings assigned.",
+  "preservation": "Versioned prospective business policy. V1/v2 key/scorers/contracts and prior FAILs unchanged. Raw classification.priority retained separately from effective priority in helper output. Do not use v2 scorer unchanged for v3; it requires raw/effective priority equality."
+}
