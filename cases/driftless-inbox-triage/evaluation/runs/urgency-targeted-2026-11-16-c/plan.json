@@ -1,0 +1,55 @@
+{
+  "label": "urgency-targeted-2026-11-16-c",
+  "policy_version": "driftless-review-draft-policy-v2-2026-11-16",
+  "change_revision": "classifier-urgency-c",
+  "existing_flow_routing_revision": "meaning-first-fixed-support-b",
+  "authorization": "One bounded general urgency correction; preserve failures; only necessary targeted checks; no full30 or features; stop on first targeted failure.",
+  "change": {
+    "old": "Use Urgent only when the actual message contains genuine near-term time pressure requiring prompt attention, such as action needed today, within hours, before an imminent deadline, or for a problem affecting tomorrow.",
+    "new": "Use Urgent when the actual message requires prompt attention because of genuine near-term time pressure, or because delaying review could allow an active or approved business operation to proceed incorrectly and cause an irreversible or costly mistake. A request to stop, hold, cancel, or correct work before it proceeds can establish urgency without an explicit date or time. Assess the supported operational situation, not merely the presence of a change request or forceful wording.\n\nA routine future update, planning-stage revision, general complaint, or information request is Routine when the supplied record supports no near-term deadline or need to prevent an operation from proceeding incorrectly. Do not assume work is already under way merely because an existing order is mentioned."
+  },
+  "unchanged": "All other prompt text,11 fields/schema/confidence0.80,existing record-change policy,flow rules/connections/fixed Support body and input references. No speculative extra prompt expansion.",
+  "max_classifier_calls": 5,
+  "max_drafter_calls": 0,
+  "stop_rule": "One attempt per listed case, in order. Stop further calls and do not revise wording if any preregistered check fails or errors. Test unsaved prompt first; save only if all scoped checks pass. Failed candidate remains archived, not silently deployed.",
+  "expectations": [
+    {
+      "id": "URG-C01",
+      "category": "Support",
+      "priority": "Urgent",
+      "record_change_requested": true,
+      "raw_output_valid": true
+    },
+    {
+      "id": "URG-C02",
+      "category": "Support",
+      "priority": "Urgent",
+      "record_change_requested": true,
+      "raw_output_valid": true
+    },
+    {
+      "id": "URG-C03",
+      "category": "Support",
+      "priority": "Urgent",
+      "record_change_requested": true,
+      "raw_output_valid": true
+    },
+    {
+      "id": "URG-C04",
+      "category": "Support",
+      "priority": "Routine",
+      "record_change_requested": true,
+      "raw_output_valid": true
+    },
+    {
+      "id": "URG-C05",
+      "category": "Sales",
+      "priority": "Routine",
+      "record_change_requested": false,
+      "raw_output_valid": true
+    }
+  ],
+  "scope": "Classifier prompt tests only; inspect existing flow bindings after saving. No mailbox/workflow run, full batch, prior-run rescoring, human ratings or unrelated tests.",
+  "benchmark": "One known regression plus4 fresh preregistered robustness probes; not independent generalization or overall release evidence.",
+  "preservation": "Every existing run/result/score/owner form and scorer/key/contract remains unchanged. Original failed v2 run stays FAIL."
+}

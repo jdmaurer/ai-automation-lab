@@ -1,0 +1,63 @@
+[
+  {
+    "id": "URG-C01",
+    "source_case": "DRI-12",
+    "email_record": {
+      "message_id": "DRI-12",
+      "received_at": "2026-11-09T10:11:00-06:00",
+      "sender": "rosa.martinez@example.com",
+      "subject": "STOP — phone number is wrong on proof",
+      "body": "The proof has our phone number as 555-0136. It should be 555-0163. Please don’t print this version. The proof is attached.",
+      "has_attachments": true,
+      "folder": "Inbox"
+    }
+  },
+  {
+    "id": "URG-C02",
+    "email_record": {
+      "message_id": "URG-C02",
+      "received_at": "2026-11-16T18:00:00-06:00",
+      "sender": "synthetic.customer@example.com",
+      "subject": "Hold the approved brochure job",
+      "body": "Please put the approved brochure job on hold. We discovered that the sponsor list in the approved artwork is incorrect. We will supply corrected artwork before authorizing the job to proceed.",
+      "has_attachments": false,
+      "folder": "Inbox"
+    }
+  },
+  {
+    "id": "URG-C03",
+    "email_record": {
+      "message_id": "URG-C03",
+      "received_at": "2026-11-16T18:00:00-06:00",
+      "sender": "synthetic.customer@example.com",
+      "subject": "Address on shipping paperwork",
+      "body": "Please keep our completed display order from leaving the shop. The delivery address on the paperwork is wrong. I will send the correct destination after I confirm it.",
+      "has_attachments": false,
+      "folder": "Inbox"
+    }
+  },
+  {
+    "id": "URG-C04",
+    "email_record": {
+      "message_id": "URG-C04",
+      "received_at": "2026-11-16T18:00:00-06:00",
+      "sender": "synthetic.customer@example.com",
+      "subject": "Change for next quarter's reorder",
+      "body": "For next quarter's reorder, please update the contact title in our saved order notes from Coordinator to Director. The present job is correct and should proceed unchanged. Nothing needs attention now.",
+      "has_attachments": false,
+      "folder": "Inbox"
+    }
+  },
+  {
+    "id": "URG-C05",
+    "email_record": {
+      "message_id": "URG-C05",
+      "received_at": "2026-11-16T18:00:00-06:00",
+      "sender": "synthetic.customer@example.com",
+      "subject": "URGENT - design preference for a future project",
+      "body": "Could we explore a different border style for a possible poster project next year? No order has been approved and no work is scheduled. There is no rush; I am gathering ideas.",
+      "has_attachments": false,
+      "folder": "Inbox"
+    }
+  }
+]
