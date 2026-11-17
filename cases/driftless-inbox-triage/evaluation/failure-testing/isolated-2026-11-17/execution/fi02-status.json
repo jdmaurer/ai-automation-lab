@@ -1,0 +1,25 @@
+{
+  "case_id": "FI-02",
+  "status": "PUBLISHED_NOT_RUN_BROWSER_BLOCKED",
+  "flow_id": "bca4414b-abe2-f111-84ea-000d3a367f8a",
+  "manual_only": true,
+  "published_ready_observed": true,
+  "run_submitted": false,
+  "runtime_result": null,
+  "model_calls": 0,
+  "mailbox_or_dataverse_writes_this_continuation": 0,
+  "gate_subtree_equal_after_status_case_normalization": true,
+  "recovery_semantics_equal": true,
+  "designer_reference_repairs": [
+    "Restored Category_-_Business_Classification category outputs('Run_a_prompt') reference cleared on action deletion",
+    "Restored Set_-_Needs_Owner_Review_-_AI_Failure runAfter Run_a_prompt Failed/TimedOut"
+  ],
+  "browser_stop": "Opening Test timed out; final editor snapshot had no test panel. No Run flow submission.",
+  "fi01": "PASS_SCOPED_SIMULATED_ACTION_FAILURE_ALREADY_PRESERVED_DO_NOT_REPEAT",
+  "fi03": "NOT_RUN",
+  "fi04": "NOT_RUN",
+  "originals_shared_prompts_connections_edited": false,
+  "accepted_contact_update_limitation": "PRESERVED",
+  "earlier_failed_runs": "PRESERVED",
+  "overall_release": "NOT_ESTABLISHED"
+}

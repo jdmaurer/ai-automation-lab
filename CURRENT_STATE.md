@@ -2,7 +2,19 @@
 
 Canonical baton under AI_HANDOFF_PROTOCOL.md. Active Week 8 case: `cases/driftless-inbox-triage/`. Scope frozen: evaluated/documented SME prototype, no extra features.
 
-## Latest November 17 checkpoint — disabled isolated triage copy SAVED; failure checks NOT RUN
+## Latest November 17 checkpoint — FI-01 scoped PASS; FI-02 setup Published, NOT RUN; browser stopped
+
+Continued the existing isolated triage copy **Driftless ISOLATED Failure Triage 2026-11-17**, ID `bca4414b-abe2-f111-84ea-000d3a367f8a`. This supersedes the older disabled/incomplete-copy checkpoint below. Its published definition is now **manual-only**, not an Inbox subscription; publishing made it On / Instant. Original main, evaluator and weekly flows, shared prompts and connections were not edited.
+
+**FI-01 ran exactly once and passed the scoped simulated action-failure acceptance check.** Cloud run `08584066687962115280420875208CU04` is Failed as deliberately injected: classifier input `@div(1,0)` failed before a model/network call. Actual recovery set owner review, applied Needs Owner Review to the new unsent synthetic source draft, and updated the same Start row to Failed/Unknown/Pending, follow-up open, draft-created false. Ordinary validation/reply/drafter paths were skipped. One source fixture draft, zero reply drafts/model calls/sends. This is not a real provider outage/timeout test. [FI-01 result](cases/driftless-inbox-triage/evaluation/failure-testing/isolated-2026-11-17/execution/FI-01.md), preserved result commit `9d7b2eb72eecb1d7f92a8b21fe0548fba61b562e`.
+
+**FI-02 saved and Published; NOT RUN.** Replaced only the copied classifier with a Compose boundary named Run a prompt, retaining the response envelope but confidence string `invalid`. Restored the category input cleared by the designer and the copied AI-failure dependency (Run_a_prompt Failed/TimedOut). Full Validate subtree matches FI-01 source after status-capitalization normalization; recovery semantics unchanged. [One-run preregistration, fixture and action snapshots](cases/driftless-inbox-triage/evaluation/failure-testing/isolated-2026-11-17/execution/fi02-preregistered.json), commit `6cb6e8b6abf1ba6e9d11743c00cfd3cdde091555`. Saved banner then Published/ready observed. Opening Test timed out; final snapshot still editor, no test panel. No Run flow submission or FI-02 execution/model call/mailbox/Dataverse write occurred.
+
+Stopped further browser work after control timed out. FI-03 and FI-04 remain NOT RUN; weekly isolated copy not created. Preserve all earlier failed runs, baseline and accepted contact-update false positive unchanged. Owner judgments still pending; full release NOT_ESTABLISHED.
+
+**Single next action:** when control is reliable, inspect this same manual-only copy's run history for any unexpected run, then execute preregistered FI-02 once with its saved pin data. Require actual review/failure logging and no reply draft; validation error without recovery is FAIL and requires stopping. Do not repeat FI-01, resubmit old runs, rebuild copies, change shared prompts/original flows or repeat completed normal/full30 tests. FI-03/FI-04 follow only if FI-02 passes and control remains reliable.
+
+## Earlier November 17 checkpoint — disabled isolated triage copy SAVED; failure checks NOT RUN
 
 Josh explicitly requested reconnecting and continuing the same four pending failure checks. Browser binding initially recovered. Created **Driftless ISOLATED Failure Triage 2026-11-17**, ID `bca4414b-abe2-f111-84ea-000d3a367f8a`; My flows showed Disabled / toggle false.
 

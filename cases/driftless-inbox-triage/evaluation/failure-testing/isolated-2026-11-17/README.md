@@ -1,5 +1,18 @@
 # Isolated failure checks — November 17, 2026
 
+## Latest continuation — FI-01 scoped PASS; FI-02 Published, NOT RUN
+
+Existing triage copy `bca4414b-abe2-f111-84ea-000d3a367f8a` is now manual-only and Published (On / Instant); no Inbox subscription. A source fixture is a new unsent lab draft whose actual ID is used for lookup/log/review marker. Replies are also unsent and lab-restricted. Originals/shared prompts/connections unchanged.
+
+- **FI-01 scoped PASS, one execution:** [actual result and boundaries](execution/FI-01.md), cloud Failed run `08584066687962115280420875208CU04` retained. Division by zero before model/network; actual marker and same-row Failed/Unknown/no-reply recovery succeeded.
+- **FI-02 Published, NOT RUN:** [preregistration](execution/fi02-preregistered.json), [pin data](execution/fi02-pin-data.json), [action definitions](execution/fi02-action-snapshots.json), [stopping status](execution/fi02-status.json). Compose with malformed confidence, original gate/recovery preserved. No runtime pass.
+- **FI-03/FI-04 NOT RUN:** weekly copy not created.
+
+Browser timed out opening Test after publication. Final editor snapshot showed Published/ready, no test panel; no Run flow submission. Stopped without further retries. Resume same copy, inspect run history, then FI-02 once if reliable. Gate runtime error without actual review/failure handling is FAIL and stop. Do not repeat FI-01, prior normal/full30 tests, change originals/shared prompts, or tune accepted contact limitation.
+
+## Earlier setup attempts — historical
+
+
 ## Latest continuation — one disabled triage copy saved; no tests
 
 Browser binding worked on Josh's explicit retry. Created **Driftless ISOLATED Failure Triage 2026-11-17**, ID `bca4414b-abe2-f111-84ea-000d3a367f8a`, using Save As. The creation dialog said copies are off by default; My flows showed this exact copy Disabled with its Enabled toggle false.

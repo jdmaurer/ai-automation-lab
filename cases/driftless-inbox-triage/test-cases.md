@@ -391,3 +391,10 @@ Josh accepted contact-update false urgency as a noncritical limitation and autho
 ## November 16 — Order-change v3 publication verification only
 
 Josh authorized publishing both saved drafts, no tests. Main/helper each Published/ready; main completion-priority JSON and complete helper Scope match saved evidence. Both classifier/drafter prompt IDs, normalized-email and classification inputs verified unchanged. No configuration edits, model/drafter calls, manual workflow/mailbox/full30 tests, previews or rescoring. [Publication evidence](evaluation/configuration/order-change-policy-v3-publication-2026-11-16/README.md). Accepted contact false positive retained; original E4/5 exact/3of3 order results and all prior FAILs/ratings preserved. No fresh runtime/quality/release pass inferred.
+
+
+## November 17 — Isolated failure coverage: FI-01 scoped PASS; FI-02..04 NOT RUN
+
+FI-01 preregistered `bb85b9c6dc26c2f70edc86f6b86df827abb35c42`, actual cloud run `08584066687962115280420875208CU04` on manual-only copy `bca4414b-abe2-f111-84ea-000d3a367f8a`. Division by zero simulated classifier-action failure before a model call. Actual review setter/category marker and same-row Failed/Unknown/Pending, follow-up open, draft-created false recovery succeeded; ordinary reply/drafter path skipped. One synthetic unsent source draft, zero reply drafts/model calls/sends. Scoped PASS; cloud Failed preserved, not real-provider-outage proof. [FI-01 actual evidence](evaluation/failure-testing/isolated-2026-11-17/execution/FI-01.md).
+
+FI-02 preregistered `6cb6e8b6abf1ba6e9d11743c00cfd3cdde091555`: copied Compose boundary returns confidence string invalid. Original gate subtree and recovery semantics preserved; restored designer-cleared category input and dependency before publishing. Saved/Published verified, browser timed out opening Test, no run submission. FI-02/03/04 NOT RUN; no weekly copy. Stop on malformed-output recovery failure, no tuning loop. Earlier runs/accepted limitation/owner judgments unchanged; no full release pass.

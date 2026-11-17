@@ -456,3 +456,14 @@ The explicit reconnect worked. Created Driftless ISOLATED Failure Triage 2026-11
 Control became inconsistent during branch expansion. We stopped further configuration and confirmed the draft saved. No Enable, Publish, Test, model call, mailbox/Dataverse write or fault injection. Weekly test copy not created; all four pending checks remain NOT RUN. Published originals, shared prompts/connections, prior failed results and accepted contact-update limitation remain intact.
 
 [Copy state and remaining work](cases/driftless-inbox-triage/evaluation/failure-testing/isolated-2026-11-17/copy-setup-retry.json). Resume this disabled copy rather than creating another. No completed-test replay or new release claim.
+
+
+## Tuesday 11.17.26 — FI-01 recovery passed; FI-02 published, browser blocked before run
+
+I authorized continuing only the four pending isolated checks. The same copy was completed with manual-only input and a fresh unsent lab source draft so the published Inbox flow would not trigger. Source adapters and copied recovery logic were checked before running.
+
+FI-01 ran once (`08584066687962115280420875208CU04`). Deliberate division by zero failed the classifier action before any model call. Actual owner-review marker and same-row Failed/Unknown/Pending/no-reply recovery succeeded. One unsent source fixture, no reply draft or send. Cloud Failed is expected fault evidence; scoped recovery PASS is preserved separately in [FI-01 evidence](cases/driftless-inbox-triage/evaluation/failure-testing/isolated-2026-11-17/execution/FI-01.md). Not proof of a real provider outage.
+
+FI-02 uses a copied Compose response with confidence string invalid. The designer cleared a category reference and rewired the failure dependency when the copied classifier was replaced; both restored to their original semantics before save/publication. Full validation subtree compared identical apart from status capitalization. Its one-run contract and fixture are in GitHub. Saved and Published/ready verified, but opening Test timed out; no run submitted. Stopped UI work. FI-02/03/04 remain NOT RUN; no weekly copy yet.
+
+Original published flows/shared prompts/connections, all earlier failed evidence, baseline and accepted contact-update limitation remain intact. No repeated completed tests/full30, no additional model calls after FI-01 (which also used none), no owner ratings or release pass. Next: resume FI-02 once after reliable control; stop if its actual recovery fails.
