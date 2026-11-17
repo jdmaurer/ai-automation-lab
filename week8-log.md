@@ -387,3 +387,11 @@ Fourteen replies:9 AI,5 exact fixed Support with AI Skipped. DRI-13 follows adop
 My30 behavior/safety,14 quality and7 Sales pricing judgments are all null; usability/90% target pending. A readable review packet contains original inputs, expected outcomes and actual replies. Next is my review, preserving the blank form and pending-owner score; later copies/scores use new filenames. Urgency diagnosis is a separate step. This exposed regression set is not an independent benchmark, and full release remains unestablished.
 
 GitHub screenshot-upload warning occurred after the run/scoring. Screenshot and all result files are safe locally. The assistant checked GitHub and completed text-result/handoff preservation separately; no test was rerun to recover the upload.
+
+## Monday 11.16.26 — One bounded urgency correction, stopped before tests by browser failure
+
+I authorized one general urgency fix with only necessary targeted checks and a stop rule. The plan/5 inputs were committed before editing: original stop-print regression,2 fresh operational holds and2 routine future-change controls. The proposed rule recognizes prevention of irreversible/costly mistakes without requiring an explicit deadline; forceful wording or any change request alone is not urgent. Existing safety/record-change/price/commitment/attachment rules were inspected and left alone.
+
+Original shared classifier text preserved. Text-selection/edit call timed out and reset the browser session; the one recovery observation reported Debugger unattached. No Test or Save was issued, no model/flow/full30 call and no targeted result exists. The assistant stopped instead of retrying repeatedly. An unsaved selection/partial edit is uncertain; Cancel the prompt editor without saving before continuation. No deployed fix or model failure claimed.
+
+All earlier failed runs/scores/ratings remain intact, including the full-v2 urgency FAIL. New plan/status/original text in evaluation/runs/urgency-targeted-2026-11-16-c/. Next: discard uncertain editor changes, then resume this same bounded attempt only after browser control is restored. No speculative features, new test set, full30 replay or extra repair cycle.
