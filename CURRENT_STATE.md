@@ -2,7 +2,19 @@
 
 Canonical baton under AI_HANDOFF_PROTOCOL.md. Active Week 8 case: `cases/driftless-inbox-triage/`. Scope frozen: evaluated/documented SME prototype, no extra features.
 
-## Latest November 17 checkpoint — isolated failure tests BLOCKED before copy creation
+## Latest November 17 checkpoint — disabled isolated triage copy SAVED; failure checks NOT RUN
+
+Josh explicitly requested reconnecting and continuing the same four pending failure checks. Browser binding initially recovered. Created **Driftless ISOLATED Failure Triage 2026-11-17**, ID `bca4414b-abe2-f111-84ea-000d3a367f8a`; My flows showed Disabled / toggle false.
+
+**Saved draft only:** copied Inbox trigger removed, manual trigger added with fixture_json input, Normalize adapter `@json(triggerBody()?['text'])` and escaped lookup filter verified in Code view, Start log Message ID/Received At fields entered as normalized-reference tokens. Other copied trigger references/required fields still need adaptation/verification; **not ready to Publish/Test**. Do not enable its older copied published Inbox definition. No fault injection installed yet.
+
+Designer control became inconsistent while expanding branches; stopped further configuration, saved Draft and verified “We saved your draft flow. You can test and run it after you publish.” [Continuation evidence](cases/driftless-inbox-triage/evaluation/failure-testing/isolated-2026-11-17/copy-setup-retry.json), [same four-check plan](cases/driftless-inbox-triage/evaluation/failure-testing/isolated-2026-11-17/plan.json).
+
+**One copy created; weekly copy not created; FI-01..FI-04 all NOT RUN.** Zero Test/Publish/Enable/model calls/mailbox or Dataverse writes. No original-flow/shared-prompt/connection edit. All failed runs, exported baseline, accepted contact-update limitation and owner judgments preserved.
+
+**Single next action:** resume this existing disabled copy only after reliable browser control; verify manual trigger schema/internal key and all adapted references/source diff before any activation/run. Do not create another duplicate, repeat completed tests, edit the original/shared prompt, or call setup progress a failure-test pass.
+
+## Earlier November 17 checkpoint — isolated failure tests BLOCKED before copy creation
 
 Josh authorized isolated failure testing in separate copies, preserving published originals, all failed runs and the accepted contact-update limitation; no completed-test replay.
 

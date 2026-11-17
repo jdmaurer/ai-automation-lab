@@ -1,5 +1,20 @@
 # Isolated failure checks — November 17, 2026
 
+## Latest continuation — one disabled triage copy saved; no tests
+
+Browser binding worked on Josh's explicit retry. Created **Driftless ISOLATED Failure Triage 2026-11-17**, ID `bca4414b-abe2-f111-84ea-000d3a367f8a`, using Save As. The creation dialog said copies are off by default; My flows showed this exact copy Disabled with its Enabled toggle false.
+
+In its draft only, removed the copied Inbox trigger, added a manual trigger with fixture_json text input, set Normalize to `@json(triggerBody()?['text'])`, adapted the lookup filter and entered normalized Message ID/Received At bindings in the Start log. Code view confirmed the Normalize expression and lookup filter; Start fields showed the entered tokens. Replacing the trigger cleared original dynamic tokens in Normalize and some direct connector fields. Remaining bindings must be inspected/adapted before any run; the draft is **not ready for Publish/Test**.
+
+The designer later behaved inconsistently: the Expand all action groups click left the Processing Outcome dropdown open rather than expanding branches. No option change was observed. Stopped configuration, dismissed the dropdown, saved Draft and observed the explicit saved banner. No Enable, Publish, Test, model call, mailbox/Dataverse write or fault injection. The older published definition of this disabled copy may still contain the Inbox trigger; **do not turn it on**.
+
+**One triage copy exists; weekly copy not created; FI-01..FI-04 all NOT RUN.** Original published flows/shared prompts/connections and earlier evidence/accepted limitation untouched.
+
+[Exact continuation record](copy-setup-retry.json). Resume this existing copy, not another duplicate. Verify the manual schema, remaining trigger references, exact source diff, fault boundaries and fixture destinations before publication/test. Then create the separate weekly copy and run only the pending four checks if control remains reliable. Initial blocked attempt below is historical and remains preserved.
+
+
+## Initial attempt — historical
+
 **Prepared, not executed. Browser blocked before copy creation. No new test result or pass.**
 
 Josh authorized four outstanding failure paths using a separate copy, preserving the published flows, earlier failed runs and accepted contact-update limitation. The exported baseline at commit d82930b6bd244488a665f767f1c176131d31d6ea is the source checkpoint.

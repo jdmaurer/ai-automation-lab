@@ -1,0 +1,52 @@
+{
+  "continuation": "connection-retry-2026-11-17",
+  "status": "COPY_SETUP_SAVED_NOT_READY_FOR_TEST",
+  "authorization": "Reconnect; if control works create isolated copies and run only four pending checks; preserve published flows, failed runs and accepted limitation.",
+  "source_commit": "c69f4a8e982b8a4759055a3e626200d844dac57f",
+  "triage_copy": {
+    "name": "Driftless ISOLATED Failure Triage 2026-11-17",
+    "id": "bca4414b-abe2-f111-84ea-000d3a367f8a",
+    "editor_url": "https://make.powerautomate.com/environments/88301e40-6106-ee47-900c-67a24cbc121e/solutions/~preferred/flows/bca4414b-abe2-f111-84ea-000d3a367f8a?v3=true",
+    "disabled_status_observed_in_My_flows": true,
+    "enabled_or_run_by_assistant": false,
+    "saved_status": "Draft",
+    "saved_banner": "We saved your draft flow. You can test and run it after you publish.",
+    "copied_inbox_trigger_removed_from_saved_draft": true,
+    "manual_trigger_added": true,
+    "manual_input_label": "fixture_json",
+    "normalization_code_view_verified": {
+      "type": "Compose",
+      "inputs": "@json(triggerBody()?['text'])",
+      "runAfter": {}
+    },
+    "lookup_filter_code_view_verified": "jdm_messageid eq '@{replace(outputs('Normalize_-_Email_Fields')?['message_id'],decodeUriComponent('%27'),decodeUriComponent('%27%27'))}'",
+    "start_log_fields_entered_and_visible_as_tokens": {
+      "Message ID": "outputs('Normalize_-_Email_Fields')?['message_id']",
+      "Received At": "outputs('Normalize_-_Email_Fields')?['received_at']"
+    },
+    "ready_for_publish_or_test": false,
+    "pending": "Verify manual schema/internal key, all copied trigger references and required inputs; record source diff and fault injection before publish/run. Do not enable the copied older published Inbox-trigger definition."
+  },
+  "weekly_copy": {
+    "created": false
+  },
+  "runtime_checks": {
+    "FI01": "NOT_RUN",
+    "FI02": "NOT_RUN",
+    "FI03": "NOT_RUN",
+    "FI04": "NOT_RUN"
+  },
+  "browser_observation": "Initial binding recovered. One loaded-card click required re-observation after a dispatch timeout. Later Expand all action groups click left Processing Outcome dropdown open instead of expanding groups; no option change observed. Stopped further configuration, dismissed dropdown, saved Draft and verified saved banner. No Test/Publish/Enable.",
+  "original_flow_edits": 0,
+  "shared_prompt_edits": 0,
+  "connection_remaps": 0,
+  "model_calls": 0,
+  "tests": 0,
+  "mailbox_or_dataverse_writes": 0,
+  "accepted_contact_limitation_unchanged": true,
+  "previous_failed_runs_unchanged": true,
+  "evidence_local": [
+    "copy-draft-saved.jpg",
+    "copy-draft-visible-state.txt"
+  ]
+}

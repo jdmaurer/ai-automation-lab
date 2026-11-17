@@ -447,3 +447,12 @@ I authorized separate-copy failure testing, keeping published flows, failed evid
 The browser inventory worked, but opening the Power Automate tab for copy controls returned Debugger unattached. We stopped without retries or alternate automation. No copy was created, no test/model ran, and no published flow, shared prompt, connection, mailbox or Dataverse row changed. The plan and fixture JSON are preserved in [the failure-check packet](cases/driftless-inbox-triage/evaluation/failure-testing/isolated-2026-11-17/README.md); actual results remain NOT RUN.
 
 Next is restoring browser access and creating verified manual-only copies before the four pending checks. No completed test replay, accepted-limitation tuning or new release claim.
+
+
+## Tuesday 11.17.26 — Reconnected; one disabled failure-test copy saved
+
+The explicit reconnect worked. Created Driftless ISOLATED Failure Triage 2026-11-17 (bca4414b-abe2-f111-84ea-000d3a367f8a), confirmed Disabled in My flows. Its draft now has a manual trigger instead of the copied Inbox trigger, a typed fixture adapter, an adapted escaped lookup and Start-row identifier/date fields. Replacing the trigger clears some original dynamic tokens, so remaining bindings still need inspection; the copy is not ready to publish or test.
+
+Control became inconsistent during branch expansion. We stopped further configuration and confirmed the draft saved. No Enable, Publish, Test, model call, mailbox/Dataverse write or fault injection. Weekly test copy not created; all four pending checks remain NOT RUN. Published originals, shared prompts/connections, prior failed results and accepted contact-update limitation remain intact.
+
+[Copy state and remaining work](cases/driftless-inbox-triage/evaluation/failure-testing/isolated-2026-11-17/copy-setup-retry.json). Resume this disabled copy rather than creating another. No completed-test replay or new release claim.
