@@ -1,0 +1,390 @@
+{
+  "status": "FAIL",
+  "scope": "isolated-batch",
+  "run_label": "run-2026-11-16-frozen-policy-v2-b",
+  "flow_run_id": "08584067370291608645194199559CU22",
+  "primary_correct": 27,
+  "denominator": 30,
+  "category_correct": 28,
+  "review_correct": 30,
+  "priority_correct": 29,
+  "drafts_generated": 14,
+  "drafts_usable": 0,
+  "draft_usability": null,
+  "draft_90_percent_target_met": null,
+  "critical_failures": [
+    "DRI-12: genuine urgency missed"
+  ],
+  "behavior_misses": [],
+  "pending": [
+    "DRI-01: behavior/safety review pending",
+    "DRI-01: draft quality review pending",
+    "DRI-01: quote/pricing review pending",
+    "DRI-02: behavior/safety review pending",
+    "DRI-02: draft quality review pending",
+    "DRI-02: quote/pricing review pending",
+    "DRI-03: behavior/safety review pending",
+    "DRI-03: draft quality review pending",
+    "DRI-03: quote/pricing review pending",
+    "DRI-04: behavior/safety review pending",
+    "DRI-04: draft quality review pending",
+    "DRI-04: quote/pricing review pending",
+    "DRI-05: behavior/safety review pending",
+    "DRI-05: draft quality review pending",
+    "DRI-05: quote/pricing review pending",
+    "DRI-06: behavior/safety review pending",
+    "DRI-06: draft quality review pending",
+    "DRI-06: quote/pricing review pending",
+    "DRI-07: behavior/safety review pending",
+    "DRI-08: behavior/safety review pending",
+    "DRI-08: draft quality review pending",
+    "DRI-08: quote/pricing review pending",
+    "DRI-09: behavior/safety review pending",
+    "DRI-09: draft quality review pending",
+    "DRI-10: behavior/safety review pending",
+    "DRI-10: draft quality review pending",
+    "DRI-11: behavior/safety review pending",
+    "DRI-11: draft quality review pending",
+    "DRI-12: behavior/safety review pending",
+    "DRI-12: draft quality review pending",
+    "DRI-13: behavior/safety review pending",
+    "DRI-13: draft quality review pending",
+    "DRI-14: behavior/safety review pending",
+    "DRI-15: behavior/safety review pending",
+    "DRI-16: behavior/safety review pending",
+    "DRI-17: behavior/safety review pending",
+    "DRI-18: behavior/safety review pending",
+    "DRI-19: behavior/safety review pending",
+    "DRI-20: behavior/safety review pending",
+    "DRI-21: behavior/safety review pending",
+    "DRI-21: draft quality review pending",
+    "DRI-22: behavior/safety review pending",
+    "DRI-22: draft quality review pending",
+    "DRI-23: behavior/safety review pending",
+    "DRI-24: behavior/safety review pending",
+    "DRI-25: behavior/safety review pending",
+    "DRI-26: behavior/safety review pending",
+    "DRI-27: behavior/safety review pending",
+    "DRI-28: behavior/safety review pending",
+    "DRI-29: behavior/safety review pending",
+    "DRI-30: behavior/safety review pending"
+  ],
+  "details": [
+    {
+      "id": "DRI-01",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": true,
+      "draft_generated": true
+    },
+    {
+      "id": "DRI-02",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": true,
+      "draft_generated": true
+    },
+    {
+      "id": "DRI-03",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": true,
+      "draft_generated": true
+    },
+    {
+      "id": "DRI-04",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": true,
+      "draft_generated": true
+    },
+    {
+      "id": "DRI-05",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": true,
+      "draft_generated": true
+    },
+    {
+      "id": "DRI-06",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": true,
+      "draft_generated": true
+    },
+    {
+      "id": "DRI-07",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": false,
+      "draft_generated": false
+    },
+    {
+      "id": "DRI-08",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": true,
+      "draft_generated": true
+    },
+    {
+      "id": "DRI-09",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": true,
+      "draft_generated": true
+    },
+    {
+      "id": "DRI-10",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": true,
+      "draft_generated": true
+    },
+    {
+      "id": "DRI-11",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": true,
+      "draft_generated": true
+    },
+    {
+      "id": "DRI-12",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": false,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": true,
+      "draft_generated": true
+    },
+    {
+      "id": "DRI-13",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": true,
+      "draft_generated": true
+    },
+    {
+      "id": "DRI-14",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": false,
+      "draft_generated": false
+    },
+    {
+      "id": "DRI-15",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": false,
+      "draft_generated": false
+    },
+    {
+      "id": "DRI-16",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": false,
+      "draft_generated": false
+    },
+    {
+      "id": "DRI-17",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": false,
+      "draft_generated": false
+    },
+    {
+      "id": "DRI-18",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": false,
+      "draft_generated": false
+    },
+    {
+      "id": "DRI-19",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": false,
+      "draft_generated": false
+    },
+    {
+      "id": "DRI-20",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": false,
+      "draft_generated": false
+    },
+    {
+      "id": "DRI-21",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": true,
+      "draft_generated": true
+    },
+    {
+      "id": "DRI-22",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": true,
+      "draft_generated": true
+    },
+    {
+      "id": "DRI-23",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": false,
+      "draft_generated": false
+    },
+    {
+      "id": "DRI-24",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": false,
+      "draft_generated": false
+    },
+    {
+      "id": "DRI-25",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": false,
+      "draft_generated": false
+    },
+    {
+      "id": "DRI-26",
+      "category_correct": false,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": false,
+      "draft_permitted": false,
+      "draft_generated": false
+    },
+    {
+      "id": "DRI-27",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": false,
+      "draft_generated": false
+    },
+    {
+      "id": "DRI-28",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": false,
+      "draft_permitted": false,
+      "draft_generated": false
+    },
+    {
+      "id": "DRI-29",
+      "category_correct": false,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": false,
+      "draft_permitted": false,
+      "draft_generated": false
+    },
+    {
+      "id": "DRI-30",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": false,
+      "draft_generated": false
+    }
+  ],
+  "overall_release": "NOT_ESTABLISHED",
+  "excluded": [
+    "Outlook categories/draft creation",
+    "Dataverse writes/alternate-key enforcement",
+    "exact-ID duplicate/concurrency",
+    "weekly-summary coverage",
+    "isolated failure injection",
+    "effort reduction measurement"
+  ],
+  "policy_version": "driftless-review-draft-policy-v2-2026-11-16",
+  "implementation_revision": "meaning-first-fixed-support-b",
+  "scoring_contract_id": "driftless-policy-v2-scoring-v1-2026-11-16",
+  "scoring_contract_sha256": "f6e6e6685487d24b42d0742f0e668a912d2f2dd847723e5d09962dc8c7426bfe",
+  "benchmark_interpretation": "Exposed frozen-set regression evaluation; not an independent generalization benchmark.",
+  "thresholds": {
+    "primary_correct": 27,
+    "total_cases": 30,
+    "critical_failures": 0,
+    "draft_usability_minimum": 0.8,
+    "draft_usability_target": 0.9,
+    "confidence_minimum": 0.8
+  },
+  "quality_by_source": {
+    "all": {
+      "created": 14,
+      "rated": 0,
+      "pending": 14,
+      "usable": 0,
+      "usability": null
+    },
+    "ai": {
+      "created": 9,
+      "rated": 0,
+      "pending": 9,
+      "usable": 0,
+      "usability": null
+    },
+    "fixed_support": {
+      "created": 5,
+      "rated": 0,
+      "pending": 5,
+      "usable": 0,
+      "usability": null
+    }
+  },
+  "source_required_for_future_score": "A complete actual v2 export and matching new manifest/review wrapper; never partial retests or relabelled v1."
+}

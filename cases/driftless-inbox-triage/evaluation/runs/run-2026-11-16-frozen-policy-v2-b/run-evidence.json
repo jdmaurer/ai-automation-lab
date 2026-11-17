@@ -1,0 +1,35 @@
+{
+  "run_label": "run-2026-11-16-frozen-policy-v2-b",
+  "flow_run_id": "08584067370291608645194199559CU22",
+  "preregistration_commit": "cdfa2deed28320096b1f83c405a2877f94173546",
+  "cloud_status": "Succeeded",
+  "ui_scope_duration": "1m 16s",
+  "ui_loop_duration": "1m 15s",
+  "export_time_ui": "2026-11-16 16:58:52 America/Chicago",
+  "collection": "Export - Evaluation Results raw-output editor selected/copied in full; unchanged JSON saved with one trailing newline. Stale Copy Outputs clipboard rejected, never saved/scored.",
+  "input_count": 30,
+  "result_count": 30,
+  "input_order_hash_and_v2_provenance_validated": true,
+  "status": "FAIL",
+  "primary": 27,
+  "category": 28,
+  "review": 30,
+  "priority": 29,
+  "critical": [
+    "DRI-12: genuine urgency missed"
+  ],
+  "classifier_status": {
+    "Succeeded": 29,
+    "Failed": 1
+  },
+  "reply_source": {
+    "ai-non-support": 9,
+    "fixed-support": 5,
+    "none": 16
+  },
+  "owner_judgments": "All null, unchanged from preregistration",
+  "draft_usability": null,
+  "overall_release": "NOT_ESTABLISHED",
+  "screenshot": "Saved locally; GitHub blob upload did not complete.",
+  "no_additional_tests_or_edits": true
+}

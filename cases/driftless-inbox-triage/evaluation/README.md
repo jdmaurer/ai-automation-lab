@@ -1,12 +1,18 @@
 # Frozen 30-message evaluation
 
-## Current scoring contract — November 16, 2026
+## Latest actual result — policy v2, November 16, 2026
+
+**Full30 complete; acceptance FAIL.** Run `08584067370291608645194199559CU22`, label `run-2026-11-16-frozen-policy-v2-b`. Packet preregistered before execution; original inputs/order/hash and v2 metadata validated. Primary27/30, category28/30, review30/30, priority29/30. Critical failure DRI-12 missed genuine urgency. DRI-26/29 category misses and DRI-28 safe classifier failure retained.14 replies:9 AI +5 fixed Support with exact literal/AI Skipped. Owner judgments all null, quality/90% target pending; overall release NOT_ESTABLISHED.
+
+[Review packet](runs/run-2026-11-16-frozen-policy-v2-b/review-packet.md), [actual results](runs/run-2026-11-16-frozen-policy-v2-b/actual-results.json), [pending-owner score](runs/run-2026-11-16-frozen-policy-v2-b/score-policy-v2-pending-owner.json). No earlier artifact overwritten/rescored, no retries or other completed-test replay. Next: Josh's review. Exposed regression evidence, not independent generalization.
+
+## Scoring contract setup checkpoint — November 16, 2026
 
 Policy v2/revision B is published. The separate [policy-v2 scoring guide](POLICY_V2_SCORING.md), [contract](policy-v2-scoring-contract.json) and `evaluate-policy-v2.mjs` are ready for a later authorized run. Twelve new artificial offline tooling checks passed; no new real run was prepared, executed or scored. V1 inputs/key/scorer/tests and every previous failed run remain unchanged.
 
 Use the v2 guide for prospective v2 scoring. The v1 result and procedures below are historical; do not follow their old next-fix instructions or use the old scorer for v2. Null owner judgments remain pending. A later exposed frozen-set run cannot establish independent generalization or overall release.
 
-## Latest actual result — November 16, 2026
+## Historical v1 actual result — November 16, 2026
 
 **Helper PUBLISHED; first formal batch completed; acceptance FAIL.** Run `08584067626552952412210788760CU18`, label `run-2026-11-14-frozen-v1`, 30 actual records, 16 generated replies. Primary25/30; exact category26/30, review27/30, priority28/30. DRI-13/27/30 each omitted required review and generated a prohibited draft. DRI-28 classifier Failed/BadRequest was captured safely (review/no draft), with detailed cause still unavailable. Overall cloud execution success does not establish acceptance.
 

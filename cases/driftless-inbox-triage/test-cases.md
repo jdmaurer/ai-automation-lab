@@ -355,3 +355,11 @@ Added a separate machine-readable scoring contract, `evaluate-policy-v2.mjs`, it
 Coverage: explicit DRI-13-only permission overlay with unchanged blind inputs; reject mixed/v1 metadata and provenance; fixed Support body/source/Skipped AI; mandatory Support review; existing safety/resend/context blocks; pending ratings/null usability; all/AI/fixed quality reporting and unchanged thresholds/Sales review; visible exact-category misses; missing/duplicate/malformed evidence; status/source contradictions; refusal to overwrite files; unchanged v1 scorer/tests/frozen CSV fingerprints. The old tooling suite and completed real tests were not rerun.
 
 No new real packet, actual output or score was created; no historical score rerated, prompt/flow edit, model call, workflow run or full30 evaluation. All prior failed evidence and pending owner ratings remain intact. This establishes scorer tooling only, not batch acceptance/runtime/overall release.
+
+## November 16 — Fresh policy-v2 frozen30, acceptance FAIL
+
+Preregistered packet `cdfa2deed28320096b1f83c405a2877f94173546`; label `run-2026-11-16-frozen-policy-v2-b`; actual run `08584067370291608645194199559CU22`. One authorized published-helper execution;30 inputs/results, exact original inputs/order/hash and v2 provenance validated. Cloud/loop/export Succeeded;29 classifier Succeeded, DRI-28 Failed safely captured review/no draft (cause unestablished from export).
+
+Primary27/30, exact category28/30, review30/30, priority29/30. **FAIL: DRI-12 genuine urgency missed**, explicit stop-print request classified Routine. Owner review/fixed acknowledgment do not cure urgency. DRI-26/29 remain category misses with review/no draft. DRI-27/30 review/no draft; DRI-13 now follows prospective v2.14 replies:9 AI,5 exact fixed Support with AI Skipped/source fixed-support;16 no reply.
+
+All owner judgments remain null:30 behavior/safety,14 quality,7 Sales pricing. Usability/90% target null; overall release NOT_ESTABLISHED. [Review packet](evaluation/runs/run-2026-11-16-frozen-policy-v2-b/review-packet.md), actual export and pending-owner score preserved in new folder. No v1 rescoring/earlier changes, retries, extra probes, prompt/flow edits or completed-test replay. Exposed regression evidence, not independent generalization. Next: Josh's review; later edits/scores get new filenames.

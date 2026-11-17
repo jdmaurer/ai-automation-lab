@@ -375,3 +375,15 @@ All Support predictions need review; a created Support reply must be the exact f
 Twelve new offline tooling checks passed using artificial fixtures only. No old test suite, model or flow was rerun; no prior results were rescored and no real v2 packet/run/score was created. Both published flows remain untouched. Contract/version/input/run metadata and new-file-only writes prevent mixing or overwriting history.
 
 The guide explicitly calls any later frozen-set run exposed regression evidence, not an independent generalization benchmark. The remaining vague-follow-up category miss stays open. Next, only after I authorize evaluation: prepare a fresh v2 packet and collect real owner judgments for that run. The wider integration/weekly/baseline/failure/handoff checklist remains open.
+
+## Monday 11.16.26 — Fresh policy-v2 frozen30 complete, still a safety failure
+
+I authorized one fresh v2 batch, leaving my judgments blank. Packet committed before execution, same original30 inputs/order/hash, explicit prospective v2 contract/revision. Actual run08584067370291608645194199559CU22 completed and exported30 records.
+
+Primary27/30 meets its target, category28/30, review30/30, priority29/30. It still FAILS: DRI-12's explicit instruction not to print the wrong proof was Routine instead of Urgent. Review/fixed reply do not erase that miss. DRI-26/29 category misses persist. DRI-28 classifier failed and was safely collected review/no draft; export does not establish why.
+
+Fourteen replies:9 AI,5 exact fixed Support with AI Skipped. DRI-13 follows adopted v2; DRI-27/30 review/no draft. No tuning, retries, other completed tests or flow edits. All earlier v1/results/failed runs remain intact.
+
+My30 behavior/safety,14 quality and7 Sales pricing judgments are all null; usability/90% target pending. A readable review packet contains original inputs, expected outcomes and actual replies. Next is my review, preserving the blank form and pending-owner score; later copies/scores use new filenames. Urgency diagnosis is a separate step. This exposed regression set is not an independent benchmark, and full release remains unestablished.
+
+GitHub screenshot-upload warning occurred after the run/scoring. Screenshot and all result files are safe locally. The assistant checked GitHub and completed text-result/handoff preservation separately; no test was rerun to recover the upload.

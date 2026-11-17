@@ -2,7 +2,23 @@
 
 Canonical baton under AI_HANDOFF_PROTOCOL.md. Active Week 8 case: `cases/driftless-inbox-triage/`. Scope frozen: evaluated/documented SME prototype, no extra features.
 
-## Latest November 16 checkpoint — policy v2 scoring contract READY; no new evaluation run
+## Latest November 16 checkpoint — policy-v2 full30 complete; FAIL, owner judgments pending
+
+Josh authorized a fresh packet/full30 evaluation only. Packet preregistered in `cdfa2deed28320096b1f83c405a2877f94173546` before execution. Label `run-2026-11-16-frozen-policy-v2-b`; actual helper run `08584067370291608645194199559CU22`. Published helper ran once; cloud execution/loop/export Succeeded. Original30 blind inputs/order/hash and policy/revision/source/prompt/helper/run provenance validated by the separate v2 scorer.
+
+**Fixed-rule result: FAIL.** Primary27/30 (target27); exact category28/30, review30/30, priority29/30. One machine-detected critical failure: **DRI-12 genuine urgency missed** — explicit stop-print/wrong-proof message classified Support/Routine instead of Urgent. Review/fixed reply do not erase this failure. DRI-26 expected Internal/actual Support and DRI-29 expected Unknown/actual Finance remain category misses, both review/no draft. DRI-28 classifier Failed/empty classification was safely captured review/no draft; fallback category matches but earns no primary successful-processing credit. Cause unestablished from export.29 classifier actions Succeeded, one Failed.
+
+14 replies collected:9 AI non-Support +5 exact fixed Support (DRI-09/10/11/12/13), with source fixed-support and actual AI drafter Skipped;16 no reply. DRI-13 conforms to prospective v2; DRI-27/30 review/no draft. This is isolated helper runtime evidence, not new main Outlook/Dataverse proof.
+
+All Josh judgments remain null:30 behavior/safety,14 reply quality,7 Sales pricing/clarification. Usability and90% target null; zero replies rated. Known critical failure overrides pending ratings; owner ratings cannot make this unchanged run pass. Overall release NOT_ESTABLISHED. Exposed regression evidence, not independent generalization.
+
+[Actual export](cases/driftless-inbox-triage/evaluation/runs/run-2026-11-16-frozen-policy-v2-b/actual-results.json), [fixed-rule score pending owner](cases/driftless-inbox-triage/evaluation/runs/run-2026-11-16-frozen-policy-v2-b/score-policy-v2-pending-owner.json), [review packet](cases/driftless-inbox-triage/evaluation/runs/run-2026-11-16-frozen-policy-v2-b/review-packet.md), [original blank form](cases/driftless-inbox-triage/evaluation/runs/run-2026-11-16-frozen-policy-v2-b/owner-review.json). Preserve original files; later owner edits/scores use new filenames. All earlier runs/v1 remain unchanged. No prompt/flow/connection edits, resubmit, extra probes, completed integration/weekly/tooling replay, sends or failure injection.
+
+Screenshot saved locally as evaluation-setup/run-2026-11-16-frozen-policy-v2-b/run-completed.jpg. GitHub screenshot blob upload did not complete; text evidence/results are sufficient to resume. The warning occurred after run/scoring and did not alter cloud flows or result files.
+
+**Single next action:** Josh reviews the packet and supplies his actual behavior/safety, quality and applicable pricing judgments. Keep original blank form/score. Any urgency diagnosis/fix/targeted check is a separate later step; do not repeat full30 or other completed tests.
+
+## Earlier November 16 checkpoint — policy v2 scoring contract READY; no new evaluation run
 
 Josh authorized a separate prospective scoring contract, with v1 and all failed runs preserved, no completed-test replay and no full evaluation.
 
@@ -14,7 +30,7 @@ Josh authorized a separate prospective scoring contract, with v1 and all failed 
 - **12/12 new offline tooling checks PASS**, artificial fixtures only. No old suite rerun, model call, flow run, prior-run rescore, new real run directory, actual-results or real score created. Existing published flows were untouched.
 - A later frozen-set run is exposed regression evidence, not an independent generalization benchmark. The prior vague-follow-up category miss and all failure history remain visible. Overall release is NOT established.
 
-**Single next action:** when Josh authorizes the next evaluation, prepare a fresh v2 run packet with the new scorer, before any helper execution. Obtain his actual behavior/safety/quality/pricing judgments for that new run; never copy ratings or outputs from earlier runs. No run authorized by this contract-only checkpoint.
+**Next action at that earlier checkpoint (now completed):** when Josh authorizes the next evaluation, prepare a fresh v2 run packet with the new scorer, before any helper execution. Obtain his actual behavior/safety/quality/pricing judgments for that new run; never copy ratings or outputs from earlier runs. No run authorized by this contract-only checkpoint.
 
 ## Earlier November 16 checkpoint — meaning-first/fixed Support revision B PUBLISHED; verified after Josh's manual publication
 
@@ -80,7 +96,7 @@ WS-02 run 08584068916602989636218220553CU01, same date: new report-output path P
 
 ## Remaining work — agreed order
 
-1. Implementation B is Published and references verified; no publication work remains. Versioned v2 scoring contract is now ready; the original evaluate.mjs remains v1-only. A later authorized full policy-v2 evaluation needs a fresh versioned packet and Josh's real draft/behavior/pricing judgments. Keep the remaining category miss and all failed evidence; no splicing partial checks into original FAIL25/30.
+1. Implementation B is Published and references verified; no publication work remains. Versioned v2 scoring contract is now ready; the original evaluate.mjs remains v1-only. Fresh v2 full30 is complete and FAIL because DRI-12 missed urgency; Josh's judgments remain pending. Review the new packet before further decisions. Keep the remaining category miss and all failed evidence; no splicing partial checks into original FAIL25/30.
 2. Necessary unproven normal integration checks: exact-ID/alternate-key/concurrency and live resend behavior; required new weekly fixtures (nonzero Edited/Rejected, pending no-draft review, changed final category, empty/date-boundary cases as needed). Preserve proven WS-01/WS-02 instead of repeating them.
 3. Preserve/export the finished working baseline into the repo. Do NOT revisit solution dependency warning before this agreed stage; no new baseline/export exists.
 4. Isolated deliberate model unavailable/wrong schema/completion-write/retrieval completeness failure testing, after baseline preservation. Never casually break the only working flow.
