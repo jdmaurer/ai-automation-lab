@@ -367,3 +367,11 @@ All owner judgments remain null:30 behavior/safety,14 quality,7 Sales pricing. U
 ## November 16 — Urgency-C targeted plan; NOT RUN, browser blocked
 
 Preregistered 219acea16c2d5d12ed0e21eac4d554d81095f176: one DRI-12 regression +4 fresh urgency/routine-change probes; max5 classifier/zero drafter calls, stop first failure and no wording iteration. Only urgency paragraph proposed; all other rules unchanged. Actual UI instruction text preserved. Selection/type call timed out and reset session; single recovery Debugger unattached. **0 tests/calls/runs, no Test/Save action issued, no saved candidate or result.** Possible unsaved editor state unverified; Cancel without saving. [Attempt status](evaluation/runs/urgency-targeted-2026-11-16-c/attempt-status.json). Original full-v2/v1 FAILs and owner judgments unchanged. Resume same bounded preregistration only after browser control returns; no extra tests/full30.
+
+## November 16 — Consolidated review D: FAIL first targeted check, stopped
+
+Preregistration e57e16f16b131910664a9a4cbd4527bfd511980c. Six planned classifier-only checks; **only CRD-01 ran**, using exact original DRI-12 input. Actual Support/Routine/confidence1, record_change_requestedtrue, contexttrue, adversarialfalse, draft_candidatefalse. Typed11 fields valid; existing owner-review/no-draft predicates satisfied by analysis. Expected priority Urgent: **FAIL**. UI5988ms/0.4Copilot credits. No workflow routing/runtime claim.
+
+Stopped at first failure: CRD-02..06 not run; no rewrite/retry/drafter/mailbox/full30/completed-test replay. Candidate cancelled without Save. Main/helper classifier and non-Support drafter IDs/email/classification inputs verified intact in Code view after cancellation. Published flows retained, no new configuration or release pass.
+
+[Evidence/report](evaluation/runs/consolidated-review-targeted-2026-11-16-d/README.md). All original failed runs/scores/forms/key/scorers/contract preserved; owner judgments pending. This is one exposed-case check, not formal batch or generalization evidence. Stop implementation/testing here.

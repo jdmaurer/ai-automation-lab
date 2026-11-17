@@ -2,7 +2,19 @@
 
 Canonical baton under AI_HANDOFF_PROTOCOL.md. Active Week 8 case: `cases/driftless-inbox-triage/`. Scope frozen: evaluated/documented SME prototype, no extra features.
 
-## Latest November 16 checkpoint — bounded urgency attempt STOPPED by browser control; zero tests, no save
+## Latest November 16 checkpoint — consolidated review candidate FAILED first check; STOPPED, NOT SAVED
+
+Josh confirmed Cancel on prior urgency-C, clarified all changes require manager review regardless of timing, reviewed final consolidated wording, then authorized application/input verification/only targeted checks with stop-on-failure. Exact wording +6 blind inputs preregistered in `e57e16f16b131910664a9a4cbd4527bfd511980c`, [D evidence folder](cases/driftless-inbox-triage/evaluation/runs/consolidated-review-targeted-2026-11-16-d/).
+
+Candidate applied only in prompt editor, input token retained and exact normalized wording verified. **One classifier call only: CRD-01 uses original DRI-12. Actual Support/Routine/confidence1, change_requested=true, context=true, adversarial=false, draft_candidate=false. Expected Urgent: FAIL.** Change recognition now true and existing rules require owner review/no draft, but urgency still wrong. No workflow execution inferred.
+
+**Stopped immediately:** remaining5 cases not run, no wording iteration/retry/drafter/workflow/full30/completed-test replay. Cancel discarded unsaved candidate; no prompt Save, flow edit/Save/Publish or connection change. **No saved/deployed correction.** Both flows' original classifier and other-drafter prompt IDs/email/classification expressions verified intact in live Code views after cancellation.
+
+[Report](cases/driftless-inbox-triage/evaluation/runs/consolidated-review-targeted-2026-11-16-d/README.md), [actual targeted result](cases/driftless-inbox-triage/evaluation/runs/consolidated-review-targeted-2026-11-16-d/classifier-results.json), [status](cases/driftless-inbox-triage/evaluation/runs/consolidated-review-targeted-2026-11-16-d/attempt-status.json). Before/candidate wording and input-reference evidence preserved. All prior runs/key/scorers/contracts/owner forms unchanged; original v1 and full-v2 remain FAIL. Human ratings pending, overall release NOT_ESTABLISHED.
+
+**Single next action: stop implementation/testing and retain the urgency limitation for closeout.** No further repair/model call/full30 rerun under this authorization. Manager review was already present for DRI-12 in the full-v2 run; formal urgency correctness remains unresolved. Do not silently change acceptance criteria or save the failed candidate.
+
+## Earlier November 16 checkpoint — bounded urgency attempt STOPPED by browser control; zero tests, no save
 
 Josh authorized one general urgency correction, necessary targeted checks only, preserve failures, no full30/features, stop on failure. Plan and five blind inputs preregistered before editing in `219acea16c2d5d12ed0e21eac4d554d81095f176`, [new folder](cases/driftless-inbox-triage/evaluation/runs/urgency-targeted-2026-11-16-c/). One known DRI-12 regression +4 fresh probes: two operational holds, two routine future-change controls. Max5 classifier calls, zero drafter calls; stop on first failed check. Candidate would be tested unsaved and saved only if all scoped checks pass.
 
@@ -10,7 +22,7 @@ Live shared classifier editor opened from main flow's Run a prompt. Original sav
 
 **Browser control blocked completion:** selectText/type block timed out and kernel reset; single recovery getTab reported Debugger unattached. No Test or Save action was issued. **0 classifier/drafter calls;0 workflow/full30 runs;0 checks completed.** No candidate-save/deployment/targeted-pass claim. Final editor state unobserved; it may contain a selection or unsaved partial edit. No further UI retries or alternative automation.
 
-**Single next action:** if the classifier prompt editor is still open, Josh clicks **Cancel**, without saving, to discard any uncertain edit. Resume only after browser access works, starting by reading saved instructions and reusing this same preregistered attempt. Do not add another revision/test set or rerun full30. This is a tool blockage, not an observed failed model check.
+**Historical next action (completed by Josh):** click Cancel without saving; Josh subsequently confirmed this. Later consolidated D attempt above supersedes urgency-C. Resume only after browser access works, starting by reading saved instructions and reusing this same preregistered attempt. Do not add another revision/test set or rerun full30. This is a tool blockage, not an observed failed model check.
 
 [Status evidence](cases/driftless-inbox-triage/evaluation/runs/urgency-targeted-2026-11-16-c/attempt-status.json) and original instructions preserved. Original full-v2 run08584067370291608645194199559CU22 remains FAIL (DRI-12 urgency); v1 and every failed run/score/owner form unchanged. Pending human judgments unaltered. No new flow features/connections/model change. Overall release NOT_ESTABLISHED.
 

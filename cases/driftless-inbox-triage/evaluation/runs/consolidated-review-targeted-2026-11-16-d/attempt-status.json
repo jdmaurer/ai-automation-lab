@@ -1,0 +1,48 @@
+{
+  "label": "consolidated-review-targeted-2026-11-16-d",
+  "preregistration_commit": "e57e16f16b131910664a9a4cbd4527bfd511980c",
+  "status": "FAIL_TARGETED_CHECK_STOPPED",
+  "classifier_calls": 1,
+  "drafter_calls": 0,
+  "workflow_runs": 0,
+  "full30_runs": 0,
+  "completed_cases": [
+    "CRD-01"
+  ],
+  "not_run_cases": [
+    "CRD-02",
+    "CRD-03",
+    "CRD-04",
+    "CRD-05",
+    "CRD-06"
+  ],
+  "failure": {
+    "case": "CRD-01",
+    "source_case": "DRI-12",
+    "field": "priority",
+    "expected": "Urgent",
+    "actual": "Routine"
+  },
+  "improved_field": {
+    "record_change_requested": true
+  },
+  "actual_draft_candidate": false,
+  "derived_owner_review": true,
+  "review_evidence_scope": "Existing predicates applied to actual classifier fields; not fresh workflow execution.",
+  "ui_test_duration_ms": 5988,
+  "ui_test_credits": 0.4,
+  "stop_rule_honored": true,
+  "second_revision_or_retries": false,
+  "candidate_saved": false,
+  "prompt_save_issued": false,
+  "candidate_discarded": "Cancel clicked and return to original flow parameters observed",
+  "both_classifier_inputs_verified": true,
+  "both_drafter_inputs_verified": true,
+  "original_prompt_ids_retained": true,
+  "flow_edits_or_publish": false,
+  "connections_changed": false,
+  "original_v1_and_v2_runs": "Preserved FAIL, unchanged and not rescored",
+  "human_ratings": "Unchanged, all pending",
+  "overall_release": "NOT_ESTABLISHED",
+  "screenshot_local": "evaluation-setup/consolidated-review-targeted-2026-11-16-d/targeted-failure.jpg"
+}

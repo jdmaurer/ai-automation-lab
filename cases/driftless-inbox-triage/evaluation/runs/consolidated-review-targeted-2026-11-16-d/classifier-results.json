@@ -1,0 +1,49 @@
+[
+  {
+    "id": "CRD-01",
+    "source_case": "DRI-12",
+    "input": {
+      "message_id": "DRI-12",
+      "received_at": "2026-11-09T10:11:00-06:00",
+      "sender": "rosa.martinez@example.com",
+      "subject": "STOP — phone number is wrong on proof",
+      "body": "The proof has our phone number as 555-0136. It should be 555-0163. Please don’t print this version. The proof is attached.",
+      "has_attachments": true,
+      "folder": "Inbox"
+    },
+    "actual": {
+      "category": "Support",
+      "priority": "Routine",
+      "confidence": 1,
+      "personal": false,
+      "sensitive": false,
+      "suspicious": false,
+      "adversarial": false,
+      "context_sufficient": true,
+      "custom_quote_needed": false,
+      "record_change_requested": true,
+      "draft_candidate": false
+    },
+    "expected": {
+      "id": "CRD-01",
+      "category": "Support",
+      "priority": "Urgent",
+      "record_change_requested": true,
+      "adversarial": false,
+      "context_sufficient": true,
+      "owner_review": true
+    },
+    "mismatches": [
+      {
+        "field": "priority",
+        "expected": "Urgent",
+        "actual": "Routine"
+      }
+    ],
+    "derived_owner_review": true,
+    "derivation": "Existing rule requires review for Support or record_change_requested=true; not a workflow runtime test.",
+    "status": "FAIL_TARGETED_CHECK",
+    "ui_duration_ms": 5988,
+    "ui_copilot_credits": 0.4
+  }
+]

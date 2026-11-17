@@ -395,3 +395,13 @@ I authorized one general urgency fix with only necessary targeted checks and a s
 Original shared classifier text preserved. Text-selection/edit call timed out and reset the browser session; the one recovery observation reported Debugger unattached. No Test or Save was issued, no model/flow/full30 call and no targeted result exists. The assistant stopped instead of retrying repeatedly. An unsaved selection/partial edit is uncertain; Cancel the prompt editor without saving before continuation. No deployed fix or model failure claimed.
 
 All earlier failed runs/scores/ratings remain intact, including the full-v2 urgency FAIL. New plan/status/original text in evaluation/runs/urgency-targeted-2026-11-16-c/. Next: discard uncertain editor changes, then resume this same bounded attempt only after browser control is restored. No speculative features, new test set, full30 replay or extra repair cycle.
+
+## Monday 11.16.26 — Consolidated review wording, first targeted check failed; stopped
+
+I clarified that every actual change request needs manager attention regardless of timing, reviewed consolidated wording, and authorized one bounded application with input verification/necessary checks. Prior urgency-C was cancelled, with no tests. D wording and6 blind cases committed before editing.
+
+The candidate retained the input token, categories, quote/context/safety rules and11 fields; overlapping paragraphs replaced. Only first case ran: original DRI-12 returned Support/Routine/confidence1, change_requestedtrue, contexttrue, candidatefalse. Manager review is required, and change recognition improved, but expected Urgent still failed. This does not change the prior failed score.
+
+Assistant stopped immediately; other5 cases skipped, no second rewrite/retry/drafter/workflow/full30 run. Failed candidate was cancelled without Save, leaving published prompt unchanged. Both flows' classifier and non-Support drafter inputs/prompt IDs verified intact after cancellation. No connection/flow edits.
+
+One actual result, before/candidate text and reference evidence preserved in evaluation/runs/consolidated-review-targeted-2026-11-16-d/. All earlier runs/keys/scores/ratings intact; my judgments remain pending. Stop implementation/testing here and disclose the unresolved urgency limitation in closeout. No overall release claim or further prompt repair authorized by this attempt.
