@@ -1,0 +1,28 @@
+{
+  "gate": [
+    {
+      "path": "/actions/Log_-_Complete_Email_Processing/inputs/parameters/item/jdm_draftid",
+      "before": "@coalesce(outputs('Create_-_Outlook_Draft')?['body/id'],outputs('Create_-_Outlook_Draft')?['body/Id'],'')",
+      "after": "@div(1,0)"
+    }
+  ],
+  "start": [
+    {
+      "path": "/inputs/parameters/item/jdm_finalcategory",
+      "before": 832990005,
+      "after": 832990003
+    }
+  ],
+  "classifierFixture": [
+    {
+      "path": "/inputs/body/responsev2/predictionOutput/structuredOutput/category",
+      "before": "Sales",
+      "after": "Support"
+    },
+    {
+      "path": "/inputs/body/responsev2/predictionOutput/structuredOutput/confidence",
+      "before": "invalid",
+      "after": 1
+    }
+  ]
+}

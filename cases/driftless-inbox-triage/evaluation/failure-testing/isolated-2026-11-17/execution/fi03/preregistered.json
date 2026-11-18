@@ -1,0 +1,57 @@
+{
+  "case_id": "FI-03",
+  "status": "PREREGISTERED_NOT_RUN",
+  "flow_id": "bca4414b-abe2-f111-84ea-000d3a367f8a",
+  "max_runtime_executions": 1,
+  "source_commit": "2691a84eceeaf039ba6da9a019c78796221eded0",
+  "classification_fixture": {
+    "category": "Support",
+    "priority": "Routine",
+    "confidence": 1,
+    "personal": false,
+    "sensitive": false,
+    "suspicious": false,
+    "adversarial": false,
+    "context_sufficient": true,
+    "custom_quote_needed": false,
+    "record_change_requested": false,
+    "draft_candidate": true
+  },
+  "fault": {
+    "action": "Log_-_Complete_Email_Processing",
+    "field": "item/jdm_draftid",
+    "original_expression": "@coalesce(outputs('Create_-_Outlook_Draft')?['body/id'],outputs('Create_-_Outlook_Draft')?['body/Id'],'')",
+    "injected_expression": "@div(1,0)",
+    "boundary": "Deterministic action-input evaluation failure after real unsent reply draft; no completion connector request. Not a real Dataverse outage or rejected-ID backend response."
+  },
+  "review_preservation_fixture": {
+    "Start_final_category": 832990003,
+    "label": "General",
+    "purpose": "Distinctive nondefault test-only value must survive fallback; Pending review outcome also retained. No human quality judgment supplied."
+  },
+  "expected": {
+    "valid_structure": "Succeeded; ordinary Support classification routes to fixed acknowledgment",
+    "reply": "Exactly one actual unsent lab reply draft with exact existing fixed Support acknowledgment; AI drafter Skipped",
+    "completion": "Failed at injected division by zero",
+    "independent_log_failure_marker": "Succeeded after completion Failed; actual Needs Owner Review on source fixture",
+    "fallback": "Succeeded on same Start row/message ID, Failed, NeedsOwnerReview true, FollowupOpen true, DraftCreated true",
+    "owner_fields": "Seeded Final Category General and Review Outcome Pending unchanged; fallback payload contains no owner review field or Draft ID update",
+    "draft_preservation": "Actual reply retained unsent; no duplicate, draft retry or send"
+  },
+  "source_verification": {
+    "gate_only_change": "completion Draft ID fault expression",
+    "Start_only_change": "Final Category Unknown to General",
+    "Compose_only_changes": "category Sales to Support; confidence invalid to 1",
+    "manual_only_trigger": true,
+    "lab_only_destinations": true,
+    "saved_banner_observed": true,
+    "checker": {
+      "errors": 0,
+      "warnings": 0
+    }
+  },
+  "stop_on_unexpected_result": true,
+  "other_tests": "DO_NOT_RUN",
+  "original_published_flows_shared_prompts_connections": "DO_NOT_EDIT",
+  "preserve_all_failed_runs_and_accepted_limitation": true
+}
