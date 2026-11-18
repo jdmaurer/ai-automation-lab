@@ -414,3 +414,10 @@ Preregistered029282c8aeddea2d9dd2cc5650461238d491f5e1; run `08584066464556424522
 Schema correctly rejected confidence invalid (String vs Number). Review setter/Outlook marker/failure log Succeeded; same Start row and marker message ID verified. Actual Failed/Unknown/Pending, review/open true, draftcreated false. Normal validation/reply body/AI drafter/reply creation Skipped. One unsent source fixture, zero reply drafts/model calls/sends. **PASS_SCOPED_MALFORMED_OUTPUT_RECOVERY**; cloud Failed is the expected injected schema error. [Actual evidence](evaluation/failure-testing/isolated-2026-11-17/execution/fi02-repair-a/README.md).
 
 Original failed FI-02 retained unchanged as FAIL. FI-01 not repeated, FI-03/04 not run. Originals not repaired/deployed; no valid-input regression/generalization/full-release claim. All previous evidence and accepted limitation preserved.
+
+
+## November17 — FI-02 repair main publication verification only
+
+Main `53209c07-ca63-bcd9-c7f3-04b29c1f562a` now has the exact verified required-type Parse JSON check and normal/recovery dependencies. Saved banner, checker0/0, Published/ready and published Code-view match confirmed. Original classifier/drafter IDs/email/classification inputs intact; validation/drafting subtree otherwise unchanged. [Publication evidence](evaluation/configuration/fi02-main-recovery-publication-2026-11-17/README.md).
+
+**No new Test/Run/resubmit, model/prompt preview or runtime checks; no new pass assigned.** Original FI-02 FAIL and isolated scoped repair PASS retained separately. FI-01 not repeated, FI-03/FI-04 pending, all prior evidence/owner judgments/accepted limitation unchanged. Overall release NOT_ESTABLISHED.

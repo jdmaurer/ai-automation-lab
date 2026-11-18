@@ -1,0 +1,94 @@
+[
+  {
+    "path": "/Set_-_Needs_Owner_Review_-_AI_Failure/runAfter/Run_a_prompt",
+    "before": [
+      "TimedOut",
+      "Failed"
+    ]
+  },
+  {
+    "path": "/Set_-_Needs_Owner_Review_-_AI_Failure/runAfter/Validate_-_Classification_Structure",
+    "after": [
+      "TimedOut",
+      "Skipped",
+      "Failed"
+    ]
+  },
+  {
+    "path": "/Validate_-_AI_Output/runAfter/Run_a_prompt",
+    "before": [
+      "Succeeded"
+    ]
+  },
+  {
+    "path": "/Validate_-_AI_Output/runAfter/Validate_-_Classification_Structure",
+    "after": [
+      "Succeeded"
+    ]
+  },
+  {
+    "path": "/Validate_-_Classification_Structure",
+    "after": {
+      "inputs": {
+        "content": "@outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput']",
+        "schema": {
+          "properties": {
+            "adversarial": {
+              "type": "boolean"
+            },
+            "category": {
+              "type": "string"
+            },
+            "confidence": {
+              "type": "number"
+            },
+            "context_sufficient": {
+              "type": "boolean"
+            },
+            "custom_quote_needed": {
+              "type": "boolean"
+            },
+            "draft_candidate": {
+              "type": "boolean"
+            },
+            "personal": {
+              "type": "boolean"
+            },
+            "priority": {
+              "type": "string"
+            },
+            "record_change_requested": {
+              "type": "boolean"
+            },
+            "sensitive": {
+              "type": "boolean"
+            },
+            "suspicious": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "category",
+            "priority",
+            "confidence",
+            "personal",
+            "sensitive",
+            "suspicious",
+            "adversarial",
+            "context_sufficient",
+            "custom_quote_needed",
+            "record_change_requested",
+            "draft_candidate"
+          ],
+          "type": "object"
+        }
+      },
+      "runAfter": {
+        "Run_a_prompt": [
+          "Succeeded"
+        ]
+      },
+      "type": "ParseJson"
+    }
+  }
+]

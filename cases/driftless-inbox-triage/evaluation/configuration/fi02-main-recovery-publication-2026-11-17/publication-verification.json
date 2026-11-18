@@ -1,0 +1,41 @@
+{
+  "format_check_matches_verified_isolated": true,
+  "recovery_dependency_matches_verified_isolated": true,
+  "normal_dependency_matches_verified_isolated": true,
+  "whole_gate_drafting_subtree_unchanged": true,
+  "classifier_input_unchanged": true,
+  "drafter_inputs_unchanged": true,
+  "trigger_unchanged": true,
+  "review_marker_matches_preserved_baseline": true,
+  "recovery_payload_unchanged": true,
+  "new_test_or_model_calls": 0,
+  "comparison_normalizations": [
+    "status capitalisation",
+    "export host connectionName versus designer connection"
+  ],
+  "main_flow_id": "53209c07-ca63-bcd9-c7f3-04b29c1f562a",
+  "status": "PUBLISHED",
+  "saved_banner_observed": true,
+  "published_ready_observed": true,
+  "checker": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "published_readback_matches_saved": true,
+  "published_classifier_inputs": {
+    "recordId": "614118d4-6ca8-4344-b945-8659eb8bb3d8",
+    "item/requestv2/email_record": "@outputs('Normalize_-_Email_Fields')"
+  },
+  "published_drafter_inputs": {
+    "recordId": "e9c13e46-ec62-4cd4-b52f-b2f596db5821",
+    "item/requestv2/classification_record": "@string(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput'])",
+    "item/requestv2/email_record": "@outputs('Normalize_-_Email_Fields')"
+  },
+  "weekly_evaluator_isolated_flows_edited": false,
+  "shared_prompts_connections_edited": false,
+  "no_Test_Run_resubmit_or_preview_actions": true,
+  "old_failed_FI02_run": "08584066475931016390512579185CU11",
+  "isolated_scoped_PASS_run": "08584066464556424522963834692CU18",
+  "new_runtime_pass_claim": false,
+  "overall_release": "NOT_ESTABLISHED"
+}

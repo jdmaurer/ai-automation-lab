@@ -487,3 +487,12 @@ I authorized the smallest general fix in the isolated copy and one necessary che
 Saved banner, checker0/0 and Published/ready confirmed. One verification run `08584066464556424522963834692CU18` followed preregistration029282c8aeddea2d9dd2cc5650461238d491f5e1. The invalid confidence correctly failed the schema; review setter and Outlook marker succeeded, then the same Start row was updated to Failed/Unknown/Pending, review/open true, draftcreated false. No reply/drafter ran, no model call/send. One fresh unsent source fixture only. Cloud Failed reflects the deliberate fault; scoped recovery PASS is separate.
 
 [Evidence](cases/driftless-inbox-triage/evaluation/failure-testing/isolated-2026-11-17/execution/fi02-repair-a/README.md). Original FI-02 failure remains unchanged. No FI-01 replay, FI-03/04 or full30. Repair is only in the manual test copy; published originals/shared prompts/connections, baseline, earlier failures and accepted limitation untouched. Next is a separate decision on deployment or remaining work; no overall release claim.
+
+
+## Tuesday 11.17.26 — Published the verified FI-02 repair in main, no new tests
+
+I authorized promoting the verified isolated format-check repair to the main triage flow only. The assistant captured the main classifier, full validation/drafting branch and recovery source, then added the same required-type Parse JSON step and two verified dependencies. Existing Inbox trigger, safe recovery payloads, order-change policy, classifier/drafter IDs and all email/classification references retained.
+
+Saved banner and checker0/0 confirmed. Publish submitted once; a status read timed out, then accessibility showed Published/ready. Published Code-view readback matched saved classifier, complete validation/drafting subtree, new check and recovery setter. [Publication evidence](cases/driftless-inbox-triage/evaluation/configuration/fi02-main-recovery-publication-2026-11-17/README.md). One initial source readback had the prior card; comparison caught it, discarded that mislabeled capture and checked the actual review marker against the preserved baseline.
+
+No Test/Run/resubmit/prompt preview/model call/new runtime check. Original failed FI-02 remains FAIL, isolated repair PASS remains separate, FI-01 not repeated and FI-03/04 pending. Baseline, all earlier failures/ratings and accepted contact-update limitation preserved; evaluator/weekly/test copy/shared prompts/connections untouched. Publication establishes active configuration, not a new runtime or full release pass. Task complete.

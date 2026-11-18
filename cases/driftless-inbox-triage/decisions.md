@@ -208,3 +208,10 @@ Append-only design record for the Driftless Print and Sign inbox-triage case.
 Josh authorized implementing the explained general fix in the isolated copy and one targeted verification. Added a separate Parse JSON action using the existing11 required field types before numeric/business comparisons. Normal validation requires Parse success; reused the existing AI-failure recovery chain on Parse Failed/TimedOut/Skipped so malformed data receives review and same-row failure logging without duplicate handler actions. A skipped Parse retains an explicit route for upstream classifier failures; no FI-01 replay claimed.
 
 This placement keeps type errors outside the condition containing drafting/completion actions and leaves its business logic/input references unchanged. Failure logging continues even when the preceding Outlook marker fails/times out. No new prompt/policy/training rule or sample-specific wording. Saved/Published/checker0/0 and one scoped malformed-confidence recovery PASS recorded in [repair evidence](evaluation/failure-testing/isolated-2026-11-17/execution/fi02-repair-a/README.md). No original-flow deployment; original failed FI-02 and accepted limitation retained.
+
+
+## November17,2026 — Promote verified FI-02 format recovery to main without retesting
+
+Josh explicitly authorized this deployment, input/save/publication verification and GitHub closeout, with no further tests. Applied only the exact verified Parse JSON format check and success/failure dependencies to main, reusing existing review/same-row recovery. Preserved main's original trigger/connector payloads and classifier/drafter input references; did not transfer synthetic adapters or fault injection.
+
+Main saved/Published with checker0/0 and published Code-view comparison; evaluator/weekly/test-copy/shared prompts/connections unchanged. Prior failed run and accepted limitation retained. [Publication record](evaluation/configuration/fi02-main-recovery-publication-2026-11-17/README.md). No runtime pass inferred from publication.

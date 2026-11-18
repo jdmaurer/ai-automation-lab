@@ -1,0 +1,5 @@
+{
+  "category_before_source": "Preserved November17 published baseline Workflows/DriftlessInboxTriage-094AF357-1CDD-F111-84EA-000D3A367F8A.json",
+  "reason": "Initial UI category-code readback still contained prior setter card. Discarded mislabeled readback. Actual current marker payload matches preserved baseline; no marker parameter edit was made.",
+  "host_normalization": "Export connectionName and designer connection denote same preserved connection reference."
+}

@@ -1,0 +1,22 @@
+{
+  "main_flow_id": "53209c07-ca63-bcd9-c7f3-04b29c1f562a",
+  "classifier_before": {
+    "recordId": "614118d4-6ca8-4344-b945-8659eb8bb3d8",
+    "item/requestv2/email_record": "@outputs('Normalize_-_Email_Fields')"
+  },
+  "classifier_after": {
+    "recordId": "614118d4-6ca8-4344-b945-8659eb8bb3d8",
+    "item/requestv2/email_record": "@outputs('Normalize_-_Email_Fields')"
+  },
+  "drafter_before": {
+    "recordId": "e9c13e46-ec62-4cd4-b52f-b2f596db5821",
+    "item/requestv2/classification_record": "@string(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput'])",
+    "item/requestv2/email_record": "@outputs('Normalize_-_Email_Fields')"
+  },
+  "drafter_after": {
+    "recordId": "e9c13e46-ec62-4cd4-b52f-b2f596db5821",
+    "item/requestv2/classification_record": "@string(outputs('Run_a_prompt')?['body/responsev2/predictionOutput/structuredOutput'])",
+    "item/requestv2/email_record": "@outputs('Normalize_-_Email_Fields')"
+  },
+  "scope": "Static UI Code view comparison of full validation/drafting subtree; no prompt previews or runtime tests."
+}

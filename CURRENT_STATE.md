@@ -2,7 +2,21 @@
 
 Canonical baton under AI_HANDOFF_PROTOCOL.md. Active Week 8 case: `cases/driftless-inbox-triage/`. Scope frozen: evaluated/documented SME prototype, no extra features.
 
-## Latest November 17 checkpoint — isolated FI-02 repair saved/Published; one targeted recovery PASS
+## Latest November 17 checkpoint — verified FI-02 repair PUBLISHED in main; inputs verified; no tests
+
+Josh authorized applying the verified isolated fix to the main triage flow, checking inputs/save/publication, updating GitHub and running **no more tests**.
+
+**Main Driftless Inbox Triage** `53209c07-ca63-bcd9-c7f3-04b29c1f562a` now includes **Validate - Classification Structure** (Parse JSON), exactly matching isolated repair's existing11 required field types/content. Normal Validate - AI Output requires its Succeeded status. Existing AI-failure review/log chain follows its Failed/TimedOut/Skipped statuses. Full validation/drafting subtree unchanged except predecessor; trigger, recovery payload and business/order-change policy retained. No test-copy fixture adapter transferred.
+
+**Saved banner confirmed; checker0errors/0warnings; Published/ready confirmed.** Publish submitted once. First status read timed out; accessibility read confirmed publication, and subsequent published Code-view readback matched saved classifier/entire validation subtree/new structure check/recovery setter. Both original classifier/drafter prompt IDs and normalized-email/classification expressions verified intact. Shared prompts/connections and evaluator/weekly/isolated flows untouched.
+
+[Publication report](cases/driftless-inbox-triage/evaluation/configuration/fi02-main-recovery-publication-2026-11-17/README.md), [verification](cases/driftless-inbox-triage/evaluation/configuration/fi02-main-recovery-publication-2026-11-17/publication-verification.json). Limited action snapshots plus preserved pre-repair baseline; no repeated export or restore test.
+
+**Zero assistant-initiated Test/Run/resubmit/prompt preview/model calls/new runtime checks.** Publication is not a new runtime/full-release pass. Original failed FI-02 `08584066475931016390512579185CU11` and all its artifacts remain FAIL/unchanged; isolated repair PASS `08584066464556424522963834692CU18` remains separate. FI-01 not repeated, FI-03/FI-04 NOT RUN. Accepted contact-update limitation, all prior evaluation failures/owner ratings and original baseline preserved. Overall release NOT_ESTABLISHED.
+
+**Single next action:** this main-publication task is complete; report saved/published/input verification and stop. Remaining isolated FI-03/FI-04 and essential handoff work stay open for Josh's separate direction. Do not repeat FI-01/FI-02/full30, change the accepted limitation, or claim a new runtime pass.
+
+## Earlier November 17 checkpoint — isolated FI-02 repair saved/Published; one targeted recovery PASS
 
 Josh authorized applying the explained format-check fix **to the isolated copy only**, verifying saved status and one necessary FI-02 check, preserving originals/failed run/accepted limitation and stopping on failure.
 

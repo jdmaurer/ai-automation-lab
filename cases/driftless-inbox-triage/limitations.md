@@ -40,3 +40,10 @@ FI-02 on the isolated main-flow copy returned wrong-typed confidence. Numeric va
 One authorized targeted check of added required-type Parse JSON and reused review/failure recovery passed, run `08584066464556424522963834692CU18`. Wrong-typed confidence now reaches actual review marker and same-row Failed/Unknown/Pending log; no reply. [Repair evidence](evaluation/failure-testing/isolated-2026-11-17/execution/fi02-repair-a/README.md).
 
 The earlier failed FI-02 remains unchanged. **This repair is not in the published original flows**; the original validation-recovery gap above remains relevant there. Other malformed-field forms, valid-output routing regression and classifier-failure behavior after this isolated change were not runtime-retested. Existing schema types/contracts were used, with no sample-specific exception. Accepted contact-update limitation and all earlier failures remain unchanged.
+
+
+## FI-02 repair now published in main — November17,2026
+
+Supersedes the earlier isolated-only deployment statement: Josh authorized carrying the verified format check and recovery wiring into the main triage flow. Main is now saved/Published, checker0/0; published input/source readback verified. [Publication evidence](evaluation/configuration/fi02-main-recovery-publication-2026-11-17/README.md).
+
+No new runtime checks were run after promotion. The single isolated malformed-confidence recovery PASS remains bounded evidence; it does not establish all malformed-field variants, valid-input regression coverage, other failure paths or full release. Evaluator/weekly definitions unchanged. Original failed FI-02 and all prior failed evidence remain unchanged. Accepted contact-update false-positive limitation above remains current and unchanged. Pre-repair baseline preserved; new captures are action-level configuration evidence, not a complete new export.
