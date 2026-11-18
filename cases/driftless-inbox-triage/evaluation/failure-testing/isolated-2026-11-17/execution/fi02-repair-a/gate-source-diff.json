@@ -1,0 +1,14 @@
+[
+  {
+    "path": "/runAfter/Run_a_prompt",
+    "before": [
+      "SUCCEEDED"
+    ]
+  },
+  {
+    "path": "/runAfter/Validate_-_Classification_Structure",
+    "after": [
+      "SUCCEEDED"
+    ]
+  }
+]

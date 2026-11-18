@@ -1,0 +1,79 @@
+{
+  "case_id": "FI-02-REPAIR-A",
+  "status": "PREREGISTERED_NOT_RUN",
+  "flow_id": "bca4414b-abe2-f111-84ea-000d3a367f8a",
+  "max_runtime_executions": 1,
+  "source_failed_run_preserved": "08584066475931016390512579185CU11",
+  "change": "Add required-type Parse JSON after classifier success. Normal gate requires Parse success. Reuse original AI-failure recovery chain after Parse Failed/TimedOut/Skipped, preserving classifier-failure recovery via skipped Parse. Existing numeric/value/policy/draft logic unchanged.",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "category": {
+        "type": "string"
+      },
+      "priority": {
+        "type": "string"
+      },
+      "confidence": {
+        "type": "number"
+      },
+      "personal": {
+        "type": "boolean"
+      },
+      "sensitive": {
+        "type": "boolean"
+      },
+      "suspicious": {
+        "type": "boolean"
+      },
+      "adversarial": {
+        "type": "boolean"
+      },
+      "context_sufficient": {
+        "type": "boolean"
+      },
+      "custom_quote_needed": {
+        "type": "boolean"
+      },
+      "record_change_requested": {
+        "type": "boolean"
+      },
+      "draft_candidate": {
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "category",
+      "priority",
+      "confidence",
+      "personal",
+      "sensitive",
+      "suspicious",
+      "adversarial",
+      "context_sufficient",
+      "custom_quote_needed",
+      "record_change_requested",
+      "draft_candidate"
+    ]
+  },
+  "fixture": "Exact prior FI-02 manual input; fresh unsent source draft supplies new unique message ID automatically. Same malformed confidence string invalid in preserved Compose response.",
+  "expected": {
+    "format_check": "Failed with schema validation error",
+    "normal_validation_and_reply": "Skipped; zero reply drafts and model calls",
+    "review_setter": "Succeeded",
+    "outlook_review_marker": "Succeeded; Needs Owner Review on new unsent source draft",
+    "failure_log": "Succeeded; same Start row/message ID, Failed/Unknown/Pending, needsownerreview true, followupopen true, draftcreated false"
+  },
+  "stop_on_failure": true,
+  "no_other_tests": true,
+  "originals_shared_prompts_connections": "DO_NOT_EDIT",
+  "accepted_contact_update_limitation": "PRESERVE",
+  "static_verification": {
+    "gate_subtree_unchanged_except_runAfter": true,
+    "format_schema_required_existing_11_fields": true,
+    "checker_errors": 0,
+    "checker_warnings": 0,
+    "saved_banner_observed": true
+  },
+  "bounds": "One targeted malformed-output copied-flow check only. Not proof of valid-output routing, real provider outage, FI-03/FI-04, original-flow deployment or full release."
+}
