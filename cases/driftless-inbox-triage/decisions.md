@@ -201,3 +201,10 @@ Append-only design record for the Driftless Print and Sign inbox-triage case.
 ## 2026-11-17 — Published configuration baseline preservation
 
 73. Preserve the existing mixed BluffsideHandbookHelper solution as an unmanaged 1.0.0.1 archive, retaining its current version and working connections. It already contains all Driftless flows/prompts/log schema; repackaging to separate prior Bluffside components would introduce unnecessary work and risk. Record the mixed scope, AI Solution default templates prerequisite, exact ZIP/member hashes and recovery boundaries. Preserve failed results and accepted contact-update limitation unchanged. Export inspection is not a model/workflow/restore test and does not establish release acceptance.
+
+
+## November17,2026 — Bounded isolated FI-02 type-validation recovery repair
+
+Josh authorized implementing the explained general fix in the isolated copy and one targeted verification. Added a separate Parse JSON action using the existing11 required field types before numeric/business comparisons. Normal validation requires Parse success; reused the existing AI-failure recovery chain on Parse Failed/TimedOut/Skipped so malformed data receives review and same-row failure logging without duplicate handler actions. A skipped Parse retains an explicit route for upstream classifier failures; no FI-01 replay claimed.
+
+This placement keeps type errors outside the condition containing drafting/completion actions and leaves its business logic/input references unchanged. Failure logging continues even when the preceding Outlook marker fails/times out. No new prompt/policy/training rule or sample-specific wording. Saved/Published/checker0/0 and one scoped malformed-confidence recovery PASS recorded in [repair evidence](evaluation/failure-testing/isolated-2026-11-17/execution/fi02-repair-a/README.md). No original-flow deployment; original failed FI-02 and accepted limitation retained.

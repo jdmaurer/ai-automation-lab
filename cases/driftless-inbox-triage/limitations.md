@@ -33,3 +33,10 @@ Prior targeted evidence remains4/5 exact,3/3 order changes; original contact-con
 FI-02 on the isolated main-flow copy returned wrong-typed confidence. Numeric validation threw InvalidTemplate instead of selecting its invalid-output False branch. That branch's owner-review setter/category marker/Failed log skipped, and the separate classifier-action failure handler skipped because the simulated response action succeeded. No reply draft/model call/send occurred, but required automatic review/failure recovery was absent: **acceptance FAIL**.
 
 [Actual run and evidence](evaluation/failure-testing/isolated-2026-11-17/execution/FI-02.md), run `08584066475931016390512579185CU11`. This was a controlled copied-flow response simulation, not a provider outage or original-flow runtime test. Existing source comparison retained validation/recovery structure; no repair was made after failure. FI-03/04 remain pending. Final Dataverse row values not independently reopened; only Start log success and skipped later writes observed. All previous failures and the accepted contact-update limitation above remain unchanged.
+
+
+## FI-02 repair verified in isolated copy only — November17,2026
+
+One authorized targeted check of added required-type Parse JSON and reused review/failure recovery passed, run `08584066464556424522963834692CU18`. Wrong-typed confidence now reaches actual review marker and same-row Failed/Unknown/Pending log; no reply. [Repair evidence](evaluation/failure-testing/isolated-2026-11-17/execution/fi02-repair-a/README.md).
+
+The earlier failed FI-02 remains unchanged. **This repair is not in the published original flows**; the original validation-recovery gap above remains relevant there. Other malformed-field forms, valid-output routing regression and classifier-failure behavior after this isolated change were not runtime-retested. Existing schema types/contracts were used, with no sample-specific exception. Accepted contact-update limitation and all earlier failures remain unchanged.

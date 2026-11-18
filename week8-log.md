@@ -478,3 +478,12 @@ The simulated classifier boundary succeeded with malformed confidence. Validate 
 One new unsent synthetic source draft and Start log succeeded. Reply creation/body/non-Support drafter skipped; zero model calls or sends. Final row values not separately reopened. The failed cloud run and [FI-02 evidence](cases/driftless-inbox-triage/evaluation/failure-testing/isolated-2026-11-17/execution/FI-02.md) are preserved.
 
 Stopped without repair, retry, resubmit, publication, FI-03/04 or completed/full30 tests. FI-01 PASS unchanged. Published originals/shared prompts/connections, baseline, previous failures and accepted contact-update limitation untouched. Next is my decision on this demonstrated validation-recovery gap; no additional work authorized by this stopped check.
+
+
+## Tuesday 11.17.26 — Isolated format-check fix saved; one FI-02 recovery check passed
+
+I authorized the smallest general fix in the isolated copy and one necessary check. Added Parse JSON for existing required types before numeric validation. Reused the existing review/Failed-log chain after Parse Failed/TimedOut/Skipped; normal routing needs Parse success. This keeps malformed output away from numeric comparisons and preserves a route for classifier failure via a skipped check. Original gate/draft rules and safe recovery payloads stayed intact.
+
+Saved banner, checker0/0 and Published/ready confirmed. One verification run `08584066464556424522963834692CU18` followed preregistration029282c8aeddea2d9dd2cc5650461238d491f5e1. The invalid confidence correctly failed the schema; review setter and Outlook marker succeeded, then the same Start row was updated to Failed/Unknown/Pending, review/open true, draftcreated false. No reply/drafter ran, no model call/send. One fresh unsent source fixture only. Cloud Failed reflects the deliberate fault; scoped recovery PASS is separate.
+
+[Evidence](cases/driftless-inbox-triage/evaluation/failure-testing/isolated-2026-11-17/execution/fi02-repair-a/README.md). Original FI-02 failure remains unchanged. No FI-01 replay, FI-03/04 or full30. Repair is only in the manual test copy; published originals/shared prompts/connections, baseline, earlier failures and accepted limitation untouched. Next is a separate decision on deployment or remaining work; no overall release claim.

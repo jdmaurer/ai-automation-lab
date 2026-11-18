@@ -405,3 +405,12 @@ FI-02 preregistered `6cb6e8b6abf1ba6e9d11743c00cfd3cdde091555`: copied Compose b
 One preregistered execution `08584066475931016390512579185CU11`, manual-only isolated copy `bca4414b-abe2-f111-84ea-000d3a367f8a`. Cloud Failed3seconds; Compose Succeeded, validation Failed0.8seconds with String/Integer greaterOrEquals InvalidTemplate. Invalid-output review setter/marker/failure log and classifier-action failure recovery all Skipped; completion/fallback logs skipped. Reply draft/body/non-Support drafter skipped, zero model calls/sends. One unsent source fixture and Start log succeeded; final row values not independently read.
 
 **FAIL_MALFORMED_OUTPUT_RECOVERY_SKIPPED**: no reply is insufficient; actual review/failure recovery was required and did not execute. [Report](evaluation/failure-testing/isolated-2026-11-17/execution/FI-02.md), [runtime evidence](evaluation/failure-testing/isolated-2026-11-17/execution/fi02-result.json). No fix/retry/resubmit, FI-01 repetition, FI-03/04 or full30 after failure. Originals and all previous evidence/accepted limitation/owner ratings preserved. Release NOT_ESTABLISHED.
+
+
+## November 17 — FI-02 repair A: scoped recovery PASS, one verification execution
+
+Preregistered029282c8aeddea2d9dd2cc5650461238d491f5e1; run `08584066464556424522963834692CU18` on isolated copy only. Added required-type Parse JSON before unchanged numeric/business validation; reused review/failure chain on Parse Failed/TimedOut/Skipped. Saved/Published and checker0/0 verified.
+
+Schema correctly rejected confidence invalid (String vs Number). Review setter/Outlook marker/failure log Succeeded; same Start row and marker message ID verified. Actual Failed/Unknown/Pending, review/open true, draftcreated false. Normal validation/reply body/AI drafter/reply creation Skipped. One unsent source fixture, zero reply drafts/model calls/sends. **PASS_SCOPED_MALFORMED_OUTPUT_RECOVERY**; cloud Failed is the expected injected schema error. [Actual evidence](evaluation/failure-testing/isolated-2026-11-17/execution/fi02-repair-a/README.md).
+
+Original failed FI-02 retained unchanged as FAIL. FI-01 not repeated, FI-03/04 not run. Originals not repaired/deployed; no valid-input regression/generalization/full-release claim. All previous evidence and accepted limitation preserved.

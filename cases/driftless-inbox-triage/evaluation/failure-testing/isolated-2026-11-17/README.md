@@ -1,5 +1,14 @@
 # Isolated failure checks — November 17, 2026
 
+## Latest outcome — isolated FI-02 repair A scoped PASS
+
+Saved and Published required-type format check in the same manual copy; checker0/0. One verification run `08584066464556424522963834692CU18`: expected schema failure, actual Outlook review marker and same-row Failed/Unknown/Pending recovery Succeeded, reply/drafter Skipped. [Repair report](execution/fi02-repair-a/README.md).
+
+Original failed FI-02 and all previous evidence unchanged. FI-01 not repeated; FI-03/FI-04 NOT RUN. **Repair only in isolated copy, originals unchanged.** Accepted limitation/owner judgments preserved; no overall release pass. Bounded repair complete; later deployment/checks need Josh's separate direction.
+
+## Earlier outcomes — historical
+
+
 ## Latest outcome — FI-02 FAIL; stopped
 
 FI-02 executed exactly once: `08584066475931016390512579185CU11`, cloud Failed3seconds. Validation threw on wrong-typed confidence; invalid-output review/failure and classifier-action failure recovery were Skipped. Reply draft/body/drafter Skipped; zero model calls/sends. **Acceptance FAIL**, because no reply without actual review/failure recovery is insufficient. [Report](execution/FI-02.md), [result](execution/fi02-result.json).

@@ -2,7 +2,21 @@
 
 Canonical baton under AI_HANDOFF_PROTOCOL.md. Active Week 8 case: `cases/driftless-inbox-triage/`. Scope frozen: evaluated/documented SME prototype, no extra features.
 
-## Latest November 17 checkpoint — FI-02 ran ONCE and FAILED; STOPPED, no repair
+## Latest November 17 checkpoint — isolated FI-02 repair saved/Published; one targeted recovery PASS
+
+Josh authorized applying the explained format-check fix **to the isolated copy only**, verifying saved status and one necessary FI-02 check, preserving originals/failed run/accepted limitation and stopping on failure.
+
+**Implemented only in manual copy** `bca4414b-abe2-f111-84ea-000d3a367f8a`: Parse JSON **Validate - Classification Structure** checks existing11 required field types after classifier success. Normal Validate requires this check Succeeded. Reused existing AI-failure setter/Outlook marker/same-row Failed log after check Failed/TimedOut/Skipped; skipped check retains a recovery route when classifier itself fails. Existing gate subtree unchanged except predecessor; downstream policy/drafting rules and marker/log payloads retained. Saved banner, checker0errors/0warnings and Published/ready observed.
+
+**One preregistered verification run `08584066464556424522963834692CU18`, Nov17 about6:07PM Central,3seconds. Scoped acceptance PASS.** Schema rejected confidence invalid as String where Number required. Normal validation/body/drafter/reply creation Skipped. Review setter, actual Outlook Needs Owner Review marker and Dataverse failure update Succeeded. Returned row `1faab4ff-e3e2-f111-84ea-000d3a367f8a` matches Start; message ID matches marker. Actual Failed/Unknown/Pending, needsownerreview true, followupopen true, draftcreated false. One new unsent source fixture; zero reply drafts/model calls/sends.
+
+Cloud status **Failed is expected for the injected schema failure**; successful recovery is the scoped pass. [Repair report and actual result](cases/driftless-inbox-triage/evaluation/failure-testing/isolated-2026-11-17/execution/fi02-repair-a/README.md), preregistration `029282c8aeddea2d9dd2cc5650461238d491f5e1`.
+
+Original FI-02 failed run `08584066475931016390512579185CU11` and all its artifacts remain FAIL/unchanged. FI-01 not repeated; FI-03/FI-04 NOT RUN; weekly copy not created. **Published original main/evaluator/weekly flows and shared prompts/connections unchanged; repair NOT deployed to originals.** Accepted contact-update limitation, baseline, earlier failed runs/owner judgments preserved. No additional runtime or full30 tests. Overall release NOT_ESTABLISHED.
+
+**Single next action:** this bounded repair task is complete; report the isolated result and await Josh's separate direction on carrying the repair into the main flow or remaining work. Do not deploy to originals, repeat FI-01/FI-02, or start FI-03/FI-04 automatically. Saved snippets are change evidence, not a new complete baseline export.
+
+## Earlier November 17 checkpoint — FI-02 ran ONCE and FAILED; STOPPED, no repair
 
 Josh authorized reconnecting and FI-02 once only, preserving originals/evidence/accepted limitation and stopping on failure. Read live baton and preregistered packet; copy run history initially showed only FI-01. Used existing manual-only **Driftless ISOLATED Failure Triage 2026-11-17**, ID `bca4414b-abe2-f111-84ea-000d3a367f8a`; no configuration edits.
 
