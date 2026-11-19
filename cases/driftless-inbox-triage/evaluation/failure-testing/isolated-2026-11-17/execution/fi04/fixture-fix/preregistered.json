@@ -1,0 +1,26 @@
+{
+  "case_id": "FI-04",
+  "status": "PUBLISHED_NOT_RUN",
+  "date": "2026-11-19",
+  "copy_flow": "b2c2285f-60e4-f111-84ea-000d3a367f8a",
+  "fix": "Only Compose inputs: raw object replaced with @json('same JSON'). Exact fixture and condition subtree preserved.",
+  "saved": true,
+  "published": true,
+  "pin": {
+    "date": "2026-11-09"
+  },
+  "max_runtime_executions": 1,
+  "expected": {
+    "condition": false,
+    "termination_status": "Failed",
+    "termination_code": "IncompleteWeeklyLogRetrieval",
+    "aggregation": "Skipped",
+    "render_counts": "Skipped",
+    "explanation": "Skipped",
+    "report_draft": "Skipped",
+    "model_calls": 0,
+    "report_drafts": 0
+  },
+  "stop_on_failure": true,
+  "prior_publication_blocker_preserved": true
+}
