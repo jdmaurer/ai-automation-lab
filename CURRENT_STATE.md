@@ -1,8 +1,22 @@
-# CURRENT STATE — updated 2026-11-17 — RESUME HERE
+# CURRENT STATE — updated 2026-11-19 — RESUME HERE
 
 Canonical baton under AI_HANDOFF_PROTOCOL.md. Active Week 8 case: `cases/driftless-inbox-triage/`. Scope frozen: evaluated/documented SME prototype, no extra features.
 
-## Latest November 17 checkpoint — verified FI-02 repair PUBLISHED in main; inputs verified; no tests
+## Latest November 19 checkpoint — November17 FI-03 results saved; scoped recovery PASS
+
+Josh requested finishing the interrupted GitHub closeout only. Used saved November17 evidence; **no browser use, tests, prompt calls or flow edits on November19**. Earlier commit creation was blocked when automatic approval review ran out of workspace credits.
+
+**FI-03 ran once on November17**, run `08584066443970741245268372506CU25`, about6:41PM Central,3seconds/cloud Succeeded. Manual test copy `bca4414b-abe2-f111-84ea-000d3a367f8a` created one actual unsent fixed Support acknowledgment. Copied completion-write action then Failed at deliberate Draft ID `@div(1,0)`; independent review marker and same-row minimal fallback Succeeded.
+
+Actual row `fc4e07c5-e8e2-f111-84ea-000d3a367f8a`: Failed, Needs Owner Review true, Follow-up Open true, **Draft Created true**. Seeded Final Category General and Review Outcome Pending preserved. November17 Outlook inspection found exactly one FI-03 reply plus one source fixture, exact fixed text, no duplicate/send/model call. **Scoped PASS**; simulation is not a real Dataverse outage/backend rejection test. [FI-03 result and bounds](cases/driftless-inbox-triage/evaluation/failure-testing/isolated-2026-11-17/execution/fi03/README.md).
+
+Last verified test-copy state (November17): manual-only/Published with FI-03 Support fixture, seeded General value and completion fault installed. Do not rerun or convert to Inbox triggering. Browser reset/current UI not inspected during this closeout. Main's separately published FI-02 repair and other original flows remain untouched by FI-03/closeout.
+
+All prior failed runs, original FI-02 FAIL, separate isolated PASS, baseline, owner judgments and accepted contact-update limitation preserved. FI-01/FI-02/other completed tests not repeated. **FI-04 NOT RUN; weekly copy not created. Overall release NOT_ESTABLISHED.**
+
+**Single next action:** FI-03 closeout is complete; report GitHub save and stop. FI-04 incomplete-weekly-retrieval check remains next pending failure case for separate direction; no automatic test, rebuild or prompt tuning.
+
+## Earlier November 17 checkpoint — verified FI-02 repair PUBLISHED in main; inputs verified; no tests
 
 Josh authorized applying the verified isolated fix to the main triage flow, checking inputs/save/publication, updating GitHub and running **no more tests**.
 

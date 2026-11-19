@@ -1,5 +1,14 @@
 # Isolated failure checks — November 17, 2026
 
+## Latest closeout — November19: November17 FI-03 scoped PASS preserved
+
+One November17 run `08584066443970741245268372506CU25`: actual unsent fixed Support reply preserved, completion action deliberately Failed, independent review marker and same-row fallback Succeeded. Draft Created true; populated General/Pending review values retained. Outlook then showed one reply plus one source fixture, no duplicate/send/model call. [Result and boundaries](execution/fi03/README.md).
+
+November19 closeout used saved evidence only; no browser, tests or flow edits. Original published flows, all earlier failures and accepted limitation preserved. Test copy last verified manual-only with FI-03 fault installed. **FI-04 NOT RUN**, no weekly copy. No release pass.
+
+## Earlier outcomes — historical
+
+
 ## Latest outcome — isolated FI-02 repair A scoped PASS
 
 Saved and Published required-type format check in the same manual copy; checker0/0. One verification run `08584066464556424522963834692CU18`: expected schema failure, actual Outlook review marker and same-row Failed/Unknown/Pending recovery Succeeded, reply/drafter Skipped. [Repair report](execution/fi02-repair-a/README.md).

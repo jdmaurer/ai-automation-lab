@@ -496,3 +496,12 @@ I authorized promoting the verified isolated format-check repair to the main tri
 Saved banner and checker0/0 confirmed. Publish submitted once; a status read timed out, then accessibility showed Published/ready. Published Code-view readback matched saved classifier, complete validation/drafting subtree, new check and recovery setter. [Publication evidence](cases/driftless-inbox-triage/evaluation/configuration/fi02-main-recovery-publication-2026-11-17/README.md). One initial source readback had the prior card; comparison caught it, discarded that mislabeled capture and checked the actual review marker against the preserved baseline.
 
 No Test/Run/resubmit/prompt preview/model call/new runtime check. Original failed FI-02 remains FAIL, isolated repair PASS remains separate, FI-01 not repeated and FI-03/04 pending. Baseline, all earlier failures/ratings and accepted contact-update limitation preserved; evaluator/weekly/test copy/shared prompts/connections untouched. Publication establishes active configuration, not a new runtime or full release pass. Task complete.
+
+
+## Thursday 11.19.26 — Finished saving November17 FI-03 evidence, no rerun
+
+I asked the assistant to finish the GitHub closeout after the prior commit attempt was blocked by exhausted workspace credits. The saved evidence was intact; no browser connection was needed and no test or flow edit happened today.
+
+FI-03 had run once on November17: `08584066443970741245268372506CU25`,3seconds/cloud Succeeded. One unsent fixed Support reply was created; injected completion-input division by zero failed the completion action. Independent review marker and same-Start-row fallback succeeded: Failed, review/open true, Draft Created true. Test-only Final Category General and Pending review outcome preserved. Outlook inspection then showed one reply plus one source fixture, exact fixed acknowledgment, no duplicate/send/model call. [Evidence and bounds](cases/driftless-inbox-triage/evaluation/failure-testing/isolated-2026-11-17/execution/fi03/README.md).
+
+This was an action-input simulation, not an actual database outage. Original published flows, earlier failures, baseline, owner forms and accepted contact-update limitation preserved. Test copy last verified manual-only with FI-03 fault still installed. Browser was reset afterward and not inspected today. FI-04 remains pending; no completed-test replay or overall release claim.
