@@ -435,3 +435,10 @@ Preregistered `6bed67c4888fab9536c170401d127c56576494b7`; **one November17 run**
 Separate manual-only weekly copy `b2c2285f-60e4-f111-84ea-000d3a367f8a` saved with simulated continuation-link retrieval; original guard/False branch retained. Checker initially0/0; one Publish rejected with invalid expressions in `Read_-_Weekly_Log_Rows`. Editor remains Draft. **No runtime execution, no acceptance result**, no repair/retry after rejection. [Attempt and preserved contract](evaluation/failure-testing/isolated-2026-11-17/execution/fi04/README.md).
 
 FI-01 scoped PASS, original FI-02 FAIL plus separate repair PASS/main publication, and FI-03 scoped PASS unchanged; no completed tests repeated. All failures/accepted limitation/owner judgments preserved. Overall release NOT_ESTABLISHED.
+
+
+## November19 — FI-04 scoped incomplete-retrieval stop PASS
+
+One run `08584064815087764006108930441CU17` after the isolated fixture-only json serialization fix; Saved/Published confirmed. Actual continuation-link envelope selected existing False stop with `IncompleteWeeklyLogRetrieval`. Counting/children/render/AI/draft Skipped, zero workflow model calls/report drafts/sends/Dataverse calls. Cloud Failed expected; Stop action Succeeded, Condition Cancelled/Terminated. [Result and bounds](evaluation/failure-testing/isolated-2026-11-17/execution/fi04/fixture-fix/README.md).
+
+Synthetic continuation simulation only, not100000-row/backend-pagination proof. Earlier publication blocker, original FI-02 FAIL/separate repair PASS, FI-03 PASS, old runs/owner judgments/accepted limitation unchanged. No completed tests repeated or overall release inferred.

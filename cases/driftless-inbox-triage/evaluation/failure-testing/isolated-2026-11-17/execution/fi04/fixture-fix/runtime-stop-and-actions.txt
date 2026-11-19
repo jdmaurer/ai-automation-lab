@@ -1,0 +1,201 @@
+- banner:
+  - button "Skip to main content"
+  - banner:
+    - button "App launcher": 
+    - generic: Power Automate
+    - search:
+      - button:
+      - combobox "Search box. Suggestions appear as you type"
+    - button "Josh Maurer's Environment":
+      - generic: Environments
+      - generic: Josh Maurer's Environment
+    - button "Click to send feedback":
+    - button "Settings":
+      - generic: 
+    - button "Help":
+      - generic: 
+    - button "Account manager for Josh Maurer":
+      - generic: JM
+    - generic: 
+- main:
+  - button "Go back to previous page":
+    - generic: 
+  - heading "The flow name is Driftless ISOLATED Weekly FI-04 2026-11-19." [level=1]:
+    - generic "The flow name is Driftless ISOLATED Weekly FI-04 2026-11-19.":
+      - generic: Driftless ISOLATED Weekly FI-04 2026-11-19
+  - toolbar:
+    - separator
+    - button "Resubmit":
+      - generic: 
+      - generic: Resubmit
+    - button "Cancel" [disabled]:
+      - generic: 
+      - generic: Cancel
+    - button "Copilot":
+      - generic: Copilot
+    - button "Edit":
+      - generic: 
+      - generic: Edit
+    - separator
+    - switch "New view" [checked]
+    - generic: New view
+  - generic: Flow run failed.
+  - button "Dismiss":
+  - application "Workflow canvas":
+    - group "Manually trigger a flow":
+      - status "0 seconds. Succeeded":
+        - generic: 0s
+      - button "Manually trigger a flow operation, Manually trigger a flow connector":
+        - generic: Manually trigger a flow
+    - group "Window - Week Start UTC":
+      - status "0 seconds. Succeeded":
+        - generic: 0s
+      - button "Window - Week Start UTC operation, Data Operation connector":
+        - generic: Window - Week Start UTC
+    - group "Window - Week End UTC":
+      - status "0 seconds. Succeeded":
+        - generic: 0s
+      - button "Window - Week End UTC operation, Data Operation connector":
+        - generic: Window - Week End UTC
+    - group "Read - Weekly Log Rows":
+      - status "0 seconds. Succeeded":
+        - generic: 0s
+      - button "Read - Weekly Log Rows operation, Data Operation connector":
+        - generic: Read - Weekly Log Rows
+    - group "Initialize variable":
+      - status "0 seconds. Succeeded":
+        - generic: 0s
+      - button "Initialize variable operation, Variable connector":
+        - generic: Initialize variable
+    - generic "Condition":
+      - status "0.1 seconds. Cancelled":
+        - generic: 0.1s
+      - button "Condition operation":
+        - generic: Condition
+        - alert:
+          - generic: Terminated
+      - button "Collapse Condition" [expanded]:
+    - button "True condition" [expanded]:
+      - generic: "True"
+      - button [disabled] [expanded]:
+    - generic "For Each - Summary Category":
+      - status "0 seconds. Skipped":
+        - generic: 0s
+      - button "For Each - Summary Category operation":
+        - generic: For Each - Summary Category
+      - button "Collapse For Each - Summary Category" [expanded]:
+    - group "Filter - Category Rows":
+      - status "Skipped":
+      - button "Filter - Category Rows operation, Data Operations connector":
+        - generic: Filter - Category Rows
+    - group "Filter - Processed Category Rows":
+      - status "Skipped":
+      - button "Filter - Processed Category Rows operation, Data Operations connector":
+        - generic: Filter - Processed Category Rows
+    - group "Filter - Drafts Accepted Unchanged":
+      - status "Skipped":
+      - button "Filter - Drafts Accepted Unchanged operation, Data Operations connector":
+        - generic: Filter - Drafts Accepted Unchanged
+    - group "Filter - Drafts Edited":
+      - status "Skipped":
+      - button "Filter - Drafts Edited operation, Data Operations connector":
+        - generic: Filter - Drafts Edited
+    - group "Filter - Drafts Rejected":
+      - status "Skipped":
+      - button "Filter - Drafts Rejected operation, Data Operations connector":
+        - generic: Filter - Drafts Rejected
+    - group "Filter - Awaiting Owner Review":
+      - status "Skipped":
+      - button "Filter - Awaiting Owner Review operation, Data Operations connector":
+        - generic: Filter - Awaiting Owner Review
+    - group "Collect - Category Summary Row":
+      - status "Skipped":
+      - button "Collect - Category Summary Row operation, Variables connector":
+        - generic: Collect - Category Summary Row
+    - group "Render - Weekly Count Table":
+      - status "0 seconds. Skipped":
+        - generic: 0s
+      - button "Render - Weekly Count Table operation, Data Operations connector":
+        - generic: Render - Weekly Count Table
+    - group "Explain - Weekly Inbox Counts":
+      - status "0 seconds. Skipped":
+        - generic: 0s
+      - button "Explain - Weekly Inbox Counts operation, Microsoft Dataverse connector":
+        - generic: Explain - Weekly Inbox Counts
+    - group "Draft - Weekly Report for Owner Review":
+      - status "0 seconds. Skipped":
+        - generic: 0s
+      - button "Draft - Weekly Report for Owner Review operation, Office 365 Outlook connector":
+        - generic: Draft - Weekly Report for Owner Review
+    - button "False condition" [expanded]:
+      - generic: "False"
+      - button [disabled] [expanded]:
+    - group "Stop - Incomplete Weekly Retrieval":
+      - status "0 seconds. Succeeded":
+        - generic: 0s
+      - button "Stop - Incomplete Weekly Retrieval operation, Control connector":
+        - generic: Stop - Incomplete Weekly Retrieval
+    - generic "Control Panel":
+      - button "Collapse all action groups":
+      - button "Zoom in":
+      - button "Zoom out":
+      - button "Zoom view to fit":
+      - button "Toggle minimap":
+      - button "Search workflow actions":
+      - button "Switch layout mode":
+    - status:
+      - generic: "Zoom level: 100 percent"
+  - dialog "Operation details panel":
+    - button "Collapse":
+    - textbox "Card title": Stop - Incomplete Weekly Retrieval
+    - button "More commands":
+    - tablist:
+      - tab "Run results" [active] [selected]:
+        - generic: Run results
+      - tab "Settings":
+        - generic: Settings
+      - tab "Code view":
+        - generic: Code view
+      - tab "About":
+        - generic: About
+    - heading "Inputs" [level=3]
+    - button "Show raw inputs":
+      - generic: 
+      - generic: Show raw inputs
+    - generic "Inputs":
+      - text: Status
+      - textbox "Status":
+        - button "Copy the value of 'Status' to the clipboard":
+        - generic: Failed
+      - text: Code
+      - textbox "Code":
+        - button "Copy the value of 'Code' to the clipboard":
+        - generic: IncompleteWeeklyLogRetrieval
+      - text: Message
+      - textbox "Message":
+        - button "Copy the value of 'Message' to the clipboard":
+        - generic: Weekly summary stopped because log retrieval reached the 100000-row limit or returned a continuation link. Counts may be incomplete; no summary was produced.
+    - heading "Properties" [level=3]
+    - generic "Properties":
+      - text: Start time
+      - textbox "Start time":
+        - button "Switch 'Start time' to the UTC time format":
+        - button "Copy the value of 'Start time' to the clipboard":
+        - generic: 11/19/2026, 3:56:16 PM (Local time)
+      - text: End time
+      - textbox "End time":
+        - button "Switch 'End time' to the UTC time format":
+        - button "Copy the value of 'End time' to the clipboard":
+        - generic: 11/19/2026, 3:56:16 PM (Local time)
+      - text: Status
+      - textbox "Status":
+        - button "Copy the value of 'Status' to the clipboard":
+        - generic: Succeeded
+      - text: Client tracking ID
+      - textbox "Client tracking ID":
+        - button "Copy the value of 'Client tracking ID' to the clipboard":
+        - generic: 08584064815087764006108930441CU17
+      - text: Action tracking ID
+      - textbox "Action tracking ID":
+        - button "Copy the value of 'Action tracking ID' to the clipboard":
+        - generic: 8e2db9b5-0cba-4b80-9c8b-de9598aab3ef

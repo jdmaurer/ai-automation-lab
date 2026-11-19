@@ -514,3 +514,12 @@ I asked for only the incomplete-weekly-retrieval check in a separate copy, with 
 One Publish attempt was rejected for invalid expressions in the copied retrieval action. The copy remains Draft. **No FI-04 runtime execution occurred**, and this does not demonstrate a failure of the original guard. The assistant stopped without a repair/retry or more tests. [Attempt evidence](cases/driftless-inbox-triage/evaluation/failure-testing/isolated-2026-11-17/execution/fi04/README.md).
 
 FI-02's original failure and later repair PASS remain separate; FI-03 remains PASS. Neither was rerun. Published originals, all earlier failed evidence, baseline, owner judgments and accepted contact-update limitation preserved. FI-04 remains pending; overall release not established.
+
+
+## Thursday 11.19.26 — FI-04 publication fixed; incomplete report correctly stopped
+
+I authorized only the isolated weekly copy's publication repair and one FI-04 run. The assistant replaced raw fixture inputs with a json expression constructing the same empty result and continuation link. The existing condition/report subtree stayed exactly unchanged. Saved and Published/ready confirmed; originals/shared prompts/connections untouched.
+
+Run `08584064815087764006108930441CU17` at3:56:16PM Central,281ms, reached the original False-branch stop with `IncompleteWeeklyLogRetrieval`. The overall cloud Failed status is deliberate: it means the incomplete report was stopped. The Terminate action Succeeded in issuing that stop; the Condition then showed Cancelled/Terminated. Every count/filter/render/AI/report-draft action Skipped. No workflow model call, report draft, send or Dataverse call.
+
+**FI-04 scoped PASS**, one synthetic continuation-envelope check. [Actual evidence and bounds](cases/driftless-inbox-triage/evaluation/failure-testing/isolated-2026-11-17/execution/fi04/fixture-fix/README.md). Not proof of real large-volume pagination/service failure. Earlier publication blocker and all failed runs retained; FI-01/02/03 and completed tests not repeated. Accepted contact-update limitation unchanged. Test copy remains manual-only Published with its fixture; full release/owner quality still not established. Stop the bounded FI-04 task here.

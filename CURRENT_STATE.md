@@ -2,7 +2,19 @@
 
 Canonical baton under AI_HANDOFF_PROTOCOL.md. Active Week 8 case: `cases/driftless-inbox-triage/`. Scope frozen: evaluated/documented SME prototype, no extra features.
 
-## Latest November 19 checkpoint — FI-04 copy saved; publication BLOCKED; NOT RUN
+## Latest November 19 checkpoint — FI-04 scoped stop PASS; isolated fixture fix Published
+
+Josh authorized only correcting the isolated weekly fixture's publication blocker, confirming publication and running FI-04 once. Same copy `b2c2285f-60e4-f111-84ea-000d3a367f8a`: **only Compose inputs changed from raw object to `@json('same JSON')`**. Fixture data identical; full Condition subtree compared exactly unchanged. Saved banner and **Published / ready** verified; copy On / Instant with no previous runs before execution. Published originals, shared prompts and connections untouched.
+
+**One run `08584064815087764006108930441CU17`, November19 3:56:16PM Central,281ms; FI-04 scoped PASS.** Retrieval fixture Succeeded with empty value and nonempty continuation link. Existing False-branch stop executed with actual runStatus **Failed**, code **IncompleteWeeklyLogRetrieval**. Terminate action itself Succeeded; enclosing Condition Cancelled/Terminated is the resulting stop, not an expression failure. Entire counting loop/children, count rendering, AI explanation and report drafting **Skipped**. Zero workflow model calls/report drafts/sends/Dataverse calls. Cloud **Failed is the expected correct behavior**.
+
+[FI-04 result, evidence and bounds](cases/driftless-inbox-triage/evaluation/failure-testing/isolated-2026-11-17/execution/fi04/fixture-fix/README.md), preregistration `372c719ffa499ae5f257b93cae2b6e6b313bb0fb`. Earlier publication rejection preserved separately. This is a simulated continuation-envelope guard check, not a real pagination outage/100000-row-cap test. The test copy remains manual-only Published with the fixture and model-safety tripwire.
+
+**Current statuses: FI-01 scoped PASS; FI-02 original FAIL preserved plus separate repair scoped PASS and Published main repair; FI-03 scoped PASS; FI-04 scoped PASS.** No completed tests repeated; all earlier failed artifacts, baseline, pending owner judgments and accepted contact-update limitation preserved. Overall release **NOT_ESTABLISHED**.
+
+**Single next action:** report this bounded FI-04 result and stop. Failure-check execution is complete at the documented simulation scope; no more automatic tests or tuning. Essential handoff/remaining documented coverage and owner quality review remain open for Josh's direction.
+
+## Earlier November 19 checkpoint — FI-04 copy saved; publication BLOCKED; NOT RUN
 
 Josh authorized only FI-04 in a separate weekly-summary copy, with no completed-test replay and stop on failure. Created manual-only **Driftless ISOLATED Weekly FI-04 2026-11-19**, ID `b2c2285f-60e4-f111-84ea-000d3a367f8a`, by Save As; initially Disabled/Instant. Injected a Compose retrieval envelope with empty value and nonempty continuation link. Original condition/False termination preserved; only test-copy explanation input has a fail-before-model tripwire. Restored designer-cleared category-filter From reference before saving; source diff verified.
 

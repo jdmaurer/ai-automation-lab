@@ -1,5 +1,14 @@
 # Isolated failure checks — November 17, 2026
 
+## Latest November19 — FI-04 scoped PASS after fixture-only publication fix
+
+Same manual-only weekly copy `b2c2285f-60e4-f111-84ea-000d3a367f8a`: raw inputs replaced with json expression constructing identical fixture; Condition subtree unchanged. Saved/Published confirmed. **One run `08584064815087764006108930441CU17`** reached existing False stop with `IncompleteWeeklyLogRetrieval`; counting/render/AI/report draft Skipped. Cloud Failed expected; Terminate Succeeded. [FI-04 actual result and bounds](execution/fi04/fixture-fix/README.md).
+
+FI-01 scoped PASS; original FI-02 FAIL retained with separate repair scoped PASS/main publication; FI-03 scoped PASS; FI-04 scoped PASS. Earlier publication blocker/failures/baseline/owner judgments/accepted limitation unchanged. No completed tests repeated; overall release NOT_ESTABLISHED. Stop this task; simulation bounds and remaining handoff/owner work remain documented.
+
+## Historical checkpoints
+
+
 ## Latest November19 — FI-04 publication BLOCKED; NOT RUN
 
 Manual-only weekly copy `b2c2285f-60e4-f111-84ea-000d3a367f8a` created and saved; checker initially0/0. One Publish rejected due to invalid expressions in the copied retrieval fixture; editor remains Draft. Stopped without repair/retry/test. This is a setup blocker, not a runtime guard failure. [FI-04 evidence](execution/fi04/README.md).

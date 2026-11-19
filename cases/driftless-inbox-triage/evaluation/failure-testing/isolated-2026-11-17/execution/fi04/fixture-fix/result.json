@@ -1,0 +1,74 @@
+{
+  "case_id": "FI-04",
+  "date": "2026-11-19",
+  "status": "PASS_SCOPED_INCOMPLETE_RETRIEVAL_STOP",
+  "run_id": "08584064815087764006108930441CU17",
+  "copy_flow": "b2c2285f-60e4-f111-84ea-000d3a367f8a",
+  "runtime_executions": 1,
+  "started_local": "2026-11-19 15:56:16 America/Chicago",
+  "duration_ms": 281,
+  "cloud_status": "Failed",
+  "saved": true,
+  "published": true,
+  "fix": "Only Read_-_Weekly_Log_Rows.inputs changed from raw object to @json('same JSON'). Condition and full report subtree exactly unchanged from previous saved copy.",
+  "preregistration_commit": "372c719ffa499ae5f257b93cae2b6e6b313bb0fb",
+  "pin": {
+    "date": "2026-11-09"
+  },
+  "retrieval": {
+    "status": "Succeeded",
+    "actual_outputs": {
+      "body": {
+        "value": [],
+        "@odata.nextLink": "https://example.invalid/isolated-fixture/continuation-not-fetched"
+      }
+    },
+    "source": "Run results > Show raw outputs"
+  },
+  "condition": {
+    "status": "Cancelled",
+    "alert": "Terminated",
+    "selected_branch": "False",
+    "evidence": "Existing else-branch Stop action executed; entire True branch Skipped. Termination cancels enclosing Condition; this is not an expression-evaluation error."
+  },
+  "termination": {
+    "action": "Stop_-_Incomplete_Weekly_Retrieval",
+    "action_status": "Succeeded",
+    "actual_inputs": {
+      "runStatus": "Failed",
+      "runError": {
+        "code": "IncompleteWeeklyLogRetrieval",
+        "message": "Weekly summary stopped because log retrieval reached the 100000-row limit or returned a continuation link. Counts may be incomplete; no summary was produced."
+      }
+    }
+  },
+  "actions": {
+    "For_Each_-_Summary_Category": "Skipped",
+    "Filter_-_Category_Rows": "Skipped",
+    "Filter_-_Processed_Category_Rows": "Skipped",
+    "Filter_-_Drafts_Accepted_Unchanged": "Skipped",
+    "Filter_-_Drafts_Edited": "Skipped",
+    "Filter_-_Drafts_Rejected": "Skipped",
+    "Filter_-_Awaiting_Owner_Review": "Skipped",
+    "Collect_-_Category_Summary_Row": "Skipped",
+    "Render_-_Weekly_Count_Table": "Skipped",
+    "Explain_-_Weekly_Inbox_Counts": "Skipped",
+    "Draft_-_Weekly_Report_for_Owner_Review": "Skipped"
+  },
+  "effects": {
+    "workflow_model_calls": 0,
+    "report_drafts": 0,
+    "sends": 0,
+    "dataverse_connector_calls": 0
+  },
+  "preserved": {
+    "published_originals": true,
+    "earlier_failed_runs": true,
+    "earlier_publication_error": true,
+    "accepted_contact_update_limitation": true,
+    "pending_owner_judgments": true,
+    "completed_tests_not_repeated": true
+  },
+  "bounds": "Synthetic continuation envelope in separate manual-only copy; not a real service outage, 100000-row cap or large-volume pagination proof. Overall release NOT_ESTABLISHED.",
+  "ui_notes": "One Code-view interaction timed out and one publication-status read timed out. Subsequent live observation confirmed saved source/publication; no duplicate Publish or Run submission. Run viewer displayed a Copilot panel, closed without submitting a prompt or flow-change request."
+}
