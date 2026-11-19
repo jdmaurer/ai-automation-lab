@@ -428,3 +428,10 @@ Main `53209c07-ca63-bcd9-c7f3-04b29c1f562a` now has the exact verified required-
 Preregistered `6bed67c4888fab9536c170401d127c56576494b7`; **one November17 run** `08584066443970741245268372506CU25`,3seconds/cloud Succeeded. Actual unsent fixed Support draft created; AI drafter Skipped. Completion action Failed on injected Draft ID division by zero before connector request. Independent failure marker and same-Start-row fallback Succeeded: Failed, Needs Owner Review/Open true, Draft Created true. Seeded General/Pending review values retained; fallback writes no owner fields/Draft ID. November17 Outlook inspection confirmed one reply plus one source fixture, no duplicate. Zero model calls/sends.
 
 [Saved FI-03 evidence](evaluation/failure-testing/isolated-2026-11-17/execution/fi03/README.md). **PASS_SCOPED_COMPLETION_WRITE_FAILURE_RECOVERY**, not real database-outage/backend-ID-rejection proof. November19 was documentation closeout only: no browser/test/flow changes. Earlier failed evidence and accepted limitation unchanged. FI-04 NOT RUN; full release NOT_ESTABLISHED.
+
+
+## November19 — FI-04 BLOCKED_PUBLICATION_NOT_RUN
+
+Separate manual-only weekly copy `b2c2285f-60e4-f111-84ea-000d3a367f8a` saved with simulated continuation-link retrieval; original guard/False branch retained. Checker initially0/0; one Publish rejected with invalid expressions in `Read_-_Weekly_Log_Rows`. Editor remains Draft. **No runtime execution, no acceptance result**, no repair/retry after rejection. [Attempt and preserved contract](evaluation/failure-testing/isolated-2026-11-17/execution/fi04/README.md).
+
+FI-01 scoped PASS, original FI-02 FAIL plus separate repair PASS/main publication, and FI-03 scoped PASS unchanged; no completed tests repeated. All failures/accepted limitation/owner judgments preserved. Overall release NOT_ESTABLISHED.

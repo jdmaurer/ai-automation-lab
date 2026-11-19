@@ -2,7 +2,17 @@
 
 Canonical baton under AI_HANDOFF_PROTOCOL.md. Active Week 8 case: `cases/driftless-inbox-triage/`. Scope frozen: evaluated/documented SME prototype, no extra features.
 
-## Latest November 19 checkpoint — November17 FI-03 results saved; scoped recovery PASS
+## Latest November 19 checkpoint — FI-04 copy saved; publication BLOCKED; NOT RUN
+
+Josh authorized only FI-04 in a separate weekly-summary copy, with no completed-test replay and stop on failure. Created manual-only **Driftless ISOLATED Weekly FI-04 2026-11-19**, ID `b2c2285f-60e4-f111-84ea-000d3a367f8a`, by Save As; initially Disabled/Instant. Injected a Compose retrieval envelope with empty value and nonempty continuation link. Original condition/False termination preserved; only test-copy explanation input has a fail-before-model tripwire. Restored designer-cleared category-filter From reference before saving; source diff verified.
+
+Saved-draft banner and checker **0 errors / 0 warnings** observed. **One Publish submission rejected**: `Read_-_Weekly_Log_Rows` input contains invalid expression(s). Editor remains **Draft**. **FI-04 NOT RUN; no runtime PASS or FAIL assigned.** This is a test-fixture publication blocker, not evidence the existing completeness guard failed. Stopped without repair/republish/run retry. [Attempt and evidence](cases/driftless-inbox-triage/evaluation/failure-testing/isolated-2026-11-17/execution/fi04/README.md), preregistration `0a9e421f206720626cc4772643f8fe2e60fc3cef`.
+
+Zero test executions/model calls/report drafts/sends, original-flow/shared-prompt/connection edits, or completed-test repetitions. **Current status: FI-01 scoped PASS; original FI-02 FAIL preserved, separate repair scoped PASS and published in main; FI-03 scoped PASS; FI-04 blocked/not run.** Baseline, all previous failed artifacts, owner judgments and accepted contact-update limitation preserved. Overall release **NOT_ESTABLISHED**.
+
+**Single next action:** report this setup blocker and stop. A separately directed bounded continuation can inspect/fix only the saved copy's fixture publication syntax, then attempt the still-pending FI-04 once. Do not repeat FI-02/FI-03, rebuild copies, change originals, or call earlier failures new regressions.
+
+## Earlier November 19 checkpoint — November17 FI-03 results saved; scoped recovery PASS
 
 Josh requested finishing the interrupted GitHub closeout only. Used saved November17 evidence; **no browser use, tests, prompt calls or flow edits on November19**. Earlier commit creation was blocked when automatic approval review ran out of workspace credits.
 

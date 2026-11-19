@@ -1,5 +1,14 @@
 # Isolated failure checks — November 17, 2026
 
+## Latest November19 — FI-04 publication BLOCKED; NOT RUN
+
+Manual-only weekly copy `b2c2285f-60e4-f111-84ea-000d3a367f8a` created and saved; checker initially0/0. One Publish rejected due to invalid expressions in the copied retrieval fixture; editor remains Draft. Stopped without repair/retry/test. This is a setup blocker, not a runtime guard failure. [FI-04 evidence](execution/fi04/README.md).
+
+FI-01 PASS; FI-02 original FAIL preserved with separate repair PASS/published main repair; FI-03 PASS. None repeated. Published originals, baseline, owner judgments, failed runs and accepted contact-update limitation unchanged. Overall release NOT_ESTABLISHED.
+
+## Historical checkpoints
+
+
 ## Latest closeout — November19: November17 FI-03 scoped PASS preserved
 
 One November17 run `08584066443970741245268372506CU25`: actual unsent fixed Support reply preserved, completion action deliberately Failed, independent review marker and same-row fallback Succeeded. Draft Created true; populated General/Pending review values retained. Outlook then showed one reply plus one source fixture, no duplicate/send/model call. [Result and boundaries](execution/fi03/README.md).

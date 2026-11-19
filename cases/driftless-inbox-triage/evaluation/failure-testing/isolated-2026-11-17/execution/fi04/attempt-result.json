@@ -1,0 +1,35 @@
+{
+  "case_id": "FI-04",
+  "date": "2026-11-19",
+  "status": "BLOCKED_PUBLICATION_NOT_RUN",
+  "acceptance_result": null,
+  "run_id": null,
+  "copy_flow": "b2c2285f-60e4-f111-84ea-000d3a367f8a",
+  "copy_name": "Driftless ISOLATED Weekly FI-04 2026-11-19",
+  "preregistration_commit": "0a9e421f206720626cc4772643f8fe2e60fc3cef",
+  "save_draft_confirmed": true,
+  "initial_flow_checker": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "publish_submissions": 1,
+  "publish_result": "Rejected; editor remains Draft",
+  "error": "The input parameter(s) of operation 'Read_-_Weekly_Log_Rows' contains invalid expression(s). Fix invalid expression(s) for the input parameter(s) of operation 'Read_-_Weekly_Log_Rows'.",
+  "runtime_executions_submitted": 0,
+  "model_calls": 0,
+  "report_drafts": 0,
+  "sends": 0,
+  "original_flow_edits": 0,
+  "shared_prompt_or_connection_edits": 0,
+  "completed_tests_repeated": 0,
+  "stop": "Stopped after publication rejection; no repair, republish or run retry.",
+  "interpretation": "Fixture/setup publication defect. No runtime evidence about the existing retrieval-completeness guard. Do not label FI-04 PASS or runtime FAIL.",
+  "prior_status": {
+    "FI01": "scoped PASS unchanged",
+    "FI02_original": "FAIL preserved",
+    "FI02_repair": "separate scoped PASS; main repair published",
+    "FI03": "scoped PASS unchanged"
+  },
+  "accepted_contact_update_limitation": "unchanged",
+  "release": "NOT_ESTABLISHED"
+}

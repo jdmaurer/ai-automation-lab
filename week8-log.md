@@ -505,3 +505,12 @@ I asked the assistant to finish the GitHub closeout after the prior commit attem
 FI-03 had run once on November17: `08584066443970741245268372506CU25`,3seconds/cloud Succeeded. One unsent fixed Support reply was created; injected completion-input division by zero failed the completion action. Independent review marker and same-Start-row fallback succeeded: Failed, review/open true, Draft Created true. Test-only Final Category General and Pending review outcome preserved. Outlook inspection then showed one reply plus one source fixture, exact fixed acknowledgment, no duplicate/send/model call. [Evidence and bounds](cases/driftless-inbox-triage/evaluation/failure-testing/isolated-2026-11-17/execution/fi03/README.md).
 
 This was an action-input simulation, not an actual database outage. Original published flows, earlier failures, baseline, owner forms and accepted contact-update limitation preserved. Test copy last verified manual-only with FI-03 fault still installed. Browser was reset afterward and not inspected today. FI-04 remains pending; no completed-test replay or overall release claim.
+
+
+## Thursday 11.19.26 — FI-04 isolated setup saved; publication blocked, no run
+
+I asked for only the incomplete-weekly-retrieval check in a separate copy, with published originals intact and no completed tests repeated. The assistant created the manual-only weekly copy `b2c2285f-60e4-f111-84ea-000d3a367f8a`, preserved the guard and its stop branch, and saved the simulated continuation-link fixture. The checker initially showed 0 errors and 0 warnings.
+
+One Publish attempt was rejected for invalid expressions in the copied retrieval action. The copy remains Draft. **No FI-04 runtime execution occurred**, and this does not demonstrate a failure of the original guard. The assistant stopped without a repair/retry or more tests. [Attempt evidence](cases/driftless-inbox-triage/evaluation/failure-testing/isolated-2026-11-17/execution/fi04/README.md).
+
+FI-02's original failure and later repair PASS remain separate; FI-03 remains PASS. Neither was rerun. Published originals, all earlier failed evidence, baseline, owner judgments and accepted contact-update limitation preserved. FI-04 remains pending; overall release not established.
