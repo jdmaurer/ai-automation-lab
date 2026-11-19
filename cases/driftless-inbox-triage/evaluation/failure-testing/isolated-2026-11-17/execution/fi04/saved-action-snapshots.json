@@ -1,0 +1,349 @@
+{
+  "Read_-_Weekly_Log_Rows": {
+    "type": "Compose",
+    "inputs": {
+      "body": {
+        "value": [],
+        "@odata.nextLink": "https://example.invalid/isolated-fixture/continuation-not-fetched"
+      }
+    },
+    "runAfter": {
+      "Window_-_Week_End_UTC": [
+        "Succeeded"
+      ]
+    }
+  },
+  "Condition": {
+    "type": "If",
+    "expression": {
+      "equals": [
+        "@and(less(length(body('Read_-_Weekly_Log_Rows')?['value']),100000),empty(body('Read_-_Weekly_Log_Rows')?['@odata.nextLink']))",
+        "@true"
+      ]
+    },
+    "actions": {
+      "For_Each_-_Summary_Category": {
+        "type": "Foreach",
+        "foreach": "@json('[{\"name\":\"Sales\",\"value\":832990000},{\"name\":\"Support\",\"value\":832990001},{\"name\":\"Finance\",\"value\":832990002},{\"name\":\"General\",\"value\":832990003},{\"name\":\"Internal\",\"value\":832990004},{\"name\":\"Unknown\",\"value\":832990005}]')",
+        "actions": {
+          "Filter_-_Category_Rows": {
+            "type": "Query",
+            "inputs": {
+              "from": "@body('Read_-_Weekly_Log_Rows')?['value']",
+              "where": "@equals(coalesce(if(empty(item()?['jdm_reviewedat']),item()?['jdm_category'],item()?['jdm_finalcategory']),832990005),items('For_Each_-_Summary_Category')?['value'])"
+            }
+          },
+          "Filter_-_Processed_Category_Rows": {
+            "type": "Query",
+            "inputs": {
+              "from": "@body('Filter_-_Category_Rows')",
+              "where": "@or(equals(item()?['jdm_processingoutcome'],832990001),equals(item()?['jdm_processingoutcome'],832990004))"
+            },
+            "runAfter": {
+              "Filter_-_Category_Rows": [
+                "Succeeded"
+              ]
+            }
+          },
+          "Filter_-_Drafts_Accepted_Unchanged": {
+            "type": "Query",
+            "inputs": {
+              "from": "@body('Filter_-_Category_Rows')",
+              "where": "@and(equals(item()?['jdm_draftcreated'],true),equals(item()?['jdm_reviewoutcome'],832990001))"
+            },
+            "runAfter": {
+              "Filter_-_Processed_Category_Rows": [
+                "Succeeded"
+              ]
+            }
+          },
+          "Filter_-_Drafts_Edited": {
+            "type": "Query",
+            "inputs": {
+              "from": "@body('Filter_-_Category_Rows')",
+              "where": "@and(equals(item()?['jdm_draftcreated'],true),equals(item()?['jdm_reviewoutcome'],832990002))"
+            },
+            "runAfter": {
+              "Filter_-_Drafts_Accepted_Unchanged": [
+                "Succeeded"
+              ]
+            }
+          },
+          "Filter_-_Drafts_Rejected": {
+            "type": "Query",
+            "inputs": {
+              "from": "@body('Filter_-_Category_Rows')",
+              "where": "@and(equals(item()?['jdm_draftcreated'],true),equals(item()?['jdm_reviewoutcome'],832990003))"
+            },
+            "runAfter": {
+              "Filter_-_Drafts_Edited": [
+                "Succeeded"
+              ]
+            }
+          },
+          "Filter_-_Awaiting_Owner_Review": {
+            "type": "Query",
+            "inputs": {
+              "from": "@body('Filter_-_Processed_Category_Rows')",
+              "where": "@and(equals(item()?['jdm_reviewoutcome'],832990000),or(equals(item()?['jdm_draftcreated'],true),equals(item()?['jdm_needsownerreview'],true)))"
+            },
+            "runAfter": {
+              "Filter_-_Drafts_Rejected": [
+                "Succeeded"
+              ]
+            }
+          },
+          "Collect_-_Category_Summary_Row": {
+            "type": "AppendToArrayVariable",
+            "inputs": {
+              "name": "weekly_summary_rows",
+              "value": "@json(concat('{\"category\":\"',items('For_Each_-_Summary_Category')?['name'],'\"',',\"messages_processed\":',string(length(body('Filter_-_Processed_Category_Rows'))),',\"drafts_accepted_unchanged\":',string(length(body('Filter_-_Drafts_Accepted_Unchanged'))),',\"drafts_edited\":',string(length(body('Filter_-_Drafts_Edited'))),',\"drafts_rejected\":',string(length(body('Filter_-_Drafts_Rejected'))),',\"awaiting_owner_review\":',string(length(body('Filter_-_Awaiting_Owner_Review'))),'}'))"
+            },
+            "runAfter": {
+              "Filter_-_Awaiting_Owner_Review": [
+                "Succeeded"
+              ]
+            }
+          }
+        }
+      },
+      "Render_-_Weekly_Count_Table": {
+        "type": "Table",
+        "inputs": {
+          "from": "@variables('weekly_summary_rows')",
+          "format": "HTML",
+          "columns": [
+            {
+              "header": "Category",
+              "value": "@item()?['category']"
+            },
+            {
+              "header": "Processed",
+              "value": "@item()?['messages_processed']"
+            },
+            {
+              "header": "Drafts accepted unchanged",
+              "value": "@item()?['drafts_accepted_unchanged']"
+            },
+            {
+              "header": "Drafts edited",
+              "value": "@item()?['drafts_edited']"
+            },
+            {
+              "header": "Drafts rejected",
+              "value": "@item()?['drafts_rejected']"
+            },
+            {
+              "header": "Awaiting owner review",
+              "value": "@item()?['awaiting_owner_review']"
+            }
+          ]
+        },
+        "runAfter": {
+          "For_Each_-_Summary_Category": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Explain_-_Weekly_Inbox_Counts": {
+        "type": "OpenApiConnection",
+        "inputs": {
+          "parameters": {
+            "recordId": "93a1dc08-e7e4-484e-98c6-0da214657570",
+            "item/requestv2/weekly_aggregates": "@div(1,0)"
+          },
+          "host": {
+            "apiId": "providers/Microsoft.ProcessSimple/operationGroups/aibuilder",
+            "connection": "shared_commondataserviceforapps",
+            "operationId": "aibuilderpredict_customprompt"
+          }
+        },
+        "runAfter": {
+          "Render_-_Weekly_Count_Table": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Draft_-_Weekly_Report_for_Owner_Review": {
+        "type": "OpenApiConnection",
+        "inputs": {
+          "parameters": {
+            "draftMessage/To": "josh@joshmaurer.onmicrosoft.com",
+            "draftMessage/Subject": "OWNER REVIEW - Driftless weekly inbox summary - @{triggerBody()?['date']}",
+            "draftMessage/Body": "<h2>Driftless Print and Sign: weekly inbox activity</h2><p><strong>OWNER REVIEW REQUIRED — UNSENT DRAFT</strong></p><p><strong>Reporting week:</strong> @{triggerBody()?['date']} through @{addDays(triggerBody()?['date'],6,'yyyy-MM-dd')} (Central time).</p><p>This report covers messages received in that week. Review decisions reflect their recorded status when the report is generated.</p>@{replace(body('Render_-_Weekly_Count_Table'),'<table>','<table style=\"border-collapse:collapse;width:100%;font-size:13px;\" border=\"1\" cellpadding=\"6\" cellspacing=\"0\">')}<h3>AI-written explanation — check for accuracy</h3><p>@{replace(replace(replace(coalesce(outputs('Explain_-_Weekly_Inbox_Counts')?['body/responsev2/predictionOutput/text'],'No AI explanation was returned. Review the count table.'),'&','&amp;'),'<','&lt;'),'>','&gt;')}</p><h3>How to read the counts</h3><ul><li><strong>Processed:</strong> completed triage or flagged as a possible resend; failed and in-progress attempts are excluded.</li><li><strong>Draft decisions:</strong> recorded acceptance, edits or rejection of an actual draft. These can include a draft whose processing later failed, so they are separate from the processed count.</li><li><strong>Awaiting owner review:</strong> processed messages with a pending draft or review requirement, including cases with no draft. Open follow-up alone does not mean review is pending.</li><li>These figures describe inbox activity. They do not establish that replies were sent, customer work was resolved, or orders were completed.</li></ul><p><strong>Before sharing:</strong> check the reporting dates, count table, AI wording and recipients. Edit this draft as needed and send it manually only after your review.</p><p><em>Synthetic SME prototype — Driftless Print and Sign.</em></p><br><br><p class=\"editor-paragraph\"><br></p><br><br>",
+            "draftMessage/Importance": "Normal"
+          },
+          "host": {
+            "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
+            "connection": "shared_office365",
+            "operationId": "DraftEmail"
+          }
+        },
+        "runAfter": {
+          "Explain_-_Weekly_Inbox_Counts": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "else": {
+      "actions": {
+        "Stop_-_Incomplete_Weekly_Retrieval": {
+          "type": "Terminate",
+          "inputs": {
+            "runStatus": "Failed",
+            "runError": {
+              "code": "IncompleteWeeklyLogRetrieval",
+              "message": "Weekly summary stopped because log retrieval reached the 100000-row limit or returned a continuation link. Counts may be incomplete; no summary was produced."
+            }
+          }
+        }
+      }
+    },
+    "runAfter": {
+      "Initialize_variable": [
+        "Succeeded"
+      ]
+    },
+    "metadata": {
+      "operationMetadataId": "e73baf4c-0c6d-40fe-9491-e28f9cf40fb4"
+    }
+  },
+  "Explain_-_Weekly_Inbox_Counts": {
+    "type": "OpenApiConnection",
+    "inputs": {
+      "parameters": {
+        "recordId": "93a1dc08-e7e4-484e-98c6-0da214657570",
+        "item/requestv2/weekly_aggregates": "@div(1,0)"
+      },
+      "host": {
+        "apiId": "providers/Microsoft.ProcessSimple/operationGroups/aibuilder",
+        "connection": "shared_commondataserviceforapps",
+        "operationId": "aibuilderpredict_customprompt"
+      }
+    },
+    "runAfter": {
+      "Render_-_Weekly_Count_Table": [
+        "Succeeded"
+      ]
+    }
+  },
+  "Initialize_variable": {
+    "type": "InitializeVariable",
+    "inputs": {
+      "variables": [
+        {
+          "name": "weekly_summary_rows",
+          "type": "array",
+          "value": []
+        }
+      ]
+    },
+    "runAfter": {
+      "Read_-_Weekly_Log_Rows": [
+        "SUCCEEDED"
+      ]
+    },
+    "metadata": {
+      "operationMetadataId": "1ad188d3-ee75-44c4-b3ac-131cf5038cfd"
+    }
+  },
+  "manual": {
+    "type": "Request",
+    "kind": "Button",
+    "inputs": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "title": "Week starting (Monday)",
+            "type": "string",
+            "format": "date",
+            "x-ms-dynamically-added": true,
+            "description": "Please enter or select a date (YYYY-MM-DD)",
+            "x-ms-content-hint": "DATE"
+          },
+          "location": {
+            "type": "object",
+            "properties": {
+              "fullAddress": {
+                "title": "Full address",
+                "type": "string",
+                "x-ms-dynamically-added": false
+              },
+              "address": {
+                "type": "object",
+                "properties": {
+                  "countryOrRegion": {
+                    "title": "Country/Region",
+                    "type": "string",
+                    "x-ms-dynamically-added": false
+                  },
+                  "city": {
+                    "title": "City",
+                    "type": "string",
+                    "x-ms-dynamically-added": false
+                  },
+                  "state": {
+                    "title": "State",
+                    "type": "string",
+                    "x-ms-dynamically-added": false
+                  },
+                  "street": {
+                    "title": "Street",
+                    "type": "string",
+                    "x-ms-dynamically-added": false
+                  },
+                  "postalCode": {
+                    "title": "Postal code",
+                    "type": "string",
+                    "x-ms-dynamically-added": false
+                  }
+                },
+                "required": [
+                  "countryOrRegion",
+                  "city",
+                  "state",
+                  "street",
+                  "postalCode"
+                ]
+              },
+              "coordinates": {
+                "type": "object",
+                "properties": {
+                  "latitude": {
+                    "title": "Latitude",
+                    "type": "number",
+                    "x-ms-dynamically-added": false
+                  },
+                  "longitude": {
+                    "title": "Longitude",
+                    "type": "number",
+                    "x-ms-dynamically-added": false
+                  }
+                },
+                "required": [
+                  "latitude",
+                  "longitude"
+                ]
+              }
+            }
+          },
+          "key-button-date": {
+            "title": "Date",
+            "type": "string",
+            "x-ms-dynamically-added": false
+          }
+        },
+        "required": [
+          "date",
+          "location",
+          "key-button-date"
+        ]
+      }
+    },
+    "metadata": {
+      "operationMetadataId": "169c6e5d-8cc6-47d2-a738-0cec323ea12f"
+    }
+  }
+}

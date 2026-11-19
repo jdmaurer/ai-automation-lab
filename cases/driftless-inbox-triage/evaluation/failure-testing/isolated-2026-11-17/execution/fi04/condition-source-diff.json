@@ -1,0 +1,7 @@
+[
+  {
+    "path": "/actions/Explain_-_Weekly_Inbox_Counts/inputs/parameters/item/requestv2/weekly_aggregates",
+    "before": "@concat('{\"week_start\":\"',triggerBody()?['date'],'\",\"week_end_exclusive\":\"',addDays(triggerBody()?['date'],7,'yyyy-MM-dd'),'\",\"review_state\":\"current_at_report_generation\",\"categories\":',string(variables('weekly_summary_rows')),'}')",
+    "after": "@div(1,0)"
+  }
+]

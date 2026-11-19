@@ -1,0 +1,51 @@
+{
+  "case_id": "FI-04",
+  "status": "PREREGISTERED_NOT_RUN",
+  "date": "2026-11-19",
+  "max_runtime_executions": 1,
+  "source_flow": "5712f23d-44e0-f111-84ea-000d3a367f8a",
+  "copy_flow": "b2c2285f-60e4-f111-84ea-000d3a367f8a",
+  "copy_name": "Driftless ISOLATED Weekly FI-04 2026-11-19",
+  "copy_creation": "Save As; Disabled/Instant confirmed before edit",
+  "fault": "Only in copy, replace Dataverse retrieval with Compose named Read - Weekly Log Rows, output envelope body.value=[] and nonempty body.@odata.nextLink. No connector read or continuation fetch.",
+  "fixture": {
+    "body": {
+      "value": [],
+      "@odata.nextLink": "https://example.invalid/isolated-fixture/continuation-not-fetched"
+    }
+  },
+  "pin": {
+    "date": "2026-11-09"
+  },
+  "model_safety": "Copied Explain action weekly_aggregates input @div(1,0) prevents a model request if guard unexpectedly selects True. For PASS this action must be Skipped, not merely Failed.",
+  "expected": {
+    "condition": false,
+    "termination_status": "Failed",
+    "termination_code": "IncompleteWeeklyLogRetrieval",
+    "aggregation": "Skipped",
+    "render_counts": "Skipped",
+    "explanation": "Skipped",
+    "report_draft": "Skipped",
+    "model_calls": 0,
+    "report_drafts": 0
+  },
+  "verification": {
+    "guardAndFalseBranchUnchanged": true,
+    "reportBranchOnlyChangeIsModelTripwire": true,
+    "clearedFilterReferenceRestored": true,
+    "fixtureEnvelopeVerified": true,
+    "manualOnly": true,
+    "saved": true,
+    "checker": {
+      "errors": 0,
+      "warnings": 0
+    }
+  },
+  "setup_notes": [
+    "Static-result UI could not cleanly represent continuation field; canceled without running and used Compose fixture.",
+    "Designer cleared Filter - Category Rows From on retrieval replacement; exact original body('Read_-_Weekly_Log_Rows')?['value'] restored before save/run.",
+    "No original flow, shared prompt, connection or accepted limitation edit. No completed test repetition."
+  ],
+  "stop_on_failure": true,
+  "bounds": "One controlled continuation-link guard check, not a real large-volume/pagination failure or normal-report test."
+}
