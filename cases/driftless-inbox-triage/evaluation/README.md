@@ -1,5 +1,11 @@
 # Frozen 30-message evaluation
 
+## Current handoff — November19,2026
+
+The [case runbook](../runbook.md) and [current baton](../../../CURRENT_STATE.md) govern continuation. Documentation closeout added no tests, scores or owner ratings. Original full-v1/v2 FAILs and all run artifacts remain unchanged. Policy-v3 order-change overrides are Published with an accepted contact-update false positive; no formal v3 acceptance exists. Do not splice targeted/failure-test passes into a full-set score.
+
+FI-01, FI-02 repair, FI-03 and FI-04 scoped checks are complete, with the original FI-02 failure preserved separately. [Failure evidence and bounds](failure-testing/isolated-2026-11-17/README.md). Current remaining coverage and owner judgments are in the runbook; **do not execute historical commands or next-test instructions below automatically**. Any future v3 score needs an explicit prospective contract for raw/effective priority and a new run label. No new full30 or completed-test repetition authorized.
+
 ## Latest actual result — policy v2, November 16, 2026
 
 **Full30 complete; acceptance FAIL.** Run `08584067370291608645194199559CU22`, label `run-2026-11-16-frozen-policy-v2-b`. Packet preregistered before execution; original inputs/order/hash and v2 metadata validated. Primary27/30, category28/30, review30/30, priority29/30. Critical failure DRI-12 missed genuine urgency. DRI-26/29 category misses and DRI-28 safe classifier failure retained.14 replies:9 AI +5 fixed Support with exact literal/AI Skipped. Owner judgments all null, quality/90% target pending; overall release NOT_ESTABLISHED.

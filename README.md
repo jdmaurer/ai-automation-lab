@@ -15,6 +15,7 @@ prototyping.
 |---|---|---|
 | [`cases/rivertown-lead-intake/`](cases/rivertown-lead-intake/) | Webhook-driven lead intake, deduplication, and routing for a synthetic 30-person B2B consulting firm | Built and tested in n8n and Power Automate, with a [client comparison memo](cases/rivertown-lead-intake/platform-comparison-memo.md) |
 | [`cases/eval-summary-drafter/`](cases/eval-summary-drafter/) | Drafts one-page client summaries from AI test results; a person reviews every draft | Built and tested (v9) |
+| [`cases/driftless-inbox-triage/`](cases/driftless-inbox-triage/) | Human-supervised Microsoft 365 inbox triage, unsent reply drafts and weekly activity report | Published synthetic prototype; evaluated failures and accepted limitation preserved; [handoff documented](cases/driftless-inbox-triage/runbook.md), overall release not established |
 
 Each case folder holds the workflow export, seed data, test cases with
 results, a decision log with reasoning, a limitations statement, and a
