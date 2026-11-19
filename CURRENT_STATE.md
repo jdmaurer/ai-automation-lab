@@ -2,13 +2,17 @@
 
 Canonical baton under [AI_HANDOFF_PROTOCOL.md](AI_HANDOFF_PROTOCOL.md). Active Week8 case: [Driftless Inbox Triage](cases/driftless-inbox-triage/README.md). **Scope frozen. Essential documentation complete; overall release NOT_ESTABLISHED.**
 
-## Exact stopping point
+## Exact stopping point — Claude second-opinion handoff, November19
 
-Josh authorized essential handoff documentation and GitHub closeout only. Updated the case front page, created the operator/admin runbook, corrected stale limitations/evaluation navigation and replaced the obsolete next-session instructions. **No browser use, flow/prompt/connection edit, publication, export, import, test, model call, rescore or owner rating during this documentation closeout.**
+Josh chose to transfer continuation to Claude for an independent review after substantial time/usage overrun. ChatGPT's session is closed out. [NEXT_SESSION_START.md](NEXT_SESSION_START.md) contains the copy-ready takeover prompt and sync instructions.
 
-[Runbook and Gate2 evidence map](cases/driftless-inbox-triage/runbook.md) now cover owner review, weekly count meaning, failures, disable/manual fallback, baseline-plus-repair recovery boundary, roles, privacy/retention, adoption and measured/unmeasured outcomes. Existing failed artifacts and accepted contact-update limitation are preserved. Earlier detailed checkpoints remain in Git history and [week8-log.md](week8-log.md); use the current summary below instead of following historical next-step instructions.
+**No new tests, browser use, flow/prompt/connection edits, publication, exports/imports or ratings during this transfer.** Published originals, all failed results, accepted contact-update limitation and pending judgments retained. Essential documentation was completed in commit `58aa6d965a4b8794b8b05fc352495be3a350c68a`; this is a documentation milestone, not acceptance or Gate2 approval.
 
-**Single next action:** Josh reviews the open-item disposition below and chooses whether to close Week8 as a documented prototype with unresolved acceptance, or authorize a separately bounded next activity. Do not automatically run another test, begin30-case owner review, tune prompts, export again or change working flows.
+**Single next action:** Claude reads the live repo and authoritative Week8/Gate2 requirements, independently checks the evidence and gives Josh the smallest closeout recommendation before any new execution. Do not accept ChatGPT's assessment uncritically or restart the build from old checkpoints.
+
+ChatGPT recommended stopping flow development and doing a final assessment from existing evidence: reconcile metrics/cost, original tabletop/feedback/Gate requirements and any owner judgments needed for the chosen outcome. It explicitly did **not** claim every original requirement is satisfied, approve a partial closeout on Josh's behalf, or authorize another test cycle. Claude should distinguish original coursework, prototype acceptance and real-client deployment prerequisites, and identify any disagreement.
+
+The original Master Calendar includes an incident tabletop, metrics/cost comparison, peer/buyer evidence and Gate2 assessment (16/20 and zero critical failures). Existing v2 contract requires30 explicit behavior/safety decisions,14 actual draft-quality ratings and7 Sales checks within those drafts for a scored batch-quality pass. No automatic30-case walkthrough; no silent relaxation or invented ratings. A documented partial/non-passing closeout is an option to discuss, not a clean pass.
 
 ## Verified build and evidence
 
