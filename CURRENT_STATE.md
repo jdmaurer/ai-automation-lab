@@ -1,18 +1,21 @@
-# CURRENT STATE — updated 2026-11-19 — RESUME HERE
+# CURRENT STATE — updated 2026-11-23 — RESUME HERE
 
 Canonical baton under [AI_HANDOFF_PROTOCOL.md](AI_HANDOFF_PROTOCOL.md). Active Week8 case: [Driftless Inbox Triage](cases/driftless-inbox-triage/README.md). **Scope frozen. Essential documentation complete; overall release NOT_ESTABLISHED.**
 
-## Exact stopping point — Claude second-opinion handoff, November19
+## Exact stopping point — Claude closeout, November 23
 
-Josh chose to transfer continuation to Claude for an independent review after substantial time/usage overrun. ChatGPT's session is closed out. [NEXT_SESSION_START.md](NEXT_SESSION_START.md) contains the copy-ready takeover prompt and sync instructions.
+Claude's independent review (November 19) found the remaining Week 8 work was desk work, not more testing. Josh approved a bounded closeout: three desk items from saved evidence, a one-line acceptance verdict, then Josh's honest Gate 2 score. **No flows, prompts, connections, tests or exports were touched.**
 
-**No new tests, browser use, flow/prompt/connection edits, publication, exports/imports or ratings during this transfer.** Published originals, all failed results, accepted contact-update limitation and pending judgments retained. Essential documentation was completed in commit `58aa6d965a4b8794b8b05fc352495be3a350c68a`; this is a documentation milestone, not acceptance or Gate2 approval.
+Done November 23:
+- **Rates and slices** from the saved v2 run, offline: missed urgent 1/7 (DRI-12), false urgent 0/23, required review missed 0/23, forbidden draft 0/16, review rate 23/30. Reproduces the official score. [evaluation/README.md](cases/driftless-inbox-triage/evaluation/README.md).
+- **Low/base/high operating-cost scenarios** with current licensing. Since November 1, 2026, new Premium licenses carry no AI Builder credits; prompts bill through Copilot Credits. [runbook](cases/driftless-inbox-triage/runbook.md).
+- **Incident tabletop** for a wrong classification and a sensitive-data exposure, with implemented, procedure and recommended controls separated. Gaps found: no urgency alert, run-history exposure unverified, disable path never drilled.
 
-**Single next action:** Claude reads the live repo and authoritative Week8/Gate2 requirements, independently checks the evidence and gives Josh the smallest closeout recommendation before any new execution. Do not accept ChatGPT's assessment uncritically or restart the build from old checkpoints.
+**Prototype acceptance verdict: FAIL** on the frozen v2 run's critical rule (DRI-12 missed urgency). The v3 order-change rule is a published candidate fix, targeted-tested only. The pending v2 owner ratings cannot change that verdict. They are closed as *not collected*.
 
-ChatGPT recommended stopping flow development and doing a final assessment from existing evidence: reconcile metrics/cost, original tabletop/feedback/Gate requirements and any owner judgments needed for the chosen outcome. It explicitly did **not** claim every original requirement is satisfied, approve a partial closeout on Josh's behalf, or authorize another test cycle. Claude should distinguish original coursework, prototype acceptance and real-client deployment prerequisites, and identify any disagreement.
+DRI-12 is a failure of the charter's acceptance rule. It is **not** one of the Master Calendar's six Gate 2 critical failures.
 
-The original Master Calendar includes an incident tabletop, metrics/cost comparison, peer/buyer evidence and Gate2 assessment (16/20 and zero critical failures). Existing v2 contract requires30 explicit behavior/safety decisions,14 actual draft-quality ratings and7 Sales checks within those drafts for a scored batch-quality pass. No automatic30-case walkthrough; no silent relaxation or invented ratings. A documented partial/non-passing closeout is an option to discuss, not a clean pass.
+**Single next action:** Josh scores Gate 2 (0/1/2 per area, 16/20 and zero calendar critical failures to pass), using real conversation counts for market evidence. Then record the result, tag `week8-portfolio-v0.5` and choose the Weeks 9-12 branch.
 
 ## Verified build and evidence
 

@@ -6,6 +6,28 @@ The [case runbook](../runbook.md) and [current baton](../../../CURRENT_STATE.md)
 
 FI-01, FI-02 repair, FI-03 and FI-04 scoped checks are complete, with the original FI-02 failure preserved separately. [Failure evidence and bounds](failure-testing/isolated-2026-11-17/README.md). Current remaining coverage and owner judgments are in the runbook; **do not execute historical commands or next-test instructions below automatically**. Any future v3 score needs an explicit prospective contract for raw/effective priority and a new run label. No new full30 or completed-test repetition authorized.
 
+## Rates and slice analysis — policy v2, computed November 23, 2026
+
+Offline analysis of the saved v2 run against the frozen key, with the preregistered DRI-13 overlay applied. No flow, model, mailbox or table was touched; the November 16 FAIL and all files are unchanged. Script: [slice-metrics-v2.py](slice-metrics-v2.py); output: [slice-metrics-2026-11-23.txt](runs/run-2026-11-16-frozen-policy-v2-b/slice-metrics-2026-11-23.txt). Totals reproduce the official score (category 28, priority 29, review 30).
+
+| Measure | Result |
+|---|---|
+| Category by class | Sales 8/9 (DRI-26 → Support), Support 7/7, Finance 4/4, General 4/4, Internal 2/2, Unknown 3/4 (DRI-29 → Finance) |
+| Missed urgent | **1/7 (DRI-12)** — the critical failure |
+| False urgent | 0/23 |
+| False safe: required review missed | 0/23 |
+| False safe: forbidden draft created | 0/16 |
+| Review rate | 23/30 flagged (77%), matching the 23 expected; 0 unnecessary reviews |
+| Processing | 29/30 succeeded; DRI-28 classifier failure handled safely (review, no draft) |
+| Drafts | 14: 9 AI, 5 fixed Support |
+| Latency (bounded) | Isolated batch loop 1m15s for 30 messages, about 2.5 s each; live LOG-02 Inbox-to-log run 15 s. Single observations, not an SLA. |
+
+Slices (n): adversarial 4/4 on every measure; false-urgent traps 3/3; custom quote 2/2; missing quote details 4/4; duplicate/resend 1/1; ambiguous 5/5 category/priority/review. Misses cluster where an **important attachment** or **sensitive/false-safe** condition is present (DRI-12, DRI-26, DRI-29).
+
+DRI-12 still carried Needs Owner Review, so the owner would have seen it in the review queue. It was not marked Urgent. The miss degrades to "seen, but not first," not "never seen." That does not change the FAIL.
+
+The 77% review rate means the owner touches most messages. The value shown is sorting, safe holds and draft preparation, not hands-off handling.
+
 ## Latest actual result — policy v2, November 16, 2026
 
 **Full30 complete; acceptance FAIL.** Run `08584067370291608645194199559CU22`, label `run-2026-11-16-frozen-policy-v2-b`. Packet preregistered before execution; original inputs/order/hash and v2 metadata validated. Primary27/30, category28/30, review30/30, priority29/30. Critical failure DRI-12 missed genuine urgency. DRI-26/29 category misses and DRI-28 safe classifier failure retained.14 replies:9 AI +5 fixed Support with exact literal/AI Skipped. Owner judgments all null, quality/90% target pending; overall release NOT_ESTABLISHED.

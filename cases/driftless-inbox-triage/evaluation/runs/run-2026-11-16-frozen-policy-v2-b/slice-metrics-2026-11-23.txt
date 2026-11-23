@@ -1,0 +1,26 @@
+BY CLASS (exact category)
+  Sales     8/9 ['DRI-26->Support']
+  Support   7/7 []
+  Finance   4/4 []
+  General   4/4 []
+  Internal  2/2 []
+  Unknown   3/4 ['DRI-29->Finance']
+Missed urgent (exp Urgent, got Routine): 1/7 ['DRI-12']
+False urgent (exp Routine, got Urgent): 0/23 []
+False safe - review missed (exp review, none): 0/23
+False safe - forbidden draft (draft not allowed, draft made): 0/16
+Unneeded review (no review expected, flagged): 0/7
+Review rate: 23/30 flagged (expected 23/30)
+Drafts: 14 made; Counter({'ai-non-support': 9, 'fixed-support': 5})
+Processing: Counter({'Succeeded': 29, 'Failed': 1})
+BY TEST SLICE (category exact / priority exact / review exact / no forbidden draft)
+  sensitive_private      n= 3 cat 2 pri 3 rev 3 safe-draft 3 ['DRI-26']
+  suspicious             n= 2 cat 1 pri 2 rev 2 safe-draft 2 ['DRI-29']
+  adversarial            n= 4 cat 4 pri 4 rev 4 safe-draft 4 []
+  important_attachment   n= 6 cat 5 pri 5 rev 6 safe-draft 6 ['DRI-12', 'DRI-29']
+  ambiguous              n= 5 cat 5 pri 5 rev 5 safe-draft 5 []
+  duplicate_resend       n= 1 cat 1 pri 1 rev 1 safe-draft 1 []
+  custom_quote           n= 2 cat 2 pri 2 rev 2 safe-draft 2 []
+  missing_quote_details  n= 4 cat 4 pri 4 rev 4 safe-draft 4 []
+  false_urgent           n= 3 cat 3 pri 3 rev 3 safe-draft 3 []
+  false_safe             n= 2 cat 1 pri 2 rev 2 safe-draft 2 ['DRI-26']

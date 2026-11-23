@@ -101,9 +101,70 @@ Measured evidence available:
 | Owner draft quality / Sales pricing | All v2 owner judgments pending: 30 behavior/safety, 14 reply quality and 7 Sales checks. Usability, 80% threshold and 90% target not established. |
 | Normal workflow/report | LOG-02 and WS-01/02 passed their documented limited cases. REVIEW-01 remains an automatic-logging failure with assisted recovery. |
 | Failure checks | FI-01 scoped PASS; FI-02 original FAIL plus separate repair PASS; FI-03 scoped PASS; FI-04 scoped PASS. See [failure evidence](evaluation/failure-testing/isolated-2026-11-17/README.md). |
-| Effort, cost and end-to-end latency | Manual-vs-assisted effort reduction and low/base/high operating-cost scenarios not measured here. Individual saved run durations are not an SLA or a productivity estimate. |
+| Rates and slices (v2, offline) | Missed urgent 1/7, false urgent 0/23, required review missed 0/23, forbidden draft 0/16, review rate 23/30. [Full table](evaluation/README.md#rates-and-slice-analysis--policy-v2-computed-november-23-2026). |
+| Effort and latency | Manual-vs-assisted effort reduction not measured. Batch about 2.5 s per message; one live Inbox-to-log run 15 s. Single observations, not an SLA or productivity estimate. |
+| Operating cost | Desk scenarios below; assumptions, not measured spend. |
 
 For a later separately approved pilot, measure comparable manual and assisted sorting/reply work, including review, corrections and recovery: reduction = (manual total - assisted total) / manual total. Retain observed minutes, workload and exclusions. The charter's 20% reduction is a target, **not an achieved result**. Actual usage/cost and license assumptions must be recorded rather than guessed. No measurement or new evaluation is authorized by this guide.
+
+### Operating-cost scenarios (desk estimate, November 23, 2026)
+
+**Purpose:** give a client an explicit range for what this design would cost to run each month. These are assumptions to confirm with the client's Microsoft 365 administrator or reseller, not measured spend. Prices change; recheck on the day of purchase.
+
+**Licensing facts (checked November 23, 2026):**
+- Power Automate Premium lists at **$15 per user/month** (paid yearly). This design needs it: the flows use Dataverse and AI Builder prompts, both premium. One license for the person who owns the flows.
+- AI Builder credits are no longer seeded in new or renewed Premium licenses from **November 1, 2026**. Prompt runs then draw on **Copilot Credits**, at $0.01 per credit pay-as-you-go. If no credits are available, the prompt step is blocked. The classifier-failure path then applies: owner review, no draft (see FI-01).
+- Rates per 1,000 tokens: basic model tier **0.1 credit**, standard tier **1.5 credits**. The classifier displays GPT-4.1 mini. Confirm its rate tier in the admin center; both tiers are shown.
+- Mailbox: assumed to already exist. If not, Business Basic was **$8.40/month** month-to-month at Josh's November 9 checkout.
+
+**Volume and usage assumptions:**
+- Low: 15 messages per business day. Base: 40. High: 100. Each assumes 22 business days per month.
+- About 4,000 tokens per message. This covers the classifier (about 7.8k characters of instructions plus email and output) and the drafter on roughly a third of messages (9 of 30 in v2), rounded up.
+- The weekly report call is negligible.
+
+| Scenario | Messages/month | AI tokens | AI cost (basic tier) | AI cost (standard tier) | Monthly total, basic | Monthly total, standard |
+|---|---|---|---|---|---|---|
+| Low | 330 | 1.3M | $1.32 | $19.80 | **$16** | **$35** |
+| Base | 880 | 3.5M | $3.52 | $52.80 | **$19** | **$68** |
+| High | 2,200 | 8.8M | $8.80 | $132.00 | **$24** | **$147** |
+
+Totals are the $15 Premium license plus AI usage, on top of the existing mailbox.
+
+**Excluded:** setup and implementation fees, maintainer time, owner review time, a support agreement, taxes, extra Dataverse capacity (tracking rows are assumed to fit the included entitlement), and any n8n alternative. The Week 6 [platform comparison memo](../rivertown-lead-intake/platform-comparison-memo.md) still covers n8n versus Power Automate licensing.
+
+**Reading:** the license, not the AI, dominates at basic-tier rates. The model's rate tier is the largest uncertainty, roughly a 15× swing in the AI line. The administrator must also arrange Copilot Credit billing, or the AI steps stop.
+
+### Incident tabletop (desk exercise, November 23, 2026)
+
+**Purpose:** walk through two plausible incidents using only the existing runbook, and find the gaps before a real one does. No flow was disabled, run or changed; this is a written exercise. Status key: **Implemented** = built and evidenced; **Procedure** = documented, not drilled; **Recommended** = not in place.
+
+**Scenario A — incorrect classification.** A customer writes "STOP, wrong phone number on the proof, don't print." The system marks it Routine, as it did in DRI-12, and the job prints.
+
+| Step | Response | Status |
+|---|---|---|
+| Detection | Message still carries Needs Owner Review (DRI-12 did), so it is in the review queue but not marked Urgent. Owner notices on review, or the customer calls. | Implemented (review marker). No urgency alert: Recommended. |
+| Owner | Process owner (Josh in the lab). | Procedure |
+| Immediate action | Handle the message manually; contact the customer by phone; stop relying on priority markers until the cause is known. A single miss does not require turning the flow off; a repeated pattern does. | Procedure |
+| Evidence | Run ID, exact Message ID, the tracking row, the classifier output (priority, confidence, flags). Preserve; do not resubmit. | Procedure |
+| Communication | Owner speaks to the customer directly. No AI-drafted apology. | Procedure |
+| Recovery | The v3 order-change rule (Urgent + review for any existing-order change) is the candidate fix. Published, but only targeted-tested (3/3), with no full-set acceptance. Add the incident as a new versioned test case; never edit the frozen set. | Implemented (v3 rule). Formal acceptance: not established. |
+
+**Scenario B — sensitive data exposure.** A customer emails a card number or personal details to the shop inbox.
+
+| Step | Response | Status |
+|---|---|---|
+| Where the data goes | The body goes to the AI Builder model for classification. The sensitive flag should block any draft. By charter design, the tracking log keeps the Message ID and review fields, not the body. Power Automate run history keeps action inputs and outputs for 28 days, visible to flow owners. Whether secure inputs/outputs are enabled on these actions was **not verified**. | Draft block: Implemented (tested in frozen set). Run-history exposure: open gap. |
+| Owner | Process owner plus the Microsoft 365 administrator. | Procedure |
+| Immediate action | Do not reply with or forward the data. Handle the message manually. Ask the administrator about run-history visibility and mailbox retention. | Procedure |
+| Disable | Turn off the main flow only if sensitive content is reaching drafts or logs as a pattern. Use the Disable steps above. | Procedure (not drilled) |
+| Communication | Whether customer notification is required is the business owner's decision, with advice. This prototype makes no legal determination. | Out of scope |
+| Recovery | Before any real use: enable secure inputs/outputs on actions that carry message bodies; DLP policy and data-processing approval from the administrator. | Recommended, not implemented |
+
+**What the tabletop found:**
+- There is no urgency alert beyond the review marker.
+- Run-history exposure of message bodies has not been checked.
+- The disable path is documented but has never been drilled.
+- None of these is fixed by this closeout. They are listed as limitations and real-use prerequisites.
 
 ### Gate 2 and remaining acceptance
 
