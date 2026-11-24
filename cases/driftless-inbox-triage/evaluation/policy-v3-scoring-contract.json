@@ -1,0 +1,49 @@
+{
+  "contract_id": "driftless-policy-v3-scoring-v1-2026-11-24",
+  "approved_by": "Josh, November 24, 2026, before any v3 full-set run",
+  "policy_version": "driftless-order-change-policy-v3-2026-11-16",
+  "implementation_revision": "order-change-urgent-e",
+  "builds_on": "driftless-policy-v2-scoring-v1-2026-11-16",
+  "source_file": "frozen-test-set-v1.csv",
+  "source_sha256_lf": "d3241136e45fc8c26ff935e63bcf5aee1637fa2f4b67e3449572ec64fa178f06",
+  "scope": "isolated-batch",
+  "benchmark_interpretation": "Exposed frozen-set regression evaluation; these 30 messages were used during development. Not evidence of generalization.",
+  "thresholds": {
+    "primary_correct": 27,
+    "total_cases": 30,
+    "critical_failures": 0,
+    "draft_usability_minimum": 0.8,
+    "draft_usability_target": 0.9,
+    "confidence_minimum": 0.8
+  },
+  "thresholds_origin": "Identical to charter.md acceptance criteria committed November 9, 2026 (97a6257), before the first evaluation was prepared on November 14. Not lowered.",
+  "provenance": {
+    "source_flow_id": "53209c07-ca63-bcd9-c7f3-04b29c1f562a",
+    "classifier_prompt_id": "614118d4-6ca8-4344-b945-8659eb8bb3d8",
+    "drafter_prompt_id": "e9c13e46-ec62-4cd4-b52f-b2f596db5821",
+    "allowed_helper_flow_ids": [
+      "b073b5f4-92ca-e6ad-e255-6a264c4891f0",
+      "9ca55e5e-afe0-f111-84ea-000d3a367f8a"
+    ]
+  },
+  "fixed_support_body": "Thank you for your message. The owner will review your concern and confirm the next step.",
+  "outcome_overrides": {
+    "DRI-13": {
+      "draft_allowed": "Yes",
+      "expected_behavior": "Policy v2 (retained): Support/Routine with required owner review. A neutral fixed acknowledgment is permitted, not required. If a draft is created it must exactly match the approved fixed Support body."
+    }
+  },
+  "general_rules": {
+    "answer_key": "Frozen key unchanged. The existing-order changes in the set (DRI-09 wrong date, DRI-11 pickup timing, DRI-12 wrong phone number) are already Urgent in the key, so policy v3 needs no relabelling.",
+    "completed_order_problems": "Owner decision before the run: problems with a finished/received order (DRI-10 damage, DRI-13 colour, DRI-14 quantity, DRI-15 resend of DRI-10) are not order changes. They stay Routine plus owner review as keyed. An Urgent result there is a non-critical false urgent, reported.",
+    "effective_priority": "Priority is scored on the effective priority the owner sees: Urgent when the raw classification is Support with record_change_requested true, otherwise the raw priority. The raw model answer is retained and reported. An exported priority that does not follow this rule is malformed evidence, not a score.",
+    "accepted_limitation": "DRI-22 (contact update) may be escalated as Support/change/Urgent; Josh accepted this on November 16 as non-critical. It still counts against the gate. A second number, primary excluding that accepted-limitation outcome, is reported for transparency only and never decides pass or fail.",
+    "carried_from_v2": "Every Support prediction requires owner review; generated Support drafts are the exact fixed body from fixed-support with the AI drafter skipped; non-Support drafts come from a successful AI drafter; all model/confidence/context/resend/failure blocks apply.",
+    "primary": "Exact category for clear cases, or exact category / safe review-no-draft for the five pre-labelled ambiguous cases. Processing must succeed for primary credit.",
+    "critical": "Zero tolerance: missed genuine urgency, missed required review, prohibited draft, violated safety gate, unsafe failure handling, wrong Support source/text, approved-quote failure, owner-identified critical failure.",
+    "owner_judgments": "Josh rates every created draft for usability, and Sales drafts for approved pricing / missing details. Per-case behaviour judgments are not required: the frozen answer key is Josh's advance judgment of all 30 cases. Josh may still mark any case critical. Missing draft ratings keep the result INCOMPLETE.",
+    "usability": "At least 80% of all created drafts usable without major factual correction; 90% target. Fixed and AI drafts are reported separately.",
+    "one_shot": "Exactly one full v3 run. No prompt or flow tuning and no rerun after results exist, whatever the outcome. A single retry is allowed only if the platform fails before producing any results; the retry is recorded.",
+    "preservation": "v1/v2 keys, scorers, runs, scores and owner forms are never edited or rescored."
+  }
+}

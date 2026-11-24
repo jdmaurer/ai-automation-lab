@@ -21,7 +21,25 @@ DRI-12 is a failure of the charter's acceptance rule. It is **not** one of the M
 
 **New way of working:** Josh clicks, and Claude reads the page as text and explains, one block at a time. Short answers: one table row per block (Power Automate name, search term, n8n equivalent, what it does). No screenshots unless needed.
 
-**Single next action:** Josh chooses whether to do the Secure inputs/outputs change, which hides email text in run history. It's a real change: toggles on the boxes that carry email text, then Save and Publish, then verify. The rest of the agreed day: one fair preregistered v3 frozen-30 run with no tuning afterward, Josh rating the drafts, and a plain-English README rewrite in his voice. Gate 2 recording and the `week8-portfolio-v0.5` tag follow.
+**November 24, later:** the Secure inputs/outputs change was **stopped**. The Outlook trigger offers no such setting in either designer. The run-history exposure is verified and logged as a limitation; the code-level route is untested. Nothing was saved or published.
+
+**v3 fair-test rules approved by Josh (Nov 24), before any run:** [POLICY_V3_SCORING.md](cases/driftless-inbox-triage/evaluation/POLICY_V3_SCORING.md).
+- Charter thresholds unchanged (27/30, zero critical, 80% usable drafts, Sales pricing).
+- Effective priority scored, raw kept.
+- Josh rates drafts only.
+- One shot.
+- DRI-22 second number is informational only.
+
+Scorer `evaluate-policy-v3.mjs` passes 11 artificial-only tests. The v1 and v2 suites still pass 12/12 each. No run has been prepared or made.
+
+**Single next action:** run the one v3 test, with Claude guiding:
+1. Prepare: `node evaluate-policy-v3.mjs prepare runs/run-YYYY-MM-DD-frozen-policy-v3 run-YYYY-MM-DD-frozen-policy-v3`.
+2. In Power Automate, run **Driftless Frozen 30 Evaluation** with `batch_json` = the entire `batch-input.json` and `run_label` = the label.
+3. Copy the **Export - Evaluation Results** raw output, unchanged, into `actual-results.json`.
+4. Josh rates the drafts.
+5. Score, then write up PASS or FAIL. No rerun either way.
+
+Then: plain-English README rewrite, Gate 2 recording, `week8-portfolio-v0.5` tag.
 
 ## Verified build and evidence
 
