@@ -54,3 +54,10 @@ No new runtime checks were run after promotion. The single isolated malformed-co
 FI-03 and FI-04 scoped PASS evidence is now saved, superseding historical pending statements above. The original FI-02 FAIL and later repair/deployment records remain distinct; earlier failures are not erased. No test or flow change occurred for this documentation update.
 
 Current-policy formal acceptance, pending owner judgments, measured effort reduction/cost scenarios, unproven normal integration/weekly coverage and Gate2 pass remain unresolved. Identity/connector scope and retention need client admin approval; lack of a Send action does not prove Mail.Send is absent from permissions. Inbox classification may process body text before personal/sensitive flags are known; minimized logs are not a guaranteed pre-model privacy filter. Synthetic use only. See the [runbook's evidence and ownership map](runbook.md).
+
+
+## November 24, 2026 — found during the read-only flow walkthrough
+
+- **Resend detection is keyword-based.** Flag - Possible Resend looks for phrases like "resending" or "sending this again." It misses other wording and could wrongly flag "please don't resend." A production version should use Outlook's conversation ID, or the same sender plus a similar subject within a few days. Not changed: the synthetic frozen test set has no real threads, so it couldn't test that design.
+- **Drafts are not threaded replies.** Create - Outlook Draft uses "Draft an email message" with the original subject and no "Re:", so the draft does not sit inside the original conversation in Outlook. A reply-type action would fix this. Not changed.
+- **"Never sends" is a design property, not a permission.** No action sends mail, but the Outlook connection uses an account that can send. A client deployment needs that enforced by the administrator.

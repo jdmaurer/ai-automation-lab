@@ -1,4 +1,4 @@
-# CURRENT STATE — updated 2026-11-23 — RESUME HERE
+# CURRENT STATE — updated 2026-11-24 — RESUME HERE
 
 Canonical baton under [AI_HANDOFF_PROTOCOL.md](AI_HANDOFF_PROTOCOL.md). Active Week8 case: [Driftless Inbox Triage](cases/driftless-inbox-triage/README.md). **Scope frozen. Essential documentation complete; overall release NOT_ESTABLISHED.**
 
@@ -15,7 +15,13 @@ Done November 23:
 
 DRI-12 is a failure of the charter's acceptance rule. It is **not** one of the Master Calendar's six Gate 2 critical failures.
 
-**Single next action:** Josh scores Gate 2 (0/1/2 per area, 16/20 and zero calendar critical failures to pass), using real conversation counts for market evidence. Then record the result, tag `week8-portfolio-v0.5` and choose the Weeks 9-12 branch.
+**Gate 2 (Josh, November 23):** market evidence scores 0 because operator conversations are deliberately scheduled for December, not missing. Claude's proposed technical scores total 13/18; Josh has not finalized them. No calendar critical failure was identified.
+
+**November 24 — guided walkthrough (read-only).** Claude opened the live main flow in the Claude desktop app's built-in browser (signed in as josh@joshmaurer.onmicrosoft.com) and taught it block by block. For each block it gave the Power Automate action name, the n8n equivalent and a plain two-line purpose. The whole main path is covered, from the trigger through Log - Complete. **Nothing was saved or published.** Three limitations were added to limitations.md: keyword resend detection, non-threaded drafts, and send-capable connection.
+
+**New way of working:** Josh clicks, and Claude reads the page as text and explains, one block at a time. Short answers: one table row per block (Power Automate name, search term, n8n equivalent, what it does). No screenshots unless needed.
+
+**Single next action:** Josh chooses whether to do the Secure inputs/outputs change, which hides email text in run history. It's a real change: toggles on the boxes that carry email text, then Save and Publish, then verify. The rest of the agreed day: one fair preregistered v3 frozen-30 run with no tuning afterward, Josh rating the drafts, and a plain-English README rewrite in his voice. Gate 2 recording and the `week8-portfolio-v0.5` tag follow.
 
 ## Verified build and evidence
 

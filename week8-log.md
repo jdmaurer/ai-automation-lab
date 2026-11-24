@@ -545,3 +545,19 @@ I chose to continue in Claude because the Week8 project has substantially overru
 The prior recommendation was to stop flow development and assess existing evidence, not to claim a clean release or silently waive original acceptance. The handoff calls out the original incident tabletop, metrics/cost, peer/buyer and Gate2 requirements; pending owner judgments; current-policy/recovery gaps; and the option of an explicitly partial/non-passing closeout for my decision. Claude should disagree where the source evidence warrants it.
 
 No browser/test/model/flow/prompt/connection/publication/export/import work or owner rating during this transfer. Published originals, all failures, FI-02 repair/FI-03/FI-04 results, baseline and accepted contact-update limitation unchanged. Next: sync GitHub Project Knowledge in Claude, paste the takeover prompt, and obtain a read-only second opinion. Do not automatically restart testing,30-case owner review or tuning.
+
+## Tuesday 11.24.26 — Walked my own flow with Claude, block by block
+
+I switched to Claude for an independent read after the ChatGPT loop. Claude's view: the prototype's own acceptance failed on DRI-12 and that's settled. What Week 8 still needed was desk work (rates and slices, cost scenarios, an incident tabletop, done Nov 23) and an honest Gate 2 score, not more testing. Market conversations are scheduled for December, so that Gate 2 area is 0 for now by plan.
+
+Today we opened the live flow in Claude's built-in browser and went through it one block at a time. I clicked; Claude read the page and explained. For each block I got the Power Automate name, what I'd search for, the n8n equivalent and what it actually does. The big ideas that landed:
+- Most of it is the same pattern as my n8n Week 3 build with different labels. Compose = Edit Fields. Condition = If. List rows / Add a new row / Update a row = Data Table get/insert/update.
+- runAfter is how failure paths work.
+- Check the AI's answer twice: shape (Parse JSON), then allowed values (Condition).
+- The review rule uses OR; the draft rule uses AND.
+- Support gets a fixed sentence because an AI reply could make promises.
+- Chip labels can mislead. Code view is the truth.
+
+I wanted to fix the resend keyword check on the spot. We didn't: the better design needs a new column, would break the synthetic resend tests, and means republishing. It's written down as a limitation instead. Nothing was saved or published today.
+
+Next: decide on the Secure inputs/outputs change, then one fair v3 test, then rewrite the README in plain English.
