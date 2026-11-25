@@ -1,0 +1,107 @@
+case_id,line_no,item_type,description,qty,unit_price,amount,technician,hours
+I01,1,part,"1/2 in. copper pipe, type L, 10 ft",6,21.40,128.40,,
+I01,2,part,1/2 in. copper 90 elbow,20,1.15,23.00,,
+I01,3,part,"Lead-free solder, 1 lb",2,24.90,49.80,,
+I02,1,part,"3/4 in. PEX-A tubing, 100 ft",1,96.00,96.00,,
+I02,2,part,"3/4 in. PEX crimp ring, 25 pk",2,11.75,23.50,,
+I02,3,part,3/4 in. ball valve,4,17.80,71.20,,
+I03,1,part,Universal hot surface igniter,3,38.50,115.50,,
+I03,2,part,Flame sensor rod,4,16.25,65.00,,
+I03,3,part,"Furnace filter 16x25x1, 12 pk",1,54.00,54.00,,
+I04,1,part,Draft inducer motor,1,182.00,182.00,,
+I04,2,part,Pressure switch,1,41.60,41.60,,
+I05,1,part,40 gal natural gas water heater,1,689.00,689.00,,
+I05,2,part,"Water heater expansion tank, 2 gal",1,48.50,48.50,,
+I06,1,part,50 gal electric water heater,1,612.00,612.00,,
+I06,2,part,Heating element 4500W,2,22.40,44.80,,
+I06,3,part,Freight,1,45.00,45.00,,
+I07,1,part,1/2 in. copper coupling,25,0.95,23.75,,
+I07,2,part,3/4 in. copper coupling,20,1.60,32.00,,
+I07,3,part,1/2 in. copper tee,15,1.85,27.75,,
+I07,4,part,3/4 in. copper tee,10,3.10,31.00,,
+I07,5,part,1/2 in. sweat ball valve,6,14.20,85.20,,
+I07,6,part,"Pipe hanger, 1/2 in.",40,0.70,28.00,,
+I07,7,part,"Pipe hanger, 3/4 in.",30,0.85,25.50,,
+I07,8,part,"Teflon tape, 1/2 in.",12,1.20,14.40,,
+I07,9,part,"Pipe dope, 8 oz",4,7.95,31.80,,
+I07,10,part,"Flux, 4 oz",4,6.40,25.60,,
+I07,11,part,Emery cloth roll,2,9.50,19.00,,
+I07,12,part,1-1/2 in. PVC P-trap,6,8.75,52.50,,
+I07,13,part,1-1/2 in. PVC coupling,12,1.10,13.20,,
+I07,14,part,"PVC cement, 8 oz",3,8.20,24.60,,
+I07,15,part,"PVC primer, 8 oz",3,7.60,22.80,,
+I07,16,part,Toilet wax ring,10,3.40,34.00,,
+I07,17,part,Toilet closet bolts,10,2.15,21.50,,
+I07,18,part,"Supply line, 3/8 x 12 in.",12,5.25,63.00,,
+I07,19,part,"Angle stop, 1/2 x 3/8",8,9.80,78.40,,
+I07,20,part,"Dielectric union, 3/4 in.",4,12.90,51.60,,
+I07,21,part,"Gas flex connector, 24 in.",3,18.60,55.80,,
+I07,22,part,Push-to-connect fitting 1/2 in.,6,8.40,50.40,,
+I07,23,part,"Hose bibb, frost-free 10 in.",2,32.00,64.00,,
+I07,24,part,"Shop rags, 50 pk",1,14.00,14.00,,
+I09,1,part,Gas shutoff valve 1/2 in.,2,15.40,30.80,,
+I09,2,part,"Gas flex connector, 36 in.",1,24.80,24.80,,
+I10,1,part,Draft inducer motor,1,182.00,182.00,,
+I10,2,part,Pressure switch,2,41.60,83.20,,
+I14,1,part,"Sump pump, 1/3 HP",1,129.00,129.00,,
+I14,2,part,"Check valve, 1-1/2 in.",1,18.40,18.40,,
+I15,1,credit,Return: 3/4 in. ball valve (wrong size),2,-17.80,-35.60,,
+I15,2,credit,Restocking fee,1,3.50,3.50,,
+I19,1,part,Shop vac filter,1,14.99,14.99,,
+I19,2,part,"Hose clamps, 10 pk",2,6.49,12.98,,
+I19,3,part,Work gloves,1,12.99,12.99,,
+I22,1,part,Boiler circulator pump,1,189.00,189.00,,
+I22,2,part,Pump flange gasket,2,4.50,9.00,,
+I22,3,part,Early-pay discount 2%,1,-3.96,-3.96,,
+W01,1,part,"1/2 in. copper pipe, 10 ft",2,32.00,64.00,,
+W01,2,part,1/2 in. copper 90 elbow,6,2.25,13.50,,
+W01,3,labor,Labor,2.5,95.00,237.50,John,2.5
+W02,1,part,Hot surface igniter,1,62.00,62.00,,
+W02,2,labor,Labor,1.5,95.00,142.50,Jane,1.5
+W03,1,part,40 gal gas water heater,1,925.00,925.00,,
+W03,2,part,"Expansion tank, 2 gal",1,72.00,72.00,,
+W03,3,labor,Labor,4.0,95.00,380.00,John,4.0
+W03,4,labor,Labor,4.0,95.00,380.00,Jane,4.0
+W04,1,part,Furnace filter 16x25x1,4,7.50,30.00,,
+W04,2,labor,Labor,1.0,95.00,95.00,Jane,1.0
+W05,1,part,3/4 in. ball valve,1,29.00,29.00,,
+W05,2,part,3/4 in. PEX crimp ring,4,0.75,3.00,,
+W05,3,labor,Labor,1.5,95.00,142.50,Jack,1.5
+W06,1,labor,Labor,1.0,95.00,95.00,John,1.0
+W07,1,part,Heating element 4500W,1,38.00,38.00,,
+W07,2,labor,Labor,1.0,95.00,95.00,Jane,1.0
+W08,1,labor,Labor,0.5,95.00,47.50,John,0.5
+W09,1,part,Draft inducer motor,1,265.00,265.00,,
+W09,2,part,Pressure switch,1,68.00,68.00,,
+W09,3,labor,Labor,2.0,95.00,190.00,Jane,2.0
+W10,1,part,50 gal electric water heater,1,880.00,880.00,,
+W10,2,labor,Labor,3.0,95.00,285.00,Jack,3.0
+W14,1,part,40 gal gas water heater,1,925.00,925.00,,
+W14,2,part,"Expansion tank, 2 gal",1,72.00,72.00,,
+W14,3,part,"Gas flex connector, 24 in.",1,28.00,28.00,,
+W14,4,labor,Labor,4.0,95.00,380.00,John,4.0
+W14,5,labor,Labor,4.0,95.00,380.00,Jane,4.0
+W15,1,part,Gas shutoff valve 1/2 in.,1,24.00,24.00,,
+W15,2,part,"Gas flex connector, 36 in.",1,39.00,39.00,,
+W15,3,labor,Labor,1.0,95.00,95.00,John,1.0
+W17,1,part,Programmable thermostat,2,89.00,178.00,,
+W17,2,labor,Labor,1.5,95.00,142.50,John,1.5
+W19,1,part,Heating element 4500W,1,38.00,38.00,,
+W19,2,labor,Labor,0.5,95.00,47.50,Jane,0.5
+H01,1,part,1-1/2 in. PVC P-trap kit,1,18.50,18.50,,
+H01,2,part,Slip joint washer,2,1.25,2.50,,
+H01,3,labor,Labor,1.0,95.00,95.00,Jane,1.0
+H02,1,part,1-1/2 in. PVC P-trap kit,1,18.50,18.50,,
+H02,2,part,Slip joint washer,2,1.25,2.50,,
+H02,3,part,Teflon tape,1,3.00,3.00,,
+H02,4,labor,Labor,1.0,95.00,95.00,Jane,1.0
+H03,1,part,"Thermocouple, 24 in.",1,14.75,14.75,,
+H03,2,labor,Labor,0.5,95.00,47.50,John,0.5
+H04,1,part,Faucet cartridge,1,54.00,54.00,,
+H04,2,part,O-ring kit,1,6.00,6.00,,
+H04,3,labor,Labor,1.5,95.00,142.50,Jane,1.5
+H07,1,part,Drain cable use fee,1,35.00,35.00,,
+H07,2,labor,Labor,2.0,95.00,190.00,Jane,2.0
+H09,1,part,Toilet fill valve,1,16.25,16.25,,
+H09,2,part,Flapper,1,7.50,7.50,,
+H09,3,labor,Labor,1.0,95.00,95.00,John,1.0

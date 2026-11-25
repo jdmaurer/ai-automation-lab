@@ -47,7 +47,7 @@ Scorer `evaluate-policy-v3.mjs` passes 11 artificial-only tests. The v1 and v2 s
 
 **Standing rule (Josh):** a gate is a checkpoint that shows what to work on. Score by purpose. Things he could reasonably do tomorrow, or that can't be done yet, don't hold him at a gate; genuinely thin skills get real work.
 
-**Single next action:** open the next chat by going through the "Ask Josh first" list below, one question at a time. Then the before-December-8 Microsoft items, then Week 9.
+**Single next action (Nov 25 afternoon):** Josh writes and saves the 9 handwritten files ([HANDWRITTEN-SHEETS.md](cases/invoice-review-queue/test-data-draft/HANDWRITTEN-SHEETS.md)); Claude checks them against the key; then freeze. Meanwhile, first build piece: n8n form trigger with a file field. Before December 8, on days Josh chooses: DEMO-05, the Copilot session, then turn off the lab-mailbox flows. The "Ask Josh first" list is closed.
 
 ## Weeks 9-12 direction (chosen with Claude, November 22-25)
 
@@ -83,7 +83,7 @@ Source: the November "what gets built" research (marketing-track `research/what-
 - Python learning path: OPEN, Josh has more questions (Nov 25). Discussed: DataCamp Intermediate Python for Developers, then Introduction to APIs in Python, chapter by chapter before the build piece that uses it; or learning Python through Colab, Streamlit, Gradio and Hugging Face. Not decided. The project record still names Google's Crash Course on Python; Josh actually did DataCamp Introduction to Python (Oct 14).
 - Done: every test file lands where the answer key says; clean fields match; a second full run adds zero rows; an alert fires on an error or on a run that produces nothing; a one-page runbook with a 30-day check question; Josh explains each major piece back; a demo labeled "a demo built on sample data, modeled on a common request," people named only Jack, Jill, John, Jane.
 - First piece (still fine as the n8n front door): an n8n form trigger (search "On form submission") with a file field, to see a file arrive as binary data.
-- Sample business: the bakery is a placeholder and now likely wrong (the real need was handwritten forms). Draft test set needs reworking before freezing. Draft files, answer key and generator (not frozen): [cases/invoice-review-queue/test-data-draft/](cases/invoice-review-queue/test-data-draft/README.md).
+- Test set REBUILT Nov 25 afternoon (not frozen): Kettle Creek Heating & Plumbing, 50 cases (22 supplier invoices, 19 generated work orders, 9 handwritten by Josh), two answer-key tables (documents, line items). Waiting on Josh's 9 handwritten files, then Claude checks them against the key, then freeze. [cases/invoice-review-queue/test-data-draft/](cases/invoice-review-queue/test-data-draft/README.md).
 
 **Later builds (from the approved November 7 list; nothing removed):**
 - Meeting notes to decisions, owners, due dates and follow-up drafts, in n8n, inside Week 11 (discovery calls). Josh's own business would use it.
