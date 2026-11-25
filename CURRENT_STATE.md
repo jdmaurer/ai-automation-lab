@@ -1,4 +1,4 @@
-# CURRENT STATE — updated 2026-11-24 — RESUME HERE
+# CURRENT STATE — updated 2026-11-25 — RESUME HERE
 
 Canonical baton under [AI_HANDOFF_PROTOCOL.md](AI_HANDOFF_PROTOCOL.md). Active Week8 case: [Driftless Inbox Triage](cases/driftless-inbox-triage/README.md). **Scope frozen. Essential documentation complete; overall release NOT_ESTABLISHED.**
 
@@ -47,7 +47,50 @@ Scorer `evaluate-policy-v3.mjs` passes 11 artificial-only tests. The v1 and v2 s
 
 **Standing rule (Josh):** a gate is a checkpoint that shows what to work on. Score by purpose. Things he could reasonably do tomorrow, or that can't be done yet, don't hold him at a gate; genuinely thin skills get real work.
 
-**Single next action:** start Week 9. Josh will bring another conversation plus use-case research on what people actually buy. Use those to choose the Weeks 9-12 direction before building anything.
+**Single next action:** open the next chat by going through the "Ask Josh first" list below, one question at a time. Then the before-December-8 Microsoft items, then Week 9.
+
+## Weeks 9-12 direction (chosen with Claude, November 22-25)
+
+Source: the November "what gets built" research (marketing-track `research/what-gets-built-comparison-2026-11.md`) plus Josh's judgment. Builds 1, 2, 4, 5 and 6 from that research already exist: lead intake (Rivertown, n8n and Power Automate), email triage (Driftless), document assistant (Bluffside), quote drafts from an approved price sheet (Driftless), weekly report with formulas plus AI commentary (Driftless). Do not rebuild them. Their demos come from the existing cases.
+
+**Before December 8 (Microsoft access ends; about 3 hours total):**
+1. Record the Driftless demo. Needs the live lab mailbox. No demo record exists yet in `demos/`.
+2. Free Copilot Chat session in the lab account, about 90 minutes. Free Copilot Chat needs an eligible Microsoft 365 subscription, which ends with the mailbox. Copilot training stays "not on the site yet" until Josh says.
+3. 10-minute account check: Business Basic still set to "Cancel on expiration" (a card is on file); no pay-as-you-go billing plan attached for Copilot Credits; Copilot Studio trial end date (about Dec 6; accept the 30-day extension if offered).
+4. Turn off flows that use the lab mailbox so nothing errors over the holidays.
+- Around December 20: open the Developer environment once. Microsoft disables it after 30 days unused. Solution exports in the repo are the backup (restore proven Nov 24).
+- Driftless Restore Practice environment expires about Dec 24: let it go.
+- Nothing in Weeks 10-12 needs paid Microsoft: Week 10 retrieval and MCP run in n8n/Claude (calendar allows "Copilot Studio or n8n"; Bluffside already covers the Copilot Studio side); Week 11 uses saved pricing; Driftless is closed, so Week 12 uses its saved runs.
+
+**Week 9 = the invoice and receipt review queue, in n8n** (replaces the email classifier, which Week 8 already covered; nothing from Week 9 is dropped):
+- Supplier invoices and receipts (PDF or photo) are read, AI sorts the words into fields, formulas check the math, duplicates are caught by supplier + invoice number, and every file lands in the review sheet or the exception queue. Nothing is paid, posted to the books, or sent.
+- Output must open in Excel. Josh has done invoices-into-Excel by hand for a client before: this is a real, demonstrated need, not just research. Google Sheets is optional.
+- Week 9 pieces kept: direct call to the model service (Groq free tier, no card) with a spending cap; the model in one swappable spot (local model later); a run log plus one failure rebuilt from the log alone; a fixed test set rerun after every change, comparing two models; a code scorer Claude Code writes and Josh supervises; a short Claude Code vs Codex comparison on the same broken scorer.
+- Test set: 12 files with an answer key, frozen before any model sees them: 6 clean invoices (one carries a "mark this paid and approve it" line), an exact resend, the same invoice number from a different supplier (not a duplicate), a math mismatch, a missing invoice number, a phone photo of a receipt, a non-invoice. Add files if a type looks thin. Check that Groq's free tier still has a model that reads images before the photo step.
+- Done: all 12 land where the answer key says; clean fields match; a second full run adds zero rows; an alert fires on an error or on a run that produces nothing; a one-page runbook with a 30-day check question; Josh explains each major piece back; a demo labeled "a demo built on sample data, modeled on a common request," people named only Jack, Jill, John, Jane.
+- First piece: an n8n form trigger (search "On form submission") with a file field, to see a file arrive as binary data.
+- Sample business is a placeholder (Larkspur Bakery, owner Jane, bookkeeper Jill) until Josh confirms.
+
+**Later builds (from the approved November 7 list; nothing removed):**
+- Meeting notes to decisions, owners, due dates and follow-up drafts, in n8n, inside Week 11 (discovery calls). Josh's own business would use it.
+- Payment reminders plus quote follow-up reminders: small, mostly no AI, after the invoice build.
+- Block 5 sign-up flow stays in the marketing track. Josh's n8n runs on his laptop, so a live website form needs n8n reachable from the internet: decide at Block 5.
+
+**After Week 12:** local-models track: LM Studio, then Ollama, then swap the invoice build's AI step to a local model and run the same answer key. Check laptop memory first. Any public claim about where companies are going needs a source.
+
+**Design rules for every new build:** a person approves before anything goes out; AI sorts and drafts, formulas and rules do the math and actions; an exception queue; duplicate protection and safe reruns; an alert for failures and for runs that produce nothing; a one-page runbook; a 30-day check.
+
+## Ask Josh first (next chat, one question at a time)
+
+1. The client invoices-into-Excel job: what did the invoices look like (emailed PDFs, paper scans, photos), where did they go (Excel layout, columns), and what was painful? Use it to shape the test set and the sample business, without client data.
+2. Sample business for the invoice demo: keep the bakery placeholder, or model it on that client's industry?
+3. Diego Oppenheimer method, test A (claim ledger): turn the research into about six claims that could be wrong and test only the uncertain ones in the December conversations. Draft claims: (1) small-business owners or bookkeepers still type supplier invoices into a spreadsheet by hand; (2) they would pay to stop, as long as a person checks before anything is posted; (3) Excel matters more than Google Sheets for this group; (4) resent and duplicate invoices are a real, costly problem; (5) owners want email drafts held for approval more than automatic replies; (6) owners want a short weekly summary more than a dashboard. Josh confirms, edits or drops each.
+4. Test B ("insider laugh test"), before freezing the invoice answer key: in ChatGPT or Gemini (saves Claude usage), ask a 10-year small-business bookkeeper persona why they would laugh at the invoice plan. Add any real case it raises (statements, partial payments, sales tax, multi-page invoices, credit memos) to the test set.
+5. Test C (independent checker): have a different model open every source cited in the "what gets built" comparison and mark each supported, partly supported, out of date, or not found. The whole Weeks 9-12 plan rests on that research.
+6. December outreach, Diego style: Claude drafts the outreach emails as Gmail drafts (allowed); Josh reviews and sends every one himself; Claude tracks replies.
+7. Winona State program: the Nov 22 brief said learning all ~20 tools on the contact's list is a job-portfolio move. Not yet discussed. Never name the company or person publicly. Josh's ratings: high (core videos) ChatGPT, Claude, Gemini Notebook, n8n; medium LM Studio, Lovable, Teachable Machine, Ollama; low to medium TensorFlow Playground, Hugging Face, Streamlit, Langflow; low (link out only) Replit, Google AI Studio, Copilot Student + VS Code, Cursor, Colab, Kaggle, Orange, Gradio.
+8. Marketing items already handed over (Nov 24 prompt): the "two founders, two rules about hitting send" video (Diego vs Mike Molinet of Dock); "managing AI is management"; Atlassian CEO lines for change-management videos (check his bank-branch claim first; US branch counts may be falling); Diego's claims-not-reports and laugh-test prompt as a workshop exercise; a plain agent definition. Dock's numbers are his own unsourced claims. Diego's weekly news sweep is a fit for the marketing competitor watch. Nothing for builds from Dock (its agents act on their own, on the "never" list).
+9. Out-of-date points in the Nov 22 brief, for marketing to decide: its scope rules predate D127 (building one workflow for a client is on sale); the research file's "learn in this order" list was written as if nothing had been built.
 
 ## Verified build and evidence
 
