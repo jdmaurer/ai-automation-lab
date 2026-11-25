@@ -1,0 +1,121 @@
+This is a simulated response from an experienced office manager and bookkeeper. The frequencies are representative estimates for the scenario, not measured statistics or claims of firsthand experience.
+1. Why I would laugh at this plan
+You're assuming the technicians fill out their paperwork correctly and the suppliers know what they're billing us for. Half the problem with my job isn't typing information into Excel; it's figuring out what actually happened. A perfectly readable document can be completely wrong, and your system might accept it without questioning a thing.
+2. The 10 most important situations you're missing
+Situation: 1. Work orders that never reach the office.
+What the paperwork actually looks like: Nothing. The technician left it in the truck, lost it, forgot to photograph it, or thought another technician submitted it.
+What should happen to it: Identify missing ticket numbers, reconcile them against scheduled jobs, and distinguish missing tickets from legitimately voided tickets.
+How often you see it (weekly, monthly, rarely): Weekly.
+What it costs if it's handled wrong: An entire job goes unbilled, including labor and materials.
+
+Situation: 2. Incorrect information that looks perfectly legitimate.
+What the paperwork actually looks like: A technician's handwritten 1.5 hours looks like 7.5 hours. A quantity of 12 looks like 17. A part number is off by one digit but happens to match another real part.
+What should happen to it: Check against the original paperwork, technician time records, parts records and reasonable job-specific expectations.
+How often you see it (weekly, monthly, rarely): Weekly.
+What it costs if it's handled wrong: Overbilling, underbilling, incorrect payroll, inventory discrepancies and customer disputes.
+
+Situation: 3. The customer, property owner and person responsible for payment are different.
+What the paperwork actually looks like: The technician writes down the tenant's name and apartment address. The property management company is actually responsible for paying and requires a purchase order number.
+What should happen to it: Identify the correct billing account, service location and any customer-specific billing requirements.
+How often you see it (weekly, monthly, rarely): Weekly.
+What it costs if it's handled wrong: Rejected invoices, delayed payments and time spent chasing the wrong people.
+
+Situation: 4. Multiple visits or technicians working on the same job.
+What the paperwork actually looks like: One technician diagnoses the problem Monday, another installs a replacement Wednesday, and someone returns Friday to finish the work. There are three tickets, and some materials or labor may be recorded more than once.
+What should happen to it: Associate all tickets with the same job, reconcile overlapping entries and determine whether the job is ready for billing.
+How often you see it (weekly, monthly, rarely): Weekly.
+What it costs if it's handled wrong: Duplicate charges, missed charges, premature billing and inaccurate job profitability.
+
+Situation: 5. Supplier invoices containing materials for multiple jobs.
+What the paperwork actually looks like: A single invoice contains a water heater for one customer, fittings for another customer, and several boxes of supplies for truck inventory. The technician might have written a customer's name beside only one item.
+What should happen to it: Allocate individual invoice lines and associated costs to the appropriate jobs, trucks or general inventory.
+How often you see it (weekly, monthly, rarely): Weekly.
+What it costs if it's handled wrong: Incorrect job costs, unbilled materials and misleading profit margins.
+
+Situation: 6. Corrected or supplemented paperwork.
+What the paperwork actually looks like: A technician submits a work order and later sends another photograph of the same ticket with additional parts or corrected hours. A supplier sends a revised invoice using the original invoice number.
+What should happen to it: Recognize that the document has changed, retain the original version, identify the differences and have someone approve the correction.
+How often you see it (weekly, monthly, rarely): Weekly.
+What it costs if it's handled wrong: Your duplicate prevention rule throws away legitimate corrections, or both versions are entered and counted.
+
+Situation: 7. Returns, supplier credits and warranty replacements.
+What the paperwork actually looks like: A credit memo resembles an invoice. The original invoice reference may be buried in the description. A returned part might have a restocking fee, or a warranty replacement might have no material charge but still include freight.
+What should happen to it: Identify the transaction as a credit or adjustment, associate it with the original purchase and correct the appropriate job or inventory costs.
+How often you see it (weekly, monthly, rarely): Weekly.
+What it costs if it's handled wrong: Paying suppliers too much, missing credits and overstating expenses.
+
+Situation: 8. Paperwork that looks like an invoice but isn't payable.
+What the paperwork actually looks like: Supplier statements, packing slips, order confirmations, quotations and delivery receipts containing supplier names, reference numbers, dates, prices and sometimes totals.
+What should happen to it: Distinguish these document types from actual invoices. Use them for reconciliation or verification without recording them as additional amounts owed.
+How often you see it (weekly, monthly, rarely): Weekly.
+What it costs if it's handled wrong: Duplicate liabilities, potential duplicate payments and incorrect accounts payable balances.
+
+Situation: 9. Warranty calls, callbacks and nonbillable work.
+What the paperwork actually looks like: A normal work order with three hours of labor and replacement parts. Somewhere in the margin the technician writes “callback,” “warranty,” “no charge,” or “talk to owner.” Sometimes they write nothing.
+What should happen to it: Determine who is responsible for the costs, whether the customer should be billed and whether a manufacturer warranty reimbursement is available. Record the actual costs regardless of billability.
+How often you see it (weekly, monthly, rarely): Weekly.
+What it costs if it's handled wrong: Charging customers for covered repairs, losing warranty reimbursements and understating the cost of callbacks.
+
+Situation: 10. Incomplete documents and complicated invoice layouts.
+What the paperwork actually looks like: A three-page invoice with totals on the final page, a photograph missing the bottom of a work order, notes on the reverse side, or an invoice containing freight charges, discounts, deposits, core charges and different units of measure. Every individual page may be perfectly readable.
+What should happen to it: Verify document completeness, combine related pages, distinguish subtotals from final totals and account for all charges and adjustments.
+How often you see it (weekly, monthly, rarely): Weekly.
+What it costs if it's handled wrong: Missing expenses, incorrect quantities, incorrect tax calculations and inaccurate supplier balances.
+3. Fields that are missing and fields I would never use
+Missing work order fields
+Field	Why I need it
+Job number	Connect multiple work orders to one job.
+Customer account number	Identify the correct customer.
+Billing name and address	Identify who actually pays.
+Customer purchase order	Meet commercial billing requirements.
+Job status	Completed, incomplete or awaiting parts.
+Job type	Installation, repair, maintenance or emergency service.
+Billing status	Billable, warranty, callback or no charge.
+Billable hours	Actual hours worked aren't necessarily billable hours.
+Labor rate or pricing method	Regular, overtime, emergency or flat-rate pricing.
+Part number	Identify the actual material used.
+Unit of measure	Individual pieces, feet, boxes or other quantities.
+Equipment model and serial number	Service history and warranty claims.
+Payment collected	Identify money already received by the technician.
+Follow-up required	Identify unfinished work and return visits.
+
+Missing supplier invoice fields
+Field	Why I need it
+Supplier account number	Distinguish accounts and billing arrangements.
+Purchase order number	Match purchases against orders.
+Job number	Allocate costs to customers and jobs.
+Supplier part number	Identify and reconcile materials.
+Quantity and unit of measure	Distinguish individual items from packages.
+Unit price and extended price	Verify individual charges.
+Subtotal	Reconcile invoice calculations.
+Freight and delivery charges	Account for additional costs.
+Discounts	Verify the actual amount owed.
+Core charges and restocking fees	Track refundable charges and return costs.
+Transaction type	Invoice, credit memo or adjustment.
+Original invoice reference	Reconcile credits and corrections.
+Payment terms	Identify early-payment discounts and payment obligations.
+Expense or inventory category	Determine where the cost belongs.
+
+Missing administrative fields for both
+Field	Why I need it
+Date received	Track late and outstanding paperwork.
+Original document link	Retrieve the actual paperwork.
+Document version	Distinguish originals from corrections.
+Review status	Know what has and hasn't been checked.
+Exception reason	Know what needs investigating.
+Reviewed by	Know who verified the information.
+Correction history	Know what was changed and why.
+Billing or posting status	Prevent processing the transaction twice.
+
+Fields I would never manually enter into Excel
+- Customer signature: I need to know whether the document was signed, but I don't need a transcription of the signature. Keep the original image.
+- Full handwritten work description in a bookkeeping ledger: I need the description for customer billing and service history, but I don't need a wall of text in my financial records.
+Everything else you've listed has a legitimate purpose somewhere in the business.
+4. What one thing would make me refuse to use this system?
+Silent failures.
+
+If I cannot account for every document received, including documents the AI rejected, classified incorrectly, considered duplicates or failed to process, I won't use it.
+
+I can deal with an exceptions list containing twenty problems. What I cannot deal with is an exceptions list containing five problems when there are actually twenty.
+
+An error I know about is work. An error I don't know about is lost money.

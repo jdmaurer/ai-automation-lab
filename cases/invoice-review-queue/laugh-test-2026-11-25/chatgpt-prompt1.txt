@@ -1,0 +1,162 @@
+I'd laugh because this plan assumes my job is typing. Typing is the easy part. Most of my time is spent figuring out what the technicians meant, who owes us money, what we actually owe suppliers, and whether the paperwork reflects what really happened.
+
+A document can be perfectly legible, pass every mathematical check, contain every required field, and still be completely wrong for billing or bookkeeping.
+1. Corrected, supplemented and resubmitted work orders
+What the paperwork actually looks like:
+- Monday: Ticket #1842 — 2 hours, replaced circulator pump.
+- Tuesday: Same ticket, with 2 hours crossed out and changed to 3.5.
+- Wednesday: Same ticket, with another part added.
+Sometimes the technician texts me the correction rather than submitting another photograph.
+
+What should happen: Recognize that these may be revisions to an existing ticket, not duplicates. Preserve the previous versions, identify the changes and flag them for review.
+
+Your duplicate detection could reject the very paperwork I need to bill the customer correctly.
+2. Multiple documents for a single job
+What the paperwork actually looks like:
+- Ticket #1843 — diagnosed furnace problem.
+- Ticket #1847 — returned with replacement motor.
+- Ticket #1851 — completed installation.
+- Supplier invoice containing the replacement motor.
+Three work orders, one supplier invoice, one customer job.
+
+What should happen: Associate all four documents with the same job. Keep the job open until completed and distinguish between individual service visits and the overall job.
+
+Otherwise, I might bill the customer three times or bill before the work is finished.
+3. The customer isn't necessarily the person paying
+What the paperwork actually looks like:
+Customer: Mike
+Address: 412 Main St., Apt. 3
+Work: Replaced kitchen faucet
+Notes: Bill landlord — approved by Dave
+Signature: Mike
+
+Mike is the tenant. Dave is the property manager. Neither necessarily receives the invoice.
+
+What should happen: Identify the service location, property owner, billing account and person authorizing the work separately. Flag unidentified billing accounts.
+
+I don't care how accurately the AI reads Mike's name if it sends the bill to the wrong person.
+4. Work that shouldn't be billed normally
+What the paperwork actually looks like:
+Replaced ignitor — 1.5 hrs
+Callback from last Thursday
+N/C — shop fault
+
+Other paperwork might say:
+- Warranty
+- Included in maintenance agreement
+- Quoted job
+- Bill manufacturer
+- Owner approved no charge
+What should happen: Record the labor and materials as actual job costs, but identify the appropriate billing treatment. A no-charge customer visit might still qualify for manufacturer reimbursement.
+
+The customer owing nothing doesn't mean the work cost us nothing.
+5. Technicians don't write parts descriptions like inventory systems
+What the paperwork actually looks like:
+2 — 90s
+6' — ¾ copper
+1 — same valve as yesterday
+½ box screws
+Misc. fittings — truck
+
+There may be three different types of 90-degree elbows in the truck.
+
+What should happen: Preserve the original description, identify the unit of measurement, match the item to a verified part number where possible, and flag ambiguous matches.
+
+An AI being confident that the technician wrote "90s" doesn't tell me which elbows we used, what they cost or what to charge.
+6. Labor hours aren't necessarily billable hours
+What the paperwork actually looks like:
+Jim: 8–11
+Tyler: 9–11
+Travel: 30 min
+Charge customer 3 hrs
+Tyler training
+
+That's five technician labor hours before accounting for travel, but only three hours explicitly designated for customer billing.
+
+Other tickets include overtime, emergency callouts, apprentices and minimum service charges.
+
+What should happen: Separate actual labor, billable labor, travel, overtime and nonbillable labor by technician. Apply the correct billing arrangement without losing actual job costs.
+
+A single hours column and technician-name column are inadequate.
+7. Supplier credit memos and returned parts
+What the paperwork actually looks like:
+CREDIT MEMO #CM-8821
+Original invoice: #76192
+Returned pump: $285.00
+Restocking fee: $28.50
+Net credit: $256.50
+
+The original invoice may have already been paid.
+
+What should happen: Classify this as a supplier credit, link it to the original purchase and job where applicable, and record the credit and restocking charge correctly.
+
+It shouldn't be rejected as an unsupported document or entered as another amount we owe.
+8. Supplier purchases don't always belong to one job
+What the paperwork actually looks like:
+Item	Amount	Technician's handwritten note
+Water heater	$650	Johnson job
+Copper fittings	$120	Truck #2
+Circulator pump	$285	Smith job
+Drill bits	$45	Shop
+
+One supplier invoice covers two customer jobs, truck inventory and company supplies.
+
+What should happen: Allocate individual invoice lines to the appropriate job, inventory location or expense category. Unallocated lines should remain unresolved until someone identifies them.
+
+Entering the correct invoice total doesn't tell me whether we made money on the Johnson job.
+9. Supplier invoices contain legitimate mathematical complications
+What the paperwork actually looks like:
+Description	Amount
+Merchandise	$1,000.00
+Contractor discount	−$100.00
+Freight	$35.00
+Tax	$63.00
+Invoice total	$998.00
+Deposit previously applied	−$200.00
+Balance due	$798.00
+
+Other invoices contain core charges, environmental fees, early-payment discounts, tax exemptions and rounding adjustments.
+
+What should happen: Identify the components separately, reconcile the invoice total and distinguish it from the outstanding balance. Preserve payment terms and flag unexplained discrepancies rather than legitimate adjustments.
+
+Your math check might flag a perfectly correct invoice or leave me thinking we owe $200 more than we actually do.
+10. Incomplete, combined and misleading paperwork
+What the paperwork actually looks like:
+
+A technician sends a single photograph containing two work orders. One is partially covered by the other. Later, he sends a close-up of the bottom half of the second ticket.
+
+A supplier sends a four-page PDF containing an invoice, a packing slip, another invoice and a statement listing invoices we've already received.
+
+The individual pages might all be perfectly readable.
+
+What should happen: Identify document boundaries, separate unrelated documents, associate continuation pages, distinguish supporting paperwork from financial transactions and flag missing portions.
+
+Your blurry-photo test doesn't cover this. The problem isn't image quality; it's determining what constitutes a complete, unique business document.
+
+Fields you are missing
+These are additional fields I would actually need, beyond the ones already proposed.
+Category	Missing fields
+Job identification	Job number, related ticket numbers, visit number, purchase order number
+Customer identification	Customer account ID, billing customer, billing address, service contact, authorizing person
+Job management	Job status, completion date, return visit required, job type
+Billing	Billable status, billing arrangement, quoted price, warranty status, maintenance agreement, callback reason, no-charge reason
+Labor	Technician ID, start time, end time, actual hours, billable hours, travel time, overtime, labor category
+Parts	Manufacturer, part number, unit of measurement, unit cost, unit selling price, inventory source, returned quantity
+Supplier identification	Supplier account ID, our account number with the supplier, supplier job reference
+Purchasing	Purchase order, delivery date, quantity ordered, quantity received, backordered quantity
+Invoice line items	Item number, description, quantity, unit price, discount, extended amount, job allocation, expense category
+Financial adjustments	Subtotal, freight, fees, discounts, core charges, deposits, credits, balance due, payment terms
+Credit memos	Original invoice reference, return authorization number, credit reason, credit amount
+Document control	Document type, source file, received date, page count, revision number, related document IDs
+Office processing	Review status, exception reason, reviewer, correction history, billing status, bookkeeping entry status
+
+What is fundamentally wrong with the test set?
+It tests whether the AI can read documents and catch relatively obvious technical failures. It barely tests whether the system understands the business transactions represented by those documents.
+
+It also assumes that exceptions arise primarily because the AI is uncertain. Many of my most important exceptions involve paperwork that is completely legible and accurately transcribed.
+
+And if everything is going into one fixed Excel row per document, you've already created another problem. A work order can have multiple technicians and multiple parts. An invoice can have multiple job allocations. A job can have multiple work orders and invoices.
+
+Those are different records with relationships between them.
+
+You could pass all 50 of your proposed tests and still produce incorrect customer bills, incorrect supplier balances and incorrect job profitability figures.

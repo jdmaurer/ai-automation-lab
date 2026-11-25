@@ -1,0 +1,52 @@
+Whoever designed this has never touched a grease-stained carbon copy or dealt with a plumber at 5:00 PM on a Friday. They think my job is typing words from a page into a spreadsheet, when the actual job is translating chicken scratch, figuring out who actually pays the bill, and matching supplier charges to the right jobs. Testing it on 50 neat samples—including a cutesy "hidden AI instruction" trick—proves they are solving tech-demo problems instead of actual shop problems.1.
+Situation: One supplier invoice covers multiple jobs and truck stock.
+What the paperwork actually looks like: A single PDF from Ferguson or Hajoca with 12 line items—three parts for the Miller boiler, two for the Davis water heater, and seven boxes of fittings for Van 2's stock. Sometimes the tech's job name is scribbled in the PO box; sometimes it just says "Dave" or "stock."
+What should happen to it: The invoice total has to be split across different job numbers for customer billing and an overhead/inventory account for truck stock.
+How often you see it (weekly, monthly, rarely): Weekly.
+What it costs if it's handled wrong: Customers don't get billed for parts we installed, or one customer gets billed for another customer's water heater.2.
+Situation: Tenant or property manager vs. the actual payer.
+What the paperwork actually looks like: The tech writes the name of the person who opened the door (the tenant) in the "Customer Name" box and the rental property in "Job Address." The landlord or management company who actually pays the bill isn't written anywhere on the ticket.
+What should happen to it: I have to look up the address in our system, swap the billing name to the landlord or property manager, and keep the tenant's name only as a job note.
+How often you see it (weekly, monthly, rarely): Weekly.
+What it costs if it's handled wrong: The invoice goes to the wrong person, sits unpaid for 60 days, and triggers an angry phone call from a tenant or a property manager.3.
+Situation: Warranty work, callbacks, and no-charge tickets.
+What the paperwork actually looks like: A normal-looking work order with hours and parts filled in, except "N/C," "callback," "warranty," or "fixed our leak from Tues" is scribbled in the margin or buried in the work description.
+What should happen to it: Hours go to payroll and parts go to job cost/warranty tracking, but the customer gets billed $0.
+How often you see it (weekly, monthly, rarely): Weekly.
+What it costs if it's handled wrong: We bill a customer for fixing our own mistake, which loses us a repeat customer and earns a one-star review.4.
+Situation: Two technicians on the same job.
+What the paperwork actually looks like: One work order where the lead tech writes "Mike + Josh" in the tech box and "4 hrs" in the hours box—leaving me to figure out if that's 4 hours total (2 each) or 4 hours each (8 billable hours).
+What should happen to it: It has to be split into two separate technician labor entries for payroll and totaled correctly for customer billing (often at different rates for a licensed tech vs. an apprentice).
+How often you see it (weekly, monthly, rarely): Weekly.
+What it costs if it's handled wrong: We underbill the customer by half the labor, or we pay a guy wrong on Friday.5.
+Situation: Vague, slang, or unpriced parts on work orders.
+What the paperwork actually looks like: Techs don't write manufacturer part numbers. They write "misc copper," "a few 3/4 press fittings," "rebuild kit," or "used from van" with no quantities.
+What should happen to it: I have to look at the work description, call the tech if needed, and translate it into actual billable line items or a flat-rate shop-supplies charge.
+How often you see it (weekly, monthly, rarely): Weekly.
+What it costs if it's handled wrong: Hundreds of dollars in small fittings and materials bleed out of the company every month without ever being billed.6.
+Situation: Multi-day jobs and updated work orders.
+What the paperwork actually looks like: A tech sends a photo of Ticket #4102 on Tuesday when he diagnoses a furnace, then takes the exact same paper form back on Wednesday to install the part, adds lines to it, and sends a new photo of Ticket #4102. Or he uses a brand-new ticket number for Day 2 without referencing Day 1.
+What should happen to it: Updated tickets need to overwrite or append to the first entry (not get blocked as duplicates), and separate tickets for the same job need to be combined onto one customer invoice.
+How often you see it (weekly, monthly, rarely): Weekly.
+What it costs if it's handled wrong: The duplicate-blocker drops the Day 2 labor and parts completely, or the customer gets two confusing bills for one repair.7.
+Situation: Credit memos and returned parts.
+What the paperwork actually looks like: A PDF from a supplier that uses the exact same template as a normal invoice, except it says "CREDIT MEMO" in small print or has negative numbers/parentheses on the line items for a returned pump or warranty exchange.
+What should happen to it: It needs to be entered as a negative amount, tied back to the original invoice or job, and deducted from what we owe the supplier.
+How often you see it (weekly, monthly, rarely): Monthly.
+What it costs if it's handled wrong: If it's read as a positive invoice, we double-pay for a part we returned and skew our job costs by twice the part's value.8.
+Situation: Payment collected on-site.
+What the paperwork actually looks like: The tech scribbles "Paid check #1042 $385" or "Paid cash" across the bottom of the work order, or snaps a photo of the check next to the form.
+What should happen to it: The invoice has to be marked paid, matched to the bank deposit or cash envelope the tech drops off, and never sent out as a bill.
+How often you see it (weekly, monthly, rarely): Weekly.
+What it costs if it's handled wrong: We send an invoice to a customer who already paid us, which looks sloppy and makes them think we lost their check.9.
+Situation: Unapproved price hikes, core charges, and hidden surcharges on supplier PDFs.
+What the paperwork actually looks like: The math on the PDF adds up fine, so the rule-checker passes it—except the supplier billed us $480 for a blower motor they quoted at $340, or tacked on a $45 fuel/hazmat fee or a refundable core charge.
+What should happen to it: It needs to be flagged against our quote or usual price so I can call the counter guy and get a credit before we pay it.
+How often you see it (weekly, monthly, rarely): Monthly.
+What it costs if it's handled wrong: We quietly eat the overcharge because we already billed the customer based on the quoted price.10.
+Situation: Writing on the back of the form, in the margins, or across two pages.
+What the paperwork actually looks like: The tech runs out of room in the "Parts" box, draws an arrow to the margin, or flips the form over and writes the rest on the back—and forgets to photograph the back, or sends two photos that the AI treats as two unrelated documents.
+What should happen to it: Both photos have to be stitched to the same ticket, and anything written outside the boxes still has to be read and billed.
+How often you see it (weekly, monthly, rarely): Monthly.
+What it costs if it's handled wrong: Half the parts or labor on a big job never make it onto the bill.3.Missing fields I actually need:Bill-to name and billing address (separate from the job/service address).Job number / PO number (the only thing that links a supplier invoice to a technician's work order).Billing type / status (Billable, Warranty, Callback, Estimate/Quote, Maintenance Contract).Payment collected on-site (amount, method, check number).Labor rate type (regular time, overtime, emergency/after-hours, diagnostic fee) and second technician's name/hours.Document type / Credit flag (Invoice vs. Credit Memo vs. Packing Slip vs. Monthly Statement).Supplier line-item allocation (which job or truck stock each individual line belongs to).Listed fields I would never use:Customer signature: You can't type a squiggle into an Excel column. I only care if the photo has a signature on file in case a customer disputes a bill later. Half the time the homeowner isn't even there, so requiring it will just flood the exceptions list.Pre-printed ticket number as a strict duplicate blocker: I need the ticket number for tracking, but using it to auto-reject duplicates breaks every time a tech updates a multi-day ticket or voids a ruined form and reuses/rewrites it.4.What would make me refuse to use it:
+If the system silently passes bad data through as "clean"—like billing a warranty callback, misreading a credit memo as a charge, or dropping a line scribbled in the margin. The second I realize I still have to open every single photo and PDF to check the AI's work, the system isn't saving me time; it's just making me do my job twice, slower.
