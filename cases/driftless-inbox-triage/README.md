@@ -1,6 +1,6 @@
 # Driftless Print and Sign: Inbox Triage (Microsoft 365)
 
-**Status:** working prototype on a live Outlook mailbox in a lab Microsoft 365 account, with synthetic data. In its final evaluation it met every safety, accuracy and pricing bar I set in advance, and every reply the AI wrote was one I'd send (8 of 8). One drafting design choice fell short of my usefulness bar. I found why and know the fix (below). It is not production-ready, and I don't claim it is.
+**Status:** working prototype on a live Outlook mailbox in a lab Microsoft 365 account, with synthetic data. In its final evaluation it met every safety, accuracy and pricing bar I set in advance, and every reply the AI wrote was usable as written or with light edits (8 of 8). One drafting design choice fell short of my usefulness bar. I found why and know the fix (below). It is not production-ready, and I don't claim it is.
 
 ## The problem
 
@@ -44,7 +44,7 @@ For v3 I wrote the rules down before the run, ran it **once**, and didn't tune i
 
 ## What I learned
 
-- **Safe isn't the same as useful.** For Support emails, the design used one fixed, pre-approved reply so the system could never promise a refund or a reprint, and it never did. But testing showed that for urgent problems ("stop the job," "is my order ready?") a generic line helps nobody; the customer wants to know their specific issue is understood. Every reply the AI wrote, by contrast, was one I'd send (8 of 8). **Next version:** urgent order problems get flagged for the owner to answer directly, and whether to send any automatic "we got it" reply is agreed with the owner up front.
+- **Safe isn't the same as useful.** For Support emails, the design used one fixed, pre-approved reply so the system could never promise a refund or a reprint, and it never did. But testing showed that for urgent problems ("stop the job," "is my order ready?") a generic line helps nobody; the customer wants to know their specific issue is understood. Every reply the AI wrote, by contrast, was usable as written or with light edits (8 of 8). **Next version:** urgent order problems get flagged for the owner to answer directly, and whether to send any automatic "we got it" reply is agreed with the owner up front.
 - **Walk real emails through the design before testing it.** For each kind of email, ask: what will this customer actually get back, and will it help them? That simple walkthrough would have shown that every Support email gets the same generic line, which can't help someone who needs a job stopped today. It's a common-sense check, but it wasn't a formal step, so the gap only surfaced in the final test. It's now a step at each stage of a build and once more before any formal test.
 - **Test the safety checks themselves, with bad input.** The flow already checked every AI answer before using it. To test that check, I deliberately fed it a broken answer: a word where a number belonged. The check itself crashed instead of catching it, so the email was never flagged for the owner. No reply went out, but the safety net had a hole. I added a format check in front of it and re-tested, and the broken answer was caught and sent to the owner. Since no one can predict every failure, the rule built in is: when anything unexpected happens, the email goes to a person.
 - **Verify a platform's limits before promising a control.** My incident drill flagged that run history might expose customer emails. I opened a real past run and confirmed it: Power Automate keeps the full email for 28 days, and this Outlook trigger offers no setting in the designer to hide it. I documented it with evidence and listed it as a decision for the client's admin.
@@ -56,6 +56,7 @@ Synthetic data only, and one mailbox. The test set was also used during developm
 ## Details
 
 - [Runbook](runbook.md): operating guide, failure handling, costs and the incident tabletop
+- [Exported flows](baselines/published-policy-v3-2026-11-17/README.md): the Power Automate solution export (main triage, weekly summary and evaluation flows). It was taken November 17, just before the format-check fix; the [fix itself is documented here](evaluation/configuration/fi02-main-recovery-publication-2026-11-17/README.md).
 - [v3 test write-up](evaluation/runs/run-2026-11-24-frozen-policy-v3/README.md) and [the rules set before it](evaluation/POLICY_V3_SCORING.md)
 - [Charter](charter.md), [decisions](decisions.md), [admin questions](admin-questions.md)
 - [Evaluation history](evaluation/README.md) and [failure tests](evaluation/failure-testing/isolated-2026-11-17/README.md)
