@@ -38,7 +38,16 @@ Scorer `evaluate-policy-v3.mjs` passes 11 artificial-only tests. The v1 and v2 s
 - Josh's finding: a canned acknowledgment is not useful for urgent customer problems; urgent order issues should be flagged, not drafted.
 - Per the one-shot rule, **no further tuning or reruns.** The Driftless build is closed.
 
-**Single next action:** rewrite the case README in plain English, in Josh's voice: what it does, what passed, what failed and what he learned. Then Gate 2 recording, the `week8-portfolio-v0.5` tag and the Weeks 9-12 branch choice.
+**WEEK 8 CLOSED, November 24, 2026.**
+- Plain-English case README published (Josh-approved).
+- Gate 2 scored by Josh, by purpose: **18 of 18** on nine areas, passed, no critical failure. [Scores and evidence](cases/driftless-inbox-triage/runbook.md).
+- Market evidence moved out of the gate; operator conversations happen in December, when they happen.
+- The one gap (never restored the backup) closed the same night. The backup was restored into a separate Trial environment, "Driftless Restore Practice" (expires about Dec 24), with zero runs. The restored main flow came up On despite the import setting and was turned off.
+- Tagged `week8-portfolio-v0.5`.
+
+**Standing rule (Josh):** a gate is a checkpoint that shows what to work on. Score by purpose. Things he could reasonably do tomorrow, or that can't be done yet, don't hold him at a gate; genuinely thin skills get real work.
+
+**Single next action:** start Week 9. Josh will bring another conversation plus use-case research on what people actually buy. Use those to choose the Weeks 9-12 direction before building anything.
 
 ## Verified build and evidence
 

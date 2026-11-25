@@ -166,23 +166,32 @@ Totals are the $15 Premium license plus AI usage, on top of the existing mailbox
 - The disable path is documented but has never been drilled.
 - None of these is fixed by this closeout. They are listed as limitations and real-use prerequisites.
 
-### Gate 2 and remaining acceptance
+### Gate 2: scored by Josh, November 24, 2026
 
-The authoritative *AI Implementation Consultant - 12-Week Master Calendar* (verified September1,2026), section “Gate 2 - End of Week 8,” requires **at least 16/20 and zero critical failures**, using 0 absent / 1 partial / 2 demonstrated. This closeout provides a dossier map, not a fabricated Gate score:
+The Master Calendar's Gate 2 is a checkpoint: it shows which skills still need building and what can responsibly be offered to clients. It does not stop the program. Josh scored each area by its purpose (0 absent, 1 partial, 2 demonstrated). Areas that could not have been done yet were moved out rather than scored.
 
-| Gate area | Available evidence / unresolved boundary |
-|---|---|
-| Cross-platform reasoning | Prior n8n case exists; same-contract equivalence/access-blocker demonstration not adjudicated here. |
-| Data model | Charter, field/key mapping, review semantics, minimization and retention decisions documented; retention enforcement not proven. |
-| Permissions | Admin questions/role boundaries documented; real-client grants and permission verification unresolved. |
-| Deterministic controls | Type validation/review rules documented and bounded recovery verified; exact-ID/concurrency/live resend still unproven. |
-| LLM quality | Frozen30 and thresholds/results preserved; formal FAILs, pending owner ratings and no formal v3 acceptance remain. |
-| Security | Adversarial smoke evidence and safety rules documented; no comprehensive security or real-client approval claim. |
-| Reliability | Isolated failure/recovery evidence plus shutdown/restore procedure; real outages, retry limits and restore remain unproven. |
-| Cost and licensing | Lab/trial assumptions identified; low/base/high operating-cost and licensing scenarios not completed in this handoff. |
-| Adoption and handoff | This guide/admin questions/role matrix now exist; training delivery, backup assignment and support agreement unresolved. |
-| Market evidence | Required five operator conversations, two confirmed pains and one pilot-design/buyer-feedback conversation are not established by this case's evidence; do not infer counts from build activity. |
+| Area | Score | Evidence |
+|---|---|---|
+| Cross-platform reasoning | 2 | Week 6: the same lead-intake contract built and tested in n8n and Power Automate, plus a client comparison memo |
+| Data model | 2 | Fields, the Message ID key, run-ID provenance, retention and "no email body in the log" are all decided and written down |
+| Permissions | 2 | Identity, connections, admin questions and role boundaries documented. Permissions are set and tested in the client's own environment at deployment. |
+| Fixed rules and approvals | 2 | Format and value checks, duplicate check, no send action, owner-review gates; zero critical failures in the v3 run |
+| AI quality testing | 2 | 30 cases with answers Josh approved, slices, a bar set before any run, three runs ([v3](evaluation/runs/run-2026-11-24-frozen-policy-v3/README.md)) |
+| Security | 2 | Hidden-instruction emails 4/4, sensitive emails blocked from drafts, nothing can send, run-history exposure verified and documented |
+| Reliability | 2 | Four deliberate failure tests; the backup was **restored into a clean environment on November 24** (see below) |
+| Cost and licensing | 2 | Low/base/high scenarios with current Microsoft prices (above) |
+| Handoff and adoption | 2 | Owner quick reference, admin questions, roles, failure monitoring and an orientation plan exist |
+| Market evidence | moved out | Operator conversations are scheduled for December. That depends on other people's calendars, not on skill, so it is tracked separately and happens when it happens. |
 
-**Gate 2 NOT SCORED / PASS NOT ESTABLISHED.** The original formal critical failure remains historical fact; later targeted policy changes cannot make that unchanged run pass. Do not silently weaken criteria or retest to complete paperwork.
+**Result: 18 of 18 on the nine areas scored. Gate 2 passed.** No calendar critical failure (secret or real data in source control, an action that bypasses approval, success reported after a failure, a control claimed but not built, no disable/owner path, unexplained dependencies).
 
-Remaining work is now a disposition list, not an automatic build queue: owner quality/weekly-wording judgment; unproven exact-ID/concurrency/live resend and weekly Edited/Rejected/no-draft/final-category/empty/date-edge cases; current-version recovery package/restore boundary; effort/cost/adoption/market evidence and formal Gate decision. Those require owner decisions and, where relevant, separately authorized evidence collection. Documentation is complete for the present bounded prototype; routine client deployment is not approved.
+The one gap found while scoring (Reliability: the backup had never been restored) was closed the same night.
+
+### Restore practice, November 24, 2026
+
+1. Created a separate **Trial** environment with a database, "Driftless Restore Practice" (30 days). Developer environments can no longer be created from the admin center.
+2. Imported the November 17 backup (`baselines/published-policy-v3-2026-11-17/…zip`) with "Enable plugin steps and flows" **unchecked**. Five connection references linked automatically. Import succeeded with no warnings: 4 cloud flows, 3 AI prompts, 2 tables, the Bluffside agent.
+3. **Finding:** despite the unchecked box, the restored Driftless Inbox Triage came up **On**. It was turned off within minutes, and its run history shows **zero runs**, so it never touched the inbox. The other three restored flows are manual-trigger only.
+4. **Lesson for any client restore:** after importing, check every flow's status and turn off anything that reacts to email or other live events before doing anything else.
+
+The backup predates the November 17 format-check fix, so a production restore would reapply that documented change.
