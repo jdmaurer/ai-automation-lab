@@ -34,7 +34,7 @@ Scorer `evaluate-policy-v3.mjs` passes 11 artificial-only tests. The v1 and v2 s
 
 **v3 fair test RAN, November 24, 2026: FAIL.** One run, no tuning; [results](cases/driftless-inbox-triage/evaluation/runs/run-2026-11-24-frozen-policy-v3/README.md).
 - Primary 27/30 ✅, critical failures 0 ✅ (DRI-12 is fixed), Sales pricing 6/6 ✅.
-- **Usable drafts 9/13 (69%) ❌.** AI drafts were 7/8; the fixed Support sentence was 2/5.
+- **Usable drafts 10/13 (77%) ❌.** AI drafts were 8/8; the fixed Support sentence was 2/5.
 - Josh's finding: a canned acknowledgment is not useful for urgent customer problems; urgent order issues should be flagged, not drafted.
 - Per the one-shot rule, **no further tuning or reruns.** The Driftless build is closed.
 

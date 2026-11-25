@@ -9,7 +9,7 @@ The single v3 run allowed by the [rules Josh approved beforehand](../../POLICY_V
 | Primary outcomes | ≥ 27/30 | **27/30** | ✅ |
 | Critical failures | 0 | **0** | ✅ DRI-12 (STOP, wrong phone number) is now Urgent |
 | Sales pricing | all correct | **6/6** | ✅ |
-| Usable drafts | ≥ 80% | **9/13 (69%)** | ❌ |
+| Usable drafts | ≥ 80% | **10/13 (77%)** | ❌ |
 
 **Overall: FAIL.** Release remains NOT_ESTABLISHED.
 
@@ -17,14 +17,14 @@ The single v3 run allowed by the [rules Josh approved beforehand](../../POLICY_V
 
 The failure comes from a design choice, not from AI writing quality.
 
-- **AI-written drafts: 7/8 usable (88%).**
+- **AI-written drafts: 8/8 usable (100%).**
 - **Fixed Support sentence: 2/5 usable (40%).** All five Support emails get the same approved line: "Thank you for your message. The owner will review your concern and confirm the next step." It is safe and honest. Josh rated it **not useful for urgent problems** (DRI-09 wrong date, DRI-11 pickup timing, DRI-12 stop-print).
 
 Josh's finding, in his words in substance: customers with a problem want to hear that their specific issue is understood and what happens next, including whether they'll pay. A canned line reassures nobody. As an *unsent* draft, it also saves the owner nothing, because the owner has to act first and then write the real answer. It would only help as an automatic "received, and being prioritized" reply.
 
 **Implication for a real client:** don't draft replies for urgent order problems; flag them instantly. Agree with the owner up front whether an automatic acknowledgment is wanted.
 
-The one AI-draft N was DRI-22 (contact update), with no reason given.
+DRI-22: Josh rated it Y on re-reading. "We will update" meets the rule; as owner he would update the records first and say so.
 
 ## Non-critical items, reported as promised
 
@@ -45,4 +45,5 @@ Five of the 13 drafts were going to be the identical fixed sentence; that was kn
 - `actual-results.json`: unchanged raw export
 - `owner-review.json`: Josh's ratings with his reasons
 - `score-v3-machine-before-owner-ratings.json`: INCOMPLETE pending ratings
-- `score-v3.json`: final FAIL
+- `score-v3.json`: first final score (DRI-22 rated N)
+- `score-v3-final.json`: final FAIL, DRI-22 re-rated Y (10/13)
