@@ -32,14 +32,13 @@ DRI-12 is a failure of the charter's acceptance rule. It is **not** one of the M
 
 Scorer `evaluate-policy-v3.mjs` passes 11 artificial-only tests. The v1 and v2 suites still pass 12/12 each. No run has been prepared or made.
 
-**Single next action:** run the one v3 test, with Claude guiding:
-1. Prepare: `node evaluate-policy-v3.mjs prepare runs/run-YYYY-MM-DD-frozen-policy-v3 run-YYYY-MM-DD-frozen-policy-v3`.
-2. In Power Automate, run **Driftless Frozen 30 Evaluation** with `batch_json` = the entire `batch-input.json` and `run_label` = the label.
-3. Copy the **Export - Evaluation Results** raw output, unchanged, into `actual-results.json`.
-4. Josh rates the drafts.
-5. Score, then write up PASS or FAIL. No rerun either way.
+**v3 fair test RAN, November 24, 2026: FAIL.** One run, no tuning; [results](cases/driftless-inbox-triage/evaluation/runs/run-2026-11-24-frozen-policy-v3/README.md).
+- Primary 27/30 ✅, critical failures 0 ✅ (DRI-12 is fixed), Sales pricing 6/6 ✅.
+- **Usable drafts 9/13 (69%) ❌.** AI drafts were 7/8; the fixed Support sentence was 2/5.
+- Josh's finding: a canned acknowledgment is not useful for urgent customer problems; urgent order issues should be flagged, not drafted.
+- Per the one-shot rule, **no further tuning or reruns.** The Driftless build is closed.
 
-Then: plain-English README rewrite, Gate 2 recording, `week8-portfolio-v0.5` tag.
+**Single next action:** rewrite the case README in plain English, in Josh's voice: what it does, what passed, what failed and what he learned. Then Gate 2 recording, the `week8-portfolio-v0.5` tag and the Weeks 9-12 branch choice.
 
 ## Verified build and evidence
 

@@ -1,0 +1,368 @@
+{
+  "status": "INCOMPLETE",
+  "scope": "isolated-batch",
+  "run_label": "run-2026-11-24-frozen-policy-v3",
+  "flow_run_id": "08584060394385561452602341235CU16",
+  "primary_correct": 27,
+  "denominator": 30,
+  "category_correct": 28,
+  "review_correct": 29,
+  "priority_correct": 27,
+  "drafts_generated": 13,
+  "drafts_usable": 0,
+  "draft_usability": null,
+  "draft_90_percent_target_met": null,
+  "critical_failures": [],
+  "behavior_misses": [],
+  "pending": [
+    "DRI-01: draft quality review pending",
+    "DRI-01: quote/pricing review pending",
+    "DRI-03: draft quality review pending",
+    "DRI-03: quote/pricing review pending",
+    "DRI-04: draft quality review pending",
+    "DRI-04: quote/pricing review pending",
+    "DRI-05: draft quality review pending",
+    "DRI-05: quote/pricing review pending",
+    "DRI-06: draft quality review pending",
+    "DRI-06: quote/pricing review pending",
+    "DRI-08: draft quality review pending",
+    "DRI-08: quote/pricing review pending",
+    "DRI-09: draft quality review pending",
+    "DRI-10: draft quality review pending",
+    "DRI-11: draft quality review pending",
+    "DRI-12: draft quality review pending",
+    "DRI-13: draft quality review pending",
+    "DRI-21: draft quality review pending",
+    "DRI-22: draft quality review pending"
+  ],
+  "details": [
+    {
+      "id": "DRI-01",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": true,
+      "draft_generated": true
+    },
+    {
+      "id": "DRI-02",
+      "category_correct": true,
+      "review_correct": false,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": true,
+      "draft_generated": false
+    },
+    {
+      "id": "DRI-03",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": true,
+      "draft_generated": true
+    },
+    {
+      "id": "DRI-04",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": true,
+      "draft_generated": true
+    },
+    {
+      "id": "DRI-05",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": true,
+      "draft_generated": true
+    },
+    {
+      "id": "DRI-06",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": true,
+      "draft_generated": true
+    },
+    {
+      "id": "DRI-07",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": false,
+      "draft_generated": false
+    },
+    {
+      "id": "DRI-08",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": true,
+      "draft_generated": true
+    },
+    {
+      "id": "DRI-09",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": true,
+      "draft_generated": true
+    },
+    {
+      "id": "DRI-10",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": false,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": true,
+      "draft_generated": true
+    },
+    {
+      "id": "DRI-11",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": true,
+      "draft_generated": true
+    },
+    {
+      "id": "DRI-12",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": true,
+      "draft_generated": true
+    },
+    {
+      "id": "DRI-13",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": true,
+      "draft_generated": true
+    },
+    {
+      "id": "DRI-14",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": false,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": false,
+      "draft_generated": false
+    },
+    {
+      "id": "DRI-15",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": false,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": false,
+      "draft_generated": false
+    },
+    {
+      "id": "DRI-16",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": false,
+      "draft_generated": false
+    },
+    {
+      "id": "DRI-17",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": false,
+      "draft_generated": false
+    },
+    {
+      "id": "DRI-18",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": false,
+      "draft_generated": false
+    },
+    {
+      "id": "DRI-19",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": false,
+      "draft_generated": false
+    },
+    {
+      "id": "DRI-20",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": false,
+      "draft_generated": false
+    },
+    {
+      "id": "DRI-21",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": true,
+      "draft_generated": true
+    },
+    {
+      "id": "DRI-22",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": true,
+      "draft_generated": true
+    },
+    {
+      "id": "DRI-23",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": false,
+      "draft_generated": false
+    },
+    {
+      "id": "DRI-24",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": false,
+      "draft_generated": false
+    },
+    {
+      "id": "DRI-25",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": false,
+      "draft_generated": false
+    },
+    {
+      "id": "DRI-26",
+      "category_correct": false,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": false,
+      "draft_permitted": false,
+      "draft_generated": false
+    },
+    {
+      "id": "DRI-27",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": false,
+      "draft_generated": false
+    },
+    {
+      "id": "DRI-28",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": false,
+      "draft_permitted": false,
+      "draft_generated": false
+    },
+    {
+      "id": "DRI-29",
+      "category_correct": false,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": false,
+      "draft_permitted": false,
+      "draft_generated": false
+    },
+    {
+      "id": "DRI-30",
+      "category_correct": true,
+      "review_correct": true,
+      "priority_correct": true,
+      "category_or_safe_ambiguous_outcome": true,
+      "draft_permitted": false,
+      "draft_generated": false
+    }
+  ],
+  "overall_release": "NOT_ESTABLISHED",
+  "excluded": [
+    "Outlook categories/draft creation",
+    "Dataverse writes/alternate-key enforcement",
+    "exact-ID duplicate/concurrency",
+    "weekly-summary coverage",
+    "isolated failure injection",
+    "effort reduction measurement"
+  ],
+  "policy_version": "driftless-order-change-policy-v3-2026-11-16",
+  "implementation_revision": "order-change-urgent-e",
+  "scoring_contract_id": "driftless-policy-v3-scoring-v1-2026-11-24",
+  "scoring_contract_sha256": "eb6156d0126049de37bb1c6c483922d1d6c225482811037e2a84c39dacc00bd4",
+  "benchmark_interpretation": "Exposed frozen-set regression evaluation; these 30 messages were used during development. Not evidence of generalization.",
+  "thresholds": {
+    "primary_correct": 27,
+    "total_cases": 30,
+    "critical_failures": 0,
+    "draft_usability_minimum": 0.8,
+    "draft_usability_target": 0.9,
+    "confidence_minimum": 0.8
+  },
+  "quality_by_source": {
+    "all": {
+      "created": 13,
+      "rated": 0,
+      "pending": 13,
+      "usable": 0,
+      "usability": null
+    },
+    "ai": {
+      "created": 8,
+      "rated": 0,
+      "pending": 8,
+      "usable": 0,
+      "usability": null
+    },
+    "fixed_support": {
+      "created": 5,
+      "rated": 0,
+      "pending": 5,
+      "usable": 0,
+      "usability": null
+    }
+  },
+  "informational": {
+    "primary_excluding_accepted_limitation": 27,
+    "accepted_limitation_case": "DRI-22",
+    "accepted_limitation_triggered": false,
+    "false_urgent_cases": [
+      "DRI-10",
+      "DRI-14",
+      "DRI-15"
+    ],
+    "raw_priority_correct": 26,
+    "effective_priority_overrides": [],
+    "note": "Reported for transparency; does not affect status."
+  }
+}

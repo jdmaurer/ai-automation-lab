@@ -561,3 +561,9 @@ Today we opened the live flow in Claude's built-in browser and went through it o
 I wanted to fix the resend keyword check on the spot. We didn't: the better design needs a new column, would break the synthetic resend tests, and means republishing. It's written down as a limitation instead. Nothing was saved or published today.
 
 Next: decide on the Secure inputs/outputs change, then one fair v3 test, then rewrite the README in plain English.
+
+## Tuesday 11.24.26 (evening) — The one fair v3 test: FAIL, and why that's useful
+
+We wrote the pass rules down first. They are the exact numbers from my Nov 9 charter, and we checked the repo history to prove it. Then we ran the 30 frozen emails through v3 once. The machine checks passed: 27/30, zero critical failures, and the DRI-12 STOP email was finally marked Urgent. I rated the 13 drafts one at a time. The AI-written ones were 7 of 8 usable. The fixed Support sentence was only 2 of 5, because for urgent problems "the owner will review your concern" helps nobody. The customer wants to know their specific problem is understood and what happens next. So the run fails at 69% usable drafts against an 80% bar.
+
+What I take from it: the AI wasn't the weak point; the design was. Urgent order problems shouldn't get a drafted reply at all. They should be flagged so the owner answers them directly. Whether to send any automatic "we got it" message is a question for the owner during discovery. Claude admitted it should have asked me about that sentence before the run. Per the one-shot rule, no more tuning. Case closed; next is the plain-English write-up.
