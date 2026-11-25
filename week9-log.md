@@ -17,3 +17,15 @@ Independent: insisting the invoice-to-Excel build stays because I've seen the ne
 With help: mapping the research onto my existing cases; checking Week 9 piece by piece; the deadline and billing table; writing it all into CURRENT_STATE so the next chat starts by asking me about the parked items.
 
 Overnight (Claude, while I slept): a demo record for the Driftless video (DEMO-05) and a draft invoice test set (12 files, answer key, supplier list), marked draft until I answer the open questions.
+
+## Wednesday 11.25.26, morning — Correcting the Week 9 plan
+
+I caught two problems. First, my own memory: the client job I'd done wasn't invoices. It was a nonprofit manager's admin paperwork, handwritten pre-printed forms, with a GPT pulling specific boxes from several forms. Second, the overnight plan had moved Week 9 into n8n and quietly dropped the calendar's point of going beneath low-code, and with it the place Python gets applied. The rule is that we add what clients buy; we never lose a skill.
+
+We read the research again. All four runs list documents into a sheet with a review step, but none mention handwriting, and proof of paid jobs is thin. What's actually sold is the reliable process around the reading, not the reading. Handwritten forms stay in as my firsthand evidence, to test in December conversations.
+
+Agreed split: n8n for the workflow a client would keep; Python only where it's genuinely the better tool, mainly the test bench that proves the workflow works. Claude writes the code; I supervise and explain it back. How I learn Python is still open; I have more questions.
+
+Independent: catching the invoice mistake in my own memory; spotting that skills were being replaced, not added; asking whether Python was being forced.
+
+With help: rereading the four research runs; comparing the plan to the calendar's Week 9 line by line.
