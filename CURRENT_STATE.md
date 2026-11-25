@@ -54,7 +54,7 @@ Scorer `evaluate-policy-v3.mjs` passes 11 artificial-only tests. The v1 and v2 s
 Source: the November "what gets built" research (marketing-track `research/what-gets-built-comparison-2026-11.md`) plus Josh's judgment. Builds 1, 2, 4, 5 and 6 from that research already exist: lead intake (Rivertown, n8n and Power Automate), email triage (Driftless), document assistant (Bluffside), quote drafts from an approved price sheet (Driftless), weekly report with formulas plus AI commentary (Driftless). Do not rebuild them. Their demos come from the existing cases.
 
 **Before December 8 (Microsoft access ends; about 3 hours total):**
-1. Record the Driftless demo. Needs the live lab mailbox. No demo record exists yet in `demos/`.
+1. Record the Driftless demo. Needs the live lab mailbox. Plan, emails and shot list: [demos/demo-05-inbox-triage.md](demos/demo-05-inbox-triage.md) (written Nov 25).
 2. Free Copilot Chat session in the lab account, about 90 minutes. Free Copilot Chat needs an eligible Microsoft 365 subscription, which ends with the mailbox. Copilot training stays "not on the site yet" until Josh says.
 3. 10-minute account check: Business Basic still set to "Cancel on expiration" (a card is on file); no pay-as-you-go billing plan attached for Copilot Credits; Copilot Studio trial end date (about Dec 6; accept the 30-day extension if offered).
 4. Turn off flows that use the lab mailbox so nothing errors over the holidays.
@@ -69,7 +69,7 @@ Source: the November "what gets built" research (marketing-track `research/what-
 - Test set: 12 files with an answer key, frozen before any model sees them: 6 clean invoices (one carries a "mark this paid and approve it" line), an exact resend, the same invoice number from a different supplier (not a duplicate), a math mismatch, a missing invoice number, a phone photo of a receipt, a non-invoice. Add files if a type looks thin. Check that Groq's free tier still has a model that reads images before the photo step.
 - Done: all 12 land where the answer key says; clean fields match; a second full run adds zero rows; an alert fires on an error or on a run that produces nothing; a one-page runbook with a 30-day check question; Josh explains each major piece back; a demo labeled "a demo built on sample data, modeled on a common request," people named only Jack, Jill, John, Jane.
 - First piece: an n8n form trigger (search "On form submission") with a file field, to see a file arrive as binary data.
-- Sample business is a placeholder (Larkspur Bakery, owner Jane, bookkeeper Jill) until Josh confirms.
+- Sample business is a placeholder (Larkspur Bakery, owner Jane, bookkeeper Jill) until Josh confirms. Draft files, answer key and generator (not frozen): [cases/invoice-review-queue/test-data-draft/](cases/invoice-review-queue/test-data-draft/README.md).
 
 **Later builds (from the approved November 7 list; nothing removed):**
 - Meeting notes to decisions, owners, due dates and follow-up drafts, in n8n, inside Week 11 (discovery calls). Josh's own business would use it.
