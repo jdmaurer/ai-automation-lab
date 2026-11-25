@@ -56,7 +56,7 @@ Source: the November "what gets built" research (marketing-track `research/what-
 **Before December 8 (Microsoft access ends; about 3 hours total):**
 1. Record the Driftless demo. Needs the live lab mailbox. Plan, emails and shot list: [demos/demo-05-inbox-triage.md](demos/demo-05-inbox-triage.md) (written Nov 25).
 2. Free Copilot Chat session in the lab account, about 90 minutes. Free Copilot Chat needs an eligible Microsoft 365 subscription, which ends with the mailbox. Copilot training stays "not on the site yet" until Josh says.
-3. 10-minute account check: Business Basic still set to "Cancel on expiration" (a card is on file); no pay-as-you-go billing plan attached for Copilot Credits; Copilot Studio trial end date (about Dec 6; accept the 30-day extension if offered).
+3. DROPPED Nov 25 (already done): Business Basic was set to cancel on expiration with Claude on Nov 9 (page reads "Expires on December 9, 2026", no charge), and notes show no pay-as-you-go billing attached. Only leftover: accept the Copilot Studio 30-day extension if Microsoft offers it around Dec 6. Original item: 10-minute account check: Business Basic still set to "Cancel on expiration" (a card is on file); no pay-as-you-go billing plan attached for Copilot Credits; Copilot Studio trial end date (about Dec 6; accept the 30-day extension if offered).
 4. Turn off flows that use the lab mailbox so nothing errors over the holidays.
 - Around December 20: open the Developer environment once. Microsoft disables it after 30 days unused. Solution exports in the repo are the backup (restore proven Nov 24).
 - Driftless Restore Practice environment expires about Dec 24: let it go.
