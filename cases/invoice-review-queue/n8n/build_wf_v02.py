@@ -297,8 +297,10 @@ return [{ json: { correlation_id: f.correlation_id, received_at: f.received_at, 
   reason: `AI reading failed: ${msg}`, document_type: '', sender: '', doc_number: '' } }];"""
 
 
+CREDS = {"groqApi": {"id": "LXrfCFEVvItUzLgJ", "name": "Groq account"},
+         "googlePalmApi": {"id": "9L2f5ojdIQ0LvXHT", "name": "Google Gemini(PaLM) Api account"}}
 def http_node(name, url, cred_type, pos):
-    return {"parameters": {"method": "POST", "url": url, "authentication": "predefinedCredentialType",
+    return {"credentials": {cred_type: CREDS[cred_type]}, "parameters": {"method": "POST", "url": url, "authentication": "predefinedCredentialType",
                            "nodeCredentialType": cred_type, "sendBody": True, "specifyBody": "json",
                            "jsonBody": "={{ JSON.stringify($json.request) }}", "options": {"timeout": 120000}},
             "type": "n8n-nodes-base.httpRequest", "typeVersion": 4.2, "position": pos, "id": nid(), "name": name,
