@@ -284,3 +284,11 @@ JSON payload.
 ## 2026-09-30 - Found while rebuilding Lead Intake in Power Automate
 
 **`.trim()` on a field the submission left out errors the node.** Rivertown's NormalizeLead uses `$json.body.first_name.trim()`. If a submission omits first_name entirely (not blank, absent), the value is undefined and `.trim()` throws. Guard it: `{{ ($json.body.first_name ?? '').trim() }}`. The Power Automate rebuild uses `trim(coalesce(triggerBody()?['first_name'], ''))` for the same reason. Not yet fixed in v2.7 (CURRENT_STATE.md, open items).
+
+## Added 2026-11-25 (paperwork intake build)
+
+- The Data Table "If Row Exists / If Row Does Not Exist" gate passes the item on but DROPS its binary file. A later Extract From File then fails with "expects ... a binary file 'data', but none was found". Fix: a Code block after the gate that re-attaches `$('Prepare file').first().binary`.
+- Pasting or importing a workflow gives the Form Trigger a NEW webhook ID, so the test form address changes every time. Read the address from the form block before testing.
+- An imported workflow cannot carry links to Data Tables made after it was written: the table block keeps only a label, shows a red triangle, and its Column list shows only id/createdAt/updatedAt. Put the real table IDs in the JSON (from the table page address) or re-pick the table.
+- Data Table Import CSV fills the table name from the file name. Name CSVs exactly as the table should be named.
+- The test form only listens while the editor tab that started the run stays open. Open the form in a second tab.
