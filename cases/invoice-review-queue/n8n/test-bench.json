@@ -1,0 +1,577 @@
+{
+  "name": "Kettle Creek - Test bench",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "name": "Start test run",
+      "id": "222f05ed-3cb2-455b-99d5-165d04701dba",
+      "position": [
+        0,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "deleteRows",
+        "dataTableId": {
+          "__rl": true,
+          "value": "ny5ujCJJdSmwAdwA",
+          "mode": "list",
+          "cachedResultName": "kc file log",
+          "cachedResultUrl": "/projects/tROV5LmWfFMPE6X7/datatables/ny5ujCJJdSmwAdwA"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "condition": "gt",
+              "keyValue": 0
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "name": "Clear file log",
+      "alwaysOutputData": true,
+      "executeOnce": true,
+      "id": "dd204c81-c2d5-483e-9852-71cad8298ea8",
+      "position": [
+        220,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "deleteRows",
+        "dataTableId": {
+          "__rl": true,
+          "value": "LGROOTb7yGYTUoBT",
+          "mode": "list",
+          "cachedResultName": "kc documents",
+          "cachedResultUrl": "/projects/tROV5LmWfFMPE6X7/datatables/LGROOTb7yGYTUoBT"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "condition": "gt",
+              "keyValue": 0
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "name": "Clear documents",
+      "alwaysOutputData": true,
+      "executeOnce": true,
+      "id": "f24fb325-bc8c-4679-8576-b61f9d6f8274",
+      "position": [
+        440,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "deleteRows",
+        "dataTableId": {
+          "__rl": true,
+          "value": "B0QDQ41AmznxgLW6",
+          "mode": "list",
+          "cachedResultName": "kc line items",
+          "cachedResultUrl": "/projects/tROV5LmWfFMPE6X7/datatables/B0QDQ41AmznxgLW6"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "id",
+              "condition": "gt",
+              "keyValue": 0
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "name": "Clear line items",
+      "alwaysOutputData": true,
+      "executeOnce": true,
+      "id": "5a3c9b6b-db5c-43d3-9179-1feb189dd0e3",
+      "position": [
+        660,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// The 50 frozen test files, in the answer key's run order.\nreturn [{\"case_id\": \"I01\", \"file\": \"i01-prairie-pipe-PP-7710.pdf\"}, {\"case_id\": \"I02\", \"file\": \"i02-prairie-pipe-PP-7724.pdf\"}, {\"case_id\": \"I03\", \"file\": \"i03-northstar-hvac-NH-2045.pdf\"}, {\"case_id\": \"I04\", \"file\": \"i04-northstar-hvac-NH-2051.pdf\"}, {\"case_id\": \"I05\", \"file\": \"i05-hilltop-heater-HW-3301.pdf\"}, {\"case_id\": \"I06\", \"file\": \"i06-hilltop-heater-HW-3308.pdf\"}, {\"case_id\": \"I07\", \"file\": \"i07-prairie-pipe-PP-7759-two-pages.pdf\"}, {\"case_id\": \"I08\", \"file\": \"i08-prairie-pipe-PP-7724-resent.pdf\"}, {\"case_id\": \"I09\", \"file\": \"i09-prairie-pipe-2045.pdf\"}, {\"case_id\": \"I10\", \"file\": \"i10-northstar-hvac-NH-2051-REVISED.pdf\"}, {\"case_id\": \"I11\", \"file\": \"i11-northstar-hvac-NH-2060.pdf\"}, {\"case_id\": \"I12\", \"file\": \"i12-northstar-hvac-no-number.pdf\"}, {\"case_id\": \"I13\", \"file\": \"i13-summit-valve-SV-118.pdf\"}, {\"case_id\": \"I14\", \"file\": \"i14-hilltop-heater-HW-3315.pdf\"}, {\"case_id\": \"I15\", \"file\": \"i15-prairie-pipe-CM-0412.pdf\"}, {\"case_id\": \"I16\", \"file\": \"i16-prairie-pipe-statement-nov.pdf\"}, {\"case_id\": \"I17\", \"file\": \"i17-northstar-hvac-packing-slip.pdf\"}, {\"case_id\": \"I18\", \"file\": \"i18-hilltop-heater-two-invoices-one-file.pdf\"}, {\"case_id\": \"I19\", \"file\": \"i19-main-street-hardware-receipt-photo.jpg\"}, {\"case_id\": \"I20\", \"file\": \"i20-damaged-file.pdf\"}, {\"case_id\": \"I21\", \"file\": \"i21-northstar-newsletter.pdf\"}, {\"case_id\": \"I22\", \"file\": \"i22-northstar-hvac-NH-2068.pdf\"}, {\"case_id\": \"W01\", \"file\": \"w01-wo-5101.pdf\"}, {\"case_id\": \"W02\", \"file\": \"w02-wo-5102.pdf\"}, {\"case_id\": \"W03\", \"file\": \"w03-wo-5103.pdf\"}, {\"case_id\": \"W04\", \"file\": \"w04-wo-5104.pdf\"}, {\"case_id\": \"W05\", \"file\": \"w05-wo-5105.pdf\"}, {\"case_id\": \"W06\", \"file\": \"w06-wo-5106.pdf\"}, {\"case_id\": \"W07\", \"file\": \"w07-wo-5107.pdf\"}, {\"case_id\": \"W08\", \"file\": \"w08-wo-5108.pdf\"}, {\"case_id\": \"W09\", \"file\": \"w09-wo-5109.pdf\"}, {\"case_id\": \"W10\", \"file\": \"w10-wo-5110.pdf\"}, {\"case_id\": \"W11\", \"file\": \"w11-wo-no-ticket.pdf\"}, {\"case_id\": \"W12\", \"file\": \"w12-wo-5112.pdf\"}, {\"case_id\": \"W13\", \"file\": \"w13-wo-5102-sent-again.pdf\"}, {\"case_id\": \"W14\", \"file\": \"w14-wo-5103-updated.pdf\"}, {\"case_id\": \"W15\", \"file\": \"w15-wo-5115.pdf\"}, {\"case_id\": \"W16\", \"file\": \"w16-wo-5116.pdf\"}, {\"case_id\": \"W17\", \"file\": \"w17-wo-5117.pdf\"}, {\"case_id\": \"W18\", \"file\": \"w18-wo-blank.pdf\"}, {\"case_id\": \"W19\", \"file\": \"w19-wo-5119.pdf\"}, {\"case_id\": \"W20\", \"file\": \"w20-wo-5120-front.pdf\"}, {\"case_id\": \"W21\", \"file\": \"w21-wo-back-page.pdf\"}, {\"case_id\": \"H01\", \"file\": \"h01-wo-5201-scan.pdf\"}, {\"case_id\": \"H02\", \"file\": \"h02-wo-5201-rescan.pdf\"}, {\"case_id\": \"H03\", \"file\": \"h03-wo-5202-scan.pdf\"}, {\"case_id\": \"H04\", \"file\": \"h04-wo-5203-scan.pdf\"}, {\"case_id\": \"H05\", \"file\": \"h05-wo-5205-scan.pdf\"}, {\"case_id\": \"H06\", \"file\": \"h06-wo-5205-phone.jpg\"}, {\"case_id\": \"H07\", \"file\": \"h07-two-forms-one-photo.jpg\"}].map((f) => ({ json: f }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "name": "Test files in run order",
+      "executeOnce": true,
+      "id": "a30b0444-581c-4739-9c33-65529fce267e",
+      "position": [
+        880,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "name": "One file at a time",
+      "id": "5e09668c-8d5b-4e4b-be66-b9e18987907c",
+      "position": [
+        1100,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "read",
+        "fileSelector": "=C:/Users/joshu/.n8n-files/kc-test/{{ $json.file }}",
+        "options": {
+          "dataPropertyName": "data"
+        }
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "name": "Read test file",
+      "id": "189251c2-d59e-4801-9d7d-c0f023455797",
+      "position": [
+        1320,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://localhost:5678/form/REPLACE-WITH-INTAKE-FORM-ID",
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "field-0",
+              "inputDataFieldName": "data"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 180000,
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "name": "Send to intake form",
+      "onError": "continueRegularOutput",
+      "id": "ea4ceef3-9638-4d4d-a847-780d5b68e920",
+      "position": [
+        1540,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 25,
+        "unit": "seconds"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "name": "Wait between files",
+      "webhookId": "141e5fb8-1205-4b57-b2a0-1ee43c62297f",
+      "id": "9bdfd344-b41c-4f5a-8755-198a684a1e3a",
+      "position": [
+        1760,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "ny5ujCJJdSmwAdwA",
+          "mode": "list",
+          "cachedResultName": "kc file log",
+          "cachedResultUrl": "/projects/tROV5LmWfFMPE6X7/datatables/ny5ujCJJdSmwAdwA"
+        },
+        "returnAll": true
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "name": "Export kc_file_log",
+      "alwaysOutputData": true,
+      "executeOnce": true,
+      "id": "0ffe5292-620a-4a06-864a-69855a498ac1",
+      "position": [
+        1320,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "csv",
+        "binaryPropertyName": "data",
+        "options": {
+          "fileName": "kc_file_log.csv"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "name": "kc_file_log to CSV",
+      "id": "52ec9373-c9ad-40d1-b3e4-8cceb8236f24",
+      "position": [
+        1540,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "C:/Users/joshu/.n8n-files/kc-test/results/kc_file_log.csv",
+        "dataPropertyName": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "name": "Save kc_file_log",
+      "executeOnce": true,
+      "id": "99a286af-c2a0-4d83-a5c1-3e86d95d33c5",
+      "position": [
+        1760,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "LGROOTb7yGYTUoBT",
+          "mode": "list",
+          "cachedResultName": "kc documents",
+          "cachedResultUrl": "/projects/tROV5LmWfFMPE6X7/datatables/LGROOTb7yGYTUoBT"
+        },
+        "returnAll": true
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "name": "Export kc_documents",
+      "alwaysOutputData": true,
+      "executeOnce": true,
+      "id": "41cdaf4c-3e61-4157-af19-992c85e3d4ee",
+      "position": [
+        1980,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "csv",
+        "binaryPropertyName": "data",
+        "options": {
+          "fileName": "kc_documents.csv"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "name": "kc_documents to CSV",
+      "id": "79250b75-87d4-4458-9574-0a94c4b865b4",
+      "position": [
+        2200,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "C:/Users/joshu/.n8n-files/kc-test/results/kc_documents.csv",
+        "dataPropertyName": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "name": "Save kc_documents",
+      "executeOnce": true,
+      "id": "521a34ac-852c-46bc-b350-e506467f3d30",
+      "position": [
+        2420,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "B0QDQ41AmznxgLW6",
+          "mode": "list",
+          "cachedResultName": "kc line items",
+          "cachedResultUrl": "/projects/tROV5LmWfFMPE6X7/datatables/B0QDQ41AmznxgLW6"
+        },
+        "returnAll": true
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "name": "Export kc_line_items",
+      "alwaysOutputData": true,
+      "executeOnce": true,
+      "id": "4a7d1549-2b2b-4857-b9e8-2b3748401ad7",
+      "position": [
+        2640,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "csv",
+        "binaryPropertyName": "data",
+        "options": {
+          "fileName": "kc_line_items.csv"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "name": "kc_line_items to CSV",
+      "id": "ae19a781-6674-4d5d-b6fb-866172cbaab1",
+      "position": [
+        2860,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "C:/Users/joshu/.n8n-files/kc-test/results/kc_line_items.csv",
+        "dataPropertyName": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "name": "Save kc_line_items",
+      "executeOnce": true,
+      "id": "d2e9e2f0-34f2-4d4f-98f5-6f9edd45a226",
+      "position": [
+        3080,
+        120
+      ]
+    }
+  ],
+  "connections": {
+    "Start test run": {
+      "main": [
+        [
+          {
+            "node": "Clear file log",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Clear file log": {
+      "main": [
+        [
+          {
+            "node": "Clear documents",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Clear documents": {
+      "main": [
+        [
+          {
+            "node": "Clear line items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Clear line items": {
+      "main": [
+        [
+          {
+            "node": "Test files in run order",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Test files in run order": {
+      "main": [
+        [
+          {
+            "node": "One file at a time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "One file at a time": {
+      "main": [
+        [
+          {
+            "node": "Export kc_file_log",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Read test file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read test file": {
+      "main": [
+        [
+          {
+            "node": "Send to intake form",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send to intake form": {
+      "main": [
+        [
+          {
+            "node": "Wait between files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait between files": {
+      "main": [
+        [
+          {
+            "node": "One file at a time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Export kc_file_log": {
+      "main": [
+        [
+          {
+            "node": "kc_file_log to CSV",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "kc_file_log to CSV": {
+      "main": [
+        [
+          {
+            "node": "Save kc_file_log",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save kc_file_log": {
+      "main": [
+        [
+          {
+            "node": "Export kc_documents",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Export kc_documents": {
+      "main": [
+        [
+          {
+            "node": "kc_documents to CSV",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "kc_documents to CSV": {
+      "main": [
+        [
+          {
+            "node": "Save kc_documents",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save kc_documents": {
+      "main": [
+        [
+          {
+            "node": "Export kc_line_items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Export kc_line_items": {
+      "main": [
+        [
+          {
+            "node": "kc_line_items to CSV",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "kc_line_items to CSV": {
+      "main": [
+        [
+          {
+            "node": "Save kc_line_items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {}
+}

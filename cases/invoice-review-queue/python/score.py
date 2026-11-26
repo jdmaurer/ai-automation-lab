@@ -4,8 +4,10 @@ Reads what n8n wrote (kc file log, kc documents, kc line items) through the n8n 
 compares each test file with the answer key, and prints PASS / FAIL / NOT RUN per case,
 then totals by slice (invoice vs work order, generated vs handwritten).
 
-Run:  python score.py
-Needs: N8N_API_KEY environment variable (n8n Settings > n8n API > Create an API key).
+Run:  python score.py                      (reads the tables through the n8n API)
+      python score.py --from-dir RESULTS    (reads kc_file_log.csv, kc_documents.csv, kc_line_items.csv
+                                             saved by the test bench workflow)
+Needs: N8N_API_KEY environment variable for the API mode (n8n Settings > n8n API > Create an API key).
 Scores the FIRST log row per file name, so start an evidence run from empty tables.
 """
 
@@ -73,14 +75,25 @@ def compare_document(want, doc, want_lines, got_lines):
     return diffs
 
 
+def read_csv_rows(path):
+    with open(path, newline="", encoding="utf-8-sig") as f:
+        rows = list(csv.DictReader(f))
+    return sorted(rows, key=lambda r: int(float(r.get("id") or 0)))
+
+
 def main():
-    key = os.environ.get("N8N_API_KEY")
-    if not key:
-        sys.exit("No N8N_API_KEY found. Set it in Windows, then open a new Terminal.")
-    try:
-        log, docs, lines = (fetch_rows(TABLES[t], key) for t in ("log", "docs", "lines"))
-    except requests.exceptions.RequestException as e:
-        sys.exit(f"Could not read the n8n tables: {e}")
+    if "--from-dir" in sys.argv:
+        d = sys.argv[sys.argv.index("--from-dir") + 1]
+        log, docs, lines = (read_csv_rows(os.path.join(d, f"{n}.csv"))
+                            for n in ("kc_file_log", "kc_documents", "kc_line_items"))
+    else:
+        key = os.environ.get("N8N_API_KEY")
+        if not key:
+            sys.exit("No N8N_API_KEY found. Set it in Windows, then open a new Terminal.")
+        try:
+            log, docs, lines = (fetch_rows(TABLES[t], key) for t in ("log", "docs", "lines"))
+        except requests.exceptions.RequestException as e:
+            sys.exit(f"Could not read the n8n tables: {e}")
 
     first_log = {}
     for row in log:

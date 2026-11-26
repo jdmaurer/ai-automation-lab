@@ -292,3 +292,5 @@ JSON payload.
 - An imported workflow cannot carry links to Data Tables made after it was written: the table block keeps only a label, shows a red triangle, and its Column list shows only id/createdAt/updatedAt. Put the real table IDs in the JSON (from the table page address) or re-pick the table.
 - Data Table Import CSV fills the table name from the file name. Name CSVs exactly as the table should be named.
 - The test form only listens while the editor tab that started the run stays open. Open the form in a second tab.
+- Files copied to the laptop through Claude's device bridge came out with the two phone JPGs re-encoded (each about 6 KB bigger, new fingerprint). PDFs arrived byte-identical. For files whose fingerprint matters, send them as base64 text and decode on the laptop, then compare SHA-256.
+- n8n 2.0 only lets Read/Write Files from Disk use `~/.n8n-files` (C:\Users\joshu\.n8n-files) unless N8N_RESTRICT_FILE_ACCESS_TO says otherwise. The Week 9 test files live in `.n8n-files\kc-test`.
