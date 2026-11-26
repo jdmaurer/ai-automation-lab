@@ -29,3 +29,21 @@ Agreed split: n8n for the workflow a client would keep; Python only where it's g
 Independent: catching the invoice mistake in my own memory; spotting that skills were being replaced, not added; asking whether Python was being forced.
 
 With help: rereading the four research runs; comparing the plan to the calendar's Week 9 line by line.
+
+## Wednesday 11.25.26, evening, to Thursday 11.26.26, 1 am — First build night (DRAFT, written by Claude for Josh to edit)
+
+The test set got rebuilt around a made-up heating and plumbing company, Kettle Creek: supplier parts invoices plus technician work orders, 50 cases. The workflow (v0.1) went into my n8n with the AI reading step left as a stand-in, so the rules could be tested first.
+
+The night started badly. Claude went back to click-by-click instructions after we'd agreed it drafts the workflow and I check it, then had me fight file pickers and table imports for an hour. What fixed it: I signed Claude into the browser panel and it did the n8n setup and test runs itself. It found a real bug on the first run: the Data Table check drops the attached file, so a "Restore file" block puts it back.
+
+Then I predicted where four files would land before each run: the same file sent twice, a damaged PDF, 14 hours on one visit, and a revised invoice. All four were right.
+
+Python, under the low-code layer: one direct call to Groq, then eight failure tests (no key, wrong key, rate limit, service down, garbled answer, wrong shape, timeout, real call), 8 of 8 safe. Every run leaves a trace line with a tracking ID and a time, and one command summarizes them. A scorer reads my n8n tables through the API and compares them to the answer key, sliced by invoices, work orders and handwritten. The 100% it showed tonight only proves the rules: the reading was pinned answer-key values, not AI.
+
+Reading step decision: Groq for text PDFs and photos; Gemini 3.5 Flash-Lite for phone-scan PDFs, because Groq's vision reads images, not PDFs. Checked first: free tier allows 500 a day, and free-tier data may be used by Google, so synthetic data only.
+
+Handwritten files: four sheets, seven files. Writing "|" between columns made "2 washers" look like 21, which became a test of its own. The originals stay private because the signatures look like mine; public display copies have the signatures blacked out. A logic check before the freeze found that revision and resend pairs fail twice if the first copy fails, so the scorer now reports those as blocked. Frozen as week9-testset-v1.
+
+Independent: catching that the n8n work had slipped back to click-by-click; pushing Claude to drive n8n itself instead of sending me on errands; four correct predictions; spotting that "|" reads as a 1; asking whether my handwriting should be public, then pointing out it's exactly what a client wants to see; asking for a logic test before freezing; arguing that sealed results work as well as predicting before the run.
+
+With help: the workflow JSON and its debugging; the Python scripts; the Groq, n8n and Gemini key setup; checking Gemini's limits and data terms.
