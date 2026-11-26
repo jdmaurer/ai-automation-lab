@@ -54,7 +54,7 @@ KEY_DOCS, KEY_LINES = [], []
 DOC_COLS = ["case_id", "file", "run_order", "source", "document_type", "sender", "doc_number",
             "doc_date", "job_number", "customer", "technician", "subtotal", "tax", "total",
             "signed", "flags", "expected_status", "expected_reason", "acceptable_alternate",
-            "what_it_tests"]
+            "depends_on", "what_it_tests"]
 LINE_COLS = ["case_id", "line_no", "item_type", "description", "qty", "unit_price", "amount",
              "technician", "hours"]
 
@@ -687,6 +687,10 @@ def main():
             expected_reason="Two forms in one photo (tickets 5202 and 5205): a person separates them",
             what_it_tests="Two sheets side by side in one plain phone photo")
 
+    # Second copies only work if the first copy landed in review: the scorer reports them as
+    # "blocked", not failed, when the first one didn't.
+    for row in KEY_DOCS:
+        row["depends_on"] = {"I10": "I04", "W14": "W03", "H02": "H01", "H06": "H05"}.get(row["case_id"], "")
     with open(os.path.join(HERE, "answer-key-documents.csv"), "w", newline="", encoding="utf-8") as f:
         wr = csv.DictWriter(f, DOC_COLS); wr.writeheader(); wr.writerows(KEY_DOCS)
     with open(os.path.join(HERE, "answer-key-line-items.csv"), "w", newline="", encoding="utf-8") as f:

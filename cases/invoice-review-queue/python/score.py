@@ -93,13 +93,19 @@ def main():
     for l in read_key("answer-key-line-items.csv"):
         key_lines[l["case_id"]].append(l)
 
-    tally = defaultdict(Counter)        # slice -> PASS/FAIL/NOT RUN counts
-    for want in read_key("answer-key-documents.csv"):
+    tally = defaultdict(Counter)        # slice -> PASS/FAIL/BLOCKED/NOT RUN counts
+    key_docs = read_key("answer-key-documents.csv")
+    file_of = {k["case_id"]: k["file"] for k in key_docs}
+    for want in key_docs:
         case, row = want["case_id"], first_log.get(want["file"])
         slices = ["all", "work orders" if case[0] in "WH" else "invoices",
                   "handwritten" if case[0] == "H" else "generated"]
+        first = want.get("depends_on")
+        first_row = first_log.get(file_of.get(first)) if first else None
         if row is None:
             result, detail = "NOT RUN", ""
+        elif first and (first_row is None or first_row.get("status") not in ("review", "revision")):
+            result, detail = "BLOCKED", f"needs {first} in review first; {first} was {first_row.get('status') if first_row else 'not run'}"
         else:
             got, expected = row.get("status"), want["expected_status"]
             alt = want["acceptable_alternate"].split(":")[0].strip()
@@ -114,14 +120,14 @@ def main():
         for s in slices:
             tally[s][result] += 1
         if result != "NOT RUN":
-            print(f"{result:4}  {case:4} {want['file']:44} {detail}")
+            print(f"{result:7}  {case:4} {want['file']:44} {detail}")
 
     print()
     for s in ("all", "invoices", "work orders", "generated", "handwritten"):
         c = tally[s]
         ran = c["PASS"] + c["FAIL"]
         pct = f"{100 * c['PASS'] / ran:.0f}%" if ran else "-"
-        print(f"{s:12} pass {c['PASS']:2} / ran {ran:2}  ({pct})   not run {c['NOT RUN']}")
+        print(f"{s:12} pass {c['PASS']:2} / ran {ran:2}  ({pct})   blocked {c['BLOCKED']}   not run {c['NOT RUN']}")
 
 
 if __name__ == "__main__":

@@ -28,3 +28,4 @@ Status: draft, written 2026-11-25. The reading step is a STAND-IN with no AI unt
 
 - The real reading step: a text model for PDFs with text, a vision model for photos. Groq's vision model reads images only, up to 3 per request, so phone-scan PDFs need converting to images first. That's an open design choice.
 - Excel output (two sheets), the failure alert, and the Python test bench that runs all 50 files.
+- Before the first AI run (from the Nov 26 logic check): the prompt must ask for exact formats (dates YYYY-MM-DD, flags from a fixed list: no_charge, warranty, callback, bill_landlord, paid_cash); Check fields must clean dates, flag words and sender names before matching; the test bench must wait between files so rate limits don't create false exceptions, and report 429s separately.
