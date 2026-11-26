@@ -3,7 +3,7 @@
 //   node cases/invoice-review-queue/n8n/check-rules-offline.js
 const fs = require('fs'), path = require('path');
 process.chdir(path.join(__dirname, '..'));
-const wf = JSON.parse(fs.readFileSync('n8n/paperwork-intake-v0.1.json', 'utf8'));
+const wf = JSON.parse(fs.readFileSync(process.argv[2] || 'n8n/paperwork-intake-v0.2.json', 'utf8'));
 const code = Object.fromEntries(wf.nodes.filter(n => n.type.endsWith('.code')).map(n => [n.name, n.parameters.jsCode]));
 const csv = (p) => { const [h, ...rows] = fs.readFileSync(p,'utf8').replace(/\r/g,'').trim().split('\n'); 
   const parse = (l) => { const out=[]; let cur='', q=false; for (const ch of l) { if (ch=='"') q=!q; else if (ch==',' && !q) {out.push(cur);cur='';} else cur+=ch; } out.push(cur); return out; };
@@ -19,7 +19,7 @@ for (const k of key) {
   else {
     const pin = JSON.parse(fs.readFileSync(`n8n/pins/${k.case_id}.json`))[0];
     const fp = {correlation_id:'x', received_at:'x', file_name:k.file, file_hash:h, mime_type:'', file_size:''};
-    const $ = (n) => n==='Fingerprint file' ? {item:{json:fp}} : {first:()=>({json:checked})};
+    const $ = (n) => n==='Fingerprint file' ? {item:{json:fp}, first:()=>({json:fp})} : {first:()=>({json:checked})};
     let checked = new Function('$json','$', code['Check fields'])(pin, $).json;
     if (!checked.passed) result = checked;
     else {

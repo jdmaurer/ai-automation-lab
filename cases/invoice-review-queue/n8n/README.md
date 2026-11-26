@@ -1,4 +1,4 @@
-# Paperwork intake workflow, v0.1 (AI off)
+# Paperwork intake workflow (v0.1 AI off; v0.2 real reading)
 
 Status: draft, written 2026-11-25. The reading step is a STAND-IN with no AI until the test set is frozen. Everything else runs.
 
@@ -29,3 +29,12 @@ Status: draft, written 2026-11-25. The reading step is a STAND-IN with no AI unt
 - The real reading step: a text model for PDFs with text, a vision model for photos. Groq's vision model reads images only, up to 3 per request, so phone-scan PDFs need converting to images first. That's an open design choice.
 - Excel output (two sheets), the failure alert, and the Python test bench that runs all 50 files.
 - Before the first AI run (from the Nov 26 logic check): the prompt must ask for exact formats (dates YYYY-MM-DD, flags from a fixed list: no_charge, warranty, callback, bill_landlord, paid_cash); Check fields must clean dates, flag words and sender names before matching; the test bench must wait between files so rate limits don't create false exceptions, and report 429s separately.
+
+## v0.2 (2026-11-26): the real reading step
+
+`paperwork-intake-v0.2.json`, built by `build_wf_v02.py`. Replaces the stand-in with three readers:
+- PDFs with text: words pulled out by Extract From File, read by Groq `openai/gpt-oss-120b` (reasoning effort low).
+- Photos (JPG/PNG): Groq vision `qwen/qwen3.8-27b`.
+- Phone-scan PDFs (no text inside): Gemini `gemini-3.5-flash-lite`, which reads PDFs directly.
+
+Models are set in one place (the Prepare file block). Every reader retries 3 times, then sends the file to exceptions with "AI reading failed". Parse reading turns any answer into the same fields. Check fields now cleans formats first (dates to YYYY-MM-DD, flag words to the fixed list, sender names matched to the approved list ignoring case and "&"/"and"). The duplicate fingerprint now uses the facts (type, sender, number, date, total, flags, line amounts), not the wording. The form answers only when the workflow finishes, so the test bench sends files strictly one at a time.
