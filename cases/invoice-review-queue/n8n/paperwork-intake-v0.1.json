@@ -24,7 +24,7 @@
         0,
         300
       ],
-      "id": "7f5946b7-4cb0-47a9-8860-2b64b0c7755c",
+      "id": "05971950-73ff-48e9-8aec-7dd0bfb31245",
       "name": "Paperwork drop form",
       "webhookId": "kettle-creek-paperwork-drop"
     },
@@ -38,7 +38,7 @@
         220,
         300
       ],
-      "id": "1b74592c-6e40-42ac-b5bd-0e2112163235",
+      "id": "e2c67d9e-0491-4ed0-b50b-303fb419a85c",
       "name": "Prepare file"
     },
     {
@@ -56,7 +56,7 @@
         440,
         300
       ],
-      "id": "f6f73603-702a-4154-bf54-cd9e8e98bad7",
+      "id": "51a88cb6-0f4a-4f5d-8f13-df4a1898e959",
       "name": "Fingerprint file"
     },
     {
@@ -64,9 +64,10 @@
         "operation": "rowExists",
         "dataTableId": {
           "__rl": true,
-          "value": "",
+          "value": "ny5ujCJJdSmwAdwA",
           "mode": "list",
-          "cachedResultName": "kc_file_log"
+          "cachedResultName": "kc file log",
+          "cachedResultUrl": "/projects/tROV5LmWfFMPE6X7/datatables/ny5ujCJJdSmwAdwA"
         },
         "matchType": "allConditions",
         "filters": {
@@ -84,7 +85,7 @@
         660,
         120
       ],
-      "id": "61bfb258-f545-4fb8-bb05-3280234cdc66",
+      "id": "0b0a67ee-816b-45d5-a942-c99195cc684f",
       "name": "Same file seen before"
     },
     {
@@ -92,9 +93,10 @@
         "operation": "rowNotExists",
         "dataTableId": {
           "__rl": true,
-          "value": "",
+          "value": "ny5ujCJJdSmwAdwA",
           "mode": "list",
-          "cachedResultName": "kc_file_log"
+          "cachedResultName": "kc file log",
+          "cachedResultUrl": "/projects/tROV5LmWfFMPE6X7/datatables/ny5ujCJJdSmwAdwA"
         },
         "matchType": "allConditions",
         "filters": {
@@ -112,7 +114,7 @@
         660,
         420
       ],
-      "id": "723395d4-0628-441a-8387-5a23f39e99f4",
+      "id": "6d5ce677-c27d-4ff3-b3e8-0ac0404c1d68",
       "name": "New file"
     },
     {
@@ -120,67 +122,67 @@
         "assignments": {
           "assignments": [
             {
-              "id": "d89e080d-177d-4230-a5fc-4c3b0ebb2e8d",
+              "id": "51f31097-fc40-4259-9b1e-79e96ade2642",
               "name": "correlation_id",
               "value": "={{ $('Fingerprint file').item.json.correlation_id }}",
               "type": "string"
             },
             {
-              "id": "ca3ebb7e-6896-45b1-ae4e-da0ac9165fc7",
+              "id": "a529809c-9e82-40b0-a3cc-6bef13d43e82",
               "name": "received_at",
               "value": "={{ $('Fingerprint file').item.json.received_at }}",
               "type": "string"
             },
             {
-              "id": "bb6b7a27-b132-4df6-b335-302b81c420d1",
+              "id": "01d36612-3952-49ba-b222-6a81b3d5972c",
               "name": "file_name",
               "value": "={{ $('Fingerprint file').item.json.file_name }}",
               "type": "string"
             },
             {
-              "id": "165f3584-6d88-4e0b-92c1-49d5f599deb7",
+              "id": "3e936123-3271-40ff-bd1c-c213449b6bea",
               "name": "file_hash",
               "value": "={{ $('Fingerprint file').item.json.file_hash }}",
               "type": "string"
             },
             {
-              "id": "ce2819b3-8366-4879-8159-38b59c57a581",
+              "id": "3e8509e0-f4e1-4510-877f-5216042168d3",
               "name": "mime_type",
               "value": "={{ $('Fingerprint file').item.json.mime_type }}",
               "type": "string"
             },
             {
-              "id": "0e1866cd-5066-47e0-87f0-bb3959404e3b",
+              "id": "63f3fca5-baee-4958-b6fe-51616b0fdf11",
               "name": "file_size",
               "value": "={{ $('Fingerprint file').item.json.file_size }}",
               "type": "string"
             },
             {
-              "id": "597d24f9-07be-4975-84ec-eeb501ac7eed",
+              "id": "12a41c94-bdbb-40f3-921d-6afd02fbea31",
               "name": "status",
               "value": "duplicate",
               "type": "string"
             },
             {
-              "id": "32d606b6-33fa-485e-afb1-cc0f658c5449",
+              "id": "59509f3b-1a8d-4e9d-ba05-f754f8088878",
               "name": "reason",
               "value": "Same file already received; logged, no new row",
               "type": "string"
             },
             {
-              "id": "a8b100a8-ba7a-43c1-89ad-9571a84089ec",
+              "id": "63247cd5-77e8-4692-9b4d-99f16b91ce29",
               "name": "document_type",
               "value": "",
               "type": "string"
             },
             {
-              "id": "0867a33f-934e-42a4-969e-e62431e9e029",
+              "id": "dff5d09f-7359-40f6-b3b9-2a78256fe2e6",
               "name": "sender",
               "value": "",
               "type": "string"
             },
             {
-              "id": "331fa4f9-ad94-4c4d-b94d-2e314f8ffa84",
+              "id": "3002b4ba-f5cd-4b3e-967e-96ea983bbf1a",
               "name": "doc_number",
               "value": "",
               "type": "string"
@@ -195,7 +197,7 @@
         880,
         120
       ],
-      "id": "b6f2c14d-6544-4691-9a40-cd84e73077fb",
+      "id": "d4c32db5-6d82-41d2-9a0b-d6ce4abed329",
       "name": "Mark: same file again"
     },
     {
@@ -212,7 +214,7 @@
                 },
                 "conditions": [
                   {
-                    "id": "cb1b9c5d-be6d-46f0-80ae-ee38c023f327",
+                    "id": "d1fb6abe-600e-46a0-b40d-0135cb22ad46",
                     "leftValue": "={{ $json.file_extension }}",
                     "rightValue": "pdf",
                     "operator": {
@@ -236,7 +238,7 @@
                 },
                 "conditions": [
                   {
-                    "id": "18bcff0d-d173-4bcf-87d9-6f11e71d0262",
+                    "id": "ef5b4bfd-acc4-492a-aad4-640fdc5f548b",
                     "leftValue": "={{ $json.file_extension }}",
                     "rightValue": "^(jpg|jpeg|png)$",
                     "operator": {
@@ -263,7 +265,7 @@
         880,
         420
       ],
-      "id": "47636dac-394d-4a75-9f4c-d5b2d33b7775",
+      "id": "7ef4f571-9c95-4bb0-919c-e384a0b0714e",
       "name": "Route by file type"
     },
     {
@@ -278,7 +280,7 @@
         1100,
         300
       ],
-      "id": "2a1b3aef-c283-4bd8-8f54-ec2a9b4f2ebd",
+      "id": "ca9f3dad-3046-4a9e-af35-5cdceab5bac1",
       "name": "Read PDF text",
       "onError": "continueErrorOutput"
     },
@@ -293,7 +295,7 @@
           },
           "conditions": [
             {
-              "id": "fbc82a62-fe65-4d24-a173-34f08de96fa3",
+              "id": "1633b55b-0d76-4890-bae1-ddde15edc4d8",
               "leftValue": "={{ ($json.text ?? '').trim().length }}",
               "rightValue": 30,
               "operator": {
@@ -312,7 +314,7 @@
         1320,
         240
       ],
-      "id": "43f8c7b3-a06f-40ca-a84b-de949fdde136",
+      "id": "dad4e7fc-0543-4df5-bd1a-c7d7f95e8556",
       "name": "PDF has text?"
     },
     {
@@ -320,67 +322,67 @@
         "assignments": {
           "assignments": [
             {
-              "id": "ac7e8ec3-83f6-4cf1-b23d-108c60d8568b",
+              "id": "3267714c-fd30-4388-a7a4-bd6d71250377",
               "name": "correlation_id",
               "value": "={{ $('Fingerprint file').item.json.correlation_id }}",
               "type": "string"
             },
             {
-              "id": "8a04bbc0-874f-4d23-b5d5-6ed5c6b4f10d",
+              "id": "e483165e-0659-44ff-acf1-70bfadc162a8",
               "name": "received_at",
               "value": "={{ $('Fingerprint file').item.json.received_at }}",
               "type": "string"
             },
             {
-              "id": "01b04fdd-808f-468c-a4c7-24c1af66d620",
+              "id": "badcdc4a-206b-4a78-8337-bb3b4e6c0c54",
               "name": "file_name",
               "value": "={{ $('Fingerprint file').item.json.file_name }}",
               "type": "string"
             },
             {
-              "id": "a949d620-caf3-44be-8f04-f0210cd08f99",
+              "id": "fb50218a-44a0-47ee-af51-3bc0f92e52c7",
               "name": "file_hash",
               "value": "={{ $('Fingerprint file').item.json.file_hash }}",
               "type": "string"
             },
             {
-              "id": "ed3ceec9-87bd-4915-8f84-15f3dd6e99f0",
+              "id": "d60a6b39-e55f-4f62-8881-648510140732",
               "name": "mime_type",
               "value": "={{ $('Fingerprint file').item.json.mime_type }}",
               "type": "string"
             },
             {
-              "id": "8c290594-3afd-4f8e-8df4-e42728fd9759",
+              "id": "f4507998-64ae-4f16-8332-465bb2408a4c",
               "name": "file_size",
               "value": "={{ $('Fingerprint file').item.json.file_size }}",
               "type": "string"
             },
             {
-              "id": "c6cbe039-e482-415e-b7b5-02ca900fc8d0",
+              "id": "3237279c-7d92-4104-93eb-56f0202c9519",
               "name": "status",
               "value": "exception",
               "type": "string"
             },
             {
-              "id": "847c4c86-c956-4b66-9d23-9f46ac32644d",
+              "id": "b33248f6-9930-4553-925f-67290b1037ab",
               "name": "reason",
               "value": "Scanned PDF with no text layer: scan reading not built yet (AI off until the test set is frozen)",
               "type": "string"
             },
             {
-              "id": "9610d0f2-47d9-494c-a497-595df6f831b8",
+              "id": "45d83926-c34a-4713-bd87-f40ae47216db",
               "name": "document_type",
               "value": "",
               "type": "string"
             },
             {
-              "id": "67c319d6-d420-4599-b3c2-e6c6ad8dee3b",
+              "id": "f91957b9-43fe-4cbc-b227-7e5dee3588d6",
               "name": "sender",
               "value": "",
               "type": "string"
             },
             {
-              "id": "1e249b74-66b4-4fd4-b16b-00d8643234a1",
+              "id": "7eb8c8e8-b336-4314-9f18-e6b960b8699c",
               "name": "doc_number",
               "value": "",
               "type": "string"
@@ -395,7 +397,7 @@
         1540,
         120
       ],
-      "id": "fd2a3809-827f-4d22-9a67-92f1b28e1a07",
+      "id": "489dc3a8-c510-4405-84c6-0d3601940e40",
       "name": "Mark: scanned PDF"
     },
     {
@@ -403,67 +405,67 @@
         "assignments": {
           "assignments": [
             {
-              "id": "793931ef-2b87-4d95-819b-49bd6d54ed98",
+              "id": "68be5c2b-7d59-41af-ba43-6074803a7de9",
               "name": "correlation_id",
               "value": "={{ $('Fingerprint file').item.json.correlation_id }}",
               "type": "string"
             },
             {
-              "id": "e6e4a041-ae53-42f9-a217-5d46fd135225",
+              "id": "dc7fb015-8553-411f-9169-e2bb1a0d1fa2",
               "name": "received_at",
               "value": "={{ $('Fingerprint file').item.json.received_at }}",
               "type": "string"
             },
             {
-              "id": "6a466327-b817-4699-b6ba-6be2c760f032",
+              "id": "6909139e-7f04-478b-a96b-24eda93811c9",
               "name": "file_name",
               "value": "={{ $('Fingerprint file').item.json.file_name }}",
               "type": "string"
             },
             {
-              "id": "295acdf4-4653-4541-9102-c0f2cb601a7f",
+              "id": "5b4ef9d2-260a-4161-bf80-f914fcf78536",
               "name": "file_hash",
               "value": "={{ $('Fingerprint file').item.json.file_hash }}",
               "type": "string"
             },
             {
-              "id": "bbcc19b3-ba7e-4b7d-9af6-631c998cf2e5",
+              "id": "41858e05-23e5-47d9-8566-7e4bcb754491",
               "name": "mime_type",
               "value": "={{ $('Fingerprint file').item.json.mime_type }}",
               "type": "string"
             },
             {
-              "id": "b43ac488-a5c9-4fba-a6ce-17c6e0c475b0",
+              "id": "faf852c3-0f46-4078-9fc3-acc3855531e3",
               "name": "file_size",
               "value": "={{ $('Fingerprint file').item.json.file_size }}",
               "type": "string"
             },
             {
-              "id": "66bf39c5-3a81-4b24-aa00-40065e595e70",
+              "id": "785d1eb6-3234-41c0-9d1f-150c86bc4f7b",
               "name": "status",
               "value": "exception",
               "type": "string"
             },
             {
-              "id": "84bffaa8-ab7e-4524-814a-cac327db915f",
+              "id": "ff59e5a5-7fbd-48ce-b046-219253c56227",
               "name": "reason",
               "value": "Unreadable file: it would not open",
               "type": "string"
             },
             {
-              "id": "8be90c03-82aa-4cc4-bf07-60b346afa69b",
+              "id": "cd0ddfcf-5bed-4022-bd91-81e02b36dcc8",
               "name": "document_type",
               "value": "",
               "type": "string"
             },
             {
-              "id": "1da3b416-ef04-47a2-bcfc-a332a3fab329",
+              "id": "127b6fd3-788d-44f4-ae82-89c52f7165cf",
               "name": "sender",
               "value": "",
               "type": "string"
             },
             {
-              "id": "336affde-1318-44c6-bc93-42f420ac0f37",
+              "id": "b47fce2b-87de-49b9-bc0b-944704dc03ab",
               "name": "doc_number",
               "value": "",
               "type": "string"
@@ -478,7 +480,7 @@
         1320,
         480
       ],
-      "id": "a751af92-e6ca-4488-a534-d6f713c0bcb5",
+      "id": "8d59fdb9-bbc0-4895-99ce-603e34497bac",
       "name": "Mark: file won't open"
     },
     {
@@ -486,67 +488,67 @@
         "assignments": {
           "assignments": [
             {
-              "id": "f68da193-06bb-42ec-81a2-b0bd963e6099",
+              "id": "fc9b082c-0b94-4c08-9189-ec59789d2197",
               "name": "correlation_id",
               "value": "={{ $('Fingerprint file').item.json.correlation_id }}",
               "type": "string"
             },
             {
-              "id": "5eb73d6e-32c0-4143-a9d3-f24a90f4b9cc",
+              "id": "f48a7f81-33ae-46cc-a251-4d7edfe5f69b",
               "name": "received_at",
               "value": "={{ $('Fingerprint file').item.json.received_at }}",
               "type": "string"
             },
             {
-              "id": "661f9ff5-7893-426b-9c27-ed25569da5ff",
+              "id": "6de06d9e-2f68-4d2b-afe7-2cd410914b03",
               "name": "file_name",
               "value": "={{ $('Fingerprint file').item.json.file_name }}",
               "type": "string"
             },
             {
-              "id": "95d3d747-75ff-41b0-bbe5-4d936de43185",
+              "id": "c554b9da-c6ba-488a-a385-06a9a6fa2a4f",
               "name": "file_hash",
               "value": "={{ $('Fingerprint file').item.json.file_hash }}",
               "type": "string"
             },
             {
-              "id": "b983ab03-2bfe-44da-bfa5-c85bf70714bf",
+              "id": "44850eab-be53-4ae7-a436-d6f6a318aed9",
               "name": "mime_type",
               "value": "={{ $('Fingerprint file').item.json.mime_type }}",
               "type": "string"
             },
             {
-              "id": "2e8debe5-1051-42b1-96e6-7cc8986ab698",
+              "id": "5d8795a2-dfba-4f2a-aae0-ea36193609f5",
               "name": "file_size",
               "value": "={{ $('Fingerprint file').item.json.file_size }}",
               "type": "string"
             },
             {
-              "id": "77782db5-c745-42f3-9daf-ba4f34e61074",
+              "id": "b0a900f5-69a6-4b7d-b7fc-fabf48a8ba48",
               "name": "status",
               "value": "exception",
               "type": "string"
             },
             {
-              "id": "f5391bbb-4cfa-4e48-a353-51c218ac5784",
+              "id": "9eb9c665-3b65-499d-9e16-786a406014ca",
               "name": "reason",
               "value": "Unsupported file type: only PDF, JPG and PNG",
               "type": "string"
             },
             {
-              "id": "3c459314-4d59-4281-808f-791a3de4a314",
+              "id": "cdde69b2-32e5-4763-a9f6-aa01aeed76f1",
               "name": "document_type",
               "value": "",
               "type": "string"
             },
             {
-              "id": "09ca4ab4-9f99-4e4c-a6d1-b7ae0ba00e0f",
+              "id": "fcf849d3-bb53-4e77-9133-3b0a9c49f46c",
               "name": "sender",
               "value": "",
               "type": "string"
             },
             {
-              "id": "cb7e35ef-5704-4cb4-b3b4-ad0be3125cfb",
+              "id": "0145f6ff-3b4e-425e-8d1a-c152ad7b648e",
               "name": "doc_number",
               "value": "",
               "type": "string"
@@ -561,7 +563,7 @@
         1100,
         640
       ],
-      "id": "e184d3c2-1119-4ce2-ab12-c19deb208286",
+      "id": "e5cc0826-9dd6-4916-85e6-78c69b96fb1f",
       "name": "Mark: unsupported type"
     },
     {
@@ -569,85 +571,85 @@
         "assignments": {
           "assignments": [
             {
-              "id": "851e4aad-e2b0-4c00-b691-be53eb3ba329",
+              "id": "65de3bf9-b020-4547-8b52-27e1872ac799",
               "name": "document_type",
               "value": "",
               "type": "string"
             },
             {
-              "id": "13438c1b-9ce7-454a-88bd-8e87fdca91bc",
+              "id": "8b5bcfb9-4011-46da-a8da-9b12c7475c83",
               "name": "sender",
               "value": "",
               "type": "string"
             },
             {
-              "id": "452bb1b7-753e-48de-986e-ae92f73364e1",
+              "id": "18e1981f-5e68-4367-bf43-9f08e5e5f768",
               "name": "doc_number",
               "value": "",
               "type": "string"
             },
             {
-              "id": "9d94d278-4b0b-41aa-a2e2-2484dac33ce7",
+              "id": "67c637c7-974d-4b91-ba4e-366bf4762915",
               "name": "doc_date",
               "value": "",
               "type": "string"
             },
             {
-              "id": "ba273c0f-5d8a-4265-a2cd-f4367e08cf45",
+              "id": "5a548ec2-24bf-489e-90a9-1139f2a9dbcf",
               "name": "job_number",
               "value": "",
               "type": "string"
             },
             {
-              "id": "9225cfec-36fa-4924-be0a-c4f07e34743c",
+              "id": "918b9586-504c-44c2-b5d3-184359a4768a",
               "name": "customer",
               "value": "",
               "type": "string"
             },
             {
-              "id": "55fcd3db-8185-4403-84e7-f62e5507b66a",
+              "id": "2ab29654-1751-43ab-a9b3-0b5c138d1c5c",
               "name": "technician",
               "value": "",
               "type": "string"
             },
             {
-              "id": "bdd9206c-ac78-446b-b2d1-8273f0304b5e",
+              "id": "47ea8c9f-7fd3-4714-b93e-e92f12ad179b",
               "name": "subtotal",
               "value": "",
               "type": "string"
             },
             {
-              "id": "3a80a2fe-3d67-455f-b463-662a589b5b57",
+              "id": "881dbb63-2f62-4244-ad02-c9962bd303ff",
               "name": "tax",
               "value": "",
               "type": "string"
             },
             {
-              "id": "7b350424-3e67-4bd6-b965-fd7f0e28ea64",
+              "id": "115ce824-2421-4f42-badf-f0376a012ff1",
               "name": "total",
               "value": "",
               "type": "string"
             },
             {
-              "id": "09306f95-d028-4062-928e-2c4719021b8a",
+              "id": "7ac939c9-b949-4265-b161-802523d7fb6e",
               "name": "signed",
               "value": "",
               "type": "string"
             },
             {
-              "id": "d668ca47-a977-41c0-93a8-756816abdf59",
+              "id": "3a30bc97-ad2f-40b9-a58f-febfbe7eed91",
               "name": "flags",
               "value": "",
               "type": "string"
             },
             {
-              "id": "6a4965e3-a021-45a8-8c0d-2d578a4c562d",
+              "id": "951f7a14-1b79-4267-8359-14171b6128a2",
               "name": "problem",
               "value": "",
               "type": "string"
             },
             {
-              "id": "fc046342-5edc-4a07-8452-b952ce641d26",
+              "id": "e7d1d056-2841-41e1-bd19-374cf18bff60",
               "name": "lines",
               "value": "={{ [] }}",
               "type": "array"
@@ -664,7 +666,7 @@
         1540,
         360
       ],
-      "id": "c645dc38-6a04-46b8-9a5c-62e6e8794e28",
+      "id": "848adf46-745e-4974-9b8b-1494a90e7818",
       "name": "Read fields (STAND-IN, no AI)"
     },
     {
@@ -678,7 +680,7 @@
         1760,
         360
       ],
-      "id": "e480df96-839d-4028-a6ca-da96db4c36b6",
+      "id": "47ec9172-9062-419b-859a-e9157701d074",
       "name": "Check fields"
     },
     {
@@ -692,7 +694,7 @@
           },
           "conditions": [
             {
-              "id": "1ad61443-292a-4cb9-a4ed-ff0412d9a9a4",
+              "id": "dcaaab7d-db71-4e45-ae3f-3b2c5bcca942",
               "leftValue": "={{ $json.passed }}",
               "rightValue": "",
               "operator": {
@@ -712,7 +714,7 @@
         1980,
         360
       ],
-      "id": "ea19b239-c468-4576-8396-e377d5a1752f",
+      "id": "6d495479-1005-4713-8ca8-c33b4276bee9",
       "name": "Passed checks?"
     },
     {
@@ -720,9 +722,10 @@
         "operation": "get",
         "dataTableId": {
           "__rl": true,
-          "value": "",
+          "value": "LGROOTb7yGYTUoBT",
           "mode": "list",
-          "cachedResultName": "kc_documents"
+          "cachedResultName": "kc documents",
+          "cachedResultUrl": "/projects/tROV5LmWfFMPE6X7/datatables/LGROOTb7yGYTUoBT"
         },
         "matchType": "allConditions",
         "filters": {
@@ -741,7 +744,7 @@
         2200,
         280
       ],
-      "id": "5d82ca33-fe0f-4d8a-bd56-3785dbdf28c6",
+      "id": "04fe30a7-6370-4a10-80cd-db82009a9cbb",
       "name": "Find same sender and number",
       "alwaysOutputData": true
     },
@@ -755,7 +758,7 @@
         2420,
         280
       ],
-      "id": "2dd6fcfb-cfda-4411-abcb-1b6bf3ddd36a",
+      "id": "97c580ee-a763-4731-9efc-4ab4381d0edf",
       "name": "Decide new, resend or revision"
     },
     {
@@ -769,7 +772,7 @@
           },
           "conditions": [
             {
-              "id": "aff498ed-169d-4332-a4d2-a4e67316c8f0",
+              "id": "850f85a6-e38c-4011-9e93-33ee8e89005d",
               "leftValue": "={{ $json.status }}",
               "rightValue": "duplicate",
               "operator": {
@@ -788,16 +791,17 @@
         2640,
         280
       ],
-      "id": "6fbb89a6-eea7-4ff1-a048-ab922c82b07a",
+      "id": "eb4189b3-bd8d-4b7b-b42b-1f218282910b",
       "name": "Add to review sheet?"
     },
     {
       "parameters": {
         "dataTableId": {
           "__rl": true,
-          "value": "",
+          "value": "LGROOTb7yGYTUoBT",
           "mode": "list",
-          "cachedResultName": "kc_documents"
+          "cachedResultName": "kc documents",
+          "cachedResultUrl": "/projects/tROV5LmWfFMPE6X7/datatables/LGROOTb7yGYTUoBT"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -1046,7 +1050,7 @@
         2860,
         200
       ],
-      "id": "c793640b-3699-477b-be1a-b6848fce51c1",
+      "id": "7d0db1f5-1628-4fc6-9e9d-f113c93b7739",
       "name": "Write document"
     },
     {
@@ -1059,16 +1063,17 @@
         3080,
         120
       ],
-      "id": "32860e89-ed04-428e-9316-d58f816ee7bb",
+      "id": "b37cb2ae-3af3-405d-85d9-5d9cab1a4e59",
       "name": "Split line items"
     },
     {
       "parameters": {
         "dataTableId": {
           "__rl": true,
-          "value": "",
+          "value": "B0QDQ41AmznxgLW6",
           "mode": "list",
-          "cachedResultName": "kc_line_items"
+          "cachedResultName": "kc line items",
+          "cachedResultUrl": "/projects/tROV5LmWfFMPE6X7/datatables/B0QDQ41AmznxgLW6"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -1207,7 +1212,7 @@
         3300,
         120
       ],
-      "id": "56b3cb76-c81f-4f38-8f94-d07ffb6d2b01",
+      "id": "bf5226c6-b33a-4025-9f73-ebaa9c0af607",
       "name": "Write line items"
     },
     {
@@ -1215,67 +1220,67 @@
         "assignments": {
           "assignments": [
             {
-              "id": "b27a00a0-1db9-4b3c-a7b3-5a015ee0d8c6",
+              "id": "16877be1-9f6b-4a6a-ba91-474f2364a292",
               "name": "correlation_id",
               "value": "={{ $('Decide new, resend or revision').first().json.correlation_id }}",
               "type": "string"
             },
             {
-              "id": "64e3f3d7-4e58-4aa1-ab24-15508bfc375f",
+              "id": "c29dfe45-597f-498a-b384-81350e966bc3",
               "name": "received_at",
               "value": "={{ $('Decide new, resend or revision').first().json.received_at }}",
               "type": "string"
             },
             {
-              "id": "6c52ae16-ea3b-4d28-8871-f3b7bbf1cbce",
+              "id": "d912eadb-88f6-4522-b124-6b89bb173857",
               "name": "file_name",
               "value": "={{ $('Decide new, resend or revision').first().json.file_name }}",
               "type": "string"
             },
             {
-              "id": "4ac52087-2f38-48c0-a5e9-bf2041b00b25",
+              "id": "40674545-237b-4d2c-91f0-fc7937ad287b",
               "name": "file_hash",
               "value": "={{ $('Decide new, resend or revision').first().json.file_hash }}",
               "type": "string"
             },
             {
-              "id": "fb04fd1b-3863-4ab2-8ecd-591c01866b47",
+              "id": "29d38598-bad6-4c33-9d73-df6962c3c5b0",
               "name": "mime_type",
               "value": "={{ $('Decide new, resend or revision').first().json.mime_type }}",
               "type": "string"
             },
             {
-              "id": "3591dda4-b8ee-4747-a830-a332e15a37a4",
+              "id": "0ee68b84-e911-4eee-9646-ef9802c659c9",
               "name": "file_size",
               "value": "={{ $('Decide new, resend or revision').first().json.file_size }}",
               "type": "string"
             },
             {
-              "id": "6e6fa770-445e-415c-a553-e9c58394da3b",
+              "id": "90769df9-d3cb-4c84-955a-09f2b95acf37",
               "name": "status",
               "value": "={{ $('Decide new, resend or revision').first().json.status }}",
               "type": "string"
             },
             {
-              "id": "850a45f9-d8eb-4e9e-be6b-986bdc4ca363",
+              "id": "4ddf6256-047a-4b16-8904-a2ed2e722933",
               "name": "reason",
               "value": "={{ $('Decide new, resend or revision').first().json.reason }}",
               "type": "string"
             },
             {
-              "id": "cdfa34d4-7a40-494d-955c-bc6baa632d50",
+              "id": "a89b3fdd-6345-4b3f-a1da-605969dcfcb0",
               "name": "document_type",
               "value": "={{ $('Decide new, resend or revision').first().json.document_type }}",
               "type": "string"
             },
             {
-              "id": "f5e767c3-1f01-458f-aa4f-e7d2e0459444",
+              "id": "fceb2bcc-858e-4bcf-9409-c86134e71dea",
               "name": "sender",
               "value": "={{ $('Decide new, resend or revision').first().json.sender }}",
               "type": "string"
             },
             {
-              "id": "69976759-a32e-45d7-a86f-9d46530b8c51",
+              "id": "b187f2e6-454d-4b08-84d1-08c966459a4d",
               "name": "doc_number",
               "value": "={{ $('Decide new, resend or revision').first().json.doc_number }}",
               "type": "string"
@@ -1290,16 +1295,17 @@
         3080,
         300
       ],
-      "id": "db9d60d7-113b-4f00-b296-5abf6a01adc3",
+      "id": "5351bfc2-7585-4d30-9f7a-07f9b1fc0282",
       "name": "Mark: added"
     },
     {
       "parameters": {
         "dataTableId": {
           "__rl": true,
-          "value": "",
+          "value": "ny5ujCJJdSmwAdwA",
           "mode": "list",
-          "cachedResultName": "kc_file_log"
+          "cachedResultName": "kc file log",
+          "cachedResultUrl": "/projects/tROV5LmWfFMPE6X7/datatables/ny5ujCJJdSmwAdwA"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -1438,7 +1444,7 @@
         3520,
         420
       ],
-      "id": "f37f7358-dbf9-4ed4-901f-213c57c272dd",
+      "id": "fbdd305a-9a5e-449a-8f37-52a30c1c8689",
       "name": "Write file log"
     }
   ],
