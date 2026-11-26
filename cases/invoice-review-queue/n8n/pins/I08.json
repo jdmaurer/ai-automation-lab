@@ -1,0 +1,18 @@
+[
+ {
+  "document_type": "invoice",
+  "sender": "Prairie Pipe & Supply",
+  "doc_number": "PP-7724",
+  "doc_date": "2026-11-10",
+  "job_number": "",
+  "customer": "",
+  "technician": "",
+  "subtotal": "",
+  "tax": "",
+  "total": "",
+  "signed": "",
+  "flags": "",
+  "problem": "none",
+  "lines": []
+ }
+]

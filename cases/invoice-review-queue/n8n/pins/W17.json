@@ -1,0 +1,37 @@
+[
+ {
+  "document_type": "work_order",
+  "sender": "John",
+  "doc_number": "5117",
+  "doc_date": "2026-11-17",
+  "job_number": "J-2617",
+  "customer": "Riverton Public Library",
+  "technician": "John",
+  "subtotal": "320.50",
+  "tax": "0.00",
+  "total": "320.50",
+  "signed": "yes",
+  "flags": "",
+  "problem": "none",
+  "lines": [
+   {
+    "item_type": "part",
+    "description": "Programmable thermostat",
+    "qty": "2",
+    "unit_price": "89.00",
+    "amount": "178.00",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "labor",
+    "description": "Labor",
+    "qty": "1.5",
+    "unit_price": "95.00",
+    "amount": "142.50",
+    "technician": "John",
+    "hours": "1.5"
+   }
+  ]
+ }
+]

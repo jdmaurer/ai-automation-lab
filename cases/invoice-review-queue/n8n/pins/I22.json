@@ -1,0 +1,46 @@
+[
+ {
+  "document_type": "invoice",
+  "sender": "Northstar HVAC Parts",
+  "doc_number": "NH-2068",
+  "doc_date": "2026-11-21",
+  "job_number": "J-2643",
+  "customer": "",
+  "technician": "",
+  "subtotal": "194.04",
+  "tax": "0.00",
+  "total": "194.04",
+  "signed": "",
+  "flags": "",
+  "problem": "none",
+  "lines": [
+   {
+    "item_type": "part",
+    "description": "Boiler circulator pump",
+    "qty": "1",
+    "unit_price": "189.00",
+    "amount": "189.00",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "Pump flange gasket",
+    "qty": "2",
+    "unit_price": "4.50",
+    "amount": "9.00",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "Early-pay discount 2%",
+    "qty": "1",
+    "unit_price": "-3.96",
+    "amount": "-3.96",
+    "technician": "",
+    "hours": ""
+   }
+  ]
+ }
+]

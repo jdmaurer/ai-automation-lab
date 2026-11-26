@@ -1,0 +1,235 @@
+[
+ {
+  "document_type": "invoice",
+  "sender": "Prairie Pipe & Supply",
+  "doc_number": "PP-7759",
+  "doc_date": "2026-11-24",
+  "job_number": "STOCK",
+  "customer": "",
+  "technician": "",
+  "subtotal": "889.80",
+  "tax": "0.00",
+  "total": "889.80",
+  "signed": "",
+  "flags": "",
+  "problem": "none",
+  "lines": [
+   {
+    "item_type": "part",
+    "description": "1/2 in. copper coupling",
+    "qty": "25",
+    "unit_price": "0.95",
+    "amount": "23.75",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "3/4 in. copper coupling",
+    "qty": "20",
+    "unit_price": "1.60",
+    "amount": "32.00",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "1/2 in. copper tee",
+    "qty": "15",
+    "unit_price": "1.85",
+    "amount": "27.75",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "3/4 in. copper tee",
+    "qty": "10",
+    "unit_price": "3.10",
+    "amount": "31.00",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "1/2 in. sweat ball valve",
+    "qty": "6",
+    "unit_price": "14.20",
+    "amount": "85.20",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "Pipe hanger, 1/2 in.",
+    "qty": "40",
+    "unit_price": "0.70",
+    "amount": "28.00",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "Pipe hanger, 3/4 in.",
+    "qty": "30",
+    "unit_price": "0.85",
+    "amount": "25.50",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "Teflon tape, 1/2 in.",
+    "qty": "12",
+    "unit_price": "1.20",
+    "amount": "14.40",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "Pipe dope, 8 oz",
+    "qty": "4",
+    "unit_price": "7.95",
+    "amount": "31.80",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "Flux, 4 oz",
+    "qty": "4",
+    "unit_price": "6.40",
+    "amount": "25.60",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "Emery cloth roll",
+    "qty": "2",
+    "unit_price": "9.50",
+    "amount": "19.00",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "1-1/2 in. PVC P-trap",
+    "qty": "6",
+    "unit_price": "8.75",
+    "amount": "52.50",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "1-1/2 in. PVC coupling",
+    "qty": "12",
+    "unit_price": "1.10",
+    "amount": "13.20",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "PVC cement, 8 oz",
+    "qty": "3",
+    "unit_price": "8.20",
+    "amount": "24.60",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "PVC primer, 8 oz",
+    "qty": "3",
+    "unit_price": "7.60",
+    "amount": "22.80",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "Toilet wax ring",
+    "qty": "10",
+    "unit_price": "3.40",
+    "amount": "34.00",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "Toilet closet bolts",
+    "qty": "10",
+    "unit_price": "2.15",
+    "amount": "21.50",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "Supply line, 3/8 x 12 in.",
+    "qty": "12",
+    "unit_price": "5.25",
+    "amount": "63.00",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "Angle stop, 1/2 x 3/8",
+    "qty": "8",
+    "unit_price": "9.80",
+    "amount": "78.40",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "Dielectric union, 3/4 in.",
+    "qty": "4",
+    "unit_price": "12.90",
+    "amount": "51.60",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "Gas flex connector, 24 in.",
+    "qty": "3",
+    "unit_price": "18.60",
+    "amount": "55.80",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "Push-to-connect fitting 1/2 in.",
+    "qty": "6",
+    "unit_price": "8.40",
+    "amount": "50.40",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "Hose bibb, frost-free 10 in.",
+    "qty": "2",
+    "unit_price": "32.00",
+    "amount": "64.00",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "Shop rags, 50 pk",
+    "qty": "1",
+    "unit_price": "14.00",
+    "amount": "14.00",
+    "technician": "",
+    "hours": ""
+   }
+  ]
+ }
+]

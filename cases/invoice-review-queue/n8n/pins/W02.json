@@ -1,0 +1,37 @@
+[
+ {
+  "document_type": "work_order",
+  "sender": "Jane",
+  "doc_number": "5102",
+  "doc_date": "2026-11-04",
+  "job_number": "J-2605",
+  "customer": "Riverton Public Library",
+  "technician": "Jane",
+  "subtotal": "204.50",
+  "tax": "0.00",
+  "total": "204.50",
+  "signed": "yes",
+  "flags": "",
+  "problem": "none",
+  "lines": [
+   {
+    "item_type": "part",
+    "description": "Hot surface igniter",
+    "qty": "1",
+    "unit_price": "62.00",
+    "amount": "62.00",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "labor",
+    "description": "Labor",
+    "qty": "1.5",
+    "unit_price": "95.00",
+    "amount": "142.50",
+    "technician": "Jane",
+    "hours": "1.5"
+   }
+  ]
+ }
+]

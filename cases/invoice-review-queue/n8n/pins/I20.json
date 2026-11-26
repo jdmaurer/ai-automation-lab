@@ -1,0 +1,18 @@
+[
+ {
+  "document_type": "",
+  "sender": "",
+  "doc_number": "",
+  "doc_date": "",
+  "job_number": "",
+  "customer": "",
+  "technician": "",
+  "subtotal": "",
+  "tax": "",
+  "total": "",
+  "signed": "",
+  "flags": "",
+  "problem": "none",
+  "lines": []
+ }
+]

@@ -1,0 +1,37 @@
+[
+ {
+  "document_type": "invoice",
+  "sender": "Prairie Pipe & Supply",
+  "doc_number": "2045",
+  "doc_date": "2026-11-17",
+  "job_number": "J-2615",
+  "customer": "",
+  "technician": "",
+  "subtotal": "55.60",
+  "tax": "0.00",
+  "total": "55.60",
+  "signed": "",
+  "flags": "",
+  "problem": "none",
+  "lines": [
+   {
+    "item_type": "part",
+    "description": "Gas shutoff valve 1/2 in.",
+    "qty": "2",
+    "unit_price": "15.40",
+    "amount": "30.80",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "Gas flex connector, 36 in.",
+    "qty": "1",
+    "unit_price": "24.80",
+    "amount": "24.80",
+    "technician": "",
+    "hours": ""
+   }
+  ]
+ }
+]

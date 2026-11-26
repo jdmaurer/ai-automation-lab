@@ -160,7 +160,7 @@ def invoice(case_id, fname, sup, number, inv_date, due, job, lines, tests, *, ta
             total_override=None, notes=None, doc_type="invoice", title="INVOICE", status="review",
             reason="", alt="", sender_override=None, key_number=None):
     s = sender_override or SUPPLIERS[sup]
-    c = canvas.Canvas(os.path.join(OUT, fname), pagesize=letter)
+    c = canvas.Canvas(os.path.join(OUT, fname), pagesize=letter, invariant=1)
     invoice_page(c, s, number, inv_date, due, job, lines, title=title, tax=tax,
                  total_override=total_override, notes=notes,
                  totals_label="Credit total" if doc_type == "credit_memo" else "Total due")
@@ -172,7 +172,7 @@ def invoice(case_id, fname, sup, number, inv_date, due, job, lines, tests, *, ta
             doc_date=inv_date, job_number=job or "", subtotal=sub, tax=tax, total=total,
             expected_status=status, expected_reason=reason, acceptable_alternate=alt,
             what_it_tests=tests)
-    if status in ("review", "revision"):
+    if status != "duplicate":
         key_lines(case_id, lines, "credit" if doc_type == "credit_memo" else "part")
     return sub, tax, total
 
@@ -289,7 +289,7 @@ def work_order(case_id, fname, wo, tests, *, status="review", reason="", alt="",
                key_overrides=None):
     sub = lines_sum(wo.get("parts", [])) + sum((m(h) * RATE for _, h in wo.get("labor", [])), Decimal("0"))
     wo.setdefault("total_written", f"{sub:.2f}")
-    c = canvas.Canvas(os.path.join(OUT, fname), pagesize=letter)
+    c = canvas.Canvas(os.path.join(OUT, fname), pagesize=letter, invariant=1)
     draw_work_order(c, wo)
     c.save()
     techs = ", ".join(dict.fromkeys(t for t, _ in wo.get("labor", []))) or wo.get("tech", "")
@@ -301,7 +301,7 @@ def work_order(case_id, fname, wo, tests, *, status="review", reason="", alt="",
                expected_reason=reason, acceptable_alternate=alt, what_it_tests=tests)
     row.update(key_overrides or {})
     key_doc(**row)
-    if status in ("review", "revision"):
+    if status != "duplicate":
         key_lines(case_id, wo.get("parts", []))
         key_labor(case_id, wo.get("labor", []))
 
@@ -318,7 +318,7 @@ def handwritten(case_id, fname, wo, tests, *, status="review", reason="", alt=""
             total=(total if total is not None else sub) if status != "exception" else None,
             signed="yes" if signed else "no", flags=flags, expected_status=status, expected_reason=reason,
             acceptable_alternate=alt, what_it_tests=tests)
-    if status in ("review", "revision"):
+    if status != "duplicate":
         key_lines(case_id, wo.get("parts", []))
         key_labor(case_id, wo.get("labor", []))
 
@@ -363,7 +363,7 @@ def receipt_photo(path, lines, tax_rate):
 
 def statement(path):
     s = SUPPLIERS["pipe"]
-    c = canvas.Canvas(path, pagesize=letter)
+    c = canvas.Canvas(path, pagesize=letter, invariant=1)
     c.setFont("Helvetica-Bold", 17); c.drawString(1 * inch, H - 1 * inch, s["name"])
     c.setFont("Helvetica-Bold", 16); c.drawRightString(W - 1 * inch, H - 1 * inch, "STATEMENT OF ACCOUNT")
     c.setFont("Helvetica", 10)
@@ -387,7 +387,7 @@ def statement(path):
 
 def newsletter(path):
     s = SUPPLIERS["hvac"]
-    c = canvas.Canvas(path, pagesize=letter)
+    c = canvas.Canvas(path, pagesize=letter, invariant=1)
     c.setFont("Helvetica-Bold", 20); c.drawString(1 * inch, H - 1 * inch, s["name"] + " Winter News")
     c.setFont("Helvetica", 11)
     y = H - 1.6 * inch
@@ -404,7 +404,7 @@ def main():
     for f in os.listdir(OUT):
         if not f.startswith("h"):  # never touch Josh's handwritten files
             os.remove(os.path.join(OUT, f))
-    c = canvas.Canvas(os.path.join(OUT, "work-order-form-layout.pdf"), pagesize=letter)
+    c = canvas.Canvas(os.path.join(OUT, "work-order-form-layout.pdf"), pagesize=letter, invariant=1)
     draw_work_order(c, None); c.save()
 
     # --- printed supplier invoices (I) ------------------------------------------------
@@ -442,7 +442,7 @@ def main():
         ("Angle stop, 1/2 x 3/8", 8, 9.80), ("Dielectric union, 3/4 in.", 4, 12.90), ("Gas flex connector, 24 in.", 3, 18.60),
         ("Push-to-connect fitting 1/2 in.", 6, 8.40), ("Hose bibb, frost-free 10 in.", 2, 32.00), ("Shop rags, 50 pk", 1, 14.00)]]
     path = os.path.join(OUT, "i07-prairie-pipe-PP-7759-two-pages.pdf")
-    c = canvas.Canvas(path, pagesize=letter)
+    c = canvas.Canvas(path, pagesize=letter, invariant=1)
     invoice_page(c, SUPPLIERS["pipe"], "PP-7759", "2026-11-24", "2026-12-24", "STOCK", i07[:16],
                  show_totals=False, page_label="Page 1 of 2")
     invoice_page(c, SUPPLIERS["pipe"], "PP-7759", "2026-11-24", "2026-12-24", "STOCK", i07[16:],
@@ -502,7 +502,7 @@ def main():
             status="exception", reason="Packing slip: no prices to enter")
     # I18 two invoices in one PDF
     path = os.path.join(OUT, "i18-hilltop-heater-two-invoices-one-file.pdf")
-    c = canvas.Canvas(path, pagesize=letter)
+    c = canvas.Canvas(path, pagesize=letter, invariant=1)
     invoice_page(c, SUPPLIERS["heater"], "HW-3320", "2026-11-22", "2026-12-07", "J-2620",
                  [("Anode rod, magnesium", 2, 27.50)])
     invoice_page(c, SUPPLIERS["heater"], "HW-3321", "2026-11-22", "2026-12-07", "J-2621",

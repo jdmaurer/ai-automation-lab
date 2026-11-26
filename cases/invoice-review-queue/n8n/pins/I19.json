@@ -1,0 +1,46 @@
+[
+ {
+  "document_type": "invoice",
+  "sender": "Main Street Hardware",
+  "doc_number": "58210",
+  "doc_date": "2026-11-20",
+  "job_number": "",
+  "customer": "",
+  "technician": "",
+  "subtotal": "40.96",
+  "tax": "3.02",
+  "total": "43.98",
+  "signed": "",
+  "flags": "",
+  "problem": "none",
+  "lines": [
+   {
+    "item_type": "part",
+    "description": "Shop vac filter",
+    "qty": "1",
+    "unit_price": "14.99",
+    "amount": "14.99",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "Hose clamps, 10 pk",
+    "qty": "2",
+    "unit_price": "6.49",
+    "amount": "12.98",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "Work gloves",
+    "qty": "1",
+    "unit_price": "12.99",
+    "amount": "12.99",
+    "technician": "",
+    "hours": ""
+   }
+  ]
+ }
+]

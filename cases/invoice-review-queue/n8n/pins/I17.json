@@ -1,0 +1,37 @@
+[
+ {
+  "document_type": "packing_slip",
+  "sender": "Northstar HVAC Parts",
+  "doc_number": "PS-88412",
+  "doc_date": "2026-11-04",
+  "job_number": "J-2605",
+  "customer": "",
+  "technician": "",
+  "subtotal": "0.00",
+  "tax": "0.00",
+  "total": "0.00",
+  "signed": "",
+  "flags": "",
+  "problem": "none",
+  "lines": [
+   {
+    "item_type": "part",
+    "description": "Universal hot surface igniter",
+    "qty": "3",
+    "unit_price": "0.00",
+    "amount": "0.00",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "Flame sensor rod",
+    "qty": "4",
+    "unit_price": "0.00",
+    "amount": "0.00",
+    "technician": "",
+    "hours": ""
+   }
+  ]
+ }
+]

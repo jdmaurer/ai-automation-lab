@@ -1,0 +1,18 @@
+[
+ {
+  "document_type": "work_order",
+  "sender": "Jane",
+  "doc_number": "5102",
+  "doc_date": "2026-11-04",
+  "job_number": "",
+  "customer": "",
+  "technician": "",
+  "subtotal": "",
+  "tax": "",
+  "total": "",
+  "signed": "",
+  "flags": "",
+  "problem": "none",
+  "lines": []
+ }
+]

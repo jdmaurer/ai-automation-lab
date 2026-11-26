@@ -1,0 +1,28 @@
+[
+ {
+  "document_type": "invoice",
+  "sender": "Northstar HVAC Parts",
+  "doc_number": "",
+  "doc_date": "2026-11-19",
+  "job_number": "J-2617",
+  "customer": "",
+  "technician": "",
+  "subtotal": "116.00",
+  "tax": "0.00",
+  "total": "116.00",
+  "signed": "",
+  "flags": "",
+  "problem": "none",
+  "lines": [
+   {
+    "item_type": "part",
+    "description": "Thermostat, programmable",
+    "qty": "2",
+    "unit_price": "58.00",
+    "amount": "116.00",
+    "technician": "",
+    "hours": ""
+   }
+  ]
+ }
+]

@@ -1,0 +1,37 @@
+[
+ {
+  "document_type": "invoice",
+  "sender": "Summit Valve Direct",
+  "doc_number": "SV-118",
+  "doc_date": "2026-11-19",
+  "job_number": "J-2618",
+  "customer": "",
+  "technician": "",
+  "subtotal": "173.00",
+  "tax": "0.00",
+  "total": "173.00",
+  "signed": "",
+  "flags": "",
+  "problem": "none",
+  "lines": [
+   {
+    "item_type": "part",
+    "description": "Backflow preventer, 3/4 in.",
+    "qty": "1",
+    "unit_price": "148.00",
+    "amount": "148.00",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "Test kit fee",
+    "qty": "1",
+    "unit_price": "25.00",
+    "amount": "25.00",
+    "technician": "",
+    "hours": ""
+   }
+  ]
+ }
+]

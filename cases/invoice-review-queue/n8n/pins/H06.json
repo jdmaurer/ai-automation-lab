@@ -1,0 +1,18 @@
+[
+ {
+  "document_type": "work_order",
+  "sender": "",
+  "doc_number": "",
+  "doc_date": "",
+  "job_number": "",
+  "customer": "",
+  "technician": "",
+  "subtotal": "",
+  "tax": "",
+  "total": "",
+  "signed": "",
+  "flags": "",
+  "problem": "back_of_form",
+  "lines": []
+ }
+]

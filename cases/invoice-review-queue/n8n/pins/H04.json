@@ -1,0 +1,46 @@
+[
+ {
+  "document_type": "work_order",
+  "sender": "Jane",
+  "doc_number": "5203",
+  "doc_date": "2026-11-20",
+  "job_number": "J-2642",
+  "customer": "Lakeview Apartments 4B",
+  "technician": "Jane",
+  "subtotal": "202.50",
+  "tax": "0.00",
+  "total": "202.50",
+  "signed": "yes",
+  "flags": "",
+  "problem": "none",
+  "lines": [
+   {
+    "item_type": "part",
+    "description": "Faucet cartridge",
+    "qty": "1",
+    "unit_price": "54.00",
+    "amount": "54.00",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "O-ring kit",
+    "qty": "1",
+    "unit_price": "6.00",
+    "amount": "6.00",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "labor",
+    "description": "Labor",
+    "qty": "1.5",
+    "unit_price": "95.00",
+    "amount": "142.50",
+    "technician": "Jane",
+    "hours": "1.5"
+   }
+  ]
+ }
+]

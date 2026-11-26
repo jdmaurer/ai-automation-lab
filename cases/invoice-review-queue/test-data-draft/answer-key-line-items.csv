@@ -43,10 +43,17 @@ I09,1,part,Gas shutoff valve 1/2 in.,2,15.40,30.80,,
 I09,2,part,"Gas flex connector, 36 in.",1,24.80,24.80,,
 I10,1,part,Draft inducer motor,1,182.00,182.00,,
 I10,2,part,Pressure switch,2,41.60,83.20,,
+I11,1,part,Condensate pump,1,64.00,64.00,,
+I11,2,part,"3/8 in. vinyl tubing, 20 ft",1,9.80,9.80,,
+I12,1,part,"Thermostat, programmable",2,58.00,116.00,,
+I13,1,part,"Backflow preventer, 3/4 in.",1,148.00,148.00,,
+I13,2,part,Test kit fee,1,25.00,25.00,,
 I14,1,part,"Sump pump, 1/3 HP",1,129.00,129.00,,
 I14,2,part,"Check valve, 1-1/2 in.",1,18.40,18.40,,
 I15,1,credit,Return: 3/4 in. ball valve (wrong size),2,-17.80,-35.60,,
 I15,2,credit,Restocking fee,1,3.50,3.50,,
+I17,1,part,Universal hot surface igniter,3,0.00,0.00,,
+I17,2,part,Flame sensor rod,4,0.00,0.00,,
 I19,1,part,Shop vac filter,1,14.99,14.99,,
 I19,2,part,"Hose clamps, 10 pk",2,6.49,12.98,,
 I19,3,part,Work gloves,1,12.99,12.99,,
@@ -76,6 +83,9 @@ W09,2,part,Pressure switch,1,68.00,68.00,,
 W09,3,labor,Labor,2.0,95.00,190.00,Jane,2.0
 W10,1,part,50 gal electric water heater,1,880.00,880.00,,
 W10,2,labor,Labor,3.0,95.00,285.00,Jack,3.0
+W11,1,labor,Labor,1.5,95.00,142.50,John,1.5
+W12,1,part,Shower valve cartridge,1,48.00,48.00,,
+W12,2,labor,Labor,1.0,95.00,95.00,Jane,1.0
 W14,1,part,40 gal gas water heater,1,925.00,925.00,,
 W14,2,part,"Expansion tank, 2 gal",1,72.00,72.00,,
 W14,3,part,"Gas flex connector, 24 in.",1,28.00,28.00,,
@@ -84,6 +94,8 @@ W14,5,labor,Labor,4.0,95.00,380.00,Jane,4.0
 W15,1,part,Gas shutoff valve 1/2 in.,1,24.00,24.00,,
 W15,2,part,"Gas flex connector, 36 in.",1,39.00,39.00,,
 W15,3,labor,Labor,1.0,95.00,95.00,John,1.0
+W16,1,part,Condensate pump,1,98.00,98.00,,
+W16,2,labor,Labor,14,95.00,1330.00,Jane,14
 W17,1,part,Programmable thermostat,2,89.00,178.00,,
 W17,2,labor,Labor,1.5,95.00,142.50,John,1.5
 W19,1,part,Heating element 4500W,1,38.00,38.00,,

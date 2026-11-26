@@ -1,0 +1,37 @@
+[
+ {
+  "document_type": "work_order",
+  "sender": "Jane",
+  "doc_number": "5116",
+  "doc_date": "2026-11-16",
+  "job_number": "J-2616",
+  "customer": "St. Mark's Church Hall",
+  "technician": "Jane",
+  "subtotal": "1428.00",
+  "tax": "0.00",
+  "total": "1428.00",
+  "signed": "yes",
+  "flags": "",
+  "problem": "none",
+  "lines": [
+   {
+    "item_type": "part",
+    "description": "Condensate pump",
+    "qty": "1",
+    "unit_price": "98.00",
+    "amount": "98.00",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "labor",
+    "description": "Labor",
+    "qty": "14",
+    "unit_price": "95.00",
+    "amount": "1330.00",
+    "technician": "Jane",
+    "hours": "14"
+   }
+  ]
+ }
+]

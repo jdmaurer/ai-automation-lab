@@ -1,0 +1,28 @@
+[
+ {
+  "document_type": "work_order",
+  "sender": "John",
+  "doc_number": "5108",
+  "doc_date": "2026-11-11",
+  "job_number": "J-2605",
+  "customer": "Riverton Public Library",
+  "technician": "John",
+  "subtotal": "47.50",
+  "tax": "0.00",
+  "total": "47.50",
+  "signed": "yes",
+  "flags": "callback",
+  "problem": "none",
+  "lines": [
+   {
+    "item_type": "labor",
+    "description": "Labor",
+    "qty": "0.5",
+    "unit_price": "95.00",
+    "amount": "47.50",
+    "technician": "John",
+    "hours": "0.5"
+   }
+  ]
+ }
+]

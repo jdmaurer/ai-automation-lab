@@ -1,0 +1,46 @@
+[
+ {
+  "document_type": "invoice",
+  "sender": "Prairie Pipe & Supply",
+  "doc_number": "PP-7724",
+  "doc_date": "2026-11-10",
+  "job_number": "J-2608",
+  "customer": "",
+  "technician": "",
+  "subtotal": "190.70",
+  "tax": "0.00",
+  "total": "190.70",
+  "signed": "",
+  "flags": "",
+  "problem": "none",
+  "lines": [
+   {
+    "item_type": "part",
+    "description": "3/4 in. PEX-A tubing, 100 ft",
+    "qty": "1",
+    "unit_price": "96.00",
+    "amount": "96.00",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "3/4 in. PEX crimp ring, 25 pk",
+    "qty": "2",
+    "unit_price": "11.75",
+    "amount": "23.50",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "3/4 in. ball valve",
+    "qty": "4",
+    "unit_price": "17.80",
+    "amount": "71.20",
+    "technician": "",
+    "hours": ""
+   }
+  ]
+ }
+]

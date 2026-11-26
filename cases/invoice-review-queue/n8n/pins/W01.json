@@ -1,0 +1,46 @@
+[
+ {
+  "document_type": "work_order",
+  "sender": "John",
+  "doc_number": "5101",
+  "doc_date": "2026-11-03",
+  "job_number": "J-2603",
+  "customer": "Front Street Diner",
+  "technician": "John",
+  "subtotal": "315.00",
+  "tax": "0.00",
+  "total": "315.00",
+  "signed": "yes",
+  "flags": "",
+  "problem": "none",
+  "lines": [
+   {
+    "item_type": "part",
+    "description": "1/2 in. copper pipe, 10 ft",
+    "qty": "2",
+    "unit_price": "32.00",
+    "amount": "64.00",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "1/2 in. copper 90 elbow",
+    "qty": "6",
+    "unit_price": "2.25",
+    "amount": "13.50",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "labor",
+    "description": "Labor",
+    "qty": "2.5",
+    "unit_price": "95.00",
+    "amount": "237.50",
+    "technician": "John",
+    "hours": "2.5"
+   }
+  ]
+ }
+]

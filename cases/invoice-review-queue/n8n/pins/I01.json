@@ -1,0 +1,46 @@
+[
+ {
+  "document_type": "invoice",
+  "sender": "Prairie Pipe & Supply",
+  "doc_number": "PP-7710",
+  "doc_date": "2026-11-03",
+  "job_number": "J-2603",
+  "customer": "",
+  "technician": "",
+  "subtotal": "201.20",
+  "tax": "0.00",
+  "total": "201.20",
+  "signed": "",
+  "flags": "",
+  "problem": "none",
+  "lines": [
+   {
+    "item_type": "part",
+    "description": "1/2 in. copper pipe, type L, 10 ft",
+    "qty": "6",
+    "unit_price": "21.40",
+    "amount": "128.40",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "1/2 in. copper 90 elbow",
+    "qty": "20",
+    "unit_price": "1.15",
+    "amount": "23.00",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "Lead-free solder, 1 lb",
+    "qty": "2",
+    "unit_price": "24.90",
+    "amount": "49.80",
+    "technician": "",
+    "hours": ""
+   }
+  ]
+ }
+]

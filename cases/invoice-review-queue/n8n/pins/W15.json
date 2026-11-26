@@ -1,0 +1,46 @@
+[
+ {
+  "document_type": "work_order",
+  "sender": "John",
+  "doc_number": "5115",
+  "doc_date": "2026-11-16",
+  "job_number": "J-2615",
+  "customer": "Residence",
+  "technician": "John",
+  "subtotal": "158.00",
+  "tax": "0.00",
+  "total": "158.00",
+  "signed": "no",
+  "flags": "",
+  "problem": "none",
+  "lines": [
+   {
+    "item_type": "part",
+    "description": "Gas shutoff valve 1/2 in.",
+    "qty": "1",
+    "unit_price": "24.00",
+    "amount": "24.00",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "Gas flex connector, 36 in.",
+    "qty": "1",
+    "unit_price": "39.00",
+    "amount": "39.00",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "labor",
+    "description": "Labor",
+    "qty": "1.0",
+    "unit_price": "95.00",
+    "amount": "95.00",
+    "technician": "John",
+    "hours": "1.0"
+   }
+  ]
+ }
+]

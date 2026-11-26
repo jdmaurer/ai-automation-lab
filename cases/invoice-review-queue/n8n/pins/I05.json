@@ -1,0 +1,37 @@
+[
+ {
+  "document_type": "invoice",
+  "sender": "Hilltop Water Heater Wholesale",
+  "doc_number": "HW-3301",
+  "doc_date": "2026-11-06",
+  "job_number": "J-2606",
+  "customer": "",
+  "technician": "",
+  "subtotal": "737.50",
+  "tax": "0.00",
+  "total": "737.50",
+  "signed": "",
+  "flags": "",
+  "problem": "none",
+  "lines": [
+   {
+    "item_type": "part",
+    "description": "40 gal natural gas water heater",
+    "qty": "1",
+    "unit_price": "689.00",
+    "amount": "689.00",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "Water heater expansion tank, 2 gal",
+    "qty": "1",
+    "unit_price": "48.50",
+    "amount": "48.50",
+    "technician": "",
+    "hours": ""
+   }
+  ]
+ }
+]

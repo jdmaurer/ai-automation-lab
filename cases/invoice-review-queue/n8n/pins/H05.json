@@ -1,0 +1,18 @@
+[
+ {
+  "document_type": "work_order",
+  "sender": "John",
+  "doc_number": "5204",
+  "doc_date": "2026-11-21",
+  "job_number": "J-2643",
+  "customer": "Riverton Public Library",
+  "technician": "John",
+  "subtotal": "",
+  "tax": "",
+  "total": "",
+  "signed": "yes",
+  "flags": "",
+  "problem": "continued_on_back",
+  "lines": []
+ }
+]

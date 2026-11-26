@@ -1,0 +1,37 @@
+[
+ {
+  "document_type": "work_order",
+  "sender": "Jane",
+  "doc_number": "5205",
+  "doc_date": "2026-11-23",
+  "job_number": "J-2644",
+  "customer": "Willow Court Townhomes #12",
+  "technician": "Jane",
+  "subtotal": "225.00",
+  "tax": "0.00",
+  "total": "225.00",
+  "signed": "no",
+  "flags": "bill_landlord",
+  "problem": "none",
+  "lines": [
+   {
+    "item_type": "part",
+    "description": "Drain cable use fee",
+    "qty": "1",
+    "unit_price": "35.00",
+    "amount": "35.00",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "labor",
+    "description": "Labor",
+    "qty": "2.0",
+    "unit_price": "95.00",
+    "amount": "190.00",
+    "technician": "Jane",
+    "hours": "2.0"
+   }
+  ]
+ }
+]

@@ -1,0 +1,37 @@
+[
+ {
+  "document_type": "invoice",
+  "sender": "Northstar HVAC Parts",
+  "doc_number": "NH-2060",
+  "doc_date": "2026-11-18",
+  "job_number": "J-2616",
+  "customer": "",
+  "technician": "",
+  "subtotal": "73.80",
+  "tax": "0.00",
+  "total": "83.80",
+  "signed": "",
+  "flags": "",
+  "problem": "none",
+  "lines": [
+   {
+    "item_type": "part",
+    "description": "Condensate pump",
+    "qty": "1",
+    "unit_price": "64.00",
+    "amount": "64.00",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "3/8 in. vinyl tubing, 20 ft",
+    "qty": "1",
+    "unit_price": "9.80",
+    "amount": "9.80",
+    "technician": "",
+    "hours": ""
+   }
+  ]
+ }
+]

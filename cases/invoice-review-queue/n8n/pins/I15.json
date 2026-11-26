@@ -1,0 +1,37 @@
+[
+ {
+  "document_type": "credit_memo",
+  "sender": "Prairie Pipe & Supply",
+  "doc_number": "CM-0412",
+  "doc_date": "2026-11-21",
+  "job_number": "J-2608",
+  "customer": "",
+  "technician": "",
+  "subtotal": "-32.10",
+  "tax": "0.00",
+  "total": "-32.10",
+  "signed": "",
+  "flags": "",
+  "problem": "none",
+  "lines": [
+   {
+    "item_type": "credit",
+    "description": "Return: 3/4 in. ball valve (wrong size)",
+    "qty": "2",
+    "unit_price": "-17.80",
+    "amount": "-35.60",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "credit",
+    "description": "Restocking fee",
+    "qty": "1",
+    "unit_price": "3.50",
+    "amount": "3.50",
+    "technician": "",
+    "hours": ""
+   }
+  ]
+ }
+]

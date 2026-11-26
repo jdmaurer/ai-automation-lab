@@ -1,0 +1,46 @@
+[
+ {
+  "document_type": "work_order",
+  "sender": "Jane",
+  "doc_number": "5201",
+  "doc_date": "2026-11-18",
+  "job_number": "J-2640",
+  "customer": "Front Street Diner",
+  "technician": "Jane",
+  "subtotal": "116.00",
+  "tax": "0.00",
+  "total": "116.00",
+  "signed": "yes",
+  "flags": "",
+  "problem": "none",
+  "lines": [
+   {
+    "item_type": "part",
+    "description": "1-1/2 in. PVC P-trap kit",
+    "qty": "1",
+    "unit_price": "18.50",
+    "amount": "18.50",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "Slip joint washer",
+    "qty": "2",
+    "unit_price": "1.25",
+    "amount": "2.50",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "labor",
+    "description": "Labor",
+    "qty": "1.0",
+    "unit_price": "95.00",
+    "amount": "95.00",
+    "technician": "Jane",
+    "hours": "1.0"
+   }
+  ]
+ }
+]

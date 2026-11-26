@@ -1,0 +1,46 @@
+[
+ {
+  "document_type": "invoice",
+  "sender": "Hilltop Water Heater Wholesale",
+  "doc_number": "HW-3308",
+  "doc_date": "2026-11-13",
+  "job_number": "J-2612",
+  "customer": "",
+  "technician": "",
+  "subtotal": "701.80",
+  "tax": "0.00",
+  "total": "701.80",
+  "signed": "",
+  "flags": "",
+  "problem": "none",
+  "lines": [
+   {
+    "item_type": "part",
+    "description": "50 gal electric water heater",
+    "qty": "1",
+    "unit_price": "612.00",
+    "amount": "612.00",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "Heating element 4500W",
+    "qty": "2",
+    "unit_price": "22.40",
+    "amount": "44.80",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
+    "description": "Freight",
+    "qty": "1",
+    "unit_price": "45.00",
+    "amount": "45.00",
+    "technician": "",
+    "hours": ""
+   }
+  ]
+ }
+]
