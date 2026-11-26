@@ -634,49 +634,58 @@ def main():
     work_order("W19", "w19-wo-5119.pdf", W19, "Several flags on one ticket",
                flags="warranty; callback; no_charge")
 
-    # --- handwritten work orders (H): Josh writes these; see HANDWRITTEN-SHEETS.md -----
+    # --- replacements for the dropped handwritten front/back sheet (generated) ---------
+    W20 = wo("5120", "2026-11-21", "John", "J-2643", "Riverton Public Library", "9 Main St",
+             ["Boiler annual service. Replaced circulator pump."],
+             [("Circulator pump", 1, 189.00), ("Pump flange gasket", 2, 4.50)], [("John", 3.0)],
+             total_written="", notes=["MORE PARTS ON BACK - total on back"])
+    work_order("W20", "w20-wo-5120-front.pdf", W20, "Front of a form that continues on the back",
+               status="exception", reason="Continued on back: no total on this page; a person joins front and back",
+               key_overrides={"total": ""})
+    c = canvas.Canvas(os.path.join(OUT, "w21-wo-back-page.pdf"), pagesize=letter, invariant=1)
+    c.setFont("Courier-Bold", 12)
+    yy = H - 1.5 * inch
+    for t in ("(continued)", "1 x Expansion tank @ 62.00 = 62.00", "1 x Pressure relief valve @ 28.50 = 28.50",
+              "TOTAL 573.50"):
+        c.drawString(1 * inch, yy, t); yy -= 22
+    c.save()
+    exception_doc("W21", "w21-wo-back-page.pdf", "Back of a form saved as its own file",
+                  "Back of a form: no header or ticket number", doc_type="work_order")
+
+    # --- handwritten work orders (H): written by Josh 2026-11-26 (see HANDWRITTEN-SHEETS.md)
     S1 = {"ticket": "5201", "iso": "2026-11-18", "tech": "Jane", "job": "J-2640",
           "customer": "Front Street Diner",
           "parts": [("1-1/2 in. PVC P-trap kit", 1, 18.50), ("Slip joint washer", 2, 1.25)],
           "labor": [("Jane", 1.0)]}
-    handwritten("H01", "h01-wo-5201-scan.pdf", S1, "Handwritten, neat, scan mode")
-    S1b = dict(S1, parts=S1["parts"] + [("Teflon tape", 1, 3.00)])
-    handwritten("H02", "h02-wo-5201-rescan.pdf", S1b, "Same sheet rescanned after a line was added",
-                status="revision", reason="Same ticket as H01 with different content: keep both, flag the change")
-    S2 = {"ticket": "5202", "iso": "2026-11-19", "tech": "John", "job": "J-2641",
-          "customer": "Riverton Laundromat",
+    handwritten("H01", "h01-wo-5201-scan.pdf", S1, "Handwritten, long form, scan mode; column lines look like 1s",
+                alt="exception: math check, if '2|slip joint washer' is read as 21")
+    S1b = dict(S1, parts=[("Teflon tape", 1, 3.00)] + S1["parts"])
+    handwritten("H02", "h02-wo-5201-rescan.pdf", S1b, "Same sheet rescanned after a line was added, total corrected",
+                status="revision", reason="Same ticket as H01 with different content: keep both, flag the change",
+                alt="exception: math check, if '2|slip joint washer' is read as 21")
+    S2 = {"ticket": "5202", "iso": "2026-11-19", "tech": "John", "job": "J-2641", "customer": "",
           "parts": [("Thermocouple, 24 in.", 1, 14.75)], "labor": [("John", 0.5)]}
-    handwritten("H03", "h03-wo-5202-scan.pdf", S2, "Margin notes become flags", flags="no_charge; callback",
-                reason="N/C and CALLBACK written in the margin are captured as flags")
-    S3 = {"ticket": "5203", "iso": "2026-11-20", "tech": "Jane", "job": "J-2642",
-          "customer": "Lakeview Apartments 4B",
+    handwritten("H03", "h03-wo-5202-scan.pdf", S2, "Short handwritten form, scan mode")
+    S3 = {"ticket": "5203", "iso": "2026-11-20", "tech": "Jane", "job": "J-2642", "customer": "",
           "parts": [("Faucet cartridge", 1, 54.00), ("O-ring kit", 1, 6.00)], "labor": [("Jane", 1.5)]}
-    handwritten("H04", "h04-wo-5203-scan.pdf", S3, "Crossed-out price and a 1.5 that could read as 15",
+    handwritten("H04", "h04-wo-5203-scan.pdf", S3, "Crossed-out price and a handwritten 1.5",
                 reason="Cartridge price is 54.00 (45.00 crossed out); hours are 1.5",
                 alt="exception: number check, if 1.5 is read as 15")
-    S4 = {"ticket": "5204", "iso": "2026-11-21", "tech": "John", "job": "J-2643",
-          "customer": "Riverton Public Library", "parts": [], "labor": []}
-    handwritten("H05", "h05-wo-5204-front-scan.pdf", S4, "Front of a form that continues on the back",
-                status="exception", reason="Continued on back: this page has no total; a person joins front and back")
-    key_doc(case_id="H06", file="h06-wo-5204-back-scan.pdf", source="handwritten (Josh)",
-            document_type="work_order", expected_status="exception",
-            expected_reason="Back of a form: no header or ticket number",
-            what_it_tests="Back side scanned as its own file")
-    S5 = {"ticket": "5205", "iso": "2026-11-23", "tech": "Jane", "job": "J-2644",
-          "customer": "Willow Court Townhomes #12",
-          "parts": [("Drain cable use fee", 1, 35.00)], "labor": [("Jane", 2.0)]}
-    handwritten("H07", "h07-wo-5205-photo.jpg", S5, "Plain phone photo: tilted and dim",
-                flags="bill_landlord", signed=False, alt="exception: unreadable",
-                reason="BILL LANDLORD in the margin; no signature (tenant not home)")
-    key_doc(case_id="H08", file="h08-two-forms-one-photo.jpg", source="handwritten (Josh)",
+    S5 = {"ticket": "5205", "iso": "2026-11-23", "tech": "Jane", "job": "J-2644", "customer": "",
+          "parts": [("Drain cable fee", 1, 35.00)], "labor": [("Jane", 2.0)]}
+    handwritten("H05", "h05-wo-5205-scan.pdf", S5, "Margin note becomes a flag; no signature",
+                flags="bill_landlord", signed=False,
+                reason="'bill landlord' written beside the date; no signature (tenant not home)")
+    key_doc(case_id="H06", file="h06-wo-5205-phone.jpg", source="handwritten (Josh)",
+            document_type="work_order", sender="Jane", doc_number="5205", doc_date="2026-11-23",
+            expected_status="duplicate",
+            expected_reason="Same paper as H05 sent again as a phone image: same ticket and content, no new row",
+            acceptable_alternate="exception: unreadable",
+            what_it_tests="Same handwritten form sent twice in two formats (PDF scan, then JPG)")
+    key_doc(case_id="H07", file="h07-two-forms-one-photo.jpg", source="handwritten (Josh)",
             document_type="work_order", expected_status="exception",
             expected_reason="Two forms in one photo (tickets 5202 and 5205): a person separates them",
-            what_it_tests="Two sheets side by side in one photo")
-    S6 = {"ticket": "5206", "iso": "2026-11-24", "tech": "John", "job": "J-2645",
-          "customer": "Residence 412 Oak St",
-          "parts": [("Toilet fill valve", 1, 16.25), ("Flapper", 1, 7.50)], "labor": [("John", 1.0)]}
-    handwritten("H09", "h09-wo-5206-scan.pdf", S6, "Signed, paid cash", flags="paid_cash",
-                reason="Signature captured as yes, never transcribed")
+            what_it_tests="Two sheets side by side in one plain phone photo")
 
     with open(os.path.join(HERE, "answer-key-documents.csv"), "w", newline="", encoding="utf-8") as f:
         wr = csv.DictWriter(f, DOC_COLS); wr.writeheader(); wr.writerows(KEY_DOCS)

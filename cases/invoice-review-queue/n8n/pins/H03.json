@@ -5,13 +5,13 @@
   "doc_number": "5202",
   "doc_date": "2026-11-19",
   "job_number": "J-2641",
-  "customer": "Riverton Laundromat",
+  "customer": "",
   "technician": "John",
   "subtotal": "62.25",
   "tax": "0.00",
   "total": "62.25",
   "signed": "yes",
-  "flags": "no_charge; callback",
+  "flags": "",
   "problem": "none",
   "lines": [
    {

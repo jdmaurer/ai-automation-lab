@@ -16,6 +16,15 @@
   "lines": [
    {
     "item_type": "part",
+    "description": "Teflon tape",
+    "qty": "1",
+    "unit_price": "3.00",
+    "amount": "3.00",
+    "technician": "",
+    "hours": ""
+   },
+   {
+    "item_type": "part",
     "description": "1-1/2 in. PVC P-trap kit",
     "qty": "1",
     "unit_price": "18.50",
@@ -29,15 +38,6 @@
     "qty": "2",
     "unit_price": "1.25",
     "amount": "2.50",
-    "technician": "",
-    "hours": ""
-   },
-   {
-    "item_type": "part",
-    "description": "Teflon tape",
-    "qty": "1",
-    "unit_price": "3.00",
-    "amount": "3.00",
     "technician": "",
     "hours": ""
    },

@@ -100,20 +100,20 @@ W17,1,part,Programmable thermostat,2,89.00,178.00,,
 W17,2,labor,Labor,1.5,95.00,142.50,John,1.5
 W19,1,part,Heating element 4500W,1,38.00,38.00,,
 W19,2,labor,Labor,0.5,95.00,47.50,Jane,0.5
+W20,1,part,Circulator pump,1,189.00,189.00,,
+W20,2,part,Pump flange gasket,2,4.50,9.00,,
+W20,3,labor,Labor,3.0,95.00,285.00,John,3.0
 H01,1,part,1-1/2 in. PVC P-trap kit,1,18.50,18.50,,
 H01,2,part,Slip joint washer,2,1.25,2.50,,
 H01,3,labor,Labor,1.0,95.00,95.00,Jane,1.0
-H02,1,part,1-1/2 in. PVC P-trap kit,1,18.50,18.50,,
-H02,2,part,Slip joint washer,2,1.25,2.50,,
-H02,3,part,Teflon tape,1,3.00,3.00,,
+H02,1,part,Teflon tape,1,3.00,3.00,,
+H02,2,part,1-1/2 in. PVC P-trap kit,1,18.50,18.50,,
+H02,3,part,Slip joint washer,2,1.25,2.50,,
 H02,4,labor,Labor,1.0,95.00,95.00,Jane,1.0
 H03,1,part,"Thermocouple, 24 in.",1,14.75,14.75,,
 H03,2,labor,Labor,0.5,95.00,47.50,John,0.5
 H04,1,part,Faucet cartridge,1,54.00,54.00,,
 H04,2,part,O-ring kit,1,6.00,6.00,,
 H04,3,labor,Labor,1.5,95.00,142.50,Jane,1.5
-H07,1,part,Drain cable use fee,1,35.00,35.00,,
-H07,2,labor,Labor,2.0,95.00,190.00,Jane,2.0
-H09,1,part,Toilet fill valve,1,16.25,16.25,,
-H09,2,part,Flapper,1,7.50,7.50,,
-H09,3,labor,Labor,1.0,95.00,95.00,John,1.0
+H05,1,part,Drain cable fee,1,35.00,35.00,,
+H05,2,labor,Labor,2.0,95.00,190.00,Jane,2.0

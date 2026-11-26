@@ -1,0 +1,9 @@
+# Private handwritten originals (not in the public repo). SHA-256 fingerprints, so the test files can be verified.
+
+a53c5eaab2e70c1e21fc9e793d62c0b7197b82608ab994d4a8f84c4b600cbe9f  h01-wo-5201-scan.pdf
+5eb04ac341ea789072a0a8640984e9a69433af956db954336a4adbd7afb5e503  h02-wo-5201-rescan.pdf
+03f2ee9c81ae7203fbbf7c502f761bce21ee7ec77669f858a897f9a50e52ffa4  h03-wo-5202-scan.pdf
+2dee75f75bf0c6e1302bf11cacbbb341ee0048a610e802711d8288dd192c5e9f  h04-wo-5203-scan.pdf
+6942f02587df9192b6a7ff88f811eaeb9ef1727e440fa93430bda79cb097e6fc  h05-wo-5205-scan.pdf
+a9e1e0dffb5351bebbea2e9b50305a2347fb04ad0132b574d642f712d655b602  h06-wo-5205-phone.jpg
+208aba1210bb2d86c0f934ca64e3091b016bd3584bfa16ebee3033efa23f4e8e  h07-two-forms-one-photo.jpg
