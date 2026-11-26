@@ -4,7 +4,7 @@ Rebuilt 2026-11-25 from the Week 9 plan in [CURRENT_STATE.md](../../../CURRENT_S
 
 Sample business: Kettle Creek Heating & Plumbing, a made-up 8-person service company. Jack owns it, Jill runs the office, John and Jane are the techs (Jack sometimes takes a call). Jill types two kinds of paper into Excel: printed supplier parts invoices and the techs' work orders.
 
-Status: complete, ready to freeze (2026-11-26). Josh's 7 handwritten files are in and checked by eye against the key. No model has seen any file. The originals are private (not in this public repo); `display/` holds public copies with signatures blacked out, and `handwritten-fingerprints.txt` holds the originals' SHA-256 fingerprints.
+Status: FROZEN 2026-11-26 by Josh, git tag `week9-testset-v1`. Do not change files or the key; record any later finding as a note, not a fix. Josh's 7 handwritten files are in and checked by eye against the key. No model has seen any file. The originals are private (not in this public repo); `display/` holds public copies with signatures blacked out, and `handwritten-fingerprints.txt` holds the originals' SHA-256 fingerprints.
 
 ## What's here
 
