@@ -11,6 +11,7 @@ import os
 import re
 import time
 import uuid
+from datetime import datetime
 
 import requests
 
@@ -45,7 +46,8 @@ def check_shape(fields):
 
 def read_note(note, key=None, url=GROQ_URL, timeout=TIMEOUT_SECONDS):
     key = os.environ.get("GROQ_API_KEY") if key is None else key
-    trace = {"correlation_id": "py-" + uuid.uuid4().hex[:8], "model": MODEL,
+    trace = {"at": datetime.now().isoformat(timespec="seconds"),
+             "correlation_id": "py-" + uuid.uuid4().hex[:8], "model": MODEL,
              "seconds": None, "http_status": None, "prompt_tokens": None,
              "completion_tokens": None, "error": None}
 
