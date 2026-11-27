@@ -1,72 +1,91 @@
-# Free Copilot Chat session: plan (about 90 minutes)
+# Microsoft Copilot: learning plan
 
-Written 2026-11-26, checked against Microsoft's current pages the same evening. Do this before the lab Business Basic subscription ends (it reads "Expires on December 9, 2026"). Better before about December 6, while the Copilot Studio trial is still active, so Block 4 shows the agent builder as a client would see it.
+Rewritten 2026-11-26 with Josh. It replaces the earlier 90-minute free-Copilot session plan. Why it changed: Josh already knows chatbots, so comparing Copilot Chat with Claude taught little. The real gaps are Copilot inside the Office apps, which needs the paid license and can't be seen in the lab account, and confidence in Copilot Studio. Bluffside was built, but in Week 7 Josh got around Copilot Studio "with help," not on his own.
 
-Where: the blue "jdmaurer Labs" Chrome window, signed in as josh@joshmaurer.onmicrosoft.com, at https://copilot.microsoft.com (or the Copilot app from microsoft365.com).
-Data: synthetic only. Files to use are in `copilot-session/`.
-Notes: keep `copilot-session/notes.md` open and write one line per block.
+Do this after the run 1 predictions and the sealed score walk-through (see CURRENT_STATE).
 
-## Why this session
+## Order
 
-Small businesses on Microsoft 365 will ask "can't we just use Copilot?" This gives you a firsthand answer about the free tier they already have.
+| # | What | Time | Deadline |
+|---|---|---|---|
+| 1 | DataCamp: Working with Microsoft Copilot, whole course | 2 hr | none |
+| 2 | Inbox check in the lab account | 20 min | before the lab subscription ends Dec 9 |
+| 3 | DataCamp: Microsoft Copilot in Excel | 3 hr | none |
+| 4 | DataCamp: Building Agents with Microsoft Copilot Studio, whole course | 3 hr | none |
+| 5 | Solo rebuild of a small piece of Bluffside | 1 hr | only if Microsoft offers the Studio trial extension around Dec 6 |
 
-What Microsoft says it includes today (check each one yourself):
-- Copilot Chat is included for Microsoft 365 business users at no extra cost, and what you can do depends on whether an admin assigned a paid Microsoft 365 Copilot license.
-- Since April 15, 2026, users without the paid license no longer get Copilot directly inside Word, Excel, PowerPoint and OneNote. They keep web chat, the Word, Excel and PowerPoint agents in the Copilot app, and Copilot in Outlook with inbox and calendar grounding.
-- Web-grounded agents come at no extra cost; agents grounded in shared company data are billed by consumption.
-- Paid users get priority access to file upload and image generation.
+Why this order: easiest first, and the only hard deadline (step 2) comes early. Step 1 covers Copilot in Outlook, so step 2 makes sense when you get to it. Step 3 is the skill the people you'll train will use most. Step 4 is the deepest, and step 5 checks whether it stuck.
 
-Rule: no pay-as-you-go billing, no paid agent. If a screen asks for billing, stop and write down what it asked for. Copilot training stays "not on the site yet" until you decide.
+The DataCamp courses use none of your Claude usage, so they fit low-usage days.
 
-## Blocks
+## 1. Working with Microsoft Copilot (2 hr)
 
-### Block 1: Which Copilot is this? (10 min)
-- Open Copilot. Look for the label: "Copilot Chat (Basic)" means the free tier; "M365 Copilot (Premium)" means the paid license.
-- Find the Work/Web switch if there is one, and the data protection marker (a shield or "protected").
-- Write down: the label you see, and word for word what the screen promises about your data.
+https://www.datacamp.com/courses/working-with-microsoft-copilot
 
-### Block 2: Same tasks you'd give Claude, scored (25 min)
-Run each in Copilot, then the same prompt in Claude.
-1. Upload `copilot-session/driftless-10-emails.md`. Prompt: "Sort these 10 emails into Sales, Support, Finance, General, Internal or Unknown. Mark each Urgent or Routine, and say which need the owner's review today. Answer as a table."
-   Then score both answers against `copilot-session/driftless-10-emails-key.md` (do not upload the key). Count right categories out of 10.
-2. Upload `cases/invoice-review-queue/test-data-draft/files/i04-northstar-hvac-NH-2051.pdf`. Prompt: "Give supplier, invoice number, date, total and each line item as a table." Correct: Northstar HVAC Parts, NH-2051, 2026-11-12, total 240.09; lines 1 x Draft inducer motor 182.00, 1 x Pressure switch 41.60.
-3. Upload `cases/invoice-review-queue/test-data-draft/display/h04-wo-5203-scan-display.png`. Same prompt. Correct: cartridge 54.00 (45.00 is crossed out), O-ring kit 6.00, Jane 1.5 hours, total 202.50.
-- Watch for: upload limits, "upgrade" prompts, slow answers, refusals.
-- Write down: a small table: task, Copilot score, Claude score.
+Chapters: Prompting with Microsoft Copilot; Applying Prompts in Microsoft 365 Apps; Building and Enhancing Custom Agents; Seamless Workflows with Copilot App and Agents.
 
-### Block 3: Copilot in Outlook on the lab inbox (15 min)
-This is the free feature closest to your Driftless build.
-- Open Outlook on the web as the lab mailbox and open Copilot.
-- Ask: "Which emails from the last month need the owner's attention today, and why?" Then: "Draft a reply to the newest sales question." Do not send anything.
-- Watch for: does it actually read the inbox? Does it move, label or log anything, or only answer in chat?
-- Write down: what it did that your Driftless flow also does, and what only the flow does (routing, labels, the exception queue, the log).
+- Chapter 1 teaches GCSE (Goal, Context, Source, Expectation), Microsoft's prompt framework. Client staff with Microsoft training will know these terms.
+- Chapter 2: Copilot inside Word, PowerPoint, Excel, Outlook and Teams.
+- Chapter 3: Agent Builder. This is not Copilot Studio. Clients mix them up.
+- Chapter 4: the Analyst and Researcher agents.
+- First check: does it run real Copilot or a simulation? You'll know within a minute.
+- Write down: one line on when a client needs Agent Builder versus Copilot Studio.
 
-### Block 4: Agents, without paying (20 min)
-- In the Copilot app, find the Excel agent. Upload `cases/invoice-review-queue/test-data-draft/answer-key-documents.csv` and ask: "Count documents by expected_status, and list the exception reasons."
-- Then try creating a simple agent with instructions only: "Kettle Creek office helper. Answer questions about the paperwork review rules." Paste the "Rules the key assumes" section from `cases/invoice-review-queue/test-data-draft/README.md` as its knowledge. Do not connect SharePoint or any data source.
-- Watch for: anything marked pay-as-you-go, Copilot Credits, admin approval, or Copilot Studio.
-- Write down: free, needed billing, needed an admin.
+## 2. Inbox check in the lab account (20 min, before Dec 9)
 
-### Block 5: Pages (5 min)
-- Turn your Block 2 email table into a Copilot Page and edit one line.
-- Write down: would a client team keep an SOP draft here? Yes, no or maybe.
+Why: this is the free tier a Business Basic client already has, and only your own account can show it. Free users lost Copilot inside Word, Excel, PowerPoint and OneNote on April 15, 2026. They keep web chat and Copilot in Outlook.
 
-### Block 6: Your verdict (15 min)
-Five lines in the notes:
-1. What a Business Basic client gets free, in plain words.
-2. The first wall they'd hit (likely: no Copilot inside Word and Excel without the paid license).
-3. One task where free Copilot is good enough, so you wouldn't build anything.
-4. One task where your n8n build clearly does more: logging, duplicate protection, the exception queue, scoring against a key.
-5. Whether this belongs in a training offer: yes, no or later.
+Where: the blue "jdmaurer Labs" Chrome window, signed in as josh@joshmaurer.onmicrosoft.com.
+Data: synthetic only. No pay-as-you-go billing, no paid agent. If a screen asks for billing, stop and write down what it asked for.
 
-## After the session
+1. Open https://copilot.microsoft.com. Look for the label. "Copilot Chat (Basic)" means the free tier.
+2. Open Outlook on the web as the lab mailbox, then open Copilot there.
+3. Ask: "Which emails from the last month need the owner's attention today, and why?"
+4. Ask: "Draft a reply to the newest sales question." Do not send it.
+5. Watch for: does it really read the inbox? Does it move, label or log anything, or only answer in chat?
+
+Write down three lines in `copilot-session/notes.md`:
+- The label you saw.
+- What Copilot did that the Driftless flow also does.
+- What only the flow does (routing, labels, the exception queue, the log).
+
+Spare, if you have time: `copilot-session/driftless-10-emails.md` plus its key let you score Copilot's sorting out of 10.
+
+## 3. Microsoft Copilot in Excel (3 hr)
+
+https://www.datacamp.com/courses/microsoft-copilot-in-excel
+
+Chapters: Getting Started with Copilot in Excel; Copilot-Powered Analysis Workflows; Data Quality, Insights, and Oversight.
+
+- It covers tables and formulas, lookups across tables, summaries and charts, flagging blanks and duplicates, and validating multi-step analysis.
+- Watch for Agent Mode versus ask-only mode. Clients will ask which to use.
+- Write down: two tasks you'd teach a small-business team first.
+
+## 4. Building Agents with Microsoft Copilot Studio (3 hr)
+
+https://www.datacamp.com/courses/building-agents-with-microsoft-copilot-studio
+
+It runs in a Microsoft 365 environment that DataCamp provides, so you don't need a license or the trial.
+
+- Chapters 1 to 3 will feel familiar from Bluffside. That's the point: this time it's your hands.
+- New to you: the activity map (chapter 1), the RSS trigger (chapter 2), a directory connector and a spreadsheet as knowledge (chapter 3), and all of chapter 4.
+- Chapter 4 does what the trial blocked: publishing to channels, the Share dialog, the Monitor dashboard, and the Flow checker (which is not the solution checker).
+
+## 5. Solo rebuild (optional, about 1 hr)
+
+Only if Microsoft offers the 30-day Studio trial extension. If it doesn't, skip this step and don't reorder anything for it.
+
+In your own trial, build one topic and one grounded answer from the Bluffside handbook, without directions. Claude only answers questions. Write down where you got stuck.
+
+## After
 
 - Commit `copilot-session/notes.md`.
-- Then turn off the flows that use the lab mailbox (CURRENT_STATE, before-December-8 list).
+- Turn off the flows that use the lab mailbox (CURRENT_STATE, before-December-8 list).
+- Copilot training stays "not on the site yet" until Josh decides.
 
 ## Sources (checked 2026-11-26)
 
+- DataCamp course pages linked above (outlines; Studio course environment and no-credit route).
 - Microsoft Support, "How Copilot Chat works in Microsoft 365 apps": https://support.microsoft.com/topic/676db5e8-9568-4bdb-bf0b-e207e29e056b
 - Purdue IT, "Microsoft removes in-app Copilot Chat features for non-licensed users" (effective April 15, 2026): https://it.purdue.edu/newsroom/articles/260403-microsoft-removes-in-app-copilot-chat-features-for-non-licensesd-users.php
-- Microsoft, Copilot Chat product page (availability in Word, Excel, PowerPoint and OneNote "may vary by market and customer licensing"): https://www.microsoft.com/microsoft-365-copilot/chat
-- Microsoft Learn service description, Microsoft 365 Copilot (web-grounded agents included; agents on tenant data billed by consumption): https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot
+- Microsoft Learn service description, Microsoft 365 Copilot: https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot
