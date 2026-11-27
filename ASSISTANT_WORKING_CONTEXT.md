@@ -349,3 +349,10 @@ Josh explicitly wants browser-connected guidance to prevent bad navigation direc
 - After a complete change, explicitly leave time for Josh to Save draft and confirm “We saved your draft flow” before moving on. Microsoft has been slow; do not rush past save checkpoints.
 - Check only settings that matter to correctness/current work. An exhaustive field-by-field audit after table creation wasted time; the Message ID key width and choice mappings mattered, redundant routine checks did not.
 - After Outlook recovery, a straightforward Publish retry succeeded without connection edits. Josh insisted on it; do not repeat speculative connection repair in the absence of a current failure.
+
+### Added 2026-11-26 (Week 9 build nights and the Copilot plan)
+
+- n8n: Claude drafts the whole workflow as JSON for Josh to paste and check, never click-by-click. When Josh signs Claude into the built-in browser, Claude does the n8n setup and test runs itself and explains what matters.
+- Before recommending a course, plan or "skip", check the repo for what is already built AND the week logs' "Independent" / "With help" lines for what Josh actually learned. Built is not learned: Bluffside was built, but Josh did not feel confident in Copilot Studio. Say which files were checked; never recommend from a course outline alone.
+- Josh learns a new tool best with a guided interactive course first (DataCamp worked for n8n), then a real build.
+- Prediction runs before seeing results (right / wrong / unsure plus a reason) worked well. Seal results until predictions are committed.

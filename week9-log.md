@@ -47,3 +47,15 @@ Handwritten files: four sheets, seven files. Writing "|" between columns made "2
 Independent: catching that the n8n work had slipped back to click-by-click; pushing Claude to drive n8n itself instead of sending me on errands; four correct predictions; spotting that "|" reads as a 1; asking whether my handwriting should be public, then pointing out it's exactly what a client wants to see; asking for a logic test before freezing; arguing that sealed results work as well as predicting before the run.
 
 With help: the workflow JSON and its debugging; the Python scripts; the Groq, n8n and Gemini key setup; checking Gemini's limits and data terms.
+
+## Thursday 11.26.26, evening — Rethinking the Copilot plan (DRAFT, written by Claude for Josh to edit)
+
+I asked Claude to double-check its free Copilot session plan, and I wasn't sure 90 minutes of it was worth it. I already know chatbots. What I've never used is Copilot inside Excel and Word, and that needs the paid license, so my lab account can't show it. DataCamp has Microsoft-built Copilot courses that can.
+
+Claude first said to do the full Copilot Studio course, then said to skip it because Bluffside already covered it. I pushed back with the real answer: Bluffside got built, but I don't feel like a competent builder in Copilot Studio yet. With n8n, I did DataCamp courses first, and that's why the builds made sense. Claude then checked my files item by item against the course outline instead of guessing.
+
+New plan: Working with Microsoft Copilot first (the overview, and it teaches Microsoft's prompt framework clients will know), then a 20-minute check of free Copilot in Outlook on my lab inbox before the subscription ends Dec 9, then Copilot in Excel (the biggest win for the people I'll train), then the full Copilot Studio course, and a solo Bluffside rebuild only if Microsoft extends my trial.
+
+Independent: questioning whether the plan was worth 90 minutes; bringing in the DataCamp courses; being honest that built isn't the same as learned; putting the easiest course first.
+
+With help: reading the course outlines; checking them against what Bluffside and Driftless already cover.

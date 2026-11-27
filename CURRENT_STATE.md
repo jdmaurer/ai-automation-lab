@@ -1,4 +1,4 @@
-# CURRENT STATE — updated 2026-11-25 — RESUME HERE
+# CURRENT STATE — updated 2026-11-26 evening — RESUME HERE
 
 Canonical baton under [AI_HANDOFF_PROTOCOL.md](AI_HANDOFF_PROTOCOL.md). Active Week8 case: [Driftless Inbox Triage](cases/driftless-inbox-triage/README.md). **Scope frozen. Essential documentation complete; overall release NOT_ESTABLISHED.**
 
@@ -53,14 +53,14 @@ Scorer `evaluate-policy-v3.mjs` passes 11 artificial-only tests. The v1 and v2 s
 
 Source: the November "what gets built" research (marketing-track `research/what-gets-built-comparison-2026-11.md`) plus Josh's judgment. Builds 1, 2, 4, 5 and 6 from that research already exist: lead intake (Rivertown, n8n and Power Automate), email triage (Driftless), document assistant (Bluffside), quote drafts from an approved price sheet (Driftless), weekly report with formulas plus AI commentary (Driftless). Do not rebuild them. Their demos come from the existing cases.
 
-**Before December 8 (Microsoft access ends; about 3 hours total):**
+**Before December 8 (Microsoft access ends; about 1.5 hours total):**
 1. Record the Driftless demo. Needs the live lab mailbox. Plan, emails and shot list: [demos/demo-05-inbox-triage.md](demos/demo-05-inbox-triage.md) (written Nov 25).
 2. Copilot inbox check in the lab account, 20 minutes (step 2 of copilot-chat-session-plan.md, rewritten Nov 26: the 90-minute session was replaced by three DataCamp courses plus this check). Free Copilot Chat needs an eligible Microsoft 365 subscription, which ends with the mailbox. Copilot training stays "not on the site yet" until Josh says.
 3. DROPPED Nov 25 (already done): Business Basic was set to cancel on expiration with Claude on Nov 9 (page reads "Expires on December 9, 2026", no charge), and notes show no pay-as-you-go billing attached. Only leftover: accept the Copilot Studio 30-day extension if Microsoft offers it around Dec 6. Original item: 10-minute account check: Business Basic still set to "Cancel on expiration" (a card is on file); no pay-as-you-go billing plan attached for Copilot Credits; Copilot Studio trial end date (about Dec 6; accept the 30-day extension if offered).
 4. Turn off flows that use the lab mailbox so nothing errors over the holidays.
 - Around December 20: open the Developer environment once. Microsoft disables it after 30 days unused. Solution exports in the repo are the backup (restore proven Nov 24).
 - Driftless Restore Practice environment expires about Dec 24: let it go.
-- Nothing in Weeks 10-12 needs paid Microsoft: Week 10 retrieval and MCP run in n8n/Claude (calendar allows "Copilot Studio or n8n"; Bluffside already covers the Copilot Studio side); Week 11 uses saved pricing; Driftless is closed, so Week 12 uses its saved runs.
+- Nothing in Weeks 10-12 needs paid Microsoft: Week 10 retrieval and MCP run in n8n/Claude (calendar allows "Copilot Studio or n8n"; Bluffside already covers the Copilot Studio build, and the DataCamp Copilot Studio course in copilot-chat-session-plan.md builds Josh's own confidence in it, no Microsoft license needed); Week 11 uses saved pricing; Driftless is closed, so Week 12 uses its saved runs.
 
 **Week 9 = the paperwork review queue: n8n workflow + Python test bench** (revised Nov 25 morning with Josh; replaces the overnight "all in n8n" version):
 - Rule (Josh): the program only ADDS. Research on what clients buy picks the case; it never removes a Master Calendar skill. The overnight version had quietly dropped the calendar's "go beneath low-code" method. Restored.
@@ -82,8 +82,11 @@ Source: the November "what gets built" research (marketing-track `research/what-
 - Output must open in Excel (two sheets: documents, line items). Google Sheets once, for Josh's confidence.
 - Python learning path: OPEN, Josh has more questions (Nov 25). Discussed: DataCamp Intermediate Python for Developers, then Introduction to APIs in Python, chapter by chapter before the build piece that uses it; or learning Python through Colab, Streamlit, Gradio and Hugging Face. Not decided. The project record still names Google's Crash Course on Python; Josh actually did DataCamp Introduction to Python (Oct 14).
 - Done: every test file lands where the answer key says; clean fields match; a second full run adds zero rows; an alert fires on an error or on a run that produces nothing; a one-page runbook with a 30-day check question; Josh explains each major piece back; a demo labeled "a demo built on sample data, modeled on a common request," people named only Jack, Jill, John, Jane.
-- First piece (still fine as the n8n front door): an n8n form trigger (search "On form submission") with a file field, to see a file arrive as binary data.
-- Test set REBUILT Nov 25 afternoon (not frozen): Kettle Creek Heating & Plumbing, 50 cases (22 supplier invoices, 19 generated work orders, 9 handwritten by Josh), two answer-key tables (documents, line items). Waiting on Josh's 9 handwritten files, then Claude checks them against the key, then freeze. [cases/invoice-review-queue/test-data-draft/](cases/invoice-review-queue/test-data-draft/README.md).
+- DONE Nov 25-26: the n8n form trigger front door (file field, binary data).
+- Test set FROZEN 2026-11-26: Kettle Creek Heating & Plumbing, 50 cases (I01-I22 supplier invoices, W01-W21 generated work orders, H01-H07 handwritten by Josh), two answer-key tables, tag week9-testset-v1 at commit 5a42950 (tag still to be pushed from Josh's laptop). Handwritten originals are private (gitignored, fingerprints only); display/ holds copies with signatures blacked out. [cases/invoice-review-queue/test-data-draft/]
+- Built 2026-11-26: workflow v0.2 with real AI reading (Groq text, Groq vision for photos, Gemini Flash-Lite for phone-scan PDFs), the n8n test bench, Python first call, failure tests (8/8), trace summary and scorer. Run 1 on the full set is SEALED; see "Single next action".
+- Still open in Week 9 after the score: fix what run 1 shows (one change at a time, rerun the frozen set), second full run adds zero rows, the no-output alert, runbook with a 30-day check, Excel output check, Josh explains each piece back, the demo.
+- Laptop: the sleep setting was changed for the overnight run on Nov 25-26; set it back to normal.
 
 **Later builds (from the approved November 7 list; nothing removed):**
 - Meeting notes to decisions, owners, due dates and follow-up drafts, in n8n, inside Week 11 (discovery calls). Josh's own business would use it.
